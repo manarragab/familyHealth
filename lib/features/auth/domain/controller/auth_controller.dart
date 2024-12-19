@@ -1,0 +1,179 @@
+import 'dart:io';
+
+import 'package:abg/data/const/export.dart';
+import 'package:abg/data/models/auth/login/LoginModel.dart';
+import 'package:abg/data/models/auth/users/PostEditProfile.dart';
+import 'package:abg/features/auth/domain/cases/auth_case.dart';
+import 'package:abg/features/auth/domain/controller/otp_controller.dart';
+import 'package:abg/features/auth/presentation/otp_confirmation_view.dart';
+import 'package:abg/features/auth/presentation/reset_password_screen.dart';
+import 'package:abg/res/router/pages.dart';
+
+class AuthController extends MainGetxController {
+  final otpController = Get.put(OTPController());
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  TextEditingController firstNameController = TextEditingController();
+  TextEditingController lastNameController = TextEditingController();
+
+  @override
+  void onInit() {
+    super.onInit();
+  }
+
+  @override
+  void onClose() {
+    for (TextEditingController controller in [
+      phoneController,
+      passwordController,
+      emailController,
+      firstNameController,
+      lastNameController,
+    ]) {
+      controller.dispose();
+    }
+    super.onClose();
+  }
+
+  LoginModel loginModel = LoginModel(data: LoginData());
+
+  String code = '';
+  String min = '00';
+  String second = '00';
+  bool startCounting = false;
+
+  login() async {
+    Get.offAllNamed(CustomPage.layoutPage);
+    //  sPrint.info('login');
+    //  // must show loading
+    //  loadingGetxController.showLoading();
+//
+    //  // user auth cases for api link or storage
+    //  //todo no need for password wait to call the client to know why there is screen for change password
+    //  var response = await sl<AuthCases>()
+    //      .login(phoneController.text, passwordController.text);
+    //  sPrint.info(response);
+    //  // must end loading
+    //  loadingGetxController.hideLoading();
+//
+    //  statusError.checkStatus(
+    //    response,
+    //    () {
+    //      loginModel = response;
+    //      sPrint.info('login data:: ${loginModel.toJson()}');
+    //      sl<AuthCases>().setUser(loginModel);
+    //      Get.offAllNamed(CustomPage.layoutPage);
+    //      /*   sPrint.info('getting success login');
+    //      Get.put(OTPController()).startCount();
+    //      Get.to(() => OtpConfirmationView(
+    //          getCode: (code) => getCode(code), resendCode: resendOTP));*/
+    //    },
+    //    onError: (msg) {},
+    //    // stateMixin:
+    //  );
+  }
+
+  /* signOut() async {
+    if (sl<AuthCases>().getUser() != null) {
+      loadingGetxController.showLoading();
+      ResponseModel? response = await sl<AuthCases>().signOut();
+      loadingGetxController.hideLoading();
+      statusError.checkStatus(response, () {
+        sl<AuthCases>().setUser(null);
+        Get.back();
+      }, onError: (msg) {
+        sl<AuthCases>().setUser(null);
+        Get.back();
+      });
+    } else {
+      Get.back();
+    }
+  }*/
+
+  getCode({bool moveTo = false}) async {
+    sPrint.info('code:: $code');
+    loadingGetxController.showLoading();
+    var response = await sl<AuthCases>().getCode(emailController.text);
+    loadingGetxController.hideLoading();
+    return statusError.checkStatus(
+      response,
+      () {
+        Get.put(OTPController()).startCount();
+        if (moveTo) {
+          Get.to(() => OtpConfirmationView(
+              getCode: (code) {
+                checkCode(code);
+              },
+              resendCode: () => getCode(moveTo: false)));
+        }
+      },
+      onError: (msg) {
+        showToast("email not found", MessageErrorType.error);
+      },
+      showErrorToast: false,
+    );
+  }
+
+  checkCode(String code) async {
+    loadingGetxController.showLoading();
+    var response = await sl<AuthCases>().checkCode(code);
+    loadingGetxController.hideLoading();
+    statusError.checkStatus(response, () {
+      Get.off(() => ResetPasswordScreen(code), transition: Transition.fadeIn);
+    });
+  }
+
+  void logOut() {
+    sl<AuthCases>().setUser(null);
+    Get.offAllNamed(CustomPage.loginPage);
+  }
+
+  void setPassword(String code) async {
+    loadingGetxController.showLoading();
+    var response = await sl<AuthCases>()
+        .resetPassord(code: code, password: passwordController.text);
+    loadingGetxController.hideLoading();
+    statusError.checkStatus(response, () {
+      Get.offAllNamed(CustomPage.loginPage);
+    });
+  }
+
+  void updateMyAccountScreen() {
+    firstNameController.text = user?.firstName ?? "";
+    lastNameController.text = user?.lastName ?? "";
+    emailController.text = user?.email ?? "";
+    phoneController.text = user?.phone ?? "";
+  }
+
+  void updateProfileImage(File file) async {
+    loadingGetxController.showProgress();
+    var response = await sl<AuthCases>().uploadProfileImage(file);
+    loadingGetxController.hideLoading();
+    statusError.checkStatus(response, () {
+      sPrint.info("image:::::::: ${response.data}");
+      loginModel = sl<AuthCases>().getUser()!;
+      loginModel.data?.user?.image = response.data;
+      sl<AuthCases>().setUser(loginModel);
+      Future.delayed(const Duration(milliseconds: 50), () {
+        update();
+      });
+    });
+  }
+
+  void updateProfile() async {
+    loadingGetxController.showProgress();
+    var response = await sl<AuthCases>().editProfile(PostEditProfile(
+      firstName: firstNameController.text,
+      lastName: lastNameController.text,
+    ));
+    loadingGetxController.hideLoading();
+    statusError.checkStatus(response, () {
+      loginModel = response as LoginModel;
+      sl<AuthCases>().setUser(loginModel);
+      Future.delayed(const Duration(milliseconds: 50), () {
+        update();
+      });
+    });
+  }
+}
