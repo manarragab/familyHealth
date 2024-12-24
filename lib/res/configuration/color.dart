@@ -19,6 +19,8 @@ class CustomColors {
 
   static Color get buttonColor => primary.withOpacity(0.9);
 
+  static Color get backButton => const Color(0xffB3CBD8);
+
   static const Color primaryLight = Color(0xff951920);
   static const Color accent = Color(0xff68605c);
   static const Color accentLight = Color(0xffFEF6ED);
@@ -94,7 +96,7 @@ class CustomColors {
 
   /// this is the color of the apps
 
-  static Color get primary => const Color(0xff0FA968);
+  static Color get primary => const Color(0xff86CD4B);
 
   static Color get secondary => const Color(0xff637D92);
 

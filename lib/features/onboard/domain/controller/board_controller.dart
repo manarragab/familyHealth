@@ -31,15 +31,15 @@ class BoardController extends MainGetxController {
 
   List<BoardModel> boards = [
     BoardModel(
-        'استكشف',
+        'Your family’s health within your hands',
         "اكتشف فرصًا جديدة للربح والنمو مع نظام مستدام يصل بك إلى مستويات أعلى",
         'assets/svg/Online connection-amico.svg'),
     BoardModel(
-        'الأمان',
+        'Keep track of your health with our calculators and reminders',
         "أمانك أولوية—نضمن لك عمليات دفع وحماية بياناتك بأحدث التقنيات",
         'assets/svg/Mobile encryption-amico.svg'),
     BoardModel(
-        'الثقة',
+        'Our symptom checkers and library will keep your mind at ease',
         "ستثمر بثقة، واستمتع بدعم متواصل وشفافية كاملة في كل خطوة",
         'assets/svg/Good team-pana.svg'),
   ];

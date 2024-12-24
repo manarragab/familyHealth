@@ -94,9 +94,9 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
     Future.delayed(const Duration(seconds: 1), () {
       sPrint.info('getUser:: ${sl<AuthCases>().getUser() != null}');
       //   if (sl<AuthCases>().getUser() != null) {
-      CustomGet.offNamed(CustomPage.layoutPage);
+     // CustomGet.offNamed(CustomPage.layoutPage);
       // } else {
-      //   CustomGet.offNamed(CustomPage.onBoardPage);
+         CustomGet.offNamed(CustomPage.onBoardPage);
       // }
     });
   }
