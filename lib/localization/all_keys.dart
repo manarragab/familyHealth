@@ -907,4 +907,31 @@ class CustomTrans {
   static const String noFiltersOrEdits = 'noFiltersOrEdits';
   static const String fullFaceVisibility = 'fullFaceVisibility';
   static const String dataSubmittedSuccessfully = 'dataSubmittedSuccessfully';
+
+  static const String yourFamilyHealthInYourHands =
+      'yourFamilyHealthInYourHands';
+  static const String keepTrackOfYourHealth = 'keepTrackOfYourHealth';
+  static const String symptomCheckersAndLibrary = 'symptomCheckersAndLibrary';
+  static const String toExploreOurAllTheFeatures = 'toExploreOurAllTheFeatures';
+  static const String signInNow = 'signInNow';
+  static const String ifYouDontHaveAnyAccount = 'ifYouDontHaveAnyAccount';
+  static const String createANewOne = 'createANewOne';
+  static const String toCreateNewPasswordPlease = 'toCreateNewPasswordPlease';
+  static const String followTheInstruction = 'followTheInstruction';
+  static const String emailOrPhone = 'emailOrPhone';
+  static const String show = 'show';
+  static const String getCode = 'getCode';
+  static const String or = 'or';
+  static const String agreeToTermAndConditions = 'agreeToTermAndConditions';
+  static const String signInWithGoogle = 'signInWithGoogle';
+  static const String subscribeOurNewsletter = 'subscribeOurNewsletter';
+  static const String iDontHaveAnAccountSignUp = 'iDontHaveAnAccountSignUp';
+  static const String iAlreadyHaveAnAccountLogin = 'iAlreadyHaveAnAccountLogin';
+  static const String varification = 'varification';
+  static const String pleaseEnterTheVerificationCodeAndExploreTheWorld =
+      'pleaseEnterTheVerificationCodeAndExploreTheWorld';
+  static const String resendTheCode = 'resendTheCode';
+  static const String thePasswordWasChangedSuccessfully =
+      'thePasswordWasChangedSuccessfully';
+  static const String backToHome = 'backToHome';
 }

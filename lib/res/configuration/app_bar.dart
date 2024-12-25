@@ -1,6 +1,26 @@
 import 'package:abg/data/const/export.dart';
+import 'package:abg/res/common-widgets/custom_back_button.dart';
 
 class CustomAppBar {
+  static PreferredSizeWidget appBarLogo({
+    List<Widget>? actions,
+  }) {
+    return PreferredSize(
+        preferredSize: const Size.fromHeight(100),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          child: AppBar(
+            centerTitle: true,
+            actions: actions,
+            title: SvgPicture.asset("assets/svg/logo_appbar.svg"),
+            iconTheme: const IconThemeData(color: Colors.white),
+            leading: const CustomBackButton(),
+            backgroundColor: Colors.white,
+            elevation: 0.0,
+          ),
+        ));
+  }
+
   static PreferredSizeWidget appBar(
     String title, {
     String subTitle = "",

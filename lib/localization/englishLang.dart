@@ -771,4 +771,33 @@ Map<String, String> en = {
       'The photo must be complete and clear, and the face must be fully visible.',
   CustomTrans.dataSubmittedSuccessfully:
       'Your data has been submitted successfully! Our team will review your files shortly. We will notify you when your identity is verified.',
+  CustomTrans.yourFamilyHealthInYourHands:
+      'Your family’s health within your hands',
+  CustomTrans.keepTrackOfYourHealth:
+      'Keep track of your health with our calculators and reminders',
+  CustomTrans.symptomCheckersAndLibrary:
+      'Our symptom checkers and library will keep your mind at ease',
+
+  CustomTrans.toExploreOurAllTheFeatures: 'To Explore Our All The Features',
+  CustomTrans.signInNow: 'Sign In Now',
+  CustomTrans.ifYouDontHaveAnyAccount: 'If You Don’t Have Any Account. Please',
+  CustomTrans.createANewOne: 'Create An New One.',
+  CustomTrans.toCreateNewPasswordPlease: 'To Create New Password Please',
+  CustomTrans.followTheInstruction: 'Follow The Instruction',
+  CustomTrans.emailOrPhone: 'Email or Phone',
+  CustomTrans.show: 'Show',
+  CustomTrans.getCode: 'Get Code',
+  CustomTrans.or: 'Or',
+  CustomTrans.agreeToTermAndConditions: 'Agree To Term & Conditions',
+  CustomTrans.signInWithGoogle: 'Sign In With Google',
+  CustomTrans.subscribeOurNewsletter: 'Subscribe Our Newsletter',
+  CustomTrans.iDontHaveAnAccountSignUp: 'I don’t have an account. Sign up',
+  CustomTrans.iAlreadyHaveAnAccountLogin: 'I already have an account. Login',
+  CustomTrans.varification: 'Varification',
+  CustomTrans.pleaseEnterTheVerificationCodeAndExploreTheWorld:
+      'Please Enter The Verification Code And Explore The World.',
+  CustomTrans.resendTheCode: 'Resend the Code',
+  CustomTrans.thePasswordWasChangedSuccessfully:
+      'The password was changed successfully',
+  CustomTrans.backToHome: 'Back to Home',
 };

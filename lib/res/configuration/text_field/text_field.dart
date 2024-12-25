@@ -137,7 +137,7 @@ class CustomTextField {
   }) {
     double radius = 20.r;
     return InputDecoration(
-      contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
+      contentPadding: const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
       errorBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(radius),
         borderSide: BorderSide(
@@ -148,29 +148,29 @@ class CustomTextField {
       ),
       suffixIcon: suffixIcon,
       counter: const Offstage(),
-      prefixIcon: prefixIcon,
+      //  prefixIcon: prefixIcon,
       hintText: "${removeHintWrite ? '' : CustomTrans.write.tr} $hintText",
       hintStyle: TFonts.inter(
           color: CustomColors.black,
-          fontSize: 14,
+          fontSize: 16,
           fontWeight: TFontWights.regular),
       labelStyle: TFonts.inter(
           color: CustomColors.textFieldColor,
-          fontSize: 14.sp,
+          fontSize: 16,
           fontWeight: TFontWights.bold),
       errorStyle: TFonts.inter(
         color: CustomColors.red,
-        fontSize: 12.sp,
+        fontSize: 16,
         fontWeight: TFontWights.bold,
       ),
       focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(radius),
           borderSide: const BorderSide(color: CustomColors.accent)),
       enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(radius),
           borderSide: const BorderSide(color: Color(0xffCED7DE))),
       focusedErrorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(radius),
           borderSide: BorderSide(color: CustomColors.primary)),
       fillColor: CustomColors.fillTextField,
       hoverColor: CustomColors.primary,

@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/onboard/domain/controller/board_controller.dart';
+import 'package:abg/res/router/pages.dart';
 
 class BoardScreen extends StatefulWidget {
   const BoardScreen({Key? key}) : super(key: key);
@@ -55,7 +56,9 @@ class _BoardScreenState extends State<BoardScreen> {
             backgroundColor: Colors.transparent,
             actions: [
               TextButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.offAllNamed(CustomPage.loginPage);
+                  },
                   child: Text(
                     CustomTrans.skip.tr,
                     style: TFonts.buttonStyleWhite,

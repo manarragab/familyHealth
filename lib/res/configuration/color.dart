@@ -13,7 +13,7 @@ class CustomColors {
   static const bottomBarUnSelectColor = Color(0xff707070);
   static const hintTextField = Color(0xffA1A1A1);
   static const icoTextField = Color(0xffC4C4C4);
-  static const backgroundScaffold = Color(0xffFAFAFA);
+  static const backgroundScaffold = Color(0xffffffff);
   static final selectedTileColor = Colors.grey.shade400;
   static var mainAppBarColor = Colors.white;
 
