@@ -15,6 +15,7 @@ class MainButton extends StatelessWidget {
   final Widget? titleWidget;
   final double padding;
   final Widget? widget;
+  final bool withShadow;
 
   const MainButton({
     key,
@@ -32,6 +33,7 @@ class MainButton extends StatelessWidget {
     this.titleWidget,
     this.padding = 0.0,
     this.widget,
+    this.withShadow = true,
   });
 
   @override
@@ -43,6 +45,7 @@ class MainButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
+          shadowColor: withShadow ? null : Colors.transparent,
           backgroundColor: backgroundColor ?? CustomColors.buttonColor,
           splashFactory: const NoSplashFactory(),
           shape: RoundedRectangleBorder(
@@ -55,7 +58,7 @@ class MainButton extends StatelessWidget {
                   style: BorderStyle.solid
                   //  strokeAlign: StrokeAlign.outside,
                   )),
-          elevation: 2.0,
+          elevation: withShadow ? 2.0 : 0.0,
         ),
         child: widget ??
             Row(

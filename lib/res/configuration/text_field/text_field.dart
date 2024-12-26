@@ -1,15 +1,9 @@
+import 'package:abg/data/const/export.dart';
 import 'package:abg/localization/change_language.dart';
 import 'package:abg/res/configuration/text_field/formatter.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:get/get_utils/src/extensions/internacionalization.dart';
 
-import '../../../localization/all_keys.dart';
-import '../color.dart';
-import '../fonts.dart';
 import '../validator.dart';
 
 enum FelidType { phone, email, none }
@@ -202,14 +196,11 @@ class CustomTextField {
         //validator: validator ?? (x) => TValidator.normalValidator(x?.trim()),
         decoration: _defaultDecoration(
           suffixIcon: Padding(
-            padding: const EdgeInsetsDirectional.only(end: 10.0),
-            child: SvgPicture.asset('assets/svg/pass.svg'),
+            padding: const EdgeInsetsDirectional.only(end: 15.0),
+            child: Text(CustomTrans.show.tr),
           ),
           hintText: hint ?? CustomTrans.password.tr,
           removeHintWrite: true,
-          prefixIcon: SvgPicture.asset(
-            'assets/svg/password.svg',
-          ),
         ),
       ),
     );

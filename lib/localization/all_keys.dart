@@ -934,4 +934,7 @@ class CustomTrans {
   static const String thePasswordWasChangedSuccessfully =
       'thePasswordWasChangedSuccessfully';
   static const String backToHome = 'backToHome';
+
+  static const String resetPassword = 'resetPassword';
+  static const String enterTheNewPassword = 'enterTheNewPassword';
 }

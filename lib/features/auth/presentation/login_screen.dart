@@ -98,6 +98,74 @@ class LoginScreen extends GetView<AuthController> {
                           textColor: CustomColors.white,
                         ),
                       ),
+                      const SizedBox(height: 10),
+                      Row(
+                        children: [
+                          Expanded(
+                              child: Divider(
+                            color: CustomColors.third,
+                            thickness: 1,
+                          )),
+                          const SizedBox(width: 10),
+                          Text(CustomTrans.or.tr),
+                          const SizedBox(width: 10),
+                          Expanded(
+                              child: Divider(
+                            color: CustomColors.third,
+                            thickness: 1,
+                          )),
+                        ],
+                      ),
+                      const SizedBox(height: 15),
+                      MainButton(
+                        onPressed: () {},
+                        title: "Sign In With google",
+                        buttonWordStyle: TFonts.textTitleStyle(
+                            fontWeight: TFontWights.regular),
+                        backgroundColor: CustomColors.lightGrey,
+                        withShadow: false,
+                      ),
+                      const SizedBox(height: 20),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          InkWell(
+                            onTap: () {},
+                            child: CircleAvatar(
+                              backgroundColor: const Color(0xffB3CBD8),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child:
+                                    SvgPicture.asset("assets/svg/facebook.svg"),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          InkWell(
+                            onTap: () {},
+                            child: CircleAvatar(
+                              backgroundColor: const Color(0xffB3CBD8),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: SvgPicture.asset(
+                                    "assets/svg/instegram.svg"),
+                              ),
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          InkWell(
+                            onTap: () {},
+                            child: CircleAvatar(
+                              backgroundColor: const Color(0xffB3CBD8),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: SvgPicture.asset("assets/svg/x.svg"),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 20),
                       Center(
                         child: RichText(
                           text: TextSpan(
@@ -110,7 +178,7 @@ class LoginScreen extends GetView<AuthController> {
                               TextSpan(
                                 text: "   ${CustomTrans.signUp.tr}   ",
                                 style: TFonts.inter(
-                                    color: CustomColors.primary,
+                                    color: CustomColors.secondary,
                                     fontSize: TFontSizes.f14,
                                     fontWeight: TFontWights.bold),
                                 recognizer: TapGestureRecognizer()

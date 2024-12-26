@@ -68,14 +68,8 @@ class MyAccountScreen extends GetView<AuthController> {
                     const SizedBox(height: 10),
                     CustomTextField.nameTextField(
                       (value) {},
-                      hint: "first name",
-                      controller: controller.firstNameController,
-                    ),
-                    const SizedBox(height: 10),
-                    CustomTextField.nameTextField(
-                      (value) {},
-                      hint: "last name",
-                      controller: controller.lastNameController,
+                      hint: "full name",
+                      controller: controller.nameController,
                     ),
                     const SizedBox(height: 10),
                     CustomTextField.emailTextField(

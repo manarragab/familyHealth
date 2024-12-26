@@ -4,6 +4,7 @@ import 'package:abg/res/common-widgets/custom_back_button.dart';
 class CustomAppBar {
   static PreferredSizeWidget appBarLogo({
     List<Widget>? actions,
+    bool displayLogo = true,
   }) {
     return PreferredSize(
         preferredSize: const Size.fromHeight(100),
@@ -12,7 +13,9 @@ class CustomAppBar {
           child: AppBar(
             centerTitle: true,
             actions: actions,
-            title: SvgPicture.asset("assets/svg/logo_appbar.svg"),
+            title: displayLogo
+                ? SvgPicture.asset("assets/svg/logo_appbar.svg")
+                : const SizedBox(),
             iconTheme: const IconThemeData(color: Colors.white),
             leading: const CustomBackButton(),
             backgroundColor: Colors.white,

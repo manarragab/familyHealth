@@ -55,7 +55,7 @@ class LoginData {
 class User {
   User({
     this.id,
-    this.firstName,
+    this.name,
     this.lastName,
     this.email,
     this.phone,
@@ -71,7 +71,7 @@ class User {
 
   User.fromJson(dynamic json) {
     id = json['id'];
-    firstName = json['first_name'];
+    name = json['first_name'];
     lastName = json['last_name'];
     email = json['email'];
     phone = json['phone'];
@@ -89,7 +89,7 @@ class User {
   }
 
   num? id;
-  String? firstName;
+  String? name;
   String? lastName;
   String? email;
   String? phone;
@@ -105,7 +105,7 @@ class User {
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['id'] = id;
-    map['first_name'] = firstName;
+    map['first_name'] = name;
     map['last_name'] = lastName;
     map['email'] = email;
     map['phone'] = phone;

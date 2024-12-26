@@ -14,8 +14,7 @@ class AuthController extends MainGetxController {
   TextEditingController phoneController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  TextEditingController firstNameController = TextEditingController();
-  TextEditingController lastNameController = TextEditingController();
+  TextEditingController nameController = TextEditingController();
 
   @override
   void onInit() {
@@ -28,8 +27,7 @@ class AuthController extends MainGetxController {
       phoneController,
       passwordController,
       emailController,
-      firstNameController,
-      lastNameController,
+      nameController,
     ]) {
       controller.dispose();
     }
@@ -140,8 +138,7 @@ class AuthController extends MainGetxController {
   }
 
   void updateMyAccountScreen() {
-    firstNameController.text = user?.firstName ?? "";
-    lastNameController.text = user?.lastName ?? "";
+    nameController.text = user?.name ?? "";
     emailController.text = user?.email ?? "";
     phoneController.text = user?.phone ?? "";
   }
@@ -164,8 +161,8 @@ class AuthController extends MainGetxController {
   void updateProfile() async {
     loadingGetxController.showProgress();
     var response = await sl<AuthCases>().editProfile(PostEditProfile(
-      firstName: firstNameController.text,
-      lastName: lastNameController.text,
+      firstName: nameController.text,
+      lastName: "",
     ));
     loadingGetxController.hideLoading();
     statusError.checkStatus(response, () {

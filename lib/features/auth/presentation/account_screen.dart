@@ -64,7 +64,7 @@ class AccountScreen extends StatelessWidget {
                         ),
                       ),
                       title: Text(
-                        "${logic.user?.firstName ?? ""} ${logic.user?.lastName ?? ""}",
+                        "${logic.user?.name ?? ""} ${logic.user?.lastName ?? ""}",
                         style: TFonts.inter(
                             fontWeight: FontWeight.bold, fontSize: 18),
                       ),

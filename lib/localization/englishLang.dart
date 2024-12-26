@@ -382,7 +382,7 @@ Map<String, String> en = {
   CustomTrans.ordersProduct: 'Order(Product)',
   CustomTrans.statistics: 'statistics',
   CustomTrans.accepted: 'accepted',
-  CustomTrans.done: 'done',
+  CustomTrans.done: 'Done',
   CustomTrans.denied: 'denied',
   CustomTrans.intinerary: 'INTINERARY',
   CustomTrans.weeklyPlan: 'WEEKLY PLAN',
@@ -799,4 +799,6 @@ Map<String, String> en = {
   CustomTrans.thePasswordWasChangedSuccessfully:
       'The password was changed successfully',
   CustomTrans.backToHome: 'Back to Home',
+  CustomTrans.resetPassword: 'Reset Password',
+  CustomTrans.enterTheNewPassword: 'Enter the new password',
 };

@@ -1,5 +1,8 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/auth/domain/controller/auth_controller.dart';
+import 'package:abg/features/auth/domain/controller/otp_controller.dart';
+import 'package:abg/features/auth/presentation/otp_confirmation_view.dart';
+import 'package:abg/features/auth/presentation/reset_password_screen.dart';
 import 'package:abg/res/configuration/text_field/text_field.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
 
@@ -9,28 +12,43 @@ class ForgetPasswordScreen extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar.appBar(CustomTrans.forgetPassword.tr),
+      appBar: CustomAppBar.appBarLogo(displayLogo: false),
       body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         children: [
-          ListTile(
-            contentPadding: EdgeInsets.zero,
-            title: Text(
-              CustomTrans.forgetPassword.tr,
-              style: TFonts.textTitleStyle(),
-            ),
-            subtitle: Text(CustomTrans.forgetPasswordLine.tr),
+          Text(
+            CustomTrans.forgetPassword.tr,
+            style: TFonts.textTitleStyle(
+                fontSize: 18, fontWeight: TFontWights.bold),
           ),
           const SizedBox(height: 10),
+          Text(
+            CustomTrans.toCreateNewPasswordPlease.tr,
+            style: TFonts.textTitleStyle(
+                fontSize: 16, fontWeight: TFontWights.regular),
+          ),
+          const SizedBox(height: 10),
+          Text(
+            CustomTrans.followTheInstruction.tr,
+            style: TFonts.textTitleStyle(
+                fontSize: 16, fontWeight: TFontWights.regular),
+          ),
+          CustomPadding.heightButton,
           CustomTextField.emailTextField((value) => null,
               controller: controller.emailController),
           const SizedBox(height: 50),
           LoadingOverLay(
             showLoadingOnly: true,
             child: MainButton(
-                title: "${CustomTrans.send.tr} ${CustomTrans.code.tr}",
+                title: CustomTrans.getCode.tr,
                 onPressed: () {
-                  controller.getCode(moveTo: true);
+                  Get.to(() => OtpConfirmationView(getCode: (code) {
+                        Get.to(() => ResetPasswordScreen("1234"));
+                      }, resendCode: () {
+                        Get.put(OTPController()).startCount();
+                      }));
+
+                  // controller.getCode(moveTo: true);
                 }),
           )
         ],

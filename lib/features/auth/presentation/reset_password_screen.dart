@@ -10,18 +10,17 @@ class ResetPasswordScreen extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar.appBar(CustomTrans.setPassword.tr),
+      appBar: CustomAppBar.appBarLogo(displayLogo: false),
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         children: [
           ListTile(
             contentPadding: EdgeInsets.zero,
             title: Text(
-              CustomTrans.setPassword.tr,
+              CustomTrans.resetPassword.tr,
               style: TFonts.textTitleStyle(),
             ),
-            subtitle: Text(
-                "${CustomTrans.setPasswordLine.tr} \n “${controller.emailController.text}”"),
+            subtitle: Text(CustomTrans.enterTheNewPassword.tr),
           ),
           const SizedBox(height: 10),
           CustomTextField.passwordTextField(
@@ -30,11 +29,18 @@ class ResetPasswordScreen extends GetView<AuthController> {
             isVisible: false,
             changeVisible: () {},
           ),
+          CustomTextField.passwordTextField((value) => null,
+              isVisible: true,
+              changeVisible: () {},
+              hint: CustomTrans.confirmPassword.tr,
+              controller: controller.passwordController
+              //  controller:
+              ),
           const SizedBox(height: 20),
           LoadingOverLay(
             showLoadingOnly: true,
             child: MainButton(
-                title: CustomTrans.confirm.tr,
+                title: CustomTrans.done.tr,
                 onPressed: () {
                   controller.setPassword(code);
                 }),

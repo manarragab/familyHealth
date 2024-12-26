@@ -1,7 +1,6 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/auth/domain/controller/auth_controller.dart';
 import 'package:abg/res/common-widgets/custom_check_box.dart';
-import 'package:abg/res/common-widgets/custom_logo.dart';
 import 'package:abg/res/configuration/text_field/text_field.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
 import 'package:abg/res/router/pages.dart';
@@ -15,35 +14,48 @@ class SignUpScreen extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar.appBar(CustomTrans.signUp.tr),
+      appBar: CustomAppBar.appBarLogo(),
       body: LoadingOverLay(
         child: Form(
           key: formKey,
           child: ListView(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
             children: [
-              const Center(
-                child: CustomLogo(height: 56, width: 148),
-              ),
-              const SizedBox(height: 20),
               Text(
-                CustomTrans.registerLine.tr,
+                CustomTrans.signUp.tr,
+                style: TFonts.textTitleStyle(
+                    fontSize: 18, fontWeight: TFontWights.bold),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                CustomTrans.ifYouDontHaveAnyAccount,
+                style: TFonts.textTitleStyle(
+                    fontSize: 16, fontWeight: TFontWights.regular),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                CustomTrans.signInNow.tr,
                 style: TFonts.textTitleStyle(
                     fontSize: 16, fontWeight: TFontWights.regular),
               ),
               CustomPadding.heightButton,
+              CustomTextField.nameTextField((value) {},
+                  controller: controller.nameController
+                  //  controller:
+                  ),
+              CustomPadding.smallHeight,
               CustomTextField.emailTextField((value) => phone = value,
                   controller: controller.phoneController
                   //  controller:
                   ),
-              CustomPadding.height,
+              CustomPadding.smallHeight,
               CustomTextField.passwordTextField((value) => null,
                   isVisible: true,
                   changeVisible: () {},
                   controller: controller.passwordController
                   //  controller:
                   ),
-              CustomPadding.height,
+              CustomPadding.smallHeight,
               CustomTextField.passwordTextField((value) => null,
                   isVisible: true,
                   changeVisible: () {},
@@ -52,54 +64,15 @@ class SignUpScreen extends GetView<AuthController> {
                   //  controller:
                   ),
               CustomPadding.height,
-              CustomTextField.dynamicTextField((value) => null,
-                  hint: CustomTrans.invitationCode.tr,
-                  suffixIcon: SvgPicture.asset("assets/svg/partner.svg")),
-              CustomPadding.height,
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                child: Row(
-                  children: [
-                    CustomCheckBox(onTap: () {}, isChecked: false),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: RichText(
-                        text: TextSpan(
-                          text: CustomTrans.termsAndConditionsFirstLine.tr,
-                          style: TFonts.inter(
-                            color: Colors.black,
-                            fontSize: TFontSizes.f14,
-                          ),
-                          children: [
-                            TextSpan(
-                              text: "   ${CustomTrans.terms.tr}   ",
-                              style: TFonts.inter(
-                                  color: CustomColors.primary,
-                                  fontSize: TFontSizes.f14,
-                                  fontWeight: TFontWights.bold),
-                              recognizer: TapGestureRecognizer()..onTap = () {},
-                            ),
-                            TextSpan(
-                              text: " ${CustomTrans.and.tr} ",
-                              style: TFonts.inter(
-                                  color: CustomColors.black,
-                                  fontSize: TFontSizes.f14,
-                                  fontWeight: TFontWights.bold),
-                            ),
-                            TextSpan(
-                              text: "   ${CustomTrans.conditions.tr}   ",
-                              style: TFonts.inter(
-                                  color: CustomColors.primary,
-                                  fontSize: TFontSizes.f14,
-                                  fontWeight: TFontWights.bold),
-                              recognizer: TapGestureRecognizer()..onTap = () {},
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+              checkboxListTile(
+                value: false,
+                onChanged: () {},
+                title: CustomTrans.agreeToTermAndConditions.tr,
+              ),
+              checkboxListTile(
+                value: false,
+                onChanged: () {},
+                title: CustomTrans.subscribeOurNewsletter.tr,
               ),
               CustomPadding.heightButton,
               Padding(
@@ -125,7 +98,7 @@ class SignUpScreen extends GetView<AuthController> {
                       TextSpan(
                         text: "   ${CustomTrans.login.tr}   ",
                         style: TFonts.inter(
-                            color: CustomColors.primary,
+                            color: CustomColors.secondary,
                             fontSize: TFontSizes.f16,
                             fontWeight: TFontWights.bold),
                         recognizer: TapGestureRecognizer()
@@ -142,6 +115,29 @@ class SignUpScreen extends GetView<AuthController> {
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+
+  checkboxListTile({
+    required bool value,
+    required Null Function() onChanged,
+    required String title,
+  }) {
+    return InkWell(
+      onTap: onChanged,
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: 5),
+        child: Row(
+          children: [
+            CustomCheckBox(
+              onTap: onChanged,
+              isChecked: value,
+            ),
+            const SizedBox(width: 10),
+            Text(title)
+          ],
         ),
       ),
     );

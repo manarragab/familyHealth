@@ -16,57 +16,113 @@ class OtpConfirmationView extends GetView<OTPController> {
   Widget build(BuildContext context) {
     final loginController = Get.find<AuthController>();
     return Scaffold(
-      appBar: CustomAppBar.appBar(CustomTrans.verificationCode.tr),
+      appBar: CustomAppBar.appBarLogo(displayLogo: false),
       body: LoadingOverLay(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 32.w),
           child: SingleChildScrollView(
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  title: Text(
-                    CustomTrans.verificationCode.tr,
-                    style: TFonts.textTitleStyle(),
+                Text(
+                  CustomTrans.verificationCode.tr,
+                  style: TFonts.textTitleStyle(
+                      fontSize: 18, fontWeight: TFontWights.bold),
+                ),
+                const SizedBox(height: 10),
+                Text(
+                  CustomTrans
+                      .pleaseEnterTheVerificationCodeAndExploreTheWorld.tr,
+                  style: TFonts.textTitleStyle(
+                      fontSize: 16, fontWeight: TFontWights.regular),
+                ),
+                const SizedBox(height: 10),
+                Center(
+                  child: Directionality(
+                    textDirection: TextDirection.ltr,
+                    child: Pinput(
+                      length: 5,
+                      keyboardType: TextInputType.text,
+                      defaultPinTheme: PinTheme(
+                        width: 48,
+                        height: 48,
+                        textStyle: TextStyle(
+                            fontSize: 20,
+                            color: CustomColors.primary,
+                            fontWeight: FontWeight.w600),
+                        decoration: BoxDecoration(
+                          border: Border.all(color: CustomColors.grey),
+                          borderRadius: BorderRadius.circular(10),
+                          color: const Color(0xffD9D9D9),
+                        ),
+                      ),
+                      pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
+                      submittedPinTheme: PinTheme(
+                        height: 48,
+                        width: 48,
+                        textStyle: TFonts.textTitleStyle(),
+                        decoration: BoxDecoration(
+                          color: const Color(0xffD9D9D9),
+                          border: Border.all(color: CustomColors.green),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                      showCursor: true,
+                      onChanged: (value) {
+                        otp = value;
+                      },
+                      onCompleted: (value) => getCode(value),
+                    ),
                   ),
-                  subtitle: Text(CustomTrans.enterVerificationCodeLine.tr),
                 ),
                 SizedBox(
                   height: 20.h,
                 ),
-                Directionality(
-                  textDirection: TextDirection.ltr,
-                  child: Pinput(
-                    length: 5,
-                    keyboardType: TextInputType.text,
-                    defaultPinTheme: PinTheme(
-                      width: 48,
-                      height: 48,
-                      textStyle: TextStyle(
-                          fontSize: 20,
-                          color: CustomColors.primary,
-                          fontWeight: FontWeight.w600),
-                      decoration: BoxDecoration(
-                          border: Border.all(color: CustomColors.grey),
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.white),
-                    ),
-                    pinputAutovalidateMode: PinputAutovalidateMode.onSubmit,
-                    submittedPinTheme: PinTheme(
-                      height: 48,
-                      width: 48,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: CustomColors.green),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                    ),
-                    showCursor: true,
-                    onChanged: (value) {
-                      otp = value;
-                    },
-                    onCompleted: (value) => getCode(value),
-                  ),
-                ),
+                GetBuilder<OTPController>(builder: (controller) {
+                  // Calculate minutes and seconds
+                  int minutes = controller.counter ~/ 60;
+                  int seconds = controller.counter % 60;
+
+                  // Format as mm:ss
+                  String formattedTime =
+                      '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
+                  return SizedBox(
+                      //height: 50.h,
+                      width: Get.width,
+                      child: Column(
+                        children: [
+                          SizedBox(
+                              child: Text(
+                            formattedTime,
+                            textAlign: TextAlign.center,
+                            style: TFonts.textTitleStyle(
+                              color: CustomColors.secondary,
+                              fontSize: 14,
+                            ),
+                          )),
+                          SizedBox(
+                            height: 20.h,
+                          ),
+                          SizedBox(
+                            width: 110.w,
+                            height: 40.h,
+                            child: InkWell(
+                              onTap: () async {
+                                if (controller.counter == 0) {
+                                  resendCode();
+                                }
+                              },
+                              child: Text(
+                                CustomTrans.resendCode.tr,
+                                style: TFonts.inter(
+                                    color: CustomColors.third,
+                                    decoration: TextDecoration.underline),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ));
+                }),
                 SizedBox(
                   height: 20.h,
                 ),
@@ -83,75 +139,6 @@ class OtpConfirmationView extends GetView<OTPController> {
                     },
                     textColor: CustomColors.white,
                     title: CustomTrans.verify.tr),
-                SizedBox(
-                  height: 20.h,
-                ),
-                GetBuilder<OTPController>(builder: (controller) {
-                  return SizedBox(
-                      //height: 50.h,
-                      width: Get.width,
-                      child: Column(
-                        children: [
-                          Text(
-                            CustomTrans.send_verification.tr,
-                            textAlign: TextAlign.center,
-                            style: TFonts.textTitleStyle(
-                              color: CustomColors.grey,
-                              fontSize: 14,
-                            ),
-                          ),
-                          SizedBox(
-                              child: Text(
-                            "${controller.counter} ${CustomTrans.secondes.tr}",
-                            textAlign: TextAlign.center,
-                            style: TFonts.textTitleStyle(
-                              color: CustomColors.grey,
-                              fontSize: 14,
-                            ),
-                          )),
-                          SizedBox(
-                            height: 20.h,
-                          ),
-                          SizedBox(
-                            width: 110.w,
-                            height: 40.h,
-                            child: MainButton(
-                              onPressed: () async {
-                                if (controller.counter == 0) {
-                                  resendCode();
-                                }
-                              },
-                              title: CustomTrans.send,
-                              textColor: Colors.white,
-                              backgroundColor: controller.counter == 0
-                                  ? CustomColors.primary
-                                  : CustomColors.grey4,
-                            ),
-                          ),
-                        ],
-                      ));
-                }),
-                SizedBox(
-                  height: 20.h,
-                ),
-                SizedBox(
-                  height: 50.h,
-                  width: Get.width,
-                  child: TextButton(
-                      style: TextButton.styleFrom(
-                        foregroundColor: CustomColors.accentLight,
-                      ),
-                      onPressed: () {
-                        Get.back();
-                      },
-                      child: Text(
-                        CustomTrans.cancel,
-                        style: TFonts.textTitleStyle(
-                          color: CustomColors.grey,
-                          fontSize: 14,
-                        ),
-                      )),
-                ),
               ],
             ),
           ),

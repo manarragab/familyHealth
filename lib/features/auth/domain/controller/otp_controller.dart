@@ -3,13 +3,13 @@ import 'dart:async';
 import 'package:abg/domain_data/main_getx_controller/main_getx_controller.dart';
 
 class OTPController extends MainGetxController {
-  int counter = 60;
+  int counter = 120;
   late Timer timer;
 
   @override
   void onInit() {
     super.onInit();
-    counter = 60;
+    counter = 120;
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (counter > 0) {
         counter--;
@@ -31,7 +31,8 @@ class OTPController extends MainGetxController {
   String otp = "";
 
   void startCount() {
-    counter = 60;
+    counter = 120;
+    timer.cancel();
     timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (counter > 0) {
         counter--;

@@ -5,7 +5,7 @@ class CustomColors {
   static const lightWhite = Color(0xff646D8F);
   static const white = Color(0xffffffff);
   static const black = Color(0xff000000);
-  static const lightGrey = Color(0xffBCBCBC);
+  static const lightGrey = Color(0xffF2F2F2);
   static const textGrey = Color(0xffA1A1A1);
   static const textDark = Color(0xff000029);
   static const borderTextField = Color(0xffE4E4E4);
@@ -97,8 +97,8 @@ class CustomColors {
   /// this is the color of the apps
 
   static Color get primary => const Color(0xff86CD4B);
-
-  static Color get secondary => const Color(0xff637D92);
+  static Color get secondary => const Color(0xffFF792F);
+  static Color get third => const Color(0xff30495E);
 
   static Color get error => const Color(0xffE4626F);
 

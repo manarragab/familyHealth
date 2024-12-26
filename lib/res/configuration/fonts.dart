@@ -143,6 +143,7 @@ class TFonts {
     FontWeight? fontWeight,
     double? letterSpacing,
     double? height,
+    TextDecoration? decoration,
   }) {
     return GoogleFonts.almarai(
       color: color,
@@ -150,6 +151,7 @@ class TFonts {
       fontWeight: fontWeight,
       letterSpacing: letterSpacing,
       height: height,
+      decoration: decoration,
     );
   }
 }

@@ -770,4 +770,6 @@ Map<String, String> ar = {
   CustomTrans.resendTheCode: 'إعادة إرسال الرمز',
   CustomTrans.thePasswordWasChangedSuccessfully: 'تم تغيير كلمة المرور بنجاح',
   CustomTrans.backToHome: 'العودة إلى الرئيسية',
+  CustomTrans.resetPassword: 'إعادة تعيين كلمة المرور',
+  CustomTrans.enterTheNewPassword: 'أدخل كلمة المرور الجديدة',
 };
