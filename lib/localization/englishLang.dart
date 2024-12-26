@@ -258,12 +258,11 @@ Map<String, String> en = {
   CustomTrans.enterYourMobileNumberAndWeWillSendYouaCode:
       "Enter your mobile number and we will send you a code",
   CustomTrans.forgetPassword: "Forget Password",
-  CustomTrans.forgotPassword: "forgot password ?",
+  CustomTrans.forgotPassword: "Forgot password ?",
   CustomTrans.needPassword: "need password",
   CustomTrans.needPhoneNumber: "need phone number",
   CustomTrans.loginToGetStartedWithTheAppAndEnjoyAllTheFeartures:
       "login to get started with the app and enjoy all the feartures",
-  CustomTrans.welcome: "Welcome",
   CustomTrans.writeYourEmail: "write your email",
   CustomTrans.writeYourName: "write your name",
   CustomTrans.needToWriteYourName: "need to write your name",

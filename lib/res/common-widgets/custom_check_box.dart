@@ -12,9 +12,10 @@ class CustomCheckBox extends StatelessWidget {
       onTap: onTap,
       child: Container(
         padding: const EdgeInsets.only(top: 2),
-        child: SvgPicture.asset(isChecked
-            ? "assets/svg/check-box-outline.svg"
-            : "assets/svg/check-box.svg"),
+        child: Icon(
+          isChecked ? Icons.check_box : Icons.check_box_outline_blank,
+          size: 20,
+        ),
       ),
     );
   }

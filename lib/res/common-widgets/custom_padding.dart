@@ -17,7 +17,7 @@ class CustomPadding {
         width: 10,
       );
 
-  static const double radius = 15;
+  static const double radius = 40;
 
   static double paddingTop(BuildContext context) {
     return MediaQuery.of(context).padding.top + 90;

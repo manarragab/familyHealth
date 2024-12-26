@@ -43,15 +43,10 @@ class MainButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          // make it primary please%
-          shadowColor: Colors.transparent,
           backgroundColor: backgroundColor ?? CustomColors.buttonColor,
-
           splashFactory: const NoSplashFactory(),
           shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                  topLeft: Radius.circular(radius.r),
-                  bottomRight: Radius.circular(radius.r)),
+              borderRadius: BorderRadius.circular(radius.r),
               side: BorderSide(
                   color: borderColor ??
                       backgroundColor ??
@@ -60,7 +55,7 @@ class MainButton extends StatelessWidget {
                   style: BorderStyle.solid
                   //  strokeAlign: StrokeAlign.outside,
                   )),
-          elevation: 0.0,
+          elevation: 2.0,
         ),
         child: widget ??
             Row(

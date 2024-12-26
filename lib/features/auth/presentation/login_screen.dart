@@ -38,6 +38,12 @@ class LoginScreen extends GetView<AuthController> {
                         style: TFonts.textTitleStyle(
                             fontSize: 16, fontWeight: TFontWights.regular),
                       ),
+                      const SizedBox(height: 10),
+                      Text(
+                        CustomTrans.signInNow.tr,
+                        style: TFonts.textTitleStyle(
+                            fontSize: 16, fontWeight: TFontWights.regular),
+                      ),
                       CustomPadding.heightButton,
                       CustomTextField.emailTextField((value) => phone = value,
                           controller: controller.phoneController
@@ -59,7 +65,7 @@ class LoginScreen extends GetView<AuthController> {
                             Row(
                               children: [
                                 CustomCheckBox(onTap: () {}, isChecked: false),
-                                const SizedBox(width: 10),
+                                const SizedBox(width: 5),
                                 Text(
                                   CustomTrans.rememberMe.tr,
                                   style: TFonts.inter(color: Colors.black),
@@ -81,9 +87,8 @@ class LoginScreen extends GetView<AuthController> {
                       ),
                       CustomPadding.heightButton,
                       Padding(
-                        padding: const EdgeInsets.all(20.0),
+                        padding: const EdgeInsets.symmetric(vertical: 20.0),
                         child: MainButton(
-                          width: 100,
                           onPressed: () {
                             if (formKey.currentState!.validate()) {
                               controller.login();
