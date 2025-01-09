@@ -72,15 +72,6 @@ class LayoutScreen extends GetView<LayoutController> {
                 child: getNavigationBar(controller.currentIndex));
           },
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {},
-          child: const Icon(
-            Icons.add,
-            size: 25,
-          ),
-          //params
-        ),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         bottomNavigationBar: GetBuilder<LayoutController>(builder: (logic) {
           return LayoutBottomNavBar(
             changeNavBarIndex: controller.changeNavBarIndex,

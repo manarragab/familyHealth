@@ -2,7 +2,6 @@ import 'package:abg/data/const/export.dart';
 import 'package:abg/data/models/transfer/get_transfer/Transfer.dart';
 import 'package:abg/data/models/transfer/get_transfer/TransferModel.dart';
 import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
-import 'package:abg/features/home/presentation/home_screen.dart';
 import 'package:abg/features/search/domain/controller/search_controller.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -15,8 +14,8 @@ class SearchScreen extends GetView<SearchGetxController> {
       appBar: CustomAppBar.appBar(CustomTrans.history.tr),
       body: controller.obx((state) {
         TransferModel model = state;
-        Map<String, List<Transfer>> transfers =
-            convertToDesign(model.data ?? []);
+        Map<String, List<Transfer>> transfers = {};
+        // convertToDesign(model.data ?? []);
         sPrint.info("dates lenght::${transfers.keys.length}");
         return SmartRefresher(
           controller: controller.refreshController,
@@ -29,7 +28,7 @@ class SearchScreen extends GetView<SearchGetxController> {
               final e = transfers.entries.toList()[index];
               return Column(
                 children: [
-                  customDivider(e.key),
+                  //customDivider(e.key),
                   ...List.generate(e.value.length, (index) {
                     return Container();
                   })

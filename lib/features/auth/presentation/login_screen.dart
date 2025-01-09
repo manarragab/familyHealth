@@ -88,14 +88,16 @@ class LoginScreen extends GetView<AuthController> {
                       CustomPadding.heightButton,
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 20.0),
-                        child: MainButton(
-                          onPressed: () {
-                            if (formKey.currentState!.validate()) {
-                              controller.login();
-                            }
-                          },
-                          title: CustomTrans.login.tr,
-                          textColor: CustomColors.white,
+                        child: Center(
+                          child: MainButton(
+                            onPressed: () {
+                              if (formKey.currentState!.validate()) {
+                                controller.login();
+                              }
+                            },
+                            title: CustomTrans.login.tr,
+                            textColor: CustomColors.white,
+                          ),
                         ),
                       ),
                       const SizedBox(height: 10),
@@ -117,13 +119,15 @@ class LoginScreen extends GetView<AuthController> {
                         ],
                       ),
                       const SizedBox(height: 15),
-                      MainButton(
-                        onPressed: () {},
-                        title: "Sign In With google",
-                        buttonWordStyle: TFonts.textTitleStyle(
-                            fontWeight: TFontWights.regular),
-                        backgroundColor: CustomColors.lightGrey,
-                        withShadow: false,
+                      Center(
+                        child: MainButton(
+                          onPressed: () {},
+                          title: "Sign In With google",
+                          buttonWordStyle: TFonts.textTitleStyle(
+                              fontWeight: TFontWights.regular),
+                          backgroundColor: CustomColors.lightGrey,
+                          withShadow: false,
+                        ),
                       ),
                       const SizedBox(height: 20),
                       Row(

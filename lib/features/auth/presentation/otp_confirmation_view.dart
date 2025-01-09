@@ -36,7 +36,9 @@ class OtpConfirmationView extends GetView<OTPController> {
                   style: TFonts.textTitleStyle(
                       fontSize: 16, fontWeight: TFontWights.regular),
                 ),
-                const SizedBox(height: 10),
+                SizedBox(
+                  height: 20.h,
+                ),
                 Center(
                   child: Directionality(
                     textDirection: TextDirection.ltr,
@@ -78,67 +80,72 @@ class OtpConfirmationView extends GetView<OTPController> {
                 SizedBox(
                   height: 20.h,
                 ),
-                GetBuilder<OTPController>(builder: (controller) {
-                  // Calculate minutes and seconds
-                  int minutes = controller.counter ~/ 60;
-                  int seconds = controller.counter % 60;
+                Center(
+                  child: GetBuilder<OTPController>(builder: (controller) {
+                    // Calculate minutes and seconds
+                    int minutes = controller.counter ~/ 60;
+                    int seconds = controller.counter % 60;
 
-                  // Format as mm:ss
-                  String formattedTime =
-                      '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
-                  return SizedBox(
-                      //height: 50.h,
-                      width: Get.width,
-                      child: Column(
-                        children: [
-                          SizedBox(
-                              child: Text(
-                            formattedTime,
-                            textAlign: TextAlign.center,
-                            style: TFonts.textTitleStyle(
-                              color: CustomColors.secondary,
-                              fontSize: 14,
+                    // Format as mm:ss
+                    String formattedTime =
+                        '${minutes.toString().padLeft(2, '0')}:${seconds.toString().padLeft(2, '0')}';
+                    return SizedBox(
+                        //height: 50.h,
+                        width: Get.width,
+                        child: Column(
+                          children: [
+                            SizedBox(
+                                child: Text(
+                              formattedTime,
+                              textAlign: TextAlign.center,
+                              style: TFonts.textTitleStyle(
+                                color: CustomColors.secondary,
+                                fontSize: 14,
+                              ),
+                            )),
+                            SizedBox(
+                              height: 20.h,
                             ),
-                          )),
-                          SizedBox(
-                            height: 20.h,
-                          ),
-                          SizedBox(
-                            width: 110.w,
-                            height: 40.h,
-                            child: InkWell(
-                              onTap: () async {
-                                if (controller.counter == 0) {
-                                  resendCode();
-                                }
-                              },
-                              child: Text(
-                                CustomTrans.resendCode.tr,
-                                style: TFonts.inter(
-                                    color: CustomColors.third,
-                                    decoration: TextDecoration.underline),
+                            Center(
+                              child: InkWell(
+                                onTap: () async {
+                                  if (controller.counter == 0) {
+                                    resendCode();
+                                  }
+                                },
+                                child: Text(
+                                  CustomTrans.resendCode.tr,
+                                  style: TFonts.inter(
+                                      color: CustomColors.third,
+                                      decoration: TextDecoration.underline),
+                                ),
                               ),
                             ),
-                          ),
-                        ],
-                      ));
-                }),
+                            SizedBox(
+                              height: 20.h,
+                            ),
+                          ],
+                        ));
+                  }),
+                ),
                 SizedBox(
                   height: 20.h,
                 ),
-                MainButton(
-                    onPressed: () async {
-                      // widget.controller.incrementCurrentStep();
+                Center(
+                  child: MainButton(
+                      onPressed: () async {
+                        // widget.controller.incrementCurrentStep();
 
-                      if (otp.isNotEmpty) {
-                        getCode(otp);
-                      } else {
-                        showToast(CustomTrans.please_enter_otp.tr,
-                            MessageErrorType.error);
-                      }
-                    },
-                    textColor: CustomColors.white,
-                    title: CustomTrans.verify.tr),
+                        if (otp.isNotEmpty) {
+                          getCode(otp);
+                        } else {
+                          showToast(CustomTrans.please_enter_otp.tr,
+                              MessageErrorType.error);
+                        }
+                      },
+                      textColor: CustomColors.white,
+                      title: CustomTrans.verify.tr),
+                ),
               ],
             ),
           ),

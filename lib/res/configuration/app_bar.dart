@@ -114,40 +114,17 @@ class CustomAppBar {
       excludeHeaderSemantics: true,
       elevation: 0,
       primary: true,
+      title: SvgPicture.asset("assets/svg/logo2.svg"),
       actions: [
-        Container(
-          width: 100,
-          margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            color: Colors.white,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              InkWell(
-                onTap: onFilterPress,
-                borderRadius: const BorderRadius.all(Radius.circular(50)),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.only(end: 10.w, start: 10.w),
-                  child: SvgPicture.asset(
-                    "assets/svg/filter.svg",
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-              InkWell(
-                onTap: onNotificationPress,
-                borderRadius: BorderRadius.circular(50),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.only(end: 10.w, start: 10.w),
-                  child: SvgPicture.asset(
-                    "assets/svg/notifications.svg",
-                    color: Colors.black,
-                  ),
-                ),
-              )
-            ],
+        InkWell(
+          onTap: onNotificationPress,
+          borderRadius: BorderRadius.circular(50),
+          child: Padding(
+            padding: const EdgeInsetsDirectional.only(end: 20, start: 10),
+            child: SvgPicture.asset(
+              "assets/svg/Notification.svg",
+              color: Colors.black,
+            ),
           ),
         ),
       ],
@@ -160,19 +137,12 @@ class CustomAppBar {
           ),
           //  padding: const EdgeInsets.symmetric(horizontal: 20),
           margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-          child: const Icon(
-            Icons.menu,
-            color: Colors.black,
+          padding: const EdgeInsets.symmetric(vertical: 12),
+          child: SvgPicture.asset(
+            "assets/svg/drawer_icon.svg",
           ),
         ),
       ),
-      /* bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(50),
-          child: CustomTextField.searchField(
-            (value) => onChange(value),
-            controller: Get.find<FilterController>().searchController,
-            hint: "${CustomTrans.write.tr} ${CustomTrans.advertiseNo.tr}",
-          )),*/
     );
   }
 

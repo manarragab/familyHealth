@@ -1,6 +1,8 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/layout/domain/controller/layout_controller.dart';
-import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
+import 'package:abg/res/nav_bar/animated_bottom_nav/src/fluid_nav_bar.dart';
+import 'package:abg/res/nav_bar/animated_bottom_nav/src/fluid_nav_bar_icon.dart';
+import 'package:abg/res/nav_bar/animated_bottom_nav/src/fluid_nav_bar_style.dart';
 
 class LayoutBottomNavBar extends GetView<LayoutController> {
   final int currentIndex;
@@ -14,38 +16,31 @@ class LayoutBottomNavBar extends GetView<LayoutController> {
 
   @override
   Widget build(BuildContext context) {
-    return AnimatedBottomNavigationBar.builder(
-      itemCount: iconList.length,
-      activeIndex: currentIndex,
-      onTap: changeNavBarIndex,
-      backgroundColor: CustomColors.backgroundBottomSheetColor,
-      tabBuilder: (int index, bool isActive) {
-        return Container(
-          padding: const EdgeInsets.symmetric(vertical: 15),
-          child: SvgPicture.asset(
-            isActive ? selectedIconList[index] : iconList[index],
-            height: 20,
-          ),
-        );
-      },
-      gapLocation: GapLocation.center,
-      notchSmoothness: NotchSmoothness.defaultEdge,
-      leftCornerRadius: 10,
-      rightCornerRadius: 10,
+    return FluidNavBar(
+      icons: [
+        FluidNavBarIcon(
+          svgPath: "assets/svg/home_mint.svg",
+          selectedBackgroundColor: const Color(0xFF86CD4B),
+        ),
+        FluidNavBarIcon(
+          svgPath: "assets/svg/books.svg",
+          selectedBackgroundColor: const Color(0xFF86CD4B),
+        ),
+        FluidNavBarIcon(
+          svgPath: "assets/svg/family.svg",
+          selectedBackgroundColor: const Color(0xFF86CD4B),
+        ),
+        FluidNavBarIcon(
+          svgPath: "assets/svg/people.svg",
+          selectedBackgroundColor: const Color(0xFF86CD4B),
+        ),
+      ],
+      onChange: changeNavBarIndex,
+      style: const FluidNavBarStyle(
+          barBackgroundColor: Color(0xFF30495E),
+          iconBackgroundColor: Color(0xFF30495E),
+          iconSelectedForegroundColor: Colors.white,
+          iconUnselectedForegroundColor: Colors.white),
     );
   }
-
-  List iconList = [
-    "assets/svg/home_one_save.svg",
-    "assets/svg/search_one_save.svg",
-    "assets/svg/group_one_save.svg",
-    "assets/svg/user_one_save.svg",
-  ];
-
-  List selectedIconList = [
-    "assets/svg/selected_home.svg",
-    "assets/svg/selected_search.svg",
-    "assets/svg/selected_group.svg",
-    "assets/svg/selected_user.svg",
-  ];
 }

@@ -4,11 +4,12 @@ import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class HomeController extends MainGetxController with CustomStateMixin {
-  TransferModel model = TransferModel();
+  TransferModel model = TransferModel(status: 1);
   RefreshController refreshController = RefreshController();
   int _page = 1;
 
   onRefresh() async {
+    change(model);
 /*    model = await refreshData(
       model: model,
       futureMethod: () => sl<HomeCases>().getTransfers(page: 1),
