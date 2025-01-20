@@ -2,9 +2,7 @@ import 'dart:io';
 
 import 'package:abg/data/models/auth/login/LoginModel.dart';
 import 'package:abg/data/models/auth/users/PostEditProfile.dart';
-import 'package:abg/data/models/team/TeamModel.dart';
-import 'package:abg/data/models/transfer/get_transfer/Transfer.dart';
-import 'package:abg/data/models/transfer/trasfer_details/Data.dart';
+import 'package:abg/data/models/auth/users/post_assign_user.dart';
 
 import '../../domain_data/repositories/domain_repositry.dart';
 import '../data_sources/get_storage.dart';
@@ -51,23 +49,6 @@ class DataRepository implements DomainData {
   }
 
   @override
-  Future<ResponseModel<TransferDetails?>> getTransferDetails(
-      {required String id}) {
-    return remote.getTransferDetails(id: id);
-  }
-
-  @override
-  Future<ResponseModel<List<Transfer>?>> getTransfers(
-      {int page = 1, bool forSale = true}) {
-    return remote.getTransfers(page: page, forSale: forSale);
-  }
-
-  @override
-  Future<ResponseModel<List<Transfer>?>> getHistory({int page = 1}) {
-    return remote.getHistory(page: page);
-  }
-
-  @override
   Future<ResponseModel<LoginData?>> checkCode(String code) {
     return remote.checkCode(code);
   }
@@ -89,23 +70,7 @@ class DataRepository implements DomainData {
   }
 
   @override
-  Future<ResponseModel<dynamic>> addDriverToCompany({required String id}) {
-    return remote.addDriverToCompany(id: id);
-  }
-
-  @override
-  Future<ResponseModel<List<TeamDriver>?>> getTeam() {
-    return remote.getTeam();
-  }
-
-  @override
-  Future<ResponseModel<dynamic>> removeDriverFromTeam({required String id}) {
-    return remote.removeDriverFromTeam(id: id);
-  }
-
-  @override
-  Future<ResponseModel<List<TeamDriver>?>> searchDriverFromPhone(
-      {String phone = ""}) {
-    return remote.searchDriverFromPhone(phone: phone);
+  Future<ResponseModel> register(PostRegister register) {
+    return remote.register(register);
   }
 }

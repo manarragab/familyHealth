@@ -1,5 +1,5 @@
 import 'package:abg/data/const/export.dart';
-import 'package:abg/res/router/pages.dart';
+import 'package:abg/features/auth/domain/controller/auth_controller.dart';
 
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({Key? key}) : super(key: key);
@@ -50,18 +50,9 @@ class ProfileScreen extends StatelessWidget {
   }
 
   final List<CustomListModel> model = [
-    CustomListModel(CustomTrans.subscribe.tr, "assets/svg/crown.svg", () {
-      Get.toNamed(CustomPage.mainVerifyAccountScreen);
-    }),
-    CustomListModel(
-        CustomTrans.promotions.tr, "assets/svg/gift-box-benefits.svg", () {}),
-    CustomListModel(CustomTrans.ads.tr, "assets/svg/ad.svg", () {}),
-    CustomListModel(CustomTrans.reports.tr, "assets/svg/report.svg", () {}),
-    CustomListModel(CustomTrans.settings.tr, "assets/svg/settings.svg", () {}),
-    CustomListModel(
-        CustomTrans.supportCenter.tr, "assets/svg/support_icon.svg", () {}),
-    CustomListModel(CustomTrans.logout.tr, "assets/svg/exit2.svg", () {},
-        color: CustomColors.red),
+    CustomListModel(CustomTrans.logout.tr, "assets/svg/exit2.svg", () {
+      Get.put(AuthController()).logOut();
+    }, color: CustomColors.red),
   ];
 }
 

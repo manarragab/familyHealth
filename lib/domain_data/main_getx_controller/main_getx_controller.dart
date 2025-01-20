@@ -15,7 +15,7 @@ class MainGetxController extends GetxController {
       Get.put(LoadingGetxController());
 
   bool get isLogin => sl<AuthCases>().getUser() != null;
-  User? get user => sl<AuthCases>().getUser()?.data?.user;
+  LoginData? get user => sl<AuthCases>().getUser()?.data;
 
   customDebounce(
       {Duration duration = const Duration(milliseconds: 500),

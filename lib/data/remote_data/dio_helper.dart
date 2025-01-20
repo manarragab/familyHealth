@@ -48,7 +48,7 @@ class DioHelper {
       if (isLogin) {
         loginModel = sl<AuthCases>().getUser()!;
         sPrint.info('login ::: ${loginModel.toJson()}');
-        if (loginModel.data?.accessToken != null) {
+        if (loginModel.data?.deviceToken != null) {
           return true;
         } else {
           throw ("login exception from app");
@@ -85,7 +85,7 @@ class DioHelper {
                     "lang": TLang.getCurrentLocale().name,
                     "Accept-Language": TLang.getCurrentLocale().name,
                     // if (isLogin)
-                    'Authorization': 'Bearer ${loginModel.data?.accessToken}',
+                    'Authorization': 'Bearer ${loginModel.data?.deviceToken}',
                     ...headers
                   }));
           sPrint.warning(_response.data);
@@ -154,59 +154,15 @@ class DioHelper {
                     "lang": TLang.getCurrentLocale().name,
                     "Accept-Language": TLang.getCurrentLocale().name,
                     if (isLogin)
-                      'Authorization': 'Bearer ${loginModel.data?.accessToken}'
+                      'Authorization': 'Bearer ${loginModel.data?.deviceToken}'
                   }));
           sPrint.warning(
               "${path.contains('http') ? path : apiUrl() + path} \n${_response.data}");
-          if (_response.statusCode == 200 && _response.data is! String) {
+          if ((_response.statusCode == 200 || _response.statusCode == 201) &&
+              _response.data is! String) {
             sPrint.success("response in dio: ${_response.data}");
-            sPrint.warning(
-                'response containe status:: ${(_response.data as Map<String, dynamic>).containsKey("status")}');
-            if ((_response.data as Map<String, dynamic>)
-                .containsKey("status")) {
-              dynamic status =
-                  (_response.data as Map<String, dynamic>)['status'];
-              sPrint.info('status:: $status');
-              if (status.toString().toLowerCase().contains("unauthorised")) {
-                sPrint.warning('response is un auth::');
-                return onError(ResponseModel(
-                    status: StatusType.authError.index,
-                    message: "un Authenticated"));
-              } else {
-                if (status is bool) {
-                  if (status) {
-                    sPrint.info('getting status true');
-                    return onSuccess({
-                      "status": StatusType.apiSuccess.index,
-                      "data": _response.data,
-                    });
-                  }
-                }
-                return onError(ResponseModel(
-                    status: StatusType.apiError.index, message: "api error"));
-              }
-            } else if ((_response.data as Map<String, dynamic>)
-                .containsKey("success")) {
-              Map<String, dynamic> data = {
-                "status": StatusType.apiSuccess.index,
-                "data": _response.data['data'],
-              };
-              return onSuccess(data);
-            }
-            Map<String, dynamic> data = {
-              "status": StatusType.apiSuccess.index,
-            };
-            if (!(_response.data as Map<String, dynamic>).containsKey("data")) {
-              data['data'] = _response.data;
-            } else {
-              data = {"status": 1, "message": "", ..._response.data};
-              return onSuccess(data);
-            }
-            data = {
-              "status": StatusType.apiSuccess.index,
-              "data": _response.data,
-            };
-            return onSuccess(data);
+            _response.data['status'] = StatusType.apiSuccess.index;
+            return onSuccess(_response.data);
           } else {
             if (_response.data is String) {
               return onError(ResponseModel(
@@ -269,7 +225,7 @@ class DioHelper {
                     "lang": TLang.getCurrentLocale().name,
                     "Accept-Language": TLang.getCurrentLocale().name,
                     if (isLogin)
-                      'Authorization': 'Bearer ${loginModel.data?.accessToken}'
+                      'Authorization': 'Bearer ${loginModel.data?.deviceToken}'
                   }));
           sPrint.warning(_response.data);
           if (_response.data is String) {
@@ -329,7 +285,7 @@ class DioHelper {
                     "lang": TLang.getCurrentLocale().name,
                     "Accept-Language": TLang.getCurrentLocale().name,
                     if (isLogin)
-                      'Authorization': 'Bearer ${loginModel.data?.accessToken}'
+                      'Authorization': 'Bearer ${loginModel.data?.deviceToken}'
                   }));
           sPrint.warning(_response.data);
           if (_response.statusCode == 200 && _response.data is! String) {

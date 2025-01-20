@@ -11,7 +11,7 @@ class AccountScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double height = 70;
-    User user = sl<AuthCases>().getUser()?.data?.user ?? User();
+    LoginData user = sl<AuthCases>().getUser()?.data ?? LoginData();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: CustomAppBar.appBar(CustomTrans.myAccount.tr),
@@ -64,11 +64,11 @@ class AccountScreen extends StatelessWidget {
                         ),
                       ),
                       title: Text(
-                        "${logic.user?.name ?? ""} ${logic.user?.lastName ?? ""}",
+                        "${logic.user?.name ?? ""} ${logic.user?.name ?? ""}",
                         style: TFonts.inter(
                             fontWeight: FontWeight.bold, fontSize: 18),
                       ),
-                      subtitle: Text('${logic.user?.driverType}'),
+                      subtitle: Text('${logic.user?.email}'),
                     );
                   }),
                   const SizedBox(height: 10),

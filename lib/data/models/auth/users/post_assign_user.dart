@@ -1,24 +1,33 @@
-class PostAssignUser {
-  PostAssignUser({
-      this.leadId, 
-      this.userId, 
-      this.note,});
+import 'package:abg/res/notification/push_notification.dart';
 
-  PostAssignUser.fromJson(dynamic json) {
-    leadId = json['lead_id'];
-    userId = json['user_id[]'];
-    note = json['note'];
+class PostRegister {
+  PostRegister({
+    required this.name,
+    required this.email,
+    required this.phone,
+    required this.password,
+  });
+
+  String? name;
+  String? email;
+  String? phone;
+  String? password;
+
+  PostRegister.fromJson(Map<String, dynamic> json) {
+    name = json['name'];
+    email = json['email'];
+    phone = json['phone'];
+    password = json['password'];
   }
-  String? leadId;
-  String? userId;
-  String? note;
 
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['lead_id'] = leadId;
-    map['user_id[]'] = userId;
-    map['note'] = note;
-    return map;
+  Future<Map<String, dynamic>> toJson() async {
+    final _data = <String, dynamic>{};
+    _data['name'] = name;
+    _data['email'] = email;
+    _data['phone'] = phone;
+    _data['password'] = password;
+    _data['device_token'] =
+        await PushNotificationsManager().getNotificationToken();
+    return _data;
   }
-
 }

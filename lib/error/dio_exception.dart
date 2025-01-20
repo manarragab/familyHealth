@@ -53,9 +53,11 @@ class DioExceptions implements Exception {
         return error["message"] ?? error['error'] ?? "method not allowed";
       case 422:
         message.status = message.status = StatusType.apiError.index;
-
-        sPrint.warning('status code :: 422 ${error['error']}');
         try {
+          sPrint.warning('status code :: 422 ${error['error']}');
+          if ((error as Map).containsKey("message")) {
+            return error['message'];
+          }
           if (error is Map<String, dynamic>) {
             if (error['error'] != null) {
               Map<String, dynamic> errors = error['error'];

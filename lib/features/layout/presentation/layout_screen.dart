@@ -4,8 +4,6 @@ import 'package:abg/features/home/domain/controller/home_controller.dart';
 import 'package:abg/features/home/presentation/home_screen.dart';
 import 'package:abg/features/layout/domain/controller/layout_controller.dart';
 import 'package:abg/features/profile/presentation/profile_screen.dart';
-import 'package:abg/features/search/domain/controller/search_controller.dart';
-import 'package:abg/features/search/presentation/search_screen.dart';
 import 'package:abg/res/configuration/print_types.dart';
 import 'package:abg/res/injection.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +16,7 @@ class LayoutScreen extends GetView<LayoutController> {
 
   List<Widget> navigationBar = [
     const HomeScreen(),
-    const SearchScreen(),
+    const Scaffold(),
     const GroupScreen(),
     ProfileScreen(),
   ];
@@ -29,7 +27,6 @@ class LayoutScreen extends GetView<LayoutController> {
         Get.put(HomeController()).onRefresh();
         break;
       case 1:
-        Get.put(SearchGetxController());
         break;
     }
 

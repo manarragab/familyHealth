@@ -18,7 +18,7 @@ class MainData {
 MainData initData = MainData(icon: "assets/svg/logo_with_background.svg");
 
 String apiUrl() {
-  return 'https://kaptanvip.com/dev/api/v1';
+  return 'https://family-health.za3bot.com/api';
 }
 
 String getPath(String url) {

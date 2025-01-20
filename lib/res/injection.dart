@@ -2,7 +2,6 @@
 import 'package:abg/features/auth/domain/cases/auth_case.dart';
 import 'package:abg/features/home/domain/cases/home_cases.dart';
 import 'package:abg/features/notification/domain/cases/notification_cases.dart';
-import 'package:abg/features/search/domain/cases/search_cases.dart';
 //import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get_it/get_it.dart';
 import 'package:get_storage/get_storage.dart';
@@ -20,7 +19,6 @@ Future<void> init() async {
   sl.registerLazySingleton(() => AuthCases(sl()));
   sl.registerLazySingleton(() => NotificationCases(sl()));
   sl.registerLazySingleton(() => HomeCases(sl()));
-  sl.registerLazySingleton(() => SearchCase(sl()));
   // * repository
   sl.registerLazySingleton<DomainData>(
       () => DataRepository(storage: sl(), remote: sl() /*, remoteFire: sl()*/));

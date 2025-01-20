@@ -2,9 +2,7 @@ import 'dart:io';
 
 import 'package:abg/data/models/auth/login/LoginModel.dart';
 import 'package:abg/data/models/auth/users/PostEditProfile.dart';
-import 'package:abg/data/models/team/TeamModel.dart';
-import 'package:abg/data/models/transfer/get_transfer/Transfer.dart';
-import 'package:abg/data/models/transfer/trasfer_details/Data.dart';
+import 'package:abg/data/models/auth/users/post_assign_user.dart';
 import 'package:abg/data/remote_data/response_model.dart';
 
 abstract class DomainData {
@@ -45,16 +43,7 @@ abstract class DomainData {
 
   Future<ResponseModel<LoginData?>> getCode(String phone);
 
-  Future<ResponseModel<List<Transfer>?>> getTransfers({
-    int page = 1,
-    bool forSale = true,
-  });
-
-  Future<ResponseModel<TransferDetails?>> getTransferDetails({
-    required String id,
-  });
-
-  Future<ResponseModel<List<Transfer>?>> getHistory({int page = 1});
+  Future<ResponseModel> register(PostRegister register);
 
   Future<ResponseModel<LoginData?>> checkCode(String code);
   Future<ResponseModel<dynamic>> resetPassord(
@@ -64,18 +53,6 @@ abstract class DomainData {
   Future<ResponseModel<LoginData?>> editProfile(PostEditProfile profile);
 
   ///----------------------------------- team -----------------------------
-  Future<ResponseModel<List<TeamDriver>?>> getTeam();
-  Future<ResponseModel<List<TeamDriver>?>> searchDriverFromPhone({
-    String phone = "",
-  });
-
-  Future<ResponseModel<dynamic>> addDriverToCompany({
-    required String id,
-  });
-
-  Future<ResponseModel<dynamic>> removeDriverFromTeam({
-    required String id,
-  });
 
   // get storage
 

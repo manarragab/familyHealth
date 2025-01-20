@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:abg/data/const/export.dart';
 import 'package:abg/data/models/auth/login/LoginModel.dart';
 import 'package:abg/data/models/auth/users/PostEditProfile.dart';
+import 'package:abg/data/models/auth/users/post_assign_user.dart';
 import 'package:abg/features/auth/domain/cases/auth_case.dart';
 import 'package:abg/features/auth/domain/controller/otp_controller.dart';
 import 'package:abg/features/auth/presentation/otp_confirmation_view.dart';
@@ -42,34 +43,67 @@ class AuthController extends MainGetxController {
   bool startCounting = false;
 
   login() async {
-    Get.offAllNamed(CustomPage.layoutPage);
-    //  sPrint.info('login');
-    //  // must show loading
-    //  loadingGetxController.showLoading();
-//
-    //  // user auth cases for api link or storage
-    //  //todo no need for password wait to call the client to know why there is screen for change password
-    //  var response = await sl<AuthCases>()
-    //      .login(phoneController.text, passwordController.text);
-    //  sPrint.info(response);
-    //  // must end loading
-    //  loadingGetxController.hideLoading();
-//
-    //  statusError.checkStatus(
-    //    response,
-    //    () {
-    //      loginModel = response;
-    //      sPrint.info('login data:: ${loginModel.toJson()}');
-    //      sl<AuthCases>().setUser(loginModel);
-    //      Get.offAllNamed(CustomPage.layoutPage);
-    //      /*   sPrint.info('getting success login');
-    //      Get.put(OTPController()).startCount();
-    //      Get.to(() => OtpConfirmationView(
-    //          getCode: (code) => getCode(code), resendCode: resendOTP));*/
-    //    },
-    //    onError: (msg) {},
-    //    // stateMixin:
-    //  );
+    sPrint.info('login');
+    // must show loading
+    loadingGetxController.showLoading();
+
+    // user auth cases for api link or storage
+    //todo no need for password wait to call the client to know why there is screen for change password
+    var response = await sl<AuthCases>()
+        .login(phoneController.text, passwordController.text);
+    sPrint.info(response);
+    // must end loading
+    loadingGetxController.hideLoading();
+
+    statusError.checkStatus(
+      response,
+      () {
+        loginModel = response;
+        sPrint.info('login data:: ${loginModel.toJson()}');
+        sl<AuthCases>().setUser(loginModel);
+        Get.offAllNamed(CustomPage.layoutPage);
+        /*   sPrint.info('getting success login');
+      Get.put(OTPController()).startCount();
+      Get.to(() => OtpConfirmationView(
+          getCode: (code) => getCode(code), resendCode: resendOTP));*/
+      },
+      onError: (msg) {},
+      // stateMixin:
+    );
+  }
+
+  register() async {
+    sPrint.info('login');
+    // must show loading
+    loadingGetxController.showLoading();
+
+    // user auth cases for api link or storage
+    //todo no need for password wait to call the client to know why there is screen for change password
+    var response = await sl<AuthCases>().register(PostRegister(
+      name: nameController.text,
+      email: emailController.text,
+      phone: phoneController.text,
+      password: passwordController.text,
+    ));
+    sPrint.info(response);
+    // must end loading
+    loadingGetxController.hideLoading();
+
+    statusError.checkStatus(
+      response,
+      () {
+        loginModel = response as LoginModel;
+        sPrint.info('login data:: ${loginModel.toJson()}');
+        sl<AuthCases>().setUser(loginModel);
+        Get.offAllNamed(CustomPage.layoutPage);
+        /*   sPrint.info('getting success login');
+      Get.put(OTPController()).startCount();
+      Get.to(() => OtpConfirmationView(
+          getCode: (code) => getCode(code), resendCode: resendOTP));*/
+      },
+      onError: (msg) {},
+      // stateMixin:
+    );
   }
 
   /* signOut() async {
@@ -150,7 +184,7 @@ class AuthController extends MainGetxController {
     statusError.checkStatus(response, () {
       sPrint.info("image:::::::: ${response.data}");
       loginModel = sl<AuthCases>().getUser()!;
-      loginModel.data?.user?.image = response.data;
+      loginModel.data?.image = response.data;
       sl<AuthCases>().setUser(loginModel);
       Future.delayed(const Duration(milliseconds: 50), () {
         update();

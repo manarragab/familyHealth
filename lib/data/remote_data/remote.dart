@@ -3,12 +3,9 @@ import 'dart:io';
 import 'package:abg/data/const/export.dart' hide MultipartFile;
 import 'package:abg/data/models/auth/login/LoginModel.dart';
 import 'package:abg/data/models/auth/users/PostEditProfile.dart';
-import 'package:abg/data/models/team/TeamModel.dart';
-import 'package:abg/data/models/transfer/get_transfer/Transfer.dart';
-import 'package:abg/data/models/transfer/get_transfer/TransferModel.dart';
-import 'package:abg/data/models/transfer/trasfer_details/Data.dart';
-import 'package:abg/data/models/transfer/trasfer_details/TransferDataModel.dart';
+import 'package:abg/data/models/auth/users/post_assign_user.dart';
 import 'package:abg/data/remote_data/response_model.dart';
+import 'package:abg/res/notification/push_notification.dart';
 import 'package:dio/dio.dart';
 
 import 'dio_helper.dart';
@@ -24,11 +21,9 @@ class Remote {
     sPrint.info('get data');
     bool isPhoneNumber = GetUtils.isPhoneNumber(text);
     Map<String, dynamic> json = {
-      'phone': text,
-      'phone_code': "90",
-      "password": password,
-      "platform": Platform.isAndroid ? "android" : "ios",
-      //  "fcm_token": await PushNotificationsManager().getNotificationToken()
+      'email': text,
+      'password': password,
+      'device_type': await PushNotificationsManager().getNotificationToken()
     };
     // return Future.delayed(const Duration(seconds: 1), () {
     //   return LoginModel();
@@ -36,7 +31,7 @@ class Remote {
 
     return _helper.post<LoginData?>(
       json,
-      path: '/login',
+      path: '/user/login',
       onSuccess: (Map<String, dynamic> data) {
         sPrint.success(data);
         sPrint.info('getting data:: $data');
@@ -47,7 +42,24 @@ class Remote {
         return ResponseModel(status: 0, message: "${data.message}");
       },
       useFormData: true,
-      userParamter: true,
+      isLogin: false,
+    );
+  }
+
+  Future<ResponseModel> register(PostRegister register) async {
+    return _helper.post<LoginData?>(
+      await register.toJson(),
+      path: '/user/register',
+      onSuccess: (Map<String, dynamic> data) {
+        sPrint.success(data);
+        sPrint.info('getting data:: $data');
+        return LoginModel.fromJson(data);
+      },
+      onError: (data) {
+        sPrint.warning('error  ${data.data?.status}:: ${data.message}');
+        return ResponseModel(status: 0, message: "${data.message}");
+      },
+      useFormData: true,
       isLogin: false,
     );
   }
@@ -126,86 +138,5 @@ class Remote {
     }, onError: (data) {
       return ResponseModel(status: data.status, message: data.message);
     }, useFormData: true, isLogin: true);
-  }
-
-  Future<ResponseModel<List<Transfer>?>> getTransfers({
-    int page = 1,
-    bool forSale = false,
-  }) async {
-    return _helper.get<List<Transfer>?>({
-      "page": page,
-      "for_sale": forSale ? 1 : 0,
-    }, path: "/transfers", onSuccess: (dynamic data) {
-      return TransferModel.fromJson(data);
-    }, onError: (data) {
-      sPrint.warning('error${data.data?.status}:: ${data.data?.msg}');
-      return ResponseModel(status: data.status ?? 0, message: data.data?.msg);
-    }, isLogin: true);
-  }
-
-  Future<ResponseModel<List<Transfer>?>> getHistory({
-    int page = 1,
-  }) async {
-    return _helper.get<List<Transfer>?>({
-      "page": page,
-    }, path: "/transfers/history", onSuccess: (dynamic data) {
-      return TransferModel.fromJson(data);
-    }, onError: (data) {
-      return ResponseModel(status: data.status, message: data.message);
-    }, isLogin: true);
-  }
-
-  Future<ResponseModel<TransferDetails?>> getTransferDetails({
-    required String id,
-  }) async {
-    return _helper.get<TransferDetails?>({}, path: "/transfers/show/$id",
-        onSuccess: (dynamic data) {
-      return TransferDetailsModel.fromJson(data);
-    }, onError: (data) {
-      return ResponseModel(status: data.status, message: data.message);
-    }, isLogin: true);
-  }
-
-  Future<ResponseModel<List<TeamDriver>?>> getTeam() async {
-    return _helper.get<List<TeamDriver>?>({}, path: "/drivers-of-company",
-        onSuccess: (dynamic data) {
-      return TeamModel.fromJson(data);
-    }, onError: (data) {
-      return ResponseModel(status: data.status, message: data.message);
-    }, isLogin: true);
-  }
-
-  Future<ResponseModel<List<TeamDriver>?>> searchDriverFromPhone({
-    String phone = "",
-  }) async {
-    return _helper.post<List<TeamDriver>?>(
-        {if (phone.isNotEmpty) "phone": phone}, path: "/search-driver",
-        onSuccess: (dynamic data) {
-      return TeamModel.fromJson(data);
-    }, onError: (data) {
-      return ResponseModel(status: data.status, message: data.message);
-    }, isLogin: true);
-  }
-
-  Future<ResponseModel<TransferDetails?>> addDriverToCompany({
-    required String id,
-  }) async {
-    return _helper.get<TransferDetails?>({}, path: "/add-driver-to-company/$id",
-        onSuccess: (dynamic data) {
-      return ResponseModel.fromJson(data);
-    }, onError: (data) {
-      return ResponseModel(status: data.status, message: data.message);
-    }, isLogin: true);
-  }
-
-  Future<ResponseModel<TransferDetails?>> removeDriverFromTeam({
-    required String id,
-  }) async {
-    return _helper.get<TransferDetails?>({},
-        path: "/delete-driver-from-company/$id", onSuccess: (dynamic data) {
-      return ResponseModel.fromJson(data);
-    }, onError: (data) {
-      return ResponseModel(status: data.status, message: data.message);
-    }, isLogin: true);
   }
 }

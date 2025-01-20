@@ -30,188 +30,66 @@ class LoginModel extends ResponseModel<LoginData?> {
 
 class LoginData {
   LoginData({
-    this.user,
-    this.accessToken,
-  });
-
-  LoginData.fromJson(dynamic json) {
-    user = json['user'] != null ? User.fromJson(json['user']) : null;
-    accessToken = json['accessToken'];
-  }
-
-  User? user;
-  String? accessToken;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    if (user != null) {
-      map['user'] = user?.toJson();
-    }
-    map['accessToken'] = accessToken;
-    return map;
-  }
-}
-
-class User {
-  User({
     this.id,
     this.name,
-    this.lastName,
     this.email,
+    this.emailVerifiedAt,
+    this.userType,
+    this.academicYear,
     this.phone,
-    this.phoneCode,
-    this.type,
-    this.locale,
-    this.status,
     this.image,
-    this.bankAccount,
-    this.driverType,
-    this.company,
+    this.deviceToken,
+    this.isLoggedIn,
+    this.isBanned,
+    this.createdAt,
+    this.updatedAt,
   });
 
-  User.fromJson(dynamic json) {
-    id = json['id'];
-    name = json['first_name'];
-    lastName = json['last_name'];
-    email = json['email'];
-    phone = json['phone'];
-    phoneCode = json['phone_code'];
-    type = json['type'];
-    locale = json['locale'];
-    status = json['status'];
-    image = json['image'];
-    bankAccount = json['bank_account'] != null
-        ? BankAccount.fromJson(json['bank_account'])
-        : null;
-    driverType = json['driver_type'];
-    company =
-        json['company'] != null ? Company.fromJson(json['company']) : null;
-  }
-
-  num? id;
+  int? id;
   String? name;
-  String? lastName;
   String? email;
+  String? emailVerifiedAt;
+  String? userType;
+  String? academicYear;
   String? phone;
-  String? phoneCode;
-  String? type;
-  String? locale;
-  String? status;
   String? image;
-  BankAccount? bankAccount;
-  String? driverType;
-  Company? company;
+  String? deviceToken;
+  int? isLoggedIn;
+  int? isBanned;
+  String? createdAt;
+  String? updatedAt;
 
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['first_name'] = name;
-    map['last_name'] = lastName;
-    map['email'] = email;
-    map['phone'] = phone;
-    map['phone_code'] = phoneCode;
-    map['type'] = type;
-    map['locale'] = locale;
-    map['status'] = status;
-    map['image'] = image;
-    if (bankAccount != null) {
-      map['bank_account'] = bankAccount?.toJson();
-    }
-    map['driver_type'] = driverType;
-    if (company != null) {
-      map['company'] = company?.toJson();
-    }
-    return map;
-  }
-}
-
-class Company {
-  Company({
-    this.id,
-    this.name,
-    this.type,
-    this.currency,
-  });
-
-  Company.fromJson(dynamic data) {
-    Map<String, dynamic> json = {};
-    if (data is List && data.isNotEmpty) {
-      json = data.first;
-    } else {
-      json = data;
-    }
+  LoginData.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     name = json['name'];
-    type = json['type'];
-    currency =
-        json['currency'] != null ? Currency.fromJson(json['currency']) : null;
+    email = json['email'];
+    emailVerifiedAt = null;
+    userType = json['user_type'];
+    academicYear = null;
+    phone = json['phone'];
+    image = json['image'];
+    deviceToken = json['device_token'];
+    isLoggedIn = json['is_logged_in'];
+    isBanned = json['is_banned'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
   }
-
-  num? id;
-  String? name;
-  String? type;
-  Currency? currency;
 
   Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['name'] = name;
-    map['type'] = type;
-    if (currency != null) {
-      map['currency'] = currency?.toJson();
-    }
-    return map;
-  }
-}
-
-class Currency {
-  Currency({
-    this.id,
-    this.code,
-    this.name,
-    this.symbol,
-  });
-
-  Currency.fromJson(dynamic json) {
-    id = json['id'];
-    code = json['code'];
-    name = json['name'];
-    symbol = json['symbol'];
-  }
-
-  num? id;
-  String? code;
-  String? name;
-  String? symbol;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['id'] = id;
-    map['code'] = code;
-    map['name'] = name;
-    map['symbol'] = symbol;
-    return map;
-  }
-}
-
-class BankAccount {
-  BankAccount({
-    this.iban,
-    this.holderName,
-  });
-
-  BankAccount.fromJson(dynamic json) {
-    iban = json['iban'];
-    holderName = json['holder_name'];
-  }
-
-  String? iban;
-  String? holderName;
-
-  Map<String, dynamic> toJson() {
-    final map = <String, dynamic>{};
-    map['iban'] = iban;
-    map['holder_name'] = holderName;
-    return map;
+    final _data = <String, dynamic>{};
+    _data['id'] = id;
+    _data['name'] = name;
+    _data['email'] = email;
+    _data['email_verified_at'] = emailVerifiedAt;
+    _data['user_type'] = userType;
+    _data['academic_year'] = academicYear;
+    _data['phone'] = phone;
+    _data['image'] = image;
+    _data['device_token'] = deviceToken;
+    _data['is_logged_in'] = isLoggedIn;
+    _data['is_banned'] = isBanned;
+    _data['created_at'] = createdAt;
+    _data['updated_at'] = updatedAt;
+    return _data;
   }
 }

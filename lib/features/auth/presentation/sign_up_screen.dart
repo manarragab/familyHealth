@@ -44,7 +44,12 @@ class SignUpScreen extends GetView<AuthController> {
                   //  controller:
                   ),
               CustomPadding.smallHeight,
-              CustomTextField.emailTextField((value) => phone = value,
+              CustomTextField.emailTextField((value) {},
+                  controller: controller.emailController
+                  //  controller:
+                  ),
+              CustomPadding.smallHeight,
+              CustomTextField.phoneTextField((value) => phone = value,
                   controller: controller.phoneController
                   //  controller:
                   ),
@@ -56,13 +61,19 @@ class SignUpScreen extends GetView<AuthController> {
                   //  controller:
                   ),
               CustomPadding.smallHeight,
-              CustomTextField.passwordTextField((value) => null,
-                  isVisible: true,
-                  changeVisible: () {},
-                  hint: CustomTrans.confirmPassword.tr,
-                  controller: controller.passwordController
-                  //  controller:
-                  ),
+              CustomTextField.passwordTextField(
+                (value) => null,
+                isVisible: true,
+                changeVisible: () {},
+                validator: (value) {
+                  if (controller.passwordController.text != value) {
+                    return CustomTrans.wrongConfirmedPassword.tr;
+                  }
+                  return null;
+                },
+                hint: CustomTrans.confirmPassword.tr,
+                //  controller:
+              ),
               CustomPadding.height,
               checkboxListTile(
                 value: false,
@@ -80,7 +91,9 @@ class SignUpScreen extends GetView<AuthController> {
                 child: MainButton(
                   width: 100,
                   onPressed: () {
-                    if (formKey.currentState!.validate()) {}
+                    if (formKey.currentState!.validate()) {
+                      controller.register();
+                    }
                   },
                   title: CustomTrans.signUp.tr,
                   textColor: CustomColors.white,
