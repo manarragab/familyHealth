@@ -1,11 +1,11 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/data/remote_data/core.dart';
 
-class DentistryCard extends StatelessWidget {
+class MyGroupCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(16),
+      margin: EdgeInsets.symmetric(vertical: 16),
       padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
       decoration: BoxDecoration(
         color: Colors.white,

@@ -1,5 +1,6 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/data/remote_data/core.dart';
+import 'package:abg/features/group/presentation/group_screen.dart';
 import 'package:abg/features/home/presentation/widget/doctor_card.dart';
 import 'package:abg/features/home/presentation/widget/home_banaras_bar.dart';
 
@@ -168,16 +169,14 @@ class HomeScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-            const Text(
-              "Groups",
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
+            getTitle(
+                title: "Group",
+                onTapMore: () {
+                  Get.to(() => GroupScreen(), transition: Transition.fadeIn);
+                }),
             const SizedBox(height: 16),
             ...List.generate(2, (index) {
-              return DentistryCard();
+              return MyGroupCard();
             }),
             const SizedBox(height: 16),
             HomeBanarasBar(images: [
@@ -342,6 +341,34 @@ class HomeScreen extends StatelessWidget {
           )
         ],
       ),
+    );
+  }
+
+  Widget getTitle({required String title, required Null Function() onTapMore}) {
+    return Row(
+      children: [
+        Text(
+          title,
+          style: TFonts.textTitleStyle(
+            fontSize: 18,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        const Spacer(),
+        GestureDetector(
+          onTap: onTapMore,
+          child: const Text(
+            "More",
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: TFontWights.bold,
+            ),
+          ),
+        ),
+        const SizedBox(
+          width: 10,
+        )
+      ],
     );
   }
 }

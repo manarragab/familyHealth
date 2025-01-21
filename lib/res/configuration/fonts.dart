@@ -59,10 +59,10 @@ class TFonts {
 
   static appBarTitle(
           {Color? color,
-          FontWeight fontWeight = TFontWights.regular,
+          FontWeight fontWeight = TFontWights.bold,
           double fontSize = 22}) =>
       inter(
-          color: color ?? CustomColors.white,
+          color: color ?? CustomColors.black,
           fontWeight: fontWeight,
           fontSize: fontSize);
 

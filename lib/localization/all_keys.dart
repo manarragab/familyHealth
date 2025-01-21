@@ -937,4 +937,6 @@ class CustomTrans {
 
   static const String resetPassword = 'resetPassword';
   static const String enterTheNewPassword = 'enterTheNewPassword';
+
+  static const String myGroup = "My Group";
 }

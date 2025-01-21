@@ -1,5 +1,5 @@
 import 'package:abg/data/const/export.dart';
-import 'package:abg/features/auth/presentation/account_screen.dart';
+import 'package:abg/features/home/presentation/widget/dentistry_card.dart';
 
 class GroupScreen extends StatelessWidget {
   const GroupScreen({Key? key}) : super(key: key);
@@ -7,34 +7,31 @@ class GroupScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar.appBar(CustomTrans.settings.tr),
+      appBar: CustomAppBar.appBar(CustomTrans.myGroup.tr),
       body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         children: [
-          Card(
-            shape: OutlineInputBorder(
-                borderSide: const BorderSide(color: CustomColors.grey),
-                borderRadius: BorderRadius.circular(10)),
-            child: Container(
-              padding: const EdgeInsets.symmetric(vertical: 2),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-              ),
-              child: Column(
-                children: [
-                  ListTile(
-                    leading: getIcon(Icons.language),
-                    title: Text(CustomTrans.changeLanguage.tr),
-                    trailing: const Icon(
-                      Icons.arrow_forward_ios,
-                      size: 15,
-                      color: Colors.black,
-                    ),
-                  ),
-                ],
-              ),
+          Container(
+            alignment: AlignmentDirectional.centerStart,
+            child: Text(
+              "Share good news with friends....",
+              style: TFonts.textTitleStyle(),
             ),
-          )
+          ),
+          ...List.generate(2, (index) {
+            return MyGroupCard();
+          }),
+          const SizedBox(height: 10),
+          Container(
+            alignment: AlignmentDirectional.centerStart,
+            child: Text(
+              "Suggested groups",
+              style: TFonts.textTitleStyle(),
+            ),
+          ),
+          ...List.generate(2, (index) {
+            return MyGroupCard();
+          }),
         ],
       ),
     );

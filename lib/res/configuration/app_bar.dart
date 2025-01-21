@@ -31,48 +31,18 @@ class CustomAppBar {
     List<Widget>? actions,
     bool centerTitle = true,
   }) {
-    return PreferredSize(
-        preferredSize: const Size.fromHeight(100),
-        child: Stack(
-          children: [
-            SvgPicture.asset(
-              "assets/svg/appbar_background_one_save.svg",
-              fit: BoxFit.cover,
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
-              child: AppBar(
-                centerTitle: centerTitle,
-                actions: actions,
-                title: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: TFonts.appBarTitle(fontSize: 20.w),
-                    ),
-                    if (subTitle.isNotEmpty)
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(height: 5),
-                          Text(
-                            subTitle,
-                            style: TFonts.textBodyWhiteStyle,
-                          ),
-                        ],
-                      )
-                  ],
-                ),
-                iconTheme: const IconThemeData(color: Colors.white),
-                leading: leadingWidget,
-                backgroundColor: Colors.transparent,
-                elevation: 0.0,
-              ),
-            )
-          ],
-        ));
+    return AppBar(
+      centerTitle: centerTitle,
+      actions: actions,
+      title: Text(
+        title,
+        style: TFonts.appBarTitle(fontSize: 20.w),
+      ),
+      iconTheme: const IconThemeData(color: Colors.black),
+      leading: leadingWidget,
+      backgroundColor: Colors.transparent,
+      elevation: 0.0,
+    );
   }
 
 /*  static PreferredSizeWidget appBar(String title,
