@@ -29,7 +29,7 @@ class CustomImageNetwork extends StatelessWidget {
 
   // final String load1 = 'assets/icons/Spinner-1s-200px.gif';
   final String load2 = 'assets/lotties/load1.gif';
-  //final String load3 = 'assets/svg/plane.svg';
+  //final String load3 = 'assets/svg/logo.svg';
   //final String load4 = 'assets/lotties/loading.gif';
 
   @override
@@ -54,7 +54,7 @@ class CustomImageNetwork extends StatelessWidget {
                           alignment: Alignment.center,
                           color: CustomColors.accentLight,
                           child: SvgPicture.asset(
-                            "assets/svg/plane.svg",
+                            "assets/svg/logo.svg",
                             width: 50,
                             height: 50,
                           ),
@@ -84,7 +84,7 @@ class CustomImageNetwork extends StatelessWidget {
                       height: height,
                       width: width,
                       fit: fit, placeholderBuilder: (BuildContext context) {
-                      return SvgPicture.asset("assets/svg/plane.svg");
+                      return SvgPicture.asset("assets/svg/logo.svg");
                     }),
             )
           : !isLocalPath(path)
@@ -105,8 +105,8 @@ class CustomImageNetwork extends StatelessWidget {
                   imageErrorBuilder: (context, error, st) {
                     return Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: onError ??
-                            SvgPicture.asset("assets/svg/plane.svg"));
+                        child:
+                            onError ?? SvgPicture.asset("assets/svg/logo.svg"));
                   },
                 )
               : Container(

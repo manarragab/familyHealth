@@ -15,7 +15,7 @@ class LayoutScreen extends GetView<LayoutController> {
   LayoutScreen({Key? key}) : super(key: key);
 
   List<Widget> navigationBar = [
-    const HomeScreen(),
+    HomeScreen(),
     const Scaffold(),
     const GroupScreen(),
     ProfileScreen(),

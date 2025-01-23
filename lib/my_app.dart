@@ -112,7 +112,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
     return Scaffold(
       backgroundColor: CustomColors.accentLight,
       body: Center(
-        child: CustomImage.asset('assets/svg/plane.svg',
+        child: CustomImage.asset('assets/svg/logo.svg',
             fit: BoxFit.fitWidth, width: Get.width, height: Get.height),
       ),
     );

@@ -6,7 +6,7 @@ import '../../res/configuration/print_types.dart';
 
 class MainData {
   String server = '';
-  String icon = 'assets/svg/plane.svg';
+  String icon = 'assets/svg/logo.svg';
 
   String title = '';
 

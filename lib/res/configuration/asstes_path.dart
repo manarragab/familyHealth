@@ -33,7 +33,7 @@ class CustomIcon {
   static String contact = "assets/svg/contact_us.svg";
   static String branches = "assets/svg/branches.svg";
   static String aboutUs = "assets/svg/about_us.svg";
-  static String smallLogo = "assets/svg/plane.svg";
+  static String smallLogo = "assets/svg/logo.svg";
   static String more = "assets/svg/more.svg";
   static String chooseLangBackground = "assets/svg/choose_lang_background.svg";
   static String notificationsIcon = "assets/svg/notifications.svg";

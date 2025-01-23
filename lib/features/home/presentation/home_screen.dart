@@ -5,19 +5,27 @@ import 'package:abg/features/home/presentation/widget/doctor_card.dart';
 import 'package:abg/features/home/presentation/widget/home_banaras_bar.dart';
 
 import 'widget/bill_card.dart';
+import 'widget/custom_drawer.dart';
 import 'widget/dentistry_card.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  HomeScreen({Key? key}) : super(key: key);
+  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: scaffoldKey,
       appBar: CustomAppBar.homeAppBar(
         onChange: (value) {},
-        onMenuPress: () {},
+        onMenuPress: () {
+          if (!scaffoldKey.currentState!.isDrawerOpen) {
+            scaffoldKey.currentState!.openDrawer();
+          }
+        },
         onNotificationPress: () {},
       ),
+      drawer: CustomDrawer(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
