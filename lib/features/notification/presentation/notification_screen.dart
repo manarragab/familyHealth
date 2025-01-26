@@ -21,9 +21,11 @@ class NotificationScreen extends GetView<NotificationController> {
             itemBuilder: (context, index) {
               NotificationData notification = model.data![index];
               return ListTile(
+                tileColor: const Color(0xffDCFEC0),
                 leading: Icon(
                   Icons.notifications,
                   color: CustomColors.primary,
+                  size: 35,
                 ),
                 title: Text(notification.title ?? ""),
                 subtitle: Text(notification.description ?? ""),

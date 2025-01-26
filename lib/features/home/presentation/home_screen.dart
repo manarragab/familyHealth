@@ -3,6 +3,7 @@ import 'package:abg/data/remote_data/core.dart';
 import 'package:abg/features/group/presentation/group_screen.dart';
 import 'package:abg/features/home/presentation/widget/doctor_card.dart';
 import 'package:abg/features/home/presentation/widget/home_banaras_bar.dart';
+import 'package:abg/res/router/pages.dart';
 
 import 'widget/bill_card.dart';
 import 'widget/custom_drawer.dart';
@@ -23,7 +24,9 @@ class HomeScreen extends StatelessWidget {
             scaffoldKey.currentState!.openDrawer();
           }
         },
-        onNotificationPress: () {},
+        onNotificationPress: () {
+          Get.toNamed(CustomPage.notificationPage);
+        },
       ),
       drawer: CustomDrawer(),
       body: Padding(

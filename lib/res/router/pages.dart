@@ -5,6 +5,8 @@ import 'package:abg/features/auth/presentation/login_screen.dart';
 import 'package:abg/features/auth/presentation/my_account_screen.dart';
 import 'package:abg/features/auth/presentation/sign_up_screen.dart';
 import 'package:abg/features/layout/presentation/layout_screen.dart';
+import 'package:abg/features/notification/domain/controller/notification_controller.dart';
+import 'package:abg/features/notification/presentation/notification_screen.dart';
 import 'package:abg/features/onboard/domain/controller/board_controller.dart';
 import 'package:abg/features/onboard/presentation/onboard_screen.dart';
 import 'package:abg/features/verify_account/domain/controller/main_verify_account_controller.dart';
@@ -48,6 +50,13 @@ class CustomPage {
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(AuthController()).updateMyAccountScreen();
+        })),
+    GetPage(
+        name: notificationPage,
+        page: () => NotificationScreen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+          Get.put(NotificationController()).onRefresh();
         })),
     GetPage(
         name: mainVerifyAccountScreen,

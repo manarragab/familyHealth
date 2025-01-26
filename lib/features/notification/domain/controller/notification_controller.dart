@@ -5,10 +5,12 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class NotificationController extends MainGetxController with CustomStateMixin {
   RefreshController refreshController = RefreshController();
-  NotificationModel model = NotificationModel();
+  NotificationModel model = NotificationModel(
+      status: 1, data: [NotificationData(title: "title", description: "des")]);
   int _page = 1;
 
   onRefresh() async {
+    change(model);
     // model = await refreshData(
     //   model: model,
     //   futureMethod: () => sl<NotificationCases>().notification(1.toString()),
