@@ -1,5 +1,6 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/data/remote_data/core.dart';
+import 'package:abg/features/chat/presentation/chat_screen.dart';
 import 'package:abg/features/group/presentation/group_screen.dart';
 import 'package:abg/features/home/presentation/widget/doctor_card.dart';
 import 'package:abg/features/home/presentation/widget/home_banaras_bar.dart';
@@ -204,7 +205,11 @@ class HomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             ...List.generate(2, (index) {
-              return DoctorCard();
+              return InkWell(
+                  onTap: () {
+                    Get.to(() => ChatScreen());
+                  },
+                  child: DoctorCard());
             }),
             const SizedBox(height: 16),
           ],

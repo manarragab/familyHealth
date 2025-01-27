@@ -116,39 +116,52 @@ class CustomAppBar {
     );
   }
 
-  static chatAppBar({String? title}) {
+  static chatAppBar(
+      {String? title, required String leadingImage, required String subTitle}) {
     return PreferredSize(
       preferredSize: const Size.fromHeight(65),
       child: AppBar(
-        elevation: 1,
-        leading: Container(),
+        elevation: 0,
+        iconTheme: const IconThemeData(color: Colors.black),
         actions: [
           Container(
             padding: const EdgeInsets.only(top: 5),
-            width: Get.width,
+            width: Get.width - 30,
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(
                   width: 10,
                 ),
-                CustomImage.asset("assets/lotties/icon.png",
-                    width: 60,
-                    height: 75,
-                    borderRadius: BorderRadius.circular(75),
-                    fit: BoxFit.contain),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  title ?? CustomTrans.supportCenter.tr,
-                  style: TFonts.inter(
-                    fontSize: TFontSizes.f16,
-                    color: CustomColors.primary,
-                    fontWeight: TFontWights.bold,
-                  ),
+                CircleAvatar(
+                  backgroundImage: NetworkImage(leadingImage),
+                  radius: 40,
                 ),
                 const SizedBox(
                   width: 10,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      title ?? "",
+                      style: TFonts.inter(
+                        fontSize: TFontSizes.f16,
+                        fontWeight: TFontWights.bold,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Text(
+                      subTitle,
+                      style: TFonts.inter(
+                        fontSize: TFontSizes.f14,
+                        fontWeight: TFontWights.regular,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
