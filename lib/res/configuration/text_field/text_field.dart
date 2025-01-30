@@ -1,5 +1,4 @@
 import 'package:abg/data/const/export.dart';
-import 'package:abg/localization/change_language.dart';
 import 'package:abg/res/configuration/text_field/formatter.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
 import 'package:flutter/services.dart';
@@ -625,30 +624,49 @@ class CustomTextField {
           child: LoadingOverLay(
             id: loadingIconID,
             showLoadingOnly: true,
-            child: IconButton(
-                onPressed: onTap,
-                icon: Icon(
-                  Icons.send,
-                  color: CustomColors.primary,
-                )),
+            child: GestureDetector(
+                onTap: onTap, child: SvgPicture.asset("assets/svg/send.svg")),
           ),
         ));
     return Padding(
-      padding: padding ?? EdgeInsets.symmetric(horizontal: 16.w),
+      padding: padding ?? EdgeInsets.symmetric(horizontal: 16.w, vertical: 10),
       child: SizedBox(
-        // height: 50,
-        child: TextFormField(
-          controller: controller,
-          autofillHints: autoFillHints,
-          style: TFonts.inter(
-              color: CustomColors.primary,
-              fontSize: 14.sp,
-              fontWeight: TFontWights.bold),
-          onChanged: (x) => onChange(x.trim()),
-          decoration: InputDecoration(
-              border: const OutlineInputBorder(),
-              suffixIcon: TLang.isArabic() ? null : button,
-              prefixIcon: TLang.isArabic() ? button : null),
+        child: Row(
+          children: [
+            Expanded(
+              child: TextFormField(
+                controller: controller,
+                autofillHints: autoFillHints,
+                style: TFonts.inter(
+                    color: CustomColors.primary,
+                    fontSize: 14.sp,
+                    fontWeight: TFontWights.bold),
+                onChanged: (x) => onChange(x.trim()),
+                decoration: InputDecoration(
+                  filled: true,
+                  hintText: CustomTrans.message.tr,
+                  hintStyle: TFonts.cardBody(color: Colors.grey),
+                  fillColor: const Color(0xffF2F2F2),
+                  border: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Colors.transparent,
+                    ),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: const BorderSide(
+                      color: Colors.transparent,
+                    ),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                ),
+              ),
+            ),
+            SizedBox(
+              width: 10,
+            ),
+            button,
+          ],
         ),
       ),
     );
