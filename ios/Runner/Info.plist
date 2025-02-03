@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -24,6 +26,29 @@
 	<string>$(FLUTTER_BUILD_NUMBER)</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>need camera to access your media to upload attachment in your request form</string>
+	<key>NSContactsUsageDescription</key>
+	<string>Access contact list to getting the number for sending invitations</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>we need the location to able to navigate user to benzol branch</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>we need the location to able to navigate user to benzol branch</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>we need the location to able to navigate user to benzol branch</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>MyApp uses the microphone to make you able to record message for support.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>we need to access your media to upload attachment in your request form</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>we need to access your media to upload attachment in your request form</string>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>fetch</string>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
@@ -41,9 +66,5 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>CADisableMinimumFrameDurationOnPhone</key>
-	<true/>
-	<key>UIApplicationSupportsIndirectInputEvents</key>
-	<true/>
 </dict>
 </plist>

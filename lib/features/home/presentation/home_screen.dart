@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
           }
         },
         onNotificationPress: () {
-          Get.toNamed(CustomPage.notificationPage);
+        //  Get.toNamed(CustomPage.notificationPage);
         },
       ),
       drawer: CustomDrawer(),
@@ -207,7 +207,7 @@ class HomeScreen extends StatelessWidget {
             ...List.generate(2, (index) {
               return InkWell(
                   onTap: () {
-                    Get.to(() => ChatScreen());
+                //    Get.to(() => ChatScreen());
                   },
                   child: DoctorCard());
             }),
