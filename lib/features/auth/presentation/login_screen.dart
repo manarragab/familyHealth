@@ -10,7 +10,7 @@ import 'package:flutter/gestures.dart';
 class LoginScreen extends GetView<AuthController> {
   LoginScreen({Key? key}) : super(key: key);
   final formKey = GlobalKey<FormState>();
-  String? phone = '';
+  String? email = '';
 
   @override
   Widget build(BuildContext context) {
@@ -45,8 +45,8 @@ class LoginScreen extends GetView<AuthController> {
                             fontSize: 16, fontWeight: TFontWights.regular),
                       ),
                       CustomPadding.heightButton,
-                      CustomTextField.emailTextField((value) => phone = value,
-                          controller: controller.phoneController
+                      CustomTextField.emailTextField((value) => email = value,
+                          controller: controller.emailController
                           //  controller:
                           ),
                       CustomPadding.heightButton,
