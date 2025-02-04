@@ -36,7 +36,6 @@ void main() async {
   initializeDateFormatting();
   await init();
   await Firebase.initializeApp(
-    name: "One-Save",
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await FirebaseMessaging.instance.getInitialMessage();
