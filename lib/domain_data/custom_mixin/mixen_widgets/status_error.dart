@@ -90,7 +90,7 @@ class StatusError {
     bool isIos = Platform.isIOS;
     Get.dialog(
       AlertDialog.adaptive(
-        title: const Text('kaptan'),
+        title: const Text('family health'),
         content: Text(CustomTrans.needLogin.tr),
         actions: [
           isIos

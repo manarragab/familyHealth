@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:abg/data/models/auth/login/LoginModel.dart';
 import 'package:abg/data/models/auth/users/PostEditProfile.dart';
 import 'package:abg/data/models/auth/users/post_assign_user.dart';
+import 'package:abg/data/models/group/group_model.dart';
+import 'package:abg/data/models/home/home_model.dart';
 
 import '../../domain_data/repositories/domain_repositry.dart';
 import '../data_sources/get_storage.dart';
@@ -72,5 +74,15 @@ class DataRepository implements DomainData {
   @override
   Future<ResponseModel> register(PostRegister register) {
     return remote.register(register);
+  }
+
+  @override
+  Future<ResponseModel<GroupData?>> groups() {
+    return remote.groups();
+  }
+
+  @override
+  Future<ResponseModel<HomeData?>> home() {
+    return remote.home();
   }
 }

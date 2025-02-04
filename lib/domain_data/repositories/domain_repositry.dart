@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:abg/data/models/auth/login/LoginModel.dart';
 import 'package:abg/data/models/auth/users/PostEditProfile.dart';
 import 'package:abg/data/models/auth/users/post_assign_user.dart';
+import 'package:abg/data/models/group/group_model.dart';
+import 'package:abg/data/models/home/home_model.dart';
 import 'package:abg/data/remote_data/response_model.dart';
 
 abstract class DomainData {
@@ -51,6 +53,10 @@ abstract class DomainData {
 
   Future<ResponseModel<String?>> uploadProfileImage(File file);
   Future<ResponseModel<LoginData?>> editProfile(PostEditProfile profile);
+
+  Future<ResponseModel<HomeData?>> home();
+
+  Future<ResponseModel<GroupData?>> groups();
 
   ///----------------------------------- team -----------------------------
 

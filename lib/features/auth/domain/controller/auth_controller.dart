@@ -50,7 +50,7 @@ class AuthController extends MainGetxController {
     // user auth cases for api link or storage
     //todo no need for password wait to call the client to know why there is screen for change password
     var response = await sl<AuthCases>()
-        .login(phoneController.text, passwordController.text);
+        .login(emailController.text, passwordController.text);
     sPrint.info(response);
     // must end loading
     loadingGetxController.hideLoading();

@@ -4,6 +4,8 @@ import 'package:abg/data/const/export.dart' hide MultipartFile;
 import 'package:abg/data/models/auth/login/LoginModel.dart';
 import 'package:abg/data/models/auth/users/PostEditProfile.dart';
 import 'package:abg/data/models/auth/users/post_assign_user.dart';
+import 'package:abg/data/models/group/group_model.dart';
+import 'package:abg/data/models/home/home_model.dart';
 import 'package:abg/data/remote_data/response_model.dart';
 import 'package:abg/res/notification/push_notification.dart';
 import 'package:dio/dio.dart';
@@ -138,5 +140,23 @@ class Remote {
     }, onError: (data) {
       return ResponseModel(status: data.status, message: data.message);
     }, useFormData: true, isLogin: true);
+  }
+
+  Future<ResponseModel<HomeData?>> home() async {
+    return _helper.get<HomeData?>({}, path: "/user/home",
+        onSuccess: (dynamic data) {
+      return HomeModel.fromJson(data);
+    }, onError: (data) {
+      return ResponseModel(status: data.status, message: data.message);
+    }, isLogin: true);
+  }
+
+  Future<ResponseModel<GroupData?>> groups() async {
+    return _helper.get<GroupData?>({}, path: "/user/my-groups",
+        onSuccess: (dynamic data) {
+      return GroupModel.fromJson(data);
+    }, onError: (data) {
+      return ResponseModel(status: data.status, message: data.message);
+    }, isLogin: true);
   }
 }
