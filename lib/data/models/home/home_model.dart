@@ -66,8 +66,8 @@ class HomeData {
         groups?.add(Groups.fromJson(v));
       });
     }
+    banners = [];
     if (json['banners'] != null) {
-      banners = [];
       json['banners'].forEach((v) {
         banners?.add(Banners.fromJson(v));
       });

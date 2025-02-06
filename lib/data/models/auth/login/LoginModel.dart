@@ -11,6 +11,9 @@ class LoginModel extends ResponseModel<LoginData?> {
     status = json['status'];
     msg = json["message"];
     data = json['data'] != null ? LoginData.fromJson(json['data']) : null;
+    if (data != null && json['token'] != null) {
+      data?.deviceToken = json['token'];
+    }
   }
 
   num? status;
@@ -68,7 +71,7 @@ class LoginData {
     academicYear = null;
     phone = json['phone'];
     image = json['image'];
-    deviceToken = json['device_token'];
+    deviceToken = json['token'];
     isLoggedIn = json['is_logged_in'];
     isBanned = json['is_banned'];
     createdAt = json['created_at'];
@@ -85,7 +88,7 @@ class LoginData {
     _data['academic_year'] = academicYear;
     _data['phone'] = phone;
     _data['image'] = image;
-    _data['device_token'] = deviceToken;
+    _data['token'] = deviceToken;
     _data['is_logged_in'] = isLoggedIn;
     _data['is_banned'] = isBanned;
     _data['created_at'] = createdAt;

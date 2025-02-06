@@ -1,7 +1,10 @@
 import 'package:abg/data/const/export.dart';
+import 'package:abg/data/models/group/group_model.dart';
+import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
+import 'package:abg/features/group/domain/controller/group_controller.dart';
 import 'package:abg/features/home/presentation/widget/dentistry_card.dart';
 
-class GroupScreen extends StatelessWidget {
+class GroupScreen extends GetView<GroupController> {
   const GroupScreen({Key? key}) : super(key: key);
 
   @override
@@ -18,19 +21,27 @@ class GroupScreen extends StatelessWidget {
               style: TFonts.textTitleStyle(),
             ),
           ),
-          ...List.generate(2, (index) {
-            return MyGroupCard();
-          }),
-          const SizedBox(height: 10),
-          Container(
-            alignment: AlignmentDirectional.centerStart,
-            child: Text(
-              "Suggested groups",
-              style: TFonts.textTitleStyle(),
-            ),
-          ),
-          ...List.generate(2, (index) {
-            return MyGroupCard();
+          controller.obx((state) {
+            GroupModel model = state;
+            return Column(
+              children: [
+                ...List.generate(model.data?.myGroups?.length ?? 0, (index) {
+                  return MyGroupCard(data: model.data!.myGroups![index]);
+                }),
+                const SizedBox(height: 10),
+                Container(
+                  alignment: AlignmentDirectional.centerStart,
+                  child: Text(
+                    "Suggested groups",
+                    style: TFonts.textTitleStyle(),
+                  ),
+                ),
+                ...List.generate(model.data?.suggestedGroups?.length ?? 0,
+                    (index) {
+                  return MyGroupCard(data: model.data!.suggestedGroups![index]);
+                }),
+              ],
+            );
           }),
         ],
       ),

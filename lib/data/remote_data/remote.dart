@@ -4,6 +4,9 @@ import 'package:abg/data/const/export.dart' hide MultipartFile;
 import 'package:abg/data/models/auth/login/LoginModel.dart';
 import 'package:abg/data/models/auth/users/PostEditProfile.dart';
 import 'package:abg/data/models/auth/users/post_assign_user.dart';
+import 'package:abg/data/models/chat/chat_model.dart';
+import 'package:abg/data/models/chat/group/post_group_message.dart';
+import 'package:abg/data/models/chat/group/sendGroupModel.dart';
 import 'package:abg/data/models/group/group_model.dart';
 import 'package:abg/data/models/home/home_model.dart';
 import 'package:abg/data/remote_data/response_model.dart';
@@ -155,6 +158,35 @@ class Remote {
     return _helper.get<GroupData?>({}, path: "/user/my-groups",
         onSuccess: (dynamic data) {
       return GroupModel.fromJson(data);
+    }, onError: (data) {
+      return ResponseModel(status: data.status, message: data.message);
+    }, isLogin: true);
+  }
+
+  Future<ResponseModel<dynamic>> joinGroup(String id) async {
+    return _helper.post<dynamic>({}, path: "/user/groups/join/$id",
+        onSuccess: (dynamic data) {
+      return ResponseModel.fromJson(data);
+    }, onError: (data) {
+      return ResponseModel(status: data.status, message: data.message);
+    }, isLogin: true);
+  }
+
+  Future<ResponseModel<ChatData?>> chatGroup(String id, {int page = 1}) async {
+    return _helper.get<ChatData?>({
+      "page": page,
+    }, path: "/user/chat/group/messages/$id", onSuccess: (dynamic data) {
+      return ChatModel.fromJson(data);
+    }, onError: (data) {
+      return ResponseModel(status: data.status, message: data.message);
+    }, isLogin: true);
+  }
+
+  Future<ResponseModel<ChatMessage?>> sendChatGroup(
+      PostGroupMessage post) async {
+    return _helper.post<ChatMessage?>(await post.toJson(),
+        path: "/user/chat/sned/message", onSuccess: (dynamic data) {
+      return SendGroupModel.fromJson(data);
     }, onError: (data) {
       return ResponseModel(status: data.status, message: data.message);
     }, isLogin: true);

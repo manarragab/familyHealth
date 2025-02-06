@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:abg/data/models/auth/login/LoginModel.dart';
 import 'package:abg/data/models/auth/users/PostEditProfile.dart';
 import 'package:abg/data/models/auth/users/post_assign_user.dart';
+import 'package:abg/data/models/chat/chat_model.dart';
+import 'package:abg/data/models/chat/group/post_group_message.dart';
 import 'package:abg/data/models/group/group_model.dart';
 import 'package:abg/data/models/home/home_model.dart';
 
@@ -84,5 +86,20 @@ class DataRepository implements DomainData {
   @override
   Future<ResponseModel<HomeData?>> home() {
     return remote.home();
+  }
+
+  @override
+  Future<ResponseModel> joinGroup(String id) {
+    return remote.joinGroup(id);
+  }
+
+  @override
+  Future<ResponseModel<ChatData?>> chatGroup(String id, {int page = 1}) {
+    return remote.chatGroup(id, page: page);
+  }
+
+  @override
+  Future<ResponseModel<ChatMessage?>> sendChatGroup(PostGroupMessage post) {
+    return remote.sendChatGroup(post);
   }
 }

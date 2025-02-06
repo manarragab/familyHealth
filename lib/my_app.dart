@@ -113,7 +113,7 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
       backgroundColor: CustomColors.accentLight,
       body: Center(
         child: CustomImage.asset('assets/svg/logo.svg',
-            fit: BoxFit.fitWidth, width: Get.width, height: Get.height),
+            fit: BoxFit.fitWidth, width: Get.width / 2, height: Get.height / 2),
       ),
     );
   }

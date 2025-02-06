@@ -1,7 +1,18 @@
 import 'package:abg/data/const/export.dart';
+import 'package:abg/data/models/group/groups.dart';
 import 'package:abg/data/remote_data/core.dart';
+import 'package:abg/features/chat/domain/controller/chat_controller.dart';
+import 'package:abg/features/chat/presentation/chat_screen.dart';
+import 'package:abg/features/group/domain/controller/group_controller.dart';
 
-class MyGroupCard extends StatelessWidget {
+class MyGroupCard extends GetView<GroupController> {
+  final Groups data;
+
+  const MyGroupCard({
+    super.key,
+    required this.data,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -44,7 +55,7 @@ class MyGroupCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Dentistry",
+                  data.title ?? "",
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
@@ -54,7 +65,7 @@ class MyGroupCard extends StatelessWidget {
                 SizedBox(height: 4),
                 // Description
                 Text(
-                  "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+                  data.description ?? "",
                   style: TextStyle(
                     fontSize: 14,
                     color: Colors.grey[600],
@@ -65,7 +76,7 @@ class MyGroupCard extends StatelessWidget {
                 SizedBox(height: 8),
                 // Private Group and Members
                 Text(
-                  "Private group\n562.6K members",
+                  "Private group\n${data.membersCount ?? ""} members",
                   style: TextStyle(
                     fontSize: 12,
                     color: Colors.grey[500],
@@ -78,36 +89,45 @@ class MyGroupCard extends StatelessWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              TextButton.icon(
-                onPressed: () {},
-                label: Text(
-                  "35K",
-                  style: TextStyle(
-                    color: Colors.grey[700],
-                    fontWeight: FontWeight.bold,
+              if (data.pivot != null)
+                TextButton.icon(
+                  onPressed: () {},
+                  label: Text(
+                    /*data. ?? */
+                    "",
+                    style: TextStyle(
+                      color: Colors.grey[700],
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  icon: Icon(
+                    Icons.notifications_none,
+                    color: Colors.pink,
                   ),
                 ),
-                icon: Icon(
-                  Icons.notifications_none,
-                  color: Colors.pink,
-                ),
-              ),
               const SizedBox(
                 height: 10,
               ),
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.black,
+                  backgroundColor:
+                      data.pivot != null ? Colors.black : Color(0xffEE2D6C),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
                   padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 ),
                 onPressed: () {
-                  // Handle button press
+                  if (data.pivot != null) {
+                    Get.to(() => ChatScreen(), binding: BindingsBuilder(() {
+                      Get.put(ChatController()).updateSelectedGroup(data);
+                    }));
+                  } else {
+                    controller.joinGroup(data);
+                  }
                 },
                 child: Text(
-                  "open",
+                  data.pivot != null ? "open" : "join",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 14,

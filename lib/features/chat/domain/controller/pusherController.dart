@@ -8,22 +8,19 @@ class Pushercontroller extends MainGetxController {
   void pusherInit() async {
     try {
       await pusher.init(
-        apiKey: pusherModel.key,
-        cluster: pusherModel.cluster,
-        onConnectionStateChange: onConnectionStateChange,
-        onError: onError,
-        onSubscriptionSucceeded: onSubscriptionSucceeded,
-        onEvent: onEvent,
-        onSubscriptionError: onSubscriptionError,
-        onDecryptionFailure: onDecryptionFailure,
-        onMemberAdded: onMemberAdded,
-        onMemberRemoved: onMemberRemoved,
-        onSubscriptionCount: onSubscriptionCount,
-        // authEndpoint: "<Your Authendpoint Url>",
-        // onAuthorizer: onAuthorizer
-      );
-      await pusher.subscribe(channelName: "");
-      await pusher.connect();
+          apiKey: pusherModel.key,
+          cluster: pusherModel.cluster,
+          onConnectionStateChange: onConnectionStateChange,
+          onError: onError,
+          onSubscriptionSucceeded: onSubscriptionSucceeded,
+          onEvent: onEvent,
+          onSubscriptionError: onSubscriptionError,
+          onDecryptionFailure: onDecryptionFailure,
+          onMemberAdded: onMemberAdded,
+          onMemberRemoved: onMemberRemoved,
+          onSubscriptionCount: onSubscriptionCount,
+          // authEndpoint: "<Your Authendpoint Url>",
+          onAuthorizer: onAuthorizer);
     } catch (e, s) {
       sPrint.error("ERROR: $e", s);
     }
@@ -76,11 +73,16 @@ class Pushercontroller extends MainGetxController {
     };
   }
 
-  void onTriggerEventPressed() async {
+  void onTriggerEventPressed(String id, String eventName) async {
     pusher.trigger(PusherEvent(
-      channelName: "",
-      eventName: "",
+      channelName: pusherModel.groupChannel(id),
+      eventName: eventName,
     ));
+  }
+
+  void startConnect(String id) async {
+    await pusher.subscribe(channelName: pusherModel.groupChannel(id));
+    await pusher.connect();
   }
 }
 
@@ -96,8 +98,9 @@ private-group.{id}
 private-private_chat.{id}
 
 */
-  String groupChannel(num id) => "private-group.$id";
-  String privateChannel(num id) => "private-private_chat.$id";
+  String groupChannel(String id) => "private-group.$id";
+
+  String privateChannel(String id) => "private-private_chat.$id";
 
   final String id = "1931559";
   final String key = "d3aed3ecfd129c54f4e7";

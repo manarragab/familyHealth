@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:abg/data/models/auth/login/LoginModel.dart';
 import 'package:abg/data/models/auth/users/PostEditProfile.dart';
 import 'package:abg/data/models/auth/users/post_assign_user.dart';
+import 'package:abg/data/models/chat/chat_model.dart';
+import 'package:abg/data/models/chat/group/post_group_message.dart';
 import 'package:abg/data/models/group/group_model.dart';
 import 'package:abg/data/models/home/home_model.dart';
 import 'package:abg/data/remote_data/response_model.dart';
@@ -48,15 +50,23 @@ abstract class DomainData {
   Future<ResponseModel> register(PostRegister register);
 
   Future<ResponseModel<LoginData?>> checkCode(String code);
+
   Future<ResponseModel<dynamic>> resetPassord(
       {required String code, required String password});
 
   Future<ResponseModel<String?>> uploadProfileImage(File file);
+
   Future<ResponseModel<LoginData?>> editProfile(PostEditProfile profile);
 
   Future<ResponseModel<HomeData?>> home();
 
   Future<ResponseModel<GroupData?>> groups();
+
+  Future<ResponseModel<dynamic>> joinGroup(String id);
+
+  Future<ResponseModel<ChatData?>> chatGroup(String id, {int page = 1});
+
+  Future<ResponseModel<ChatMessage?>> sendChatGroup(PostGroupMessage post);
 
   ///----------------------------------- team -----------------------------
 
