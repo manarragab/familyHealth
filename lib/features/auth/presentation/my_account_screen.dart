@@ -1,8 +1,5 @@
-import 'dart:io';
-
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/auth/domain/controller/auth_controller.dart';
-import 'package:abg/res/configuration/image/pick_image.dart';
 import 'package:abg/res/configuration/text_field/text_field.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
 
@@ -25,10 +22,10 @@ class MyAccountScreen extends GetView<AuthController> {
                     Center(
                       child: GestureDetector(
                         onTap: () async {
-                          File? file = await Pick.pickImage(context);
-                          if (file != null) {
-                            controller.updateProfileImage(file);
-                          }
+                          //   File? file = await Pick.pickImage(context);
+                          //   if (file != null) {
+                          //     controller.updateProfileImage(file);
+                          //   }
                         },
                         child: Container(
                           height: height,

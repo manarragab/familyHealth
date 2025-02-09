@@ -1,6 +1,7 @@
 /*
 * to pick Image
-*/
+*/ /*
+
 
 import 'dart:io';
 
@@ -74,3 +75,4 @@ class Pick {
     }
   }
 }
+*/
