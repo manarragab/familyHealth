@@ -330,7 +330,7 @@ void showProgress(received, total) {
 }
 
 Future<bool> connectedToNetwork() async {
-  bool isInternet = await InternetConnectionChecker().hasConnection;
+  bool isInternet = await InternetConnectionChecker.instance.hasConnection;
   if (isInternet) {
     return true;
   } else {
