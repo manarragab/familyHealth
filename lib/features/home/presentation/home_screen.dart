@@ -95,6 +95,7 @@ class HomeScreen extends GetView<HomeController> {
                 controller.obx((value) {
                   HomeModel model = value;
                   return Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       // Reminders Section
                       const Text(
@@ -157,49 +158,63 @@ class HomeScreen extends GetView<HomeController> {
                         ),
                       ),
                       const SizedBox(height: 16),
-                      const Text(
-                        "Pills",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      ...List.generate(2, (index) {
-                        return PillCard();
-                      }),
-                      const SizedBox(height: 16),
-                      const Text(
-                        "Progress tracker",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 16),
-                      SizedBox(
-                        height: 100,
-                        child: ListView.separated(
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) {
-                            return SizedBox(
-                              width: 115,
-                              child: Column(
-                                children: [
-                                  Expanded(child: Placeholder()),
-                                  Text(
-                                    "test",
-                                    style: TFonts.textTitleStyle(),
-                                  )
-                                ],
+                      if (false)
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "Pills",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
                               ),
-                            );
-                          },
-                          separatorBuilder: (context, index) =>
-                              const SizedBox(width: 10),
-                          itemCount: 10,
+                            ),
+                            const SizedBox(height: 16),
+                            ...List.generate(2, (index) {
+                              return PillCard();
+                            }),
+                          ],
                         ),
-                      ),
+
+                      if (false)
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(height: 16),
+                            const Text(
+                              "Progress tracker",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 16),
+                            SizedBox(
+                              height: 100,
+                              child: ListView.separated(
+                                scrollDirection: Axis.horizontal,
+                                itemBuilder: (context, index) {
+                                  return SizedBox(
+                                    width: 115,
+                                    child: Column(
+                                      children: [
+                                        Expanded(child: Placeholder()),
+                                        Text(
+                                          "test",
+                                          style: TFonts.textTitleStyle(),
+                                        )
+                                      ],
+                                    ),
+                                  );
+                                },
+                                separatorBuilder: (context, index) =>
+                                    const SizedBox(width: 10),
+                                itemCount: 10,
+                              ),
+                            ),
+                          ],
+                        ),
+
                       const SizedBox(height: 16),
                       getTitle(
                           title: "Group",
@@ -215,30 +230,37 @@ class HomeScreen extends GetView<HomeController> {
                           (index) {
                         return MyGroupCard(data: model.data!.groups![index]);
                       }),
-                      const SizedBox(height: 16),
+                      if (model.data?.banners?.isNotEmpty ?? false)
+                        const SizedBox(height: 16),
                       if (model.data?.banners?.isNotEmpty ?? false)
                         HomeBanarasBar(
                             images: model.data?.banners
                                     ?.map((e) => e.image ?? "")
                                     .toList() ??
                                 []),
-                      if (model.data?.banners?.isNotEmpty ?? false)
-                        const SizedBox(height: 16),
-                      const Text(
-                        "Best doctors",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+
                       const SizedBox(height: 16),
-                      ...List.generate(2, (index) {
-                        return InkWell(
-                            onTap: () {
-                              //    Get.to(() => ChatScreen());
-                            },
-                            child: DoctorCard());
-                      }),
+                      if (false)
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "Best doctors",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            const SizedBox(height: 16),
+                            ...List.generate(2, (index) {
+                              return InkWell(
+                                  onTap: () {
+                                    //    Get.to(() => ChatScreen());
+                                  },
+                                  child: DoctorCard());
+                            }),
+                          ],
+                        )
                     ],
                   );
                 }),

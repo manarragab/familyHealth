@@ -26,22 +26,23 @@ import 'package:flutter/foundation.dart';
 class sPrint {
   static warning(msg) {
     if (kDebugMode) {
-      log(msg.toString(), name: 'WARNING 📙:');
-   //   print("📙: \x1B[33m $msg \x1B[0m");
+      // log(msg.toString(), name: 'WARNING 📙:');
+      print("📙: \x1B[33m $msg \x1B[0m");
     }
   }
 
   static info(msg) {
     if (kDebugMode) {
-      log(msg.toString(), name: 'INFO 📘: '/*,stackTrace: StackTrace.current*/);
+      log(msg.toString(),
+          name: 'INFO 📘: ' /*,stackTrace: StackTrace.current*/);
       print('📘: \x1B[34m   $msg  \x1B[0m');
     }
   }
 
   static success(msg) {
     if (kDebugMode) {
-      log(msg.toString(), name: 'SUCCESS 📗:');
-      //  print('📗: \x1B[32m   $msg  \x1B[0m');
+      //   log(msg.toString(), name: 'SUCCESS 📗:');
+      print('📗: \x1B[32m   $msg  \x1B[0m');
     }
   }
 

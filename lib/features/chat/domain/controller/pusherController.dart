@@ -5,11 +5,13 @@ class Pushercontroller extends MainGetxController {
   PusherModel pusherModel = PusherModel();
   PusherChannelsFlutter pusher = PusherChannelsFlutter.getInstance();
 
-  void pusherInit() async {
+  void pusherInit(String id) async {
     try {
       await pusher.init(
           apiKey: pusherModel.key,
           cluster: pusherModel.cluster,
+          enableStats: true,
+          useTLS: true,
           onConnectionStateChange: onConnectionStateChange,
           onError: onError,
           onSubscriptionSucceeded: onSubscriptionSucceeded,
@@ -21,6 +23,7 @@ class Pushercontroller extends MainGetxController {
           onSubscriptionCount: onSubscriptionCount,
           // authEndpoint: "<Your Authendpoint Url>",
           onAuthorizer: onAuthorizer);
+      await startConnect(id);
     } catch (e, s) {
       sPrint.error("ERROR: $e", s);
     }
@@ -65,12 +68,32 @@ class Pushercontroller extends MainGetxController {
         "onSubscriptionCount: $channelName subscriptionCount: $subscriptionCount");
   }
 
-  dynamic onAuthorizer(String channelName, String socketId, dynamic options) {
+  /* dynamic onAuthorizer(
+      String channelName, String socketId, dynamic options, String id) {
     return {
-      "auth": "foo:bar",
-      "channel_data": '{"user_id": 1}',
-      "shared_secret": "foobar"
+      {
+        "auth": pusherModel.key, // token
+        "shared_secret": pusherModel.secret,
+        "channel_data": "private-group.$id" // user-info
+      }
     };
+  }*/
+
+  dynamic onAuthorizer(
+      String channelName, String socketId, dynamic options) async {
+    return {};
+    //  String token = Shared.getstring("token")!;
+    /*var authUrl = "http://192.168.1.102:8000//broadcasting/auth";
+    var result = await Dio().post(
+      Uri.parse(authUrl),
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        'Authorization': 'Bearer ${token}',
+      },
+      body: 'socket_id=$socketId&channel_name=$channelName',
+    );
+    var json = jsonDecode(result.body);
+    return json;*/
   }
 
   void onTriggerEventPressed(String id, String eventName) async {
@@ -80,9 +103,9 @@ class Pushercontroller extends MainGetxController {
     ));
   }
 
-  void startConnect(String id) async {
+  dynamic startConnect(String id) async {
     await pusher.subscribe(channelName: pusherModel.groupChannel(id));
-    await pusher.connect();
+    return await pusher.connect();
   }
 }
 

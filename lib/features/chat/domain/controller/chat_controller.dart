@@ -17,7 +17,6 @@ class ChatController extends MainGetxController with CustomStateMixin {
 
   @override
   void onInit() {
-    pusher.pusherInit();
     super.onInit();
   }
 
@@ -69,7 +68,7 @@ class ChatController extends MainGetxController with CustomStateMixin {
       },
       getPage: (page) => _page = page,
     );
-    pusher.startConnect(selectedGroup!.id.toString());
+    pusher.pusherInit(selectedGroup!.id.toString());
   }
 
   onLoadMore() async {
