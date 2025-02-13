@@ -5,7 +5,6 @@ import 'package:abg/data/models/group/groups.dart';
 import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
 import 'package:abg/domain_data/custom_mixin/mixen_widgets/status_error.dart';
 import 'package:abg/features/chat/domain/cases/chat_cases.dart';
-import 'package:abg/features/chat/domain/controller/pusherController.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class ChatController extends MainGetxController with CustomStateMixin {
@@ -13,7 +12,7 @@ class ChatController extends MainGetxController with CustomStateMixin {
 
   TextEditingController messageController = TextEditingController();
 
-  Pushercontroller pusher = Pushercontroller();
+  // Pushercontroller pusher = Pushercontroller();
 
   @override
   void onInit() {
@@ -23,7 +22,7 @@ class ChatController extends MainGetxController with CustomStateMixin {
   @override
   void onClose() {
     messageController.dispose();
-    pusher.dispose();
+    //pusher.dispose();
     super.onClose();
   }
 
@@ -68,7 +67,7 @@ class ChatController extends MainGetxController with CustomStateMixin {
       },
       getPage: (page) => _page = page,
     );
-    pusher.pusherInit(selectedGroup!.id.toString());
+    // pusher.pusherInit(selectedGroup!.id.toString());
   }
 
   onLoadMore() async {

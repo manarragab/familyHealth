@@ -28,7 +28,7 @@ class Remote {
     Map<String, dynamic> json = {
       'email': text,
       'password': password,
-      'device_type': await PushNotificationsManager().getNotificationToken()
+      'device_token': await PushNotificationsManager().getNotificationToken()
     };
     // return Future.delayed(const Duration(seconds: 1), () {
     //   return LoginModel();

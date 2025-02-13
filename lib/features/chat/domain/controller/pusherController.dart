@@ -1,3 +1,4 @@
+/*
 import 'package:abg/data/const/export.dart';
 import 'package:pusher_channels_flutter/pusher_channels_flutter.dart';
 
@@ -8,21 +9,22 @@ class Pushercontroller extends MainGetxController {
   void pusherInit(String id) async {
     try {
       await pusher.init(
-          apiKey: pusherModel.key,
-          cluster: pusherModel.cluster,
-          enableStats: true,
-          useTLS: true,
-          onConnectionStateChange: onConnectionStateChange,
-          onError: onError,
-          onSubscriptionSucceeded: onSubscriptionSucceeded,
-          onEvent: onEvent,
-          onSubscriptionError: onSubscriptionError,
-          onDecryptionFailure: onDecryptionFailure,
-          onMemberAdded: onMemberAdded,
-          onMemberRemoved: onMemberRemoved,
-          onSubscriptionCount: onSubscriptionCount,
-          // authEndpoint: "<Your Authendpoint Url>",
-          onAuthorizer: onAuthorizer);
+        apiKey: pusherModel.key,
+        cluster: pusherModel.cluster,
+        enableStats: true,
+        useTLS: true,
+        onConnectionStateChange: onConnectionStateChange,
+        onError: onError,
+        onSubscriptionSucceeded: onSubscriptionSucceeded,
+        onEvent: onEvent,
+        onSubscriptionError: onSubscriptionError,
+        onDecryptionFailure: onDecryptionFailure,
+        onMemberAdded: onMemberAdded,
+        onMemberRemoved: onMemberRemoved,
+        onSubscriptionCount: onSubscriptionCount,
+        // authEndpoint: "<Your Authendpoint Url>",
+        onAuthorizer: onAuthorizer,
+      );
       await startConnect(id);
     } catch (e, s) {
       sPrint.error("ERROR: $e", s);
@@ -68,7 +70,8 @@ class Pushercontroller extends MainGetxController {
         "onSubscriptionCount: $channelName subscriptionCount: $subscriptionCount");
   }
 
-  /* dynamic onAuthorizer(
+  */
+/* dynamic onAuthorizer(
       String channelName, String socketId, dynamic options, String id) {
     return {
       {
@@ -77,13 +80,15 @@ class Pushercontroller extends MainGetxController {
         "channel_data": "private-group.$id" // user-info
       }
     };
-  }*/
+  }*/ /*
+
 
   dynamic onAuthorizer(
       String channelName, String socketId, dynamic options) async {
     return {};
     //  String token = Shared.getstring("token")!;
-    /*var authUrl = "http://192.168.1.102:8000//broadcasting/auth";
+    */
+/*var authUrl = "http://192.168.1.102:8000//broadcasting/auth";
     var result = await Dio().post(
       Uri.parse(authUrl),
       headers: {
@@ -93,7 +98,8 @@ class Pushercontroller extends MainGetxController {
       body: 'socket_id=$socketId&channel_name=$channelName',
     );
     var json = jsonDecode(result.body);
-    return json;*/
+    return json;*/ /*
+
   }
 
   void onTriggerEventPressed(String id, String eventName) async {
@@ -111,7 +117,8 @@ class Pushercontroller extends MainGetxController {
 
 class PusherModel {
   /// pusher
-  /*PUSHER_APP_ID="1931559"
+  */
+/*PUSHER_APP_ID="1931559"
 PUSHER_APP_KEY="d3aed3ecfd129c54f4e7"
 PUSHER_APP_SECRET="56d8e768b275dd36bb67"
 PUSHER_APP_CLUSTER="eu"
@@ -120,7 +127,8 @@ Channel names :
 private-group.{id}
 private-private_chat.{id}
 
-*/
+*/ /*
+
   String groupChannel(String id) => "private-group.$id";
 
   String privateChannel(String id) => "private-private_chat.$id";
@@ -130,3 +138,4 @@ private-private_chat.{id}
   final String secret = "56d8e768b275dd36bb67";
   final String cluster = "eu";
 }
+*/
