@@ -1,5 +1,6 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/data/remote_data/core.dart';
+import 'package:abg/res/router/pages.dart';
 
 class CustomDrawer extends StatelessWidget {
   CustomDrawer({Key? key}) : super(key: key);
@@ -46,6 +47,7 @@ class CustomDrawer extends StatelessWidget {
             children: items
                 .map(
                   (e) => ListTile(
+                    onTap: e.onTap,
                     leading: CircleAvatar(
                       backgroundColor:
                           const Color(0xff30495E).withOpacity(0.85),
@@ -64,7 +66,12 @@ class CustomDrawer extends StatelessWidget {
   final List<DrawerItem> items = [
     DrawerItem(
         image: "assets/svg/folder.svg", name: "Medical Record", onTap: () {}),
-    DrawerItem(image: "assets/svg/alarm.svg", name: "My Alarm", onTap: () {}),
+    DrawerItem(
+        image: "assets/svg/alarm.svg",
+        name: CustomTrans.myAlarm.tr,
+        onTap: () {
+          Get.toNamed(CustomPage.myAlarm);
+        }),
     DrawerItem(
         image: "assets/svg/calculator.svg", name: "calculations", onTap: () {}),
     DrawerItem(

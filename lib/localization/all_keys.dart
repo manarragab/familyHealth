@@ -939,4 +939,9 @@ class CustomTrans {
   static const String enterTheNewPassword = 'enterTheNewPassword';
 
   static const String myGroup = "My Group";
+
+//todo need to translate
+  static const String myAlarm = "My Alarm";
+
+  static const String newAlarm = "New Alarm";
 }

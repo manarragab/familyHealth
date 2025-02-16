@@ -1,5 +1,7 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/domain_data/get_binding/get_binding.dart';
+import 'package:abg/features/alarm/domain/controller/alarm_controller.dart';
+import 'package:abg/features/alarm/presentation/alarm_screen.dart';
 import 'package:abg/features/auth/domain/controller/auth_controller.dart';
 import 'package:abg/features/auth/presentation/login_screen.dart';
 import 'package:abg/features/auth/presentation/my_account_screen.dart';
@@ -65,6 +67,13 @@ class CustomPage {
         binding: BindingsBuilder(() {
           Get.put(MainVerifyAccountController());
         })),
+    GetPage(
+        name: myAlarm,
+        page: () => AlarmScreen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+          Get.put(AlarmController()).onRefresh();
+        })),
   ];
 
   static String layoutPage = '/layout';
@@ -82,4 +91,6 @@ class CustomPage {
 
   static String registerScreen = "/register";
   static String mainVerifyAccountScreen = "/main_verify_account_screen";
+
+  static String myAlarm = "/my_alarm_page";
 }
