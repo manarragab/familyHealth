@@ -93,6 +93,9 @@ class CustomColors {
   static const Color darkOrange = Color(0xffffa348);
   static const Color pink = Color(0xffffa6c4);
   static const Color pink2 = Color(0xffDC6E8C);
+  static const Color lightGrey2 = Color(0xFFF8F8F8);
+  static const Color lightBlue2 = Color(0xFF30495E);
+  static const Color darkBlue2 = Color(0xFF24394A);
 
   /// this is the color of the apps
 

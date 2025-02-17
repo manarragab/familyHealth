@@ -1,4 +1,6 @@
+import 'package:abg/res/configuration/color.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AlarmItem extends StatelessWidget {
   final String title;
@@ -21,6 +23,7 @@ class AlarmItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: CustomColors.lightGrey2,
       margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
@@ -31,15 +34,19 @@ class AlarmItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Alarm Image Placeholder
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Container(
-                width: 60,
-                height: 60,
-                color: Colors.grey[300], // Placeholder color
-                child: const Icon(Icons.image, color: Colors.grey),
-              ),
-            ),
+            Container(
+                width: 100,
+                height: 100,
+                // Placeholder color
+                decoration: const BoxDecoration(boxShadow: [
+                  BoxShadow(
+                      color: Colors.grey,
+                      spreadRadius: 0.2,
+                      blurRadius: 2,
+                      offset: Offset(1.5, 1.5))
+                ]),
+                child: Image.asset("assets/images/checker.png")),
+
             const SizedBox(width: 12),
 
             // Alarm Details
@@ -47,19 +54,47 @@ class AlarmItem extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    title,
-                    style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+                  Row(
+                    children: [
+                      Text(title,
+                          style: GoogleFonts.almarai(
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                          )),
+                      const Spacer(),
+                      IconButton(
+                        icon: const Icon(
+                          Icons.edit_outlined,
+                          color: Colors.blue,
+                          size: 20,
+                        ),
+                        onPressed: onEdit,
+                        constraints: const BoxConstraints(
+                          minHeight: 1,
+                          minWidth: 1,
+                        ),
+                      ),
+                      IconButton(
+                        icon: const Icon(
+                          Icons.delete_outline,
+                          color: Colors.red,
+                          size: 20,
+                        ),
+                        onPressed: onDelete,
+                        constraints: const BoxConstraints(
+                          minHeight: 1,
+                          minWidth: 1,
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 4),
                   Text(
                     description,
-                    maxLines: 2,
+                    maxLines: 3,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(fontSize: 14, color: Colors.grey),
+                    style: GoogleFonts.almarai(
+                        fontSize: 14, color: CustomColors.lightBlue2),
                   ),
                   const SizedBox(height: 8),
 
@@ -67,14 +102,14 @@ class AlarmItem extends StatelessWidget {
                   Row(
                     children: [
                       const Icon(Icons.calendar_today,
-                          size: 14, color: Colors.grey),
+                          size: 14, color: Colors.black),
                       const SizedBox(width: 4),
                       Text(date,
                           style: const TextStyle(
                               fontSize: 14, color: Colors.grey)),
                       const SizedBox(width: 16),
                       const Icon(Icons.access_time,
-                          size: 14, color: Colors.grey),
+                          size: 14, color: Colors.black),
                       const SizedBox(width: 4),
                       Text(time,
                           style: const TextStyle(
@@ -86,18 +121,6 @@ class AlarmItem extends StatelessWidget {
             ),
 
             // Edit & Delete Buttons
-            Column(
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.edit, color: Colors.blue),
-                  onPressed: onEdit,
-                ),
-                IconButton(
-                  icon: const Icon(Icons.delete, color: Colors.red),
-                  onPressed: onDelete,
-                ),
-              ],
-            ),
           ],
         ),
       ),
