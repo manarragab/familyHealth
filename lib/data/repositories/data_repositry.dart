@@ -7,6 +7,7 @@ import 'package:abg/data/models/chat/chat_model.dart';
 import 'package:abg/data/models/chat/group/post_group_message.dart';
 import 'package:abg/data/models/group/group_model.dart';
 import 'package:abg/data/models/home/home_model.dart';
+import 'package:abg/data/models/social/social_model.dart';
 
 import '../../domain_data/repositories/domain_repositry.dart';
 import '../data_sources/get_storage.dart';
@@ -101,5 +102,15 @@ class DataRepository implements DomainData {
   @override
   Future<ResponseModel<ChatMessage?>> sendChatGroup(PostGroupMessage post) {
     return remote.sendChatGroup(post);
+  }
+
+  @override
+  Future facebookApi(String token, String id) {
+    return remote.facebookApi(token, id);
+  }
+
+  @override
+  Future<ResponseModel<LoginData?>> socialLogin(SocialModel? socialModel) {
+    return remote.socialLogin(socialModel);
   }
 }

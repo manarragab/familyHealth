@@ -98,9 +98,9 @@ dependencies:
 
 
   #social login
-  # sign_in_with_apple: ^4.1.0
-  # google_sign_in: ^5.2.4
-  # flutter_facebook_auth: ^4.4.1
+  sign_in_with_apple: ^6.1.4
+  google_sign_in: ^6.2.2
+  flutter_facebook_auth: ^7.1.1
 
   #native splash
   # flutter_native_splash: ^2.2.9

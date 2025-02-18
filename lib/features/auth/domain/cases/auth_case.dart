@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:abg/data/models/auth/login/LoginModel.dart';
 import 'package:abg/data/models/auth/users/PostEditProfile.dart';
 import 'package:abg/data/models/auth/users/post_assign_user.dart';
+import 'package:abg/data/models/social/social_model.dart';
 import 'package:abg/data/remote_data/response_model.dart';
 import 'package:abg/domain_data/repositories/domain_repositry.dart';
 
@@ -50,5 +51,13 @@ class AuthCases {
 
   Future<ResponseModel> register(PostRegister register) {
     return _data.register(register);
+  }
+
+  Future<dynamic> facebookApi(String token, String id) {
+    return _data.facebookApi(token, id);
+  }
+
+  Future<ResponseModel<LoginData?>> socialLogin(SocialModel? socialModel) {
+    return _data.socialLogin(socialModel);
   }
 }

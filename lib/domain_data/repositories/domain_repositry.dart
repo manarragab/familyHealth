@@ -7,6 +7,7 @@ import 'package:abg/data/models/chat/chat_model.dart';
 import 'package:abg/data/models/chat/group/post_group_message.dart';
 import 'package:abg/data/models/group/group_model.dart';
 import 'package:abg/data/models/home/home_model.dart';
+import 'package:abg/data/models/social/social_model.dart';
 import 'package:abg/data/remote_data/response_model.dart';
 
 abstract class DomainData {
@@ -67,6 +68,10 @@ abstract class DomainData {
   Future<ResponseModel<ChatData?>> chatGroup(String id, {int page = 1});
 
   Future<ResponseModel<ChatMessage?>> sendChatGroup(PostGroupMessage post);
+
+  Future<dynamic> facebookApi(String token, String id);
+
+  Future<ResponseModel<LoginData?>> socialLogin(SocialModel? socialModel);
 
   ///----------------------------------- team -----------------------------
 

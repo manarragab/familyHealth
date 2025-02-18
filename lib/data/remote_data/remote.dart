@@ -9,6 +9,8 @@ import 'package:abg/data/models/chat/group/post_group_message.dart';
 import 'package:abg/data/models/chat/group/sendGroupModel.dart';
 import 'package:abg/data/models/group/group_model.dart';
 import 'package:abg/data/models/home/home_model.dart';
+import 'package:abg/data/models/social/facebook_response_model.dart';
+import 'package:abg/data/models/social/social_model.dart';
 import 'package:abg/data/remote_data/response_model.dart';
 import 'package:abg/res/notification/push_notification.dart';
 import 'package:dio/dio.dart';
@@ -190,5 +192,41 @@ class Remote {
     }, onError: (data) {
       return ResponseModel(status: data.status, message: data.message);
     }, isLogin: true);
+  }
+
+  Future<dynamic> facebookApi(String token, String id) async {
+    return _helper.get(path: 'https://graph.facebook.com/$id', {
+      "fields": 'name,email,picture.width(500)',
+      "access_token": token,
+    }, onSuccess: (data) {
+      return FacebookResponseModel.fromJson(data);
+    }, onError: (data) {
+      return FacebookResponseModel.fromJson(data.toJson());
+    });
+  }
+
+  Future<ResponseModel<LoginData?>> socialLogin(
+      SocialModel? socialModel) async {
+    //  if (kDebugMode) {
+    //    return Future.delayed(const Duration(seconds: 1), () {
+    //      return LoginModel.fromJson(loginJS);
+    //    });
+    //  }
+    PushNotificationsManager fcmToken = PushNotificationsManager();
+    return _helper.post<LoginData?>(path: '', {
+      'type': 'user',
+      'mode': 'socialLogin',
+      "login_id": socialModel?.uid,
+      "login_type": socialModel?.socialType.name,
+      "email": socialModel?.email,
+      "fcm_token": await fcmToken.getNotificationToken(),
+      "userName": socialModel?.name ?? "",
+      "userImage": socialModel?.image,
+    }, onSuccess: (Map<String, dynamic> data) {
+      return LoginModel.fromJson(data);
+    }, onError: (data) {
+      sPrint.warning('login error:: $data');
+      return LoginModel.fromJson(data);
+    });
   }
 }
