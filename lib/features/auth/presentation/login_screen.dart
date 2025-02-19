@@ -1,11 +1,14 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/auth/domain/controller/auth_controller.dart';
+import 'package:abg/features/auth/domain/controller/authenticate_methods.dart';
 import 'package:abg/features/auth/presentation/forget_password_screen.dart';
 import 'package:abg/res/common-widgets/custom_check_box.dart';
 import 'package:abg/res/configuration/text_field/text_field.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
 import 'package:abg/res/router/pages.dart';
 import 'package:flutter/gestures.dart';
+
+import '../domain/controller/getx_social_login_controller.dart';
 
 class LoginScreen extends GetView<AuthController> {
   LoginScreen({Key? key}) : super(key: key);
@@ -121,7 +124,22 @@ class LoginScreen extends GetView<AuthController> {
                       const SizedBox(height: 15),
                       Center(
                         child: MainButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Get.put(GetXSocialLoginController()).socialLogin(SocialType.apple);
+                          },
+                          title: "Sign In With apple",
+                          buttonWordStyle: TFonts.textTitleStyle(
+                              fontWeight: TFontWights.regular),
+                          backgroundColor: CustomColors.lightGrey,
+                          withShadow: false,
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Center(
+                        child: MainButton(
+                          onPressed: () {
+                         Get.put(GetXSocialLoginController()).socialLogin(SocialType.google);
+                          },
                           title: "Sign In With google",
                           buttonWordStyle: TFonts.textTitleStyle(
                               fontWeight: TFontWights.regular),
@@ -134,7 +152,9 @@ class LoginScreen extends GetView<AuthController> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           InkWell(
-                            onTap: () {},
+                            onTap: () {
+                              Get.put(GetXSocialLoginController()).socialLogin(SocialType.facebook);
+                            },
                             child: CircleAvatar(
                               backgroundColor: const Color(0xffB3CBD8),
                               child: Padding(
