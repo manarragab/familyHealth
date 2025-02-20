@@ -105,11 +105,6 @@ class DataRepository implements DomainData {
   }
 
   @override
-  Future facebookApi(String token, String id) {
-    return remote.facebookApi(token, id);
-  }
-
-  @override
   Future<ResponseModel<LoginData?>> socialLogin(SocialModel? socialModel) {
     return remote.socialLogin(socialModel);
   }

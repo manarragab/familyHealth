@@ -53,10 +53,6 @@ class AuthCases {
     return _data.register(register);
   }
 
-  Future<dynamic> facebookApi(String token, String id) {
-    return _data.facebookApi(token, id);
-  }
-
   Future<ResponseModel<LoginData?>> socialLogin(SocialModel? socialModel) {
     return _data.socialLogin(socialModel);
   }

@@ -21,7 +21,7 @@ class CustomColors {
 
   static Color get backButton => const Color(0xffB3CBD8);
 
-  static const Color primaryLight = Color(0xff951920);
+  static Color get primaryLight => primary.withOpacity(0.55);
   static const Color accent = Color(0xff68605c);
   static const Color accentLight = Color(0xffFEF6ED);
   static const Color red = Color(0xffF0544C);

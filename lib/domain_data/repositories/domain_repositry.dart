@@ -69,8 +69,6 @@ abstract class DomainData {
 
   Future<ResponseModel<ChatMessage?>> sendChatGroup(PostGroupMessage post);
 
-  Future<dynamic> facebookApi(String token, String id);
-
   Future<ResponseModel<LoginData?>> socialLogin(SocialModel? socialModel);
 
   ///----------------------------------- team -----------------------------

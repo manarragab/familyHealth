@@ -9,7 +9,6 @@ import 'package:abg/data/models/chat/group/post_group_message.dart';
 import 'package:abg/data/models/chat/group/sendGroupModel.dart';
 import 'package:abg/data/models/group/group_model.dart';
 import 'package:abg/data/models/home/home_model.dart';
-import 'package:abg/data/models/social/facebook_response_model.dart';
 import 'package:abg/data/models/social/social_model.dart';
 import 'package:abg/data/remote_data/response_model.dart';
 import 'package:abg/res/notification/push_notification.dart';
@@ -86,7 +85,7 @@ class Remote {
     //   return LoginModel();
     // });
 
-    return _helper.post<LoginData?>(json, path: '/host/password/forgot',
+    return _helper.post<LoginData?>(json, path: '/user/forget-password',
         onSuccess: (Map<String, dynamic> data) {
       return LoginModel.fromJson(data);
     }, onError: (data) {
@@ -192,17 +191,6 @@ class Remote {
     }, onError: (data) {
       return ResponseModel(status: data.status, message: data.message);
     }, isLogin: true);
-  }
-
-  Future<dynamic> facebookApi(String token, String id) async {
-    return _helper.get(path: 'https://graph.facebook.com/$id', {
-      "fields": 'name,email,picture.width(500)',
-      "access_token": token,
-    }, onSuccess: (data) {
-      return FacebookResponseModel.fromJson(data);
-    }, onError: (data) {
-      return FacebookResponseModel.fromJson(data.toJson());
-    });
   }
 
   Future<ResponseModel<LoginData?>> socialLogin(
