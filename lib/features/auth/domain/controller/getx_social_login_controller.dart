@@ -27,7 +27,12 @@ class GetXSocialLoginController extends MainGetxController {
     }
     sPrint.info('login');
     // must show loading
-
+    if (socialModel == null) {
+      loadingGetxController.hideLoading();
+      showToast(
+          "can't connect to your ${socialType.name}", MessageErrorType.error);
+      return;
+    }
     //todo user auth cases for api link or storage
 
     var response = await sl<AuthCases>().socialLogin(socialModel);

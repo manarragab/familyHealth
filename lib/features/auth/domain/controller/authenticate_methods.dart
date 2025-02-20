@@ -1,8 +1,5 @@
-import 'package:abg/data/models/social/facebook_response_model.dart';
 import 'package:abg/data/models/social/social_model.dart';
-import 'package:abg/features/auth/domain/cases/auth_case.dart';
 import 'package:abg/res/configuration/print_types.dart';
-import 'package:abg/res/injection.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -47,28 +44,39 @@ class AuthenticateMethods {
   Future<SocialModel?> signInWithFacebook() async {
     // Trigger the sign-in flow
     try {
-      final LoginResult loginResult =
-          await FacebookAuth.instance.login(permissions: [
-        "email",
-        "public_profile",
-      ]);
+      final LoginResult loginResult = await FacebookAuth.instance.login(
+        permissions: [
+          'public_profile',
+          'email',
+        ],
+      );
       // Create a credential from the access token
       //final OAuthCredential facebookAuthCredential = FacebookAuthProvider.credential(loginResult.accessToken!.token);
-      print(
-          'facebook auth credential accessToken:: ${(loginResult.accessToken as LimitedToken).tokenString}');
-      print(
-          'facebook auth credential tokenID:: ${(loginResult.accessToken as LimitedToken).userId}');
+      if (loginResult.accessToken is ClassicToken) {
+        print(
+            'facebook auth credential accessToken:: ${(loginResult.accessToken as ClassicToken).tokenString}');
+        print(
+            'facebook auth credential tokenID:: ${(loginResult.accessToken as ClassicToken).userId}');
+      } else {
+        print(
+            'facebook auth credential accessToken:: ${(loginResult.accessToken as LimitedToken).tokenString}');
+        print(
+            'facebook auth credential tokenID:: ${(loginResult.accessToken as LimitedToken).userId}');
+      }
+      final userData =
+          await FacebookAuth.instance.getUserData(fields: "id,name,email");
       // Once signed in, return the UserCredential
-      FacebookResponseModel facebookResponseEntity = await sl<AuthCases>()
+      /*   FacebookResponseModel facebookResponseEntity = await sl<AuthCases>()
           .facebookApi(loginResult.accessToken!.tokenString,
-              loginResult.accessToken!.type.name);
+              loginResult.accessToken!.type.name);*/
       //await _auth.signInWithCredential(facebookAuthCredential);
+      sPrint.warning("userData:: $userData");
       return SocialModel(
-          name: facebookResponseEntity.name.toString(),
+          name: userData['name'],
           socialType: SocialType.facebook,
-          email: facebookResponseEntity.email.toString(),
-          uid: facebookResponseEntity.id.toString(),
-          image: facebookResponseEntity.picture!.data!.url);
+          email: userData['email'],
+          uid: userData['id'],
+          image: "");
     } on Exception catch (e, s) {
       sPrint.error(e.toString(), s);
     } catch (e, s) {

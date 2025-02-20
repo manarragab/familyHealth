@@ -213,15 +213,13 @@ class Remote {
     //    });
     //  }
     PushNotificationsManager fcmToken = PushNotificationsManager();
-    return _helper.post<LoginData?>(path: '', {
-      'type': 'user',
-      'mode': 'socialLogin',
-      "login_id": socialModel?.uid,
-      "login_type": socialModel?.socialType.name,
+    return _helper.post<LoginData?>(path: '/user/social-login', {
+      "social_id": socialModel?.uid,
+      "social_type": socialModel?.socialType.name,
       "email": socialModel?.email,
       "fcm_token": await fcmToken.getNotificationToken(),
-      "userName": socialModel?.name ?? "",
-      "userImage": socialModel?.image,
+      "name": socialModel?.name ?? "",
+      "image": socialModel?.image,
     }, onSuccess: (Map<String, dynamic> data) {
       return LoginModel.fromJson(data);
     }, onError: (data) {
