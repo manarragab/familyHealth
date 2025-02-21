@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 
 import 'curves.dart';
 
-typedef void FluidNavBarButtonTappedCallback();
+typedef FluidNavBarButtonTappedCallback = void Function();
 
 /// An interactive button within [FluidNavBar]
 ///
@@ -16,7 +16,7 @@ typedef void FluidNavBarButtonTappedCallback();
 ///  * [FluidNavBarIcon]
 
 class FluidNavBarItem extends StatefulWidget {
-  static const nominalExtent = const Size(64, 64);
+  static const nominalExtent = Size(64, 64);
 
   /// The path of the SVG asset
   final String? svgPath;
@@ -48,7 +48,7 @@ class FluidNavBarItem extends StatefulWidget {
   /// The delay factor of the animations ( < 1 is faster, > 1 is slower)
   final double animationFactor;
 
-  FluidNavBarItem(
+  const FluidNavBarItem(
     this.svgPath,
     this.icon,
     this.selected,
@@ -58,7 +58,7 @@ class FluidNavBarItem extends StatefulWidget {
     this.selectedBackgroundColor,
     this.unSelectedBackgroundColor,
     this.scaleFactor,
-    this.animationFactor,
+    this.animationFactor, {super.key}
   )   : assert(scaleFactor >= 1.0),
         assert(svgPath == null || icon == null,
             'Cannot provide both an iconPath and an icon.'),
@@ -102,17 +102,17 @@ class _FluidNavBarItemState extends State<FluidNavBarItem>
     _activeColorClipAnimation =
         Tween<double>(begin: 0.0, end: _iconSize).animate(CurvedAnimation(
       parent: _animationController,
-      curve: Interval(0.25, 0.38, curve: Curves.easeOut),
-      reverseCurve: Interval(0.7, 1.0, curve: Curves.easeInCirc),
+      curve: const Interval(0.25, 0.38, curve: Curves.easeOut),
+      reverseCurve: const Interval(0.7, 1.0, curve: Curves.easeInCirc),
     ));
 
-    var _animation = CurvedAnimation(
+    var animation = CurvedAnimation(
         parent: _animationController, curve: LinearPointCurve(waveRatio, 0.0));
 
     _yOffsetAnimation = Tween<double>(begin: _defaultOffset, end: _activeOffset)
         .animate(CurvedAnimation(
-      parent: _animation,
-      curve: ElasticOutCurve(0.38),
+      parent: animation,
+      curve: const ElasticOutCurve(0.38),
       reverseCurve: Curves.easeInCirc,
     ));
 
@@ -122,12 +122,12 @@ class _FluidNavBarItemState extends State<FluidNavBarItem>
       TweenSequenceItem(
           tween: ReverseTween<double>(activatingHalfTween), weight: 50.0),
     ]).animate(CurvedAnimation(
-      parent: _animation,
-      curve: Interval(0.0, 0.3),
+      parent: animation,
+      curve: const Interval(0.0, 0.3),
     ));
     _inactivatingAnimation = ConstantTween<double>(1.0).animate(CurvedAnimation(
-      parent: _animation,
-      curve: Interval(0.3, 1.0),
+      parent: animation,
+      curve: const Interval(0.3, 1.0),
     ));
 
     _startAnimation();
@@ -165,12 +165,12 @@ class _FluidNavBarItemState extends State<FluidNavBarItem>
         alignment: Alignment.center,
         child: Container(
           margin: EdgeInsets.all(ne.width / 2 - _iconSize),
-          constraints: BoxConstraints.tight(Size.square(_iconSize * 2)),
+          constraints: BoxConstraints.tight(const Size.square(_iconSize * 2)),
           decoration: ShapeDecoration(
             color: _selected
                 ? widget.selectedBackgroundColor
                 : widget.unSelectedBackgroundColor,
-            shape: CircleBorder(),
+            shape: const CircleBorder(),
           ),
           transform: Matrix4.translationValues(0, -_yOffsetAnimation.value, 0),
           child: Stack(children: <Widget>[

@@ -82,7 +82,7 @@ class CustomLauncher {
     try {
       launchInBrowser(Uri.parse(
           "https://api.whatsapp.com/send/?phone=$phone&text=$message"));
-    } catch (e, s) {
+    } catch (e) {
       showToast("can't open whatsapp", MessageErrorType.error);
     }
   }

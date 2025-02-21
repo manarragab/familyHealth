@@ -225,7 +225,7 @@ class ImageDialog extends StatelessWidget {
       height: 195,
       child: Column(
         children: [
-          Container(
+          SizedBox(
             height: imagePath.contains('.svg') ? 101 : 120,
             width: imagePath.contains('.svg') ? 103 : 200,
             child: imagePath.contains('.svg')

@@ -2,11 +2,13 @@ import 'package:abg/data/const/export.dart';
 import 'package:abg/data/remote_data/core.dart';
 
 class DoctorCard extends StatelessWidget {
+  const DoctorCard({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 5),
-      padding: EdgeInsets.symmetric(vertical: 12, horizontal: 5),
+      margin: const EdgeInsets.symmetric(vertical: 5),
+      padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 5),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
@@ -14,7 +16,7 @@ class DoctorCard extends StatelessWidget {
           BoxShadow(
             color: Colors.black.withOpacity(0.1),
             blurRadius: 8,
-            offset: Offset(0, 4),
+            offset: const Offset(0, 4),
           ),
         ],
       ),
@@ -31,14 +33,14 @@ class DoctorCard extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          SizedBox(width: 12), // Spacing between image and text
+          const SizedBox(width: 12), // Spacing between image and text
           // Doctor's Details
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Doctor's Name and Online Status
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     // Doctor Name
@@ -70,7 +72,7 @@ class DoctorCard extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 // Specialization
                 Text(
                   "Psychiatrist",
@@ -79,16 +81,16 @@ class DoctorCard extends StatelessWidget {
                     color: Colors.grey[600],
                   ),
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 // Rating and Time
                 Row(
                   children: [
-                    Icon(
+                    const Icon(
                       Icons.star,
                       color: Colors.amber,
                       size: 16,
                     ),
-                    SizedBox(width: 4),
+                    const SizedBox(width: 4),
                     Text(
                       "5.0",
                       style: TextStyle(
@@ -96,13 +98,13 @@ class DoctorCard extends StatelessWidget {
                         color: Colors.grey[700],
                       ),
                     ),
-                    SizedBox(width: 8),
-                    Icon(
+                    const SizedBox(width: 8),
+                    const Icon(
                       Icons.access_time,
                       color: Colors.grey,
                       size: 16,
                     ),
-                    SizedBox(width: 4),
+                    const SizedBox(width: 4),
                     Text(
                       "10:00 am - 11:00 am",
                       style: TextStyle(
@@ -115,7 +117,7 @@ class DoctorCard extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(width: 12),
+          const SizedBox(width: 12),
           // Fee
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -127,8 +129,8 @@ class DoctorCard extends StatelessWidget {
                   color: Colors.grey[600],
                 ),
               ),
-              SizedBox(height: 4),
-              Text(
+              const SizedBox(height: 4),
+              const Text(
                 "500egp",
                 style: TextStyle(
                   fontSize: 14,

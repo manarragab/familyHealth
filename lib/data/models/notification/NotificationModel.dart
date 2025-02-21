@@ -25,13 +25,18 @@ class NotificationModel extends ResponseModel<List<NotificationData>?> {
     message = json['message'];
   }
 
+  @override
   num? status;
   bool? success;
+  @override
   List<NotificationData>? data;
   Meta? meta;
+  @override
   bool more = true;
+  @override
   String? message;
 
+  @override
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['status'] = status;

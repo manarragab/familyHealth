@@ -21,13 +21,13 @@ class PostRegister {
   }
 
   Future<Map<String, dynamic>> toJson() async {
-    final _data = <String, dynamic>{};
-    _data['name'] = name;
-    _data['email'] = email;
-    _data['phone'] = phone;
-    _data['password'] = password;
-    _data['device_token'] =
+    final data = <String, dynamic>{};
+    data['name'] = name;
+    data['email'] = email;
+    data['phone'] = phone;
+    data['password'] = password;
+    data['device_token'] =
         await PushNotificationsManager().getNotificationToken();
-    return _data;
+    return data;
   }
 }

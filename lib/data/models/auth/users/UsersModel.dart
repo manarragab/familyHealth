@@ -18,11 +18,15 @@ class UsersModel extends ResponseModel<List<UserData>?> {
     }
     message = json['message'];
   }
+  @override
   num? status;
   bool? success;
+  @override
   List<UserData>? data;
+  @override
   String? message;
 
+  @override
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['status'] = status;

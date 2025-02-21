@@ -4,7 +4,7 @@ class LinearPointCurve extends Curve {
   final double pIn;
   final double pOut;
 
-  LinearPointCurve(this.pIn, this.pOut);
+  const LinearPointCurve(this.pIn, this.pOut);
 
   @override
   double transform(double x) {

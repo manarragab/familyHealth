@@ -7,7 +7,7 @@ class NotificationController extends MainGetxController with CustomStateMixin {
   RefreshController refreshController = RefreshController();
   NotificationModel model = NotificationModel(
       status: 1, data: [NotificationData(title: "title", description: "des")]);
-  int _page = 1;
+  final int _page = 1;
 
   onRefresh() async {
     change(model);

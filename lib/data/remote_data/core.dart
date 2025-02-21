@@ -48,11 +48,11 @@ enum PathType { image, pdf, video, noPath, none }
 getAllImagePath(String path) {
   String type = path.split('.').last;
   PathType pathType = PathType.none;
-  filesType.forEach((element) {
+  for (var element in filesType) {
     if (type.toUpperCase() == element.exstension) {
       pathType = element.pathType;
     }
-  });
+  }
   return pathType;
 }
 

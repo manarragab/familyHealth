@@ -29,7 +29,7 @@ class AccountScreen extends StatelessWidget {
                         onTap: () {
                           Get.toNamed(CustomPage.myAccountPage);
                         },
-                        child: Container(
+                        child: SizedBox(
                           height: height,
                           width: height,
                           child: Stack(

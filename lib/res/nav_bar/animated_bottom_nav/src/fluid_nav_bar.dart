@@ -5,9 +5,9 @@ import './fluid_nav_bar_item.dart';
 import 'fluid_nav_bar_icon.dart';
 import 'fluid_nav_bar_style.dart';
 
-typedef void FluidNavBarChangeCallback(int selectedIndex);
+typedef FluidNavBarChangeCallback = void Function(int selectedIndex);
 
-typedef Widget FluidNavBarItemBuilder(
+typedef FluidNavBarItemBuilder = Widget Function(
     FluidNavBarIcon icon, FluidNavBarItem item);
 
 /// A widget to display a fluid navigation bar with icon buttons.
@@ -59,7 +59,7 @@ class FluidNavBar extends StatefulWidget {
 
   final FluidNavBarItemBuilder itemBuilder;
 
-  FluidNavBar(
+  const FluidNavBar(
       {Key? key,
       required this.icons,
       this.onChange,
@@ -68,7 +68,7 @@ class FluidNavBar extends StatefulWidget {
       this.scaleFactor = 1.2,
       this.defaultIndex = 0,
       FluidNavBarItemBuilder? itemBuilder})
-      : this.itemBuilder = itemBuilder ?? _identityBuilder,
+      : itemBuilder = itemBuilder ?? _identityBuilder,
         assert(icons.length > 1),
         super(key: key);
 
@@ -123,7 +123,7 @@ class _FluidNavBarState extends State<FluidNavBar>
     final appSize = MediaQuery.of(context).size;
     const height = FluidNavBar.nominalHeight;
 
-    return Container(
+    return SizedBox(
       width: appSize.width,
       height: FluidNavBar.nominalHeight,
       child: Stack(
@@ -155,7 +155,7 @@ class _FluidNavBarState extends State<FluidNavBar>
         _xController.value * MediaQuery.of(context).size.width,
         Tween<double>(
           begin: Curves.easeInExpo.transform(_yController.value),
-          end: ElasticOutCurve(0.38).transform(_yController.value),
+          end: const ElasticOutCurve(0.38).transform(_yController.value),
         ).transform(_yController.velocity.sign * 0.5 + 0.5),
         widget.style?.barBackgroundColor ?? Colors.white,
       ),
@@ -226,16 +226,16 @@ class _FluidNavBarState extends State<FluidNavBar>
     _yController.value = 1.0;
     _xController.animateTo(
         _indexToPosition(index) / MediaQuery.of(context).size.width,
-        duration: Duration(milliseconds: 620) * widget.animationFactor);
+        duration: const Duration(milliseconds: 620) * widget.animationFactor);
     Future.delayed(
-      Duration(milliseconds: 500) * widget.animationFactor,
+      const Duration(milliseconds: 500) * widget.animationFactor,
       () {
         _yController.animateTo(1.0,
-            duration: Duration(milliseconds: 1200) * widget.animationFactor);
+            duration: const Duration(milliseconds: 1200) * widget.animationFactor);
       },
     );
     _yController.animateTo(0.0,
-        duration: Duration(milliseconds: 300) * widget.animationFactor);
+        duration: const Duration(milliseconds: 300) * widget.animationFactor);
 
     if (widget.onChange != null) {
       widget.onChange!(index);

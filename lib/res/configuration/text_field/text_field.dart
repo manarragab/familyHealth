@@ -18,7 +18,7 @@ class CustomTextField {
     List<dynamic> allData = const [],
     required String Function(dynamic) getValue,
   }) {
-    String? _data;
+    String? data;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10),
       child: SizedBox(
@@ -27,12 +27,12 @@ class CustomTextField {
           enabled: enabled,
           validator: validator ??
               ((value) =>
-                  TValidator.normalValidator(_data?.trim(), hint: hint)),
+                  TValidator.normalValidator(data?.trim(), hint: hint)),
           decoration: _defaultDecoration(
             suffixIcon: DropdownButtonFormField<dynamic>(
-              value: _data,
+              value: data,
               onChanged: (newValue) {
-                _data = onChange(newValue);
+                data = onChange(newValue);
               },
               decoration: _defaultDecoration(),
               dropdownColor: Colors.white,
@@ -662,7 +662,7 @@ class CustomTextField {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 10,
             ),
             button,

@@ -17,10 +17,6 @@ class AuthController extends MainGetxController {
   TextEditingController passwordController = TextEditingController();
   TextEditingController nameController = TextEditingController();
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   @override
   void onClose() {

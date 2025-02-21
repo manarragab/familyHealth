@@ -2,11 +2,13 @@ import 'package:abg/data/const/export.dart';
 import 'package:abg/data/remote_data/core.dart';
 
 class PillCard extends StatelessWidget {
+  const PillCard({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.all(5),
-      padding: EdgeInsets.all(12),
+      margin: const EdgeInsets.all(5),
+      padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
@@ -14,7 +16,7 @@ class PillCard extends StatelessWidget {
           BoxShadow(
             color: Colors.black.withOpacity(0.1),
             blurRadius: 8,
-            offset: Offset(0, 4),
+            offset: const Offset(0, 4),
           ),
         ],
         border: Border.all(color: Colors.blue, width: 1),
@@ -32,13 +34,13 @@ class PillCard extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          SizedBox(width: 12), // Space between image and text
+          const SizedBox(width: 12), // Space between image and text
           // Text and description
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                const Text(
                   "Name Pill",
                   style: TextStyle(
                     fontSize: 16,
@@ -46,7 +48,7 @@ class PillCard extends StatelessWidget {
                     color: Colors.black,
                   ),
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 Text(
                   "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
                   style: TextStyle(
@@ -56,18 +58,18 @@ class PillCard extends StatelessWidget {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
-                SizedBox(height: 12),
+                const SizedBox(height: 12),
                 Row(
                   children: [
                     // Drug Button
                     Container(
                       padding:
-                          EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                          const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                       decoration: BoxDecoration(
                         color: Colors.green.shade100,
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      child: Row(
+                      child: const Row(
                         children: [
                           Text(
                             "Drug",
@@ -82,7 +84,7 @@ class PillCard extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Spacer(), // Push the Continue button to the right
+                    const Spacer(), // Push the Continue button to the right
                     // Continue Button
                     ElevatedButton(
                       style: ElevatedButton.styleFrom(
@@ -94,7 +96,7 @@ class PillCard extends StatelessWidget {
                       onPressed: () {
                         // Handle button press
                       },
-                      child: Text(
+                      child: const Text(
                         "Continue",
                         style: TextStyle(color: Colors.white),
                       ),

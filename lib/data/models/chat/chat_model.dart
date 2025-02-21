@@ -23,10 +23,14 @@ class ChatModel extends ResponseModel<ChatData?> {
     }
   }
 
+  @override
   ChatData? data;
+  @override
   num? status;
+  @override
   String? message;
 
+  @override
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     if (data != null) {

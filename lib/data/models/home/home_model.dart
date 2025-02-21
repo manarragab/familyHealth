@@ -19,10 +19,14 @@ class HomeModel extends ResponseModel<HomeData?> {
     status = json['status'];
     message = json['message'];
   }
+  @override
   HomeData? data;
+  @override
   num? status;
+  @override
   String? message;
 
+  @override
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     if (data != null) {

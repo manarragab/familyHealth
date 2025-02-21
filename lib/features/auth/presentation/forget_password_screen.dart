@@ -43,7 +43,7 @@ class ForgetPasswordScreen extends GetView<AuthController> {
                 title: CustomTrans.getCode.tr,
                 onPressed: () {
                   Get.to(() => OtpConfirmationView(getCode: (code) {
-                        Get.to(() => ResetPasswordScreen("1234"));
+                        Get.to(() => const ResetPasswordScreen("1234"));
                       }, resendCode: () {
                         Get.put(OTPController()).startCount();
                       }));

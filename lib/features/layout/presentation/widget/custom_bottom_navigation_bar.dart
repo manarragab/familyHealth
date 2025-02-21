@@ -8,7 +8,7 @@ class LayoutBottomNavBar extends GetView<LayoutController> {
   final int currentIndex;
   final Function(int) changeNavBarIndex;
 
-  LayoutBottomNavBar({
+  const LayoutBottomNavBar({
     Key? key,
     required this.changeNavBarIndex,
     required this.currentIndex,

@@ -5,7 +5,7 @@ class MyBottomSheet extends StatelessWidget {
   final VoidCallback? onClosing;
   final Widget? child;
 
-  MyBottomSheet({
+  const MyBottomSheet({
     Key? key,
     this.height = 400,
     this.onClosing,
@@ -21,7 +21,7 @@ class MyBottomSheet extends StatelessWidget {
       initialChildSize: 0.25,
       builder: (context, scrollController) {
         return Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
               topLeft: Radius.circular(10),

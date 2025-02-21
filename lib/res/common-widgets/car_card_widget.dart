@@ -33,7 +33,7 @@ class CarCardWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               if (cardText.isNotEmpty)
-                Container(
+                SizedBox(
                   height: 15,
                   // decoration: BoxDecoration(border:Border.all(color: Colors.black)),
                   child: Text(

@@ -114,7 +114,7 @@ class DioHelper {
       }
     } catch (error, s) {
       String msg = '';
-      if (error is DioError) {
+      if (error is DioException) {
         DioExceptions dioExceptions = DioExceptions.fromDioError(error);
         msg = dioExceptions.message.toString();
         return onError(dioExceptions.message);
@@ -184,7 +184,7 @@ class DioHelper {
       sPrint.info(
           'error on link ${path.contains('http') ? path : apiUrl() + path}');
       String msg = '';
-      if (error is DioError) {
+      if (error is DioException) {
         DioExceptions dioExceptions = DioExceptions.fromDioError(error);
         msg = dioExceptions.message.toString();
         sPrint.warning(
@@ -249,7 +249,7 @@ class DioHelper {
       }
     } catch (error, s) {
       String msg = '';
-      if (error is DioError) {
+      if (error is DioException) {
         DioExceptions dioExceptions = DioExceptions.fromDioError(error);
         msg = dioExceptions.message.toString();
         return onError(dioExceptions.message);
@@ -306,7 +306,7 @@ class DioHelper {
       }
     } catch (error, s) {
       String msg = '';
-      if (error is DioError) {
+      if (error is DioException) {
         DioExceptions dioExceptions = DioExceptions.fromDioError(error);
         msg = dioExceptions.message.message.toString();
         return onError(dioExceptions.message);
@@ -356,7 +356,7 @@ final dioLoggerInterceptor =
   log("└------------------------------------------------------------------------------");
   handler.next(response);
   // return response; // continue
-}, onError: (DioError error, handler) async {
+}, onError: (DioException error, handler) async {
   log("| [DIO] Error: ${error.error}: ${error.response.toString()}");
   log("└------------------------------------------------------------------------------");
   handler.next(error); //continue

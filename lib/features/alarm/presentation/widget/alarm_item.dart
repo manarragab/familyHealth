@@ -1,5 +1,6 @@
 import 'package:abg/res/configuration/color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AlarmItem extends StatelessWidget {
@@ -38,14 +39,8 @@ class AlarmItem extends StatelessWidget {
                 width: 100,
                 height: 100,
                 // Placeholder color
-                decoration: const BoxDecoration(boxShadow: [
-                  BoxShadow(
-                      color: Colors.grey,
-                      spreadRadius: 0.2,
-                      blurRadius: 2,
-                      offset: Offset(1.5, 1.5))
-                ]),
-                child: Image.asset("assets/images/checker.png")),
+               
+                child: Image.asset("assets/images/cheker.png" , fit:BoxFit.cover,) , ),
 
             const SizedBox(width: 12),
 
@@ -58,62 +53,59 @@ class AlarmItem extends StatelessWidget {
                     children: [
                       Text(title,
                           style: GoogleFonts.almarai(
-                            fontSize: 16,
+                            fontSize: 12,
                             fontWeight: FontWeight.bold,
                           )),
                       const Spacer(),
-                      IconButton(
-                        icon: const Icon(
-                          Icons.edit_outlined,
-                          color: Colors.blue,
-                          size: 20,
-                        ),
-                        onPressed: onEdit,
-                        constraints: const BoxConstraints(
-                          minHeight: 1,
-                          minWidth: 1,
-                        ),
+                    InkWell(
+                        child: SvgPicture.asset(
+                                    "assets/svg/edit.svg", 
+                                    
+                                  ),
                       ),
-                      IconButton(
-                        icon: const Icon(
-                          Icons.delete_outline,
-                          color: Colors.red,
-                          size: 20,
-                        ),
-                        onPressed: onDelete,
-                        constraints: const BoxConstraints(
-                          minHeight: 1,
-                          minWidth: 1,
-                        ),
+                      SizedBox(width: 16,),
+                    InkWell(
+                        child: SvgPicture.asset(
+                                    "assets/svg/delete.svg", 
+                                    
+                                  ),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(height: 10),
                   Text(
                     description,
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.almarai(
-                        fontSize: 14, color: CustomColors.lightBlue2),
+                                                  fontWeight:FontWeight.w400,
+
+                        fontSize: 12, color: CustomColors.lightBlue2),
                   ),
-                  const SizedBox(height: 8),
+                  const SizedBox(height: 14),
 
                   // Date & Time
                   Row(
                     children: [
-                      const Icon(Icons.calendar_today,
-                          size: 14, color: Colors.black),
-                      const SizedBox(width: 4),
+                     InkWell(
+                        child: SvgPicture.asset(
+                                    "assets/svg/clender.svg", 
+                                    
+                                  ),
+                      ),  const SizedBox(width: 4),
                       Text(date,
                           style: const TextStyle(
-                              fontSize: 14, color: Colors.grey)),
+                              fontSize: 12, color: Colors.black)),
                       const SizedBox(width: 16),
-                      const Icon(Icons.access_time,
-                          size: 14, color: Colors.black),
-                      const SizedBox(width: 4),
+                     InkWell(
+                        child: SvgPicture.asset(
+                                    "assets/svg/clock.svg", 
+                                    
+                                  ),
+                      ), const SizedBox(width: 4),
                       Text(time,
                           style: const TextStyle(
-                              fontSize: 14, color: Colors.grey)),
+                              fontSize: 12, color: Colors.black)),
                     ],
                   ),
                 ],

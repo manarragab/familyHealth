@@ -16,8 +16,8 @@ class MyGroupCard extends GetView<GroupController> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 16),
-      padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+      margin: const EdgeInsets.symmetric(vertical: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
@@ -25,7 +25,7 @@ class MyGroupCard extends GetView<GroupController> {
           BoxShadow(
             color: Colors.black.withOpacity(0.1),
             blurRadius: 8,
-            offset: Offset(0, 4),
+            offset: const Offset(0, 4),
           ),
         ],
       ),
@@ -34,8 +34,8 @@ class MyGroupCard extends GetView<GroupController> {
         children: [
           // Circular Image
           Container(
-            padding: EdgeInsets.all(4), // Green border width
-            decoration: BoxDecoration(
+            padding: const EdgeInsets.all(4), // Green border width
+            decoration: const BoxDecoration(
               shape: BoxShape.circle,
               color: Colors.green, // Border color
             ),
@@ -48,7 +48,7 @@ class MyGroupCard extends GetView<GroupController> {
               ),
             ),
           ),
-          SizedBox(width: 12), // Space between image and text
+          const SizedBox(width: 12), // Space between image and text
           // Text and details
           Expanded(
             child: Column(
@@ -56,13 +56,13 @@ class MyGroupCard extends GetView<GroupController> {
               children: [
                 Text(
                   data.title ?? "",
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.bold,
                     color: Colors.black,
                   ),
                 ),
-                SizedBox(height: 4),
+                const SizedBox(height: 4),
                 // Description
                 Text(
                   data.description ?? "",
@@ -73,7 +73,7 @@ class MyGroupCard extends GetView<GroupController> {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                 ),
-                SizedBox(height: 8),
+                const SizedBox(height: 8),
                 // Private Group and Members
                 Text(
                   "Private group\n${data.membersCount ?? ""} members",
@@ -85,7 +85,7 @@ class MyGroupCard extends GetView<GroupController> {
               ],
             ),
           ),
-          SizedBox(width: 12),
+          const SizedBox(width: 12),
           Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -100,7 +100,7 @@ class MyGroupCard extends GetView<GroupController> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  icon: Icon(
+                  icon: const Icon(
                     Icons.notifications_none,
                     color: Colors.pink,
                   ),
@@ -111,15 +111,15 @@ class MyGroupCard extends GetView<GroupController> {
               ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   backgroundColor:
-                      data.pivot != null ? Colors.black : Color(0xffEE2D6C),
+                      data.pivot != null ? Colors.black : const Color(0xffEE2D6C),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                 ),
                 onPressed: () {
                   if (data.pivot != null) {
-                    Get.to(() => ChatScreen(), binding: BindingsBuilder(() {
+                    Get.to(() => const ChatScreen(), binding: BindingsBuilder(() {
                       Get.put(ChatController()).updateSelectedGroup(data);
                     }));
                   } else {
@@ -128,7 +128,7 @@ class MyGroupCard extends GetView<GroupController> {
                 },
                 child: Text(
                   data.pivot != null ? "open" : "join",
-                  style: TextStyle(
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 14,
                   ),
