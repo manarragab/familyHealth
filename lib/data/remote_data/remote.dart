@@ -70,13 +70,9 @@ class Remote {
     );
   }
 
-  Future<ResponseModel<LoginData?>> getCode(String text) async {
-    sPrint.info('get data');
-    bool isPhoneNumber = GetUtils.isPhoneNumber(text);
+  Future<ResponseModel<dynamic>> getCode(String text) async {
     Map<String, dynamic> json = {
-      if (!isPhoneNumber) 'email': text,
-      if (isPhoneNumber) 'mobile': text,
-      //   "fcm_token": await PushNotificationsManager().getNotificationToken(),
+      'identifier': text,
     };
 
     sPrint.info(json);
@@ -85,9 +81,9 @@ class Remote {
     //   return LoginModel();
     // });
 
-    return _helper.post<LoginData?>(json, path: '/user/forget-password',
+    return _helper.post<dynamic>(json, path: '/user/forget-password',
         onSuccess: (Map<String, dynamic> data) {
-      return LoginModel.fromJson(data);
+      return ResponseModel.fromJson(data);
     }, onError: (data) {
       return ResponseModel(status: data.status, message: data.message);
     }, useFormData: false);
@@ -104,11 +100,11 @@ class Remote {
   }
 
   Future<ResponseModel<dynamic>> resetPassord(
-      {required String code, required String password}) async {
+      {required String password}) async {
     return _helper.post<dynamic>({
-      "reset_code": code,
-      "new_password": password,
-    }, path: "/store_password/reset", onSuccess: (dynamic data) {
+      "password": password,
+      "password_confirmation": password,
+    }, path: "/user/reset-password", onSuccess: (dynamic data) {
       return ResponseModel.fromJson(data);
     }, onError: (data) {
       return ResponseModel(status: data.status, message: data.message);

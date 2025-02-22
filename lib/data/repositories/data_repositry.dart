@@ -39,7 +39,7 @@ class DataRepository implements DomainData {
   }
 
   @override
-  Future<ResponseModel<LoginData?>> getCode(String phone) {
+  Future<ResponseModel<dynamic>> getCode(String phone) {
     return remote.getCode(phone);
   }
 
@@ -59,9 +59,8 @@ class DataRepository implements DomainData {
   }
 
   @override
-  Future<ResponseModel> resetPassord(
-      {required String code, required String password}) {
-    return remote.resetPassord(code: code, password: password);
+  Future<ResponseModel> resetPassword({required String password}) {
+    return remote.resetPassord(password: password);
   }
 
   @override

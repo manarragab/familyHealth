@@ -4,8 +4,7 @@ import 'package:abg/res/configuration/text_field/text_field.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
 
 class ResetPasswordScreen extends GetView<AuthController> {
-  const ResetPasswordScreen(this.code, {Key? key}) : super(key: key);
-  final String code;
+  const ResetPasswordScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +41,7 @@ class ResetPasswordScreen extends GetView<AuthController> {
             child: MainButton(
                 title: CustomTrans.done.tr,
                 onPressed: () {
-                  controller.setPassword(code);
+                  controller.setPassword();
                 }),
           )
         ],

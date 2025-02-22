@@ -42,6 +42,8 @@ class AuthController extends MainGetxController {
   String second = '00';
   bool startCounting = false;
 
+  bool rememberMe = false;
+
   login() async {
     sPrint.info('login');
     // must show loading
@@ -152,7 +154,8 @@ class AuthController extends MainGetxController {
     var response = await sl<AuthCases>().checkCode(code);
     loadingGetxController.hideLoading();
     statusError.checkStatus(response, () {
-      Get.off(() => ResetPasswordScreen(code), transition: Transition.fadeIn);
+      loginModel = response as LoginModel;
+      Get.off(() => ResetPasswordScreen(), transition: Transition.fadeIn);
     });
   }
 
@@ -161,10 +164,10 @@ class AuthController extends MainGetxController {
     Get.offAllNamed(CustomPage.loginPage);
   }
 
-  void setPassword(String code) async {
+  void setPassword() async {
     loadingGetxController.showLoading();
-    var response = await sl<AuthCases>()
-        .resetPassord(code: code, password: passwordController.text);
+    var response =
+        await sl<AuthCases>().resetPassord(password: passwordController.text);
     loadingGetxController.hideLoading();
     statusError.checkStatus(response, () {
       Get.offAllNamed(CustomPage.loginPage);
@@ -206,5 +209,9 @@ class AuthController extends MainGetxController {
         update();
       });
     });
+  }
+
+  void changeRememberMe() {
+    rememberMe = !rememberMe;
   }
 }

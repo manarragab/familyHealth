@@ -28,7 +28,7 @@ class AuthCases {
     return _data.signOut();
   }
 
-  Future<ResponseModel<LoginData?>> getCode(String text) {
+  Future<ResponseModel<dynamic>> getCode(String text) {
     return _data.getCode(text);
   }
 
@@ -36,9 +36,8 @@ class AuthCases {
     return _data.checkCode(code);
   }
 
-  Future<ResponseModel<dynamic>> resetPassord(
-      {required String code, required String password}) {
-    return _data.resetPassord(code: code, password: password);
+  Future<ResponseModel<dynamic>> resetPassord({required String password}) {
+    return _data.resetPassword(password: password);
   }
 
   Future<ResponseModel<String?>> uploadProfileImage(File file) {

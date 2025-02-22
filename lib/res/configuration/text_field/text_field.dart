@@ -196,7 +196,10 @@ class CustomTextField {
         decoration: _defaultDecoration(
           suffixIcon: Padding(
             padding: const EdgeInsetsDirectional.only(end: 15.0),
-            child: Text(CustomTrans.show.tr),
+            child: InkWell(
+                onTap: changeVisible,
+                child: Text(
+                    !isVisible ? CustomTrans.hide.tr : CustomTrans.show.tr)),
           ),
           hintText: hint ?? CustomTrans.password.tr,
           removeHintWrite: true,

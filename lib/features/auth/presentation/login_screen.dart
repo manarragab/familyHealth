@@ -4,7 +4,6 @@ import 'package:abg/data/const/export.dart';
 import 'package:abg/features/auth/domain/controller/auth_controller.dart';
 import 'package:abg/features/auth/domain/controller/authenticate_methods.dart';
 import 'package:abg/features/auth/presentation/forget_password_screen.dart';
-import 'package:abg/res/common-widgets/custom_check_box.dart';
 import 'package:abg/res/configuration/text_field/text_field.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
 import 'package:abg/res/router/pages.dart';
@@ -67,16 +66,21 @@ class LoginScreen extends GetView<AuthController> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Row(
+                            SizedBox(),
+                            /*   Row(
                               children: [
-                                CustomCheckBox(onTap: () {}, isChecked: false),
+                                GetBuilder<AuthController>(builder: (logic) {
+                                  return CustomCheckBox(
+                                      onTap: () {logic.changeRememberMe()},
+                                      isChecked: logic.rememberMe);
+                                }),
                                 const SizedBox(width: 5),
                                 Text(
                                   CustomTrans.rememberMe.tr,
                                   style: TFonts.inter(color: Colors.black),
                                 ),
                               ],
-                            ),
+                            ),*/
                             GestureDetector(
                               onTap: () {
                                 Get.to(() => const ForgetPasswordScreen(),

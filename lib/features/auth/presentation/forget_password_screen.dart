@@ -1,8 +1,5 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/auth/domain/controller/auth_controller.dart';
-import 'package:abg/features/auth/domain/controller/otp_controller.dart';
-import 'package:abg/features/auth/presentation/otp_confirmation_view.dart';
-import 'package:abg/features/auth/presentation/reset_password_screen.dart';
 import 'package:abg/res/configuration/text_field/text_field.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
 
@@ -42,13 +39,7 @@ class ForgetPasswordScreen extends GetView<AuthController> {
             child: MainButton(
                 title: CustomTrans.getCode.tr,
                 onPressed: () {
-                  Get.to(() => OtpConfirmationView(getCode: (code) {
-                        Get.to(() => ResetPasswordScreen("1234"));
-                      }, resendCode: () {
-                        Get.put(OTPController()).startCount();
-                      }));
-
-                  // controller.getCode(moveTo: true);
+                  controller.getCode(moveTo: true);
                 }),
           )
         ],

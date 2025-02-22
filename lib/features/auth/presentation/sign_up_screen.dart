@@ -11,6 +11,12 @@ class SignUpScreen extends GetView<AuthController> {
   final formKey = GlobalKey<FormState>();
   String? phone = '';
 
+  final hidePassword = true.obs;
+  final hideConfirmPassword = true.obs;
+
+  final agreeTerms = false.obs;
+  final agreeSubscribe = false.obs;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,37 +60,51 @@ class SignUpScreen extends GetView<AuthController> {
                   //  controller:
                   ),
               CustomPadding.smallHeight,
-              CustomTextField.passwordTextField((value) => null,
-                  isVisible: true,
-                  changeVisible: () {},
-                  controller: controller.passwordController
-                  //  controller:
-                  ),
+              Obx(() {
+                return CustomTextField.passwordTextField((value) => null,
+                    isVisible: hidePassword.value, changeVisible: () {
+                  hidePassword(!(hidePassword.value));
+                }, controller: controller.passwordController
+                    //  controller:
+                    );
+              }),
               CustomPadding.smallHeight,
-              CustomTextField.passwordTextField(
-                (value) => null,
-                isVisible: true,
-                changeVisible: () {},
-                validator: (value) {
-                  if (controller.passwordController.text != value) {
-                    return CustomTrans.wrongConfirmedPassword.tr;
-                  }
-                  return null;
-                },
-                hint: CustomTrans.confirmPassword.tr,
-                //  controller:
-              ),
+              Obx(() {
+                return CustomTextField.passwordTextField(
+                  (value) => null,
+                  isVisible: hideConfirmPassword.value,
+                  changeVisible: () {
+                    hideConfirmPassword(!(hideConfirmPassword.value));
+                  },
+                  validator: (value) {
+                    if (controller.passwordController.text != value) {
+                      return CustomTrans.wrongConfirmedPassword.tr;
+                    }
+                    return null;
+                  },
+                  hint: CustomTrans.confirmPassword.tr,
+                  //  controller:
+                );
+              }),
               CustomPadding.height,
-              checkboxListTile(
-                value: false,
-                onChanged: () {},
-                title: CustomTrans.agreeToTermAndConditions.tr,
-              ),
-              checkboxListTile(
-                value: false,
-                onChanged: () {},
-                title: CustomTrans.subscribeOurNewsletter.tr,
-              ),
+              Obx(() {
+                return checkboxListTile(
+                  value: agreeTerms.value,
+                  onChanged: () {
+                    agreeTerms(!agreeTerms.value);
+                  },
+                  title: CustomTrans.agreeToTermAndConditions.tr,
+                );
+              }),
+              Obx(() {
+                return checkboxListTile(
+                  value: agreeSubscribe.value,
+                  onChanged: () {
+                    agreeSubscribe(!agreeSubscribe.value);
+                  },
+                  title: CustomTrans.subscribeOurNewsletter.tr,
+                );
+              }),
               CustomPadding.heightButton,
               Padding(
                 padding: const EdgeInsets.all(20.0),
@@ -92,6 +112,17 @@ class SignUpScreen extends GetView<AuthController> {
                   width: 100,
                   onPressed: () {
                     if (formKey.currentState!.validate()) {
+                      if (!agreeTerms.value) {
+                        showToast(
+                            "${CustomTrans.needToAccept.tr} ${CustomTrans.termsAndConditions.tr}",
+                            MessageErrorType.error);
+                        return;
+                      } else if (!agreeSubscribe.value) {
+                        showToast(
+                            "${CustomTrans.needToAccept.tr} ${CustomTrans.subscribeOurNewsletter.tr}",
+                            MessageErrorType.error);
+                        return;
+                      }
                       controller.register();
                     }
                   },

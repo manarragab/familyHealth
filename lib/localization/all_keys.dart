@@ -944,4 +944,6 @@ class CustomTrans {
   static const String myAlarm = "My Alarm";
 
   static const String newAlarm = "New Alarm";
+
+  static const String needToAccept = "need to accept";
 }

@@ -46,14 +46,13 @@ abstract class DomainData {
 
   Future<ResponseModel<LoginData?>> signOut();
 
-  Future<ResponseModel<LoginData?>> getCode(String phone);
+  Future<ResponseModel<dynamic>> getCode(String phone);
 
   Future<ResponseModel> register(PostRegister register);
 
   Future<ResponseModel<LoginData?>> checkCode(String code);
 
-  Future<ResponseModel<dynamic>> resetPassord(
-      {required String code, required String password});
+  Future<ResponseModel<dynamic>> resetPassword({required String password});
 
   Future<ResponseModel<String?>> uploadProfileImage(File file);
 
