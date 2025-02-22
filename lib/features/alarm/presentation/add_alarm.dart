@@ -162,56 +162,60 @@ class _AddAlarmState extends State<AddAlarm> {
                   ),
                 ),
                 SizedBox(height: 16),
-                GestureDetector(
-                  onTap: () {
-                    alarmCont.pickImage();
-                  },
-                  child: Obx(() => Stack(
-                        children: [
-                          Container(
-                            width: 382,
-                            height: 306.17,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(
-                                  width: 0.5, color: CustomColors.lightBlue2),
-                            ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                              child: alarmCont.image.value != null
-                                  ? Image.file(
-                                      alarmCont.image.value!,
-                                      fit: BoxFit.cover,
-                                      width: 382,
-                                      height: 306.17,
-                                    )
-                                  : Image.asset("assets/images/cheker.png",
-                                      fit: BoxFit.cover,
-                                      width: 382,
-                                      height: 306.17),
-                            ),
-                          ),
-                          if (alarmCont.image.value == null)
-                            Positioned.fill(
-                              child: Center(
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    SvgPicture.asset("assets/svg/camera.svg",
-                                        width: 45, height: 40),
-                                    SizedBox(height: 8),
-                                    Text("Add Photo",
-                                        style: GoogleFonts.almarai(
-                                            fontSize: 16,
-                                            color: CustomColors.darkBlue2,
-                                            fontWeight: FontWeight.w700)),
-                                  ],
-                                ),
-                              ),
-                            ),
-                        ],
-                      )),
+               GestureDetector(
+  onTap: () {
+    alarmCont.pickImage();
+  },
+  child: Obx(() => Stack(
+        children: [
+          Container(
+            width: 382,
+            height: 306.17,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(width: 0.5, color: CustomColors.lightBlue2),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: alarmCont.isLoading.value
+                  ? Center(child: CircularProgressIndicator()) 
+                  : alarmCont.image.value != null
+                      ? Image.file(
+                          alarmCont.image.value!,
+                          fit: BoxFit.cover,
+                          width: 382,
+                          height: 306.17,
+                        )
+                      : Image.asset(
+                          "assets/images/cheker.png",
+                          fit: BoxFit.cover,
+                          width: 382,
+                          height: 306.17,
+                        ),
+            ),
+          ),
+          if (alarmCont.image.value == null && !alarmCont.isLoading.value)
+            Positioned.fill(
+              child: Center(
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    SvgPicture.asset("assets/svg/camera.svg",
+                        width: 45, height: 40),
+                    SizedBox(height: 8),
+                    Text("Add Photo",
+                        style: GoogleFonts.almarai(
+                            fontSize: 16,
+                            color: CustomColors.darkBlue2,
+                            fontWeight: FontWeight.w700)),
+                  ],
                 ),
+              ),
+            ),
+        ],
+      )),
+),
+
                 SizedBox(
                   height: 16,
                 ),

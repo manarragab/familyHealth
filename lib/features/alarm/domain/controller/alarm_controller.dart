@@ -10,15 +10,19 @@ void selectradio(String value){
   selectRadio=value;
   update();
 }
- Rxn<File> image = Rxn<File>(); // Reactive variable
-
-  final ImagePicker _picker = ImagePicker();
+ var image = Rx<File?>(null);
+  var isLoading = false.obs;
 
   Future<void> pickImage() async {
-    final XFile? pickedFile = await _picker.pickImage(source: ImageSource.gallery);
+    isLoading.value = true;  
+    final pickedFile = await ImagePicker().pickImage(source: ImageSource.gallery);
+
     if (pickedFile != null) {
-      image.value = File(pickedFile.path); // Update reactive variable
+      image.value = File(pickedFile.path);
     }
+
+    isLoading.value = false; 
+  
 
   }
 }
