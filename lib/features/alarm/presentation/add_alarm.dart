@@ -1,5 +1,6 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/alarm/domain/controller/alarm_controller.dart';
+import 'package:abg/features/alarm/presentation/done_screen.dart';
 import 'package:abg/features/alarm/presentation/widget/radio_item.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -216,11 +217,13 @@ class _AddAlarmState extends State<AddAlarm> {
                 ),
                 Center(
                   child: MainButton(
+                  
                     onPressed: () {
-                      Get.to(const AddAlarm());
+                      Get.to( Done());
                     },
                     radius: 10,
                     title: CustomTrans.addAlarm.tr,
+                    fontSize: 24,
                   ),
                 ),
               ],

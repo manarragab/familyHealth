@@ -947,4 +947,8 @@ class CustomTrans {
 
     static const String addAlarm = "Add Alarm";
 
+
+    static const String BacktoHome = "Back to Home";
+
+
 }

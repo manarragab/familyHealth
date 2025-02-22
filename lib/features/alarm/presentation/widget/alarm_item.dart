@@ -34,17 +34,14 @@ class AlarmItem extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Alarm Image Placeholder
+           
             Container(
                 width: 100,
                 height: 100,
-                // Placeholder color
-               
                 child: Image.asset("assets/images/cheker.png" , fit:BoxFit.cover,) , ),
 
             const SizedBox(width: 12),
 
-            // Alarm Details
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,

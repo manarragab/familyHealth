@@ -96,8 +96,11 @@ class CustomColors {
   static const Color lightGrey2 = Color(0xFFF8F8F8);
   static const Color lightBlue2 = Color(0xFF30495E);
   static const Color darkBlue2 = Color(0xFF24394A);
-    static const Color lightgrey3 = Color(0xFFF2F2F2);
-        static const Color darkgrey3 = Color(0xFF707070);
+  static const Color lightgrey3 = Color(0xFFF2F2F2);
+  static const Color darkgrey3 = Color(0xFF707070);
+  static const Color darkblack = Color(0xFF22282D);
+  static const Color lightgrey4= Color(0xFFEDEDED);
+
 
 
 

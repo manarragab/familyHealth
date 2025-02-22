@@ -20,6 +20,7 @@ class AlarmScreen extends StatelessWidget {
               },
               radius: 10,
               title: CustomTrans.newAlarm.tr,
+              fontSize: 24,
             ),
           ),
           Column(
