@@ -70,7 +70,7 @@ class Done extends StatelessWidget {
               ),
                MainButton(              
                     onPressed: () {
-                      Get.to(HomeScreen());
+                      Get.offAll(HomeScreen());
                     },
                     radius: 25,
                     title: CustomTrans.BacktoHome.tr,
