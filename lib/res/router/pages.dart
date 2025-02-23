@@ -6,6 +6,8 @@ import 'package:abg/features/auth/domain/controller/auth_controller.dart';
 import 'package:abg/features/auth/presentation/login_screen.dart';
 import 'package:abg/features/auth/presentation/my_account_screen.dart';
 import 'package:abg/features/auth/presentation/sign_up_screen.dart';
+import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
+import 'package:abg/features/calculation/presentation/medicalCalc_screen.dart';
 import 'package:abg/features/layout/presentation/layout_screen.dart';
 import 'package:abg/features/notification/domain/controller/notification_controller.dart';
 import 'package:abg/features/notification/presentation/notification_screen.dart';
@@ -74,6 +76,16 @@ class CustomPage {
         binding: BindingsBuilder(() {
           Get.put(AlarmController()).selectradio;
         })),
+
+  GetPage(
+        name: calculation,
+        page: () =>  MedicalcalcScreen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+          Get.put(Calculationcontroller());
+        })),
+
+
   ];
 
   static String layoutPage = '/layout';
@@ -93,4 +105,5 @@ class CustomPage {
   static String mainVerifyAccountScreen = "/main_verify_account_screen";
 
   static String myAlarm = "/my_alarm_page";
+  static String calculation="/calculation";
 }

@@ -68,14 +68,14 @@ class Done extends StatelessWidget {
               SizedBox(
                 height: 32,
               ),
-               MainButton(              
-                    onPressed: () {
-                      Get.offAll(HomeScreen());
-                    },
-                    radius: 25,
-                    title: CustomTrans.BacktoHome.tr,
-                    fontSize: 24,
-                  ),
+              MainButton(
+                onPressed: () {
+                  Get.offAll(HomeScreen());
+                },
+                radius: 25,
+                title: CustomTrans.BacktoHome.tr,
+                fontSize: 24,
+              ),
             ],
           )),
     );

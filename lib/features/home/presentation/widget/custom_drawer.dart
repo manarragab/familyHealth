@@ -73,7 +73,12 @@ class CustomDrawer extends StatelessWidget {
           Get.toNamed(CustomPage.myAlarm);
         }),
     DrawerItem(
-        image: "assets/svg/calculator.svg", name: "calculations", onTap: () {}),
+        image: "assets/svg/calculator.svg", name: "calculations", onTap: () {
+
+          Get.toNamed(CustomPage.calculation);
+
+
+        }),
     DrawerItem(
         image: "assets/svg/follow_up.svg", name: "Follow Up", onTap: () {}),
     DrawerItem(
