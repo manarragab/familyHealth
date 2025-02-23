@@ -1,3 +1,4 @@
+import 'package:abg/features/calculation/presentation/dueDate_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/card_item.dart';
 import 'package:abg/localization/all_keys.dart';
 import 'package:abg/res/configuration/app_bar.dart';
@@ -96,7 +97,7 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
             ),
             GestureDetector(
               onTap: (){
-                
+                 Get.to(DuedateScreen());
               },
               child: CardItem(
                 image: "assets/images/baby.png",

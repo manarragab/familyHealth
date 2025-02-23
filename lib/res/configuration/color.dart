@@ -101,7 +101,8 @@ class CustomColors {
   static const Color darkblack = Color(0xFF22282D);
   static const Color lightgrey4= Color(0xFFEDEDED);
   static const Color lightgrey5= Color(0xFFF8F8F8);
-
+  static Color lightpink1= Color(0xFFF2285B).withOpacity(0.1); //10%
+  static const Color darkpink= Color(0xFFEE2D6C);
 
 
   /// this is the color of the apps
