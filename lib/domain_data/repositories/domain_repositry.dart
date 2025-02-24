@@ -50,7 +50,7 @@ abstract class DomainData {
 
   Future<ResponseModel> register(PostRegister register);
 
-  Future<ResponseModel<LoginData?>> checkCode(String code);
+  Future<ResponseModel<LoginData?>> checkCode(String code, String email);
 
   Future<ResponseModel<dynamic>> resetPassword({required String password});
 

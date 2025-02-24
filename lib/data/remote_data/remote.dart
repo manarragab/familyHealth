@@ -89,26 +89,34 @@ class Remote {
     }, useFormData: false);
   }
 
-  Future<ResponseModel<LoginData?>> checkCode(String code) async {
-    return _helper.get<LoginData?>({
-      "reset_code": code,
-    }, path: "/password/reset", onSuccess: (dynamic data) {
+  Future<ResponseModel<LoginData?>> checkCode(String code, String email) async {
+    return _helper.post<LoginData?>({
+      "otp": code,
+      "email": email,
+    }, path: "/user/verify-otp", onSuccess: (dynamic data) {
       return LoginModel.fromJson(data);
     }, onError: (data) {
       return ResponseModel(status: data.status, message: data.message);
-    });
+    }, useFormData: true);
   }
 
   Future<ResponseModel<dynamic>> resetPassord(
       {required String password}) async {
-    return _helper.post<dynamic>({
-      "password": password,
-      "password_confirmation": password,
-    }, path: "/user/reset-password", onSuccess: (dynamic data) {
-      return ResponseModel.fromJson(data);
-    }, onError: (data) {
-      return ResponseModel(status: data.status, message: data.message);
-    }, useFormData: false);
+    return _helper.post<dynamic>(
+      {
+        "password": password,
+        "password_confirmation": password,
+      },
+      path: "/user/reset-password",
+      onSuccess: (dynamic data) {
+        return ResponseModel.fromJson(data);
+      },
+      onError: (data) {
+        return ResponseModel(status: data.status, message: data.message);
+      },
+      useFormData: false,
+      isLogin: true,
+    );
   }
 
   Future<ResponseModel<String?>> uploadProfileImage(File file) async {

@@ -54,8 +54,8 @@ class DataRepository implements DomainData {
   }
 
   @override
-  Future<ResponseModel<LoginData?>> checkCode(String code) {
-    return remote.checkCode(code);
+  Future<ResponseModel<LoginData?>> checkCode(String code, String email) {
+    return remote.checkCode(code, email);
   }
 
   @override

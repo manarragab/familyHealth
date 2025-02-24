@@ -4,7 +4,10 @@ import 'package:abg/res/configuration/text_field/text_field.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
 
 class ResetPasswordScreen extends GetView<AuthController> {
-  const ResetPasswordScreen({Key? key}) : super(key: key);
+  ResetPasswordScreen({Key? key}) : super(key: key);
+
+  final hidePassword = true.obs;
+  final hideConfirmPassword = true.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -22,19 +25,35 @@ class ResetPasswordScreen extends GetView<AuthController> {
             subtitle: Text(CustomTrans.enterTheNewPassword.tr),
           ),
           const SizedBox(height: 10),
-          CustomTextField.passwordTextField(
-            (value) => null,
-            controller: controller.passwordController,
-            isVisible: false,
-            changeVisible: () {},
-          ),
-          CustomTextField.passwordTextField((value) => null,
-              isVisible: true,
-              changeVisible: () {},
+          Obx(() {
+            return CustomTextField.passwordTextField(
+              (value) => null,
+              controller: controller.passwordController,
+              isVisible: hidePassword.value,
+              changeVisible: () {
+                hidePassword(!hidePassword.value);
+              },
+            );
+          }),
+          const SizedBox(height: 10),
+          Obx(() {
+            return CustomTextField.passwordTextField(
+              (value) => null,
+              isVisible: hideConfirmPassword.value,
+              validator: (value) {
+                if (controller.passwordController.text != value) {
+                  return CustomTrans.wrongConfirmedPassword.tr;
+                }
+                return null;
+              },
+              changeVisible: () {
+                hideConfirmPassword(!hideConfirmPassword.value);
+              },
               hint: CustomTrans.confirmPassword.tr,
-              controller: controller.passwordController
+
               //  controller:
-              ),
+            );
+          }),
           const SizedBox(height: 20),
           LoadingOverLay(
             showLoadingOnly: true,

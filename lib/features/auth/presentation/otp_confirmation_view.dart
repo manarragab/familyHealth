@@ -43,7 +43,7 @@ class OtpConfirmationView extends GetView<OTPController> {
                   child: Directionality(
                     textDirection: TextDirection.ltr,
                     child: Pinput(
-                      length: 5,
+                      length: 4,
                       keyboardType: TextInputType.text,
                       defaultPinTheme: PinTheme(
                         width: 48,

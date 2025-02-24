@@ -32,8 +32,8 @@ class AuthCases {
     return _data.getCode(text);
   }
 
-  Future<ResponseModel<LoginData?>> checkCode(String code) {
-    return _data.checkCode(code);
+  Future<ResponseModel<LoginData?>> checkCode(String code, String email) {
+    return _data.checkCode(code, email);
   }
 
   Future<ResponseModel<dynamic>> resetPassord({required String password}) {

@@ -151,10 +151,11 @@ class AuthController extends MainGetxController {
 
   checkCode(String code) async {
     loadingGetxController.showLoading();
-    var response = await sl<AuthCases>().checkCode(code);
+    var response = await sl<AuthCases>().checkCode(code, emailController.text);
     loadingGetxController.hideLoading();
     statusError.checkStatus(response, () {
       loginModel = response as LoginModel;
+      sl<AuthCases>().setUser(loginModel);
       Get.off(() => ResetPasswordScreen(), transition: Transition.fadeIn);
     });
   }
