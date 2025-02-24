@@ -44,9 +44,9 @@ class HomeScreen extends GetView<HomeController> {
             child: ListView(
               children: [
                 // Greeting and mood emojis
-                const Text(
-                  "Hey Amira",
-                  style: TextStyle(
+                Text(
+                  "Hey ${controller.user?.name ?? ""}",
+                  style: TFonts.textTitleStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
                   ),
