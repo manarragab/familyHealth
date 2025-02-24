@@ -28,30 +28,21 @@ class _DuedateScreenState extends State<DuedateScreen> {
               image: "assets/images/girl.png",
               widg: Column(
                 children: [
-
-
-SizedBox(height: 20,),
-             Text(
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(
                     "The first day of the last menstrual cycle",
-                    
                     style: GoogleFonts.almarai(
                       fontSize: 14,
                       color: CustomColors.darkBlue2,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-SizedBox(height: 15,),
-
-
-                 
-
-
-DateItem(),
-
-
-
-
-
+                  SizedBox(
+                    height: 15,
+                  ),
+                  DateItem(),
                   SizedBox(
                     height: 23,
                   ),

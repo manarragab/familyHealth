@@ -9,7 +9,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
 class MedicalcalcScreen extends StatefulWidget {
   @override
   State<MedicalcalcScreen> createState() => _MedicalcalcScreenState();
@@ -77,7 +76,6 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
               height: 13,
             ),
             CardItem(
-             
               image: "assets/images/BMI.png",
               elevation: 0.0,
               title: "BMI Calculator",
@@ -99,8 +97,8 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
               height: 10,
             ),
             InkWell(
-              onTap: (){
-                 Get.to(DuedateScreen());
+              onTap: () {
+                Get.to(DuedateScreen());
               },
               child: CardItem(
                 image: "assets/images/baby.png",
@@ -113,14 +111,9 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
             SizedBox(
               height: 7,
             ),
-
-
-
             InkWell(
-              onTap: (){
-
-Get.to(OvulationcalcScreen());
-
+              onTap: () {
+                Get.to(OvulationcalcScreen());
               },
               child: CardItem(
                 image: "assets/images/womb.png",
