@@ -7,13 +7,16 @@ class CardItem extends StatefulWidget {
   final double? elevation;
   final String title;
   final String subTitle;
+ 
 
   const CardItem(
       {super.key,
       required this.image,
       required this.title,
       required this.subTitle,
-      required this.elevation});
+      required this.elevation,}
+      
+      );
 
   @override
   State<CardItem> createState() => _CardItemState();
@@ -92,6 +95,7 @@ class _CardItemState extends State<CardItem> {
                   ),
                 ),
               ),
+             
             ],
           ),
         ),

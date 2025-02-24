@@ -952,6 +952,8 @@ class CustomTrans {
   static const String medicalCalc = "Medical calculations";
   static const String dueDateCalc = "Medical calculations";
   static const String calculate = "Calculate";
+  static const String next2 = "Next";
+
 
 
 

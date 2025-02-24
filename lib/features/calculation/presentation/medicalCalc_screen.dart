@@ -1,4 +1,5 @@
 import 'package:abg/features/calculation/presentation/dueDate_screen.dart';
+import 'package:abg/features/calculation/presentation/ovulationCalc_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/card_item.dart';
 import 'package:abg/localization/all_keys.dart';
 import 'package:abg/res/configuration/app_bar.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 
 class MedicalcalcScreen extends StatefulWidget {
   @override
@@ -75,6 +77,7 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
               height: 13,
             ),
             CardItem(
+             
               image: "assets/images/BMI.png",
               elevation: 0.0,
               title: "BMI Calculator",
@@ -95,7 +98,7 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
             SizedBox(
               height: 10,
             ),
-            GestureDetector(
+            InkWell(
               onTap: (){
                  Get.to(DuedateScreen());
               },
@@ -110,12 +113,22 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
             SizedBox(
               height: 7,
             ),
-            CardItem(
-              image: "assets/images/womb.png",
-              elevation: 2.3,
-              title: "Ovulation Calculator",
-              subTitle:
-                  "It provides an ovulation day calculator to determine the period when the egg is ready for fertilization",
+
+
+
+            InkWell(
+              onTap: (){
+
+Get.to(OvulationcalcScreen());
+
+              },
+              child: CardItem(
+                image: "assets/images/womb.png",
+                elevation: 2.3,
+                title: "Ovulation Calculator",
+                subTitle:
+                    "It provides an ovulation day calculator to determine the period when the egg is ready for fertilization",
+              ),
             ),
             SizedBox(
               height: 7,
