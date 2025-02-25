@@ -104,6 +104,12 @@ class CustomColors {
   static Color lightpink1= Color(0xFFF2285B).withOpacity(0.1); //10%
   static const Color darkpink= Color(0xFFEE2D6C);
   static  Color lightblue3= Color(0xFF24394A).withOpacity(0.2); //20%
+  static const Color lightGreen1 = Color.fromRGBO(134, 205, 75, 0.3);
+  static const Color green1 = Color.fromRGBO(134, 205, 75, 1);
+  static const Color grey12 = Color.fromRGBO(132, 132, 132, 1);
+  static const Color grey13 = Color.fromRGBO(242, 242, 242, 1);
+  static const Color darkblue3 = Color.fromRGBO(48, 73, 94, 1);
+    static const Color darkblack1= Color.fromRGBO(36, 57, 74, 1);
 
   /// this is the color of the apps
 

@@ -8,16 +8,14 @@ class Pinkcontainer extends StatelessWidget {
   final double? heightt;
   final String? firstTxt;
 
-
-  const Pinkcontainer(
-      {super.key,
-      required this.title,
-      required this.image,
-      required this.widg,
-      this.heightt,
-      this.firstTxt,
-     
-      });
+  const Pinkcontainer({
+    super.key,
+    required this.title,
+    required this.image,
+    required this.widg,
+    this.heightt,
+    this.firstTxt,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +24,7 @@ class Pinkcontainer extends StatelessWidget {
         children: [
           Center(
             child: Text(
-             firstTxt?? "Due date Calculator",
+              firstTxt ?? "Due date Calculator",
               style: GoogleFonts.almarai(
                 fontSize: 14,
                 color: CustomColors.darkBlue2,
@@ -104,7 +102,6 @@ class Pinkcontainer extends StatelessWidget {
               ],
             ),
           ),
-        
         ],
       ),
     );

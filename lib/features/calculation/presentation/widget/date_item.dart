@@ -11,7 +11,7 @@ class _DateItemState extends State<DateItem> {
   int selectedDay = 1;
   int selectedMonth = 1;
   int selectedYear = 2024;
-
+//day , month,year
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -53,7 +53,7 @@ class _DateItemState extends State<DateItem> {
           alignment: Alignment.center,
           padding: EdgeInsets.symmetric(vertical: 10),
           width: double.infinity,
-          height: 60, 
+          height: 60,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             color: Colors.white,
@@ -69,7 +69,6 @@ class _DateItemState extends State<DateItem> {
               children: [
                 SizedBox(
                   width: 50,
-           
                   child: ListWheelScrollView.useDelegate(
                     itemExtent: 42,
                     physics: FixedExtentScrollPhysics(),
@@ -98,10 +97,8 @@ class _DateItemState extends State<DateItem> {
                     ),
                   ),
                 ),
-              
                 SizedBox(
                   width: 50,
-                  
                   child: ListWheelScrollView.useDelegate(
                     itemExtent: 42,
                     physics: FixedExtentScrollPhysics(),
@@ -130,10 +127,8 @@ class _DateItemState extends State<DateItem> {
                     ),
                   ),
                 ),
-              
                 SizedBox(
                   width: 70,
-                 
                   child: ListWheelScrollView.useDelegate(
                     itemExtent: 42,
                     physics: FixedExtentScrollPhysics(),

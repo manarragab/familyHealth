@@ -1,3 +1,4 @@
+import 'package:abg/features/calculation/presentation/BMIcalc_screen.dart';
 import 'package:abg/features/calculation/presentation/dueDate_screen.dart';
 import 'package:abg/features/calculation/presentation/ovulationCalc_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/card_item.dart';
@@ -75,12 +76,17 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
             SizedBox(
               height: 13,
             ),
-            CardItem(
-              image: "assets/images/BMI.png",
-              elevation: 0.0,
-              title: "BMI Calculator",
-              subTitle:
-                  "The BMI calculator is a powerful tool for assessing healthy weight and understanding your fitness level.",
+            InkWell(
+              onTap: (){
+                Get.to(BmicalcScreen());
+              },
+              child: CardItem(
+                image: "assets/images/BMI.png",
+                elevation: 0.0,
+                title: "BMI Calculator",
+                subTitle:
+                    "The BMI calculator is a powerful tool for assessing healthy weight and understanding your fitness level.",
+              ),
             ),
             SizedBox(
               height: 18,

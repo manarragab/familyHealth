@@ -125,6 +125,7 @@ dependencies:
   shared_preferences: ^2.5.1
 
   font_awesome_flutter: ^10.8.0
+  flutter_xlider: ^3.5.0
 
 
 
