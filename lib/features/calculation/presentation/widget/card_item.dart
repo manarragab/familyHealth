@@ -88,6 +88,7 @@ class _CardItemState extends State<CardItem> {
                   isClicked
                       ? "assets/svg/filledLove.svg"
                       : "assets/svg/outlineLove.svg",
+
                   width: 22,
                   height: 18.85,
                 ),
