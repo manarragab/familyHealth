@@ -1,10 +1,7 @@
 import 'package:abg/data/const/export.dart';
+import 'package:abg/features/calculation/presentation/BMIcalc_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/coloredBar.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
-import 'package:abg/localization/all_keys.dart';
-import 'package:abg/res/configuration/app_bar.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Bmi2calcScreen extends StatelessWidget {
@@ -75,7 +72,40 @@ class Bmi2calcScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-              )
+              ),
+
+
+              SizedBox(
+                height: 20,
+              ),
+              GestureDetector(
+                onTap: () {
+                  Get.off(BmicalcScreen());
+                },
+                child: Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/greensign.png",
+                        width: 25.9,
+                        height: 24,
+                      ),
+                      SizedBox(
+                        width: 7,
+                      ),
+                      Text(
+                        "Recalculation",
+                        style: GoogleFonts.almarai(
+                          color: CustomColors.green1,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ));

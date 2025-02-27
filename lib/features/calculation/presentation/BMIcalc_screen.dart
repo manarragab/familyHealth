@@ -23,10 +23,12 @@ class BmicalcScreen extends StatelessWidget {
                     child: Column(
                   children: [
                     White2container(
+                     KEY: "one",
                         title1: "Please enter your height",
                         title2: "(cm)",
                         measure: "cm"),
                     White2container(
+                      KEY: "two",
                         title1: "your weight", title2: "(kg)", measure: "kg"),
                     SizedBox(
                       height: 23,

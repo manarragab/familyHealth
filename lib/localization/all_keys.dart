@@ -954,6 +954,7 @@ class CustomTrans {
   static const String calculate = "Calculate";
   static const String next2 = "Next";
   static const String calculating = "Calculating";
+  static const String back = "Back";
 
 
 

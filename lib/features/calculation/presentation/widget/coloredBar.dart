@@ -1,94 +1,117 @@
-import 'package:abg/res/configuration/color.dart';
-import 'package:flutter/material.dart';
+import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:abg/data/const/export.dart';
 
-class Coloredbar extends StatefulWidget {
-  @override
-  State<Coloredbar> createState() => _ColoredbarState();
-}
+class Coloredbar extends StatelessWidget {
+  final List<String>? txt;
+  final List<String>? txt2;
+  final String? title;
+  final String? subTitle;  
 
-class _ColoredbarState extends State<Coloredbar> {
-  double bmiValue = 25;
-  final double minBmi = 10;
-  final double maxBmi = 40;
-  final double speedFactor = 2.5;
+  Coloredbar({super.key, this.txt, this.txt2  , this.title , this.subTitle});
+
+  final Calculationcontroller controller = Get.find();
+
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double barWidth = screenWidth - 80;
-    double indicatorPosition =
-        ((bmiValue - minBmi) / (maxBmi - minBmi)) * barWidth;
 
-    return Container(
-      margin: EdgeInsets.only(top: 20),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 74),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _buildNumber("18.5"),
-                _buildNumber("25"),
-                _buildNumber("30"),
-              ],
-            ),
-          ),
-          SizedBox(height: 5),
-          Stack(
+    return GetBuilder<Calculationcontroller>(
+      builder: (context) {
+        double indicatorPosition =
+            ((controller.bmiValue - controller.minBmi) /
+                (controller.maxBmi - controller.minBmi)) *
+            barWidth;
+
+        return Container(
+          margin: EdgeInsets.only(top: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              SizedBox(
-                width: barWidth,
-                child: Row(
-                  children: [
-                    _buildBarSegment(barWidth * 0.25, Colors.blue),
-                    _buildBarSegment(barWidth * 0.25, Colors.green),
-                    _buildBarSegment(barWidth * 0.25, Colors.yellow),
-                    _buildBarSegment(barWidth * 0.25, Colors.red),
-                  ],
-                ),
-              ),
-              Positioned(
-                left: indicatorPosition.clamp(0, barWidth - 6),
-                child: GestureDetector(
-                  onHorizontalDragUpdate: (details) {
-                    setState(() {
-                      double newPosition =
-                          indicatorPosition + (details.delta.dx * speedFactor);
-                      bmiValue =
-                          ((newPosition / barWidth) * (maxBmi - minBmi)) +
-                              minBmi;
-                      bmiValue = bmiValue.clamp(minBmi, maxBmi);
-                    });
-                  },
-                  child: Container(
-                    width: 4,
-                    height: 30,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
+              _buildNumberRow(),
+              SizedBox(height: 5),
+              _buildBar(barWidth, indicatorPosition),
+              SizedBox(height: 5),
+              _buildLabelRow(barWidth),
+              SizedBox(height: 25),
+              _buildBmiScore(),
             ],
           ),
-          SizedBox(height: 5),
-          Container(
-            width: barWidth,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _buildLabel("low weight"),
-                _buildLabel("normal weight"),
-                _buildLabel("over weight"),
-                _buildLabel("Obesity"),
-              ],
+        );
+      },
+    );
+  }
+
+  Widget _buildNumberRow() {
+    return Container(
+      margin: EdgeInsets.symmetric(horizontal: 74),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          _buildNumber(txt2?[0] ?? "18.5", 0),
+          _buildNumber(txt2?[1] ?? "25", 1),
+          _buildNumber(txt2?[2] ?? "30", 2),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildBar(double barWidth, double indicatorPosition) {
+    return Stack(
+      children: [
+        SizedBox(
+          width: barWidth,
+          child: Row(
+            children: [
+              _buildBarSegment(barWidth * 0.25, Colors.blue, "low"),
+              _buildBarSegment(barWidth * 0.25, Colors.green, "normal"),
+              _buildBarSegment(barWidth * 0.25, Colors.yellow, "over"),
+              _buildBarSegment(barWidth * 0.25, Colors.red, "obese"),
+            ],
+          ),
+        ),
+        Positioned(
+          left: indicatorPosition.clamp(0, barWidth - 6),
+          child: GestureDetector(
+            onHorizontalDragUpdate: (details) {
+              controller.updateBmi(
+                  indicatorPosition + (details.delta.dx * controller.speedFactor * 2), // Faster cursor
+                  barWidth);
+            },
+            child: Container(
+              width: 4,
+              height: 30,
+              color: Colors.black,
             ),
           ),
-          SizedBox(
-            height: 25,
-          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildLabelRow(double barWidth) {
+    return Container(
+      width: barWidth,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          _buildLabel(txt?[0] ?? "low weight", 0),
+          _buildLabel(txt?[1] ?? "normal weight", 1),
+          _buildLabel(txt?[2] ?? "over weight", 2),
+          _buildLabel(txt?[3] ?? "Obesity", 3),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildBmiScore() {
+    return GetBuilder<Calculationcontroller>(
+      builder: (context) => Column(
+        children: [
           Text(
-            "BMI score",
+            title??"BMI score",
+            key: ValueKey("bmi_score_label"),
             style: GoogleFonts.almarai(
               fontSize: 30,
               color: CustomColors.darkblack1,
@@ -96,18 +119,18 @@ class _ColoredbarState extends State<Coloredbar> {
             ),
           ),
           Text(
-            ((bmiValue * 10).ceil() / 10.0).toString(),
+            ((controller.bmiValue * 10).ceil() / 10.0).toString(),
+            key: ValueKey("bmi_score_value"),
             style: GoogleFonts.almarai(
               fontSize: 40,
               color: CustomColors.green1,
               fontWeight: FontWeight.w700,
             ),
           ),
-          SizedBox(
-            height: 18,
-          ),
+          SizedBox(height: 18),
           Text(
-            "normal weight",
+            subTitle??"normal weight",
+            key: ValueKey("bmi_status"),
             style: GoogleFonts.almarai(
               fontSize: 16,
               color: CustomColors.darkblack1,
@@ -119,8 +142,9 @@ class _ColoredbarState extends State<Coloredbar> {
     );
   }
 
-  Widget _buildBarSegment(double width, Color color) {
+  Widget _buildBarSegment(double width, Color color, String label) {
     return Container(
+      key: ValueKey("bar_segment_$label"),
       width: width,
       height: 25,
       decoration: BoxDecoration(
@@ -133,9 +157,10 @@ class _ColoredbarState extends State<Coloredbar> {
     );
   }
 
-  Widget _buildLabel(String text) {
+  Widget _buildLabel(String text, int i) {
     return Text(
-      text,
+      txt?[i] ?? text,
+      key: ValueKey("label_$i"),
       style: GoogleFonts.almarai(
         fontSize: 13,
         color: CustomColors.darkblack1,
@@ -144,9 +169,10 @@ class _ColoredbarState extends State<Coloredbar> {
     );
   }
 
-  Widget _buildNumber(String number) {
+  Widget _buildNumber(String number, int index) {
     return Text(
       number,
+      key: ValueKey("number_$index"),
       style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
     );
   }

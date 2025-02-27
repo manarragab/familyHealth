@@ -110,6 +110,10 @@ class CustomColors {
   static const Color grey13 = Color.fromRGBO(242, 242, 242, 1);
   static const Color darkblue3 = Color.fromRGBO(48, 73, 94, 1);
     static const Color darkblack1= Color.fromRGBO(36, 57, 74, 1);
+  static const Color darkblue4 = Color.fromRGBO(48, 73, 94, 0.35);
+  static const Color lightgrey6= Color.fromRGBO(217, 217, 217, 1);
+  static const Color darkgrey4=Color.fromRGBO(217, 217, 217, 1);
+
 
   /// this is the color of the apps
 

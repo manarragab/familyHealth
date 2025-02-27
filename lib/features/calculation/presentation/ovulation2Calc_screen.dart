@@ -1,4 +1,5 @@
 import 'package:abg/features/calculation/presentation/ovulation3Calc_screen.dart';
+import 'package:abg/features/calculation/presentation/widget/listDay_item.dart';
 import 'package:abg/features/calculation/presentation/widget/pinkContainer.dart';
 import 'package:abg/localization/all_keys.dart';
 import 'package:abg/res/common-widgets/custm_button.dart';
@@ -43,49 +44,8 @@ class _Ovulation2calcScreenState extends State<Ovulation2calcScreen> {
               SizedBox(
                 height: 15,
               ),
-              Center(
-                child: Container(
-                  height: 130,
-                  width: double.infinity,
-                  child: Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      Container(
-                        height: 38,
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.black.withOpacity(0.15),
-                        ),
-                      ),
-                      ListWheelScrollView.useDelegate(
-                        itemExtent: 33,
-                        physics: FixedExtentScrollPhysics(),
-                        onSelectedItemChanged: (i) {
-                          setState(() {
-                            selectedIndex = i;
-                          });
-                        },
-                        childDelegate: ListWheelChildBuilderDelegate(
-                          childCount: 30,
-                          builder: (context, i) {
-                            return Text(
-                              "${i + 1} Day",
-                              style: GoogleFonts.almarai(
-                                fontSize: 23,
-                                color: i == selectedIndex
-                                    ? CustomColors.darkBlue2
-                                    : CustomColors.lightblue3,
-                                fontWeight: FontWeight.w700,
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              ListdayItem(),
+
               SizedBox(
                 height: 15,
               ),

@@ -8,14 +8,19 @@ class Greencontainer extends StatelessWidget {
   final Widget widg;
   final double? heightt;
   final String? firstTxt;
+    final String? centertxt;
+    final double? size;
+
 
   const Greencontainer({
     super.key,
     this.title,
-    this.image,
+    this.image, 
     required this.widg,
     this.heightt,
     this.firstTxt,
+    this.centertxt,
+    this.size
   });
   @override
   Widget build(BuildContext context) {
@@ -24,7 +29,7 @@ class Greencontainer extends StatelessWidget {
       children: [
         Center(
           child: Text(
-            "BMI Calculator",
+          centertxt??  "BMI Calculator",
             style: GoogleFonts.almarai(
               fontSize: 14,
               color: CustomColors.darkBlue2,
@@ -36,7 +41,7 @@ class Greencontainer extends StatelessWidget {
           height: 25,
         ),
         Text(
-          "Body mass index is a measure of body fat based on height and weight.",
+         firstTxt?? "Body mass index is a measure of body fat based on height and weight.",
           style: GoogleFonts.almarai(
             fontSize: 15,
             color: CustomColors.darkBlue2,
@@ -47,7 +52,7 @@ class Greencontainer extends StatelessWidget {
           height: 15,
         ),
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 15),
+          padding: EdgeInsets.symmetric(horizontal: 12),
           width: double.infinity,
           height: heightt ?? 515,
           decoration: BoxDecoration(
@@ -65,9 +70,9 @@ class Greencontainer extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "BMI",
+                           title?? "BMI",
                             style: GoogleFonts.almarai(
-                              fontSize: 40,
+                              fontSize: size??40,
                               color: CustomColors.green1,
                               fontWeight: FontWeight.w700,
                             ),
@@ -84,7 +89,7 @@ class Greencontainer extends StatelessWidget {
                       ),
                     ),
                     Image.asset(
-                      "assets/images/boy.png",
+                    image??  "assets/images/boy.png",
                       width: 160,
                       height: 160,
                     ),

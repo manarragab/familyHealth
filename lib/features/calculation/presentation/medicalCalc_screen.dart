@@ -1,6 +1,8 @@
 import 'package:abg/features/calculation/presentation/BMIcalc_screen.dart';
+import 'package:abg/features/calculation/presentation/calorieCalc_screen.dart';
 import 'package:abg/features/calculation/presentation/dueDate_screen.dart';
 import 'package:abg/features/calculation/presentation/ovulationCalc_screen.dart';
+import 'package:abg/features/calculation/presentation/waterCalc_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/card_item.dart';
 import 'package:abg/localization/all_keys.dart';
 import 'package:abg/res/configuration/app_bar.dart';
@@ -132,32 +134,49 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
             SizedBox(
               height: 7,
             ),
-            CardItem(
-              image: "assets/images/BMI.png",
-              elevation: 2.3,
-              title: "BMI Calculator",
-              subTitle:
-                  "The BMI calculator is a powerful tool for assessing healthy weight and understanding your fitness level.",
+            InkWell(
+              onTap: (){
+              Get.to(BmicalcScreen());
+              },
+              child: CardItem(
+                image: "assets/images/BMI.png",
+                elevation: 2.3,
+                title: "BMI Calculator",
+                subTitle:
+                    "The BMI calculator is a powerful tool for assessing healthy weight and understanding your fitness level.",
+              ),
             ),
             SizedBox(
               height: 7,
             ),
-            CardItem(
-              image: "assets/images/fruits.png",
-              elevation: 2.3,
-              title: "Calorie Calculator",
-              subTitle:
-                  "This calculator can help you determine the types and amounts of food that suit your needs and track your daily food intake.",
+            InkWell(
+              onTap: (){
+
+              Get.to(CaloriecalcScreen());
+              },
+              child: CardItem(
+                image: "assets/images/fruits.png",
+                elevation: 2.3,
+                title: "Calorie Calculator",
+                subTitle:
+                    "This calculator can help you determine the types and amounts of food that suit your needs and track your daily food intake.",
+              ),
             ),
             SizedBox(
               height: 7,
             ),
-            CardItem(
-              image: "assets/images/water.png",
-              elevation: 2.3,
-              title: "Body water Calculator",
-              subTitle:
-                  "This calculator can help you determine the types and amounts of food that suit your needs and track your daily food intake.",
+            InkWell(
+              onTap: (){
+
+               Get.to( WatercalcScreen());
+              },
+              child: CardItem(
+                image: "assets/images/water.png",
+                elevation: 2.3,
+                title: "Body water Calculator",
+                subTitle:
+                    "This calculator can help you determine the types and amounts of food that suit your needs and track your daily food intake.",
+              ),
             ),
           ],
         ),
