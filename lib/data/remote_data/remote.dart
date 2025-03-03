@@ -1,6 +1,8 @@
 import 'dart:io';
 
 import 'package:abg/data/const/export.dart' hide MultipartFile;
+import 'package:abg/data/models/alarm/get_alarms/alarm_model.dart';
+import 'package:abg/data/models/alarm/post_alarms/post_alarm_response.dart';
 import 'package:abg/data/models/auth/login/LoginModel.dart';
 import 'package:abg/data/models/auth/users/PostEditProfile.dart';
 import 'package:abg/data/models/auth/users/post_assign_user.dart';
@@ -218,5 +220,32 @@ class Remote {
       sPrint.warning('login error:: $data');
       return LoginModel.fromJson(data);
     });
+  }
+
+  Future<ResponseModel<List<Alarm>?>> getAlarm(PostGroupMessage post) async {
+    return _helper.get<List<Alarm>?>(await post.toJson(), path: "/user/alarms",
+        onSuccess: (dynamic data) {
+      return AlarmModel.fromJson(data);
+    }, onError: (data) {
+      return ResponseModel(status: data.status, message: data.message);
+    }, isLogin: true);
+  }
+
+  Future<ResponseModel<Alarm?>> addAlarm(PostGroupMessage post) async {
+    return _helper.post<Alarm?>(await post.toJson(), path: "/user/alarms",
+        onSuccess: (dynamic data) {
+      return PostAlarmResponse.fromJson(data);
+    }, onError: (data) {
+      return ResponseModel(status: data.status, message: data.message);
+    }, isLogin: true);
+  }
+
+  Future<ResponseModel<dynamic>> deleteAlarm(int id) async {
+    return _helper.post<dynamic>({}, path: "/user/alarms/$id",
+        onSuccess: (dynamic data) {
+      return ResponseModel.fromJson(data);
+    }, onError: (data) {
+      return ResponseModel(status: data.status, message: data.message);
+    }, isLogin: true);
   }
 }

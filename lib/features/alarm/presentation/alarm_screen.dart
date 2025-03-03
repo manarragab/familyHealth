@@ -1,9 +1,10 @@
 import 'package:abg/data/const/export.dart';
+import 'package:abg/features/alarm/domain/controller/alarm_controller.dart';
 import 'package:abg/features/alarm/presentation/add_alarm.dart';
 import 'package:abg/features/alarm/presentation/widget/alarm_item.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class AlarmScreen extends StatelessWidget {
+class AlarmScreen extends GetView<AlarmController> {
   const AlarmScreen({Key? key}) : super(key: key);
 
   @override
@@ -15,7 +16,6 @@ class AlarmScreen extends StatelessWidget {
           Center(
             child: MainButton(
               onPressed: () {
-
                 Get.to(const AddAlarm());
               },
               radius: 10,
