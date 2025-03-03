@@ -13,8 +13,26 @@ class CustomDatePicker {
   final int minYear = 1700;
   final int maxYear = DateTime.now().year;
 
-
   showDatePicker(BuildContext context) {
+    showCupertinoModalPopup<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return _buildBottomPicker(
+          CupertinoDatePicker(
+            mode: CupertinoDatePickerMode.date,
+            initialDateTime: _date,
+            minimumYear: minYear,
+            maximumYear: DateTime.now().year,
+            onDateTimeChanged: (DateTime newDateTime) {
+              date(newDateTime);
+            },
+          ),
+        );
+      },
+    );
+  }
+
+  showTimePicker(BuildContext context) {
     showCupertinoModalPopup<void>(
       context: context,
       builder: (BuildContext context) {
@@ -32,6 +50,7 @@ class CustomDatePicker {
       },
     );
   }
+
   showYearPicker(BuildContext context) {
     showCupertinoModalPopup<void>(
       context: context,
@@ -40,6 +59,7 @@ class CustomDatePicker {
       },
     );
   }
+
   Widget _buildYearPicker() {
     final List<Widget> yearWidgets = [];
 
@@ -57,8 +77,8 @@ class CustomDatePicker {
         ),
         itemExtent: 40.0,
         onSelectedItemChanged: (int index) {
-            selectedYear = maxYear - index;
-            date(DateTime(selectedYear));
+          selectedYear = maxYear - index;
+          date(DateTime(selectedYear));
         },
         children: yearWidgets,
       ),
@@ -87,5 +107,3 @@ class CustomDatePicker {
     );
   }
 }
-
-

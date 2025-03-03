@@ -26,8 +26,7 @@ class CustomTextField {
         child: TextFormField(
           enabled: enabled,
           validator: validator ??
-              ((value) =>
-                  TValidator.normalValidator(data?.trim(), hint: hint)),
+              ((value) => TValidator.normalValidator(data?.trim(), hint: hint)),
           decoration: _defaultDecoration(
             suffixIcon: DropdownButtonFormField<dynamic>(
               value: data,
@@ -234,44 +233,18 @@ class CustomTextField {
     TextEditingController? controller,
     // String? Function(String?)? validator,
   }) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          if (hint.isNotEmpty)
-            Column(
-              children: [
-                Text(
-                  hint,
-                  style: TFonts.textTitleStyle(
-                    color: CustomColors.primary,
-                  ),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-              ],
-            ),
-          SizedBox(
-            height: 90,
-            child: TextFormField(
-              keyboardType: TextInputType.name,
-              controller: controller,
-              validator: isRequired
-                  ? (value) => TValidator.normalValidator(value?.trim())
-                  : null,
-              onChanged: (x) => onChange(x.trim()),
-              maxLines: 3,
-              minLines: 3,
-              decoration: _defaultDecoration(
-                hintText: hint,
-                removeHintWrite: true,
-              ),
-            ),
-          ),
-        ],
+    return TextFormField(
+      keyboardType: TextInputType.name,
+      controller: controller,
+      validator: isRequired
+          ? (value) => TValidator.normalValidator(value?.trim())
+          : null,
+      onChanged: (x) => onChange(x.trim()),
+      maxLines: null,
+      minLines: 6,
+      decoration: _defaultDecoration(
+        hintText: hint,
+        removeHintWrite: true,
       ),
     );
   }
@@ -395,7 +368,7 @@ class CustomTextField {
   }
 
   static Widget datePickerTextField({
-    String hint = '',
+    String? hint,
     required String prefixIconPath,
     required Function() onDatePickerPress,
     TextEditingController? controller,
@@ -428,7 +401,7 @@ class CustomTextField {
                 },
                 decoration: _defaultDecoration(
                   removeHintWrite: true,
-                  hintText: "${CustomTrans.select.tr} ${CustomTrans.date.tr}",
+                  hintText: hint ?? CustomTrans.date.tr,
                 ),
               ),
             ),
@@ -440,12 +413,13 @@ class CustomTextField {
               highlightColor: Colors.transparent,
               onTap: onDatePickerPress,
               child: Padding(
-                padding: const EdgeInsetsDirectional.only(end: 12, top: 12),
+                padding: const EdgeInsetsDirectional.only(
+                    end: 12, top: 10, bottom: 10),
                 child: SizedBox(
                   child: SvgPicture.asset(
                     prefixIconPath,
-                    height: 14,
-                    width: 14,
+                    height: 25.h,
+                    width: 25.w,
                     fit: BoxFit.fill,
                   ),
                 ),

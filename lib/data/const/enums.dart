@@ -42,3 +42,5 @@ enum ItemInfoType { contactAgent, sendLocation }
 enum ContactType { contact, contactUS }
 
 enum InterestType { moreInterest, interest }
+
+enum AlarmType { reminder, medicine, appointment }
