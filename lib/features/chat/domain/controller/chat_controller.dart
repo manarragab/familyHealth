@@ -14,10 +14,6 @@ class ChatController extends MainGetxController with CustomStateMixin {
 
   // Pushercontroller pusher = Pushercontroller();
 
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   @override
   void onClose() {

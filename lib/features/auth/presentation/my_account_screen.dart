@@ -27,7 +27,7 @@ class MyAccountScreen extends GetView<AuthController> {
                           //     controller.updateProfileImage(file);
                           //   }
                         },
-                        child: Container(
+                        child: SizedBox(
                           height: height,
                           width: height,
                           child: Stack(

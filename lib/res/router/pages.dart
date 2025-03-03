@@ -48,31 +48,31 @@ class CustomPage {
         })),
     GetPage(
         name: myAccountPage,
-        page: () => MyAccountScreen(),
+        page: () => const MyAccountScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(AuthController()).updateMyAccountScreen();
         })),
     GetPage(
         name: notificationPage,
-        page: () => NotificationScreen(),
+        page: () => const NotificationScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(NotificationController()).onRefresh();
         })),
     GetPage(
         name: mainVerifyAccountScreen,
-        page: () => MainVerifyAccountScreen(),
+        page: () => const MainVerifyAccountScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(MainVerifyAccountController());
         })),
     GetPage(
         name: myAlarm,
-        page: () => AlarmScreen(),
+        page: () => const AlarmScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
-          Get.put(AlarmController()).onRefresh();
+          Get.put(AlarmController()).selectradio;
         })),
   ];
 

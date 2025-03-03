@@ -1,7 +1,7 @@
 import 'package:abg/domain_data/repositories/domain_repositry.dart';
 
 class NotificationCases {
-  DomainData _data;
+  final DomainData _data;
 
   NotificationCases(this._data);
 

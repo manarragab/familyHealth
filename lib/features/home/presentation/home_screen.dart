@@ -54,11 +54,11 @@ class HomeScreen extends GetView<HomeController> {
                 const SizedBox(height: 8),
                 Row(
                   children: [
-                    Text(
+                    const Text(
                       "How are you feeling today?",
                       style: TextStyle(fontSize: 16, color: Colors.grey),
                     ),
-                    Spacer(),
+                    const Spacer(),
                     CustomImage.asset("assets/svg/emojis.svg",
                         height: 25, fit: BoxFit.fitWidth)
                   ],
@@ -68,7 +68,7 @@ class HomeScreen extends GetView<HomeController> {
                 // Search bar
                 Row(
                   children: [
-                    CircleAvatar(
+                    const CircleAvatar(
                       radius: 22,
                       backgroundImage:
                           NetworkImage('https://via.placeholder.com/100'),
@@ -198,7 +198,7 @@ class HomeScreen extends GetView<HomeController> {
                                     width: 115,
                                     child: Column(
                                       children: [
-                                        Expanded(child: Placeholder()),
+                                        const Expanded(child: Placeholder()),
                                         Text(
                                           "test",
                                           style: TFonts.textTitleStyle(),

@@ -16,10 +16,13 @@ class LoginModel extends ResponseModel<LoginData?> {
     }
   }
 
+  @override
   num? status;
   String? msg;
+  @override
   LoginData? data;
 
+  @override
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     map['status'] = status;
@@ -79,20 +82,20 @@ class LoginData {
   }
 
   Map<String, dynamic> toJson() {
-    final _data = <String, dynamic>{};
-    _data['id'] = id;
-    _data['name'] = name;
-    _data['email'] = email;
-    _data['email_verified_at'] = emailVerifiedAt;
-    _data['user_type'] = userType;
-    _data['academic_year'] = academicYear;
-    _data['phone'] = phone;
-    _data['image'] = image;
-    _data['token'] = deviceToken;
-    _data['is_logged_in'] = isLoggedIn;
-    _data['is_banned'] = isBanned;
-    _data['created_at'] = createdAt;
-    _data['updated_at'] = updatedAt;
-    return _data;
+    final data = <String, dynamic>{};
+    data['id'] = id;
+    data['name'] = name;
+    data['email'] = email;
+    data['email_verified_at'] = emailVerifiedAt;
+    data['user_type'] = userType;
+    data['academic_year'] = academicYear;
+    data['phone'] = phone;
+    data['image'] = image;
+    data['token'] = deviceToken;
+    data['is_logged_in'] = isLoggedIn;
+    data['is_banned'] = isBanned;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    return data;
   }
 }

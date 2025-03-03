@@ -17,8 +17,8 @@ class MainButton extends StatelessWidget {
   final Widget? widget;
   final bool withShadow;
 
-  const MainButton({
-    key,
+  const MainButton({super.key, 
+    
     this.title = "",
     this.width,
     this.height,

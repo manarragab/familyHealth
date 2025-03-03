@@ -57,7 +57,7 @@ class StatusError {
           sPrint.success('get Success');
           if (showSuccessToast) {
             Future.delayed(const Duration(milliseconds: 500), () {
-              showToast('${data!.message}', MessageErrorType.success);
+              showToast('${data.message}', MessageErrorType.success);
             });
           }
           return onSuccess.call();

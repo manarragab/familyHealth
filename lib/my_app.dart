@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
 }
 
 class NotFoundPage extends StatelessWidget {
-  NotFoundPage({Key? key}) : super(key: key);
+  const NotFoundPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +65,7 @@ class NotFoundPage extends StatelessWidget {
 }
 
 class Splash extends StatefulWidget {
-  Splash({Key? key}) : super(key: key);
+  const Splash({Key? key}) : super(key: key);
 
   @override
   _SplashState createState() {
@@ -101,11 +101,6 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
     });
   }
 
-  @override
-  void dispose() {
-    super.dispose();
-    //  _controller.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {

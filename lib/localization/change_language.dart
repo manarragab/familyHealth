@@ -31,7 +31,7 @@ class TLang {
       bool isEnglishChar = englishChar.contains(value.trim()[0].toLowerCase());
       // Print.info('isEnglishChar $value :: $isEnglishChar');
       return isEnglishChar;
-    } catch (e, s) {
+    } catch (e) {
       sPrint.warning(e);
       return false;
     }

@@ -17,10 +17,14 @@ class GroupModel extends ResponseModel<GroupData?> {
     status = json['status'];
     message = json['message'];
   }
+  @override
   GroupData? data;
+  @override
   num? status;
+  @override
   String? message;
 
+  @override
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     if (data != null) {

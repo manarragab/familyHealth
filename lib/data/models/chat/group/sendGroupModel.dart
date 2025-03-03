@@ -17,10 +17,14 @@ class SendGroupModel extends ResponseModel<ChatMessage?> {
     status = json['status'];
     message = json['message'];
   }
+  @override
   ChatMessage? data;
+  @override
   num? status;
+  @override
   String? message;
 
+  @override
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     if (data != null) {

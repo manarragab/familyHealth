@@ -1,4 +1,3 @@
-import 'package:abg/res/configuration/print_types.dart';
 
 /*String getMapImagePath(Branch branch) {
   int zoom = 17;

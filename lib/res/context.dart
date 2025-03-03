@@ -26,7 +26,7 @@ class TContext {
           } else {
             body = const Text("No more data");
           }
-          return Container(
+          return SizedBox(
             height: 55.0,
             child: Center(child: body),
           );

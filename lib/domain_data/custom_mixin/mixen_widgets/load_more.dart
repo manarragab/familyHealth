@@ -9,7 +9,7 @@ class TRefresher{
     sPrint.info('get refresh explain');
     try{
       model?.more = true;
-    }catch(e,s){
+    }catch(e){
       sPrint.warning(e.toString());
     }
     model = await getData(true);

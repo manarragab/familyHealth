@@ -1,4 +1,5 @@
 import 'package:abg/data/const/export.dart';
+import 'package:abg/features/alarm/presentation/add_alarm.dart';
 import 'package:abg/features/alarm/presentation/widget/alarm_item.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -13,9 +14,13 @@ class AlarmScreen extends StatelessWidget {
         children: [
           Center(
             child: MainButton(
-              onPressed: () {},
+              onPressed: () {
+
+                Get.to(const AddAlarm());
+              },
               radius: 10,
               title: CustomTrans.newAlarm.tr,
+              fontSize: 24,
             ),
           ),
           Column(

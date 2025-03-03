@@ -4,7 +4,7 @@ import 'package:abg/data/remote_data/response_model.dart';
 import 'package:abg/domain_data/repositories/domain_repositry.dart';
 
 class ChatCases {
-  DomainData _data;
+  final DomainData _data;
 
   ChatCases(this._data);
 

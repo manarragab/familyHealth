@@ -945,5 +945,12 @@ class CustomTrans {
 
   static const String newAlarm = "New Alarm";
 
+    static const String addAlarm = "Add Alarm";
+
+
+    static const String BacktoHome = "Back to Home";
+
+
+
   static const String needToAccept = "need to accept";
 }

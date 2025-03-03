@@ -38,7 +38,7 @@ class CustomColors {
   static const Color appBarFontColor = Color(0xff333333);
   static const Color greyFontColor = Color(0xff4A4A4A);
   static const Color greyFontColor2 = Color(0xff8F8E8E);
-  static Color shadowColor = Color(0xff545596).withOpacity(0.2);
+  static Color shadowColor = const Color(0xff545596).withOpacity(0.2);
   static const Color yellow = Color(0xffF2CB5F);
   static const Color lightYellow = Color(0xffFFF6DB);
   static Color textFieldColor = const Color(0xff637D92);
@@ -96,6 +96,13 @@ class CustomColors {
   static const Color lightGrey2 = Color(0xFFF8F8F8);
   static const Color lightBlue2 = Color(0xFF30495E);
   static const Color darkBlue2 = Color(0xFF24394A);
+  static const Color lightgrey3 = Color(0xFFF2F2F2);
+  static const Color darkgrey3 = Color(0xFF707070);
+  static const Color darkblack = Color(0xFF22282D);
+  static const Color lightgrey4= Color(0xFFEDEDED);
+
+
+
 
   /// this is the color of the apps
 
