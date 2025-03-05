@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:abg/data/const/export.dart' hide MultipartFile;
 import 'package:abg/data/models/alarm/get_alarms/alarm_model.dart';
+import 'package:abg/data/models/alarm/post_alarms/post_alarm.dart';
 import 'package:abg/data/models/alarm/post_alarms/post_alarm_response.dart';
 import 'package:abg/data/models/auth/login/LoginModel.dart';
 import 'package:abg/data/models/auth/users/PostEditProfile.dart';
@@ -222,8 +223,8 @@ class Remote {
     });
   }
 
-  Future<ResponseModel<List<Alarm>?>> getAlarm(PostGroupMessage post) async {
-    return _helper.get<List<Alarm>?>(await post.toJson(), path: "/user/alarms",
+  Future<ResponseModel<List<Alarm>?>> getAlarm() async {
+    return _helper.get<List<Alarm>?>({}, path: "/user/alarms",
         onSuccess: (dynamic data) {
       return AlarmModel.fromJson(data);
     }, onError: (data) {
@@ -231,7 +232,7 @@ class Remote {
     }, isLogin: true);
   }
 
-  Future<ResponseModel<Alarm?>> addAlarm(PostGroupMessage post) async {
+  Future<ResponseModel<Alarm?>> addAlarm(PostAlarm post) async {
     return _helper.post<Alarm?>(await post.toJson(), path: "/user/alarms",
         onSuccess: (dynamic data) {
       return PostAlarmResponse.fromJson(data);

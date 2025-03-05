@@ -1,8 +1,3 @@
-/*
-* to pick Image
-*/ /*
-
-
 import 'dart:io';
 
 import 'package:abg/data/const/export.dart';
@@ -15,10 +10,11 @@ class Pick {
   static Future<File?> pickImage(BuildContext context) async {
     ImageSource? imageSource = ImageSource.gallery;
     double? imageHeight = 30;
-    ImageSource? selected = await CustomBottomSheet.showCupertinoBottomSheet(context,
-        height: 220,
-        //  title: "select Image Source",
-        widget: [
+    ImageSource? selected =
+        await CustomBottomSheet.showCupertinoBottomSheet(context,
+            height: 220,
+            //  title: "select Image Source",
+            widget: [
           CupertinoActionSheetAction(
             onPressed: () {
               imageSource = ImageSource.camera;
@@ -75,4 +71,3 @@ class Pick {
     }
   }
 }
-*/

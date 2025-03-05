@@ -72,7 +72,7 @@ class CustomPage {
         page: () => const AlarmScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
-          Get.put(AlarmController()).selectradio;
+          Get.put(AlarmController()).onRefresh();
         })),
   ];
 

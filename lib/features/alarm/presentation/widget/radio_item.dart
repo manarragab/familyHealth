@@ -15,6 +15,7 @@ class RadioItem extends GetView<AlarmController> {
       return GestureDetector(
         onTap: () {
           controller.selectRadio = type;
+          controller.postAlarm.type = type.name;
           controller.update();
         },
         child: Row(

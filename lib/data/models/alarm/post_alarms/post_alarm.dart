@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:dio/dio.dart';
+
 /// image : "file"
 /// type : "medicine"
 /// title : "medicine title is here"
@@ -16,7 +18,7 @@ class PostAlarm {
     this.description,
     this.medicineStartDate,
     this.medicineEndDate,
-    this.isRepeatable,
+    this.isRepeatable = false,
   });
 
   PostAlarm.fromJson(dynamic json) {
@@ -27,25 +29,32 @@ class PostAlarm {
     medicineEndDate = json['medicine_end_date'];
     isRepeatable = json['is_repeatable'];
   }
+
   File? image;
   String? type;
   String? title;
   String? description;
   String? medicineStartDate;
   String? medicineEndDate;
-  String? isRepeatable;
+  bool isRepeatable = false;
+
+  String? alarmDate;
+
+  String? alarmTime;
 
   Future<Map<String, dynamic>> toJson() async {
     final map = <String, dynamic>{};
     if (image != null) {
-      map['image'] = image;
+      map['image'] = await MultipartFile.fromFile(image!.path);
     }
     map['type'] = type;
     map['title'] = title;
     map['description'] = description;
-    map['medicine_start_date'] = medicineStartDate;
+    map['alarm_date'] = alarmDate;
+    map['alarm_time'] = alarmTime;
+    map['medicine_start_date'] = medicineStartDate ?? alarmDate;
     map['medicine_end_date'] = medicineEndDate;
-    map['is_repeatable'] = isRepeatable;
+    map['is_repeatable'] = isRepeatable ? 1 : 0;
     return map;
   }
 }

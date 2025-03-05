@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:abg/data/models/alarm/get_alarms/alarm_model.dart';
+import 'package:abg/data/models/alarm/post_alarms/post_alarm.dart';
 import 'package:abg/data/models/auth/login/LoginModel.dart';
 import 'package:abg/data/models/auth/users/PostEditProfile.dart';
 import 'package:abg/data/models/auth/users/post_assign_user.dart';
@@ -71,9 +72,9 @@ abstract class DomainData {
 
   Future<ResponseModel<LoginData?>> socialLogin(SocialModel? socialModel);
 
-  Future<ResponseModel<List<Alarm>?>> getAlarm(PostGroupMessage post);
+  Future<ResponseModel<List<Alarm>?>> getAlarm();
 
-  Future<ResponseModel<Alarm?>> addAlarm(PostGroupMessage post);
+  Future<ResponseModel<Alarm?>> addAlarm(PostAlarm post);
 
   Future<ResponseModel<dynamic>> deleteAlarm(int id);
 

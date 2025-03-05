@@ -387,10 +387,6 @@ class CustomTextField {
               //height: 50,
               child: TextFormField(
                 enabled: true,
-                style: TFonts.inter(
-                    color: CustomColors.primary,
-                    fontSize: 14,
-                    fontWeight: TFontWights.bold),
                 controller: controller,
                 validator: (value) {
                   if (isRequired) {

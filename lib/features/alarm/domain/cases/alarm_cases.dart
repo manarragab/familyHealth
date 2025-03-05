@@ -1,5 +1,5 @@
 import 'package:abg/data/models/alarm/get_alarms/alarm_model.dart';
-import 'package:abg/data/models/chat/group/post_group_message.dart';
+import 'package:abg/data/models/alarm/post_alarms/post_alarm.dart';
 import 'package:abg/data/remote_data/response_model.dart';
 import 'package:abg/domain_data/repositories/domain_repositry.dart';
 
@@ -8,11 +8,11 @@ class AlarmCases {
 
   AlarmCases(this._data);
 
-  Future<ResponseModel<List<Alarm>?>> getAlarm(PostGroupMessage post) {
-    return _data.getAlarm(post);
+  Future<ResponseModel<List<Alarm>?>> getAlarm() {
+    return _data.getAlarm();
   }
 
-  Future<ResponseModel<Alarm?>> addAlarm(PostGroupMessage post) {
+  Future<ResponseModel<Alarm?>> addAlarm(PostAlarm post) {
     return _data.addAlarm(post);
   }
 

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:abg/data/models/alarm/get_alarms/alarm_model.dart';
+import 'package:abg/data/models/alarm/post_alarms/post_alarm.dart';
 import 'package:abg/data/models/auth/login/LoginModel.dart';
 import 'package:abg/data/models/auth/users/PostEditProfile.dart';
 import 'package:abg/data/models/auth/users/post_assign_user.dart';
@@ -110,7 +111,7 @@ class DataRepository implements DomainData {
   }
 
   @override
-  Future<ResponseModel<Alarm?>> addAlarm(PostGroupMessage post) {
+  Future<ResponseModel<Alarm?>> addAlarm(PostAlarm post) {
     return remote.addAlarm(post);
   }
 
@@ -120,7 +121,7 @@ class DataRepository implements DomainData {
   }
 
   @override
-  Future<ResponseModel<List<Alarm>?>> getAlarm(PostGroupMessage post) {
-    return remote.getAlarm(post);
+  Future<ResponseModel<List<Alarm>?>> getAlarm() {
+    return remote.getAlarm();
   }
 }

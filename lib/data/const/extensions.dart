@@ -3,6 +3,7 @@ import 'package:intl/intl.dart';
 extension Dates on DateTime {
   get stringDate => DateFormat('yyyy-MM-dd').format(this);
   get stringTime => DateFormat('HH:mm a').format(this);
+  get stringTime24 => DateFormat('HH:mm').format(this);
   get stringAllDate => DateFormat('yyyy-MM-dd HH:mm:ss').format(this);
 }
 
