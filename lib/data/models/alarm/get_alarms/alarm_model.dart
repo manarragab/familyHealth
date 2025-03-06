@@ -77,7 +77,7 @@ class Alarm {
     description = json['description'];
     alarmDate = json['alarm_date'];
     alarmTime = json['alarm_time'];
-    isRepeatable = json['is_repeatable'];
+    isRepeatable = json['is_repeatable']?.toString();
     medicineStartDate = json['medicine_start_date'];
     medicineEndDate = json['medicine_end_date'];
     image = json['image'];
@@ -92,7 +92,7 @@ class Alarm {
   String? description;
   dynamic alarmDate;
   dynamic alarmTime;
-  num? isRepeatable;
+  String? isRepeatable;
   String? medicineStartDate;
   String? medicineEndDate;
   String? image;
