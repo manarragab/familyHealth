@@ -10,6 +10,8 @@ import 'package:abg/data/models/auth/users/post_assign_user.dart';
 import 'package:abg/data/models/chat/chat_model.dart';
 import 'package:abg/data/models/chat/group/post_group_message.dart';
 import 'package:abg/data/models/chat/group/sendGroupModel.dart';
+import 'package:abg/data/models/family/get_family/family_model.dart';
+import 'package:abg/data/models/family/post_family/post_family_response.dart';
 import 'package:abg/data/models/group/group_model.dart';
 import 'package:abg/data/models/home/home_model.dart';
 import 'package:abg/data/models/social/social_model.dart';
@@ -17,6 +19,7 @@ import 'package:abg/data/remote_data/response_model.dart';
 import 'package:abg/res/notification/push_notification.dart';
 import 'package:dio/dio.dart';
 
+import '../models/family/post_family/post_family_MD.dart';
 import 'dio_helper.dart';
 
 class Remote {
@@ -223,6 +226,8 @@ class Remote {
     });
   }
 
+//alarm
+
   Future<ResponseModel<List<Alarm>?>> getAlarm() async {
     return _helper.get<List<Alarm>?>({}, path: "/user/alarms",
         onSuccess: (dynamic data) {
@@ -249,4 +254,43 @@ class Remote {
       return ResponseModel(status: data.status, message: data.message);
     }, isLogin: true);
   }
+
+
+//family
+  
+  Future<ResponseModel<List<Family>?>> getFamily() async {
+    return _helper.get<List<Family>?>({}, path: "/user/family",
+        onSuccess: (dynamic data) {
+      return FamilyModel.fromJson(data);
+    }, onError: (data) {
+      return ResponseModel(status: data.status, message: data.message);
+    }, isLogin: true);
+  }
+
+
+  Future<ResponseModel<Family?>> addFamily(PostfamilyModel post) async {
+    return _helper.post<Family?>(await post.toJson(), path: "/user/family",
+        onSuccess: (dynamic data) {
+      return PostFamilyResponse.fromJson(data);
+    }, onError: (data) {
+      return ResponseModel(status: data.status, message: data.message);
+    }, isLogin: true);
+  }
+
+
+ Future<ResponseModel<dynamic>> deleteFamily(int id) async {
+    return _helper.post<dynamic>({}, path: "/user/family/$id",
+        onSuccess: (dynamic data) {
+      return ResponseModel.fromJson(data);
+    }, onError: (data) {
+      return ResponseModel(status: data.status, message: data.message);
+    }, isLogin: true);
+  }
+
+
+
+
+
+
+
 }
