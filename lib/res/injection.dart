@@ -2,6 +2,7 @@
 import 'package:abg/features/alarm/domain/cases/alarm_cases.dart';
 import 'package:abg/features/auth/domain/cases/auth_case.dart';
 import 'package:abg/features/chat/domain/cases/chat_cases.dart';
+import 'package:abg/features/family/domain/cases/family_cases.dart';
 import 'package:abg/features/group/domain/cases/group_case.dart';
 import 'package:abg/features/home/domain/cases/home_cases.dart';
 import 'package:abg/features/notification/domain/cases/notification_cases.dart';
@@ -25,6 +26,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => GroupCase(sl()));
   sl.registerLazySingleton(() => ChatCases(sl()));
   sl.registerLazySingleton(() => AlarmCases(sl()));
+  sl.registerLazySingleton(() => FamilyCases(sl()));
   // * repository
   sl.registerLazySingleton<DomainData>(
       () => DataRepository(storage: sl(), remote: sl() /*, remoteFire: sl()*/));
