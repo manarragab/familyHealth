@@ -20,7 +20,7 @@ class AlarmController extends MainGetxController with CustomStateMixin {
   TextEditingController alarmTimeController = TextEditingController();
   TextEditingController medicineStartController = TextEditingController();
   TextEditingController medicineEndController = TextEditingController();
-  int _page = 1;
+  final int _page = 1;
 
   onRefresh() async {
     model = await refreshData(
@@ -50,9 +50,9 @@ class AlarmController extends MainGetxController with CustomStateMixin {
   }
 
   deleteAlarm(int id) async {
-    loadingGetxController.showLoading();
+    loadingGetxController.showCustomLoading(id.toString());
     var response = await sl<AlarmCases>().deleteAlarm(id);
-    loadingGetxController.hideLoading();
+    loadingGetxController.hideCustomLoading(id.toString());
     statusError.checkStatus(response, () {
       model.data?.removeWhere((e) => e.id == id);
       change(model);

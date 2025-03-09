@@ -59,6 +59,7 @@ class Pick {
     if (selected != null) {
       return _pickImage(selected);
     }
+    return null;
   }
 
   static Future<File?> _pickImage(ImageSource imageSource) async {
@@ -69,5 +70,6 @@ class Pick {
     if (file != null) {
       return File(file.path);
     }
+    return null;
   }
 }

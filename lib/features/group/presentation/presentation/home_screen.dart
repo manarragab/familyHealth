@@ -171,7 +171,7 @@ class HomeScreen extends GetView<HomeController> {
                             ),
                             const SizedBox(height: 16),
                             ...List.generate(2, (index) {
-                              return PillCard();
+                              return const PillCard();
                             }),
                           ],
                         ),
@@ -257,7 +257,7 @@ class HomeScreen extends GetView<HomeController> {
                                   onTap: () {
                                     //    Get.to(() => ChatScreen());
                                   },
-                                  child: DoctorCard());
+                                  child: const DoctorCard());
                             }),
                           ],
                         )

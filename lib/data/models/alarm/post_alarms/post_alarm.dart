@@ -1,7 +1,8 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
-
+import 'package:mime/mime.dart';
+import 'package:http_parser/http_parser.dart';
 /// image : "file"
 /// type : "medicine"
 /// title : "medicine title is here"
@@ -45,7 +46,9 @@ class PostAlarm {
   Future<Map<String, dynamic>> toJson() async {
     final map = <String, dynamic>{};
     if (image != null) {
-      map['image'] = await MultipartFile.fromFile(image!.path);
+      final mimeType = lookupMimeType(image!.path) ?? 'application/octet-stream'; // Detect file type
+      final mediaType = MediaType.parse(mimeType); // Convert to MediaType
+      map['image'] = await MultipartFile.fromFile(image!.path,contentType: mediaType);
     }
     map['type'] = type;
     map['title'] = title;

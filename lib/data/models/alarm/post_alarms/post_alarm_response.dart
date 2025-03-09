@@ -17,10 +17,14 @@ class PostAlarmResponse extends ResponseModel<Alarm?> {
     status = json['status'];
     message = json['message'];
   }
+  @override
   Alarm? data;
+  @override
   num? status;
+  @override
   String? message;
 
+  @override
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     if (data != null) {

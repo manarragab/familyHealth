@@ -3,12 +3,14 @@ import 'package:abg/features/group/presentation/presentation/home_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Done extends StatelessWidget {
+  const Done({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: CustomColors.darkblack,
       body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -28,7 +30,7 @@ class Done extends StatelessWidget {
                           Container(
                             width: 167,
                             height: 167,
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               color: CustomColors.lightgrey4,
                               shape: BoxShape.circle,
                             ),
@@ -45,7 +47,7 @@ class Done extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 13,
                     ),
                     Text("Thank you!",
@@ -53,7 +55,7 @@ class Done extends StatelessWidget {
                             fontSize: 24,
                             color: CustomColors.third,
                             fontWeight: FontWeight.w700)),
-                    SizedBox(
+                    const SizedBox(
                       height: 19,
                     ),
                     Text("The alarm has been added \n successfully.",
@@ -65,7 +67,7 @@ class Done extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 32,
               ),
                MainButton(              

@@ -38,7 +38,7 @@ class CustomPage {
         binding: GetBinding()),
     GetPage(
         name: splashPage,
-        page: () => Splash(),
+        page: () => const Splash(),
         transition: Transition.fadeIn,
         binding: GetBinding()),
     GetPage(

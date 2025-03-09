@@ -13,10 +13,14 @@ class PostFamilyResponse extends ResponseModel<Family?> {
     status = json['status'];
     message = json['message'];
   }
+  @override
   Family? data;
+  @override
   num? status;
+  @override
   String? message;
 
+  @override
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     if (data != null) {

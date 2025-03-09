@@ -13,13 +13,13 @@ class PostfamilyModel {
     }
 
     Map<String, dynamic> toJson() {
-        final Map<String, dynamic> _data = <String, dynamic>{};
+        final Map<String, dynamic> data = <String, dynamic>{};
         if(data != null) {
-            _data["data"] = data?.toJson();
+            data["data"] = data?.toJson();
         }
-        _data["status"] = status;
-        _data["message"] = message;
-        return _data;
+        data["status"] = status;
+        data["message"] = message;
+        return data;
     }
 }
 
@@ -49,16 +49,16 @@ class PostFamily {
     }
 
     Map<String, dynamic> toJson() {
-        final Map<String, dynamic> _data = <String, dynamic>{};
-        _data["image"] = image;
-        _data["name"] = name;
-        _data["brith_date"] = brithDate;
-        _data["phone"] = phone;
-        _data["relative"] = relative;
-        _data["user_id"] = userId;
-        _data["updated_at"] = updatedAt;
-        _data["created_at"] = createdAt;
-        _data["id"] = id;
-        return _data;
+        final Map<String, dynamic> data = <String, dynamic>{};
+        data["image"] = image;
+        data["name"] = name;
+        data["brith_date"] = brithDate;
+        data["phone"] = phone;
+        data["relative"] = relative;
+        data["user_id"] = userId;
+        data["updated_at"] = updatedAt;
+        data["created_at"] = createdAt;
+        data["id"] = id;
+        return data;
     }
 }

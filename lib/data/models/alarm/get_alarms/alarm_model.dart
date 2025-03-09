@@ -21,10 +21,14 @@ class AlarmModel extends ResponseModel<List<Alarm>?> {
     status = json['status'];
     message = json['message'];
   }
+  @override
   List<Alarm>? data;
+  @override
   num? status;
+  @override
   String? message;
 
+  @override
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
     if (data != null) {

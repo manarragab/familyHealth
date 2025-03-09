@@ -18,7 +18,7 @@ class GreycontainerItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 13),
+      padding: const EdgeInsets.symmetric(horizontal: 13),
       decoration: BoxDecoration(
           color: CustomColors.lightgrey,
           borderRadius: BorderRadius.circular(10)),
@@ -27,11 +27,11 @@ class GreycontainerItem extends StatelessWidget {
           Image.asset(
             image,
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
           Container(
-            margin: EdgeInsets.only(top: 10),
+            margin: const EdgeInsets.only(top: 10),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
@@ -43,7 +43,7 @@ class GreycontainerItem extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                       color: CustomColors.darkblue),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 3,
                 ),
                 Text(
@@ -53,7 +53,7 @@ class GreycontainerItem extends StatelessWidget {
                       fontWeight: FontWeight.w400,
                       color: CustomColors.darkblue),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 3,
                 ),
                 Text(
@@ -66,9 +66,9 @@ class GreycontainerItem extends StatelessWidget {
               ],
             ),
           ),
-          Spacer(),
+          const Spacer(),
           Container(
-            margin: EdgeInsets.only(top: 50),
+            margin: const EdgeInsets.only(top: 50),
             child: Text(
               "Details",
               style: GoogleFonts.almarai(

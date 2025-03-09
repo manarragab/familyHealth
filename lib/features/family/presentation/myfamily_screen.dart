@@ -3,20 +3,22 @@ import 'package:abg/features/family/presentation/addfamily_screen.dart';
 import 'package:abg/features/family/presentation/widget/greyContainer_item.dart';
 
 class MyfamilyScreen extends StatelessWidget {
+  const MyfamilyScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: CustomAppBar.appBar(CustomTrans.myFamily.tr),
         body: Stack(children: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 57),
+            padding: const EdgeInsets.symmetric(horizontal: 57),
             child: GridView(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 1,
                 mainAxisSpacing: 16,
                 mainAxisExtent: 81,
               ),
-              children: [
+              children: const [
                 GreycontainerItem(
                   image: "assets/images/grandFather.png",
                   name: "Omar Ahmed",

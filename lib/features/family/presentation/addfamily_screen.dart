@@ -2,12 +2,14 @@ import 'package:abg/data/const/export.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AddfamilyScreen extends StatelessWidget {
+  const AddfamilyScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: CustomAppBar.appBar(CustomTrans.family.tr),
         body: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 15),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Column(
               children: [
                 Center(
@@ -19,7 +21,7 @@ class AddfamilyScreen extends StatelessWidget {
                         color: CustomColors.darkblue),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
                 Expanded(
@@ -28,7 +30,7 @@ class AddfamilyScreen extends StatelessWidget {
                       Stack(
                         children: [
                           Center(
-                            child: Container(
+                            child: SizedBox(
                               width: 200,
                               height: 160.3,
                               child: ClipRRect(

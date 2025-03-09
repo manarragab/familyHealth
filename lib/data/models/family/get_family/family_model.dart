@@ -2,9 +2,12 @@
 import 'package:abg/data/remote_data/response_model.dart';
 
 class FamilyModel extends ResponseModel<List<Family>?>{
-    List<Family>? data;
-    num? status;
-    String? message;
+    @override
+  List<Family>? data;
+    @override
+  num? status;
+    @override
+  String? message;
 
     FamilyModel({this.data, this.status, this.message});
 
@@ -14,14 +17,15 @@ class FamilyModel extends ResponseModel<List<Family>?>{
         message = json["message"];
     }
 
-    Map<String, dynamic> toJson() {
-        final Map<String, dynamic> _data = <String, dynamic>{};
+    @override
+  Map<String, dynamic> toJson() {
+        final Map<String, dynamic> data = <String, dynamic>{};
         if(data != null) {
-            _data["data"] = data?.map((e) => e.toJson()).toList();
+            data["data"] = data?.map((e) => e.toJson()).toList();
         }
-        _data["status"] = status;
-        _data["message"] = message;
-        return _data;
+        data["status"] = status;
+        data["message"] = message;
+        return data;
     }
 }
 
@@ -43,12 +47,12 @@ class Family {
     }
 
     Map<String, dynamic> toJson() {
-        final Map<String, dynamic> _data = <String, dynamic>{};
-        _data["id"] = id;
-        _data["name"] = name;
-        _data["image"] = image;
-        _data["relative"] = relative;
-        _data["age"] = age;
-        return _data;
+        final Map<String, dynamic> data = <String, dynamic>{};
+        data["id"] = id;
+        data["name"] = name;
+        data["image"] = image;
+        data["relative"] = relative;
+        data["age"] = age;
+        return data;
     }
 }
