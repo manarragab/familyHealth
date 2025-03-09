@@ -247,17 +247,19 @@ class Remote {
   }
 
   Future<ResponseModel<dynamic>> deleteAlarm(int id) async {
-    return _helper.post<dynamic>({}, path: "/user/alarms/$id",
+    return _helper.delete<dynamic>(
+        path: "/user/alarms/$id",
         onSuccess: (dynamic data) {
-      return ResponseModel.fromJson(data);
-    }, onError: (data) {
-      return ResponseModel(status: data.status, message: data.message);
-    }, isLogin: true);
+          return ResponseModel.fromJson(data);
+        },
+        onError: (data) {
+          return ResponseModel(status: data.status, message: data.message);
+        },
+        isLogin: true);
   }
 
-
 //family
-  
+
   Future<ResponseModel<List<Family>?>> getFamily() async {
     return _helper.get<List<Family>?>({}, path: "/user/family",
         onSuccess: (dynamic data) {
@@ -266,7 +268,6 @@ class Remote {
       return ResponseModel(status: data.status, message: data.message);
     }, isLogin: true);
   }
-
 
   Future<ResponseModel<Family?>> addFamily(PostfamilyModel post) async {
     return _helper.post<Family?>(await post.toJson(), path: "/user/family",
@@ -277,20 +278,15 @@ class Remote {
     }, isLogin: true);
   }
 
-
- Future<ResponseModel<dynamic>> deleteFamily(int id) async {
-    return _helper.post<dynamic>({}, path: "/user/family/$id",
+  Future<ResponseModel<dynamic>> deleteFamily(int id) async {
+    return _helper.delete<dynamic>(
+        path: "/user/family/$id",
         onSuccess: (dynamic data) {
-      return ResponseModel.fromJson(data);
-    }, onError: (data) {
-      return ResponseModel(status: data.status, message: data.message);
-    }, isLogin: true);
+          return ResponseModel.fromJson(data);
+        },
+        onError: (data) {
+          return ResponseModel(status: data.status, message: data.message);
+        },
+        isLogin: true);
   }
-
-
-
-
-
-
-
 }

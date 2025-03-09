@@ -34,11 +34,14 @@ class AlarmItem extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-           
             Container(
-                width: 100,
-                height: 100,
-                child: Image.asset("assets/images/cheker.png" , fit:BoxFit.cover,) , ),
+              width: 100,
+              height: 100,
+              child: Image.asset(
+                "assets/images/cheker.png",
+                fit: BoxFit.cover,
+              ),
+            ),
 
             const SizedBox(width: 12),
 
@@ -54,18 +57,20 @@ class AlarmItem extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           )),
                       const Spacer(),
-                    InkWell(
+                      InkWell(
+                        onTap: onEdit,
                         child: SvgPicture.asset(
-                                    "assets/svg/edit.svg", 
-                                    
-                                  ),
+                          "assets/svg/edit.svg",
+                        ),
                       ),
-                      SizedBox(width: 16,),
-                    InkWell(
+                      SizedBox(
+                        width: 16,
+                      ),
+                      InkWell(
+                        onTap: onDelete,
                         child: SvgPicture.asset(
-                                    "assets/svg/delete.svg", 
-                                    
-                                  ),
+                          "assets/svg/delete.svg",
+                        ),
                       ),
                     ],
                   ),
@@ -75,31 +80,31 @@ class AlarmItem extends StatelessWidget {
                     maxLines: 3,
                     overflow: TextOverflow.ellipsis,
                     style: GoogleFonts.almarai(
-                                                  fontWeight:FontWeight.w400,
-
-                        fontSize: 12, color: CustomColors.lightBlue2),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 12,
+                        color: CustomColors.lightBlue2),
                   ),
                   const SizedBox(height: 14),
 
                   // Date & Time
                   Row(
                     children: [
-                     InkWell(
+                      InkWell(
                         child: SvgPicture.asset(
-                                    "assets/svg/clender.svg", 
-                                    
-                                  ),
-                      ),  const SizedBox(width: 4),
+                          "assets/svg/clender.svg",
+                        ),
+                      ),
+                      const SizedBox(width: 4),
                       Text(date,
                           style: const TextStyle(
                               fontSize: 12, color: Colors.black)),
                       const SizedBox(width: 16),
-                     InkWell(
+                      InkWell(
                         child: SvgPicture.asset(
-                                    "assets/svg/clock.svg", 
-                                    
-                                  ),
-                      ), const SizedBox(width: 4),
+                          "assets/svg/clock.svg",
+                        ),
+                      ),
+                      const SizedBox(width: 4),
                       Text(time,
                           style: const TextStyle(
                               fontSize: 12, color: Colors.black)),

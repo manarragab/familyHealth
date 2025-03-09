@@ -44,9 +44,9 @@ class PostAlarm {
 
   Future<Map<String, dynamic>> toJson() async {
     final map = <String, dynamic>{};
-    if (image != null) {
-      map['image'] = await MultipartFile.fromFile(image!.path);
-    }
+  // if (image != null) {
+  //   map['image'] = await MultipartFile.fromFile(image!.path);
+  // }
     map['type'] = type;
     map['title'] = title;
     map['description'] = description;
