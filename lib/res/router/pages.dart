@@ -6,6 +6,8 @@ import 'package:abg/features/auth/domain/controller/auth_controller.dart';
 import 'package:abg/features/auth/presentation/login_screen.dart';
 import 'package:abg/features/auth/presentation/my_account_screen.dart';
 import 'package:abg/features/auth/presentation/sign_up_screen.dart';
+import 'package:abg/features/family/domain/controller/family_controller.dart';
+import 'package:abg/features/family/presentation/myfamily_screen.dart';
 import 'package:abg/features/layout/presentation/layout_screen.dart';
 import 'package:abg/features/notification/domain/controller/notification_controller.dart';
 import 'package:abg/features/notification/presentation/notification_screen.dart';
@@ -74,6 +76,16 @@ class CustomPage {
         binding: BindingsBuilder(() {
           Get.put(AlarmController()).onRefresh();
         })),
+
+
+
+         GetPage(
+        name: myFamily,
+        page: () =>  MyfamilyScreen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+          Get.put(FamilyController());
+        })),
   ];
 
   static String layoutPage = '/layout';
@@ -93,4 +105,7 @@ class CustomPage {
   static String mainVerifyAccountScreen = "/main_verify_account_screen";
 
   static String myAlarm = "/my_alarm_page";
+
+    static String myFamily = "/my_family_page";
+
 }
