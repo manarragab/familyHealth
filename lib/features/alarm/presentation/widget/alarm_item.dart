@@ -34,7 +34,11 @@ class AlarmItem extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+<<<<<<< HEAD
             SizedBox(
+=======
+            Container(
+>>>>>>> 17247873ef4f9edd72afc80dac96596f5b03724f
               width: 100,
               height: 100,
               child: Image.asset(
@@ -63,7 +67,11 @@ class AlarmItem extends StatelessWidget {
                           "assets/svg/edit.svg",
                         ),
                       ),
+<<<<<<< HEAD
                       const SizedBox(
+=======
+                      SizedBox(
+>>>>>>> 17247873ef4f9edd72afc80dac96596f5b03724f
                         width: 16,
                       ),
                       InkWell(
