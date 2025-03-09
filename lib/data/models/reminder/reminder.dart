@@ -52,8 +52,8 @@ class Reminders {
   String? type;
   String? title;
   String? description;
-  dynamic alarmDate;
-  dynamic alarmTime;
+  String? alarmDate;
+  String? alarmTime;
   num? isRepeatable;
   String? medicineStartDate;
   String? medicineEndDate;

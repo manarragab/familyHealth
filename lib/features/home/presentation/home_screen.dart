@@ -115,7 +115,7 @@ class HomeScreen extends GetView<HomeController> {
                               Reminders remind = model.data!.reminders![index];
                               return _buildReminderCard(
                                 title: remind.title ?? "",
-                                subtitle: remind.alarmTime,
+                                subtitle: remind.alarmTime??"",
                                 dosage: remind.description ?? "",
                                 isTaken: index % 2 == 0,
                               );
@@ -280,7 +280,6 @@ class HomeScreen extends GetView<HomeController> {
     required bool isTaken,
   }) {
     return Container(
-      width: 180,
       margin: const EdgeInsets.only(right: 16),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
@@ -335,7 +334,6 @@ class HomeScreen extends GetView<HomeController> {
     required String image,
   }) {
     return Container(
-      width: 190,
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
