@@ -6,8 +6,8 @@ import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
 import 'package:abg/features/group/domain/controller/group_controller.dart';
 import 'package:abg/features/group/presentation/group_screen.dart';
 import 'package:abg/features/home/domain/controller/home_controller.dart';
-import 'package:abg/features/home/presentation/widget/doctor_card.dart';
-import 'package:abg/features/home/presentation/widget/home_banaras_bar.dart';
+import 'package:abg/features/group/presentation/presentation/widget/doctor_card.dart';
+import 'package:abg/features/group/presentation/presentation/widget/home_banaras_bar.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 

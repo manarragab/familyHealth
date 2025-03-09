@@ -1,7 +1,7 @@
 // dot_item
 import 'package:flutter/material.dart';
 
-import '../../../../../res/configuration/color.dart';
+import '../../../../../../res/configuration/color.dart';
 
 class DotItem extends StatelessWidget {
   final int index;
