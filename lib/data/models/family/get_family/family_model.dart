@@ -1,58 +1,59 @@
-
 import 'package:abg/data/remote_data/response_model.dart';
 
-class FamilyModel extends ResponseModel<List<Family>?>{
-    @override
+class FamilyModel extends ResponseModel<List<Family>?> {
+  @override
   List<Family>? data;
-    @override
+  @override
   num? status;
-    @override
+  @override
   String? message;
 
-    FamilyModel({this.data, this.status, this.message});
+  FamilyModel({this.data, this.status, this.message});
 
-    FamilyModel.fromJson(Map<String, dynamic> json) {
-        data = json["data"] == null ? null : (json["data"] as List).map((e) => Family.fromJson(e)).toList();
-        status = json["status"];
-        message = json["message"];
-    }
+  FamilyModel.fromJson(Map<String, dynamic> json) {
+    data = json["data"] == null
+        ? null
+        : (json["data"] as List).map((e) => Family.fromJson(e)).toList();
+    status = json["status"];
+    message = json["message"];
+  }
 
-    @override
+  @override
   Map<String, dynamic> toJson() {
-        final Map<String, dynamic> data = <String, dynamic>{};
-        if(data != null) {
-            data["data"] = data?.map((e) => e.toJson()).toList();
-        }
-        data["status"] = status;
-        data["message"] = message;
-        return data;
+    final Map<String, dynamic> jsonData = <String, dynamic>{}; // ✅ Renamed to jsonData
+    if (data != null) {
+      jsonData["data"] = data!.map((e) => e.toJson()).toList(); // ✅ Fixed null check
     }
+    jsonData["status"] = status;
+    jsonData["message"] = message;
+    return jsonData;
+  }
 }
 
 class Family {
-    int? id;
-    String? name;
-    String? image;
-    String? relative;
-    int? age;
+  int? id;
+  String? name;
+  String? image;
+  String? relative;
+  int? age;
 
-    Family({this.id, this.name, this.image, this.relative, this.age});
+  Family({this.id, this.name, this.image, this.relative, this.age});
 
-    Family.fromJson(Map<String, dynamic> json) {
-        id = json["id"];
-        name = json["name"];
-        image = json["image"];
-        relative = json["relative"];
-        age = json["age"];
-    }
+  Family.fromJson(Map<String, dynamic> json) {
+    id = json["id"];
+    name = json["name"];
+    image = json["image"];
+    relative = json["relative"];
+    age = json["age"];
+  }
 
-    Map<String, dynamic> toJson() {
-        final Map<String, dynamic> data = <String, dynamic>{};
-        data["id"] = id;
-        data["name"] = name;
-        data["image"] = image;
-        data["relative"] = relative;
-        data["age"] = age;
-        return data;
-    }
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> jsonData = <String, dynamic>{}; // ✅ Renamed to jsonData
+    jsonData["id"] = id;
+    jsonData["name"] = name;
+    jsonData["image"] = image;
+    jsonData["relative"] = relative;
+    jsonData["age"] = age;
+    return jsonData;
+  }
 }

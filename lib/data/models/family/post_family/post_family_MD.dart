@@ -1,4 +1,3 @@
-
 class PostfamilyModel {
     PostFamily? data;
     int? status;
@@ -13,20 +12,20 @@ class PostfamilyModel {
     }
 
     Map<String, dynamic> toJson() {
-        final Map<String, dynamic> data = <String, dynamic>{};
-        if(data != null) {
-            data["data"] = data?.toJson();
+        final Map<String, dynamic> Data = <String, dynamic>{}; 
+        if (data != null) { 
+            Data["data"] = data!.toJson(); 
         }
-        data["status"] = status;
-        data["message"] = message;
-        return data;
+        Data["status"] = status;
+        Data["message"] = message;
+        return Data;
     }
 }
 
 class PostFamily {
     String? image;
     String? name;
-    String? brithDate;
+    String? birthDate; 
     String? phone;
     String? relative;
     int? userId;
@@ -34,12 +33,12 @@ class PostFamily {
     String? createdAt;
     int? id;
 
-    PostFamily({this.image, this.name, this.brithDate, this.phone, this.relative, this.userId, this.updatedAt, this.createdAt, this.id});
+    PostFamily({this.image, this.name, this.birthDate, this.phone, this.relative, this.userId, this.updatedAt, this.createdAt, this.id});
 
     PostFamily.fromJson(Map<String, dynamic> json) {
         image = json["image"];
         name = json["name"];
-        brithDate = json["brith_date"];
+        birthDate = json["brith_date"];
         phone = json["phone"];
         relative = json["relative"];
         userId = json["user_id"];
@@ -49,16 +48,16 @@ class PostFamily {
     }
 
     Map<String, dynamic> toJson() {
-        final Map<String, dynamic> data = <String, dynamic>{};
-        data["image"] = image;
-        data["name"] = name;
-        data["brith_date"] = brithDate;
-        data["phone"] = phone;
-        data["relative"] = relative;
-        data["user_id"] = userId;
-        data["updated_at"] = updatedAt;
-        data["created_at"] = createdAt;
-        data["id"] = id;
-        return data;
+        final Map<String, dynamic> Data = <String, dynamic>{}; // ✅ Renamed to Data
+        Data["image"] = image;
+        Data["name"] = name;
+        Data["brith_date"] = birthDate;
+        Data["phone"] = phone;
+        Data["relative"] = relative;
+        Data["user_id"] = userId;
+        Data["updated_at"] = updatedAt;
+        Data["created_at"] = createdAt;
+        Data["id"] = id;
+        return Data;
     }
 }
