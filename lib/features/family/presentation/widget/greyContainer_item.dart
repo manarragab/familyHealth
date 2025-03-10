@@ -24,8 +24,10 @@ class GreycontainerItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(10)),
       child: Row(
         children: [
-          Image.asset(
+          Image.network(
+            
             image,
+            width: 40,
           ),
           const SizedBox(
             width: 10,

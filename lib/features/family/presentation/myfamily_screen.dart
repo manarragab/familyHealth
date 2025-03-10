@@ -1,75 +1,48 @@
 import 'package:abg/data/const/export.dart';
-import 'package:abg/features/family/presentation/addfamily_screen.dart';
+import 'package:abg/data/models/family/get_family/family_model.dart';
+import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
+import 'package:abg/features/family/domain/controller/family_controller.dart';
 import 'package:abg/features/family/presentation/widget/greyContainer_item.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-class MyfamilyScreen extends StatelessWidget {
+class MyfamilyScreen extends GetView<FamilyController> {
   const MyfamilyScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: CustomAppBar.appBar(CustomTrans.myFamily.tr),
-        body: Stack(children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 57),
-            child: GridView(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 1,
-                mainAxisSpacing: 16,
-                mainAxisExtent: 81,
+      appBar: CustomAppBar.appBar(CustomTrans.myFamily.tr),
+      body: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16),
+          child: controller.obx((state) {
+            FamilyModel model=state;
+             List<Family> data=model.data?? [];
+            return SmartRefresher(
+              controller: controller.ref,
+              onRefresh: controller.onRefresh,
+              child: ListView.builder(
+                itemCount: data.length,
+                itemBuilder:  (context, Index) {
+                  Family fam=data[Index];
+                  return GreycontainerItem(
+                    image: fam.image??"",
+                    name: fam.name??"",
+                    kind: fam.relative??"",
+                    age: fam.age??1,
+                  );
+                },
               ),
-              children: const [
-                GreycontainerItem(
-                  image: "assets/images/grandFather.png",
-                  name: "Omar Ahmed",
-                  kind: "My Dad",
-                  age: 50,
-                ),
-                GreycontainerItem(
-                  image: "assets/images/grandMother.png",
-                  name: "Mayada Hosni",
-                  kind: "Mom",
-                  age: 45,
-                ),
-                GreycontainerItem(
-                  image: "assets/images/boyy.png",
-                  name: "Mohamed Ahmed",
-                  kind: "My Husband",
-                  age: 35,
-                ),
-                GreycontainerItem(
-                  image: "assets/images/girll.png",
-                  name: "Hana Ahmed",
-                  kind: "My Daughter",
-                  age: 18,
-                ),
-                GreycontainerItem(
-                  image: "assets/images/nono1.png",
-                  name: "Mohamed Ahmed",
-                  kind: "My Son",
-                  age: 3,
-                ),
-                GreycontainerItem(
-                  image: "assets/images/nono2.png",
-                  name: "Yousef Ahmed",
-                  kind: "My Son",
-                  age: 10,
-                ),
-              ],
-            ),
-          ),
-          Positioned(
-              left: 16,
-              bottom: 50,
-              child: GestureDetector(
-                  onTap: () {
-                 Get.to(const AddfamilyScreen());
-                  },
-                  child: Image.asset(
-                    "assets/images/add.png",
-                    width: 56,
-                    height: 56,
-                  )))
-        ]));
+            );
+          })),
+      floatingActionButton: FloatingActionButton(
+        elevation: 0,
+        onPressed: () {},
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+          size: 40,
+        ),
+      ),
+    );
   }
 }

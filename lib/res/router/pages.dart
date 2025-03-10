@@ -81,7 +81,7 @@ class CustomPage {
         page: () =>  const MyfamilyScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
-        Get.put(FamilyController());
+        Get.put(FamilyController()).onRefresh();
         })),
   ];
 

@@ -14,13 +14,13 @@ class AlarmController extends MainGetxController with CustomStateMixin {
 
   AlarmModel model = AlarmModel();
   PostAlarm postAlarm = PostAlarm();
-
   RefreshController refreshController = RefreshController();
+  
   TextEditingController alarmDateController = TextEditingController();
   TextEditingController alarmTimeController = TextEditingController();
   TextEditingController medicineStartController = TextEditingController();
   TextEditingController medicineEndController = TextEditingController();
-  final int _page = 1;
+   int _page = 1;
 
   onRefresh() async {
     model = await refreshData(
@@ -35,7 +35,7 @@ class AlarmController extends MainGetxController with CustomStateMixin {
         }
         return data;
       },
-      getPage: (_) => _,
+      getPage: (page) => _page=page,
     );
   }
 
