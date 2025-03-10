@@ -1,5 +1,5 @@
 // home_banaras_bar
-import 'package:abg/features/group/presentation/presentation/widget/home_banar_item.dart';
+import 'package:abg/features/home/presentation/widget/home_banar_item.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';

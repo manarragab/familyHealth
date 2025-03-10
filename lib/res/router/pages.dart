@@ -76,15 +76,12 @@ class CustomPage {
         binding: BindingsBuilder(() {
           Get.put(AlarmController()).onRefresh();
         })),
-
-
-
          GetPage(
         name: myFamily,
-        page: () =>  MyfamilyScreen(),
+        page: () =>  const MyfamilyScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
-          Get.put(FamilyController());
+        Get.put(FamilyController());
         })),
   ];
 
@@ -106,6 +103,6 @@ class CustomPage {
 
   static String myAlarm = "/my_alarm_page";
 
-    static String myFamily = "/my_family_page";
+    static String myFamily = "/family_page";
 
 }

@@ -2,7 +2,7 @@ import 'package:abg/data/const/export.dart';
 import 'package:abg/data/models/group/group_model.dart';
 import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
 import 'package:abg/features/group/domain/controller/group_controller.dart';
-import 'package:abg/features/group/presentation/presentation/widget/dentistry_card.dart';
+import 'package:abg/features/home/presentation/widget/dentistry_card.dart';
 
 class GroupScreen extends GetView<GroupController> {
   const GroupScreen({Key? key}) : super(key: key);

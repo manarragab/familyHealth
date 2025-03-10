@@ -63,7 +63,7 @@ class MyfamilyScreen extends StatelessWidget {
               bottom: 50,
               child: GestureDetector(
                   onTap: () {
-                 Get.to(AddfamilyScreen());
+                 Get.to(const AddfamilyScreen());
                   },
                   child: Image.asset(
                     "assets/images/add.png",

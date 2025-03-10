@@ -1,7 +1,7 @@
 import 'package:abg/features/auth/domain/cases/auth_case.dart';
 import 'package:abg/features/group/presentation/group_screen.dart';
 import 'package:abg/features/home/domain/controller/home_controller.dart';
-import 'package:abg/features/group/presentation/presentation/home_screen.dart';
+import 'package:abg/features/home/presentation/home_screen.dart';
 import 'package:abg/features/layout/domain/controller/layout_controller.dart';
 import 'package:abg/features/profile/presentation/profile_screen.dart';
 import 'package:abg/res/configuration/print_types.dart';
@@ -15,7 +15,7 @@ class LayoutScreen extends GetView<LayoutController> {
   LayoutScreen({Key? key}) : super(key: key);
 
   List<Widget> navigationBar = [
-    HomeScreen(),
+    Homescreen(),
     const Scaffold(),
     const GroupScreen(),
     ProfileScreen(),

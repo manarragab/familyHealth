@@ -37,7 +37,7 @@ class AlarmItem extends StatelessWidget {
 
             const SizedBox(width: 12),
 
-           Container(
+           SizedBox(
               width: 100,
               height: 100,
               child: Image.asset(
@@ -67,7 +67,7 @@ class AlarmItem extends StatelessWidget {
                         ),
                       ),
 
-                      SizedBox(
+                      const SizedBox(
                         width: 16,
                       ),
                       InkWell(
