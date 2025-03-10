@@ -250,7 +250,7 @@ class Remote {
   Future<ResponseModel<Alarm?>> updateAlarm(PostAlarm post) async {
     return _helper.post<Alarm?>(await post.toJson(), path: "/user/alarms/${post.id}?_method=PUT",
         onSuccess: (dynamic data) {
-          return PostAlarmResponse.fromJson(data);
+          return ResponseModel.fromJson(data);
         }, onError: (data) {
           return ResponseModel(status: data.status, message: data.message);
         }, isLogin: true);
