@@ -33,7 +33,7 @@ class AlarmScreen extends GetView<AlarmController> {
               height: Get.height,
               alignment: Alignment.center,
               child: controller.obx((state) {
-                AlarmModel model = state;
+                AlarmModel model = state; 
                 List<Alarm> list = model.data ?? [];
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

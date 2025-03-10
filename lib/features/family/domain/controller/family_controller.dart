@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:abg/data/const/export.dart';
 import 'package:abg/data/models/family/get_family/family_model.dart';
 import 'package:abg/data/models/family/post_family/post_family_MD.dart';
@@ -8,8 +10,9 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class FamilyController extends MainGetxController with CustomStateMixin {
 
+
   FamilyModel famMD = FamilyModel();
-  PostfamilyModel postFam = PostfamilyModel();
+  PostFamily postFam =PostFamily();
   RefreshController ref = RefreshController();
 
   int _pageNum = 1;
@@ -31,6 +34,8 @@ class FamilyController extends MainGetxController with CustomStateMixin {
         //load refresh part with part
         getPage: (page) => _pageNum = page);
   }
+
+
 
 
 

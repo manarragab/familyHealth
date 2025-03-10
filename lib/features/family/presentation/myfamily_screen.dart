@@ -2,6 +2,7 @@ import 'package:abg/data/const/export.dart';
 import 'package:abg/data/models/family/get_family/family_model.dart';
 import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
 import 'package:abg/features/family/domain/controller/family_controller.dart';
+import 'package:abg/features/family/presentation/addfamily_screen.dart';
 import 'package:abg/features/family/presentation/widget/greyContainer_item.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -37,7 +38,9 @@ class MyfamilyScreen extends GetView<FamilyController> {
           })),
       floatingActionButton: FloatingActionButton(
         elevation: 0,
-        onPressed: () {},
+        onPressed: () {
+          Get.to(AddfamilyScreen());
+        },
         child: const Icon(
           Icons.add,
           color: Colors.white,

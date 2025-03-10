@@ -952,6 +952,7 @@ class CustomTrans {
 
     static const String BacktoHome = "Back to Home";
 
+    static const String Add = "Add";
 
 
   static const String needToAccept = "need to accept";
