@@ -63,8 +63,9 @@ class AlarmItem extends StatelessWidget {
                           "assets/svg/edit.svg",
                         ),
                       ),
-                      SizedBox(
-                        width: 16,
+                      const SizedBox
+                        (
+                        width: 20,
                       ),
                       InkWell(
                         onTap: onDelete,

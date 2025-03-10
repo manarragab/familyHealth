@@ -89,7 +89,7 @@ class DioHelper {
                     ...headers
                   }));
           sPrint.warning(_response.data);
-          if (_response.statusCode == 200 && _response.data is! String) {
+          if ((_response.statusCode == 200 || _response.statusCode == 202||_response.statusCode == 201) && _response.data is! String) {
             Map<String, dynamic> data = {"status": 1};
             sPrint.warning(
                 'check if there is data:: ${(_response.data as Map<String, dynamic>).containsKey("data")}');

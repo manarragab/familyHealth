@@ -47,12 +47,13 @@ class AddAlarm extends GetView<AlarmController> {
                 children: [
                   CustomTextField.dynamicTextField((value) {
                     controller.postAlarm.title = value;
-                  }, hint: "Name alarm"),
+                  }, hint: "Name alarm", controller: controller.nameController),
                   const SizedBox(height: 16),
                   CustomTextField.paragraphTextField(
                     (value) {
                       controller.postAlarm.description = value;
                     },
+                    controller: controller.messageController,
                     hint: "The message you want with the alarm",
                   ),
                   const SizedBox(height: 16),
@@ -160,15 +161,19 @@ class AddAlarm extends GetView<AlarmController> {
                                       width: 382,
                                       height: 306.17,
                                     )
-                                  : Image.asset(
-                                      "assets/images/cheker.png",
-                                      fit: BoxFit.cover,
-                                      width: 382,
-                                      height: 306.17,
-                                    ),
+                                  : controller.postAlarm.imageData != null
+                                      ? Image.network(
+                                          controller.postAlarm.imageData ?? "")
+                                      : Image.asset(
+                                          "assets/images/cheker.png",
+                                          fit: BoxFit.cover,
+                                          width: 382,
+                                          height: 306.17,
+                                        ),
                             ),
                           ),
-                          if (controller.postAlarm.image == null)
+                          if (controller.postAlarm.image == null &&
+                              controller.postAlarm.imageData == null)
                             Positioned.fill(
                               child: Center(
                                 child: Column(
@@ -196,7 +201,11 @@ class AddAlarm extends GetView<AlarmController> {
                   Center(
                     child: MainButton(
                       onPressed: () {
-                        controller.addAlarm();
+                        if(controller.postAlarm.id != null){
+                          controller.updateAlarm();
+                        }else {
+                          controller.addAlarm();
+                        }
                       },
                       radius: 10,
                       title: CustomTrans.addAlarm.tr,

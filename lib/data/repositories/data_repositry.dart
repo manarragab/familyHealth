@@ -127,10 +127,9 @@ class DataRepository implements DomainData {
     return remote.getAlarm();
   }
 
-
   @override
   Future<ResponseModel<List<Family>?>> getFamily() {
-   return remote.getFamily();
+    return remote.getFamily();
   }
 
   @override
@@ -141,5 +140,15 @@ class DataRepository implements DomainData {
   @override
   Future<ResponseModel> deleteFamily(int id) {
     return remote.deleteFamily(id);
+  }
+
+  @override
+  Future<ResponseModel<Alarm?>> alarmDetails(int id) {
+    return remote.alarmDetails(id);
+  }
+
+  @override
+  Future<ResponseModel<Alarm?>> updateAlarm(PostAlarm post) {
+    return remote.updateAlarm(post);
   }
 }

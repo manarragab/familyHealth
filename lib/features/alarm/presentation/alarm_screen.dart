@@ -22,6 +22,7 @@ class AlarmScreen extends GetView<AlarmController> {
             Center(
               child: MainButton(
                 onPressed: () {
+                  controller.clearData();
                   Get.to(const AddAlarm());
                 },
                 radius: 10,
@@ -58,7 +59,9 @@ class AlarmScreen extends GetView<AlarmController> {
                           description: alarm.description ?? "",
                           date: alarm.alarmDate ?? "",
                           time: alarm.alarmTime ?? "",
-                          onEdit: () {},
+                          onEdit: () {
+                            controller.getDetails(alarm.id!.toInt());
+                          },
                           onDelete: () {
                             controller.deleteAlarm(alarm.id!.toInt());
                           },

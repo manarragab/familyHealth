@@ -55,9 +55,10 @@ class CustomTextField {
   static Widget dynamicTextField(
     Function(String value) onChange, {
     String hint = '',
-    Widget? suffixIcon,
+    Widget? suffixIcon,  TextEditingController? controller,
   }) {
     return TextFormField(
+      controller: controller,
       keyboardType: TextInputType.multiline,
       validator: (value) => TValidator.normalValidator(value?.trim()),
       onChanged: (x) => onChange(replaceArabicNumber(x.trim())),

@@ -19,4 +19,12 @@ class AlarmCases {
   Future<ResponseModel<dynamic>> deleteAlarm(int id) {
     return _data.deleteAlarm(id);
   }
+
+  Future<ResponseModel<Alarm?>> alarmDetails(int id) {
+    return _data.alarmDetails(id);
+  }
+
+  Future<ResponseModel<Alarm?>> updateAlarm(PostAlarm post) {
+    return _data.updateAlarm(post);
+  }
 }

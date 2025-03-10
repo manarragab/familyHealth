@@ -82,6 +82,9 @@ abstract class DomainData {
 
   Future<ResponseModel<dynamic>> deleteAlarm(int id);
 
+  Future<ResponseModel<Alarm?>> alarmDetails(int id);
+  Future<ResponseModel<Alarm?>> updateAlarm(PostAlarm post);
+
   //family
 
   Future<ResponseModel<List<Family>?>> getFamily();
