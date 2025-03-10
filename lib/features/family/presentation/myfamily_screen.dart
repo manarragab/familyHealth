@@ -20,10 +20,11 @@ class MyfamilyScreen extends GetView<FamilyController> {
             return SmartRefresher(
               controller: controller.ref,
               onRefresh: controller.onRefresh,
-              child: ListView.builder(
+              child: ListView.separated(
                 itemCount: data.length,
-                itemBuilder:  (context, Index) {
-                  Family fam=data[Index];
+                separatorBuilder: (context,index)=> const SizedBox(height: 10,),
+                itemBuilder:  (context, index) {
+                  Family fam=data[index];
                   return GreycontainerItem(
                     image: fam.image??"",
                     name: fam.name??"",
