@@ -26,7 +26,7 @@ class PostAlarm {
     id = json['id'];
     type = json['type'];
     title = json['title'];
-    imageData = json['image'];
+    imageData = json['image_path'];
     alarmDate = json["alarm_date"];
     alarmTime = json['alarm_time'];
     description = json['description'];

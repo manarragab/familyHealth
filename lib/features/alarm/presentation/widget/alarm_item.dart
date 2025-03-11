@@ -1,10 +1,12 @@
 import 'package:abg/res/configuration/color.dart';
+import 'package:abg/res/configuration/image/custom_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AlarmItem extends StatelessWidget {
   final String title;
+  final String image;
   final String description;
   final String date;
   final String time;
@@ -13,6 +15,7 @@ class AlarmItem extends StatelessWidget {
 
   const AlarmItem({
     Key? key,
+    required this.image,
     required this.title,
     required this.description,
     required this.date,
@@ -37,8 +40,8 @@ class AlarmItem extends StatelessWidget {
             Container(
               width: 100,
               height: 100,
-              child: Image.asset(
-                "assets/images/cheker.png",
+              child: CustomImage.network(
+                image,
                 fit: BoxFit.cover,
               ),
             ),

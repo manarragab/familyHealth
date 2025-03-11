@@ -163,7 +163,7 @@ class AddAlarm extends GetView<AlarmController> {
                                     )
                                   : controller.postAlarm.imageData != null
                                       ? Image.network(
-                                          controller.postAlarm.imageData ?? "")
+                                          controller.postAlarm.imageData ?? "",fit: BoxFit.contain,)
                                       : Image.asset(
                                           "assets/images/cheker.png",
                                           fit: BoxFit.cover,

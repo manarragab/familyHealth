@@ -80,7 +80,7 @@ class Alarm {
     isRepeatable = json['is_repeatable']?.toString();
     medicineStartDate = json['medicine_start_date'];
     medicineEndDate = json['medicine_end_date'];
-    image = json['image'];
+    image = json['image_path'];
     isTriggered = json['is_triggered'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
@@ -112,7 +112,7 @@ class Alarm {
     map['is_repeatable'] = isRepeatable;
     map['medicine_start_date'] = medicineStartDate;
     map['medicine_end_date'] = medicineEndDate;
-    map['image'] = image;
+    map['image_path'] = image;
     map['is_triggered'] = isTriggered;
     map['created_at'] = createdAt;
     map['updated_at'] = updatedAt;

@@ -39,22 +39,13 @@ class AlarmScreen extends GetView<AlarmController> {
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    /* Container(
-                        margin: const EdgeInsets.symmetric(
-                            horizontal: 10, vertical: 15),
-                        child: Text(
-                          'Today',
-                          style: GoogleFonts.almarai(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                              color: CustomColors.lightBlue2),
-                        )),*/
                     ...List.generate(list.length, (index) {
                       Alarm alarm = list[index];
                       return LoadingOverLay(
                         showLoadingOnly: true,
                         id: alarm.id.toString(),
                         child: AlarmItem(
+                          image: alarm.image??"",
                           title: alarm.title ?? "",
                           description: alarm.description ?? "",
                           date: alarm.alarmDate ?? "",
