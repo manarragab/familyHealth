@@ -19,7 +19,7 @@ import 'package:abg/data/remote_data/response_model.dart';
 import 'package:abg/res/notification/push_notification.dart';
 import 'package:dio/dio.dart';
 
-import '../models/family/post_family/post_family_MD.dart';
+import '../models/family/post_family/post_family.dart';
 import 'dio_helper.dart';
 
 class Remote {

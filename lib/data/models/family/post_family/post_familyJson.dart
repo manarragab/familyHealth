@@ -15,3 +15,12 @@ Map<String,dynamic> postFamilyJSON={
     "status": 201,
     "message": "Family member Created Successfully!"
 };
+
+Map<String, dynamic> postFamily= {
+    'image': "",
+    'name': 'Family member two name',
+    'brith_date': '1980-02-22',
+    'phone': '01152067272',
+    'relative': 'Brother',
+    'medical_record[]': 'Medical Record One',
+};
