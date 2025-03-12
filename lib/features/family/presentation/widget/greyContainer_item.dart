@@ -70,16 +70,25 @@ class GreycontainerItem extends StatelessWidget {
             ],
           ),
           const Spacer(),
-          Container(
-            margin: const EdgeInsets.only(top: 50),
-            child: Text(
-              "Details",
-              style: GoogleFonts.almarai(
-                  fontSize: 10,
-                  fontWeight: FontWeight.w400,
-                  color: CustomColors.darkpinky),
-            ),
-          )
+          Column(
+               children: [
+              InkWell(
+                onTap: (){
+
+                },
+                child: SvgPicture.asset("assets/svg/delete.svg")),
+             SizedBox(height:22),
+           
+              Text(
+                  "Details",
+                  style: GoogleFonts.almarai(
+                      fontSize: 10,
+                      fontWeight: FontWeight.w400,
+                      color: CustomColors.darkpinky),
+                ),
+            ],
+          ),
+        
         ],
       ),
     );

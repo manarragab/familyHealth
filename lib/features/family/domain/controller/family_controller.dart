@@ -8,8 +8,9 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class FamilyController extends MainGetxController with CustomStateMixin {
 
+
   FamilyModel famMD = FamilyModel();
-  Family postFam = Family();
+  PostFamily postFam =PostFamily();
   RefreshController ref = RefreshController();
 
   int _pageNum = 1;
@@ -31,6 +32,8 @@ class FamilyController extends MainGetxController with CustomStateMixin {
         //load refresh part with part
         getPage: (page) => _pageNum = page);
   }
+
+
 
 
 

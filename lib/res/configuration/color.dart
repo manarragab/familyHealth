@@ -104,6 +104,8 @@ class CustomColors {
  static const Color darkblue=Color.fromRGBO(36, 57, 74, 1);
  static const Color darkpinky=Color.fromRGBO(238, 45, 108, 1);
  static const Color lightgrey=Color.fromRGBO(235, 235, 235, 1);
+ static const Color lighttblue=Color.fromRGBO(48, 73, 94, 1);
+
 
 
   /// this is the color of the apps

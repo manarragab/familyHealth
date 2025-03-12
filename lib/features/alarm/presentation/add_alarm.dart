@@ -203,9 +203,7 @@ class AddAlarm extends GetView<AlarmController> {
                       fontSize: 24,
                     ),
                   ),
-                  const SizedBox(
-                    height: 16,
-                  ),
+                 
                 ],
               ))
             ],
