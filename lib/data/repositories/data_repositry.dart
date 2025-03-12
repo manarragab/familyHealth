@@ -134,7 +134,7 @@ class DataRepository implements DomainData {
   }
 
   @override
-  Future<ResponseModel<Family?>> addFamily(PostfamilyModel post) {
+  Future<ResponseModel<Family?>> addFamily(Family post) {
     return remote.addFamily(post);
   }
 

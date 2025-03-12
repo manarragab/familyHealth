@@ -1,6 +1,8 @@
 import 'package:abg/data/models/family/get_family/family_model.dart';
 import 'package:abg/data/remote_data/response_model.dart';
 
+import 'post_family_MD.dart';
+
 class PostFamilyResponse extends ResponseModel<Family?> {
   PostFamilyResponse({
     this.data,

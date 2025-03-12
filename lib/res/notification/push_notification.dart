@@ -22,20 +22,13 @@ class PushNotificationsManager {
 
   bool showNotification = true;
 
-  subscribeEmployee({bool value = true}) {
-    if (value) {
-      firebaseMessaging.subscribeToTopic(LoginType.employee.name);
-    } else {
-      firebaseMessaging.unsubscribeFromTopic(LoginType.employee.name);
-    }
+  subscribe(String id) {
+    sPrint.info('alarm:: $id');
+    firebaseMessaging.subscribeToTopic(id);
   }
 
-  subscribeClient({bool value = true}) {
-    if (value) {
-      firebaseMessaging.subscribeToTopic(LoginType.client.name);
-    } else {
-      firebaseMessaging.unsubscribeFromTopic(LoginType.client.name);
-    }
+  unSubscribe(String id) {
+    firebaseMessaging.unsubscribeFromTopic(id);
   }
 
   getNotification() {

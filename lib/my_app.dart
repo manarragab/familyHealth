@@ -88,7 +88,6 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
     PushNotificationsManager().requestNotificationPermissions();
     PushNotificationsManager().getNotificationToken();
     PushNotificationsManager().getNotification();
-    PushNotificationsManager().subscribeClient();
     // getData();
     sPrint.warning('checkIFSelected:: ${TLang.checkIFSelectLocal()}');
     Future.delayed(const Duration(seconds: 1), () {

@@ -7,6 +7,7 @@ import 'package:abg/data/models/alarm/post_alarms/post_alarm.dart';
 import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
 import 'package:abg/domain_data/custom_mixin/mixen_widgets/status_error.dart';
 import 'package:abg/features/alarm/domain/cases/alarm_cases.dart';
+import 'package:abg/res/notification/push_notification.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class AlarmController extends MainGetxController with CustomStateMixin {
@@ -44,6 +45,7 @@ class AlarmController extends MainGetxController with CustomStateMixin {
     var response = await sl<AlarmCases>().addAlarm(postAlarm);
     loadingGetxController.hideLoading();
     statusError.checkStatus(response, () {
+      PushNotificationsManager().subscribe("alarm-${response.data?.alarmDate}_${response.data?.alarmTime}");
       onRefresh();
       Get.back();
     });
