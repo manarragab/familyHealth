@@ -113,7 +113,7 @@ class DataRepository implements DomainData {
   }
 
   @override
-  Future<ResponseModel<Alarm?>> addAlarm(PostAlarm post) {
+  Future<ResponseModel<AlarmData?>> addAlarm(PostAlarm post) {
     return remote.addAlarm(post);
   }
 
@@ -123,7 +123,7 @@ class DataRepository implements DomainData {
   }
 
   @override
-  Future<ResponseModel<List<Alarm>?>> getAlarm() {
+  Future<ResponseModel<List<AlarmData>?>> getAlarm() {
     return remote.getAlarm();
   }
 
@@ -143,12 +143,12 @@ class DataRepository implements DomainData {
   }
 
   @override
-  Future<ResponseModel<Alarm?>> alarmDetails(int id) {
+  Future<ResponseModel<AlarmData?>> alarmDetails(int id) {
     return remote.alarmDetails(id);
   }
 
   @override
-  Future<ResponseModel<Alarm?>> updateAlarm(PostAlarm post) {
+  Future<ResponseModel<AlarmData?>> updateAlarm(PostAlarm post) {
     return remote.updateAlarm(post);
   }
 }

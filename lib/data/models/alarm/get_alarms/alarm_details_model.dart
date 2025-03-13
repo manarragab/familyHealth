@@ -6,7 +6,7 @@ import 'alarm_model.dart';
 /// status : 200
 /// message : "Success"
 
-class AlarmDetailsModel extends ResponseModel<Alarm?> {
+class AlarmDetailsModel extends ResponseModel<AlarmData?> {
   AlarmDetailsModel({
     this.data,
     this.status,
@@ -15,12 +15,12 @@ class AlarmDetailsModel extends ResponseModel<Alarm?> {
 
   AlarmDetailsModel.fromJson(dynamic json) {
     if (json['data'] != null) {
-     data = Alarm.fromJson(json['data']);
+     data = AlarmData.fromJson(json['data']);
     }
     status = json['status'];
     message = json['message'];
   }
-  Alarm? data;
+  AlarmData? data;
   num? status;
   String? message;
 

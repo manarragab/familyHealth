@@ -8,11 +8,11 @@ class AlarmCases {
 
   AlarmCases(this._data);
 
-  Future<ResponseModel<List<Alarm>?>> getAlarm() {
+  Future<ResponseModel<List<AlarmData>?>> getAlarm() {
     return _data.getAlarm();
   }
 
-  Future<ResponseModel<Alarm?>> addAlarm(PostAlarm post) {
+  Future<ResponseModel<AlarmData?>> addAlarm(PostAlarm post) {
     return _data.addAlarm(post);
   }
 
@@ -20,11 +20,11 @@ class AlarmCases {
     return _data.deleteAlarm(id);
   }
 
-  Future<ResponseModel<Alarm?>> alarmDetails(int id) {
+  Future<ResponseModel<AlarmData?>> alarmDetails(int id) {
     return _data.alarmDetails(id);
   }
 
-  Future<ResponseModel<Alarm?>> updateAlarm(PostAlarm post) {
+  Future<ResponseModel<AlarmData?>> updateAlarm(PostAlarm post) {
     return _data.updateAlarm(post);
   }
 }

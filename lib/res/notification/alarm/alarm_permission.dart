@@ -1,0 +1,43 @@
+import 'package:logging/logging.dart';
+import 'package:permission_handler/permission_handler.dart';
+
+class AlarmPermissions {
+  static final _log = Logger('AlarmPermissions');
+
+  static Future<bool> checkNotificationPermission() async {
+    final status = await Permission.notification.status;
+    if (status.isDenied) {
+      _log.info('Requesting notification permission...');
+      final res = await Permission.notification.request();
+      _log.info(
+        'Notification permission ${res.isGranted ? '' : 'not '}granted',
+      );
+      return res.isGranted;
+    }
+    return true;
+  }
+
+  static Future<bool> checkAndroidScheduleExactAlarmPermission() async {
+    final status = await Permission.scheduleExactAlarm.status;
+    _log.info('Schedule exact alarm permission: $status.');
+    if (status.isDenied) {
+      _log.info('Requesting schedule exact alarm permission...');
+      final res = await Permission.scheduleExactAlarm.request();
+      _log.info(
+        'Schedule exact alarm permission ${res.isGranted ? '' : 'not'} granted',
+      );
+      return res.isGranted;
+    }
+    return true;
+  }
+
+  Future<bool> checkPermissions() async {
+    late bool check;
+    check = await checkAndroidScheduleExactAlarmPermission();
+    if (!check) {
+      return check;
+    }
+    check = await checkNotificationPermission();
+    return check;
+  }
+}

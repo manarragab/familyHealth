@@ -2,9 +2,12 @@ import 'package:abg/data/const/enums.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../configuration/print_types.dart';
+import 'package:timezone/data/latest_all.dart' as tz;
+import 'package:timezone/timezone.dart' as tz;
 
 class PushNotificationsManager {
   PushNotificationsManager._();
@@ -22,6 +25,7 @@ class PushNotificationsManager {
 
   bool showNotification = true;
 
+/*
   subscribeEmployee({bool value = true}) {
     if (value) {
       firebaseMessaging.subscribeToTopic(LoginType.employee.name);
@@ -36,7 +40,7 @@ class PushNotificationsManager {
     } else {
       firebaseMessaging.unsubscribeFromTopic(LoginType.client.name);
     }
-  }
+  }*/
 
   getNotification() {
     FirebaseMessaging.onMessage.listen(
@@ -109,8 +113,7 @@ class PushNotificationsManager {
   }) async {
     /*Get.snackbar(title, message,
         icon: icon, onTap: onTap, duration: const Duration(seconds: 3));*/
-    final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-        FlutterLocalNotificationsPlugin();
+
     bool? showNotification = await flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<
             AndroidFlutterLocalNotificationsPlugin>()
@@ -128,12 +131,16 @@ class PushNotificationsManager {
   }
 }
 
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+
 class LocalNotification {
   static Future initialize(
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin,
       void Function(NotificationResponse) onReceive) async {
+
     var initializationsSettings = const InitializationSettings(
-        android: AndroidInitializationSettings('mipmap/launcher_icon'),
+        android: AndroidInitializationSettings('@mipmap/ic_launcher'),
         iOS: DarwinInitializationSettings());
     await flutterLocalNotificationsPlugin.initialize(initializationsSettings,
         onDidReceiveBackgroundNotificationResponse: onReceive,
@@ -162,5 +169,58 @@ class LocalNotification {
         android: androidPlatformChannelSpecifics,
         iOS: const DarwinNotificationDetails());
     await fln.show(id, title, body, not, payload: payload);
+  }
+
+  requestAlarmNotification() {
+    Permission.scheduleExactAlarm.request();
+    Permission.criticalAlerts.request();
+  }
+
+  static Future<void> scheduleDailyAlarms(
+    int id,
+    DateTime startDate,
+    DateTime? endDate,
+    int hour,
+    int minute, {
+    String title = "",
+    String body = "",
+  }) async {
+    tz.TZDateTime now = tz.TZDateTime.now(tz.local);
+    tz.TZDateTime start = tz.TZDateTime.from(startDate, tz.local);
+    tz.TZDateTime end = tz.TZDateTime.from(endDate ?? startDate, tz.local);
+
+    // Ensure start date is in the future
+    if (start.isBefore(now)) {
+      start =
+          tz.TZDateTime(tz.local, now.year, now.month, now.day, hour, minute);
+    }
+
+    sPrint.warning('localNotification:: ${start.toString()}');
+
+    while (start.isBefore(end)) {
+      await flutterLocalNotificationsPlugin.zonedSchedule(
+        id++, // Unique Notification ID
+        title,
+        body,
+        start,
+        const NotificationDetails(
+          android: AndroidNotificationDetails(
+            'daily_alarm_channel', // Channel ID
+            'Daily Alarm Notifications', // Channel Name
+            importance: Importance.high,
+            priority: Priority.high,
+            icon: '@mipmap/ic_launcher', // ✅ Ensure this is set properly
+            sound: RawResourceAndroidNotificationSound('alarm'), // Custom sound
+          ),
+        ),
+        uiLocalNotificationDateInterpretation:
+            UILocalNotificationDateInterpretation.absoluteTime,
+        androidScheduleMode:
+            AndroidScheduleMode.alarmClock, // Ensures it repeats daily
+      );
+
+      // Move to the next day
+      start = start.add(const Duration(days: 1));
+    }
   }
 }

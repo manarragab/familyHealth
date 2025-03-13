@@ -74,13 +74,6 @@ class Splash extends StatefulWidget {
 }
 
 class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
-/*  final loginController = Get.find<AuthController>();
-
-  // late AnimationController _controller;
-  getData() async {
-    log((await CustomDeviceInfo().getDevice()).toString());
-    loginController.getSetting();
-  }*/
 
   @override
   void initState() {
@@ -88,7 +81,6 @@ class _SplashState extends State<Splash> with SingleTickerProviderStateMixin {
     PushNotificationsManager().requestNotificationPermissions();
     PushNotificationsManager().getNotificationToken();
     PushNotificationsManager().getNotification();
-    PushNotificationsManager().subscribeClient();
     // getData();
     sPrint.warning('checkIFSelected:: ${TLang.checkIFSelectLocal()}');
     Future.delayed(const Duration(seconds: 1), () {

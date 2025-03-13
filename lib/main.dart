@@ -1,19 +1,22 @@
+import 'dart:isolate';
+
+import 'package:abg/data/const/export.dart';
 import 'package:abg/res/injection.dart';
+import 'package:abg/res/notification/push_notification.dart';
+import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
 //import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
 import 'firebase_options.dart';
 import 'my_app.dart';
+import 'package:timezone/data/latest_all.dart' as tz;
 
-/*
 
-flutter build web --target=lib/main.dart --pwa-strategy=none --base-href /course_site/
-cp -R build/web/* websites/course_site
 
-* */*/
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   print("handler a background message ${message.messageId}");
   print("payload background ${message.data}");
@@ -32,6 +35,8 @@ const notificationId = 888;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // ✅ Initialize Timezone before using `tz.local`
+  tz.initializeTimeZones();
 
   initializeDateFormatting();
   await init();
@@ -40,10 +45,10 @@ void main() async {
   );
   await FirebaseMessaging.instance.getInitialMessage();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-/*//   getVersion();
-  initData.server = '';
-  initData.icon = 'assets/images/logo/drops_splash.svg';
-  initData.title = 'Katarat';
-  initData.color = const Color(0xff33BAF7);*/
+  await AndroidAlarmManager.initialize();
+ // const int helloAlarmID = 0;
+ // await AndroidAlarmManager.periodic(const Duration(minutes: 1), helloAlarmID, printHello);
+
+
   runApp(const MyApp());
 }

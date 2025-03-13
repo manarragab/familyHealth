@@ -4,7 +4,7 @@ import 'package:abg/data/remote_data/response_model.dart';
 /// status : 200
 /// message : "Success"
 
-class AlarmModel extends ResponseModel<List<Alarm>?> {
+class AlarmModel extends ResponseModel<List<AlarmData>?> {
   AlarmModel({
     this.data,
     this.status,
@@ -15,13 +15,13 @@ class AlarmModel extends ResponseModel<List<Alarm>?> {
     if (json['data'] != null) {
       data = [];
       json['data'].forEach((v) {
-        data?.add(Alarm.fromJson(v));
+        data?.add(AlarmData.fromJson(v));
       });
     }
     status = json['status'];
     message = json['message'];
   }
-  List<Alarm>? data;
+  List<AlarmData>? data;
   num? status;
   String? message;
 
@@ -51,8 +51,8 @@ class AlarmModel extends ResponseModel<List<Alarm>?> {
 /// created_at : "2025-01-18T18:53:41.000000Z"
 /// updated_at : "2025-01-18T18:53:41.000000Z"
 
-class Alarm {
-  Alarm({
+class AlarmData {
+  AlarmData({
     this.id,
     this.userId,
     this.type,
@@ -69,7 +69,7 @@ class Alarm {
     this.updatedAt,
   });
 
-  Alarm.fromJson(dynamic json) {
+  AlarmData.fromJson(dynamic json) {
     id = json['id'];
     userId = json['user_id'];
     type = json['type'];

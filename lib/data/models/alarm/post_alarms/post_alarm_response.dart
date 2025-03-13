@@ -5,7 +5,7 @@ import 'package:abg/data/remote_data/response_model.dart';
 /// status : 201
 /// message : "Alarm Created Successfully!"
 
-class PostAlarmResponse extends ResponseModel<Alarm?> {
+class PostAlarmResponse extends ResponseModel<AlarmData?> {
   PostAlarmResponse({
     this.data,
     this.status,
@@ -13,11 +13,11 @@ class PostAlarmResponse extends ResponseModel<Alarm?> {
   });
 
   PostAlarmResponse.fromJson(dynamic json) {
-    data = json['data'] != null ? Alarm.fromJson(json['data']) : null;
+    data = json['data'] != null ? AlarmData.fromJson(json['data']) : null;
     status = json['status'];
     message = json['message'];
   }
-  Alarm? data;
+  AlarmData? data;
   num? status;
   String? message;
 

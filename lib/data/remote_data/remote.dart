@@ -229,8 +229,8 @@ class Remote {
 
 //alarm
 
-  Future<ResponseModel<List<Alarm>?>> getAlarm() async {
-    return _helper.get<List<Alarm>?>({}, path: "/user/alarms",
+  Future<ResponseModel<List<AlarmData>?>> getAlarm() async {
+    return _helper.get<List<AlarmData>?>({}, path: "/user/alarms",
         onSuccess: (dynamic data) {
       return AlarmModel.fromJson(data);
     }, onError: (data) {
@@ -238,8 +238,8 @@ class Remote {
     }, isLogin: true);
   }
 
-  Future<ResponseModel<Alarm?>> alarmDetails(int id) async {
-    return _helper.get<Alarm?>({}, path: "/user/alarms/$id",
+  Future<ResponseModel<AlarmData?>> alarmDetails(int id) async {
+    return _helper.get<AlarmData?>({}, path: "/user/alarms/$id",
         onSuccess: (dynamic data) {
           return AlarmDetailsModel.fromJson(data);
         }, onError: (data) {
@@ -247,8 +247,8 @@ class Remote {
         }, isLogin: true);
   }
 
-  Future<ResponseModel<Alarm?>> updateAlarm(PostAlarm post) async {
-    return _helper.post<Alarm?>(await post.toJson(), path: "/user/alarms/${post.id}?_method=PUT",
+  Future<ResponseModel<AlarmData?>> updateAlarm(PostAlarm post) async {
+    return _helper.post<AlarmData?>(await post.toJson(), path: "/user/alarms/${post.id}?_method=PUT",
         onSuccess: (dynamic data) {
           return ResponseModel.fromJson(data);
         }, onError: (data) {
@@ -256,8 +256,8 @@ class Remote {
         }, isLogin: true);
   }
 
-  Future<ResponseModel<Alarm?>> addAlarm(PostAlarm post) async {
-    return _helper.post<Alarm?>(await post.toJson(), path: "/user/alarms",
+  Future<ResponseModel<AlarmData?>> addAlarm(PostAlarm post) async {
+    return _helper.post<AlarmData?>(await post.toJson(), path: "/user/alarms",
         onSuccess: (dynamic data) {
       return PostAlarmResponse.fromJson(data);
     }, onError: (data) {

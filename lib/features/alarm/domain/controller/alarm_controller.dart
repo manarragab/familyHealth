@@ -8,6 +8,7 @@ import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
 import 'package:abg/domain_data/custom_mixin/mixen_widgets/status_error.dart';
 import 'package:abg/features/alarm/domain/cases/alarm_cases.dart';
 import 'package:abg/features/alarm/presentation/add_alarm.dart';
+import 'package:abg/res/notification/alarm/alarm.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class AlarmController extends MainGetxController with CustomStateMixin {
@@ -49,7 +50,7 @@ class AlarmController extends MainGetxController with CustomStateMixin {
     });
   }
 
-  updateAlarmData(Alarm alarm) {
+  updateAlarmData(AlarmData alarm) {
     postAlarm = PostAlarm.fromJson(alarm.toJson());
     nameController.text = alarm.title ?? "";
     messageController.text = alarm.description ?? "";
@@ -77,6 +78,10 @@ class AlarmController extends MainGetxController with CustomStateMixin {
       },
       getPage: (_) => _,
     );
+
+  //  model.data?.forEach((e){
+  //    CustomAlarm().addAlarm(e);
+  //  });
   }
 
   addAlarm() async {
@@ -85,6 +90,7 @@ class AlarmController extends MainGetxController with CustomStateMixin {
     loadingGetxController.hideLoading();
     statusError.checkStatus(response, () {
       onRefresh();
+      CustomAlarm().addAlarm(response.data!);
       Get.back();
     });
   }
