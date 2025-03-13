@@ -44,3 +44,8 @@ enum ContactType { contact, contactUS }
 enum InterestType { moreInterest, interest }
 
 enum AlarmType { reminder, medicine, appointment }
+
+enum FamilyType { SeeAll , MySon ,Mum, Dad , MyDauther, Husband  }
+
+enum SelectSomeone { A , B , C}
+

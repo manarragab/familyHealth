@@ -86,7 +86,7 @@ abstract class DomainData {
 
   Future<ResponseModel<List<Family>?>> getFamily();
 
-  Future<ResponseModel<Family?>> addFamily(PostfamilyModel post);
+  Future<ResponseModel<Family?>> addFamily(PostFamilyModel post);
 
  Future<ResponseModel<dynamic>> deleteFamily(int id);
 

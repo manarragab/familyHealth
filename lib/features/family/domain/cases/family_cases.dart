@@ -13,7 +13,7 @@ class FamilyCases {
     return _data.getFamily();
   }
 
-  Future<ResponseModel<Family?>> addFamily(PostfamilyModel post) {
+  Future<ResponseModel<Family?>> addFamily(PostFamilyModel post) {
     return _data.addFamily(post);
   }
 

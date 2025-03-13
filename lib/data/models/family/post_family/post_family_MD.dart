@@ -1,63 +1,55 @@
-class PostfamilyModel {
-    PostFamily? data;
-    int? status;
-    String? message;
+import 'dart:io';
 
-    PostfamilyModel({this.data, this.status, this.message});
 
-    PostfamilyModel.fromJson(Map<String, dynamic> json) {
-        data = json["data"] == null ? null : PostFamily.fromJson(json["data"]);
-        status = json["status"];
-        message = json["message"];
-    }
+import 'package:dio/dio.dart';
+import 'package:http_parser/http_parser.dart';
+import 'package:mime/mime.dart';
 
-    Map<String, dynamic> toJson() {
-        final Map<String, dynamic> Data = <String, dynamic>{}; 
-        if (data != null) { 
-            Data["data"] = data!.toJson(); 
-        }
-        Data["status"] = status;
-        Data["message"] = message;
-        return Data;
-    }
-}
+class PostFamilyModel {
+  File? image;
+  String? name;
+  String? birthDate;
+  String? phone;
+  String? relative;
+  int? userId;
+  int? id;
 
-class PostFamily {
-    String? image;
-    String? name;
-    String? birthDate; 
-    String? phone;
-    String? relative;
-    int? userId;
-    String? updatedAt;
-    String? createdAt;
-    int? id;
+  PostFamilyModel({
+    this.image,
+    this.name,
+    this.birthDate,
+    this.phone,
+    this.relative,
+    this.userId,
+    this.id,
+  });
 
-    PostFamily({this.image, this.name, this.birthDate, this.phone, this.relative, this.userId, this.updatedAt, this.createdAt, this.id});
+  factory PostFamilyModel.fromJson(Map<String, dynamic> json) {
+    return PostFamilyModel(
+    //  image: json['image'],
+      name: json['name'],
+      birthDate: json['brith_date'],
+      phone: json['phone'],
+      relative: json['relative'],
+      userId: json['user_id'],
+      id: json['id'],
+    );
+  }
 
-    PostFamily.fromJson(Map<String, dynamic> json) {
-        image = json["image"];
-        name = json["name"];
-        birthDate = json["brith_date"];
-        phone = json["phone"];
-        relative = json["relative"];
-        userId = json["user_id"];
-        updatedAt = json["updated_at"];
-        createdAt = json["created_at"];
-        id = json["id"];
-    }
-
-    Map<String, dynamic> toJson() {
-        final Map<String, dynamic> Data = <String, dynamic>{}; // ✅ Renamed to Data
-        Data["image"] = image;
-        Data["name"] = name;
-        Data["brith_date"] = birthDate;
-        Data["phone"] = phone;
-        Data["relative"] = relative;
-        Data["user_id"] = userId;
-        Data["updated_at"] = updatedAt;
-        Data["created_at"] = createdAt;
-        Data["id"] = id;
-        return Data;
-    }
+  Future<Map<String, dynamic>> toJson() async {
+    final map = <String, dynamic>{};
+    // if (image != null) {
+    //   final mimeType = lookupMimeType(image!.path) ?? 'application/octet-stream'; // Detect file type
+    //   final mediaType = MediaType.parse(mimeType); // Convert to MediaType
+    //   map['image'] = await MultipartFile.fromFile(image!.path,contentType: mediaType);
+    // }
+    map['name'] = name;
+    map['brith_date'] = birthDate;
+    map['phone'] = phone;
+    map['relative'] = relative;
+    map['medical_record[0]'] = "hhhnnnm";
+    map['userId'] = userId;
+    map['id'] = id ;
+    return map;
+  }
 }

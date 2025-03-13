@@ -1,4 +1,6 @@
 import 'package:abg/features/auth/domain/cases/auth_case.dart';
+import 'package:abg/features/family/domain/controller/family_controller.dart';
+import 'package:abg/features/family/presentation/profileFamily_screen.dart';
 import 'package:abg/features/group/presentation/group_screen.dart';
 import 'package:abg/features/home/domain/controller/home_controller.dart';
 import 'package:abg/features/home/presentation/home_screen.dart';
@@ -17,7 +19,7 @@ class LayoutScreen extends GetView<LayoutController> {
   List<Widget> navigationBar = [
     Homescreen(),
     const Scaffold(),
-    const GroupScreen(),
+    const ProfilefamilyScreen(),
     ProfileScreen(),
   ];
 

@@ -1,11 +1,13 @@
 import 'package:abg/data/const/export.dart';
+import 'package:abg/features/family/domain/controller/family_controller.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class GreycontainerItem extends StatelessWidget {
+class GreycontainerItem extends GetWidget<FamilyController>  {
   final String image;
   final String name;
   final String kind;
   final int age;
+  final VoidCallback onDelete;
 
   const GreycontainerItem({
     super.key,
@@ -13,11 +15,14 @@ class GreycontainerItem extends StatelessWidget {
     required this.name,
     required this.kind,
     required this.age,
+    required this.onDelete, 
+
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
+     
       padding: const EdgeInsets.symmetric(horizontal: 13,vertical: 10),
       decoration: BoxDecoration(
           color: CustomColors.lightgrey,
@@ -70,14 +75,15 @@ class GreycontainerItem extends StatelessWidget {
             ],
           ),
           const Spacer(),
-          Column(
+        GetBuilder<FamilyController>(builder: (context){
+          return  Column(
                children: [
               InkWell(
                 onTap: (){
-
+                  onDelete();
                 },
                 child: SvgPicture.asset("assets/svg/delete.svg")),
-             SizedBox(height:22),
+             const SizedBox(height:22),
            
               Text(
                   "Details",
@@ -87,7 +93,9 @@ class GreycontainerItem extends StatelessWidget {
                       color: CustomColors.darkpinky),
                 ),
             ],
-          ),
+          ); 
+
+        }),
         
         ],
       ),

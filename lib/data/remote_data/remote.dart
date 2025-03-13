@@ -269,8 +269,8 @@ class Remote {
     }, isLogin: true);
   }
 
-  Future<ResponseModel<Family?>> addFamily(PostfamilyModel post) async {
-    return _helper.post<Family?>(post.toJson(), path: "/user/family",
+  Future<ResponseModel<Family?>> addFamily(PostFamilyModel post) async {
+    return _helper.post<Family?>(await post.toJson(), path: "/user/family",
         onSuccess: (dynamic data) {
       return PostFamilyResponse.fromJson(data);
     }, onError: (data) {

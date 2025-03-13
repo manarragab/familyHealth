@@ -30,7 +30,6 @@ class DataRepository implements DomainData {
     //  required this.remoteFire,
   });
 
-// feature authenticate
 
   @override
   LoginModel? getUser() {
@@ -127,19 +126,20 @@ class DataRepository implements DomainData {
     return remote.getAlarm();
   }
 
-
   @override
   Future<ResponseModel<List<Family>?>> getFamily() {
    return remote.getFamily();
   }
 
   @override
-  Future<ResponseModel<Family?>> addFamily(PostfamilyModel post) {
+  Future<ResponseModel<Family?>> addFamily(PostFamilyModel post) {
     return remote.addFamily(post);
   }
-
+  
   @override
   Future<ResponseModel> deleteFamily(int id) {
     return remote.deleteFamily(id);
   }
+
+
 }

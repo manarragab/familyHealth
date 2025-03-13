@@ -1,4 +1,3 @@
-import 'dart:io';
 
 import 'package:abg/data/const/export.dart';
 import 'package:abg/data/models/family/get_family/family_model.dart';
@@ -10,10 +9,23 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class FamilyController extends MainGetxController with CustomStateMixin {
 
+var isSelect=(-1).obs;   
+void selected(index){
+isSelect.value= index;
+}
+
+var istapped=(-1).obs;
+void tapped(indexx){
+istapped.value=indexx;
+}
 
   FamilyModel famMD = FamilyModel();
-  PostFamily postFam =PostFamily();
+  PostFamilyModel postFam =PostFamilyModel();
   RefreshController ref = RefreshController();
+
+TextEditingController dateController=TextEditingController();
+TextEditingController familyController=TextEditingController();
+TextEditingController selectSomeoneController=TextEditingController();
 
   int _pageNum = 1;
 
@@ -30,16 +42,28 @@ class FamilyController extends MainGetxController with CustomStateMixin {
           }
           return data;
         },
-
         //load refresh part with part
         getPage: (page) => _pageNum = page);
   }
 
+addFamily()async{
+  loadingGetxController.showLoading();
+  var response=await sl<FamilyCases>().addFamily(postFam);
+ loadingGetxController.hideLoading();
+    statusError.checkStatus(response, () {
+      onRefresh();
+      Get.back();
+    });
 
-
-
-
-
-
+}
+  deleteFamily(int id) async {
+    loadingGetxController.showCustomLoading(id.toString());
+    var response = await sl<FamilyCases>().deleteFamily(id);
+    loadingGetxController.hideCustomLoading(id.toString());
+    statusError.checkStatus(response, () {
+      famMD.data?.removeWhere((e) => e.id == id);
+      change(famMD);
+    });
+  }
 
 }
