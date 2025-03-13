@@ -6,6 +6,7 @@ import 'package:abg/features/auth/domain/controller/auth_controller.dart';
 import 'package:abg/features/auth/presentation/login_screen.dart';
 import 'package:abg/features/auth/presentation/my_account_screen.dart';
 import 'package:abg/features/auth/presentation/sign_up_screen.dart';
+import 'package:abg/features/layout/domain/controller/layout_controller.dart';
 import 'package:abg/features/layout/presentation/layout_screen.dart';
 import 'package:abg/features/notification/domain/controller/notification_controller.dart';
 import 'package:abg/features/notification/presentation/notification_screen.dart';
@@ -33,7 +34,10 @@ class CustomPage {
         name: layoutPage,
         page: () => LayoutScreen(),
         transition: Transition.fadeIn,
-        binding: GetBinding()),
+        binding: BindingsBuilder((){
+          GetBinding();
+          Get.put(LayoutController()).changeNavBarIndex(0);
+        })),
     GetPage(
         name: splashPage,
         page: () => Splash(),

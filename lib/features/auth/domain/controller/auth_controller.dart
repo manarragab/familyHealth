@@ -8,6 +8,7 @@ import 'package:abg/features/auth/domain/cases/auth_case.dart';
 import 'package:abg/features/auth/domain/controller/otp_controller.dart';
 import 'package:abg/features/auth/presentation/otp_confirmation_view.dart';
 import 'package:abg/features/auth/presentation/reset_password_screen.dart';
+import 'package:abg/features/layout/domain/controller/layout_controller.dart';
 import 'package:abg/res/router/pages.dart';
 
 class AuthController extends MainGetxController {
@@ -16,7 +17,6 @@ class AuthController extends MainGetxController {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController nameController = TextEditingController();
-
 
   @override
   void onClose() {

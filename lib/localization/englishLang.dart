@@ -6,7 +6,7 @@ import 'all_keys.dart';
 Map<String, String> en = {
   CustomTrans.login: "Login",
   CustomTrans.createANewAccount: "create A New Account",
-  CustomTrans.createNewAccount: "create A New Account",
+  CustomTrans.createNewAccount: "Create A New Account",
   CustomTrans.welcomeLine: "Log in to discover what's new in our community",
   CustomTrans.welcome: "welcome",
   CustomTrans.phone: 'Phone Number',

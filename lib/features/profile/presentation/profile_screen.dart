@@ -7,7 +7,8 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar.appBar("user name",
+      appBar: AppBar(),
+  /*    appBar: CustomAppBar.appBar("user name",
           centerTitle: false,
           leadingWidget: const CircleAvatar(),
           subTitle: "test subtitle",
@@ -19,7 +20,7 @@ class ProfileScreen extends StatelessWidget {
                   color: Colors.white,
                   size: 25,
                 ))
-          ]),
+          ]),*/
       body: ListView.separated(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         itemBuilder: (BuildContext context, int index) {

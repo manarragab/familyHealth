@@ -15,6 +15,7 @@ class LoginScreen extends GetView<AuthController> {
   LoginScreen({Key? key}) : super(key: key);
   final formKey = GlobalKey<FormState>();
   String? email = '';
+  final showPassword = false.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -54,12 +55,15 @@ class LoginScreen extends GetView<AuthController> {
                           //  controller:
                           ),
                       CustomPadding.heightButton,
-                      CustomTextField.passwordTextField((value) => null,
-                          isVisible: true,
-                          changeVisible: () {},
-                          controller: controller.passwordController
-                          //  controller:
-                          ),
+                      Obx(() {
+                        return CustomTextField.passwordTextField(
+                            (value) => null,
+                            isVisible: showPassword.value, changeVisible: () {
+                          showPassword(!showPassword.value);
+                        }, controller: controller.passwordController
+                            //  controller:
+                            );
+                      }),
                       CustomPadding.heightButton,
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 5.0),
@@ -215,7 +219,7 @@ class LoginScreen extends GetView<AuthController> {
                       Center(
                         child: RichText(
                           text: TextSpan(
-                            text: CustomTrans.alreadyHaveAnAccount.tr,
+                            text: CustomTrans.createNewAccount.tr,
                             style: TFonts.inter(
                               color: const Color(0xff636363),
                               fontSize: TFontSizes.f14,
