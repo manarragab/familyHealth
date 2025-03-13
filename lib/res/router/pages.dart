@@ -24,12 +24,16 @@ class CustomPage {
         name: loginPage,
         page: () => LoginScreen(),
         transition: Transition.fadeIn,
-        binding: GetBinding()),
+        binding: BindingsBuilder((){
+          Get.put(AuthController()).clearData();
+        })),
     GetPage(
         name: registerScreen,
         page: () => SignUpScreen(),
         transition: Transition.fadeIn,
-        binding: GetBinding()),
+        binding: BindingsBuilder((){
+          Get.put(AuthController()).clearData();
+        })),
     GetPage(
         name: layoutPage,
         page: () => LayoutScreen(),

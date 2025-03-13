@@ -31,6 +31,17 @@ class AuthController extends MainGetxController {
     super.onClose();
   }
 
+  clearData(){
+    for (TextEditingController controller in [
+      phoneController,
+      passwordController,
+      emailController,
+      nameController,
+    ]) {
+      controller.clear();
+    }
+  }
+
   LoginModel loginModel = LoginModel(data: LoginData());
 
   String code = '';
@@ -158,6 +169,7 @@ class AuthController extends MainGetxController {
 
   void logOut() {
     sl<AuthCases>().setUser(null);
+    clearData();
     Get.offAllNamed(CustomPage.loginPage);
   }
 

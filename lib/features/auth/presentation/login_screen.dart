@@ -15,7 +15,7 @@ class LoginScreen extends GetView<AuthController> {
   LoginScreen({Key? key}) : super(key: key);
   final formKey = GlobalKey<FormState>();
   String? email = '';
-  final showPassword = false.obs;
+  final hidePassword = true.obs;
 
   @override
   Widget build(BuildContext context) {
@@ -58,8 +58,8 @@ class LoginScreen extends GetView<AuthController> {
                       Obx(() {
                         return CustomTextField.passwordTextField(
                             (value) => null,
-                            isVisible: showPassword.value, changeVisible: () {
-                          showPassword(!showPassword.value);
+                            isVisible: hidePassword.value, changeVisible: () {
+                          hidePassword(!hidePassword.value);
                         }, controller: controller.passwordController
                             //  controller:
                             );
@@ -88,7 +88,9 @@ class LoginScreen extends GetView<AuthController> {
                             GestureDetector(
                               onTap: () {
                                 Get.to(() => const ForgetPasswordScreen(),
-                                    transition: Transition.fadeIn);
+                                    transition: Transition.fadeIn,binding: BindingsBuilder((){
+                                      controller.clearData();
+                                    }));
                               },
                               child: Text(
                                 CustomTrans.forgotPassword.tr,
@@ -202,7 +204,10 @@ class LoginScreen extends GetView<AuthController> {
                             ),
                             const SizedBox(width: 10),
                             InkWell(
-                              onTap: () {},
+                              onTap: () {
+                                Get.put(GetXSocialLoginController())
+                                    .socialLogin(SocialType.google);
+                              },
                               child: CircleAvatar(
                                 backgroundColor: const Color(0xffB3CBD8),
                                 child: Padding(
