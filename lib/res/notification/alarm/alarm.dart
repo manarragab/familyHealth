@@ -35,6 +35,7 @@ class CustomAlarm {
       if (Platform.isIOS) {
         LocalNotification.scheduleDailyAlarms(
           alarm.id!.toInt(),
+          alarm.userId!.toInt(),
           start,
           end,
           hour,
@@ -43,7 +44,7 @@ class CustomAlarm {
           body: alarm.description ?? "",
         );
       } else {
-        startAndroidAlarm(alarm.id!.toInt(), start, end, hour, minute);
+        startAndroidAlarm(alarm.id!.toInt(),alarm.userId!.toInt(), start, end, hour, minute);
       }
     } else {
       sPrint.error("permission denied", StackTrace.current);
@@ -53,6 +54,7 @@ class CustomAlarm {
 
   startAndroidAlarm(
     int id,
+    int userID,
     DateTime startDate,
     DateTime? endDate,
     int hour,
@@ -62,21 +64,24 @@ class CustomAlarm {
   }) {
     sPrint.info("alarm start");
     endDate = endDate ?? startDate;
-    sPrint.info(
-        'start date:: $startDate  end data :: $endDate  ${startDate.isBefore(endDate)}');
+DateTime start = startDate;
+    int count = 1;
     do {
       DateTime date = DateTime(startDate.year, startDate.month, startDate.day,
           hour, minute, startDate.second);
       sPrint.info(date.toString());
       AndroidAlarmManager.oneShotAt(
         date,
-        1234547,
+        int.parse("$userID$id$count"),
         getCallBack,
         alarmClock: true,
         wakeup: true,
         rescheduleOnReboot: true,
         params: {'title': title, 'body': body},
       );
+      count = count + 1;
+      start = start.add(const Duration(days: 1));
+      sPrint.info('alarm:: $userID$id  $count $start');
     } while (startDate.isBefore(endDate) && false);
     sPrint.success('end alarm');
   }
@@ -88,6 +93,7 @@ getCallBack() async {
   final receivedIntent = await ReceiveIntent.getInitialIntent();
   String title = "Alarm";
   String body = "Wake up!";
+  sPrint.info("intent:: ${receivedIntent?.action}");
   if (receivedIntent?.action == "android.intent.action.MAIN") {
     final paramsExtra = receivedIntent?.extra?["params"];
     if (paramsExtra != null) {

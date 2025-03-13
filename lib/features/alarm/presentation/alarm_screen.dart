@@ -18,70 +18,62 @@ class AlarmScreen extends GetView<AlarmController> {
       body: SmartRefresher(
         controller: controller.refreshController,
         onRefresh: controller.onRefresh,
-        child: Column(
+        child: ListView(
           children: [
             Center(
               child: MainButton(
                 onPressed: () {
-                /*  controller.clearData();
-                  Get.to(const AddAlarm());*/
-                  CustomAlarm().addAlarm(AlarmData(
+                  controller.clearData();
+                  Get.to(const AddAlarm());
+            /*      CustomAlarm().addAlarm(AlarmData(
                     id: 1,
                     userId: 2,
                     type: "medicine",
                     title: "Take Morning Medicine",
                     description: "Take your blood pressure medicine.",
                     alarmDate: "2025-03-15",
-                    alarmTime: "${DateTime.now().hour}:${DateTime.now().add(const Duration(minutes: 20)).minute}",
+                    alarmTime: "${DateTime.now().hour}:${DateTime.now().add(const Duration(seconds: 5)).minute}",
                     isRepeatable: "1",
                     medicineStartDate: DateTime.now().toString(),
                     medicineEndDate: "2025-03-20",
                     image: "uploads/alarms/example.jpg",
                     isTriggered: 0,
-                  ));
+                  ));*/
                 },
                 radius: 10,
                 title: CustomTrans.newAlarm.tr,
                 fontSize: 24,
               ),
             ),
-            Expanded(
-              child: Container(
-                height: Get.height,
-                alignment: Alignment.center,
-                child: controller.obx((state) {
-                  AlarmModel model = state;
-                  List<AlarmData> list = model.data ?? [];
-                  return SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ...List.generate(list.length, (index) {
-                          AlarmData alarm = list[index];
-                          return LoadingOverLay(
-                            showLoadingOnly: true,
-                            id: alarm.id.toString(),
-                            child: AlarmItem(
-                              image: alarm.image??"",
-                              title: alarm.title ?? "",
-                              description: alarm.description ?? "",
-                              date: alarm.alarmDate ?? "",
-                              time: alarm.alarmTime ?? "",
-                              onEdit: () {
-                                controller.getDetails(alarm.id!.toInt());
-                              },
-                              onDelete: () {
-                                controller.deleteAlarm(alarm.id!.toInt());
-                              },
-                            ),
-                          );
-                        })
-                      ],
-                    ),
-                  );
-                }),
-              ),
-            ),
+            controller.obx((state) {
+              AlarmModel model = state;
+              List<AlarmData> list = model.data ?? [];
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ...List.generate(list.length, (index) {
+                    AlarmData alarm = list[index];
+                    return LoadingOverLay(
+                      showLoadingOnly: true,
+                      id: alarm.id.toString(),
+                      child: AlarmItem(
+                        image: alarm.image??"",
+                        title: alarm.title ?? "",
+                        description: alarm.description ?? "",
+                        date: alarm.alarmDate ?? "",
+                        time: alarm.alarmTime ?? "",
+                        onEdit: () {
+                          controller.getDetails(alarm.id!.toInt());
+                        },
+                        onDelete: () {
+                          controller.deleteAlarm(alarm.id!.toInt());
+                        },
+                      ),
+                    );
+                  })
+                ],
+              );
+            }),
           ],
         ),
       ),

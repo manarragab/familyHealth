@@ -79,9 +79,9 @@ class AlarmController extends MainGetxController with CustomStateMixin {
       getPage: (_) => _,
     );
 
-  //  model.data?.forEach((e){
-  //    CustomAlarm().addAlarm(e);
-  //  });
+    model.data?.forEach((e){
+      CustomAlarm().addAlarm(e);
+    });
   }
 
   addAlarm() async {

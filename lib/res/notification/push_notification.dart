@@ -178,6 +178,7 @@ class LocalNotification {
 
   static Future<void> scheduleDailyAlarms(
     int id,
+    int userID,
     DateTime startDate,
     DateTime? endDate,
     int hour,
@@ -197,7 +198,12 @@ class LocalNotification {
 
     sPrint.warning('localNotification:: ${start.toString()}');
 
-    while (start.isBefore(end)) {
+    sPrint.info("alarm start");
+    int count = 1;
+    do {
+      DateTime date = DateTime(startDate.year, startDate.month, startDate.day,
+          hour, minute, startDate.second);
+      sPrint.info(date.toString());
       await flutterLocalNotificationsPlugin.zonedSchedule(
         id++, // Unique Notification ID
         title,
@@ -214,13 +220,15 @@ class LocalNotification {
           ),
         ),
         uiLocalNotificationDateInterpretation:
-            UILocalNotificationDateInterpretation.absoluteTime,
+        UILocalNotificationDateInterpretation.absoluteTime,
         androidScheduleMode:
-            AndroidScheduleMode.alarmClock, // Ensures it repeats daily
+        AndroidScheduleMode.alarmClock, // Ensures it repeats daily
       );
-
-      // Move to the next day
+      count = count + 1;
       start = start.add(const Duration(days: 1));
-    }
+      sPrint.info('alarm:: $userID$id  $count $start');
+    } while (start.isBefore(end) && false);
+    sPrint.success('end alarm');
   }
+
 }
