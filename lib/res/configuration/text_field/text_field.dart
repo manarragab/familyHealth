@@ -135,12 +135,12 @@ class CustomTextField {
         borderSide: BorderSide(
             color: CustomColors.accent, width: 2.w, style: BorderStyle.solid),
       ),
-      suffixIconConstraints: const BoxConstraints(
-        maxHeight: 35,
-      ),
+      // suffixIconConstraints: const BoxConstraints(
+      //   maxHeight: 35,
+      // ),
       suffixIcon: suffixIcon,
       counter: const Offstage(),
-      //  prefixIcon: prefixIcon,
+        prefixIcon: prefixIcon,
       hintText: "${removeHintWrite ? '' : CustomTrans.write.tr} $hintText",
       hintStyle: TFonts.inter(
           color: CustomColors.black,
@@ -311,6 +311,7 @@ class CustomTextField {
     bool isRequired = false,
     bool faelid = false,
     TextEditingController? controller,
+      Widget? suffixIcon,
   }) {
     return InkWell(
       onTap: onDropDownPress,
@@ -335,6 +336,13 @@ class CustomTextField {
                 decoration: _defaultDecoration(
                   removeHintWrite: true,
                   prefixIcon: prefixIcon,
+                  suffixIcon:  
+                     Padding(
+                       padding: const EdgeInsets.all(18),
+                       child: SvgPicture.asset("assets/svg/select.svg" ,  ),
+                     ),
+                
+                    
                   hintText: hint,
                 ),
               ),

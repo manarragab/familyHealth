@@ -8,8 +8,7 @@ import 'package:abg/data/models/auth/users/post_assign_user.dart';
 import 'package:abg/data/models/chat/chat_model.dart';
 import 'package:abg/data/models/chat/group/post_group_message.dart';
 import 'package:abg/data/models/family/get_family/family_model.dart';
-import 'package:abg/data/models/family/post_family/post_family.dart';
-import 'package:abg/data/models/family/post_family/post_family_response.dart';
+import 'package:abg/data/models/family/post_family/post_family_MD.dart';
 import 'package:abg/data/models/group/group_model.dart';
 import 'package:abg/data/models/home/home_model.dart';
 import 'package:abg/data/models/social/social_model.dart';
@@ -87,7 +86,7 @@ abstract class DomainData {
 
   Future<ResponseModel<List<Family>?>> getFamily();
 
-  Future<ResponseModel<Family?>> addFamily(Family post);
+  Future<ResponseModel<Family?>> addFamily(PostFamilyModel post);
 
  Future<ResponseModel<dynamic>> deleteFamily(int id);
 

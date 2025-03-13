@@ -6,6 +6,13 @@ import 'package:abg/data/remote_data/response_model.dart';
 /// message : "Alarm Created Successfully!"
 
 class PostAlarmResponse extends ResponseModel<Alarm?> {
+    @override
+  Alarm? data;
+  @override
+  num? status;
+  @override
+  String? message;
+
   PostAlarmResponse({
     this.data,
     this.status,
@@ -17,12 +24,6 @@ class PostAlarmResponse extends ResponseModel<Alarm?> {
     status = json['status'];
     message = json['message'];
   }
-  @override
-  Alarm? data;
-  @override
-  num? status;
-  @override
-  String? message;
 
   @override
   Map<String, dynamic> toJson() {

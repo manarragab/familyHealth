@@ -1,5 +1,7 @@
-import 'package:abg/data/models/family/post_family/post_family.dart';
-import 'package:abg/data/models/family/post_family/post_family_response.dart';
+//import 'dart:core';
+
+import 'dart:core';
+
 import 'package:abg/data/remote_data/response_model.dart';
 
 class FamilyModel extends ResponseModel<List<Family>?> {
@@ -22,12 +24,40 @@ class FamilyModel extends ResponseModel<List<Family>?> {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> jsonData = <String, dynamic>{}; // ✅ Renamed to jsonData
+    final Map<String, dynamic> jsonData = <String, dynamic>{};
     if (data != null) {
-      jsonData["data"] = data!.map((e) => e.toJson()).toList(); // ✅ Fixed null check
+      jsonData["data"] = data!.map((e) => e.toJson()).toList();
     }
     jsonData["status"] = status;
     jsonData["message"] = message;
+    return jsonData;
+  }
+}
+
+class Family {
+  int? id;
+  String? name;
+  String? image;
+  String? relative;
+  int? age;
+
+  Family({this.id, this.name, this.image, this.relative, this.age});
+
+  Family.fromJson(Map<String, dynamic> json) {
+    id = json["id"];
+    name = json["name"];
+    image = json["image"];
+    relative = json["relative"];
+    age = json["age"];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> jsonData = <String, dynamic>{}; // ✅ Renamed to jsonData
+    jsonData["id"] = id;
+    jsonData["name"] = name;
+    jsonData["image"] = image;
+    jsonData["relative"] = relative;
+    jsonData["age"] = age;
     return jsonData;
   }
 }

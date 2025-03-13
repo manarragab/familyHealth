@@ -19,7 +19,7 @@ import 'package:abg/data/remote_data/response_model.dart';
 import 'package:abg/res/notification/push_notification.dart';
 import 'package:dio/dio.dart';
 
-import '../models/family/post_family/post_family.dart';
+import '../models/family/post_family/post_family_MD.dart';
 import 'dio_helper.dart';
 
 class Remote {
@@ -269,7 +269,7 @@ class Remote {
     }, isLogin: true);
   }
 
-  Future<ResponseModel<Family?>> addFamily(Family post) async {
+  Future<ResponseModel<Family?>> addFamily(PostFamilyModel post) async {
     return _helper.post<Family?>(await post.toJson(), path: "/user/family",
         onSuccess: (dynamic data) {
       return PostFamilyResponse.fromJson(data);

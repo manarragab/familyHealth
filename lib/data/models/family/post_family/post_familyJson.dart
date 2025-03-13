@@ -9,7 +9,6 @@ Map<String,dynamic> postFamilyJSON={
         "updated_at": "2025-01-18T19:20:28.000000Z",
         "created_at": "2025-01-18T19:20:28.000000Z",
         "id": 1,
-        
     },
     
     "status": 201,

@@ -12,6 +12,17 @@ import 'package:http_parser/http_parser.dart';
 /// is_repeatable : "1"
 
 class PostAlarm {
+  
+  File? image;
+  String? type;
+  String? title;
+  String? description;
+  String? medicineStartDate;
+  String? medicineEndDate;
+  bool isRepeatable = false;
+  String? alarmDate;
+  String? alarmTime;
+  
   PostAlarm({
     this.image,
     this.type,
@@ -31,17 +42,6 @@ class PostAlarm {
     isRepeatable = json['is_repeatable'];
   }
 
-  File? image;
-  String? type;
-  String? title;
-  String? description;
-  String? medicineStartDate;
-  String? medicineEndDate;
-  bool isRepeatable = false;
-
-  String? alarmDate;
-
-  String? alarmTime;
 
   Future<Map<String, dynamic>> toJson() async {
     final map = <String, dynamic>{};
