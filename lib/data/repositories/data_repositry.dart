@@ -15,6 +15,7 @@ import 'package:abg/data/models/social/social_model.dart';
 
 import '../../domain_data/repositories/domain_repositry.dart';
 import '../data_sources/get_storage.dart';
+import '../models/family/post_family/post_family_response.dart';
 import '../remote_data/remote.dart';
 import '../remote_data/response_model.dart';
 

@@ -1,5 +1,6 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/data/models/family/get_family/family_model.dart';
+import 'package:abg/data/models/family/post_family/post_family_response.dart';
 import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
 import 'package:abg/features/family/domain/controller/family_controller.dart';
 import 'package:abg/features/family/presentation/addfamily_screen.dart';

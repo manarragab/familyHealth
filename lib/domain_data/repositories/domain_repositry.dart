@@ -14,6 +14,8 @@ import 'package:abg/data/models/home/home_model.dart';
 import 'package:abg/data/models/social/social_model.dart';
 import 'package:abg/data/remote_data/response_model.dart';
 
+import '../../data/models/family/post_family/post_family_response.dart';
+
 abstract class DomainData {
   /*
   * this is abstract class to connect your features with data package

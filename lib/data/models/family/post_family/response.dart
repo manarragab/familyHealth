@@ -2,6 +2,8 @@
 import 'package:abg/data/models/family/get_family/family_model.dart';
 import 'package:abg/data/remote_data/response_model.dart';
 
+import 'post_family_response.dart';
+
 class Response extends ResponseModel<Family> {
   @override
   final Family? data;

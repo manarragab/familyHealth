@@ -11,6 +11,8 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter/material.dart';
 
+import '../../../data/models/family/post_family/post_family_response.dart';
+
 class FamilyScreen extends StatefulWidget {
   @override
   State<FamilyScreen> createState() => _FamilyScreenState();

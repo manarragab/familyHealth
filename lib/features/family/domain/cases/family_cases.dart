@@ -3,6 +3,8 @@ import 'package:abg/data/models/family/post_family/post_family_MD.dart';
 import 'package:abg/data/remote_data/response_model.dart';
 import 'package:abg/domain_data/repositories/domain_repositry.dart';
 
+import '../../../../data/models/family/post_family/post_family_response.dart';
+
 class FamilyCases {
   final DomainData _data;
 
