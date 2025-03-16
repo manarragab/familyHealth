@@ -48,9 +48,10 @@ class Remote {
       onSuccess: (Map<String, dynamic> data) {
         sPrint.success(data);
         sPrint.info('getting data:: $data');
-        var response =  LoginModel.fromJson(data["data"]);
-        sPrint.info('login:: ${response.toJson()}');
-        return response;
+        // var response =  LoginModel.fromJson(data["data"]);
+        // sPrint.info('login:: ${response.toJson()}');
+        // return response;
+        return LoginModel.fromJson(data);
       },
       onError: (data) {
         sPrint.warning('error  ${data.data?.status}:: ${data.message}');
@@ -243,19 +244,19 @@ class Remote {
   Future<ResponseModel<AlarmData?>> alarmDetails(int id) async {
     return _helper.get<AlarmData?>({}, path: "/user/alarms/$id",
         onSuccess: (dynamic data) {
-          return AlarmDetailsModel.fromJson(data);
-        }, onError: (data) {
-          return ResponseModel(status: data.status, message: data.message);
-        }, isLogin: true);
+      return AlarmDetailsModel.fromJson(data);
+    }, onError: (data) {
+      return ResponseModel(status: data.status, message: data.message);
+    }, isLogin: true);
   }
 
   Future<ResponseModel<AlarmData?>> updateAlarm(PostAlarm post) async {
-    return _helper.post<AlarmData?>(await post.toJson(), path: "/user/alarms/${post.id}?_method=PUT",
-        onSuccess: (dynamic data) {
-          return ResponseModel.fromJson(data);
-        }, onError: (data) {
-          return ResponseModel(status: data.status, message: data.message);
-        }, isLogin: true);
+    return _helper.post<AlarmData?>(await post.toJson(),
+        path: "/user/alarms/${post.id}?_method=PUT", onSuccess: (dynamic data) {
+      return ResponseModel.fromJson(data);
+    }, onError: (data) {
+      return ResponseModel(status: data.status, message: data.message);
+    }, isLogin: true);
   }
 
   Future<ResponseModel<AlarmData?>> addAlarm(PostAlarm post) async {
