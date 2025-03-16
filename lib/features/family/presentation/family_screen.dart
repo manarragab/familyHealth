@@ -14,6 +14,8 @@ import 'package:flutter/material.dart';
 import '../../../data/models/family/post_family/post_family_response.dart';
 
 class FamilyScreen extends StatefulWidget {
+  const FamilyScreen({super.key});
+
   @override
   State<FamilyScreen> createState() => _FamilyScreenState();
 }
@@ -40,15 +42,14 @@ class _FamilyScreenState extends State<FamilyScreen> {
           model = state;
           List<Family> list=model.data??[];
 
-          return Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          return ListView(
             children: [
               _buildFamilyTypeGrid(),
-              SizedBox(height: 14),
+              const SizedBox(height: 14),
               _buildImageStack(),
-              SizedBox(height: 17),
+              const SizedBox(height: 17),
               _buildinfoersTitle(),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               _buildFamilyList(list),
             ],
           );
@@ -61,6 +62,8 @@ class _FamilyScreenState extends State<FamilyScreen> {
     return SizedBox(
       height: 100,
       child: GridView.builder(
+        shrinkWrap: true,
+        physics: NeverScrollableScrollPhysics(),
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 3,
           mainAxisExtent: 40,
@@ -90,6 +93,7 @@ class _FamilyScreenState extends State<FamilyScreen> {
 
   Widget _buildImageContainer() {
     return Container(
+     clipBehavior: Clip.hardEdge,
       width: double.infinity,
       height: 350,
       decoration: BoxDecoration(
@@ -120,7 +124,7 @@ class _FamilyScreenState extends State<FamilyScreen> {
     return Container(
       width: 28,
       height: 28,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: CustomColors.darkpinky,
         shape: BoxShape.circle,
       ),
@@ -193,13 +197,15 @@ class _FamilyScreenState extends State<FamilyScreen> {
           refreshController.refreshCompleted();
         },
         child: ListView.builder(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
           scrollDirection: Axis.horizontal,
           itemCount: list.length,
           itemBuilder: (context, index) {
             Family info = list[index];
             return Container(
               width: 150,
-              margin: EdgeInsets.all(8),
+              margin: const EdgeInsets.all(8),
               child: FamilyContainer(
                 index: index,
                 name: info.name ?? "",

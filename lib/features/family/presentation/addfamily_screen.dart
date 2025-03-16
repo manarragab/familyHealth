@@ -177,7 +177,7 @@ class AddfamilyScreen extends GetView<FamilyController> {
                         onTap: (){
                           Get.to(FamilyScreen());
                         },
-                        child: Text("family" , style: TextStyle(color: Colors.blue),)),
+                        child: const Text("family" , style: TextStyle(color: Colors.blue),)),
                       
                     ],
                   ),

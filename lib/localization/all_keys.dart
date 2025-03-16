@@ -954,6 +954,7 @@ class CustomTrans {
 
     static const String Add = "Add";
 
+    static const String Profile = "profile";
 
   static const String needToAccept = "need to accept";
 }

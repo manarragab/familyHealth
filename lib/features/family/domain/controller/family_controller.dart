@@ -19,6 +19,22 @@ void tapped(indexx){
 istapped.value=indexx;
 }
 
+var isChoosen=(-1).obs;
+void choosen(index){
+  isChoosen.value=index;
+}
+
+List<String> disease=[
+  "Heart Disease" ,"Brain Disease" , "Stomach Disease" ,"Lung Disease" ,"Lung Disease"
+];
+
+List<String> images=[
+  "assets/images/heart.png",
+    "assets/images/brain.png",
+  "assets/images/stomach.png",
+  "assets/images/lung.png",  "assets/images/lung.png",
+];
+
   FamilyModel famMD = FamilyModel();
   PostFamilyModel postFam =PostFamilyModel();
   RefreshController ref = RefreshController();

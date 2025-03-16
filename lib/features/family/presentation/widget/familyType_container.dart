@@ -22,7 +22,7 @@ final VoidCallback tapped;
             }
         },
         child: Container(
-        padding: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+        padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
         height: 40,     
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(50),
