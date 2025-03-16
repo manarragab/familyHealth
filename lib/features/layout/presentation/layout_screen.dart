@@ -19,7 +19,7 @@ class LayoutScreen extends GetView<LayoutController> {
   List<Widget> navigationBar = [
     Homescreen(),
     const Scaffold(),
-     FamilyScreen(),
+    FamilyScreen(),
     //ProfileScreen(),
     MyprofileScreen(),
   ];
@@ -30,7 +30,7 @@ class LayoutScreen extends GetView<LayoutController> {
         Get.put(HomeController()).onRefresh();
         break;
       case 2:
-      Get.lazyPut(()=> FamilyController());
+        Get.put(FamilyController()).onRefresh();
         break;
     }
 

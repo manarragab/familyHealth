@@ -198,13 +198,11 @@ class _FamilyScreenState extends State<FamilyScreen> {
         },
         child: ListView.builder(
           shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
           scrollDirection: Axis.horizontal,
           itemCount: list.length,
           itemBuilder: (context, index) {
             Family info = list[index];
             return Container(
-              width: 150,
               margin: const EdgeInsets.all(8),
               child: FamilyContainer(
                 index: index,
