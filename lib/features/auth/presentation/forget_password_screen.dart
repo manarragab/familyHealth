@@ -31,8 +31,9 @@ class ForgetPasswordScreen extends GetView<AuthController> {
                 fontSize: 16, fontWeight: TFontWights.regular),
           ),
           CustomPadding.heightButton,
-          CustomTextField.emailTextField((value) => null,
-              controller: controller.emailController),
+          CustomTextField.emailTextField(
+            (value) => controller.postRegister.email = value,
+          ),
           const SizedBox(height: 50),
           LoadingOverLay(
             showLoadingOnly: true,

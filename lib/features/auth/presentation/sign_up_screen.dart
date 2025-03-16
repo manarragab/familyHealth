@@ -45,39 +45,39 @@ class SignUpScreen extends GetView<AuthController> {
                     fontSize: 16, fontWeight: TFontWights.regular),
               ),
               CustomPadding.heightButton,
-              CustomTextField.nameTextField((value) {},
-                  controller: controller.nameController
-                  //  controller:
-                  ),
+              CustomTextField.nameTextField((value) {
+                controller.postRegister.name = value;
+              },
+
+                //  controller:
+              ),
               CustomPadding.smallHeight,
-              CustomTextField.emailTextField((value) {},
-                  controller: controller.emailController
-                  //  controller:
-                  ),
+              CustomTextField.emailTextField((value) {
+                controller.postRegister.email = value;
+              },
+              ),
               CustomPadding.smallHeight,
-              CustomTextField.phoneTextField((value) => phone = value,
-                  controller: controller.phoneController
-                  //  controller:
-                  ),
+              CustomTextField.phoneTextField((value) =>
+              controller.postRegister.phone = value,
+              ),
               CustomPadding.smallHeight,
               Obx(() {
-                return CustomTextField.passwordTextField((value) => null,
-                    isVisible: hidePassword.value, changeVisible: () {
-                  hidePassword(!(hidePassword.value));
-                }, controller: controller.passwordController
-                    //  controller:
-                    );
+                return CustomTextField.passwordTextField((value) =>  controller.postRegister.password = value,
+                  isVisible: hidePassword.value, changeVisible: () {
+                    hidePassword(!(hidePassword.value));
+                  },
+                );
               }),
               CustomPadding.smallHeight,
               Obx(() {
                 return CustomTextField.passwordTextField(
-                  (value) => null,
+                      (value) => null,
                   isVisible: hideConfirmPassword.value,
                   changeVisible: () {
                     hideConfirmPassword(!(hideConfirmPassword.value));
                   },
                   validator: (value) {
-                    if (controller.passwordController.text != value) {
+                    if ( controller.postRegister.password != value) {
                       return CustomTrans.wrongConfirmedPassword.tr;
                     }
                     return null;
@@ -114,12 +114,14 @@ class SignUpScreen extends GetView<AuthController> {
                     if (formKey.currentState!.validate()) {
                       if (!agreeTerms.value) {
                         showToast(
-                            "${CustomTrans.needToAccept.tr} ${CustomTrans.termsAndConditions.tr}",
+                            "${CustomTrans.needToAccept.tr} ${CustomTrans
+                                .termsAndConditions.tr}",
                             MessageErrorType.error);
                         return;
                       } else if (!agreeSubscribe.value) {
                         showToast(
-                            "${CustomTrans.needToAccept.tr} ${CustomTrans.subscribeOurNewsletter.tr}",
+                            "${CustomTrans.needToAccept.tr} ${CustomTrans
+                                .subscribeOurNewsletter.tr}",
                             MessageErrorType.error);
                         return;
                       }

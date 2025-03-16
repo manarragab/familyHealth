@@ -192,7 +192,7 @@ class CustomTextField {
         autofillHints: autoFillHints,
         onChanged: (x) => onChange(x.trim()),
         obscureText: isVisible,
-        //validator: validator ?? (x) => TValidator.normalValidator(x?.trim()),
+        validator: validator ?? (x) => TValidator.normalValidator(x?.trim()),
         decoration: _defaultDecoration(
           suffixIcon: Padding(
             padding: const EdgeInsetsDirectional.only(end: 15.0),

@@ -27,8 +27,7 @@ class ResetPasswordScreen extends GetView<AuthController> {
           const SizedBox(height: 10),
           Obx(() {
             return CustomTextField.passwordTextField(
-              (value) => null,
-              controller: controller.passwordController,
+              (value) => controller.postRegister.password = value,
               isVisible: hidePassword.value,
               changeVisible: () {
                 hidePassword(!hidePassword.value);
@@ -41,7 +40,7 @@ class ResetPasswordScreen extends GetView<AuthController> {
               (value) => null,
               isVisible: hideConfirmPassword.value,
               validator: (value) {
-                if (controller.passwordController.text != value) {
+                if (controller.postRegister.password != value) {
                   return CustomTrans.wrongConfirmedPassword.tr;
                 }
                 return null;

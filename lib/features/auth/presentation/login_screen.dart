@@ -50,19 +50,20 @@ class LoginScreen extends GetView<AuthController> {
                             fontSize: 16, fontWeight: TFontWights.regular),
                       ),
                       CustomPadding.heightButton,
-                      CustomTextField.emailTextField((value) => email = value,
-                          controller: controller.emailController
-                          //  controller:
-                          ),
+                      CustomTextField.emailTextField(
+                        (value) => controller.postRegister.email = value,
+                        //  controller:
+                      ),
                       CustomPadding.heightButton,
                       Obx(() {
                         return CustomTextField.passwordTextField(
-                            (value) => null,
-                            isVisible: hidePassword.value, changeVisible: () {
-                          hidePassword(!hidePassword.value);
-                        }, controller: controller.passwordController
-                            //  controller:
-                            );
+                          (value) => controller.postRegister.password = value,
+                          isVisible: hidePassword.value,
+                          changeVisible: () {
+                            hidePassword(!hidePassword.value);
+                          },
+                          //  controller:
+                        );
                       }),
                       CustomPadding.heightButton,
                       Padding(
@@ -88,9 +89,10 @@ class LoginScreen extends GetView<AuthController> {
                             GestureDetector(
                               onTap: () {
                                 Get.to(() => const ForgetPasswordScreen(),
-                                    transition: Transition.fadeIn,binding: BindingsBuilder((){
-                                      controller.clearData();
-                                    }));
+                                    transition: Transition.fadeIn,
+                                    binding: BindingsBuilder(() {
+                                  controller.clearData();
+                                }));
                               },
                               child: Text(
                                 CustomTrans.forgotPassword.tr,

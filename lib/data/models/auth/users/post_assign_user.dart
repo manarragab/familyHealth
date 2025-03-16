@@ -2,10 +2,10 @@ import 'package:abg/res/notification/push_notification.dart';
 
 class PostRegister {
   PostRegister({
-    required this.name,
-    required this.email,
-    required this.phone,
-    required this.password,
+    this.name,
+    this.email,
+    this.phone,
+    this.password,
   });
 
   String? name;

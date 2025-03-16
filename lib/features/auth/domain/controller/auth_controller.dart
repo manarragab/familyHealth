@@ -13,34 +13,34 @@ import 'package:abg/res/router/pages.dart';
 
 class AuthController extends MainGetxController {
   final otpController = Get.put(OTPController());
-  TextEditingController phoneController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-  TextEditingController nameController = TextEditingController();
+  PostRegister postRegister = PostRegister();
 
-  @override
-  void onClose() {
-    for (TextEditingController controller in [
-      phoneController,
-      passwordController,
-      emailController,
-      nameController,
-    ]) {
-      controller.dispose();
-    }
-    super.onClose();
+//  TextEditingController phoneController = TextEditingController();
+//  TextEditingController emailController = TextEditingController();
+//  TextEditingController passwordController = TextEditingController();
+//  TextEditingController nameController = TextEditingController();
+
+  // @override
+  // void onClose() {
+  //   for (TextEditingController controller in [
+  //     phoneController,
+  //     passwordController,
+  //     emailController,
+  //     nameController,
+  //   ]) {
+  //     controller.dispose();
+  //   }
+  //   super.onClose();
+  // }
+
+  clearData() {
+    postRegister = PostRegister();
   }
 
-  clearData(){
-    for (TextEditingController controller in [
-      phoneController,
-      passwordController,
-      emailController,
-      nameController,
-    ]) {
-      controller.clear();
-    }
-  }
+  String email = "";
+  String password = "";
+  String phone = "";
+  String name = "";
 
   LoginModel loginModel = LoginModel(data: LoginData());
 
@@ -59,7 +59,7 @@ class AuthController extends MainGetxController {
     // user auth cases for api link or storage
     //todo no need for password wait to call the client to know why there is screen for change password
     var response = await sl<AuthCases>()
-        .login(emailController.text, passwordController.text);
+        .login(postRegister.email??"", postRegister.password??"");
     sPrint.info(response);
     // must end loading
     loadingGetxController.hideLoading();
@@ -68,6 +68,7 @@ class AuthController extends MainGetxController {
       response,
       () {
         loginModel = response;
+        sPrint.info('response data:: ${response.toJson()}');
         sPrint.info('login data:: ${loginModel.toJson()}');
         sl<AuthCases>().setUser(loginModel);
         Get.offAllNamed(CustomPage.layoutPage);
@@ -88,12 +89,7 @@ class AuthController extends MainGetxController {
 
     // user auth cases for api link or storage
     //todo no need for password wait to call the client to know why there is screen for change password
-    var response = await sl<AuthCases>().register(PostRegister(
-      name: nameController.text,
-      email: emailController.text,
-      phone: phoneController.text,
-      password: passwordController.text,
-    ));
+    var response = await sl<AuthCases>().register(postRegister);
     sPrint.info(response);
     // must end loading
     loadingGetxController.hideLoading();
@@ -135,7 +131,7 @@ class AuthController extends MainGetxController {
   getCode({bool moveTo = false}) async {
     sPrint.info('code:: $code');
     loadingGetxController.showLoading();
-    var response = await sl<AuthCases>().getCode(emailController.text);
+    var response = await sl<AuthCases>().getCode(postRegister.email??"");
     loadingGetxController.hideLoading();
     return statusError.checkStatus(
       response,
@@ -158,7 +154,7 @@ class AuthController extends MainGetxController {
 
   checkCode(String code) async {
     loadingGetxController.showLoading();
-    var response = await sl<AuthCases>().checkCode(code, emailController.text);
+    var response = await sl<AuthCases>().checkCode(code, postRegister.email??"");
     loadingGetxController.hideLoading();
     statusError.checkStatus(response, () {
       loginModel = response as LoginModel;
@@ -176,7 +172,7 @@ class AuthController extends MainGetxController {
   void setPassword() async {
     loadingGetxController.showLoading();
     var response =
-        await sl<AuthCases>().resetPassord(password: passwordController.text);
+        await sl<AuthCases>().resetPassord(password: postRegister.password??"");
     loadingGetxController.hideLoading();
     statusError.checkStatus(response, () {
       Get.offAllNamed(CustomPage.loginPage);
@@ -184,9 +180,7 @@ class AuthController extends MainGetxController {
   }
 
   void updateMyAccountScreen() {
-    nameController.text = user?.name ?? "";
-    emailController.text = user?.email ?? "";
-    phoneController.text = user?.phone ?? "";
+    postRegister = PostRegister(name: user?.name ?? "",email: user?.email ?? "",phone:user?.phone ?? "" );
   }
 
   void updateProfileImage(File file) async {
@@ -207,7 +201,7 @@ class AuthController extends MainGetxController {
   void updateProfile() async {
     loadingGetxController.showProgress();
     var response = await sl<AuthCases>().editProfile(PostEditProfile(
-      firstName: nameController.text,
+      firstName: postRegister.name??"",
       lastName: "",
     ));
     loadingGetxController.hideLoading();

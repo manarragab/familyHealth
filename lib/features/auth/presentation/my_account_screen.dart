@@ -64,21 +64,24 @@ class MyAccountScreen extends GetView<AuthController> {
                     ),
                     const SizedBox(height: 10),
                     CustomTextField.nameTextField(
-                      (value) {},
+                      (value) {
+                        controller.postRegister.name = value;
+                      },
                       hint: "full name",
-                      controller: controller.nameController,
                     ),
                     const SizedBox(height: 10),
                     CustomTextField.emailTextField(
-                      (value) {},
+                      (value) {
+                        controller.postRegister.email = value;
+                      },
                       readOnly: true,
-                      controller: controller.emailController,
                     ),
                     const SizedBox(height: 10),
                     CustomTextField.phoneTextField(
-                      (value) {},
+                      (value) {
+                        controller.postRegister.phone = value;
+                      },
                       readOnly: true,
-                      controller: controller.phoneController,
                     ),
                   ],
                 ),

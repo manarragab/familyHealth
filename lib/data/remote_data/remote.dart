@@ -48,7 +48,9 @@ class Remote {
       onSuccess: (Map<String, dynamic> data) {
         sPrint.success(data);
         sPrint.info('getting data:: $data');
-        return LoginModel.fromJson(data);
+        var response =  LoginModel.fromJson(data["data"]);
+        sPrint.info('login:: ${response.toJson()}');
+        return response;
       },
       onError: (data) {
         sPrint.warning('error  ${data.data?.status}:: ${data.message}');
@@ -220,10 +222,10 @@ class Remote {
       "name": socialModel?.name ?? "",
       "image": socialModel?.image,
     }, onSuccess: (Map<String, dynamic> data) {
-      return LoginModel.fromJson(data);
+      return LoginModel.fromJson(data["data"]);
     }, onError: (data) {
       sPrint.warning('login error:: $data');
-      return LoginModel.fromJson(data);
+      return LoginModel.fromJson(data.toJson());
     });
   }
 

@@ -7,7 +7,7 @@ class LoginModel extends ResponseModel<LoginData?> {
     this.data,
   });
 
-  LoginModel.fromJson(dynamic json) {
+  LoginModel.fromJson(Map<String,dynamic> json) {
     status = json['status'];
     msg = json["message"];
     data = json['data'] != null ? LoginData.fromJson(json['data']) : null;
