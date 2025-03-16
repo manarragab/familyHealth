@@ -62,7 +62,7 @@ class AddfamilyScreen extends GetView<FamilyController> {
                                             fit: BoxFit.cover,
                                             width: 200,
                                             height: 160.3,
-                                          )
+                                           )
                                         : Image.asset(
                                             "assets/images/cheker.png",
                                             fit: BoxFit.cover,
@@ -126,22 +126,25 @@ class AddfamilyScreen extends GetView<FamilyController> {
                         hint: "Phone",
                       ),
                       const SizedBox(height: 20),
-                      CustomTextField.dropDownTextField(
-                        controller: controller.familyController,
-                        onDropDownPress: () {
-                          CustomBottomSheet.showDefaultListBottomSheet(context,
-                              title: "Family Type :- ",
-                              data: FamilyType.values, mainTitle: (index) {
-                            return FamilyType.values[index].name;
-                          }, onTap: (index) {
-                            controller.postFam.relative=FamilyType.values[index].name;
-                            controller.familyController.text =
-                                FamilyType.values[index].name;
-                            Get.back();
-                          });
+                      CustomTextField.dynamicTextField(
+                        (val){
+
+                      }  , hint: "Medical record" , 
+                      suffixIcon: InkWell(
+                        onTap: (){
+                          Get.dialog(
+Text("data"),
+
+                          );
                         },
-                        hint: "Select someone",
+                        child: Icon(Icons.add , size: 20,))
                       ),
+
+
+
+
+
+
                      const SizedBox(height: 20),
                       CustomTextField.dropDownTextField(
                           controller: controller.selectSomeoneController,

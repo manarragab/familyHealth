@@ -11,9 +11,12 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class ProfilefamilyScreen extends StatefulWidget {
   final String? image;
+    final String title;
+
   ProfilefamilyScreen({
     super.key,
-    this.image,
+    this.image, 
+   required this.title,
   });
 
   @override
@@ -36,7 +39,7 @@ class _ProfilefamilyScreenState extends State<ProfilefamilyScreen> {
           return ListView(
             children: [
               _buildHeader(),
-                                  const SizedBox(height: 20),
+               const SizedBox(height: 20),
 
                 Container(
                       width: double.infinity,
@@ -76,7 +79,7 @@ class _ProfilefamilyScreenState extends State<ProfilefamilyScreen> {
     return Center(
       child: Column(
         children: [
-          Text("My Dad", style: GoogleFonts.almarai(fontSize: 20, fontWeight: FontWeight.w400, color: CustomColors.darkblue)),
+          Text(widget.title, style: GoogleFonts.almarai(fontSize: 20, fontWeight: FontWeight.w400, color: CustomColors.darkblue)),
           const SizedBox(height: 15),
           Container(
             width: 200,

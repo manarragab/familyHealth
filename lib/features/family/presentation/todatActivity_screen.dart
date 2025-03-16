@@ -9,7 +9,6 @@ import 'package:google_fonts/google_fonts.dart';
 class TodatactivityScreen extends GetView<FamilyController> {
   @override
   Widget build(BuildContext context) {
-    // Ensure the controller is properly retrieved
     final controller = Get.find<FamilyController>();
 
     return Scaffold(

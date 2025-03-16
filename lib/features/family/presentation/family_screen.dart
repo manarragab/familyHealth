@@ -101,7 +101,7 @@ class _FamilyScreenState extends State<FamilyScreen> {
       ),
       child: InkWell(
         onTap: (){
-          Get.to(ProfilefamilyScreen(image: _getImagePath(selectedIndex),));
+          Get.to(ProfilefamilyScreen(image: _getImagePath(selectedIndex), title: FamilyType.values[selectedIndex].name,));
         },
         child: Image.asset(_getImagePath(selectedIndex), fit: BoxFit.cover)),
     );
