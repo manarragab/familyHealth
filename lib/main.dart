@@ -1,7 +1,9 @@
 import 'package:abg/res/injection.dart';
+import 'package:device_preview/device_preview.dart';
 //import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
@@ -45,5 +47,13 @@ void main() async {
   initData.icon = 'assets/images/logo/drops_splash.svg';
   initData.title = 'Katarat';
   initData.color = const Color(0xff33BAF7);*/
-  runApp(const MyApp());
+  
+  runApp(
+    
+     DevicePreview(
+      enabled: kDebugMode,
+      
+      builder: (context) => const MyApp(),
+    ),
+    );
 }

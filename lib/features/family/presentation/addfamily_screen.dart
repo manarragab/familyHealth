@@ -126,23 +126,22 @@ class AddfamilyScreen extends GetView<FamilyController> {
                         hint: "Phone",
                       ),
                       const SizedBox(height: 20),
-                      CustomTextField.dynamicTextField(
-                        (val){
+                    
 
-                      }  , hint: "Medical record" , 
-                      suffixIcon: InkWell(
-                        onTap: (){
-                          Get.dialog(
-Text("data"),
-
-                          );
-                        },
-                        child: Icon(Icons.add , size: 20,))
-                      ),
-
-
-
-
+         CustomTextField.dropDownTextField(
+                          controller: controller.selectSomeoneController,
+                          hint: "Medical record",
+                          onDropDownPress: () {
+                            CustomBottomSheet.showDefaultListBottomSheet(context,
+                                title: "Select someone :-",
+                                data: FamilyType.values, mainTitle: (index) {
+                              return FamilyType.values[index].name;
+                            }, onTap: (index) {
+                              controller.selectSomeoneController.text =
+                                  FamilyType.values[index].name;
+                              Get.back();
+                            });
+                          }),
 
 
                      const SizedBox(height: 20),

@@ -8,6 +8,8 @@ import 'package:abg/features/auth/presentation/my_account_screen.dart';
 import 'package:abg/features/auth/presentation/sign_up_screen.dart';
 import 'package:abg/features/family/domain/controller/family_controller.dart';
 import 'package:abg/features/family/presentation/family_screen.dart';
+import 'package:abg/features/followUp/domain/controller/followUp_controller.dart';
+import 'package:abg/features/followUp/presentation/followUp_screen.dart';
 import 'package:abg/features/layout/presentation/layout_screen.dart';
 import 'package:abg/features/notification/domain/controller/notification_controller.dart';
 import 'package:abg/features/notification/presentation/notification_screen.dart';
@@ -83,6 +85,14 @@ class CustomPage {
         binding: BindingsBuilder(() {
         Get.put(FamilyController()).onRefresh();
         })),
+
+          GetPage(
+        name: followUp,
+        page: () =>   FollowupScreen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+        Get.put(FollowupController());
+        })),
   ];
 
   static String layoutPage = '/layout';
@@ -104,5 +114,7 @@ class CustomPage {
   static String myAlarm = "/my_alarm_page";
 
     static String myFamily = "/family_page";
+        static String followUp = "/follow_up_page";
+
 
 }

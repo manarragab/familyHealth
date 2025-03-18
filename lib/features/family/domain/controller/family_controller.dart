@@ -42,6 +42,8 @@ List<String> images=[
 TextEditingController dateController=TextEditingController();
 TextEditingController familyController=TextEditingController();
 TextEditingController selectSomeoneController=TextEditingController();
+TextEditingController familyDiseaseController=TextEditingController();
+
 
   int _pageNum = 1;
 

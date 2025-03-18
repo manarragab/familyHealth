@@ -56,14 +56,20 @@ class CustomTextField {
     Function(String value) onChange, {
     String hint = '',
     Widget? suffixIcon,
+     Function()? onTapped,
+    TextEditingController? controller,
+
   }) {
     return TextFormField(
+      controller: controller,
+      onTap: onTapped,
+      
       keyboardType: TextInputType.multiline,
       validator: (value) => TValidator.normalValidator(value?.trim()),
       onChanged: (x) => onChange(replaceArabicNumber(x.trim())),
       decoration: _defaultDecoration(
         removeHintWrite: true,
-        prefixIcon: suffixIcon,
+        suffixIcon: suffixIcon,
         hintText: hint,
       ),
     );

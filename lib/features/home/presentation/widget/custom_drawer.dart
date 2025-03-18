@@ -78,7 +78,10 @@ class CustomDrawer extends StatelessWidget {
     DrawerItem(
         image: "assets/svg/calculator.svg", name: "calculations", onTap: () {}),
     DrawerItem(
-        image: "assets/svg/follow_up.svg", name: "Follow Up", onTap: () {}),
+        image: "assets/svg/follow_up.svg", name:  CustomTrans.followUp.tr, onTap: () {
+
+          Get.toNamed(CustomPage.followUp);
+        }),
     DrawerItem(
         image: "assets/svg/progress_tracker.svg",
         name: "Progress tracker",

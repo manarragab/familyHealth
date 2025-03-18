@@ -117,6 +117,17 @@ static const Color white2 = Color.fromRGBO(252, 252, 252, 1);
 
 static const Color lightBlue3= Color.fromRGBO(26, 176, 236, 1);
 static const Color lightyellow= Color.fromRGBO(255, 204, 0, 1);
+      static const Color lightgreen=Color.fromRGBO(134, 205, 75, 0.3);
+      static const Color greyy1=Color.fromRGBO(242, 242, 242, 1);
+      static const Color darkblack2=Color.fromRGBO(30, 30, 30, 1);
+      static const Color bluee=Color.fromRGBO(71, 145, 255, 1);
+      static const Color grenn=Color.fromRGBO(2, 188, 119, 1);
+      static const Color greyy2=Color.fromRGBO(217, 217, 217, 1);
+      static const Color green1=Color.fromRGBO(134, 205, 75, 1);
+
+      static const Color greyy3=Color.fromRGBO(242, 242, 242, 1);
+
+
 
 
 

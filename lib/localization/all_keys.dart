@@ -955,6 +955,11 @@ class CustomTrans {
     static const String Add = "Add";
 
     static const String Profile = "profile";
+    static const String logOut = "Log Out";
+    static const String followUp = "Follow Up";
+    static const String record = "Record";
 
   static const String needToAccept = "need to accept";
+
+
 }
