@@ -115,7 +115,7 @@ class DataRepository implements DomainData {
   }
 
   @override
-  Future<ResponseModel<Alarm?>> addAlarm(PostAlarm post) {
+  Future<ResponseModel<AlarmData?>> addAlarm(PostAlarm post) {
     return remote.addAlarm(post);
   }
 
@@ -125,7 +125,7 @@ class DataRepository implements DomainData {
   }
 
   @override
-  Future<ResponseModel<List<Alarm>?>> getAlarm() {
+  Future<ResponseModel<List<AlarmData>?>> getAlarm() {
     return remote.getAlarm();
   }
 

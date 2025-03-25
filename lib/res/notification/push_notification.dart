@@ -8,6 +8,10 @@ import '../configuration/print_types.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
+
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+FlutterLocalNotificationsPlugin();
+
 class PushNotificationsManager {
   PushNotificationsManager._();
 
@@ -24,22 +28,14 @@ class PushNotificationsManager {
 
   bool showNotification = true;
 
-/*
-  subscribeEmployee({bool value = true}) {
-    if (value) {
-      firebaseMessaging.subscribeToTopic(LoginType.employee.name);
-    } else {
-      firebaseMessaging.unsubscribeFromTopic(LoginType.employee.name);
-    }
+  subscribe(String id) {
+    sPrint.info('alarm:: $id');
+    firebaseMessaging.subscribeToTopic(id);
   }
 
-  subscribeClient({bool value = true}) {
-    if (value) {
-      firebaseMessaging.subscribeToTopic(LoginType.client.name);
-    } else {
-      firebaseMessaging.unsubscribeFromTopic(LoginType.client.name);
-    }
-  }*/
+  unSubscribe(String id) {
+    firebaseMessaging.unsubscribeFromTopic(id);
+  }
 
   getNotification() {
     FirebaseMessaging.onMessage.listen(
@@ -112,8 +108,7 @@ class PushNotificationsManager {
   }) async {
     /*Get.snackbar(title, message,
         icon: icon, onTap: onTap, duration: const Duration(seconds: 3));*/
-    final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-        FlutterLocalNotificationsPlugin();
+
     bool? showNotification = await flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<
             AndroidFlutterLocalNotificationsPlugin>()

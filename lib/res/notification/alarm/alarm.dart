@@ -53,18 +53,18 @@ class CustomAlarm {
   }
 
   startAndroidAlarm(
-    int id,
-    int userID,
-    DateTime startDate,
-    DateTime? endDate,
-    int hour,
-    int minute, {
-    String title = "",
-    String body = "",
-  }) {
+      int id,
+      int userID,
+      DateTime startDate,
+      DateTime? endDate,
+      int hour,
+      int minute, {
+        String title = "",
+        String body = "",
+      }) {
     sPrint.info("alarm start");
     endDate = endDate ?? startDate;
-DateTime start = startDate;
+    DateTime start = startDate;
     int count = 1;
     do {
       DateTime date = DateTime(startDate.year, startDate.month, startDate.day,

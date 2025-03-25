@@ -62,7 +62,7 @@ class HabitbreakerScreen extends StatelessWidget {
                 Get.dialog(
                   Delete(),
                 );
-                  },
+                  }, image: '',
                 ),
               );
             })

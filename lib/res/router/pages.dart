@@ -10,6 +10,7 @@ import 'package:abg/features/family/domain/controller/family_controller.dart';
 import 'package:abg/features/family/presentation/family_screen.dart';
 import 'package:abg/features/followUp/domain/controller/followUp_controller.dart';
 import 'package:abg/features/followUp/presentation/followUp_screen.dart';
+import 'package:abg/features/layout/domain/controller/layout_controller.dart';
 import 'package:abg/features/layout/presentation/layout_screen.dart';
 import 'package:abg/features/notification/domain/controller/notification_controller.dart';
 import 'package:abg/features/notification/presentation/notification_screen.dart';

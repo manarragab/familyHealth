@@ -119,7 +119,7 @@ class HabittrackerScreen extends StatelessWidget {
           )),
                     );
                   },
-                  sign: true,
+                  sign: true, image: '',
                 ),
               );
             })
