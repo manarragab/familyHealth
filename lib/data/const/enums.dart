@@ -44,3 +44,14 @@ enum ContactType { contact, contactUS }
 enum InterestType { moreInterest, interest }
 
 enum AlarmType { reminder, medicine, appointment }
+
+enum FamilyType { SeeAll , MySon ,Mum, Dad , MyDauther, Husband  }
+
+enum SelectSomeone { A , B , C}
+
+enum ProgressType { Daily, Weekly, Monthly } 
+
+enum PeriodType { Day60 , Day90 , Other}
+
+
+

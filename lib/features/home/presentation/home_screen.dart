@@ -7,6 +7,7 @@ import 'package:abg/features/group/domain/controller/group_controller.dart';
 import 'package:abg/features/group/presentation/group_screen.dart';
 import 'package:abg/features/home/domain/controller/home_controller.dart';
 import 'package:abg/features/home/presentation/widget/doctor_card.dart';
+import 'package:abg/features/home/presentation/widget/family_container.dart';
 import 'package:abg/features/home/presentation/widget/home_banaras_bar.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -15,8 +16,8 @@ import 'widget/bill_card.dart';
 import 'widget/custom_drawer.dart';
 import 'widget/dentistry_card.dart';
 
-class HomeScreen extends GetView<HomeController> {
-  HomeScreen({Key? key}) : super(key: key);
+class Homescreen extends GetView<HomeController> {
+  Homescreen({Key? key}) : super(key: key);
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
@@ -27,14 +28,14 @@ class HomeScreen extends GetView<HomeController> {
         onChange: (value) {},
         onMenuPress: () {
           if (!scaffoldKey.currentState!.isDrawerOpen) {
-            scaffoldKey.currentState!.openDrawer();
+         scaffoldKey.currentState!.openDrawer();
           }
         },
         onNotificationPress: () {
           //  Get.toNamed(CustomPage.notificationPage);
         },
       ),
-      drawer: CustomDrawer(),
+       drawer: CustomDrawer(),
       body: LoadingOverLay(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -115,7 +116,7 @@ class HomeScreen extends GetView<HomeController> {
                               Reminders remind = model.data!.reminders![index];
                               return _buildReminderCard(
                                 title: remind.title ?? "",
-                                subtitle: remind.alarmTime??"",
+                                subtitle: remind.alarmTime!,
                                 dosage: remind.description ?? "",
                                 isTaken: index % 2 == 0,
                               );
@@ -141,13 +142,17 @@ class HomeScreen extends GetView<HomeController> {
                           itemBuilder: (context, index) {
                             FamilyReminders remind =
                                 model.data!.familyReminders![index];
-                            return _buildFamilyReminderCard(
+                           // FamilyModel model2=value;
+                            // List<Family> list=model2.data??[];
+                            // Family remind=list[index];
+                           return FamilyContainer(
+                              index:index,
                               name: remind.name ?? "",
                               relation: remind.relative ?? "",
                               title: remind.name ?? "",
                               dosage: "not found",
                               time: remind.createdAt ?? "",
-                              isTaken: true,
+                              //isTaken: true,
                               image: remind.image ?? "",
                               whenGetIT: 'after launch',
                             );
@@ -171,7 +176,7 @@ class HomeScreen extends GetView<HomeController> {
                             ),
                             const SizedBox(height: 16),
                             ...List.generate(2, (index) {
-                              return PillCard();
+                              return const PillCard();
                             }),
                           ],
                         ),
@@ -257,7 +262,7 @@ class HomeScreen extends GetView<HomeController> {
                                   onTap: () {
                                     //    Get.to(() => ChatScreen());
                                   },
-                                  child: DoctorCard());
+                                  child: const DoctorCard());
                             }),
                           ],
                         )
@@ -280,6 +285,7 @@ class HomeScreen extends GetView<HomeController> {
     required bool isTaken,
   }) {
     return Container(
+      width: 180,
       margin: const EdgeInsets.only(right: 16),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
@@ -323,95 +329,6 @@ class HomeScreen extends GetView<HomeController> {
     );
   }
 
-  Widget _buildFamilyReminderCard({
-    required String name,
-    required String relation,
-    required String title,
-    required String dosage,
-    required String whenGetIT,
-    required String time,
-    required bool isTaken,
-    required String image,
-  }) {
-    return Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
-        color: Colors.grey[100],
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  CircleAvatar(
-                    radius: 20,
-                    backgroundImage: NetworkImage(image),
-                  ),
-                  const SizedBox(width: 8),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        name,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                      Text(
-                        relation,
-                        style:
-                            const TextStyle(fontSize: 12, color: Colors.grey),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-              const SizedBox(width: 8),
-              Icon(
-                isTaken ? Icons.check_circle : Icons.radio_button_unchecked,
-                color: isTaken ? Colors.green : Colors.grey,
-                size: 25,
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                title,
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-              const SizedBox(width: 8),
-              Text(
-                dosage,
-                style: const TextStyle(color: Colors.grey),
-              ),
-            ],
-          ),
-          const SizedBox(height: 8),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                whenGetIT,
-                style: const TextStyle(fontWeight: FontWeight.normal),
-              ),
-              const SizedBox(width: 8),
-              Text(
-                time,
-                style: const TextStyle(fontSize: 12, color: Colors.grey),
-              ),
-            ],
-          )
-        ],
-      ),
-    );
-  }
 
   Widget getTitle({required String title, required Null Function() onTapMore}) {
     return Row(

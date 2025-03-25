@@ -1,8 +1,10 @@
 import 'package:abg/features/auth/domain/cases/auth_case.dart';
-import 'package:abg/features/group/presentation/group_screen.dart';
+import 'package:abg/features/family/domain/controller/family_controller.dart';
+import 'package:abg/features/family/presentation/family_screen.dart';
 import 'package:abg/features/home/domain/controller/home_controller.dart';
 import 'package:abg/features/home/presentation/home_screen.dart';
 import 'package:abg/features/layout/domain/controller/layout_controller.dart';
+import 'package:abg/features/profile/presentation/myProfile_screen.dart';
 import 'package:abg/features/profile/presentation/profile_screen.dart';
 import 'package:abg/res/configuration/print_types.dart';
 import 'package:abg/res/injection.dart';
@@ -15,10 +17,11 @@ class LayoutScreen extends GetView<LayoutController> {
   LayoutScreen({Key? key}) : super(key: key);
 
   List<Widget> navigationBar = [
-    HomeScreen(),
+    Homescreen(),
     const Scaffold(),
-    const GroupScreen(),
-    ProfileScreen(),
+    FamilyScreen(),
+    //ProfileScreen(),
+    MyprofileScreen(),
   ];
 
   Widget getNavigationBar(int index) {
@@ -26,7 +29,8 @@ class LayoutScreen extends GetView<LayoutController> {
       case 0:
         Get.put(HomeController()).onRefresh();
         break;
-      case 1:
+      case 2:
+        Get.put(FamilyController()).onRefresh();
         break;
     }
 

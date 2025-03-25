@@ -12,6 +12,17 @@ import 'package:http_parser/http_parser.dart';
 /// is_repeatable : "1"
 
 class PostAlarm {
+  
+  File? image;
+  String? type;
+  String? title;
+  String? description;
+  String? medicineStartDate;
+  String? medicineEndDate;
+  bool isRepeatable = false;
+  String? alarmDate;
+  String? alarmTime;
+  
   PostAlarm({
     this.image,
     this.type,
@@ -23,32 +34,14 @@ class PostAlarm {
   });
 
   PostAlarm.fromJson(dynamic json) {
-    id = json['id'];
     type = json['type'];
     title = json['title'];
-    imageData = json['image_path'];
-    alarmDate = json["alarm_date"];
-    alarmTime = json['alarm_time'];
     description = json['description'];
     medicineStartDate = json['medicine_start_date'];
     medicineEndDate = json['medicine_end_date'];
-    isRepeatable = json['is_repeatable'] == "1";
+    isRepeatable = json['is_repeatable'];
   }
 
-  String? imageData;
-  File? image;
-  String? type;
-  String? title;
-  String? description;
-  String? medicineStartDate;
-  String? medicineEndDate;
-  bool isRepeatable = false;
-
-  String? alarmDate;
-
-  String? alarmTime;
-
-  int? id;
 
   Future<Map<String, dynamic>> toJson() async {
     final map = <String, dynamic>{};
@@ -64,7 +57,7 @@ class PostAlarm {
     map['alarm_time'] = alarmTime;
     map['medicine_start_date'] = medicineStartDate ?? alarmDate;
     map['medicine_end_date'] = medicineEndDate;
-    map['is_repeatable'] = isRepeatable ? "1" : "0";
+    map['is_repeatable'] = isRepeatable ? 1 : 0;
     return map;
   }
 }

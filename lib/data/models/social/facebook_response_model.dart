@@ -34,7 +34,7 @@ class Picture {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     if (this.data != null) {
       data['data'] = this.data!.toJson();
     }
@@ -58,11 +58,11 @@ class Data {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['height'] = this.height;
-    data['is_silhouette'] = this.isSilhouette;
-    data['url'] = this.url;
-    data['width'] = this.width;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['height'] = height;
+    data['is_silhouette'] = isSilhouette;
+    data['url'] = url;
+    data['width'] = width;
     return data;
   }
 }

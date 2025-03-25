@@ -18,7 +18,7 @@ class BasicDataWidget extends StatelessWidget {
             prefixIconPath: "assets/svg/date.svg", onDatePickerPress: () {}),
         const SizedBox(height: 10),
         CustomTextField.dynamicTextField((value) {},
-            hint: CustomTrans.gender.tr),
+            hint: CustomTrans.gender.tr, onTapped: () {  }),
         const SizedBox(height: 10),
         CustomTextField.dropDownTextField(
           onDropDownPress: () {},

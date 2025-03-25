@@ -7,8 +7,7 @@ import 'package:abg/data/models/alarm/post_alarms/post_alarm.dart';
 import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
 import 'package:abg/domain_data/custom_mixin/mixen_widgets/status_error.dart';
 import 'package:abg/features/alarm/domain/cases/alarm_cases.dart';
-import 'package:abg/features/alarm/presentation/add_alarm.dart';
-import 'package:abg/res/notification/alarm/alarm.dart';
+import 'package:abg/res/notification/push_notification.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class AlarmController extends MainGetxController with CustomStateMixin {
@@ -16,52 +15,13 @@ class AlarmController extends MainGetxController with CustomStateMixin {
 
   AlarmModel model = AlarmModel();
   PostAlarm postAlarm = PostAlarm();
-
   RefreshController refreshController = RefreshController();
-  TextEditingController nameController = TextEditingController();
-  TextEditingController messageController = TextEditingController();
+
   TextEditingController alarmDateController = TextEditingController();
   TextEditingController alarmTimeController = TextEditingController();
   TextEditingController medicineStartController = TextEditingController();
   TextEditingController medicineEndController = TextEditingController();
-  int _page = 1;
-
-  void clearData() {
-    postAlarm = PostAlarm();
-    for (TextEditingController controller in [
-      nameController,
-      messageController,
-      alarmDateController,
-      alarmTimeController,
-      medicineStartController,
-      medicineEndController,
-    ]) {
-      controller.clear();
-    }
-    selectRadio = null;
-  }
-
-  getDetails(int id) async {
-    loadingGetxController.showCustomLoading(id.toString());
-    var response = await sl<AlarmCases>().alarmDetails(id);
-    loadingGetxController.hideCustomLoading(id.toString());
-    statusError.checkStatus(response, () {
-      updateAlarmData(response.data!);
-    });
-  }
-
-  updateAlarmData(AlarmData alarm) {
-    postAlarm = PostAlarm.fromJson(alarm.toJson());
-    nameController.text = alarm.title ?? "";
-    messageController.text = alarm.description ?? "";
-    alarmDateController.text = alarm.alarmDate;
-    alarmTimeController.text = alarm.alarmTime;
-    medicineStartController.text = alarm.medicineStartDate ?? "";
-    medicineEndController.text = alarm.medicineEndDate ?? "";
-    sPrint.info("type:: ${alarm.type}");
-    selectRadio = AlarmType.values.asNameMap()[alarm.type];
-    Get.to(() => const AddAlarm(), transition: Transition.fadeIn);
-  }
+   int _page = 1;
 
   onRefresh() async {
     model = await refreshData(
@@ -76,12 +36,8 @@ class AlarmController extends MainGetxController with CustomStateMixin {
         }
         return data;
       },
-      getPage: (_) => _,
+      getPage: (page) => _page=page,
     );
-
-    model.data?.forEach((e){
-      CustomAlarm().addAlarm(e);
-    });
   }
 
   addAlarm() async {
@@ -89,8 +45,8 @@ class AlarmController extends MainGetxController with CustomStateMixin {
     var response = await sl<AlarmCases>().addAlarm(postAlarm);
     loadingGetxController.hideLoading();
     statusError.checkStatus(response, () {
+      PushNotificationsManager().subscribe("alarm-${response.data?.alarmDate}_${response.data?.alarmTime}");
       onRefresh();
-      CustomAlarm().addAlarm(response.data!);
       Get.back();
     });
   }
@@ -109,6 +65,9 @@ class AlarmController extends MainGetxController with CustomStateMixin {
     selectRadio = value;
     update();
   }
+
+  var image = Rx<File?>(null);
+  var isLoading = false.obs;
 
   void updateAlarm() async {
     loadingGetxController.showLoading();

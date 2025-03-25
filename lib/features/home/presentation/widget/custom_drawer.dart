@@ -1,3 +1,4 @@
+
 import 'package:abg/data/const/export.dart';
 import 'package:abg/data/remote_data/core.dart';
 import 'package:abg/features/auth/domain/cases/auth_case.dart';
@@ -45,6 +46,7 @@ class CustomDrawer extends GetView<AuthController> {
           Expanded(
               child: ListView(
             padding: const EdgeInsets.only(bottom: 30),
+           
             children: items
                 .map(
                   (e) => ListTile(
@@ -76,12 +78,24 @@ class CustomDrawer extends GetView<AuthController> {
     DrawerItem(
         image: "assets/svg/calculator.svg", name: "calculations", onTap: () {}),
     DrawerItem(
-        image: "assets/svg/follow_up.svg", name: "Follow Up", onTap: () {}),
+        image: "assets/svg/follow_up.svg", name:  CustomTrans.followUp.tr, onTap: () {
+
+          Get.toNamed(CustomPage.followUp);
+        }),
     DrawerItem(
         image: "assets/svg/progress_tracker.svg",
-        name: "Progress tracker",
-        onTap: () {}),
-    DrawerItem(image: "assets/svg/group.svg", name: "My Family", onTap: () {}),
+          name: CustomTrans.progressTracker.tr,
+        onTap: () {
+          Get.toNamed(CustomPage.progressTracker);
+        }),
+        
+    DrawerItem(image: "assets/svg/group.svg",
+     name:  CustomTrans.myFamily.tr, 
+     onTap: () { 
+ // print("Navigating to MyfamilyScreen ${CustomPage.myFamily}");
+      Get.toNamed(CustomPage.myFamily);
+     }),
+
     DrawerItem(
         image: "assets/svg/liberary.svg", name: "My Liberary", onTap: () {}),
     DrawerItem(image: "assets/svg/bills.svg", name: "Pills", onTap: () {}),

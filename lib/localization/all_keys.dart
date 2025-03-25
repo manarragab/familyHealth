@@ -469,7 +469,7 @@ class CustomTrans {
   static const String wasTheProductSamplesDeliveredToTheCustomer =
       'Was the product samples delivered to the customer?';
   static const String decision = 'decision';
-  static const String add = 'add';
+  static const String add = 'Add';
   static const String printerName = 'printerName';
   static const String printerPassword = 'printer Password';
   static const String addInventory = 'addInventory';
@@ -692,7 +692,7 @@ class CustomTrans {
 
   static const String saudiRiyal = "Saudi Riyal";
 
-  static const String time = "time";
+  static const String time = "Time";
 
   static const String noTimeAvailable = "no time available";
 
@@ -947,10 +947,28 @@ class CustomTrans {
 
     static const String addAlarm = "Add Alarm";
 
+    static const String myFamily = "My Family";
+    static const String family = "Family";
 
     static const String BacktoHome = "Back to Home";
 
 
+    static const String Profile = "profile";
+    static const String logOut = "Log Out";
+    static const String followUp = "Follow Up";
+    static const String record = "Record";
+    static const String progressTracker = "Progress Tracker";
+    static const String photoTracker = "Photo Tracker";
+static const String AddHabitTracking="Add habit tracking";
+    static const String habitTracker = "Habit Tracking";
+        static const String AddHabitBreaker = "Add Habit Breaker";
+
+    static const String habitBreaker = "Habit Breaker";
 
   static const String needToAccept = "need to accept";
+
+  static const String Areyousureyouwanttodeletehabittracking=  "Are you sure you want to delete habit tracking?";
+
+
+
 }

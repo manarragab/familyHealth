@@ -8,6 +8,8 @@ import 'package:abg/data/models/alarm/post_alarms/post_alarm_response.dart';
 import 'package:abg/data/models/auth/login/LoginModel.dart';
 import 'package:abg/data/models/auth/users/PostEditProfile.dart';
 import 'package:abg/data/models/auth/users/post_assign_user.dart';
+import 'package:abg/data/models/calculation/BMI/post_BMI/post_BMI_MD.dart';
+import 'package:abg/data/models/calculation/BMI/post_BMI/post_BMI_response.dart';
 import 'package:abg/data/models/chat/chat_model.dart';
 import 'package:abg/data/models/chat/group/post_group_message.dart';
 import 'package:abg/data/models/chat/group/sendGroupModel.dart';
@@ -280,7 +282,7 @@ class Remote {
         isLogin: true);
   }
 
-//family
+//family    
 
   Future<ResponseModel<List<Family>?>> getFamily() async {
     return _helper.get<List<Family>?>({}, path: "/user/family",
@@ -291,7 +293,7 @@ class Remote {
     }, isLogin: true);
   }
 
-  Future<ResponseModel<Family?>> addFamily(PostfamilyModel post) async {
+  Future<ResponseModel<Family?>> addFamily(PostFamilyModel post) async {
     return _helper.post<Family?>(await post.toJson(), path: "/user/family",
         onSuccess: (dynamic data) {
       return PostFamilyResponse.fromJson(data);
@@ -311,4 +313,17 @@ class Remote {
         },
         isLogin: true);
   }
+
+
+  //Calculation=>BMI
+
+  Future<ResponseModel<BMI?>> addBmi(PostBmiMd post) async {
+    return _helper.post<BMI?>(await post.toJson(), path: "/user/bmi-calculator",
+        onSuccess: (dynamic data) {
+      return PostBMIResponse.fromJson(data);
+    }, onError: (data) {
+      return ResponseModel(status: data.status, message: data.message);
+    }, isLogin: true);
+  }
+  
 }

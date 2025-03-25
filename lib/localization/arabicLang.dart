@@ -472,6 +472,11 @@ Map<String, String> ar = {
   CustomTrans.selectDateAndTime: "اختر التاريخ والوقت",
   TabTypes.current.name: "الحاليه",
   TabTypes.past.name: "القديمة",
+
+  PeriodType.Day60.name:"٦٠ يوم",  
+  PeriodType.Day90.name :"٩٠ يوم",
+  PeriodType.Other.name:"أخرى",
+
   CustomTrans.ok: 'موافق',
   CustomTrans.all_right: 'جميع الحقوق محفوظة ©',
   CustomTrans.our_values: 'قيمنا',
@@ -772,4 +777,7 @@ Map<String, String> ar = {
   CustomTrans.backToHome: 'العودة إلى الرئيسية',
   CustomTrans.resetPassword: 'إعادة تعيين كلمة المرور',
   CustomTrans.enterTheNewPassword: 'أدخل كلمة المرور الجديدة',
+  CustomTrans.Areyousureyouwanttodeletehabittracking: 'هل أنت متأكد من حذف تتبع العادة؟',
+
+
 };

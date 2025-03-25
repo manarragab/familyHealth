@@ -6,12 +6,17 @@ import 'package:abg/features/auth/domain/controller/auth_controller.dart';
 import 'package:abg/features/auth/presentation/login_screen.dart';
 import 'package:abg/features/auth/presentation/my_account_screen.dart';
 import 'package:abg/features/auth/presentation/sign_up_screen.dart';
-import 'package:abg/features/layout/domain/controller/layout_controller.dart';
+import 'package:abg/features/family/domain/controller/family_controller.dart';
+import 'package:abg/features/family/presentation/family_screen.dart';
+import 'package:abg/features/followUp/domain/controller/followUp_controller.dart';
+import 'package:abg/features/followUp/presentation/followUp_screen.dart';
 import 'package:abg/features/layout/presentation/layout_screen.dart';
 import 'package:abg/features/notification/domain/controller/notification_controller.dart';
 import 'package:abg/features/notification/presentation/notification_screen.dart';
 import 'package:abg/features/onboard/domain/controller/board_controller.dart';
 import 'package:abg/features/onboard/presentation/onboard_screen.dart';
+import 'package:abg/features/progressTracker/domain/controller/progressTracker_controller.dart';
+import 'package:abg/features/progressTracker/presentation/progressTracker_screen.dart';
 import 'package:abg/features/verify_account/domain/controller/main_verify_account_controller.dart';
 import 'package:abg/features/verify_account/presentation/main_verify_account_screen.dart';
 import 'package:get/get.dart';
@@ -44,7 +49,7 @@ class CustomPage {
         })),
     GetPage(
         name: splashPage,
-        page: () => Splash(),
+        page: () => const Splash(),
         transition: Transition.fadeIn,
         binding: GetBinding()),
     GetPage(
@@ -82,6 +87,29 @@ class CustomPage {
         binding: BindingsBuilder(() {
           Get.put(AlarmController()).onRefresh();
         })),
+         GetPage(
+        name: myFamily,
+        page: () =>   FamilyScreen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+        Get.put(FamilyController()).onRefresh();
+        })),
+
+          GetPage(
+        name: followUp,
+        page: () =>   FollowupScreen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+        Get.put(FollowupController());
+        })),
+
+         GetPage(
+        name: progressTracker,
+        page: () =>   ProgresstrackerScreen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+        Get.put(ProgresstrackerController());
+        })),
   ];
 
   static String layoutPage = '/layout';
@@ -101,4 +129,11 @@ class CustomPage {
   static String mainVerifyAccountScreen = "/main_verify_account_screen";
 
   static String myAlarm = "/my_alarm_page";
+
+    static String myFamily = "/family_page";
+        static String followUp = "/follow_up_page";
+          static String progressTracker = "/progress_tracker_page";
+
+
+
 }

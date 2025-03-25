@@ -1,10 +1,11 @@
-import 'package:abg/data/models/family/get_family/family_model.dart';
 import 'package:abg/data/models/family/post_family/post_family_MD.dart';
 import 'package:abg/data/remote_data/response_model.dart';
 import 'package:abg/domain_data/repositories/domain_repositry.dart';
 
+import '../../../../data/models/family/post_family/post_family_response.dart';
+
 class FamilyCases {
-  DomainData _data;
+  final DomainData _data;
 
   FamilyCases(this._data);
 
@@ -13,7 +14,7 @@ class FamilyCases {
     return _data.getFamily();
   }
 
-  Future<ResponseModel<Family?>> addFamily(PostfamilyModel post) {
+  Future<ResponseModel<Family?>> addFamily(PostFamilyModel post) {
     return _data.addFamily(post);
   }
 

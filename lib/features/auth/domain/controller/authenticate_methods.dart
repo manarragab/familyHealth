@@ -82,6 +82,7 @@ class AuthenticateMethods {
     } catch (e, s) {
       sPrint.error(e.toString(), s);
     }
+    return null;
   }
 
   Future<SocialModel?> singInWithApple() async {

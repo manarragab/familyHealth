@@ -1,4 +1,3 @@
-import 'package:abg/data/const/enums.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
@@ -113,7 +112,8 @@ class PushNotificationsManager {
   }) async {
     /*Get.snackbar(title, message,
         icon: icon, onTap: onTap, duration: const Duration(seconds: 3));*/
-
+    final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+        FlutterLocalNotificationsPlugin();
     bool? showNotification = await flutterLocalNotificationsPlugin
         .resolvePlatformSpecificImplementation<
             AndroidFlutterLocalNotificationsPlugin>()
@@ -131,16 +131,12 @@ class PushNotificationsManager {
   }
 }
 
-final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-    FlutterLocalNotificationsPlugin();
-
 class LocalNotification {
   static Future initialize(
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin,
       void Function(NotificationResponse) onReceive) async {
-
     var initializationsSettings = const InitializationSettings(
-        android: AndroidInitializationSettings('@mipmap/ic_launcher'),
+        android: AndroidInitializationSettings('mipmap/launcher_icon'),
         iOS: DarwinInitializationSettings());
     await flutterLocalNotificationsPlugin.initialize(initializationsSettings,
         onDidReceiveBackgroundNotificationResponse: onReceive,

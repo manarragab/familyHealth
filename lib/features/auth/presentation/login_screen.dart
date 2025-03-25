@@ -71,7 +71,7 @@ class LoginScreen extends GetView<AuthController> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            SizedBox(),
+                            const SizedBox(),
                             /*   Row(
                               children: [
                                 GetBuilder<AuthController>(builder: (logic) {

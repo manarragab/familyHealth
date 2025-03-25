@@ -10,6 +10,7 @@ class MainButton extends StatelessWidget {
   final Color? borderColor;
   final Color textColor;
   final double? fontSize;
+  final FontWeight? fontWeight;
   final double radius;
   final Widget? icon;
   final Widget? titleWidget;
@@ -33,7 +34,8 @@ class MainButton extends StatelessWidget {
     this.titleWidget,
     this.padding = 0.0,
     this.widget,
-    this.withShadow = true,
+    this.withShadow = true, 
+    this.fontWeight,
   });
 
   @override
@@ -76,7 +78,7 @@ class MainButton extends StatelessWidget {
                       style: buttonWordStyle ??
                           TFonts.inter(
                             fontSize: fontSize ?? TFontSizes.f16,
-                            fontWeight: TFontWights.bold,
+                            fontWeight: fontWeight?? TFontWights.bold,
                             color: textColor,
                           ),
                     ),

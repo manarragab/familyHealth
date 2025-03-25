@@ -9,9 +9,17 @@ Map<String,dynamic> postFamilyJSON={
         "updated_at": "2025-01-18T19:20:28.000000Z",
         "created_at": "2025-01-18T19:20:28.000000Z",
         "id": 1,
-        
     },
     
     "status": 201,
     "message": "Family member Created Successfully!"
+};
+
+Map<String, dynamic> postFamily= {
+    'image': "",
+    'name': 'Family member two name',
+    'brith_date': '1980-02-22',
+    'phone': '01152067272',
+    'relative': 'Brother',
+    'medical_record[]': 'Medical Record One',
 };

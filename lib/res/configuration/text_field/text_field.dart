@@ -55,10 +55,15 @@ class CustomTextField {
   static Widget dynamicTextField(
     Function(String value) onChange, {
     String hint = '',
-    Widget? suffixIcon,  TextEditingController? controller,
+    Widget? suffixIcon,
+     Function()? onTapped,
+    TextEditingController? controller,
+
   }) {
     return TextFormField(
       controller: controller,
+      onTap: onTapped,
+
       keyboardType: TextInputType.multiline,
       validator: (value) => TValidator.normalValidator(value?.trim()),
       onChanged: (x) => onChange(replaceArabicNumber(x.trim())),
@@ -78,22 +83,18 @@ class CustomTextField {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: SizedBox(
-            // height: 50,
-            child: TextFormField(
+       TextFormField(
               keyboardType: TextInputType.multiline,
               inputFormatters: [CustomFormatter.onlyDouble()],
               validator: (value) => TValidator.normalValidator(value?.trim()),
               onChanged: (x) => onChange(replaceArabicNumber(x.trim())),
               decoration: _defaultDecoration(
-                prefixIcon: const SizedBox(),
+               // prefixIcon: const SizedBox(),
                 hintText: hint,
               ),
             ),
-          ),
-        ),
+
+
       ],
     );
   }
@@ -192,7 +193,7 @@ class CustomTextField {
         autofillHints: autoFillHints,
         onChanged: (x) => onChange(x.trim()),
         obscureText: isVisible,
-        validator: validator ?? (x) => TValidator.normalValidator(x?.trim()),
+        //validator: validator ?? (x) => TValidator.normalValidator(x?.trim()),
         decoration: _defaultDecoration(
           suffixIcon: Padding(
             padding: const EdgeInsetsDirectional.only(end: 15.0),
@@ -312,6 +313,7 @@ class CustomTextField {
     bool isRequired = false,
     bool faelid = false,
     TextEditingController? controller,
+      Widget? suffixIcon,
   }) {
     return InkWell(
       onTap: onDropDownPress,
@@ -336,6 +338,13 @@ class CustomTextField {
                 decoration: _defaultDecoration(
                   removeHintWrite: true,
                   prefixIcon: prefixIcon,
+                  suffixIcon:
+                     Padding(
+                       padding: const EdgeInsets.all(18),
+                       child: SvgPicture.asset("assets/svg/select.svg" ,  ),
+                     ),
+
+
                   hintText: hint,
                 ),
               ),
