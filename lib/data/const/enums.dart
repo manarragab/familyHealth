@@ -49,3 +49,9 @@ enum FamilyType { SeeAll , MySon ,Mum, Dad , MyDauther, Husband  }
 
 enum SelectSomeone { A , B , C}
 
+enum ProgressType { Daily, Weekly, Monthly } 
+
+enum PeriodType { Day60 , Day90 , Other}
+
+
+

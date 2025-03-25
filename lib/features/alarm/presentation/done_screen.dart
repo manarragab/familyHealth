@@ -7,9 +7,7 @@ class Done extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: CustomColors.darkblack,
-      body: Padding(
+    return  Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -79,7 +77,7 @@ class Done extends StatelessWidget {
                     fontSize: 24,
                   ),
             ],
-          )),
-    );
+          ));
+    
   }
 }

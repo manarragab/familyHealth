@@ -4,6 +4,7 @@ import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
 import 'package:abg/features/alarm/domain/controller/alarm_controller.dart';
 import 'package:abg/features/alarm/presentation/add_alarm.dart';
 import 'package:abg/features/alarm/presentation/widget/alarm_item.dart';
+import 'package:abg/features/progressTracker/presentation/delete_screen.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -33,7 +34,7 @@ class AlarmScreen extends GetView<AlarmController> {
               height: Get.height,
               alignment: Alignment.center,
               child: controller.obx((state) {
-                AlarmModel model = state; 
+                AlarmModel model = state;
                 List<Alarm> list = model.data ?? [];
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,6 +62,10 @@ class AlarmScreen extends GetView<AlarmController> {
                           onEdit: () {},
                           onDelete: () {
                             controller.deleteAlarm(alarm.id!.toInt());
+
+                            Get.dialog(
+                              Delete(),
+                            );
                           },
                         ),
                       );

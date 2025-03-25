@@ -10,6 +10,8 @@ class AlarmItem extends StatelessWidget {
   final String time;
   final VoidCallback onEdit;
   final VoidCallback onDelete;
+  final bool? sign;
+  final Widget? container;
 
   const AlarmItem({
     Key? key,
@@ -19,13 +21,16 @@ class AlarmItem extends StatelessWidget {
     required this.time,
     required this.onEdit,
     required this.onDelete,
+    this.sign,
+     this.container,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Card(
+      
       color: CustomColors.lightGrey2,
-      margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+      margin: const EdgeInsets.symmetric(vertical: 8, ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(12),
       ),
@@ -34,13 +39,12 @@ class AlarmItem extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+          
 
-            const SizedBox(width: 12),
-
-           SizedBox(
+            SizedBox(
               width: 100,
               height: 100,
-              child: Image.asset(
+              child: container?? Image.asset(
                 "assets/images/cheker.png",
                 fit: BoxFit.cover,
               ),
@@ -66,7 +70,6 @@ class AlarmItem extends StatelessWidget {
                           "assets/svg/edit.svg",
                         ),
                       ),
-
                       const SizedBox(
                         width: 16,
                       ),
@@ -102,7 +105,7 @@ class AlarmItem extends StatelessWidget {
                       Text(date,
                           style: const TextStyle(
                               fontSize: 12, color: Colors.black)),
-                      const SizedBox(width: 16),
+                     Spacer(),
                       InkWell(
                         child: SvgPicture.asset(
                           "assets/svg/clock.svg",
@@ -112,6 +115,20 @@ class AlarmItem extends StatelessWidget {
                       Text(time,
                           style: const TextStyle(
                               fontSize: 12, color: Colors.black)),
+                      Spacer(),
+                      sign == true
+                          ? Container(
+                              child: Row(
+                                children: [
+                                  Image.asset("assets/images/signs.png"),
+                                  const SizedBox(width: 4),
+                                  Text("10",
+                                      style: const TextStyle(
+                                          fontSize: 12, color: Colors.black)),
+                                ],
+                              ),
+                            )
+                          : Container()
                     ],
                   ),
                 ],
@@ -119,7 +136,7 @@ class AlarmItem extends StatelessWidget {
             ),
 
             // Edit & Delete Buttons
-      ],
+          ],
         ),
       ),
     );

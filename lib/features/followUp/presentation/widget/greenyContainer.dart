@@ -1,7 +1,7 @@
 import 'package:abg/data/const/export.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Greencontainer extends StatelessWidget {
+class Greenycontainer extends StatelessWidget {
   final String? title;
   final String? image;
   final Widget widg;
@@ -10,7 +10,7 @@ class Greencontainer extends StatelessWidget {
   final String? centertxt;
   final double? size;
 
-  const Greencontainer(
+  const Greenycontainer(
       {super.key,
       this.title,
       this.image,

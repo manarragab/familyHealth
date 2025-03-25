@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class White1container extends StatelessWidget {
+class Whitey1container extends StatelessWidget {
   final String txt;
   final int pressure;
   final double? width;
 
-  const White1container(
+  const Whitey1container(
       {super.key, required this.txt, required this.pressure, this.width});
 
   @override
@@ -31,7 +31,7 @@ class White1container extends StatelessWidget {
           width: width ?? Get.width * 0.287,
           height: 46,
           decoration: BoxDecoration(
-              color: CustomColors.greyy3,
+              color: CustomColors.greyy1,
               borderRadius: BorderRadius.circular(10)),
           child: Center(
             child: Text(

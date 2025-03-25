@@ -1,6 +1,7 @@
 import 'package:abg/data/const/enums.dart';
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/alarm/domain/controller/alarm_controller.dart';
+import 'package:abg/features/alarm/presentation/done_screen.dart';
 import 'package:abg/features/alarm/presentation/widget/radio_item.dart';
 import 'package:abg/res/configuration/bottom_sheet/date_picker.dart';
 import 'package:abg/res/configuration/image/pick_image.dart';
@@ -197,6 +198,9 @@ class AddAlarm extends GetView<AlarmController> {
                     child: MainButton(
                       onPressed: () {
                         controller.addAlarm();
+                       Get.dialog(
+                       Done(),
+                       );
                       },
                       radius: 10,
                       title: CustomTrans.addAlarm.tr,

@@ -166,8 +166,9 @@ class AddfamilyScreen extends GetView<FamilyController> {
                           controller.addFamily();
                           },
                           radius: 25, 
-                          title: CustomTrans.Add.tr,
+                          title: CustomTrans.add.tr,
                           fontSize: 24,
+                          fontWeight: FontWeight.w400,
                         ),
                       ),
                      

@@ -83,22 +83,18 @@ class CustomTextField {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: SizedBox(
-            // height: 50,
-            child: TextFormField(
+       TextFormField(
               keyboardType: TextInputType.multiline,
               inputFormatters: [CustomFormatter.onlyDouble()],
               validator: (value) => TValidator.normalValidator(value?.trim()),
               onChanged: (x) => onChange(replaceArabicNumber(x.trim())),
               decoration: _defaultDecoration(
-                prefixIcon: const SizedBox(),
+               // prefixIcon: const SizedBox(),
                 hintText: hint,
               ),
             ),
-          ),
-        ),
+          
+        
       ],
     );
   }

@@ -489,8 +489,13 @@ Map<String, String> en = {
   CustomTrans.rateTheProduct: "Rate the product",
   CustomTrans.rateRep: "Rep Rate",
   CustomTrans.selectDateAndTime: "Select date and time",
-  TabTypes.current.name: "Current",
+  TabTypes.current.name: "Current", 
   TabTypes.past.name: "Past",
+
+  PeriodType.Day60.name : "60 Day",
+PeriodType.Day90.name :"90 Day",
+PeriodType.Other.name:"Other",
+
   CustomTrans.ok: 'Ok',
   CustomTrans.all_right: 'All rights reserved ©',
   CustomTrans.our_values: 'Our Values',
@@ -801,4 +806,8 @@ Map<String, String> en = {
   CustomTrans.backToHome: 'Back to Home',
   CustomTrans.resetPassword: 'Reset Password',
   CustomTrans.enterTheNewPassword: 'Enter the new password',
+  CustomTrans.Areyousureyouwanttodeletehabittracking: 'Are you sure you deleted Habit Breaker?',
+ 
+
+
 };

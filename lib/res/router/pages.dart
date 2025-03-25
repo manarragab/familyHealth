@@ -15,6 +15,8 @@ import 'package:abg/features/notification/domain/controller/notification_control
 import 'package:abg/features/notification/presentation/notification_screen.dart';
 import 'package:abg/features/onboard/domain/controller/board_controller.dart';
 import 'package:abg/features/onboard/presentation/onboard_screen.dart';
+import 'package:abg/features/progressTracker/domain/controller/progressTracker_controller.dart';
+import 'package:abg/features/progressTracker/presentation/progressTracker_screen.dart';
 import 'package:abg/features/verify_account/domain/controller/main_verify_account_controller.dart';
 import 'package:abg/features/verify_account/presentation/main_verify_account_screen.dart';
 import 'package:get/get.dart';
@@ -93,6 +95,14 @@ class CustomPage {
         binding: BindingsBuilder(() {
         Get.put(FollowupController());
         })),
+
+         GetPage(
+        name: progressTracker,
+        page: () =>   ProgresstrackerScreen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+        Get.put(ProgresstrackerController());
+        })),
   ];
 
   static String layoutPage = '/layout';
@@ -115,6 +125,8 @@ class CustomPage {
 
     static String myFamily = "/family_page";
         static String followUp = "/follow_up_page";
+          static String progressTracker = "/progress_tracker_page";
+
 
 
 }

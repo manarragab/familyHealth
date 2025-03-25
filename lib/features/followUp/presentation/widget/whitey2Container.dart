@@ -5,13 +5,13 @@ import 'package:flutter_xlider/flutter_xlider.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class White2container extends StatefulWidget {
+class Whitey2container extends StatefulWidget {
   final String title1;
   final String title2;
   final String measure;
   final String KEY;
 
-  const White2container({
+  const Whitey2container({
     super.key,
     required this.title1,
     required this.title2,
@@ -20,10 +20,10 @@ class White2container extends StatefulWidget {
   });
 
   @override
-  State<White2container> createState() => _White2containerState();
+  State<Whitey2container> createState() => _Whitey2containerState();
 }
 
-class _White2containerState extends State<White2container> {
+class _Whitey2containerState extends State<Whitey2container> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<FollowupController>(
@@ -80,14 +80,14 @@ class _White2containerState extends State<White2container> {
                     controller.updateValue(widget.KEY, lowerValue);
                   },
                   values: [currentValue],
-                  max: 300,
                   min: 1,
+                  max: 300,
                   trackBar: FlutterSliderTrackBar(
                     activeTrackBar: BoxDecoration(
                       color: CustomColors.green1,
                     ),
                     inactiveTrackBar: BoxDecoration(
-                      color: CustomColors.greyy3,
+                      color: CustomColors.greyy1,
                     ),
                     activeTrackBarHeight: 4,
                     inactiveTrackBarHeight: 4,

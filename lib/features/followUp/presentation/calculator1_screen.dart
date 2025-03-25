@@ -1,6 +1,6 @@
 import 'package:abg/features/followUp/presentation/viewProgress_screen.dart';
-import 'package:abg/features/followUp/presentation/widget/greenContainer.dart';
-import 'package:abg/features/followUp/presentation/widget/white2Container.dart';
+import 'package:abg/features/followUp/presentation/widget/greenyContainer.dart';
+import 'package:abg/features/followUp/presentation/widget/whitey2Container.dart';
 import 'package:abg/localization/all_keys.dart';
 import 'package:abg/res/common-widgets/custm_button.dart';
 import 'package:abg/res/configuration/app_bar.dart';
@@ -21,7 +21,7 @@ class Calculator1Screen extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 16),
           child: ListView(
             children: [
-              Greencontainer(
+            Greenycontainer(
                 image: image,
                 widg: Container(
                     child: Column(
@@ -38,7 +38,7 @@ class Calculator1Screen extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    White2container(
+                    Whitey2container(
                         KEY: "one",
                         title1: "your weight",
                         title2: "(kg)",

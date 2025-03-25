@@ -5,6 +5,8 @@ import 'package:abg/data/models/alarm/post_alarms/post_alarm.dart';
 import 'package:abg/data/models/auth/login/LoginModel.dart';
 import 'package:abg/data/models/auth/users/PostEditProfile.dart';
 import 'package:abg/data/models/auth/users/post_assign_user.dart';
+import 'package:abg/data/models/calculation/BMI/post_BMI/post_BMI_MD.dart';
+import 'package:abg/data/models/calculation/BMI/post_BMI/post_BMI_response.dart';
 import 'package:abg/data/models/chat/chat_model.dart';
 import 'package:abg/data/models/chat/group/post_group_message.dart';
 import 'package:abg/data/models/family/post_family/post_family_MD.dart';
@@ -142,5 +144,8 @@ class DataRepository implements DomainData {
     return remote.deleteFamily(id);
   }
 
-
+  @override
+  Future<ResponseModel<BMI?>> addBmi(PostBmiMd post) {
+    return remote.addBmi(post);
+  }
 }

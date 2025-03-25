@@ -1,7 +1,6 @@
 import 'package:abg/features/followUp/presentation/viewProgress_screen.dart';
-import 'package:abg/features/followUp/presentation/widget/greenContainer.dart';
-import 'package:abg/features/followUp/presentation/widget/white1Container.dart';
-import 'package:abg/features/followUp/presentation/widget/white2Container.dart';
+import 'package:abg/features/followUp/presentation/widget/greenyContainer.dart';
+import 'package:abg/features/followUp/presentation/widget/whitey1Container.dart';
 import 'package:abg/localization/all_keys.dart';
 import 'package:abg/res/common-widgets/custm_button.dart';
 import 'package:abg/res/configuration/app_bar.dart';
@@ -22,7 +21,7 @@ class Calculator2Screen extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 16),
           child: ListView(
             children: [
-              Greencontainer(
+             Greenycontainer(
                 title: "blood\npressure",
                 centertxt: "Measuring blood pressure",
                 heightt: 399,
@@ -50,8 +49,8 @@ class Calculator2Screen extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          White1container(txt: "systolic", pressure: 120),
-                          White1container(txt: "diastolic", pressure: 80),
+                         Whitey1container(txt: "systolic", pressure: 120),
+                          Whitey1container(txt: "diastolic", pressure: 80),
                         ],
                       ),
                     ),

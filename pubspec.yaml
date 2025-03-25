@@ -132,6 +132,7 @@ dependencies:
   device_preview: ^1.2.0
   fl_chart: ^0.70.2
   flutter_xlider: ^3.5.0
+  table_calendar: ^3.1.3
 
 
 
