@@ -317,8 +317,8 @@ class Remote {
 
   //Calculation=>BMI
 
-  Future<ResponseModel<BMI?>> addBmi(PostBmiMd post) async {
-    return _helper.post<BMI?>(await post.toJson(), path: "/user/bmi-calculator",
+  Future<ResponseModel<BMI?>> addBmi(PostBmiMd post){
+    return _helper.post<BMI?>(post.toJson(), path: "/user/bmi-calculator",
         onSuccess: (dynamic data) {
       return PostBMIResponse.fromJson(data);
     }, onError: (data) {

@@ -75,9 +75,9 @@ class Coloredbar extends StatelessWidget {
           left: indicatorPosition.clamp(0, barWidth - 6),
           child: GestureDetector(
             onHorizontalDragUpdate: (details) {
-              controller.updateBmi(
-                  indicatorPosition + (details.delta.dx * controller.speedFactor * 2), // Faster cursor
-                  barWidth);
+              // controller.updateBmi(
+              //     indicatorPosition + (details.delta.dx * controller.speedFactor * 2), // Faster cursor
+              //     barWidth);
             },
             child: Container(
               width: 4,
