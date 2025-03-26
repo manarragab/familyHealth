@@ -11,6 +11,10 @@ import 'package:abg/features/family/presentation/family_screen.dart';
 import 'package:abg/features/followUp/domain/controller/followUp_controller.dart';
 import 'package:abg/features/followUp/presentation/followUp_screen.dart';
 import 'package:abg/features/layout/domain/controller/layout_controller.dart';
+
+import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
+import 'package:abg/features/calculation/presentation/medicalCalc_screen.dart';
+
 import 'package:abg/features/layout/presentation/layout_screen.dart';
 import 'package:abg/features/notification/domain/controller/notification_controller.dart';
 import 'package:abg/features/notification/presentation/notification_screen.dart';
@@ -111,6 +115,16 @@ class CustomPage {
         binding: BindingsBuilder(() {
         Get.put(ProgresstrackerController());
         })),
+
+  GetPage(
+        name: calculation,
+        page: () =>  MedicalcalcScreen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+          Get.put(Calculationcontroller());
+        })),
+
+
   ];
 
   static String layoutPage = '/layout';
@@ -131,10 +145,11 @@ class CustomPage {
 
   static String myAlarm = "/my_alarm_page";
 
+
     static String myFamily = "/family_page";
         static String followUp = "/follow_up_page";
           static String progressTracker = "/progress_tracker_page";
 
-
+  static String calculation="/calculation";
 
 }

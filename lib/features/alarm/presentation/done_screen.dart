@@ -68,6 +68,7 @@ class Done extends StatelessWidget {
               const SizedBox(
                 height: 32,
               ),
+
                MainButton(              
                     onPressed: () {
                       Get.offAll(Homescreen());
@@ -76,6 +77,9 @@ class Done extends StatelessWidget {
                     title: CustomTrans.BacktoHome.tr,
                     fontSize: 24,
                   ),
+
+           
+
             ],
           ));
     

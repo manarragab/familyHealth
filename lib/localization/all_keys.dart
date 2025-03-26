@@ -941,16 +941,30 @@ class CustomTrans {
   static const String myGroup = "My Group";
 
 //todo need to translate
+
+//Alarm 
   static const String myAlarm = "My Alarm";
-
   static const String newAlarm = "New Alarm";
+  static const String addAlarm = "Add Alarm";
+  static const String BacktoHome = "Back to Home";
 
-    static const String addAlarm = "Add Alarm";
+//calculation
+  static const String medicalCalc = "Medical calculations";
+  static const String dueDateCalc = "Medical calculations";
+  static const String calculate = "Calculate";
+  static const String next2 = "Next";
+  static const String calculating = "Calculating";
+  static const String back = "Back";
+
+
+
+
+
+
 
     static const String myFamily = "My Family";
     static const String family = "Family";
 
-    static const String BacktoHome = "Back to Home";
 
 
     static const String Profile = "profile";

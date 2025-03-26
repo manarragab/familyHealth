@@ -76,7 +76,12 @@ class CustomDrawer extends GetView<AuthController> {
           Get.toNamed(CustomPage.myAlarm);
         }),
     DrawerItem(
-        image: "assets/svg/calculator.svg", name: "calculations", onTap: () {}),
+        image: "assets/svg/calculator.svg", name: "calculations", onTap: () {
+
+          Get.toNamed(CustomPage.calculation);
+
+
+        }),
     DrawerItem(
         image: "assets/svg/follow_up.svg", name:  CustomTrans.followUp.tr, onTap: () {
 
