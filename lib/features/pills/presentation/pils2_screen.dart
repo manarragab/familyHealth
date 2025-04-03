@@ -1,0 +1,131 @@
+import 'package:abg/data/const/export.dart';
+import 'package:abg/localization/all_keys.dart';
+import 'package:abg/res/configuration/app_bar.dart';
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class Pils2Screen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: CustomAppBar.appBar(CustomTrans.Pils.tr),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: ListView(
+          children: [
+            Center(
+              child: Text(
+                "Name pil",
+                style: GoogleFonts.almarai(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w400,
+                  color: CustomColors.darkblue,
+                ),
+              ),
+            ),
+            SizedBox(height: 20),
+
+            /// **Stack for Image & Overlay**
+            Stack(
+              children: [
+                /// **Rounded Image**
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Image.asset(
+                    "assets/images/pilsImage.png",
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+
+                /// **Top Row: Home & Voice**
+                Positioned(
+                  top: 40,
+                  left: 30,
+                  right: 30,
+                  child: Row(
+                    children: [
+                      Image.asset("assets/images/whiteHome.png"),
+                      SizedBox(width: 10),
+                      Container(
+                        width: 20,
+                        height: 20,
+                        decoration: BoxDecoration(
+                          color: CustomColors.redd,
+                          shape: BoxShape.circle,
+                        ),
+                        child: Center(
+                          child: Image.asset("assets/images/voice.png"),
+                        ),
+                      ),
+                      SizedBox(width: 5),
+                      Text(
+                        "Listen To The PIL",
+                        style: GoogleFonts.almarai(
+                          fontSize: 8,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Spacer(),
+                      Image.asset("assets/images/dots.png"),
+                    ],
+                  ),
+                ),
+
+                /// **Title (With Overflow Fix)**
+                Positioned(
+                 top: 85,
+                  left: 16,
+                  right: 16,
+                  child: Center(
+                    child: Text(
+                      "Back and Pelvic \n Pain In \n Pregnancy",
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.almarai(
+                        fontSize: 30, // Reduced for better fit
+                        fontWeight: FontWeight.w700,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+
+                /// **Continue Button (Centered at Bottom)**
+                Positioned(
+                  bottom: 40,
+                  left: (Get.width / 2) - (Get.width * 1 / 3) / 2,
+                  child: Container(
+                    width: Get.width * 1 / 3,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      color: CustomColors.redd,
+                      borderRadius: BorderRadius.circular(100),
+                    ),
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Continue",
+                            style: GoogleFonts.almarai(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.white,
+                            ),
+                          ),
+                          SizedBox(width: 5),
+                          Image.asset("assets/images/signn.png"),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}

@@ -128,7 +128,6 @@ static const Color lightyellow= Color.fromRGBO(255, 204, 0, 1);
       static const Color babyblue=Color.fromRGBO(112, 169, 255, 1);
 
 
-
   static const Color lightgrey5= Color(0xFFF8F8F8);
   static Color lightpink1= Color(0xFFF2285B).withOpacity(0.1); //10%
   static const Color darkpink= Color(0xFFEE2D6C);
@@ -141,7 +140,8 @@ static const Color lightyellow= Color.fromRGBO(255, 204, 0, 1);
   static const Color darkblue4 = Color.fromRGBO(48, 73, 94, 0.35);
   static const Color lightgrey6= Color.fromRGBO(217, 217, 217, 1);
   static const Color darkgrey4=Color.fromRGBO(217, 217, 217, 1);
-// >>>>>>> calculation
+    static const Color redd=Color.fromRGBO(163, 0, 0, 1);
+
 
 
   /// this is the color of the apps

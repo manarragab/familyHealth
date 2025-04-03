@@ -956,17 +956,10 @@ class CustomTrans {
   static const String calculating = "Calculating";
   static const String back = "Back";
 
-
-
-
-
-
-
     static const String myFamily = "My Family";
     static const String family = "Family";
-
-
-
+  static const String Pils="Pils";
+  
     static const String Profile = "profile";
     static const String logOut = "Log Out";
     static const String followUp = "Follow Up";
