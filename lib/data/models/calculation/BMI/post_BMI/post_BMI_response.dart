@@ -36,14 +36,14 @@ class PostBMIResponse extends ResponseModel<BMI?> {
 
 
 class BMI {
-  String? score;
+  double? score;
   String? category;
   String? comment;
 
   BMI({this.score, this.category, this.comment});
 
   BMI.fromJson(Map<String, dynamic> json) {
-    score = json["score"];
+    score = double.tryParse(json["score"].toString());
     category = json["category"];
     comment = json["comment"];
   }

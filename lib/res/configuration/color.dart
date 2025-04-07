@@ -100,6 +100,7 @@ class CustomColors {
   static const Color darkgrey3 = Color(0xFF707070);
   static const Color darkblack = Color(0xFF22282D);
   static const Color lightgrey4= Color(0xFFEDEDED);
+
    // Fully opaque red
 
 

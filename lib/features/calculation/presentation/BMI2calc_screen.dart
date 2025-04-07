@@ -1,10 +1,11 @@
 import 'package:abg/data/const/export.dart';
+import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
 import 'package:abg/features/calculation/presentation/BMIcalc_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/coloredBar.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Bmi2calcScreen extends StatelessWidget {
+class Bmi2calcScreen extends GetView<Calculationcontroller>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -63,7 +64,7 @@ class Bmi2calcScreen extends StatelessWidget {
                       height: 7,
                     ),
                     Text(
-                      "A BMI between 18.5 and 24.9 indicates that you are a healthy weight for your height. By maintaining a healthy weight, you can reduce your risk of developing serious health problems.",
+                     controller.responseBMi.data?.comment??"",
                       style: GoogleFonts.almarai(
                         fontSize: 16,
                         color: CustomColors.darkblack1,

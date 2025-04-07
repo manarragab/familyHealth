@@ -578,9 +578,9 @@ class CustomTextField {
           decoration: _defaultDecoration(
             suffixIcon: InkWell(
               onTap: searchTap,
-              child: const Icon(
-                Icons.search,
-                color: Colors.grey,
+              child:  Container(
+                margin: const EdgeInsets.only(right: 10),
+                child: SvgPicture.asset("assets/svg/search.svg"),
               ),
             ),
             removeHintWrite: true,

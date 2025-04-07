@@ -1,13 +1,35 @@
+import 'package:abg/data/const/enums.dart';
 import 'package:abg/data/const/export.dart';
+import 'package:abg/data/models/calculation/BMI/post_BMI/post_BMI_MD.dart';
+import 'package:abg/data/models/calculation/BMI/post_BMI/post_BMI_response.dart';
+import 'package:abg/features/calculation/domain/cases/calculation_cases.dart';
+import 'package:abg/features/calculation/presentation/BMI2calc_screen.dart';
 
 class Calculationcontroller extends MainGetxController {
+
+//API
+PostBMIResponse responseBMi=PostBMIResponse();
+PostBmiMd postBmi=PostBmiMd();
+
+  addBmi() async {
+    loadingGetxController.showLoading();
+    var response = await sl<CalculationCases>().addBmi(postBmi);
+    loadingGetxController.hideLoading();
+    statusError.checkStatus(response, () {
+responseBMi=response as PostBMIResponse;
+  updateBmi(responseBMi.data?.score?? 0.0  , Get.width-80);
+      Get.to(Bmi2calcScreen());
+    });
+  }
+
+
 
   //colored bar
   double bmiValue = 25.0;
   final double minBmi = 10.0;
   final double maxBmi = 40.0;
   final double speedFactor = 2.5;
-  void updateBmi(double newPosition, double barWidth) {
+  void updateBmi(double newPosition, double barWidth ) {
     bmiValue = ((newPosition / barWidth) * (maxBmi - minBmi)) + minBmi;
     bmiValue = bmiValue.clamp(minBmi, maxBmi);
     update(); 
@@ -21,8 +43,18 @@ class Calculationcontroller extends MainGetxController {
     return valuesMap[key] ?? 50;
   }
 
-  void updateValue(String key, double newValue) {
+  void updateValue(String key, double newValue , String measure) {
     valuesMap[key] = newValue;
+   switch(measure){
+    case "cm":
+    postBmi.height=newValue.toInt();
+    break;
+
+    case "kg":
+    postBmi.weight=newValue.toInt();
+    break;
+
+   }
     update();
   }
 
@@ -83,6 +115,12 @@ String? selectedone;
     
     
     }
+
+
+
+
+
+
 }
 
   

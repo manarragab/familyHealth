@@ -35,7 +35,7 @@ class LoadingOverLay extends StatelessWidget {
         return Container(
           alignment: Alignment.center,
           color: showLoadingOnly
-              ? CustomColors.white
+              ? CustomColors.transparent
               : CustomColors.white.withOpacity(0.5),
           child: loading ?? const LoadingWidget(),
         );
