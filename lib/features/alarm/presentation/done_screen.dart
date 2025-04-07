@@ -28,7 +28,7 @@ class Done extends StatelessWidget {
                           Container(
                             width: 167,
                             height: 167,
-                            decoration: const BoxDecoration(
+                            decoration: BoxDecoration(
                               color: CustomColors.lightgrey4,
                               shape: BoxShape.circle,
                             ),
@@ -76,8 +76,15 @@ class Done extends StatelessWidget {
                     title: CustomTrans.BacktoHome.tr,
                     fontSize: 24,
                   ),
+              MainButton(
+                onPressed: () {
+                  Get.offAllNamed(Cust);
+                },
+                radius: 25,
+                title: CustomTrans.BacktoHome.tr,
+                fontSize: 24,
+              ),
             ],
           ));
-    
   }
 }

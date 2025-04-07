@@ -17,6 +17,7 @@ class MainButton extends StatelessWidget {
   final double padding;
   final Widget? widget;
   final bool withShadow;
+  final double? borderWidth;
 
   const MainButton({super.key, 
     
@@ -34,7 +35,9 @@ class MainButton extends StatelessWidget {
     this.titleWidget,
     this.padding = 0.0,
     this.widget,
-    this.withShadow = true, 
+    this.withShadow = true,
+    this.borderWidth
+    this.withShadow = true,
     this.fontWeight,
   });
 
@@ -56,7 +59,7 @@ class MainButton extends StatelessWidget {
                   color: borderColor ??
                       backgroundColor ??
                       CustomColors.buttonColor,
-                  width: 1.w,
+                  width:borderWidth?? 1.w,
                   style: BorderStyle.solid
                   //  strokeAlign: StrokeAlign.outside,
                   )),
@@ -78,7 +81,7 @@ class MainButton extends StatelessWidget {
                       style: buttonWordStyle ??
                           TFonts.inter(
                             fontSize: fontSize ?? TFontSizes.f16,
-                            fontWeight: fontWeight?? TFontWights.bold,
+                            fontWeight: TFontWights.bold,
                             color: textColor,
                           ),
                     ),
