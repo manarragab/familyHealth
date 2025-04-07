@@ -117,7 +117,7 @@ class Homescreen extends GetView<HomeController> {
                                 title: remind.title ?? "",
                                 subtitle: remind.alarmTime!,
                                 dosage: remind.description ?? "",
-                                isTaken: index % 2 == 0,
+                                isTaken: (remind.isTriggered??0) == 1,
                               );
                             },
                           ),
