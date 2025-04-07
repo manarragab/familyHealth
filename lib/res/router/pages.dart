@@ -18,6 +18,8 @@ import 'package:abg/features/notification/domain/controller/notification_control
 import 'package:abg/features/notification/presentation/notification_screen.dart';
 import 'package:abg/features/onboard/domain/controller/board_controller.dart';
 import 'package:abg/features/onboard/presentation/onboard_screen.dart';
+import 'package:abg/features/progressTracker/domain/controller/progressTracker_controller.dart';
+import 'package:abg/features/progressTracker/presentation/progressTracker_screen.dart';
 import 'package:abg/features/verify_account/domain/controller/main_verify_account_controller.dart';
 import 'package:abg/features/verify_account/presentation/main_verify_account_screen.dart';
 import 'package:get/get.dart';

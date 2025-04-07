@@ -36,8 +36,7 @@ class MainButton extends StatelessWidget {
     this.padding = 0.0,
     this.widget,
     this.withShadow = true,
-    this.borderWidth
-    this.withShadow = true,
+    this.borderWidth,
     this.fontWeight,
   });
 

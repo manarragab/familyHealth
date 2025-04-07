@@ -76,8 +76,13 @@ class AlarmController extends MainGetxController with CustomStateMixin {
         }
         return data;
       },
-      getPage: (page) => _page=page,
+      getPage: (page) => _page = page,
     );
+    CustomAlarm().getAllAlarms();
+    // CustomAlarm().clearAll();
+    //   model.data?.forEach((e) {
+    //     CustomAlarm().addAlarm(e);
+    //   });
   }
 
   addAlarm() async {
@@ -85,7 +90,8 @@ class AlarmController extends MainGetxController with CustomStateMixin {
     var response = await sl<AlarmCases>().addAlarm(postAlarm);
     loadingGetxController.hideLoading();
     statusError.checkStatus(response, () {
-     // PushNotificationsManager().subscribe("alarm-${response.data?.alarmDate}_${response.data?.alarmTime}");
+      // PushNotificationsManager().subscribe("alarm-${response.data?.alarmDate}_${response.data?.alarmTime}");
+      CustomAlarm().addAlarm(response.data!);
       onRefresh();
       Get.back();
     });
@@ -113,8 +119,10 @@ class AlarmController extends MainGetxController with CustomStateMixin {
     loadingGetxController.showLoading();
     var response = await sl<AlarmCases>().updateAlarm(postAlarm);
     loadingGetxController.hideLoading();
-    statusError.checkStatus(response, () {
+    statusError.checkStatus(response, () async {
       onRefresh();
+      postAlarm.image = null;
+      CustomAlarm().addAlarm(AlarmData.fromJson(await postAlarm.toJson()));
       Get.back();
     });
   }

@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:abg/data/const/export.dart';
 import 'package:abg/data/models/alarm/get_alarms/alarm_model.dart';
 import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
@@ -24,15 +26,15 @@ class AlarmScreen extends GetView<AlarmController> {
               child: MainButton(
                 onPressed: () {
                   controller.clearData();
-                  Get.to(const AddAlarm());
+                 Get.to(const AddAlarm());
             /*      CustomAlarm().addAlarm(AlarmData(
-                    id: 1,
-                    userId: 2,
+                    id: Random(4).nextInt(100),
+                    userId: Random(4).nextInt(100),
                     type: "medicine",
                     title: "Take Morning Medicine",
                     description: "Take your blood pressure medicine.",
                     alarmDate: "2025-03-15",
-                    alarmTime: "${DateTime.now().hour}:${DateTime.now().add(const Duration(seconds: 5)).minute}",
+                    alarmTime: "${DateTime.now().hour}:${DateTime.now().add(const Duration(minutes: 20)).minute}",
                     isRepeatable: "1",
                     medicineStartDate: DateTime.now().toString(),
                     medicineEndDate: "2025-03-20",

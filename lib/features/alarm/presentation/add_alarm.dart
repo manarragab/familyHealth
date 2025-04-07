@@ -119,10 +119,8 @@ class AddAlarm extends GetView<AlarmController> {
                                 hint: "end date",
                                 onDatePickerPress: () {
                                   CustomDatePicker((date) {
-                                    controller.postAlarm.medicineEndDate =
-                                        date.stringDate;
-                                    controller.medicineEndController.text =
-                                        date.stringDate;
+                                    controller.postAlarm.medicineEndDate = date.stringDate;
+                                    controller.medicineEndController.text = date.stringDate;
                                   }).showDatePicker(context);
                                 },
                               ),

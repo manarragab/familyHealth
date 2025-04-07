@@ -1,5 +1,5 @@
 import 'package:abg/res/injection.dart';
-import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
+import 'package:alarm/alarm.dart';
 import 'package:device_preview/device_preview.dart';
 //import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -43,7 +43,7 @@ void main() async {
   );
   await FirebaseMessaging.instance.getInitialMessage();
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  await AndroidAlarmManager.initialize();
+  await Alarm.init();
 /*//   getVersion();
   initData.server = '';
   initData.icon = 'assets/images/logo/drops_splash.svg';

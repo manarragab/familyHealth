@@ -5,7 +5,7 @@ class CustomDatePicker {
 
   CustomDatePicker(this.date);
 
-  final DateTime _date = DateTime.now().add(const Duration(days: 1));
+  final DateTime _date = DateTime.now();
   final double _kPickerSheetHeight = 216.0;
 
   late int selectedYear = DateTime.now().year;

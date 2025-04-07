@@ -1,14 +1,11 @@
 import 'dart:io';
-import 'dart:isolate';
 
 import 'package:abg/data/const/export.dart';
 import 'package:abg/data/models/alarm/get_alarms/alarm_model.dart';
 import 'package:abg/res/notification/alarm/alarm_permission.dart';
 import 'package:abg/res/notification/push_notification.dart';
-import 'package:android_alarm_manager_plus/android_alarm_manager_plus.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:receive_intent/receive_intent.dart';
-import 'dart:convert'; // for jsonDecode
+import 'package:alarm/alarm.dart';
+import 'package:alarm/model/volume_settings.dart';
 
 class CustomAlarm {
   AlarmPermissions permissions = AlarmPermissions();
@@ -44,7 +41,16 @@ class CustomAlarm {
           body: alarm.description ?? "",
         );
       } else {
-        startAndroidAlarm(alarm.id!.toInt(),alarm.userId!.toInt(), start, end, hour, minute);
+        startAndroidAlarm(
+          alarm.id!.toInt(),
+          alarm.userId!.toInt(),
+          start,
+          end,
+          hour,
+          minute,
+          title: alarm.title ?? "",
+          body: alarm.description ?? "",
+        );
       }
     } else {
       sPrint.error("permission denied", StackTrace.current);
@@ -53,85 +59,61 @@ class CustomAlarm {
   }
 
   startAndroidAlarm(
-      int id,
-      int userID,
-      DateTime startDate,
-      DateTime? endDate,
-      int hour,
-      int minute, {
-        String title = "",
-        String body = "",
-      }) {
-    sPrint.info("alarm start");
+    int id,
+    int userID,
+    DateTime startDate,
+    DateTime? endDate,
+    int hour,
+    int minute, {
+    String title = "",
+    String body = "",
+  }) async {
+    sPrint.info("alarm start $hour $minute");
     endDate = endDate ?? startDate;
-    DateTime start = startDate;
     int count = 1;
+    DateTime date = DateTime(startDate.year, startDate.month, startDate.day,
+        hour, minute, startDate.second);
     do {
-      DateTime date = DateTime(startDate.year, startDate.month, startDate.day,
-          hour, minute, startDate.second);
       sPrint.info(date.toString());
-      AndroidAlarmManager.oneShotAt(
-        date,
-        int.parse("$userID$id$count"),
-        getCallBack,
-        alarmClock: true,
-        wakeup: true,
-        rescheduleOnReboot: true,
-        params: {'title': title, 'body': body},
+      final alarmSettings = AlarmSettings(
+        id: int.parse("$userID$id$count"),
+        dateTime: date,
+        assetAudioPath: 'assets/alarm.wav',
+        loopAudio: true,
+        vibrate: true,
+        warningNotificationOnKill: Platform.isIOS,
+        volumeSettings: VolumeSettings.fade(
+          volume: 0.8,
+          fadeDuration: const Duration(seconds: 5),
+          volumeEnforced: true,
+        ),
+        notificationSettings: NotificationSettings(
+          title: title,
+          body: body,
+          stopButton: 'Stop the alarm',
+          icon: 'ic_launcher',
+          iconColor: Colors.transparent,
+        ),
       );
+      await Alarm.set(alarmSettings: alarmSettings);
+      date = date.add(const Duration(days: 1));
+      sPrint.info('alarm:: $userID$id  $count $date');
       count = count + 1;
-      start = start.add(const Duration(days: 1));
-      sPrint.info('alarm:: $userID$id  $count $start');
-    } while (startDate.isBefore(endDate) && false);
+      sPrint.info("date.isBefore(endDate) =============> ${date.isBefore(endDate)}  ${date} < ${endDate}");
+    } while (date.isBefore(endDate) && count < 10);
     sPrint.success('end alarm');
   }
-// Be sure to annotate your callback function to avoid issues in release mode on Flutter >= 3.3.0
-}
 
-@pragma('vm:entry-point')
-getCallBack() async {
-  final receivedIntent = await ReceiveIntent.getInitialIntent();
-  String title = "Alarm";
-  String body = "Wake up!";
-  sPrint.info("intent:: ${receivedIntent?.action}");
-  if (receivedIntent?.action == "android.intent.action.MAIN") {
-    final paramsExtra = receivedIntent?.extra?["params"];
-    if (paramsExtra != null) {
-      // The received params is a string, so we need to convert it into a json map
-      final params = jsonDecode(paramsExtra);
-      // use params
-      title = params['title'];
-      body = params['body'];
-    }
+  void getAllAlarms() {
+    sPrint.info('get all alarm');
+    Alarm.getAlarms().asStream().listen((value) {
+      value.forEach((e) {
+        sPrint.warning(e.toJson());
+      });
+    });
   }
-  final id = receivedIntent?.extra?["id"];
-  // navigate user to alarm with given id
-  var androidDetails = const AndroidNotificationDetails(
-    'daily_alarm_channel', // Channel ID
-    'Daily Alarm Notifications', // Channel Name
-    importance: Importance.high,
-    priority: Priority.high,
-    icon: '@mipmap/ic_launcher', // ✅ Ensure this is set properly
-    sound: RawResourceAndroidNotificationSound('alarm'), // Custom sound
-  );
-  final flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-  LocalNotification.initialize(
-      flutterLocalNotificationsPlugin, backgroundNotificationHandler);
-  var notificationDetails = NotificationDetails(android: androidDetails);
 
-  await flutterLocalNotificationsPlugin.show(
-    int.tryParse(id?.toString() ?? "") ?? 2135465,
-    title,
-    body,
-    notificationDetails,
-  );
-
-  sPrint.info('alarm end');
-}
-
-// 🛑 Ensure this function is a top-level function (outside any class)
-@pragma('vm:entry-point')
-void backgroundNotificationHandler(
-    NotificationResponse notificationResponse) async {
-  print("Background notification clicked: ${notificationResponse.payload}");
+  void clearAll() {
+    Alarm.stopAll();
+  }
 }

@@ -1,5 +1,6 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/home/presentation/home_screen.dart';
+import 'package:abg/res/router/pages.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Done extends StatelessWidget {
@@ -78,7 +79,7 @@ class Done extends StatelessWidget {
                   ),
               MainButton(
                 onPressed: () {
-                  Get.offAllNamed(Cust);
+                  Get.offAllNamed(CustomPage.layoutPage);
                 },
                 radius: 25,
                 title: CustomTrans.BacktoHome.tr,
