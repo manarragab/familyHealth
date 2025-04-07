@@ -51,7 +51,7 @@ class Pils2Screen extends StatelessWidget {
                         width: 20,
                         height: 20,
                         decoration: BoxDecoration(
-                          color: CustomColors.redd,
+                          color: CustomColors.red,
                           shape: BoxShape.circle,
                         ),
                         child: Center(
@@ -99,7 +99,7 @@ class Pils2Screen extends StatelessWidget {
                     width: Get.width * 1 / 3,
                     height: 40,
                     decoration: BoxDecoration(
-                      color: CustomColors.redd,
+                      color: CustomColors.red,
                       borderRadius: BorderRadius.circular(100),
                     ),
                     child: Center(
