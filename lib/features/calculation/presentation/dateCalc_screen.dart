@@ -7,8 +7,9 @@ import 'package:abg/res/configuration/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
 
-class DatecalcScreen extends StatelessWidget {
+class DatecalcScreen extends GetView<Calculationcontroller>{
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,14 +30,14 @@ class DatecalcScreen extends StatelessWidget {
                   Whitecontainer(
                       image: "assets/images/pregnant.png",
                       title: "Expected birth date",
-                      subTitle: "22/06/2025"),
+                      subTitle: controller.responseTracker.data!.expectedPregnancyDate.toString()),
                   SizedBox(
                     height: 11,
                   ),
                   Whitecontainer(
                       image: "assets/images/loveBook.png",
-                      title: "Expected birth date",
-                      subTitle: "22/06/2025")
+                      title: "Last menstrual period since",
+                      subTitle: controller.responseTracker.data!.weeksPassed.toString())
                 ],
               ),
             ),

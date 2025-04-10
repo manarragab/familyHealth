@@ -1,4 +1,3 @@
-import 'package:abg/data/models/alarm/get_alarms/alarm_model.dart';
 import 'package:abg/data/remote_data/response_model.dart';
 
 

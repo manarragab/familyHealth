@@ -1,4 +1,4 @@
-import 'package:abg/features/calculation/presentation/BMIcalc_screen.dart';
+import 'package:abg/features/calculation/presentation/BmiCalc/BMIcalc_screen.dart';
 import 'package:abg/features/calculation/presentation/calorieCalc_screen.dart';
 import 'package:abg/features/calculation/presentation/dueDate_screen.dart';
 import 'package:abg/features/calculation/presentation/ovulationCalc_screen.dart';

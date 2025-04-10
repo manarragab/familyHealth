@@ -1,6 +1,6 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
-import 'package:abg/features/calculation/presentation/BMIcalc_screen.dart';
+import 'package:abg/features/calculation/presentation/BmiCalc/BMIcalc_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/coloredBar.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
 import 'package:google_fonts/google_fonts.dart';

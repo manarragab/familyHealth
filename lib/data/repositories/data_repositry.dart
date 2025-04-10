@@ -7,6 +7,8 @@ import 'package:abg/data/models/auth/users/PostEditProfile.dart';
 import 'package:abg/data/models/auth/users/post_assign_user.dart';
 import 'package:abg/data/models/calculation/BMI/post_BMI/post_BMI_MD.dart';
 import 'package:abg/data/models/calculation/BMI/post_BMI/post_BMI_response.dart';
+import 'package:abg/data/models/calculation/pregnancyTracker/post_tracker/post_tracker_MD.dart';
+import 'package:abg/data/models/calculation/pregnancyTracker/post_tracker/post_tracker_response.dart';
 import 'package:abg/data/models/chat/chat_model.dart';
 import 'package:abg/data/models/chat/group/post_group_message.dart';
 import 'package:abg/data/models/family/post_family/post_family_MD.dart';
@@ -158,4 +160,11 @@ class DataRepository implements DomainData {
   Future<ResponseModel<AlarmData?>> updateAlarm(PostAlarm post) {
     return remote.updateAlarm(post);
   }
+  
+  @override
+  Future<ResponseModel<Tracker?>> addTracker(PostTrackerMD post) {
+  return remote.addTracker(post);
+  }
+
+  
 }

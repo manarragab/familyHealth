@@ -1,6 +1,6 @@
 import 'package:abg/data/models/calculation/BMI/post_BMI/post_BMI_MD.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
-import 'package:abg/features/calculation/presentation/BMI2calc_screen.dart';
+import 'package:abg/features/calculation/presentation/BmiCalc/BMI2calc_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
 import 'package:abg/features/calculation/presentation/widget/white2Container.dart';
 import 'package:abg/localization/all_keys.dart';
