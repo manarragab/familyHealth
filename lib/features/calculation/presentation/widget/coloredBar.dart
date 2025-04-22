@@ -6,30 +6,34 @@ class Coloredbar extends StatelessWidget {
   final List<String>? txt;
   final List<String>? txt2;
   final String? title;
-  final String? subTitle;  
+  final String? subTitle; 
+  final String id; 
 
-  Coloredbar({super.key, this.txt, this.txt2  , this.title , this.subTitle});
+  Coloredbar({super.key, this.txt, this.txt2  , this.title , this.subTitle, required this.id});
 
   final Calculationcontroller controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
+    double screenWidth = Get.width;
     double barWidth = screenWidth - 80;
 
     return GetBuilder<Calculationcontroller>(
+      id: id,
       builder: (context) {
         double indicatorPosition =
             ((controller.bmiValue - controller.minBmi) /
                 (controller.maxBmi - controller.minBmi)) *
             barWidth;
+          
+controller.setId(id);
 
         return Container(
           margin: EdgeInsets.only(top: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              _buildNumberRow(),
+           id=="diabetes8"?SizedBox():    _buildNumberRow(),
               SizedBox(height: 5),
               _buildBar(barWidth, indicatorPosition),
               SizedBox(height: 5),
@@ -74,6 +78,7 @@ class Coloredbar extends StatelessWidget {
         Positioned(
           left: indicatorPosition.clamp(0, barWidth - 6),
           child: GestureDetector(
+            
             onHorizontalDragUpdate: (details) {
               // controller.updateBmi(
               //     indicatorPosition + (details.delta.dx * controller.speedFactor * 2), // Faster cursor
@@ -111,7 +116,6 @@ class Coloredbar extends StatelessWidget {
         children: [
           Text(
             title??"BMI score",
-            key: ValueKey("bmi_score_label"),
             style: GoogleFonts.almarai(
               fontSize: 30,
               color: CustomColors.darkblack1,
@@ -120,7 +124,7 @@ class Coloredbar extends StatelessWidget {
           ),
           Text(
             ((controller.bmiValue * 10).ceil() / 10.0).toString(),
-            key: ValueKey("bmi_score_value"),
+            key: ValueKey(id),
             style: GoogleFonts.almarai(
               fontSize: 40,
               color: CustomColors.green1,
@@ -128,9 +132,8 @@ class Coloredbar extends StatelessWidget {
             ),
           ),
           SizedBox(height: 18),
-          Text(
-            subTitle??"normal weight",
-            key: ValueKey("bmi_status"),
+ id=="diabetes8"? SizedBox() : Text(
+            subTitle??"",
             style: GoogleFonts.almarai(
               fontSize: 16,
               color: CustomColors.darkblack1,
@@ -160,7 +163,7 @@ class Coloredbar extends StatelessWidget {
   Widget _buildLabel(String text, int i) {
     return Text(
       txt?[i] ?? text,
-      key: ValueKey("label_$i"),
+     // key: ValueKey("label_$i"),
       style: GoogleFonts.almarai(
         fontSize: 13,
         color: CustomColors.darkblack1,

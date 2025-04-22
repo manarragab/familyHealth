@@ -36,7 +36,7 @@ class CustomAppBar {
       actions: actions,
       title: Text(
         title,
-        style: TFonts.appBarTitle(fontSize: 30.w),
+        style: TFonts.appBarTitle(fontSize: 24.w),
       ),
       iconTheme: const IconThemeData(color: Colors.black),
       leading: leadingWidget,

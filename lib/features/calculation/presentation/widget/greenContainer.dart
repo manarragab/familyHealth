@@ -1,3 +1,4 @@
+import 'package:abg/data/const/export.dart';
 import 'package:abg/res/configuration/color.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -88,7 +89,7 @@ class Greencontainer extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Image.asset(
+                   CustomImage.asset(
                     image??  "assets/images/boy.png",
                       width: 160,
                       height: 160,

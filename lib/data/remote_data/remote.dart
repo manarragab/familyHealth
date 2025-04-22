@@ -334,6 +334,7 @@ class Remote {
   Future<ResponseModel<Tracker?>> addTracker(PostTrackerMD post) async {
     return _helper.post<Tracker?>(await post.toJson(), path: "/user/pregnancy/tracker/calculate",
         onSuccess: (dynamic data) {
+          
       return PostTrackerResponse.fromJson(data);
     }, onError: (data) {
       return ResponseModel(status: data.status, message: data.message);

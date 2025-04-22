@@ -1,5 +1,5 @@
 import 'package:abg/features/calculation/presentation/BmiCalc/BMI2calc_screen.dart';
-import 'package:abg/features/calculation/presentation/water2Calc_screen.dart';
+import 'package:abg/features/calculation/presentation/bodyWater/water2Calc_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
 import 'package:abg/features/calculation/presentation/widget/radiooo_item.dart';
 import 'package:abg/features/calculation/presentation/widget/white2Container.dart';

@@ -2,11 +2,16 @@ import 'package:abg/features/calculation/domain/controller/CalculationController
 import 'package:abg/data/const/export.dart';
 
 class DotsbarItem extends StatelessWidget {
-  final String KEY;
+
 //this KEY for separate all calling of dotsBar => every call has its own different key 
 //لحل مشكلة ارتباط كل DotsbarItem بنفس currentStep،
 
-  DotsbarItem({super.key, required this.KEY});
+ final String KEY;
+  final int totalSteps;
+
+  DotsbarItem({super.key, required this.KEY}) :
+   totalSteps = (KEY == "diabetes1"|| KEY =="diabetes2"|| KEY =="diabetes3" ||
+    KEY =="diabetes4"||KEY =="diabetes5"  )? 7 : 5;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +19,7 @@ class DotsbarItem extends StatelessWidget {
       builder: (controller) {
         int currentStep = controller.getstep(KEY); 
         return Row(
-          children: List.generate(controller.totalSteps * 2 - 1, (index) {
+          children: List.generate(totalSteps * 2 - 1, (index) {
             int stepIndex = index ~/ 2;
             bool isActive = stepIndex == currentStep;
             bool isCompleted = stepIndex < currentStep;
@@ -23,6 +28,7 @@ class DotsbarItem extends StatelessWidget {
                 ? GestureDetector(
                     onTap: () {
                       controller.updateStep(KEY, stepIndex);
+                      controller.update([KEY]);
                     },
                     child: Container(
                       width: 15,

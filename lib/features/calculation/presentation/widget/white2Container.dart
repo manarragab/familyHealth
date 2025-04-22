@@ -79,6 +79,7 @@ class _White2containerState extends State<White2container> {
                 child: FlutterSlider(
                   onDragging: (handlerIndex, lowerValue, upperValue) {
                     controller.updateValue(widget.KEY, lowerValue , widget.measure);
+                    controller.update([widget.KEY]);
                   },
                   values: [currentValue],
                   max: 300,

@@ -1,17 +1,18 @@
 import 'package:abg/data/const/export.dart';
-import 'package:abg/features/calculation/presentation/calorie3Calc_screen.dart';
-import 'package:abg/features/calculation/presentation/calorie5Calc_screen.dart';
+import 'package:abg/features/calculation/presentation/calories/calorie3Calc_screen.dart';
+import 'package:abg/features/calculation/presentation/calories/calorie4Calc_screen.dart';
+import 'package:abg/features/calculation/presentation/calories/calorie6Calc_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
-import 'package:abg/features/calculation/presentation/widget/white2Container.dart';
+import 'package:abg/features/calculation/presentation/widget/radioo_item.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Calorie4calcScreen extends StatefulWidget {
+class Calorie5calcScreen extends StatefulWidget {
   @override
-  State<Calorie4calcScreen> createState() => _Calorie4calcScreenState();
+  State<Calorie5calcScreen> createState() => _Calorie5calcScreenState();
 }
 
-class _Calorie4calcScreenState extends State<Calorie4calcScreen> {
+class _Calorie5calcScreenState extends State<Calorie5calcScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +27,7 @@ class _Calorie4calcScreenState extends State<Calorie4calcScreen> {
                   centertxt: "Calorie Calculator",
                   title: "Calorie",
                   image: "assets/images/fruity.png",
-                  heightt: 615,
+                  heightt: 665,
                   widg: Column(
                     children: [
                       SizedBox(
@@ -39,7 +40,7 @@ class _Calorie4calcScreenState extends State<Calorie4calcScreen> {
                         height: 35,
                       ),
                       Text(
-                        "Height",
+                        "Activity",
                         style: GoogleFonts.almarai(
                           color: CustomColors.darkblue3,
                           fontSize: 30,
@@ -49,18 +50,48 @@ class _Calorie4calcScreenState extends State<Calorie4calcScreen> {
                       SizedBox(
                         height: 20,
                       ),
-                      White2container(
-                          KEY: "four",
-                          title1: "Please enter your height",
-                          title2: "(cm)",
-                          measure: "cm"),
+
+                      // GridView(
+
+                      //   gridDelegate:    SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2) ,
+                      //   children: [
+
+                      //  //  RadiooItem(title: "jjj", subTitle: "subTitle")
+                      //     //Radio(value: value, groupValue: groupValue, onChanged: onChanged)
+                      GridView(
+                        shrinkWrap: true,
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                            childAspectRatio: 3.2,
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 9,
+                            crossAxisSpacing: 9),
+                        children: [
+                          RadiooItem(
+                              title: "Established",
+                              subTitle: "Little or no exercise"),
+                          RadiooItem(
+                              title: "light ",
+                              subTitle: "Exercise 1-3 times a week"),
+                          RadiooItem(
+                              title: "Moderate",
+                              subTitle: "Exercise 4-5 times a week"),
+                          RadiooItem(
+                              title: "Active",
+                              subTitle:
+                                  "Exercise daily or vigorously3-4 times a week."),
+                          RadiooItem(
+                              title: "Very active",
+                              subTitle:
+                                  "Do intense exercise 6-7 times a week."),
+                        ],
+                      ),
                       SizedBox(
-                        height: 35,
+                        height: 20,
                       ),
                       MainButton(
                         withShadow: true,
                         onPressed: () {
-                          Get.to(Calorie5calcScreen());
+                          Get.to(Calorie6calcScreen());
                         },
                         radius: 10,
                         height: 46,
@@ -86,7 +117,7 @@ class _Calorie4calcScreenState extends State<Calorie4calcScreen> {
                                 color: CustomColors.darkblue3, width: 2)),
                         child: MaterialButton(
                           onPressed: () {
-                            Get.to(Calorie3calcScreen());
+                            Get.to(Calorie4calcScreen());
                           },
                           child: Text(
                             "Back",

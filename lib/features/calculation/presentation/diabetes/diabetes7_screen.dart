@@ -1,18 +1,19 @@
 import 'package:abg/data/const/export.dart';
-import 'package:abg/features/calculation/presentation/calorie2Calc_screen.dart';
-import 'package:abg/features/calculation/presentation/calorie4Calc_screen.dart';
-import 'package:abg/features/calculation/presentation/calorieCalc_screen.dart';
+import 'package:abg/features/calculation/presentation/calories/calorie3Calc_screen.dart';
+import 'package:abg/features/calculation/presentation/calories/calorie5Calc_screen.dart';
+import 'package:abg/features/calculation/presentation/diabetes/diabetes8_screen.dart';
+import 'package:abg/features/calculation/presentation/diabetes/widget/white5Container.dart';
 import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
 import 'package:abg/features/calculation/presentation/widget/white2Container.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Calorie3calcScreen extends StatefulWidget {
+class Diabetes7Screen extends StatefulWidget {
   @override
-  State<Calorie3calcScreen> createState() => _Calorie3calcScreenState();
+  State<Diabetes7Screen> createState() => _Diabetes7ScreenState();
 }
 
-class _Calorie3calcScreenState extends State<Calorie3calcScreen> {
+class _Diabetes7ScreenState extends State<Diabetes7Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,42 +23,51 @@ class _Calorie3calcScreenState extends State<Calorie3calcScreen> {
           child: ListView(
             children: [
               Greencontainer(
-                  firstTxt:
-                      "Control your diet with this easy-to-use calorie calculator.",
-                  centertxt: "Calorie Calculator",
-                  title: "Calorie",
-                  image: "assets/images/fruity.png",
-                  heightt: 615,
+                firstTxt:
+                      "Check your blood sugar risk easily and stay ahead of your health.",
+                  centertxt: "Diabetes Type 2 Risk Calculator",
+                  title: "Diabetes\nType2\nRisk",
+                  image: "assets/svg/diabetes.svg",
+                  heightt: 638,
                   widg: Column(
                     children: [
                       SizedBox(
-                        height: 45,
+                        height: 30,
                       ),
-                      DotsbarItem(KEY: "three",),
+                      DotsbarItem(
+                        KEY: "diabetes5",
+                      ),
                       SizedBox(
                         height: 35,
                       ),
                       Text(
-                        "Weight",
+                        "Smoking History",
                         style: GoogleFonts.almarai(
                           color: CustomColors.darkblue3,
-                          fontSize: 30,
+                          fontSize: 20,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
                       SizedBox(
                         height: 20,
                       ),
-                      White2container(
-                        KEY: "three",
-                          title1: "your weight", title2: "(kg)", measure: "kg"),
+                     White5container(
+                      id: "diabetes7",
+                      Q: "What is your smoking status?", 
+                     options: [
+                      "Non-Smoker" ,
+                      "Former Smoker",
+                      "Current Smoker"]),
+                  
+                     
                       SizedBox(
-                        height: 35,
+                        height: 30,
                       ),
                       MainButton(
-                       withShadow: true,
+                        width: double.infinity,
+                        withShadow: true,
                         onPressed: () {
-                       Get.to(Calorie4calcScreen());
+                          Get.to(Diabetes8Screen());
                         },
                         radius: 10,
                         height: 46,
@@ -83,8 +93,7 @@ class _Calorie3calcScreenState extends State<Calorie3calcScreen> {
                                 color: CustomColors.darkblue3, width: 2)),
                         child: MaterialButton(
                           onPressed: () {
-
-                            Get.to(Calorie2calcScreen());
+                            Get.back();
                           },
                           child: Text(
                             "Back",

@@ -1,8 +1,9 @@
 import 'package:abg/features/calculation/presentation/BmiCalc/BMIcalc_screen.dart';
-import 'package:abg/features/calculation/presentation/calorieCalc_screen.dart';
-import 'package:abg/features/calculation/presentation/dueDate_screen.dart';
-import 'package:abg/features/calculation/presentation/ovulationCalc_screen.dart';
-import 'package:abg/features/calculation/presentation/waterCalc_screen.dart';
+import 'package:abg/features/calculation/presentation/calories/calorieCalc_screen.dart';
+import 'package:abg/features/calculation/presentation/DuedateCalc/dueDate_screen.dart';
+import 'package:abg/features/calculation/presentation/diabetes/diabetes1_screen.dart';
+import 'package:abg/features/calculation/presentation/ovulation/ovulationCalc_screen.dart';
+import 'package:abg/features/calculation/presentation/bodyWater/waterCalc_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/card_item.dart';
 import 'package:abg/localization/all_keys.dart';
 import 'package:abg/res/configuration/app_bar.dart';
@@ -134,6 +135,23 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
             SizedBox(
               height: 7,
             ),
+
+             InkWell(
+              onTap: () {
+                Get.to(Diabetes1Screen());
+              },
+              child: CardItem(
+                image: "assets/svg/diabetes.svg",
+                elevation: 2.3,
+                title: "Diabetes Type2 Risk Calculator",
+                subTitle:
+                    "It provides an Diabetes Type2 Risk day calculator to determine when the egg is ready for fertilization",
+              ),
+            ),
+            SizedBox(
+              height: 7,
+            ),
+
             InkWell(
               onTap: (){
               Get.to(BmicalcScreen());

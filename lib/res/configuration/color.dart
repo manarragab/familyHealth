@@ -143,7 +143,6 @@ static const Color lightyellow= Color.fromRGBO(255, 204, 0, 1);
     static const Color redd=Color.fromRGBO(163, 0, 0, 1);
 
 
-
   /// this is the color of the apps
 
   static Color get primary => const Color(0xff86CD4B);

@@ -1,17 +1,19 @@
 import 'package:abg/data/const/export.dart';
-import 'package:abg/features/calculation/presentation/calorie3Calc_screen.dart';
-import 'package:abg/features/calculation/presentation/calorieCalc_screen.dart';
+import 'package:abg/features/calculation/presentation/calories/calorie3Calc_screen.dart';
+import 'package:abg/features/calculation/presentation/calories/calorieCalc_screen.dart';
+import 'package:abg/features/calculation/presentation/diabetes/diabetes4_screen.dart';
+import 'package:abg/features/calculation/presentation/diabetes/widget/white4Container.dart';
 import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
 import 'package:abg/features/calculation/presentation/widget/listDay_item.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Calorie2calcScreen extends StatefulWidget {
+class Diabetes3Screen extends StatefulWidget {
   @override
-  State<Calorie2calcScreen> createState() => _Calorie2calcScreenState();
+  State<Diabetes3Screen> createState() => _Diabetes3ScreenState();
 }
 
-class _Calorie2calcScreenState extends State<Calorie2calcScreen> {
+class _Diabetes3ScreenState extends State<Diabetes3Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,79 +23,46 @@ class _Calorie2calcScreenState extends State<Calorie2calcScreen> {
           child: ListView(
             children: [
               Greencontainer(
+                
                   firstTxt:
-                      "Control your diet with this easy-to-use calorie calculator.",
-                  centertxt: "Calorie Calculator",
-                  title: "Calorie",
-                  image: "assets/images/fruity.png",
-                  heightt: 615,
+                      "Check your blood sugar risk easily and stay ahead of your health.",
+                  centertxt: "Diabetes Type 2 Risk Calculator",
+                  title: "Diabetes\nType2\nRisk",
+                  image: "assets/svg/diabetes.svg",
+                  heightt: 585,
                   widg: Column(
                     children: [
                       SizedBox(
                         height: 45,
                       ),
-                      DotsbarItem(KEY: "two",),
+                      DotsbarItem(KEY: "diabetes3",),
                       SizedBox(
                         height: 35,
                       ),
                       Text(
-                        "Gender",
-                        style: GoogleFonts.almarai(
+                        "High Blood Pressure Medicines",
+                        style: TFonts.inter(
                           color: CustomColors.darkblue3,
-                          fontSize: 30,
+                          fontSize: 20.w,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      SizedBox(
-                        height: 25,
+                    
+                   SizedBox(
+                        height: 20,
                       ),
-                      Container(
-                        margin: EdgeInsets.symmetric(horizontal: 65),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              children: [
-                                Image.asset("assets/images/male.png"),
-                                SizedBox(
-                                  height: 7,
-                                ),
-                                Text(
-                                  "Male",
-                                  style: GoogleFonts.almarai(
-                                    color: CustomColors.darkblack1,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              children: [
-                                Image.asset("assets/images/female.png"),
-                                SizedBox(
-                                  height: 7,
-                                ),
-                                Text(
-                                  "Female",
-                                  style: GoogleFonts.almarai(
-                                    color: CustomColors.darkblack1,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
+                  
+                  
+                  White4container(id: "diabetes3" , ),
+                  
                       SizedBox(
-                        height: 35,
+                        height: 30,
                       ),
                       MainButton(
+                         width: double.infinity,
                         withShadow: true,
                         onPressed: () {
-                         Get.to(Calorie3calcScreen());
+                         Get.to(Diabetes4Screen());
                         },
                         radius: 10,
                         height: 46,
@@ -119,7 +88,7 @@ class _Calorie2calcScreenState extends State<Calorie2calcScreen> {
                                 color: CustomColors.darkblue3, width: 2)),
                         child: MaterialButton(
                           onPressed: () {
-                            Get.to(CaloriecalcScreen());
+                           Get.back();
                           },
                           child: Text(
                             "Back",
