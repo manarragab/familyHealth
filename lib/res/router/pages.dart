@@ -6,6 +6,7 @@ import 'package:abg/features/auth/domain/controller/auth_controller.dart';
 import 'package:abg/features/auth/presentation/login_screen.dart';
 import 'package:abg/features/auth/presentation/my_account_screen.dart';
 import 'package:abg/features/auth/presentation/sign_up_screen.dart';
+import 'package:abg/features/calculation/presentation/diabetes/diabetes1_screen.dart';
 import 'package:abg/features/calculation/presentation/diabetes/diabetes2_screen.dart';
 import 'package:abg/features/family/domain/controller/family_controller.dart';
 import 'package:abg/features/family/presentation/family_screen.dart';
@@ -133,6 +134,14 @@ class CustomPage {
           Get.put(Calculationcontroller());
         })),
 
+         GetPage(
+        name: diabetes1Page,
+        page: () =>  Diabetes1Screen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+          Get.put(Calculationcontroller());
+        })),
+
 
   ];
 
@@ -162,5 +171,6 @@ class CustomPage {
   static String calculation="/calculation";
     static String diabetes2Page="/diabetes2";
 
+    static String diabetes1Page="/diabetes1";
 
 }

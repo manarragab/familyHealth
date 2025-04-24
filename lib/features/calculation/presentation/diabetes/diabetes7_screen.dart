@@ -4,6 +4,7 @@ import 'package:abg/features/calculation/presentation/diabetes/diabetes8_screen.
 import 'package:abg/features/calculation/presentation/diabetes/widget/white5Container.dart';
 import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
+import 'package:abg/res/loading/loading_overlay_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Diabetes7Screen extends StatefulWidget {
@@ -35,7 +36,7 @@ class _Diabetes7ScreenState extends State<Diabetes7Screen> {
                         height: 30,
                       ),
                       DotsbarItem(
-                        KEY: "diabetes5",
+                        step: 7,
                       ),
                       SizedBox(
                         height: 35,
@@ -63,22 +64,25 @@ class _Diabetes7ScreenState extends State<Diabetes7Screen> {
                       SizedBox(
                         height: 30,
                       ),
-                      MainButton(
-                        width: double.infinity,
-                        withShadow: true,
-                        onPressed: () {
-                          controller.addDiabetes();
-                          Get.to(Diabetes8Screen());
-                        },
-                        radius: 10,
-                        height: 46,
-                        backgroundColor: CustomColors.darkblue3,
-                        titleWidget: Text(
-                          CustomTrans.next2.tr,
-                          style: GoogleFonts.almarai(
-                            fontSize: 24,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w400,
+                      LoadingOverLay(
+                        showLoadingOnly: true,
+                        child: MainButton(
+                          width: double.infinity,
+                          withShadow: true,
+                          onPressed: () {
+                            controller.addDiabetes();
+                          
+                          },
+                          radius: 10,
+                          height: 46,
+                          backgroundColor: CustomColors.darkblue3,
+                          titleWidget: Text(
+                            CustomTrans.next2.tr,
+                            style: GoogleFonts.almarai(
+                              fontSize: 24,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                         ),
                       ),

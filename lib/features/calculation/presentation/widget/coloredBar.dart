@@ -126,7 +126,7 @@ controller.setId(id);
           ),
 
      Text(
-    ((controller.bmiValue * 10).ceil() / 10).toString(),
+subTitle??"",
  key: ValueKey(id),
   style: GoogleFonts.almarai(
     fontSize: 40,

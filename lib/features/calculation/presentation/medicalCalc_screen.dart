@@ -1,3 +1,4 @@
+import 'package:abg/data/const/export.dart';
 import 'package:abg/features/calculation/presentation/BmiCalc/BMIcalc_screen.dart';
 import 'package:abg/features/calculation/presentation/calories/calorieCalc_screen.dart';
 import 'package:abg/features/calculation/presentation/DuedateCalc/dueDate_screen.dart';
@@ -8,6 +9,7 @@ import 'package:abg/features/calculation/presentation/widget/card_item.dart';
 import 'package:abg/localization/all_keys.dart';
 import 'package:abg/res/configuration/app_bar.dart';
 import 'package:abg/res/configuration/color.dart';
+import 'package:abg/res/router/pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
@@ -138,7 +140,7 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
 
              InkWell(
               onTap: () {
-                Get.to(Diabetes1Screen());
+                Get.toNamed(CustomPage.diabetes1Page);
               },
               child: CardItem(
                 image: "assets/svg/diabetes.svg",

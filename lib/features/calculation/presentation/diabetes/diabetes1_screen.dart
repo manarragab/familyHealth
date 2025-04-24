@@ -7,6 +7,7 @@ import 'package:abg/localization/all_keys.dart';
 import 'package:abg/res/configuration/app_bar.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
 import 'package:abg/res/router/pages.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -39,7 +40,7 @@ class Diabetes1Screen extends  GetView<Calculationcontroller> {
                       SizedBox(
                         height: 45,
                       ),
-                      DotsbarItem( KEY: "diabetes1",),
+                      DotsbarItem( step: 1,),
                       SizedBox(
                         height: 35,
                       ),
@@ -58,26 +59,28 @@ class Diabetes1Screen extends  GetView<Calculationcontroller> {
                       SizedBox(
                         height: 45,
                       ),
-                      LoadingOverLay(
-                        showLoadingOnly: true,
-                   
-                        child: MainButton(
-                          withShadow: true,
-                          onPressed: () {
-                         controller.addDiabetes();
-                    
-      Get.toNamed(CustomPage.diabetes2Page);
-                          },
-                          radius: 10,
-                          height: 46,
-                          backgroundColor: CustomColors.darkblue3,
-                          titleWidget: Text(
-                            CustomTrans.next2.tr,
-                            style: TFonts.inter(
-                              fontSize: 24,
-                              color: Colors.white,
-                              fontWeight: FontWeight.w400,
-                            ),
+                      MainButton(
+                        withShadow: true,
+                        onPressed: () {
+
+if(controller.postDiabetes.age !=null){
+
+   Get.toNamed(CustomPage.diabetes2Page);
+}
+else{
+  showToast("You should select age", MessageErrorType.error);
+}
+                                                                 
+                        },
+                        radius: 10,
+                        height: 46,
+                        backgroundColor: CustomColors.darkblue3,
+                        titleWidget: Text(
+                          CustomTrans.next2.tr,
+                          style: TFonts.inter(
+                            fontSize: 24,
+                            color: Colors.white,
+                            fontWeight: FontWeight.w400,
                           ),
                         ),
                       ),

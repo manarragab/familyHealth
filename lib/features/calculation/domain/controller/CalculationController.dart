@@ -12,6 +12,7 @@ import 'package:abg/features/calculation/domain/cases/calculation_cases.dart';
 import 'package:abg/features/calculation/presentation/BmiCalc/BMI2calc_screen.dart';
 import 'package:abg/features/calculation/presentation/DuedateCalc/dateCalc_screen.dart';
 import 'package:abg/features/calculation/presentation/diabetes/diabetes3_screen.dart';
+import 'package:abg/features/calculation/presentation/diabetes/diabetes8_screen.dart';
 import 'package:abg/res/router/pages.dart';
 import 'package:dio/dio.dart';
 
@@ -52,20 +53,11 @@ String? idColored;
     statusError.checkStatus(response, () {
       responseDiabetes = response as PostDiabetesResponse;
 
-  //  switch(id){
-  //     case "diabetes1Screen":
-  //     Get.toNamed(CustomPage.diabetes2Page);
-  //     update([id]);
-  //     break;
-  // case "diabetes2Screen":
-  //   Get.to(Diabetes3Screen());
-  //         update([id]);
-  //   break;}
-
 print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq ${responseDiabetes.data?.riskResult}");
 
-     updateBmi(responseDiabetes.data?.riskResult ?? 0.0, Get.width - 80 , idd);
+     updateBmi(responseDiabetes.data?.riskResult?.toDouble() ?? 0.0, Get.width - 80 , idd);
  update(['diabetes8']); 
+   Get.to(Diabetes8Screen());
     });
   }
 
@@ -78,17 +70,17 @@ update([id]);
   }
 
 //due date , tracker
-  int selectedDay = 1;
-  int selectedMonth = 1;
-  int selectedYear = 2024;
+  int? selectedDay;
+  int? selectedMonth ;
+  int? selectedYear ;
 
-  void postPeroid(selectedDay, selectedMonth, selectedYear) {
+  void postPeroid() {
     try {
       //postTracker.date = "$selectedDay-$selectedMonth-$selectedYear";
       postTracker.date =
           "${selectedYear.toString()}-${selectedMonth.toString().padLeft(2, '0')}-${selectedDay.toString().padLeft(2, '0')}";
 
-      print(" date .........  ${postTracker.date}");
+      print(" date .................................  ${postTracker.date}");
     } catch (e) {
       print("Error in date: ${postTracker.date}");
     }
@@ -98,7 +90,6 @@ update([id]);
   addTracker() async {
     loadingGetxController.showLoading();
     var response = await sl<CalculationCases>().addTracker(postTracker);
-    postPeroid(selectedDay, selectedMonth, selectedYear);
     loadingGetxController.hideLoading();
     statusError.checkStatus(response, () {
       log(response.toString());
@@ -117,7 +108,6 @@ update([id]);
   void updateBmi(double newPosition, double barWidth , idd) {
     bmiValue = ((newPosition / barWidth) * (maxBmi - minBmi)) + minBmi;
     bmiValue = bmiValue.clamp(minBmi, maxBmi);
-    update([idd]);
   }
 
 //white2container , audio bar
@@ -139,19 +129,6 @@ update([id]);
         break;
     }
     update([key]);
-  }
-
-//dotsbar
-
-  Map<String, int> stepsMap = {};
-
-  int getstep(String key) {
-    return stepsMap[key] ?? 0;
-  }
-
-  void updateStep(String key, int step) {
-    stepsMap[key] = step;
-    update();
   }
 
   //listDay

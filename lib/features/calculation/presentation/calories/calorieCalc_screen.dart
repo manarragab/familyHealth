@@ -31,7 +31,7 @@ class _CaloriecalcScreenState extends State<CaloriecalcScreen> {
                       SizedBox(
                         height: 45,
                       ),
-                      DotsbarItem( KEY: "one",),
+                      DotsbarItem(step: 1,),
                       SizedBox(
                         height: 35,
                       ),

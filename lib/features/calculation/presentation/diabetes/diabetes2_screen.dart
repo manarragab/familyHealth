@@ -1,12 +1,9 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
-import 'package:abg/features/calculation/presentation/calories/calorie3Calc_screen.dart';
-import 'package:abg/features/calculation/presentation/calories/calorieCalc_screen.dart';
 import 'package:abg/features/calculation/presentation/diabetes/diabetes3_screen.dart';
 import 'package:abg/features/calculation/presentation/diabetes/widget/gender_item.dart';
 import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
-import 'package:abg/features/calculation/presentation/widget/listDay_item.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -40,7 +37,7 @@ class _Diabetes2ScreenState extends State<Diabetes2Screen> {
                       SizedBox(
                         height: 45,
                       ),
-                      DotsbarItem(KEY: "diabetes2",),
+                      DotsbarItem( step: 2),
                       SizedBox(
                         height: 35,
                       ),
@@ -68,8 +65,10 @@ GenderItem(id: "diabetes2"),
                            width: double.infinity,
                           withShadow: true,
                           onPressed: () {
-                        controller.addDiabetes();
+                    
                       Get.to(Diabetes3Screen());
+
+                      
                           },
                           radius: 10,
                           height: 46,

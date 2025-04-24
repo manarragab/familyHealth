@@ -1,12 +1,9 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
-import 'package:abg/features/calculation/presentation/calories/calorie3Calc_screen.dart';
-import 'package:abg/features/calculation/presentation/calories/calorie5Calc_screen.dart';
 import 'package:abg/features/calculation/presentation/diabetes/diabetes7_screen.dart';
 import 'package:abg/features/calculation/presentation/diabetes/widget/white5Container.dart';
 import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
-import 'package:abg/features/calculation/presentation/widget/white2Container.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Diabetes6Screen extends StatefulWidget {
@@ -38,7 +35,7 @@ class _Diabetes6ScreenState extends State<Diabetes6Screen> {
                         height: 30,
                       ),
                       DotsbarItem(
-                        KEY: "diabetes5",
+                        step: 6,
                       ),
                       SizedBox(
                         height: 35,
@@ -70,7 +67,7 @@ class _Diabetes6ScreenState extends State<Diabetes6Screen> {
                         width: double.infinity,
                         withShadow: true,
                         onPressed: () {
-                          controller.addDiabetes();
+                          
                           Get.to(Diabetes7Screen());
                         },
                         radius: 10,

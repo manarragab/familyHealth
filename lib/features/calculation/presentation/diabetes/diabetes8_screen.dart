@@ -1,8 +1,10 @@
 import 'package:abg/data/const/export.dart';
+import 'package:abg/data/models/calculation/diabetes/post_diabetes/post_diabetes_MD.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
 import 'package:abg/features/calculation/presentation/diabetes/diabetes1_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/coloredBar.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
+import 'package:abg/res/router/pages.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Diabetes8Screen extends StatefulWidget {
@@ -50,6 +52,7 @@ class _Diabetes8ScreenState extends State<Diabetes8Screen> {
                           "Very High Risk"
                         ],
                         title: "score",
+                        subTitle: controller.responseDiabetes.data?.riskResult.toString(),
                       ),
                       Text(
                         "Right now, your risk for having type 2 diabetes is low. However, your risk changes over time. Be sure to schedule regular check-ups with your doctor and take healthy steps toward preventing or delaying diabetes.",
@@ -65,7 +68,8 @@ class _Diabetes8ScreenState extends State<Diabetes8Screen> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Get.to(Diabetes1Screen());
+                    controller.postDiabetes=PostDiabetesMd();
+                    Get.until((route)=>Get.currentRoute==CustomPage.diabetes1Page);
                   },
                   child: Container(
                     child: Row(

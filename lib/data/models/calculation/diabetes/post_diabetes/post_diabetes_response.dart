@@ -26,7 +26,7 @@ class PostDiabetesResponse  extends ResponseModel<Diabetes?> {
 }
 
 class Diabetes {
-  double? riskResult;
+  num? riskResult;
 
   Diabetes({this.riskResult});
 

@@ -35,7 +35,7 @@ class _Diabetes5ScreenState extends State<Diabetes5Screen> {
                         height: 35,
                       ),
                       DotsbarItem(
-                        KEY: "diabetes5",
+                        step: 5,
                       ),
                       SizedBox(
                         height: 30,
@@ -71,7 +71,7 @@ class _Diabetes5ScreenState extends State<Diabetes5Screen> {
                          width: double.infinity,
                         withShadow: true,
                         onPressed: () {
-                          controller.addDiabetes();
+                         
                           Get.to(Diabetes6Screen());
                         },
                         radius: 10,
