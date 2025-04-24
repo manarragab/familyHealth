@@ -109,7 +109,7 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
             ),
             InkWell(
               onTap: () {
-                Get.to(DuedateScreen());
+                Get.toNamed(CustomPage.dueDatePage);
               },
               child: CardItem(
                 image: "assets/images/baby.png",

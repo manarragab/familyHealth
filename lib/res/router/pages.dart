@@ -6,8 +6,15 @@ import 'package:abg/features/auth/domain/controller/auth_controller.dart';
 import 'package:abg/features/auth/presentation/login_screen.dart';
 import 'package:abg/features/auth/presentation/my_account_screen.dart';
 import 'package:abg/features/auth/presentation/sign_up_screen.dart';
+import 'package:abg/features/calculation/presentation/DuedateCalc/dueDate_screen.dart';
 import 'package:abg/features/calculation/presentation/diabetes/diabetes1_screen.dart';
 import 'package:abg/features/calculation/presentation/diabetes/diabetes2_screen.dart';
+import 'package:abg/features/calculation/presentation/diabetes/diabetes3_screen.dart';
+import 'package:abg/features/calculation/presentation/diabetes/diabetes4_screen.dart';
+import 'package:abg/features/calculation/presentation/diabetes/diabetes5_screen.dart';
+import 'package:abg/features/calculation/presentation/diabetes/diabetes6_screen.dart';
+import 'package:abg/features/calculation/presentation/diabetes/diabetes7_screen.dart';
+import 'package:abg/features/calculation/presentation/diabetes/diabetes8_screen.dart';
 import 'package:abg/features/family/domain/controller/family_controller.dart';
 import 'package:abg/features/family/presentation/family_screen.dart';
 import 'package:abg/features/followUp/domain/controller/followUp_controller.dart';
@@ -142,6 +149,62 @@ class CustomPage {
           Get.put(Calculationcontroller());
         })),
 
+          GetPage(
+        name: diabetes3Page,
+        page: () =>  Diabetes3Screen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+          Get.put(Calculationcontroller());
+        })), 
+        
+         GetPage(
+        name: diabetes4Page,
+        page: () =>  Diabetes4Screen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+          Get.put(Calculationcontroller());
+        })),
+        
+        
+          GetPage(
+        name: diabetes5Page,
+        page: () =>  Diabetes5Screen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+          Get.put(Calculationcontroller());
+        })), 
+        
+         GetPage(
+        name: diabetes6Page,
+        page: () =>  Diabetes6Screen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+          Get.put(Calculationcontroller());
+        })), 
+        
+         GetPage(
+        name: diabetes7Page,
+        page: () =>  Diabetes7Screen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+          Get.put(Calculationcontroller());
+        })), 
+        
+         GetPage(
+        name: diabetes8Page,
+        page: () =>  Diabetes8Screen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+          Get.put(Calculationcontroller());
+        })),
+
+ GetPage(
+        name: dueDatePage,
+        page: () =>  DuedateScreen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+          Get.put(Calculationcontroller());
+        })),
 
   ];
 
@@ -169,8 +232,18 @@ class CustomPage {
           static String progressTracker = "/progress_tracker_page";
 
   static String calculation="/calculation";
-    static String diabetes2Page="/diabetes2";
 
     static String diabetes1Page="/diabetes1";
+    static String diabetes2Page="/diabetes2";
+    static String diabetes3Page="/diabetes3";
+    static String diabetes4Page="/diabetes4";
+    static String diabetes5Page="/diabetes5";
+    static String diabetes6Page="/diabetes6";
+    static String diabetes7Page="/diabetes7";
+    static String diabetes8Page="/diabetes8";
+
+    static String dueDatePage="/duedate";
+
+
 
 }

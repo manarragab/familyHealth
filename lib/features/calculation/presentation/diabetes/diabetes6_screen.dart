@@ -4,6 +4,7 @@ import 'package:abg/features/calculation/presentation/diabetes/diabetes7_screen.
 import 'package:abg/features/calculation/presentation/diabetes/widget/white5Container.dart';
 import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
+import 'package:abg/res/router/pages.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Diabetes6Screen extends StatefulWidget {
@@ -35,6 +36,7 @@ class _Diabetes6ScreenState extends State<Diabetes6Screen> {
                         height: 30,
                       ),
                       DotsbarItem(
+                         id: "diabetes6",
                         step: 6,
                       ),
                       SizedBox(
@@ -67,8 +69,13 @@ class _Diabetes6ScreenState extends State<Diabetes6Screen> {
                         width: double.infinity,
                         withShadow: true,
                         onPressed: () {
-                          
-                          Get.to(Diabetes7Screen());
+                           if (controller.postDiabetes.familyHistoryOfDiabetes != null) {
+                                    Get.toNamed(CustomPage.diabetes7Page);
+                                  } else {
+                                    showToast("You should answer the question",
+                                        MessageErrorType.error);
+                                  } 
+                    
                         },
                         radius: 10,
                         height: 46,

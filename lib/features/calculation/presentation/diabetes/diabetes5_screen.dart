@@ -4,6 +4,7 @@ import 'package:abg/features/calculation/presentation/diabetes/diabetes6_screen.
 import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
 import 'package:abg/features/calculation/presentation/widget/white2Container.dart';
+import 'package:abg/res/router/pages.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Diabetes5Screen extends StatefulWidget {
@@ -12,7 +13,7 @@ class Diabetes5Screen extends StatefulWidget {
 }
 
 class _Diabetes5ScreenState extends State<Diabetes5Screen> {
-      Calculationcontroller controller=Get.find();
+  Calculationcontroller controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class _Diabetes5ScreenState extends State<Diabetes5Screen> {
           child: ListView(
             children: [
               Greencontainer(
-                firstTxt:
+                  firstTxt:
                       "Check your blood sugar risk easily and stay ahead of your health.",
                   centertxt: "Diabetes Type 2 Risk Calculator",
                   title: "Diabetes\nType2\nRisk",
@@ -35,6 +36,7 @@ class _Diabetes5ScreenState extends State<Diabetes5Screen> {
                         height: 35,
                       ),
                       DotsbarItem(
+                        id: "diabetes5",
                         step: 5,
                       ),
                       SizedBox(
@@ -56,10 +58,10 @@ class _Diabetes5ScreenState extends State<Diabetes5Screen> {
                           title1: "Please enter your height",
                           title2: "(cm)",
                           measure: "cm"),
-   SizedBox(
+                      SizedBox(
                         height: 10,
                       ),
-                            White2container(
+                      White2container(
                           KEY: "diabetes5",
                           title1: "Please enter your wieght",
                           title2: "(kg)",
@@ -68,11 +70,17 @@ class _Diabetes5ScreenState extends State<Diabetes5Screen> {
                         height: 30,
                       ),
                       MainButton(
-                         width: double.infinity,
+                        width: double.infinity,
                         withShadow: true,
                         onPressed: () {
-                         
-                          Get.to(Diabetes6Screen());
+                          if (controller.postDiabetes.weight !=
+                              null &&controller.postDiabetes.height !=
+                              null ) {
+                            Get.toNamed(CustomPage.diabetes6Page);
+                          } else {
+                            showToast("You should set value for height && weight both",
+                                MessageErrorType.error);
+                          }
                         },
                         radius: 10,
                         height: 46,
@@ -98,7 +106,7 @@ class _Diabetes5ScreenState extends State<Diabetes5Screen> {
                                 color: CustomColors.darkblue3, width: 2)),
                         child: MaterialButton(
                           onPressed: () {
-                        Get.back();
+                            Get.back();
                           },
                           child: Text(
                             "Back",

@@ -57,7 +57,7 @@ print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq ${responseDiabetes.data?.riskResu
 
      updateBmi(responseDiabetes.data?.riskResult?.toDouble() ?? 0.0, Get.width - 80 , idd);
  update(['diabetes8']); 
-   Get.to(Diabetes8Screen());
+                                    Get.toNamed(CustomPage.diabetes8Page);
     });
   }
 

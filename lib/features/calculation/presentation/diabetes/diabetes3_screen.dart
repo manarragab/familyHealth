@@ -4,6 +4,7 @@ import 'package:abg/features/calculation/presentation/diabetes/diabetes4_screen.
 import 'package:abg/features/calculation/presentation/diabetes/widget/white4Container.dart';
 import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
+import 'package:abg/res/router/pages.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Diabetes3Screen extends StatefulWidget {
@@ -12,7 +13,7 @@ class Diabetes3Screen extends StatefulWidget {
 }
 
 class _Diabetes3ScreenState extends State<Diabetes3Screen> {
-  Calculationcontroller controller=Get.find();
+  Calculationcontroller controller = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +23,6 @@ class _Diabetes3ScreenState extends State<Diabetes3Screen> {
           child: ListView(
             children: [
               Greencontainer(
-                
                   firstTxt:
                       "Check your blood sugar risk easily and stay ahead of your health.",
                   centertxt: "Diabetes Type 2 Risk Calculator",
@@ -34,7 +34,7 @@ class _Diabetes3ScreenState extends State<Diabetes3Screen> {
                       SizedBox(
                         height: 45,
                       ),
-                      DotsbarItem( step: 3),
+                      DotsbarItem(id: "diabetes3", step: 3),
                       SizedBox(
                         height: 35,
                       ),
@@ -46,24 +46,24 @@ class _Diabetes3ScreenState extends State<Diabetes3Screen> {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                    
-                   SizedBox(
+                      SizedBox(
                         height: 20,
                       ),
-                  
-                  
-                  White4container(id: "diabetes3" ),
-                  
+                      White4container(id: "diabetes3"),
                       SizedBox(
                         height: 30,
                       ),
                       MainButton(
-                         width: double.infinity,
+                        width: double.infinity,
                         withShadow: true,
                         onPressed: () {
-                      
-                        
-                         Get.to(Diabetes4Screen());
+                          if (controller.postDiabetes.highBloodPressure !=
+                              null) {
+                            Get.toNamed(CustomPage.diabetes4Page);
+                          } else {
+                            showToast("You should answer the question",
+                                MessageErrorType.error);
+                          }
                         },
                         radius: 10,
                         height: 46,
@@ -89,7 +89,7 @@ class _Diabetes3ScreenState extends State<Diabetes3Screen> {
                                 color: CustomColors.darkblue3, width: 2)),
                         child: MaterialButton(
                           onPressed: () {
-                           Get.back();
+                            Get.back();
                           },
                           child: Text(
                             "Back",

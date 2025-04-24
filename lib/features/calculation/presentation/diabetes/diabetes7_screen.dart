@@ -13,7 +13,7 @@ class Diabetes7Screen extends StatefulWidget {
 }
 
 class _Diabetes7ScreenState extends State<Diabetes7Screen> {
-          Calculationcontroller controller=Get.find();
+  Calculationcontroller controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class _Diabetes7ScreenState extends State<Diabetes7Screen> {
           child: ListView(
             children: [
               Greencontainer(
-                firstTxt:
+                  firstTxt:
                       "Check your blood sugar risk easily and stay ahead of your health.",
                   centertxt: "Diabetes Type 2 Risk Calculator",
                   title: "Diabetes\nType2\nRisk",
@@ -36,6 +36,7 @@ class _Diabetes7ScreenState extends State<Diabetes7Screen> {
                         height: 30,
                       ),
                       DotsbarItem(
+                        id: "diabetes7",
                         step: 7,
                       ),
                       SizedBox(
@@ -52,15 +53,14 @@ class _Diabetes7ScreenState extends State<Diabetes7Screen> {
                       SizedBox(
                         height: 20,
                       ),
-                     White5container(
-                      id: "diabetes7",
-                      Q: "What is your smoking status?", 
-                     options: [
-                      "Non-Smoker" ,
-                      "Former Smoker",
-                      "Current Smoker"]),
-                  
-                     
+                      White5container(
+                          id: "diabetes7",
+                          Q: "What is your smoking status?",
+                          options: [
+                            "Non-Smoker",
+                            "Former Smoker",
+                            "Current Smoker"
+                          ]),
                       SizedBox(
                         height: 30,
                       ),
@@ -70,8 +70,13 @@ class _Diabetes7ScreenState extends State<Diabetes7Screen> {
                           width: double.infinity,
                           withShadow: true,
                           onPressed: () {
-                            controller.addDiabetes();
-                          
+                            if (controller.postDiabetes.smokingHistory !=
+                                null) {
+                              controller.addDiabetes();
+                            } else {
+                              showToast("You should answer the question",
+                                  MessageErrorType.error);
+                            }
                           },
                           radius: 10,
                           height: 46,

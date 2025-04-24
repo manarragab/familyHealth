@@ -6,15 +6,22 @@ class DotsbarItem extends StatelessWidget {
 //this KEY for separate all calling of dotsBar => every call has its own different key 
 //لحل مشكلة ارتباط كل DotsbarItem بنفس currentStep،
 
- final int totalSteps;
- final int step;
+  final int totalSteps;   
+  final int step;
+  final String id;
 
-  DotsbarItem({super.key,  this.totalSteps=7 ,required this.step});
+  DotsbarItem({
+    Key? key,
+    required this.step,
+    required this.id,
+  }) : totalSteps = (id == 'calorie') ? 5 : 7;  
 
   @override
   Widget build(BuildContext context) {
 
     return GetBuilder<Calculationcontroller>(
+      id: id,
+
       builder: (controller) {
         return Row(
           children: List.generate(totalSteps * 2 - 1, (index) {
