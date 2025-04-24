@@ -17,7 +17,7 @@ class DuedateScreen extends StatefulWidget {
 }
 
 class _DuedateScreenState extends State<DuedateScreen> {
-  Calculationcontroller controller=Calculationcontroller();
+  Calculationcontroller controller=Get.find();
   @override
   Widget build(BuildContext context) {  
     return Scaffold(

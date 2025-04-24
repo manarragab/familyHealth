@@ -78,8 +78,7 @@ class _DateItemState extends State<DateItem> {
                         setState(() {
                           controller.selectedDay = index + 1;
                          
-                          controller.postPeroid(controller.selectedDay,
-                              controller.selectedMonth, controller.selectedYear);
+                          controller.postPeroid();
                         });
                       },
                       childDelegate: ListWheelChildBuilderDelegate(
@@ -111,8 +110,7 @@ class _DateItemState extends State<DateItem> {
                         setState(() {
                           controller.selectedMonth = index + 1;
                           print("gggggggggggggggg ${controller.selectedMonth}");
-                          controller.postPeroid(controller.selectedDay,
-                              controller.selectedMonth, controller.selectedYear);
+                          controller.postPeroid();
                         });
                       },
                       childDelegate: ListWheelChildBuilderDelegate(
@@ -144,8 +142,7 @@ class _DateItemState extends State<DateItem> {
                         setState(() {
                           controller.selectedYear = 2025 + index;
                          
-                          controller.postPeroid(controller.selectedDay,
-                              controller.selectedMonth, controller.selectedYear);
+                          controller.postPeroid();
                           
                         });
                       },
