@@ -28,6 +28,7 @@ class _White2containerState extends State<White2container> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<Calculationcontroller>(
+      id: widget.KEY,
       builder: (controller) {
         double currentValue = controller.getValue(widget.KEY);
         

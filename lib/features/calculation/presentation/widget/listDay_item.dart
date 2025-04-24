@@ -44,19 +44,19 @@ return  Center(
                         physics: FixedExtentScrollPhysics(),
                         onSelectedItemChanged: (i) {
                           setState(() {
-                           cont.selectedIndex = i;
-                           cont.list(i);
+                           cont.selectedIndex= i;
+                           cont.list(i ,widget.id );
                            cont.update([widget.id]);
                           });
                         },
                         childDelegate: ListWheelChildBuilderDelegate(
-                          childCount: 31,
+                          childCount:   widget.id=="diabetes1"? 100: 31,
                           builder: (context, i) {
                             return Text(
-                              "${i + 1} Day",
+                     widget.id=="diabetes1"?  "${i+10} Year": "${i + 1} Day",
                               style: TFonts.inter(
                                 fontSize: 23,
-                                color: i ==cont. selectedIndex
+                                color: i ==cont.selectedIndex
                                     ? CustomColors.darkBlue2
                                     : CustomColors.lightblue3,
                                 fontWeight: FontWeight.w700,

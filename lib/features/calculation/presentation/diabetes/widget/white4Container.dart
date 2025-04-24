@@ -14,7 +14,9 @@ class White4container extends StatelessWidget {
     return GetBuilder<Calculationcontroller>(
       id: id,
       builder: (_) {
-        final bool selected = calc.selectedRadio == "Yes";
+        final bool selectedYes = calc.selectedRadio == "Yes";
+        final bool selectedNo = calc.selectedRadio == "No";
+
 
         return Container(
           width: Get.width,
@@ -41,18 +43,18 @@ class White4container extends StatelessWidget {
                 children: [
                   _radioOption(
                     text: "Yes",
-                    selected: selected,
+                    selected: selectedYes,
                     onTap: () {
-                      calc.selecting("Yes", id);
-                      calc.update([id]);
+                      calc.selecting("Yes", id , true);
+                
                     },
                   ),
                   _radioOption(
                     text: "No",
-                    selected: !selected,
+                    selected: selectedNo,
                     onTap: () {
-                      calc.selecting("No", id);
-                      calc.update([id]);
+                      calc.selecting("No", id , false );
+                    
                     },
                   ),
                 ],

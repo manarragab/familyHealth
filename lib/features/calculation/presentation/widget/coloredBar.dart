@@ -17,6 +17,8 @@ class Coloredbar extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = Get.width;
     double barWidth = screenWidth - 80;
+    
+    
 
     return GetBuilder<Calculationcontroller>(
       id: id,
@@ -33,7 +35,7 @@ controller.setId(id);
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-           id=="diabetes8"?SizedBox():    _buildNumberRow(),
+           id=="diabetes8"?SizedBox():  _buildNumberRow(),
               SizedBox(height: 5),
               _buildBar(barWidth, indicatorPosition),
               SizedBox(height: 5),
@@ -122,15 +124,17 @@ controller.setId(id);
               fontWeight: FontWeight.w700,
             ),
           ),
-          Text(
-            ((controller.bmiValue * 10).ceil() / 10.0).toString(),
-            key: ValueKey(id),
-            style: GoogleFonts.almarai(
-              fontSize: 40,
-              color: CustomColors.green1,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
+
+     Text(
+    ((controller.bmiValue * 10).ceil() / 10).toString(),
+ key: ValueKey(id),
+  style: GoogleFonts.almarai(
+    fontSize: 40,
+    color: CustomColors.green1,
+    fontWeight: FontWeight.w700,
+  ),
+),
+
           SizedBox(height: 18),
  id=="diabetes8"? SizedBox() : Text(
             subTitle??"",

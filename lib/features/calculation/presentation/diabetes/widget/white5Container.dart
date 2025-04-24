@@ -20,7 +20,6 @@ class _White5containerState extends State<White5container> {
   String? diabetes7;
   String? diabetes6;
 
-  String? rad;
   Calculationcontroller controller = Get.find();
   @override
   Widget build(BuildContext context) {
@@ -64,13 +63,38 @@ class _White5containerState extends State<White5container> {
                         ),
                       ),
                       value: options,
-                      groupValue: rad,
+                      groupValue: controller.rad,
                       onChanged: (String? val) {
                         setState(() {
-                          rad = val ?? "";
+                        controller.rad = val ?? "";
+                        print("///////////////////// $val");
+                       
+                      if( widget.id=="diabetes6"){
+                         if(val== "No first-degree family members with diabetes" ){
+                         controller.num=1; 
+                        }
+                        else if(val=="Parent or sibling with diabetes"){
+                         controller.num=2; 
+                        }
+                        else{
+                         controller.num=3; 
+                        }
+                      }
+                      else{
+                          if(val== "Non-Smoker" ){
+                         controller.num2=1; 
+                        }
+                        else if(val=="Former Smoker"){
+                         controller.num2=2; 
+                        }
+                        else{
+                         controller.num2=3; 
+                        }
+                      }
+                      
+                        controller.radioFamily(val??"" , widget.id);
                           controller.update([widget.id]);
-                          // widget.id=="diabetes7"? diabetes7=rad : diabetes6=rad ;
-                        });
+                             });
                       },
                     );
                   })

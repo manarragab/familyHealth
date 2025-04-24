@@ -1,4 +1,5 @@
 import 'package:abg/data/const/export.dart';
+import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
 import 'package:abg/features/calculation/presentation/calories/calorie3Calc_screen.dart';
 import 'package:abg/features/calculation/presentation/calories/calorieCalc_screen.dart';
 import 'package:abg/features/calculation/presentation/diabetes/diabetes5_screen.dart';
@@ -14,6 +15,8 @@ class Diabetes4Screen extends StatefulWidget {
 }
 
 class _Diabetes4ScreenState extends State<Diabetes4Screen> {
+    Calculationcontroller controller=Get.find();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,6 +65,8 @@ class _Diabetes4ScreenState extends State<Diabetes4Screen> {
                          width: double.infinity,
                         withShadow: true,
                         onPressed: () {
+                          controller.addDiabetes();
+                        
                          Get.to(Diabetes5Screen());
                         },
                         radius: 10,

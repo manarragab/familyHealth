@@ -1,21 +1,26 @@
 import 'package:abg/data/const/export.dart';
+import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
 import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
 import 'package:abg/features/calculation/presentation/widget/listDay_item.dart';
 import 'package:abg/localization/all_keys.dart';
 import 'package:abg/res/configuration/app_bar.dart';
+import 'package:abg/res/loading/loading_overlay_widget.dart';
 import 'package:abg/res/router/pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class Diabetes1Screen extends StatelessWidget{
+class Diabetes1Screen extends  GetView<Calculationcontroller> {
   
   const Diabetes1Screen({super.key,});
 
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return   GetBuilder<Calculationcontroller>(
+      id: "diabetes1Screen",
+      builder: (_){
+      return  Scaffold(
             appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
 
         body: Padding(
@@ -53,20 +58,26 @@ class Diabetes1Screen extends StatelessWidget{
                       SizedBox(
                         height: 45,
                       ),
-                      MainButton(
-                        withShadow: true,
-                        onPressed: () {
-               Get.toNamed(CustomPage.diabetes2Page);
-                        },
-                        radius: 10,
-                        height: 46,
-                        backgroundColor: CustomColors.darkblue3,
-                        titleWidget: Text(
-                          CustomTrans.next2.tr,
-                          style: TFonts.inter(
-                            fontSize: 24,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w400,
+                      LoadingOverLay(
+                        showLoadingOnly: true,
+                   
+                        child: MainButton(
+                          withShadow: true,
+                          onPressed: () {
+                         controller.addDiabetes();
+                    
+      Get.toNamed(CustomPage.diabetes2Page);
+                          },
+                          radius: 10,
+                          height: 46,
+                          backgroundColor: CustomColors.darkblue3,
+                          titleWidget: Text(
+                            CustomTrans.next2.tr,
+                            style: TFonts.inter(
+                              fontSize: 24,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                         ),
                       ),
@@ -78,6 +89,7 @@ class Diabetes1Screen extends StatelessWidget{
     );
 
 
+    });
   }
 
 

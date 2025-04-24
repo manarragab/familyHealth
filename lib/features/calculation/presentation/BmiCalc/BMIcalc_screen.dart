@@ -42,9 +42,7 @@ class BmicalcScreen extends GetView<Calculationcontroller>{
                          withShadow: true,
                         
                         onPressed: () {
-                      controller.addBmi();
-                      
-                      
+                      controller.addBmi();       
                         },
                         radius: 10,
                         height: 46,

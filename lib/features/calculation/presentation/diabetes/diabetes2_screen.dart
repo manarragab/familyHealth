@@ -1,10 +1,13 @@
 import 'package:abg/data/const/export.dart';
+import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
 import 'package:abg/features/calculation/presentation/calories/calorie3Calc_screen.dart';
 import 'package:abg/features/calculation/presentation/calories/calorieCalc_screen.dart';
 import 'package:abg/features/calculation/presentation/diabetes/diabetes3_screen.dart';
+import 'package:abg/features/calculation/presentation/diabetes/widget/gender_item.dart';
 import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
 import 'package:abg/features/calculation/presentation/widget/listDay_item.dart';
+import 'package:abg/res/loading/loading_overlay_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Diabetes2Screen extends StatefulWidget {
@@ -13,9 +16,13 @@ class Diabetes2Screen extends StatefulWidget {
 }
 
 class _Diabetes2ScreenState extends State<Diabetes2Screen> {
+  Calculationcontroller controller=Get.find();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return  GetBuilder<Calculationcontroller>(
+      id: "diabetes2Screen",
+      builder: (_){
+      return Scaffold(
         appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16),
@@ -48,64 +55,32 @@ class _Diabetes2ScreenState extends State<Diabetes2Screen> {
                       SizedBox(
                         height: 25,
                       ),
-                      Container(
-                        margin: EdgeInsets.symmetric(horizontal: 65),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              children: [
-                                Image.asset("assets/images/male.png"),
-                                SizedBox(
-                                  height: 7,
-                                ),
-                                Text(
-                                  "Male",
-                                  style: TFonts.inter(
-                                    color: CustomColors.darkblack1,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Column(
-                              children: [
-                                Image.asset("assets/images/female.png"),
-                                SizedBox(
-                                  height: 7,
-                                ),
-                                Text(
-                                  "Female",
-                                  style: TFonts.inter(
-                                    color: CustomColors.darkblack1,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w700,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
+                    
+
+GenderItem(id: "diabetes2"),
+
                       SizedBox(
                         height: 35,
                       ),
-                      MainButton(
-                         width: double.infinity,
-                        withShadow: true,
-                        onPressed: () {
-                         Get.to(Diabetes3Screen());
-                        },
-                        radius: 10,
-                        height: 46,
-                        backgroundColor: CustomColors.darkblue3,
-                        titleWidget: Text(
-                          CustomTrans.next2.tr,
-                          style: GoogleFonts.almarai(
-                            fontSize: 24,
-                            color: Colors.white,
-                            fontWeight: FontWeight.w400,
+                      LoadingOverLay(
+                        showLoadingOnly: true,
+                        child: MainButton(
+                           width: double.infinity,
+                          withShadow: true,
+                          onPressed: () {
+                        controller.addDiabetes();
+                      Get.to(Diabetes3Screen());
+                          },
+                          radius: 10,
+                          height: 46,
+                          backgroundColor: CustomColors.darkblue3,
+                          titleWidget: Text(
+                            CustomTrans.next2.tr,
+                            style: GoogleFonts.almarai(
+                              fontSize: 24,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w400,
+                            ),
                           ),
                         ),
                       ),
@@ -138,5 +113,6 @@ class _Diabetes2ScreenState extends State<Diabetes2Screen> {
             ],
           ),
         ));
+    }) ;
   }
 }

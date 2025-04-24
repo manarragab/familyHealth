@@ -7,6 +7,8 @@ import 'package:abg/data/models/auth/users/PostEditProfile.dart';
 import 'package:abg/data/models/auth/users/post_assign_user.dart';
 import 'package:abg/data/models/calculation/BMI/post_BMI/post_BMI_MD.dart';
 import 'package:abg/data/models/calculation/BMI/post_BMI/post_BMI_response.dart';
+import 'package:abg/data/models/calculation/diabetes/post_diabetes/post_diabetes_MD.dart';
+import 'package:abg/data/models/calculation/diabetes/post_diabetes/post_diabetes_response.dart';
 import 'package:abg/data/models/calculation/pregnancyTracker/post_tracker/post_tracker_MD.dart';
 import 'package:abg/data/models/calculation/pregnancyTracker/post_tracker/post_tracker_response.dart';
 import 'package:abg/data/models/chat/chat_model.dart';
@@ -166,5 +168,8 @@ class DataRepository implements DomainData {
   return remote.addTracker(post);
   }
 
-  
+    @override
+  Future<ResponseModel<Diabetes?>> addDiabetes(PostDiabetesMd post) {
+  return remote.addDiabetes(post);
+  }
 }
