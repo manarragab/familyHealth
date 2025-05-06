@@ -24,6 +24,7 @@ class AlarmController extends MainGetxController with CustomStateMixin {
   TextEditingController alarmTimeController = TextEditingController();
   TextEditingController medicineStartController = TextEditingController();
   TextEditingController medicineEndController = TextEditingController();
+  String? imageUrl ;
   int _page = 1;
 
   void clearData() {
@@ -55,11 +56,20 @@ class AlarmController extends MainGetxController with CustomStateMixin {
     nameController.text = alarm.title ?? "";
     messageController.text = alarm.description ?? "";
     alarmDateController.text = alarm.alarmDate;
-    alarmTimeController.text = alarm.alarmTime;
+   // alarmTimeController.text = alarm.alarmTime  ;
+    //alarmTimeController.text = DateFormat.jm().format(alarm.alarmTime);
+    try {
+    final parsedTime = DateFormat("HH:mm").parse(alarm.alarmTime);
+    alarmTimeController.text = DateFormat.jm().format(parsedTime);
+  } catch (e) {
+      print("Error parsing alarm time: $e");
+    alarmTimeController.text = alarm.alarmTime; 
+  }
     medicineStartController.text = alarm.medicineStartDate ?? "";
     medicineEndController.text = alarm.medicineEndDate ?? "";
     sPrint.info("type:: ${alarm.type}");
     selectRadio = AlarmType.values.asNameMap()[alarm.type];
+    imageUrl =alarm.image;
     Get.to(() => const AddAlarm(), transition: Transition.fadeIn);
   }
 
@@ -81,6 +91,15 @@ class AlarmController extends MainGetxController with CustomStateMixin {
   }
 
   addAlarm() async {
+     try {
+    postAlarm.alarmTime = DateFormat("HH:mm").format(
+      DateFormat.jm().parse(alarmTimeController.text),
+    );
+  } catch (e) {
+    print("❌ Failed to parse alarm time: $e");
+    postAlarm.alarmTime = alarmTimeController.text; // fallback (اختياري)
+  }
+
     loadingGetxController.showLoading();
     var response = await sl<AlarmCases>().addAlarm(postAlarm);
     loadingGetxController.hideLoading();
@@ -110,6 +129,15 @@ class AlarmController extends MainGetxController with CustomStateMixin {
   var isLoading = false.obs;
 
   void updateAlarm() async {
+     try {
+    postAlarm.alarmTime = DateFormat("HH:mm").format(
+      DateFormat.jm().parse(alarmTimeController.text),
+    );
+  } catch (e) {
+    print("❌ Failed to parse alarm time: $e");
+    postAlarm.alarmTime = alarmTimeController.text; 
+  }
+
     loadingGetxController.showLoading();
     var response = await sl<AlarmCases>().updateAlarm(postAlarm);
     loadingGetxController.hideLoading();

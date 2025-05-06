@@ -1,10 +1,8 @@
-import 'dart:developer';
-
-import 'package:abg/data/const/export.dart';
-import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:get/get.dart';
 import 'package:abg/res/configuration/color.dart';
+import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
 
 class DateItem extends StatefulWidget {
   @override
@@ -12,6 +10,18 @@ class DateItem extends StatefulWidget {
 }
 
 class _DateItemState extends State<DateItem> {
+  final DateTime now = DateTime.now();
+
+  final FixedExtentScrollController _dayController = FixedExtentScrollController();
+  final FixedExtentScrollController _monthController = FixedExtentScrollController();
+  final FixedExtentScrollController _yearController = FixedExtentScrollController();
+
+  @override
+  void initState() {
+    super.initState();
+    // No initial selection, we just allow the user to choose a date.
+  }
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<Calculationcontroller>(builder: (controller) {
@@ -22,30 +32,9 @@ class _DateItemState extends State<DateItem> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  "Day",
-                  style: GoogleFonts.almarai(
-                    fontSize: 16,
-                    color: CustomColors.darkBlue2,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-                Text(
-                  "Month",
-                  style: GoogleFonts.almarai(
-                    fontSize: 16,
-                    color: CustomColors.darkBlue2,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-                Text(
-                  "Year",
-                  style: GoogleFonts.almarai(
-                    fontSize: 16,
-                    color: CustomColors.darkBlue2,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
+                _label("Day"),
+                _label("Month"),
+                _label("Year"),
               ],
             ),
           ),
@@ -68,28 +57,30 @@ class _DateItemState extends State<DateItem> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  // Day Picker
                   SizedBox(
                     width: 50,
                     child: ListWheelScrollView.useDelegate(
+                      controller: _dayController,
                       itemExtent: 42,
                       physics: FixedExtentScrollPhysics(),
                       diameterRatio: 2.5,
                       onSelectedItemChanged: (index) {
                         setState(() {
                           controller.selectedDay = index + 1;
-                        
-                          controller.postPeroid();
-          });
+                          controller.postPeroid(); // Update the selected period
+                        });
                       },
                       childDelegate: ListWheelChildBuilderDelegate(
-                        childCount: 30,
+                        childCount: now.day, // Days from 1 to today's date
                         builder: (context, i) {
+                          final day = i + 1;
                           return Center(
                             child: Text(
-                              "${i + 1}",
+                              "$day",
                               style: GoogleFonts.almarai(
                                 fontSize: 16,
-                                color: (i + 1 == controller.selectedDay)
+                                color: (controller.selectedDay == day)
                                     ? Colors.black
                                     : CustomColors.darkBlue2,
                                 fontWeight: FontWeight.w700,
@@ -100,30 +91,31 @@ class _DateItemState extends State<DateItem> {
                       ),
                     ),
                   ),
+
+                  // Month Picker
                   SizedBox(
                     width: 50,
                     child: ListWheelScrollView.useDelegate(
+                      controller: _monthController,
                       itemExtent: 42,
                       physics: FixedExtentScrollPhysics(),
                       diameterRatio: 2.5,
                       onSelectedItemChanged: (index) {
                         setState(() {
                           controller.selectedMonth = index + 1;
-                          print("gggggggggggggggg ${controller.selectedMonth}");
-
-                         
-                          controller.postPeroid( );   });
- 
-                    },
+                          controller.postPeroid(); // Update the selected period
+                        });
+                      },
                       childDelegate: ListWheelChildBuilderDelegate(
-                        childCount: 12,
+                        childCount: now.month, // Months from 1 to current month
                         builder: (context, i) {
+                          final month = i + 1;
                           return Center(
                             child: Text(
-                              "${i + 1}",
+                              "$month",
                               style: GoogleFonts.almarai(
                                 fontSize: 16,
-                                color: (i + 1 == controller.selectedMonth)
+                                color: (controller.selectedMonth == month)
                                     ? Colors.black
                                     : CustomColors.darkBlue2,
                                 fontWeight: FontWeight.w700,
@@ -134,27 +126,31 @@ class _DateItemState extends State<DateItem> {
                       ),
                     ),
                   ),
+
+                  // Year Picker
                   SizedBox(
                     width: 70,
                     child: ListWheelScrollView.useDelegate(
+                      controller: _yearController,
                       itemExtent: 42,
                       physics: FixedExtentScrollPhysics(),
                       diameterRatio: 2.5,
                       onSelectedItemChanged: (index) {
                         setState(() {
-                          controller.selectedYear = 2025 + index;
-                         
-                          controller.postPeroid();           });
+                          controller.selectedYear = 2000 + index;
+                          controller.postPeroid(); 
+                        });
                       },
                       childDelegate: ListWheelChildBuilderDelegate(
-                        childCount: 100,
+                        childCount: now.year - 2000 + 1, 
                         builder: (context, i) {
+                          final year = 2000 + i;
                           return Center(
                             child: Text(
-                              "${2025 + i}",
+                              "$year",
                               style: GoogleFonts.almarai(
                                 fontSize: 16,
-                                color: (2025 + i == controller.selectedYear)
+                                color: (controller.selectedYear == year)
                                     ? Colors.black
                                     : CustomColors.darkBlue2,
                                 fontWeight: FontWeight.w700,
@@ -172,5 +168,16 @@ class _DateItemState extends State<DateItem> {
         ],
       );
     });
+  }
+
+  Widget _label(String text) {
+    return Text(
+      text,
+      style: GoogleFonts.almarai(
+        fontSize: 16,
+        color: CustomColors.darkBlue2,
+        fontWeight: FontWeight.w400,
+      ),
+    );
   }
 }

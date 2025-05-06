@@ -47,12 +47,13 @@ class AddAlarm extends GetView<AlarmController> {
                 children: [
                   CustomTextField.dynamicTextField((value) {
                     controller.postAlarm.title = value;
-                  }, hint: "Name alarm"),
+                  }, controller: controller.nameController, hint: "Name alarm"),
                   const SizedBox(height: 16),
                   CustomTextField.paragraphTextField(
                     (value) {
                       controller.postAlarm.description = value;
                     },
+                    controller: controller.messageController,
                     hint: "The message you want with the alarm",
                   ),
                   const SizedBox(height: 16),
@@ -138,6 +139,7 @@ class AddAlarm extends GetView<AlarmController> {
                         final pickedFile = await Pick.pickImage(context);
                         if (pickedFile != null) {
                           controller.postAlarm.image = pickedFile;
+                          controller.imageUrl = null;
                           controller.update();
                         }
                       },
@@ -154,21 +156,16 @@ class AddAlarm extends GetView<AlarmController> {
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(10),
                               child: controller.postAlarm.image != null
-                                  ? Image.file(
-                                      controller.postAlarm.image!,
-                                      fit: BoxFit.cover,
-                                      width: 382,
-                                      height: 306.17,
-                                    )
-                                  : Image.asset(
-                                      "assets/images/cheker.png",
-                                      fit: BoxFit.cover,
-                                      width: 382,
-                                      height: 306.17,
-                                    ),
+                                  ? Image.file(controller.postAlarm.image!,
+                                      fit: BoxFit.cover)
+                                  : controller.imageUrl != null
+                                      ? Image.network(controller.imageUrl!,
+                                          fit: BoxFit.cover)
+                                      : Image.asset("assets/images/cheker.png",
+                                          fit: BoxFit.cover),
                             ),
                           ),
-                          if (controller.postAlarm.image == null)
+                          if (controller.postAlarm.image == null && controller.imageUrl==null )
                             Positioned.fill(
                               child: Center(
                                 child: Column(
@@ -196,9 +193,9 @@ class AddAlarm extends GetView<AlarmController> {
                   Center(
                     child: MainButton(
                       onPressed: () {
-                        if(controller.postAlarm.id != null){
+                        if (controller.postAlarm.id != null) {
                           controller.updateAlarm();
-                        }else {
+                        } else {
                           controller.addAlarm();
                         }
                       },
@@ -207,7 +204,6 @@ class AddAlarm extends GetView<AlarmController> {
                       fontSize: 24,
                     ),
                   ),
-
                 ],
               ))
             ],

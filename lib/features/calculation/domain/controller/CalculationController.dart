@@ -69,22 +69,21 @@ selectt=val;
 update([id]);
   }
 
-//due date , tracker
+
   int? selectedDay;
-  int? selectedMonth ;
-  int? selectedYear ;
+  int? selectedMonth;
+  int? selectedYear;
 
   void postPeroid() {
-    try {
-      //postTracker.date = "$selectedDay-$selectedMonth-$selectedYear";
-      postTracker.date =
-          "${selectedYear.toString()}-${selectedMonth.toString().padLeft(2, '0')}-${selectedDay.toString().padLeft(2, '0')}";
+    if (selectedDay == null && selectedMonth == null && selectedYear == null) {
+      showToast("You should select menstrual date",
+                              MessageErrorType.error);
+    } else {
+       postTracker.date =
+        "${selectedYear.toString()}-${selectedMonth.toString().padLeft(2, '0')}-${selectedDay.toString().padLeft(2, '0')}";
 
-      print(" date .................................  ${postTracker.date}");
-    } catch (e) {
-      print("Error in date: ${postTracker.date}");
+      print("................... ${postTracker.date}");
     }
-    update();
   }
 
   addTracker() async {
