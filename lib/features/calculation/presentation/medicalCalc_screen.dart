@@ -3,7 +3,7 @@ import 'package:abg/features/calculation/presentation/BmiCalc/BMIcalc_screen.dar
 import 'package:abg/features/calculation/presentation/calories/calorieCalc_screen.dart';
 import 'package:abg/features/calculation/presentation/DuedateCalc/dueDate_screen.dart';
 import 'package:abg/features/calculation/presentation/diabetes/diabetes1_screen.dart';
-import 'package:abg/features/calculation/presentation/ovulation/ovulationCalc_screen.dart';
+import 'package:abg/features/calculation/presentation/DuedateCalc/ovulation/ovulationCalc_screen.dart';
 import 'package:abg/features/calculation/presentation/bodyWater/waterCalc_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/card_item.dart';
 import 'package:abg/localization/all_keys.dart';

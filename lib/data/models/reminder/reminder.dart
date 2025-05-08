@@ -53,7 +53,7 @@ class Reminders {
   String? title;
   String? description;
   String? alarmDate;
-  String? alarmTime;
+  dynamic alarmTime;
   num? isRepeatable;
   String? medicineStartDate;
   String? medicineEndDate;

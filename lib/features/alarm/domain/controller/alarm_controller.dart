@@ -90,25 +90,52 @@ class AlarmController extends MainGetxController with CustomStateMixin {
     );
   }
 
+  // addAlarm() async {
+  //    try {
+  //   postAlarm.alarmTime = DateFormat("HH:mm").format(
+  //     DateFormat.jm().parse(alarmTimeController.text),
+  //   );
+  // } catch (e) {
+  //   print("❌ Failed to parse alarm time: $e");
+  //   postAlarm.alarmTime = alarmTimeController.text;
+  // }
+
+  //   loadingGetxController.showLoading();
+  //   var response = await sl<AlarmCases>().addAlarm(postAlarm);
+  //   loadingGetxController.hideLoading();
+  //   statusError.checkStatus(response, () {
+  //    // PushNotificationsManager().subscribe("alarm-${response.data?.alarmDate}_${response.data?.alarmTime}");
+  //     onRefresh();
+  //     Get.back();
+  //   });
+  // }
+
   addAlarm() async {
-     try {
+  try {
     postAlarm.alarmTime = DateFormat("HH:mm").format(
       DateFormat.jm().parse(alarmTimeController.text),
     );
   } catch (e) {
     print("❌ Failed to parse alarm time: $e");
-    postAlarm.alarmTime = alarmTimeController.text; // fallback (اختياري)
+    postAlarm.alarmTime = alarmTimeController.text;
   }
 
-    loadingGetxController.showLoading();
-    var response = await sl<AlarmCases>().addAlarm(postAlarm);
-    loadingGetxController.hideLoading();
-    statusError.checkStatus(response, () {
-     // PushNotificationsManager().subscribe("alarm-${response.data?.alarmDate}_${response.data?.alarmTime}");
-      onRefresh();
-      Get.back();
-    });
-  }
+  loadingGetxController.showLoading();
+  var response = await sl<AlarmCases>().addAlarm(postAlarm);
+  loadingGetxController.hideLoading();
+
+  statusError.checkStatus(response, () {
+    final alarmData = response.data;
+    if (alarmData != null) {
+      // ✅ Schedule the alarm using CustomAlarm
+      CustomAlarm().addAlarm(alarmData);
+    }
+
+    onRefresh();
+    Get.back();
+  });
+}
+
 
   deleteAlarm(int id) async {
     loadingGetxController.showCustomLoading(id.toString());
@@ -142,6 +169,9 @@ class AlarmController extends MainGetxController with CustomStateMixin {
     var response = await sl<AlarmCases>().updateAlarm(postAlarm);
     loadingGetxController.hideLoading();
     statusError.checkStatus(response, () {
+       if (response.data != null) {
+      CustomAlarm().addAlarm(response.data!);
+    }
       onRefresh();
       Get.back();
     });

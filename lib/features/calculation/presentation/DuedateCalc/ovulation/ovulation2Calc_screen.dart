@@ -1,4 +1,4 @@
-import 'package:abg/features/calculation/presentation/ovulation/ovulation3Calc_screen.dart';
+import 'package:abg/features/calculation/presentation/DuedateCalc/ovulation/ovulation3Calc_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/listDay_item.dart';
 import 'package:abg/features/calculation/presentation/widget/pinkContainer.dart';
 import 'package:abg/localization/all_keys.dart';

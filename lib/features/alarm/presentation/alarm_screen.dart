@@ -53,6 +53,7 @@ class AlarmScreen extends GetView<AlarmController> {
                 children: [
                   ...List.generate(list.length, (index) {
                     AlarmData alarm = list[index];
+      final  alarmTime = DateFormat.jm().format(DateFormat("HH:mm").parse(alarm.alarmTime));         
                     return LoadingOverLay(
                       showLoadingOnly: true,
                       id: alarm.id.toString(),
@@ -61,7 +62,7 @@ class AlarmScreen extends GetView<AlarmController> {
                         title: alarm.title ?? "",
                         description: alarm.description ?? "",
                         date: alarm.alarmDate ?? "",
-                        time: alarm.alarmTime ?? "",
+                        time: alarmTime ?? "",
                         onEdit: () {
                           controller.getDetails(alarm.id!.toInt());
                         },
