@@ -1,6 +1,6 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
-import 'package:abg/features/calculation/presentation/BMIcalc_screen.dart';
+import 'package:abg/features/calculation/presentation/BmiCalc/BMIcalc_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/coloredBar.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 class Bmi2calcScreen extends GetView<Calculationcontroller>{
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
         appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
         body: Padding(
@@ -19,7 +20,7 @@ class Bmi2calcScreen extends GetView<Calculationcontroller>{
                   widg: Container(
                     child: Column(
                       children: [
-                        Coloredbar(),
+                        Coloredbar( subTitle: controller.responseBMi.data?.category,),
                       ],
                     ),
                   )),
@@ -50,7 +51,7 @@ class Bmi2calcScreen extends GetView<Calculationcontroller>{
                             width: 10,
                           ),
                           Text(
-                            "Normal Weight",
+                            controller.responseBMi.data?.category??"",
                             style: GoogleFonts.almarai(
                               fontSize: 16,
                               color: CustomColors.darkblack1,
@@ -81,7 +82,7 @@ class Bmi2calcScreen extends GetView<Calculationcontroller>{
               ),
               GestureDetector(
                 onTap: () {
-                  Get.off(BmicalcScreen());
+                  Get.back();
                 },
                 child: Container(
                   child: Row(

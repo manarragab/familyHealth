@@ -1,13 +1,15 @@
+import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
 import 'package:abg/features/calculation/presentation/dateCalc_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/date_item.dart';
 import 'package:abg/features/calculation/presentation/widget/pinkContainer.dart';
-import 'package:abg/localization/all_keys.dart';
-import 'package:abg/res/common-widgets/custm_button.dart';
-import 'package:abg/res/configuration/app_bar.dart';
-import 'package:abg/res/configuration/color.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
+  import 'package:abg/localization/all_keys.dart';
+  import 'package:abg/res/common-widgets/custm_button.dart';
+  import 'package:abg/res/configuration/app_bar.dart';
+  import 'package:abg/res/configuration/color.dart';
+  import 'package:abg/res/loading/loading_overlay_widget.dart';
+  import 'package:flutter/material.dart';
+  import 'package:get/get.dart';
+  import 'package:google_fonts/google_fonts.dart';
 
 class DuedateScreen extends StatefulWidget {
   @override
@@ -15,8 +17,9 @@ class DuedateScreen extends StatefulWidget {
 }
 
 class _DuedateScreenState extends State<DuedateScreen> {
+  Calculationcontroller controller=Calculationcontroller();
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context) {  
     return Scaffold(
       appBar: CustomAppBar.appBar(CustomTrans.dueDateCalc.tr),
       body: Padding(
@@ -46,20 +49,23 @@ class _DuedateScreenState extends State<DuedateScreen> {
                   SizedBox(
                     height: 23,
                   ),
-                  MainButton(
-                    withShadow: true,
-                    onPressed: () {
-                      Get.to(DatecalcScreen());
-                    },
-                    radius: 10,
-                    height: 46,
-                    backgroundColor: CustomColors.darkpink,
-                    titleWidget: Text(
-                      CustomTrans.calculate.tr,
-                      style: GoogleFonts.almarai(
-                        fontSize: 24,
-                        color: Colors.white,
-                        fontWeight: FontWeight.w400,
+                  LoadingOverLay(
+                    showLoadingOnly: true,
+                    child: MainButton(
+                      withShadow: true,
+                      onPressed: () {
+                        controller.addTracker();
+                      },
+                      radius: 10,
+                      height: 46,
+                      backgroundColor: CustomColors.darkpink,
+                      titleWidget: Text(
+                        CustomTrans.calculate.tr,
+                        style: GoogleFonts.almarai(
+                          fontSize: 24,
+                          color: Colors.white,
+                          fontWeight: FontWeight.w400,
+                        ),
                       ),
                     ),
                   ),

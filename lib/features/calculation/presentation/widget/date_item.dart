@@ -1,3 +1,5 @@
+import 'package:abg/data/const/export.dart';
+import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:abg/res/configuration/color.dart';
@@ -8,13 +10,11 @@ class DateItem extends StatefulWidget {
 }
 
 class _DateItemState extends State<DateItem> {
-  int selectedDay = 1;
-  int selectedMonth = 1;
-  int selectedYear = 2024;
-//day , month,year
+  
   @override
   Widget build(BuildContext context) {
-    return Column(
+    return GetBuilder<Calculationcontroller>(builder: (controller){
+return Column(
       children: [
         Container(
           margin: EdgeInsets.symmetric(horizontal: 40),
@@ -75,8 +75,9 @@ class _DateItemState extends State<DateItem> {
                     diameterRatio: 2.5,
                     onSelectedItemChanged: (index) {
                       setState(() {
-                        selectedDay = index + 1;
-                      });
+                        controller.selectedDay = index + 1;
+ controller.postPeroid(controller.selectedDay ,controller.selectedMonth , controller.selectedYear);
+                                              });
                     },
                     childDelegate: ListWheelChildBuilderDelegate(
                       childCount: 30,
@@ -86,7 +87,7 @@ class _DateItemState extends State<DateItem> {
                             "${i + 1}",
                             style: GoogleFonts.almarai(
                               fontSize: 16,
-                              color: (i + 1 == selectedDay)
+                              color: (i + 1 == controller.selectedDay)
                                   ? Colors.black
                                   : CustomColors.darkBlue2,
                               fontWeight: FontWeight.w700,
@@ -105,7 +106,10 @@ class _DateItemState extends State<DateItem> {
                     diameterRatio: 2.5,
                     onSelectedItemChanged: (index) {
                       setState(() {
-                        selectedMonth = index + 1;
+                        controller.selectedMonth = index + 1;
+                
+                        controller.postPeroid(controller.selectedDay ,controller.selectedMonth , controller.selectedYear);
+                        
                       });
                     },
                     childDelegate: ListWheelChildBuilderDelegate(
@@ -116,7 +120,7 @@ class _DateItemState extends State<DateItem> {
                             "${i + 1}",
                             style: GoogleFonts.almarai(
                               fontSize: 16,
-                              color: (i + 1 == selectedMonth)
+                              color: (i + 1 == controller.selectedMonth)
                                   ? Colors.black
                                   : CustomColors.darkBlue2,
                               fontWeight: FontWeight.w700,
@@ -135,7 +139,10 @@ class _DateItemState extends State<DateItem> {
                     diameterRatio: 2.5,
                     onSelectedItemChanged: (index) {
                       setState(() {
-                        selectedYear = 2024 + index;
+                        controller.selectedYear = 2025 + index;
+                        
+ controller.postPeroid(controller.selectedDay ,controller.selectedMonth , controller.selectedYear);
+                                              
                       });
                     },
                     childDelegate: ListWheelChildBuilderDelegate(
@@ -143,10 +150,10 @@ class _DateItemState extends State<DateItem> {
                       builder: (context, i) {
                         return Center(
                           child: Text(
-                            "${2024 + i}",
+                            "${2025 + i}",
                             style: GoogleFonts.almarai(
                               fontSize: 16,
-                              color: (2024 + i == selectedYear)
+                              color: (2025 + i == controller.selectedYear)
                                   ? Colors.black
                                   : CustomColors.darkBlue2,
                               fontWeight: FontWeight.w700,
@@ -163,5 +170,6 @@ class _DateItemState extends State<DateItem> {
         ),
       ],
     );
+    });
   }
 }

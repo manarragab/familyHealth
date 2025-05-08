@@ -25,10 +25,8 @@ class Pils2Screen extends StatelessWidget {
             ),
             SizedBox(height: 20),
 
-            /// **Stack for Image & Overlay**
             Stack(
               children: [
-                /// **Rounded Image**
                 ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: Image.asset(
@@ -38,7 +36,6 @@ class Pils2Screen extends StatelessWidget {
                   ),
                 ),
 
-                /// **Top Row: Home & Voice**
                 Positioned(
                   top: 40,
                   left: 30,
@@ -73,7 +70,6 @@ class Pils2Screen extends StatelessWidget {
                   ),
                 ),
 
-                /// **Title (With Overflow Fix)**
                 Positioned(
                  top: 85,
                   left: 16,
@@ -83,7 +79,7 @@ class Pils2Screen extends StatelessWidget {
                       "Back and Pelvic \n Pain In \n Pregnancy",
                       textAlign: TextAlign.center,
                       style: GoogleFonts.almarai(
-                        fontSize: 30, // Reduced for better fit
+                        fontSize: 30, 
                         fontWeight: FontWeight.w700,
                         color: Colors.white,
                       ),
@@ -91,7 +87,6 @@ class Pils2Screen extends StatelessWidget {
                   ),
                 ),
 
-                /// **Continue Button (Centered at Bottom)**
                 Positioned(
                   bottom: 40,
                   left: (Get.width / 2) - (Get.width * 1 / 3) / 2,
