@@ -20,7 +20,6 @@ class White4container extends StatelessWidget {
 
         return Container(
           width: Get.width,
-          height: 92,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(12),

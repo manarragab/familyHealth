@@ -19,8 +19,6 @@ class Homescreen extends GetView<HomeController> {
   Homescreen({Key? key}) : super(key: key);
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-
- 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,14 +27,14 @@ class Homescreen extends GetView<HomeController> {
         onChange: (value) {},
         onMenuPress: () {
           if (!scaffoldKey.currentState!.isDrawerOpen) {
-         scaffoldKey.currentState!.openDrawer();
+            scaffoldKey.currentState!.openDrawer();
           }
         },
         onNotificationPress: () {
           //  Get.toNamed(CustomPage.notificationPage);
         },
       ),
-       drawer: CustomDrawer(),
+      drawer: CustomDrawer(),
       body: LoadingOverLay(
         child: Padding(
           padding: const EdgeInsets.all(16.0),
@@ -115,12 +113,13 @@ class Homescreen extends GetView<HomeController> {
                             model.data?.reminders?.length ?? 0,
                             (index) {
                               Reminders remind = model.data!.reminders![index];
-               final  alarmTime = DateFormat.jm().format(DateFormat("HH:mm:ss").parse(remind.alarmTime));
+                              final alarmTime = DateFormat.jm().format(
+                                  DateFormat("HH:mm:ss")
+                                      .parse(remind.alarmTime));
                               return _buildReminderCard(
                                 title: remind.title ?? "",
                                 subtitle: alarmTime,
                                 dosage: remind.description ?? "",
-                                isTaken: (remind.isTriggered??0) == 1,
                               );
                             },
                           ),
@@ -144,11 +143,11 @@ class Homescreen extends GetView<HomeController> {
                           itemBuilder: (context, index) {
                             FamilyReminders remind =
                                 model.data!.familyReminders![index];
-                           // FamilyModel model2=value;
+                            // FamilyModel model2=value;
                             // List<Family> list=model2.data??[];
                             // Family remind=list[index];
-                           return FamilyContainer(
-                              index:index,
+                            return FamilyContainer(
+                              index: index,
                               name: remind.name ?? "",
                               relation: remind.relative ?? "",
                               title: remind.name ?? "",
@@ -284,15 +283,13 @@ class Homescreen extends GetView<HomeController> {
     required String title,
     required String subtitle,
     required String dosage,
-    required bool isTaken,
   }) {
     return Container(
-    
       margin: const EdgeInsets.only(right: 16),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: isTaken ? Colors.green[50] : Colors.grey[100],
+        color:  Colors.grey[100],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -313,24 +310,19 @@ class Homescreen extends GetView<HomeController> {
           ),
           const SizedBox(height: 8),
           Row(
-           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 subtitle,
                 style: TFonts.textTitleStyle(fontSize: 12, color: Colors.grey),
               ),
-         
-              Icon(
-                isTaken ? Icons.check_circle : Icons.radio_button_unchecked,
-                color: isTaken ? Colors.green : Colors.grey,
-              ),
+              const SizedBox(),
             ],
           ),
         ],
       ),
     );
   }
-
 
   Widget getTitle({required String title, required Null Function() onTapMore}) {
     return Row(

@@ -73,7 +73,7 @@ class Greencontainer extends StatelessWidget {
                           Text(
                            title?? "BMI",
                             style: GoogleFonts.almarai(
-                              fontSize: size??40,
+                              fontSize: size??40.w,
                               color: CustomColors.green1,
                               fontWeight: FontWeight.w700,
                             ),
@@ -81,7 +81,7 @@ class Greencontainer extends StatelessWidget {
                           Text(
                             "Calculator",
                             style: GoogleFonts.almarai(
-                              fontSize: 30,
+                              fontSize: 30.w,
                               color: CustomColors.green1,
                               fontWeight: FontWeight.w700,
                             ),
@@ -89,11 +89,13 @@ class Greencontainer extends StatelessWidget {
                         ],
                       ),
                     ),
-                   CustomImage.asset(
-                    image??  "assets/images/boy.png",
-                      width: 160,
-                      height: 160,
-                    ),
+                   Flexible(
+                     child: CustomImage.asset(
+                      image??  "assets/images/boy.png",
+                        width: 160,
+                        height: 160,
+                      ),
+                   ),
                   ],
                 ),
               ),

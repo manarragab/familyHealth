@@ -14,6 +14,7 @@ enum StatusType { apiError, apiSuccess, authError, ban, empty, none }
 
 class StatusError {
   StatusType getStatus(num status) {
+    sPrint.info('StatusType getStatus(num status) => $status');
     switch (status) {
       case 422:
         return StatusType.apiError;
@@ -35,6 +36,7 @@ class StatusError {
     bool showErrorToast = true,
     bool showSuccessToast = false,
   }) {
+    sPrint.info('statusType :: ${data.status}');
     sPrint.info('statusType :: ${getStatus(data.status!)}');
     try {
       switch (getStatus(data.status!)) {

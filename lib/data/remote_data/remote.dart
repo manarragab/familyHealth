@@ -229,7 +229,7 @@ class Remote {
       "name": socialModel?.name ?? "",
       "image": socialModel?.image,
     }, onSuccess: (Map<String, dynamic> data) {
-      return LoginModel.fromJson(data["data"]);
+      return LoginModel.fromJson(data);
     }, onError: (data) {
       sPrint.warning('login error:: $data');
       return LoginModel.fromJson(data.toJson());
@@ -286,7 +286,7 @@ class Remote {
         isLogin: true);
   }
 
-//family    
+//family
 
   Future<ResponseModel<List<Family>?>> getFamily() async {
     return _helper.get<List<Family>?>({}, path: "/user/family",
@@ -318,10 +318,9 @@ class Remote {
         isLogin: true);
   }
 
-
   //Calculation=>BMI
 
-  Future<ResponseModel<BMI?>> addBmi(PostBmiMd post){
+  Future<ResponseModel<BMI?>> addBmi(PostBmiMd post) {
     return _helper.post<BMI?>(post.toJson(), path: "/user/bmi-calculator",
         onSuccess: (dynamic data) {
       return PostBMIResponse.fromJson(data);
@@ -329,27 +328,24 @@ class Remote {
       return ResponseModel(status: data.status, message: data.message);
     }, isLogin: true);
   }
-  
 
   //calculation => Due date
-    Future<ResponseModel<Tracker?>> addTracker(PostTrackerMD post){
-    return _helper.post<Tracker?>(post.toJson(), path: "/user/pregnancy/tracker/calculate",
-        onSuccess: (dynamic data) {
+  Future<ResponseModel<Tracker?>> addTracker(PostTrackerMD post) {
+    return _helper.post<Tracker?>(post.toJson(),
+        path: "/user/pregnancy/tracker/calculate", onSuccess: (dynamic data) {
       return PostTrackerResponse.fromJson(data);
     }, onError: (data) {
       return ResponseModel(status: data.status, message: data.message);
     }, isLogin: true);
   }
 
-
 //calculation => diabetes
-      Future<ResponseModel<Diabetes?>> addDiabetes(PostDiabetesMd post){
-    return _helper.post<Diabetes?>(post.toJson(), path: "/user/diabetes-calculator",
-        onSuccess: (dynamic data) {
+  Future<ResponseModel<Diabetes?>> addDiabetes(PostDiabetesMd post) {
+    return _helper.post<Diabetes?>(post.toJson(),
+        path: "/user/diabetes-calculator", onSuccess: (dynamic data) {
       return PostDiabetesResponse.fromJson(data);
     }, onError: (data) {
       return ResponseModel(status: data.status, message: data.message);
     }, isLogin: true);
   }
-  
 }
