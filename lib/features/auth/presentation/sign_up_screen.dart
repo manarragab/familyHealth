@@ -1,6 +1,7 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/auth/domain/controller/auth_controller.dart';
 import 'package:abg/res/common-widgets/custom_check_box.dart';
+import 'package:abg/res/configuration/bottom_sheet/date_picker.dart';
 import 'package:abg/res/configuration/text_field/text_field.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
 import 'package:abg/res/router/pages.dart';
@@ -45,25 +46,36 @@ class SignUpScreen extends GetView<AuthController> {
                     fontSize: 16, fontWeight: TFontWights.regular),
               ),
               CustomPadding.heightButton,
-              CustomTextField.nameTextField((value) {
-                controller.postRegister.name = value;
-              },
-
-                //  controller:
+              CustomTextField.nameTextField(
+                (value) {
+                  controller.postRegister.name = value;
+                },
               ),
               CustomPadding.smallHeight,
-              CustomTextField.emailTextField((value) {
-                controller.postRegister.email = value;
-              },
+              CustomTextField.datePickerTextField(
+                  prefixIconPath: "assets/svg/clender.svg",
+                  hint: CustomTrans.dateOfBirth.tr,
+                  onDatePickerPress: () {
+                    CustomDatePicker((date) {
+                      controller.postRegister.dateOfBirth = date;
+                    }).showDatePicker(context);
+                  }),
+              CustomPadding.smallHeight,
+              CustomTextField.emailTextField(
+                (value) {
+                  controller.postRegister.email = value;
+                },
               ),
               CustomPadding.smallHeight,
-              CustomTextField.phoneTextField((value) =>
-              controller.postRegister.phone = value,
+              CustomTextField.phoneTextField(
+                (value) => controller.postRegister.phone = value,
               ),
               CustomPadding.smallHeight,
               Obx(() {
-                return CustomTextField.passwordTextField((value) =>  controller.postRegister.password = value,
-                  isVisible: hidePassword.value, changeVisible: () {
+                return CustomTextField.passwordTextField(
+                  (value) => controller.postRegister.password = value,
+                  isVisible: hidePassword.value,
+                  changeVisible: () {
                     hidePassword(!(hidePassword.value));
                   },
                 );
@@ -71,13 +83,13 @@ class SignUpScreen extends GetView<AuthController> {
               CustomPadding.smallHeight,
               Obx(() {
                 return CustomTextField.passwordTextField(
-                      (value) => null,
+                  (value) => null,
                   isVisible: hideConfirmPassword.value,
                   changeVisible: () {
                     hideConfirmPassword(!(hideConfirmPassword.value));
                   },
                   validator: (value) {
-                    if ( controller.postRegister.password != value) {
+                    if (controller.postRegister.password != value) {
                       return CustomTrans.wrongConfirmedPassword.tr;
                     }
                     return null;
@@ -114,14 +126,12 @@ class SignUpScreen extends GetView<AuthController> {
                     if (formKey.currentState!.validate()) {
                       if (!agreeTerms.value) {
                         showToast(
-                            "${CustomTrans.needToAccept.tr} ${CustomTrans
-                                .termsAndConditions.tr}",
+                            "${CustomTrans.needToAccept.tr} ${CustomTrans.termsAndConditions.tr}",
                             MessageErrorType.error);
                         return;
                       } else if (!agreeSubscribe.value) {
                         showToast(
-                            "${CustomTrans.needToAccept.tr} ${CustomTrans
-                                .subscribeOurNewsletter.tr}",
+                            "${CustomTrans.needToAccept.tr} ${CustomTrans.subscribeOurNewsletter.tr}",
                             MessageErrorType.error);
                         return;
                       }

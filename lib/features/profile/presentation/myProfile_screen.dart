@@ -2,6 +2,7 @@ import 'package:abg/data/const/export.dart';
 import 'package:abg/data/models/family/get_family/family_model.dart';
 import 'package:abg/data/models/family/post_family/post_family_response.dart';
 import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
+import 'package:abg/features/auth/domain/cases/auth_case.dart';
 import 'package:abg/features/family/domain/controller/family_controller.dart';
 import 'package:abg/features/family/presentation/widget/dadContainer.dart';
 import 'package:abg/features/profile/presentation/profile_screen.dart';
@@ -19,7 +20,7 @@ class MyprofileScreen extends StatefulWidget {
 class _MyprofileScreenState extends State<MyprofileScreen> {
   RefreshController refreshController = RefreshController();
 
-  FamilyController control = Get.put(FamilyController());
+  FamilyController controller = Get.put(FamilyController());
 
   List<String> texts = [
     "Health Trackers",
@@ -41,6 +42,7 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final user = sl<AuthCases>().getUser()?.data;
     return Scaffold(
         appBar: CustomAppBar.appBar(CustomTrans.Profile.tr),
         body: Padding(
@@ -51,14 +53,14 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Hey Amira",
+                    "Hey ${sl<AuthCases>().getUser()?.data?.name ?? ""}",
                     style: GoogleFonts.almarai(
                       fontSize: 18,
                       fontWeight: FontWeight.w700,
                       color: CustomColors.darkblue,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 4,
                   ),
                   Text(
@@ -71,45 +73,45 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               Container(
-                decoration: BoxDecoration(
-                 // color: Colors.black
-                ),
-                height: Get.height*1.5/3,
+                decoration: const BoxDecoration(
+                    // color: Colors.black
+                    ),
+                height: Get.height * 1.5 / 3,
                 child: Stack(
                   children: [
                     Column(
-                    
-                 crossAxisAlignment: CrossAxisAlignment.start,
-                      
-                       //   direction: Axis.vertical,
-                          children: [
-                            ...List.generate(texts.length, (index) {
-                              return ColoredContainer(
-                                  text: texts[index], color: colors[index]);
-                            }),
-                          ],
-                        
-                                         
-                     ),
+                      crossAxisAlignment: CrossAxisAlignment.start,
+
+                      //   direction: Axis.vertical,
+                      children: [
+                        ...List.generate(texts.length, (index) {
+                          return ColoredContainer(
+                              text: texts[index], color: colors[index]);
+                        }),
+                      ],
+                    ),
                     Container(
                       alignment: AlignmentDirectional.centerEnd,
-                      child: Stack(
-                      
-                        children: [
+                      child: Stack(children: [
                         Container(
-                          width: Get.width*1.73/3,
-                          decoration: BoxDecoration(
-                           // color: Colors.blue
-                          ),
-                          margin: EdgeInsets.only(bottom: 12),
-                          child: Image.asset(
-                            "assets/images/profileImage.png",
-                            fit: BoxFit.cover,
-                          ),
+                          width: Get.width * 1.73 / 3,
+                          decoration: const BoxDecoration(
+                              // color: Colors.blue
+                              ),
+                          margin: const EdgeInsets.only(bottom: 12),
+                          child: user?.image != null
+                              ? Image.network(
+                                  user!.image!,
+                                  fit: BoxFit.cover,
+                                )
+                              : Image.asset(
+                                  "assets/images/profileImage.png",
+                                  fit: BoxFit.cover,
+                                ),
                         ),
                         Positioned(
                           right: 85,
@@ -121,14 +123,14 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                             child: Container(
                               width: 32,
                               height: 32,
-                              decoration: BoxDecoration(
+                              decoration: const BoxDecoration(
                                 shape: BoxShape.circle,
                                 color: CustomColors.darkblue,
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.all(7),
-                                child:
-                                    SvgPicture.asset("assets/svg/whiteCamera.svg"),
+                                child: SvgPicture.asset(
+                                    "assets/svg/whiteCamera.svg"),
                               ),
                             ),
                           ),
@@ -152,7 +154,7 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
               SizedBox(
                 height: 4,
               ),
-              control.obx((state) {
+              controller.obx((state) {
                 FamilyModel fam = state;
                 List<Family> list = fam.data ?? [];
                 return SizedBox(
@@ -160,7 +162,7 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                   child: SmartRefresher(
                     controller: refreshController,
                     onRefresh: () async {
-                      await control.onRefresh();
+                      await controller.onRefresh();
                       refreshController.refreshCompleted();
                     },
                     child: ListView.builder(
@@ -169,7 +171,7 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                       itemBuilder: (context, index) {
                         Family info = list[index];
                         return Container(
-                          width: 145,
+                          //  width: 145,
                           margin: const EdgeInsets.all(8),
                           child: Dadcontainer(
                             key: ValueKey(index),
@@ -184,19 +186,21 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                   ),
                 );
               }),
-SizedBox(height: 20,),
-                Center(
-                    child: MainButton(
-                      onPressed: () {
-                       Get.to(ProfileScreen());
-                      },
-                      backgroundColor: Colors.redAccent,
-                      width: Get.width*2/3,
-                      radius: 10,
-                      title: CustomTrans.logOut.tr,
-                      fontSize: 24,
-                    ),
-                  ),
+              const SizedBox(
+                height: 20,
+              ),
+              Center(
+                child: MainButton(
+                  onPressed: () {
+                    Get.to(ProfileScreen());
+                  },
+                  backgroundColor: Colors.redAccent,
+                  width: Get.width * 2 / 3,
+                  radius: 10,
+                  title: CustomTrans.logOut.tr,
+                  fontSize: 24,
+                ),
+              ),
             ],
           ),
         ));

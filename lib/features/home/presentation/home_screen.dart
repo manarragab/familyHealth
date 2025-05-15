@@ -119,7 +119,6 @@ class Homescreen extends GetView<HomeController> {
                               return _buildReminderCard(
                                 title: remind.title ?? "",
                                 subtitle: alarmTime,
-                                 
                                 dosage: remind.description ?? "",
                                 isTaken: (remind.isTriggered??0) == 1,
                               );

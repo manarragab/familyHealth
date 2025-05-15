@@ -1,3 +1,4 @@
+import 'package:abg/data/const/extensions.dart';
 import 'package:abg/res/notification/push_notification.dart';
 
 class PostRegister {
@@ -13,11 +14,14 @@ class PostRegister {
   String? phone;
   String? password;
 
+  DateTime? dateOfBirth;
+
   PostRegister.fromJson(Map<String, dynamic> json) {
     name = json['name'];
     email = json['email'];
     phone = json['phone'];
     password = json['password'];
+    dateOfBirth = json['date_of_birth'];
   }
 
   Future<Map<String, dynamic>> toJson() async {
@@ -26,6 +30,7 @@ class PostRegister {
     data['email'] = email;
     data['phone'] = phone;
     data['password'] = password;
+    data['date_of_birth'] = dateOfBirth?.stringDate;
     data['device_token'] =
         await PushNotificationsManager().getNotificationToken();
     return data;

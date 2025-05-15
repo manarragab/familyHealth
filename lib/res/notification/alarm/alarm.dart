@@ -80,11 +80,14 @@ class CustomAlarm {
         dateTime: date,
         assetAudioPath: 'assets/alarm.wav',
         loopAudio: true,
+        allowAlarmOverlap: true,
+        iOSBackgroundAudio: true,
         vibrate: true,
+        androidFullScreenIntent: true,
         warningNotificationOnKill: Platform.isIOS,
         volumeSettings: VolumeSettings.fade(
           volume: 0.8,
-          fadeDuration: const Duration(seconds: 5),
+          fadeDuration: const Duration(seconds: 2),
           volumeEnforced: true,
         ),
         notificationSettings: NotificationSettings(

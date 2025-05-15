@@ -1,4 +1,3 @@
-
 import 'package:abg/data/const/export.dart';
 import 'package:abg/data/remote_data/core.dart';
 import 'package:abg/features/auth/domain/cases/auth_case.dart';
@@ -7,8 +6,10 @@ import 'package:abg/res/router/pages.dart';
 
 class CustomDrawer extends GetView<AuthController> {
   CustomDrawer({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
+    final user = sl<AuthCases>().getUser()?.data;
     return Drawer(
       child: Column(
         children: [
@@ -18,11 +19,17 @@ class CustomDrawer extends GetView<AuthController> {
                 padding: EdgeInsets.zero,
                 child: Stack(
                   children: [
-                    Image.asset(
-                      "assets/images/drawer_header.png",
-                      fit: BoxFit.fill,
-                      width: Get.width,
-                    ),
+                    user?.image != null
+                        ? Image.network(
+                            user?.image ?? "",
+                            fit: BoxFit.fill,
+                            width: Get.width,
+                          )
+                        : Image.asset(
+                            "assets/images/drawer_header.png",
+                            fit: BoxFit.fill,
+                            width: Get.width,
+                          ),
                     Padding(
                       padding: const EdgeInsets.only(top: 15.0),
                       child: ListTile(
@@ -46,7 +53,6 @@ class CustomDrawer extends GetView<AuthController> {
           Expanded(
               child: ListView(
             padding: const EdgeInsets.only(bottom: 30),
-           
             children: items
                 .map(
                   (e) => ListTile(
@@ -76,31 +82,30 @@ class CustomDrawer extends GetView<AuthController> {
           Get.toNamed(CustomPage.myAlarm);
         }),
     DrawerItem(
-        image: "assets/svg/calculator.svg", name: "calculations", onTap: () {
-
+        image: "assets/svg/calculator.svg",
+        name: "calculations",
+        onTap: () {
           Get.toNamed(CustomPage.calculation);
-
-
         }),
     DrawerItem(
-        image: "assets/svg/follow_up.svg", name:  CustomTrans.followUp.tr, onTap: () {
-
+        image: "assets/svg/follow_up.svg",
+        name: CustomTrans.followUp.tr,
+        onTap: () {
           Get.toNamed(CustomPage.followUp);
         }),
     DrawerItem(
         image: "assets/svg/progress_tracker.svg",
-          name: CustomTrans.progressTracker.tr,
+        name: CustomTrans.progressTracker.tr,
         onTap: () {
           Get.toNamed(CustomPage.progressTracker);
         }),
-        
-    DrawerItem(image: "assets/svg/group.svg",
-     name:  CustomTrans.myFamily.tr, 
-     onTap: () { 
- // print("Navigating to MyfamilyScreen ${CustomPage.myFamily}");
-      Get.toNamed(CustomPage.myFamily);
-     }),
-
+    DrawerItem(
+        image: "assets/svg/group.svg",
+        name: CustomTrans.myFamily.tr,
+        onTap: () {
+          // print("Navigating to MyfamilyScreen ${CustomPage.myFamily}");
+          Get.toNamed(CustomPage.myFamily);
+        }),
     DrawerItem(
         image: "assets/svg/liberary.svg", name: "My Liberary", onTap: () {}),
     DrawerItem(image: "assets/svg/bills.svg", name: "Pills", onTap: () {}),

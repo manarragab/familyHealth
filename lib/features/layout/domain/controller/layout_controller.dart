@@ -1,5 +1,6 @@
 import 'package:abg/data/models/auth/login/LoginModel.dart';
 import 'package:abg/features/auth/domain/cases/auth_case.dart';
+import 'package:abg/features/family/domain/controller/family_controller.dart';
 
 import '../../../../data/const/export.dart';
 
@@ -17,7 +18,8 @@ class LayoutController extends MainGetxController {
         break;
       case 2:
         break;
-      case 3:  
+      case 3:
+        Get.put(FamilyController()).onRefresh();
         break;
       case 4:
         break;
