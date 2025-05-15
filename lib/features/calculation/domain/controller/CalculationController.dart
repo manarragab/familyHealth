@@ -4,11 +4,17 @@ import 'package:abg/data/const/enums.dart';
 import 'package:abg/data/const/export.dart';
 import 'package:abg/data/models/calculation/BMI/post_BMI/post_BMI_MD.dart';
 import 'package:abg/data/models/calculation/BMI/post_BMI/post_BMI_response.dart';
+import 'package:abg/data/models/calculation/diabetes/post_diabetes/post_diabetes_MD.dart';
+import 'package:abg/data/models/calculation/diabetes/post_diabetes/post_diabetes_response.dart';
 import 'package:abg/data/models/calculation/pregnancyTracker/post_tracker/post_tracker_MD.dart';
 import 'package:abg/data/models/calculation/pregnancyTracker/post_tracker/post_tracker_response.dart';
 import 'package:abg/features/calculation/domain/cases/calculation_cases.dart';
 import 'package:abg/features/calculation/presentation/BmiCalc/BMI2calc_screen.dart';
-import 'package:abg/features/calculation/presentation/dateCalc_screen.dart';
+import 'package:abg/features/calculation/presentation/DuedateCalc/dateCalc_screen.dart';
+import 'package:abg/features/calculation/presentation/diabetes/diabetes3_screen.dart';
+import 'package:abg/features/calculation/presentation/diabetes/diabetes8_screen.dart';
+import 'package:abg/res/router/pages.dart';
+import 'package:dio/dio.dart';
 
 class Calculationcontroller extends MainGetxController {
 //API
@@ -18,32 +24,66 @@ class Calculationcontroller extends MainGetxController {
   PostTrackerMD postTracker = PostTrackerMD();
   PostTrackerResponse responseTracker = PostTrackerResponse();
 
+  PostDiabetesMd postDiabetes = PostDiabetesMd();
+  PostDiabetesResponse responseDiabetes = PostDiabetesResponse();
+
+  String? idd;
+  void setId(String id) {
+    idd = id;
+  }
+
+String? idColored;
   addBmi() async {
     loadingGetxController.showLoading();
     var response = await sl<CalculationCases>().addBmi(postBmi);
     loadingGetxController.hideLoading();
     statusError.checkStatus(response, () {
       responseBMi = response as PostBMIResponse;
-      updateBmi(responseBMi.data?.score ?? 0.0, Get.width - 80);
+
+        updateBmi(responseBMi.data?.score ?? 0.0, Get.width - 80 , idd);
+      
       Get.to(Bmi2calcScreen());
     });
   }
 
-//due date , tracker
+  addDiabetes() async {
+    loadingGetxController.showLoading();
+    var response = await sl<CalculationCases>().addDiabetes(postDiabetes);
+    loadingGetxController.hideLoading();
+    statusError.checkStatus(response, () {
+      responseDiabetes = response as PostDiabetesResponse;
 
-  int selectedDay = 1;
-  int selectedMonth = 1;
-  int selectedYear = 2025;
+print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq ${responseDiabetes.data?.riskResult}");
 
-  void postPeroid(selectedDay, selectedMonth, selectedYear) {
-    try{
-      
-    postTracker.date = "$selectedDay-$selectedMonth-$selectedYear";
+     updateBmi(responseDiabetes.data?.riskResult?.toDouble() ?? 0.0, Get.width - 80 , idd);
+ update(['diabetes8']); 
+                                    Get.toNamed(CustomPage.diabetes8Page);
+    });
+  }
+
+  //select gender (diabetes)
+  String selectt="";
+  void selectGender(String val , String id){
+selectt=val;
+ postDiabetes.gender=val;
+update([id]);
+  }
+
+
+  int? selectedDay;
+  int? selectedMonth;
+  int? selectedYear;
+
+  void postPeroid() {
+    if (selectedDay == null && selectedMonth == null && selectedYear == null) {
+      showToast("You should select menstrual date",
+                              MessageErrorType.error);
+    } else {
+       postTracker.date =
+        "${selectedYear.toString()}-${selectedMonth.toString().padLeft(2, '0')}-${selectedDay.toString().padLeft(2, '0')}";
+
+      print("................... ${postTracker.date}");
     }
-    catch(e){
-      print("error in date ${postTracker.date} ");
-    }
-    update();
   }
 
   addTracker() async {
@@ -53,7 +93,8 @@ class Calculationcontroller extends MainGetxController {
     statusError.checkStatus(response, () {
       log(response.toString());
       responseTracker = response as PostTrackerResponse;
-      postPeroid(selectedDay, selectedMonth, selectedYear);
+
+      print(responseTracker.data?.weeksPassed.toString());
       Get.to(DatecalcScreen());
     });
   }
@@ -63,13 +104,12 @@ class Calculationcontroller extends MainGetxController {
   final double minBmi = 10.0;
   final double maxBmi = 40.0;
   final double speedFactor = 2.5;
-  void updateBmi(double newPosition, double barWidth) {
+  void updateBmi(double newPosition, double barWidth , idd) {
     bmiValue = ((newPosition / barWidth) * (maxBmi - minBmi)) + minBmi;
     bmiValue = bmiValue.clamp(minBmi, maxBmi);
-    update();
   }
 
-//white2container
+//white2container , audio bar
   Map<String, double> valuesMap = {};
 
   double getValue(String key) {
@@ -80,38 +120,28 @@ class Calculationcontroller extends MainGetxController {
     valuesMap[key] = newValue;
     switch (measure) {
       case "cm":
-        postBmi.height = newValue.toInt();
+    key=="one"||key=="two"? postBmi.height = newValue.toInt() : postDiabetes.height = newValue.toInt();
         break;
 
       case "kg":
-        postBmi.weight = newValue.toInt();
+    key=="one"||key=="two"? postBmi.weight = newValue.toInt() : postDiabetes.weight = newValue.toInt();
         break;
     }
-    update();
-  }
-
-//dotsbar
-  final int totalSteps = 5;
-  Map<String, int> stepsMap = {};
-
-  int getstep(String key) {
-    return stepsMap[key] ?? 0;
-  }
-
-  void updateStep(String key, int step) {
-    stepsMap[key] = step;
-    update();
+    update([key]);
   }
 
   //listDay
   int selectedIndex = 0;
 
-  void list(int value) {
+  void list(int value, String id) {
     selectedIndex = value;
+
+    if (id == "diabetes1") {
+      postDiabetes.age = value +10;
+    }
   }
 
 //radiooitem
-//  bool select=false;
   String? selectedRadio;
   void selected(String val) {
     selectedRadio = val;
@@ -137,4 +167,29 @@ class Calculationcontroller extends MainGetxController {
     valuesBar[key] = newValue;
     update();
   }
+
+//diabetes radio
+  String? select;
+  void selecting(String val, String id , bool pressure) {
+    selectedRadio = val;
+    if(id=="diabetes3"){
+    postDiabetes.highBloodPressure=pressure;
+    print("ddddddddddddddd ${postDiabetes.highBloodPressure}");
+    }
+    else if(id=="diabetes4"){
+postDiabetes.steroidsUsage=pressure;
+    }
+    update([id]);
+  }
+
+
+//family diabetes
+  String? rad;
+  int? num;
+  int? num2;
+  void radioFamily(String value , String id){
+    rad=value;
+   id=="diabetes6"?postDiabetes.familyHistoryOfDiabetes=num : postDiabetes.smokingHistory=num2;
+  }
+
 }

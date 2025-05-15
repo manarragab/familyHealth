@@ -38,8 +38,9 @@ class _CardItemState extends State<CardItem> {
             SizedBox(
               width: 90,
               height: 90,
-              child: Image.asset(widget.image, fit: BoxFit.cover),
+              child: CustomImage.asset(widget.image, fit: BoxFit.cover),
             ),
+            SizedBox(width: 7,),
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(top: 8.0),

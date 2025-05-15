@@ -25,6 +25,8 @@ class RadioItem extends GetView<AlarmController> {
               groupValue: type.index,
               onChanged: (val) {
                 controller.selectRadio = type;
+                print("xxxxxxxxxxxxxxxxxxxxxxxxx  ${ type.name}");
+                controller.postAlarm.type = type.name;
                 controller.update();
               },
               visualDensity: VisualDensity.compact,

@@ -10,6 +10,8 @@ import 'package:abg/data/models/auth/users/PostEditProfile.dart';
 import 'package:abg/data/models/auth/users/post_assign_user.dart';
 import 'package:abg/data/models/calculation/BMI/post_BMI/post_BMI_MD.dart';
 import 'package:abg/data/models/calculation/BMI/post_BMI/post_BMI_response.dart';
+import 'package:abg/data/models/calculation/diabetes/post_diabetes/post_diabetes_MD.dart';
+import 'package:abg/data/models/calculation/diabetes/post_diabetes/post_diabetes_response.dart';
 import 'package:abg/data/models/calculation/pregnancyTracker/post_tracker/post_tracker_MD.dart';
 import 'package:abg/data/models/calculation/pregnancyTracker/post_tracker/post_tracker_response.dart';
 import 'package:abg/data/models/chat/chat_model.dart';
@@ -330,11 +332,21 @@ class Remote {
   
 
   //calculation => Due date
-  
-  Future<ResponseModel<Tracker?>> addTracker(PostTrackerMD post) async {
-    return _helper.post<Tracker?>(await post.toJson(), path: "/user/pregnancy/tracker/calculate",
+    Future<ResponseModel<Tracker?>> addTracker(PostTrackerMD post){
+    return _helper.post<Tracker?>(post.toJson(), path: "/user/pregnancy/tracker/calculate",
         onSuccess: (dynamic data) {
       return PostTrackerResponse.fromJson(data);
+    }, onError: (data) {
+      return ResponseModel(status: data.status, message: data.message);
+    }, isLogin: true);
+  }
+
+
+//calculation => diabetes
+      Future<ResponseModel<Diabetes?>> addDiabetes(PostDiabetesMd post){
+    return _helper.post<Diabetes?>(post.toJson(), path: "/user/diabetes-calculator",
+        onSuccess: (dynamic data) {
+      return PostDiabetesResponse.fromJson(data);
     }, onError: (data) {
       return ResponseModel(status: data.status, message: data.message);
     }, isLogin: true);

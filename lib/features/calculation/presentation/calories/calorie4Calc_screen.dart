@@ -1,16 +1,17 @@
 import 'package:abg/data/const/export.dart';
-import 'package:abg/features/calculation/presentation/calorie2Calc_screen.dart';
+import 'package:abg/features/calculation/presentation/calories/calorie3Calc_screen.dart';
+import 'package:abg/features/calculation/presentation/calories/calorie5Calc_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
-import 'package:abg/features/calculation/presentation/widget/listDay_item.dart';
+import 'package:abg/features/calculation/presentation/widget/white2Container.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CaloriecalcScreen extends StatefulWidget {
+class Calorie4calcScreen extends StatefulWidget {
   @override
-  State<CaloriecalcScreen> createState() => _CaloriecalcScreenState();
+  State<Calorie4calcScreen> createState() => _Calorie4calcScreenState();
 }
 
-class _CaloriecalcScreenState extends State<CaloriecalcScreen> {
+class _Calorie4calcScreenState extends State<Calorie4calcScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,12 +32,15 @@ class _CaloriecalcScreenState extends State<CaloriecalcScreen> {
                       SizedBox(
                         height: 45,
                       ),
-                      DotsbarItem( KEY: "one",),
+                      DotsbarItem(
+                        id: "calorie",
+                        step: 4,
+                      ),
                       SizedBox(
                         height: 35,
                       ),
                       Text(
-                        "Age",
+                        "Height",
                         style: GoogleFonts.almarai(
                           color: CustomColors.darkblue3,
                           fontSize: 30,
@@ -44,17 +48,20 @@ class _CaloriecalcScreenState extends State<CaloriecalcScreen> {
                         ),
                       ),
                       SizedBox(
-                        height: 37,
+                        height: 20,
                       ),
-                      ListdayItem(),
+                      White2container(
+                          KEY: "four",
+                          title1: "Please enter your height",
+                          title2: "(cm)",
+                          measure: "cm"),
                       SizedBox(
-                        height: 45,
+                        height: 35,
                       ),
                       MainButton(
                         withShadow: true,
                         onPressed: () {
-
-                          Get.to(Calorie2calcScreen());
+                          Get.to(Calorie5calcScreen());
                         },
                         radius: 10,
                         height: 46,
@@ -68,6 +75,30 @@ class _CaloriecalcScreenState extends State<CaloriecalcScreen> {
                           ),
                         ),
                       ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Container(
+                        width: double.infinity,
+                        height: 46,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                                color: CustomColors.darkblue3, width: 2)),
+                        child: MaterialButton(
+                          onPressed: () {
+                            Get.to(Calorie3calcScreen());
+                          },
+                          child: Text(
+                            "Back",
+                            style: GoogleFonts.almarai(
+                              fontSize: 24,
+                              color: CustomColors.darkblue3,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
+                      )
                     ],
                   ))
             ],

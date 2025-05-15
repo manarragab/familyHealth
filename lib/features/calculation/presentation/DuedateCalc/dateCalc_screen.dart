@@ -1,4 +1,3 @@
-import 'package:abg/features/calculation/presentation/dueDate_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/pinkContainer.dart';
 import 'package:abg/features/calculation/presentation/widget/whiteContainer.dart';
 import 'package:abg/localization/all_keys.dart';
@@ -30,14 +29,14 @@ class DatecalcScreen extends GetView<Calculationcontroller>{
                   Whitecontainer(
                       image: "assets/images/pregnant.png",
                       title: "Expected birth date",
-                      subTitle: controller.responseTracker.data!.expectedPregnancyDate.toString()),
+                      subTitle: controller.responseTracker.data?.expectedPregnancyDate??""),
                   SizedBox(
                     height: 11,
                   ),
                   Whitecontainer(
                       image: "assets/images/loveBook.png",
                       title: "Last menstrual period since",
-                      subTitle: controller.responseTracker.data!.weeksPassed.toString())
+                      subTitle: controller.responseTracker.data?.weeksPassed.toString()??"")
                 ],
               ),
             ),
@@ -46,7 +45,7 @@ class DatecalcScreen extends GetView<Calculationcontroller>{
             ),
             GestureDetector(
               onTap: () {
-                Get.off(DuedateScreen());
+               Get.back();
               },
               child: Container(
                 child: Row(

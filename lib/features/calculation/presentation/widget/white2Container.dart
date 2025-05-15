@@ -28,6 +28,7 @@ class _White2containerState extends State<White2container> {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<Calculationcontroller>(
+      id: widget.KEY,
       builder: (controller) {
         double currentValue = controller.getValue(widget.KEY);
         
@@ -79,6 +80,7 @@ class _White2containerState extends State<White2container> {
                 child: FlutterSlider(
                   onDragging: (handlerIndex, lowerValue, upperValue) {
                     controller.updateValue(widget.KEY, lowerValue , widget.measure);
+                    controller.update([widget.KEY]);
                   },
                   values: [currentValue],
                   max: 300,

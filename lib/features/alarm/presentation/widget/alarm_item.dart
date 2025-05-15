@@ -79,14 +79,17 @@ class AlarmItem extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 10),
-                  Text(
-                    description,
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
-                    style: GoogleFonts.almarai(
-                        fontWeight: FontWeight.w400,
-                        fontSize: 12,
-                        color: CustomColors.lightBlue2),
+                  SizedBox(
+                    height: 40,
+                    child: Text(
+                      description,
+                      maxLines: 3,
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.almarai(
+                          fontWeight: FontWeight.w400,
+                          fontSize: 12,
+                          color: CustomColors.lightBlue2),
+                    ),
                   ),
                   const SizedBox(height: 14),
 

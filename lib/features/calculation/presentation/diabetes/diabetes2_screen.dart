@@ -1,0 +1,117 @@
+import 'package:abg/data/const/export.dart';
+import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
+import 'package:abg/features/calculation/presentation/diabetes/diabetes3_screen.dart';
+import 'package:abg/features/calculation/presentation/diabetes/widget/gender_item.dart';
+import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
+import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
+import 'package:abg/res/loading/loading_overlay_widget.dart';
+import 'package:abg/res/router/pages.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class Diabetes2Screen extends StatefulWidget {
+  @override
+  State<Diabetes2Screen> createState() => _Diabetes2ScreenState();
+}
+
+class _Diabetes2ScreenState extends State<Diabetes2Screen> {
+  Calculationcontroller controller = Get.find();
+  @override
+  Widget build(BuildContext context) {
+    return GetBuilder<Calculationcontroller>(
+        id: "diabetes2Screen",
+        builder: (_) {
+          return Scaffold(
+              appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
+              body: Padding(
+                padding: EdgeInsets.symmetric(horizontal: 16),
+                child: ListView(
+                  children: [
+                    Greencontainer(
+                        firstTxt:
+                            "Check your blood sugar risk easily and stay ahead of your health.",
+                        centertxt: "Diabetes Type 2 Risk Calculator",
+                        title: "Diabetes\nType2\nRisk",
+                        image: "assets/svg/diabetes.svg",
+                        heightt: 615,
+                        widg: Column(
+                          children: [
+                            SizedBox(
+                              height: 45,
+                            ),
+                            DotsbarItem(id: "diabetes2", step: 2),
+                            SizedBox(
+                              height: 35,
+                            ),
+                            Text(
+                              "Gender",
+                              style: TFonts.inter(
+                                color: CustomColors.darkblue3,
+                                fontSize: 30,
+                                fontWeight: FontWeight.w700,
+                              ),
+                            ),
+                            SizedBox(
+                              height: 25,
+                            ),
+                            GenderItem(id: "diabetes2"),
+                            SizedBox(
+                              height: 35,
+                            ),
+                            LoadingOverLay(
+                              showLoadingOnly: true,
+                              child: MainButton(
+                                width: double.infinity,
+                                withShadow: true,
+                                onPressed: () {
+                                  if (controller.postDiabetes.gender != null) {
+                                    Get.toNamed(CustomPage.diabetes3Page);
+                                  } else {
+                                    showToast("You should select gender",
+                                        MessageErrorType.error);
+                                  }
+                                },
+                                radius: 10,
+                                height: 46,
+                                backgroundColor: CustomColors.darkblue3,
+                                titleWidget: Text(
+                                  CustomTrans.next2.tr,
+                                  style: GoogleFonts.almarai(
+                                    fontSize: 24,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                              ),
+                            ),
+                            SizedBox(
+                              height: 10,
+                            ),
+                            Container(
+                              width: double.infinity,
+                              height: 46,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  border: Border.all(
+                                      color: CustomColors.darkblue3, width: 2)),
+                              child: MaterialButton(
+                                onPressed: () {
+                                  Get.back();
+                                },
+                                child: Text(
+                                  "Back",
+                                  style: GoogleFonts.almarai(
+                                    fontSize: 24,
+                                    color: CustomColors.darkblue3,
+                                    fontWeight: FontWeight.w400,
+                                  ),
+                                ),
+                              ),
+                            )
+                          ],
+                        ))
+                  ],
+                ),
+              ));
+        });
+  }
+}

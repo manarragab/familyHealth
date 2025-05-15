@@ -1,6 +1,7 @@
 import 'package:abg/data/const/export.dart';
 
 class ChatCard extends StatelessWidget {
+  
   const ChatCard({
     required this.message,
     required this.isImage,
@@ -8,9 +9,11 @@ class ChatCard extends StatelessWidget {
     required this.avatar,
     Key? key,
   }) : super(key: key);
+
   final String message, avatar;
   final bool isImage;
   final bool fromMe;
+
 
   @override
   Widget build(BuildContext context) {

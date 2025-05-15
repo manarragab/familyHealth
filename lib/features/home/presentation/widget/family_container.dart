@@ -89,14 +89,13 @@ return GestureDetector(
             const SizedBox(height: 8),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              
               children: [
                 Text(
                   widget.title??"",
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
               //  const SizedBox(width: 8),
-             // Spacer(),
+          
                 Text(
                   widget.dosage??"",
                   style: const TextStyle(color: Colors.grey),

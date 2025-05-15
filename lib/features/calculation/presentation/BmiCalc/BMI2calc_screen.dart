@@ -1,6 +1,5 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
-import 'package:abg/features/calculation/presentation/BmiCalc/BMIcalc_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/coloredBar.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -20,7 +19,9 @@ class Bmi2calcScreen extends GetView<Calculationcontroller>{
                   widg: Container(
                     child: Column(
                       children: [
-                        Coloredbar( subTitle: controller.responseBMi.data?.category,),
+                        Coloredbar(
+                          id: "BMI2",
+                           subTitle: controller.responseBMi.data?.category,),
                       ],
                     ),
                   )),

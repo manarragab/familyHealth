@@ -19,6 +19,8 @@ class Homescreen extends GetView<HomeController> {
   Homescreen({Key? key}) : super(key: key);
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
+
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -113,9 +115,11 @@ class Homescreen extends GetView<HomeController> {
                             model.data?.reminders?.length ?? 0,
                             (index) {
                               Reminders remind = model.data!.reminders![index];
+               final  alarmTime = DateFormat.jm().format(DateFormat("HH:mm:ss").parse(remind.alarmTime));
                               return _buildReminderCard(
                                 title: remind.title ?? "",
-                                subtitle: remind.alarmTime!,
+                                subtitle: alarmTime,
+                                 
                                 dosage: remind.description ?? "",
                                 isTaken: (remind.isTriggered??0) == 1,
                               );
@@ -284,7 +288,7 @@ class Homescreen extends GetView<HomeController> {
     required bool isTaken,
   }) {
     return Container(
-      width: 180,
+    
       margin: const EdgeInsets.only(right: 16),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
@@ -310,13 +314,13 @@ class Homescreen extends GetView<HomeController> {
           ),
           const SizedBox(height: 8),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+           mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
                 subtitle,
                 style: TFonts.textTitleStyle(fontSize: 12, color: Colors.grey),
               ),
-              const SizedBox(width: 8),
+         
               Icon(
                 isTaken ? Icons.check_circle : Icons.radio_button_unchecked,
                 color: isTaken ? Colors.green : Colors.grey,

@@ -1,7 +1,7 @@
 import 'package:abg/data/const/export.dart';
-import 'package:abg/features/calculation/presentation/calorie3Calc_screen.dart';
-import 'package:abg/features/calculation/presentation/calorie4Calc_screen.dart';
-import 'package:abg/features/calculation/presentation/calorie6Calc_screen.dart';
+import 'package:abg/features/calculation/presentation/calories/calorie3Calc_screen.dart';
+import 'package:abg/features/calculation/presentation/calories/calorie4Calc_screen.dart';
+import 'package:abg/features/calculation/presentation/calories/calorie6Calc_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
 import 'package:abg/features/calculation/presentation/widget/radioo_item.dart';
@@ -34,7 +34,8 @@ class _Calorie5calcScreenState extends State<Calorie5calcScreen> {
                         height: 45,
                       ),
                       DotsbarItem(
-                        KEY: "four",
+                        id: "calorie",
+                        step: 5,
                       ),
                       SizedBox(
                         height: 35,

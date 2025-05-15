@@ -1,6 +1,6 @@
 import 'package:abg/data/const/export.dart';
-import 'package:abg/features/calculation/presentation/calorie3Calc_screen.dart';
-import 'package:abg/features/calculation/presentation/calorieCalc_screen.dart';
+import 'package:abg/features/calculation/presentation/calories/calorie3Calc_screen.dart';
+import 'package:abg/features/calculation/presentation/calories/calorieCalc_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
 import 'package:abg/features/calculation/presentation/widget/listDay_item.dart';
@@ -32,7 +32,9 @@ class _Calorie2calcScreenState extends State<Calorie2calcScreen> {
                       SizedBox(
                         height: 45,
                       ),
-                      DotsbarItem(KEY: "two",),
+                      DotsbarItem( 
+                        id: "calorie",
+                         step: 2,),
                       SizedBox(
                         height: 35,
                       ),
@@ -119,7 +121,7 @@ class _Calorie2calcScreenState extends State<Calorie2calcScreen> {
                                 color: CustomColors.darkblue3, width: 2)),
                         child: MaterialButton(
                           onPressed: () {
-                            Get.to(CaloriecalcScreen());
+                           Get.back();
                           },
                           child: Text(
                             "Back",

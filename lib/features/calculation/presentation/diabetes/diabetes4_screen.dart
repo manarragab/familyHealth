@@ -1,17 +1,20 @@
 import 'package:abg/data/const/export.dart';
-import 'package:abg/features/calculation/presentation/calorie3Calc_screen.dart';
-import 'package:abg/features/calculation/presentation/calorie5Calc_screen.dart';
+import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
+import 'package:abg/features/calculation/presentation/diabetes/diabetes5_screen.dart';
+import 'package:abg/features/calculation/presentation/diabetes/widget/white4Container.dart';
 import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
-import 'package:abg/features/calculation/presentation/widget/white2Container.dart';
+import 'package:abg/res/router/pages.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Calorie4calcScreen extends StatefulWidget {
+class Diabetes4Screen extends StatefulWidget {
   @override
-  State<Calorie4calcScreen> createState() => _Calorie4calcScreenState();
+  State<Diabetes4Screen> createState() => _Diabetes4ScreenState();
 }
 
-class _Calorie4calcScreenState extends State<Calorie4calcScreen> {
+class _Diabetes4ScreenState extends State<Diabetes4Screen> {
+    Calculationcontroller controller=Get.find();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,46 +24,54 @@ class _Calorie4calcScreenState extends State<Calorie4calcScreen> {
           child: ListView(
             children: [
               Greencontainer(
+                
                   firstTxt:
-                      "Control your diet with this easy-to-use calorie calculator.",
-                  centertxt: "Calorie Calculator",
-                  title: "Calorie",
-                  image: "assets/images/fruity.png",
-                  heightt: 615,
+                      "Check your blood sugar risk easily and stay ahead of your health.",
+                  centertxt: "Diabetes Type 2 Risk Calculator",
+                  title: "Diabetes\nType2\nRisk",
+                  image: "assets/svg/diabetes.svg",
+                  heightt: 585,
                   widg: Column(
                     children: [
                       SizedBox(
                         height: 45,
                       ),
-                      DotsbarItem(
-                        KEY: "four",
-                      ),
+                      DotsbarItem(  
+                         id: "diabetes4",
+                         step: 4,),
                       SizedBox(
                         height: 35,
                       ),
                       Text(
-                        "Height",
-                        style: GoogleFonts.almarai(
+                        "Steroids Usage",
+                        style: TFonts.inter(
                           color: CustomColors.darkblue3,
-                          fontSize: 30,
+                          fontSize: 20.w,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      SizedBox(
+                    
+                   SizedBox(
                         height: 20,
                       ),
-                      White2container(
-                          KEY: "four",
-                          title1: "Please enter your height",
-                          title2: "(cm)",
-                          measure: "cm"),
+                  
+                  
+                  White4container(id: "diabetes4" ),
+                  
                       SizedBox(
-                        height: 35,
+                        height: 30,
                       ),
                       MainButton(
+                         width: double.infinity,
                         withShadow: true,
                         onPressed: () {
-                          Get.to(Calorie5calcScreen());
+                         if (controller.postDiabetes.steroidsUsage != null) {
+                                    Get.toNamed(CustomPage.diabetes5Page);
+                                  } else {
+                                    showToast("You should answer the question",
+                                        MessageErrorType.error);
+                                  } 
+                      
                         },
                         radius: 10,
                         height: 46,
@@ -86,7 +97,7 @@ class _Calorie4calcScreenState extends State<Calorie4calcScreen> {
                                 color: CustomColors.darkblue3, width: 2)),
                         child: MaterialButton(
                           onPressed: () {
-                            Get.to(Calorie3calcScreen());
+                           Get.back();
                           },
                           child: Text(
                             "Back",

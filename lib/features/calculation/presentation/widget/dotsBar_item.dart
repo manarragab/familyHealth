@@ -2,47 +2,52 @@ import 'package:abg/features/calculation/domain/controller/CalculationController
 import 'package:abg/data/const/export.dart';
 
 class DotsbarItem extends StatelessWidget {
-  final String KEY;
+
 //this KEY for separate all calling of dotsBar => every call has its own different key 
 //لحل مشكلة ارتباط كل DotsbarItem بنفس currentStep،
 
-  DotsbarItem({super.key, required this.KEY});
+  final int totalSteps;   
+  final int step;
+  final String id;
+
+  DotsbarItem({
+    Key? key,
+    required this.step,
+    required this.id,
+  }) : totalSteps = (id == 'calorie') ? 5 : 7;  
 
   @override
   Widget build(BuildContext context) {
+
     return GetBuilder<Calculationcontroller>(
+      id: id,
+
       builder: (controller) {
-        int currentStep = controller.getstep(KEY); 
         return Row(
-          children: List.generate(controller.totalSteps * 2 - 1, (index) {
-            int stepIndex = index ~/ 2;
-            bool isActive = stepIndex == currentStep;
-            bool isCompleted = stepIndex < currentStep;
+          children: List.generate(totalSteps * 2 - 1, (index) {
+           
+            bool isActive = index== step*2-1 ;
+            bool isCompleted = index<step*2-1 ;
 
             return index.isEven
-                ? GestureDetector(
-                    onTap: () {
-                      controller.updateStep(KEY, stepIndex);
-                    },
+                ? Container(
+                  width: 15,
+                  height: 15,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    color: isCompleted || isActive ? CustomColors.green1 : CustomColors.grey6,
+                  ),
+                  child: Center(
                     child: Container(
-                      width: 15,
-                      height: 15,
+                      width: 7.5,
+                      height: 7.5,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
-                        color: isCompleted || isActive ? CustomColors.green1 : CustomColors.grey6,
-                      ),
-                      child: Center(
-                        child: Container(
-                          width: 7.5,
-                          height: 7.5,
-                          decoration: BoxDecoration(
-                            shape: BoxShape.circle,
-                            color: isCompleted || isActive ? CustomColors.darkblue3 : CustomColors.darkblue4,
-                          ),
-                        ),
+                        color: isCompleted || isActive ? CustomColors.darkblue3 : CustomColors.darkblue4,
                       ),
                     ),
-                  )
+                  ),
+                )
                 : Expanded(
                     child: Container(
                       height: 3.71,
