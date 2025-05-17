@@ -7,6 +7,12 @@ import 'package:abg/features/auth/presentation/login_screen.dart';
 import 'package:abg/features/auth/presentation/my_account_screen.dart';
 import 'package:abg/features/auth/presentation/sign_up_screen.dart';
 import 'package:abg/features/calculation/presentation/DuedateCalc/dueDate_screen.dart';
+import 'package:abg/features/calculation/presentation/IBS/ibsCalc1_screen.dart';
+import 'package:abg/features/calculation/presentation/IBS/ibsCalc3_screen.dart';
+import 'package:abg/features/calculation/presentation/IBS/ibsCalc4_screen.dart';
+import 'package:abg/features/calculation/presentation/IBS/ibsCalc5_screen.dart';
+import 'package:abg/features/calculation/presentation/IBS/ibsCalc6_screen.dart';
+import 'package:abg/features/calculation/presentation/IBS/ibscalc2_screen.dart';
 import 'package:abg/features/calculation/presentation/diabetes/diabetes1_screen.dart';
 import 'package:abg/features/calculation/presentation/diabetes/diabetes2_screen.dart';
 import 'package:abg/features/calculation/presentation/diabetes/diabetes3_screen.dart';
@@ -204,6 +210,62 @@ class CustomPage {
           Get.put(Calculationcontroller());
         })),
 
+
+        
+ GetPage(
+        name: ibsPage1,
+        page: () =>  Ibscalc1Screen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+          Get.put(Calculationcontroller());
+        })),
+
+
+        
+        
+ GetPage(
+        name: ibsPage2,
+        page: () =>  Ibscalc2Screen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+          Get.put(Calculationcontroller());
+        })),
+        
+ GetPage(
+        name: ibsPage3,
+        page: () =>  Ibscalc3Screen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+          Get.put(Calculationcontroller());
+        })),
+
+
+         GetPage(
+        name: ibsPage4,
+        page: () => Ibscalc4Screen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+          Get.put(Calculationcontroller());
+        })), 
+        
+        
+        GetPage(
+        name: ibsPage5,
+        page: () =>  Ibscalc5Screen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+          Get.put(Calculationcontroller());
+        })),
+
+
+        GetPage(
+        name: ibsPage6,
+        page: () => Ibscalc6Screen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+          Get.put(Calculationcontroller());
+        })),
+
   ];
 
   static String layoutPage = '/layout';
@@ -242,6 +304,13 @@ class CustomPage {
 
     static String dueDatePage="/duedate";
 
+    static String ibsPage1="/ibsPage1";
+
+    static String ibsPage2="/ibsPage2";
+    static String ibsPage3="/ibsPage3";
+    static String ibsPage4="/ibsPage4";
+    static String ibsPage5="/ibsPage5";
+    static String ibsPage6="/ibsPage6";
 
 
 }

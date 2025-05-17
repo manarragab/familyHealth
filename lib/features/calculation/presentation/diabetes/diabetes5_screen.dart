@@ -73,12 +73,12 @@ class _Diabetes5ScreenState extends State<Diabetes5Screen> {
                         width: double.infinity,
                         withShadow: true,
                         onPressed: () {
-                          if (controller.postDiabetes.weight !=
-                              null &&controller.postDiabetes.height !=
-                              null ) {
+                          if (controller.postDiabetes.weight != null &&
+                              controller.postDiabetes.height != null) {
                             Get.toNamed(CustomPage.diabetes6Page);
                           } else {
-                            showToast("You should set value for height && weight both",
+                            showToast(
+                                "You should set value for height && weight both",
                                 MessageErrorType.error);
                           }
                         },

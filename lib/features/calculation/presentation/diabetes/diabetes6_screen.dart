@@ -13,7 +13,7 @@ class Diabetes6Screen extends StatefulWidget {
 }
 
 class _Diabetes6ScreenState extends State<Diabetes6Screen> {
-        Calculationcontroller controller=Get.find();
+  Calculationcontroller controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,7 @@ class _Diabetes6ScreenState extends State<Diabetes6Screen> {
           child: ListView(
             children: [
               Greencontainer(
-                firstTxt:
+                  firstTxt:
                       "Check your blood sugar risk easily and stay ahead of your health.",
                   centertxt: "Diabetes Type 2 Risk Calculator",
                   title: "Diabetes\nType2\nRisk",
@@ -36,7 +36,7 @@ class _Diabetes6ScreenState extends State<Diabetes6Screen> {
                         height: 30,
                       ),
                       DotsbarItem(
-                         id: "diabetes6",
+                        id: "diabetes6",
                         step: 6,
                       ),
                       SizedBox(
@@ -53,15 +53,14 @@ class _Diabetes6ScreenState extends State<Diabetes6Screen> {
                       SizedBox(
                         height: 20,
                       ),
-                     White5container(
-                      id: "diabetes6",
-                      Q: "Do any of your first-degree family members have diabetes?", 
-                     options: 
-                     ["No first-degree family members with diabetes" ,
-                      "Parent or sibling with diabetes",
-                      "Parent and sibling with diabetes"]),
-                  
-                     
+                      White5container(
+                          id: "diabetes6",
+                          Q: "Do any of your first-degree family members have diabetes?",
+                          options: [
+                            "No first-degree family members with diabetes",
+                            "Parent or sibling with diabetes",
+                            "Parent and sibling with diabetes"
+                          ]),
                       SizedBox(
                         height: 30,
                       ),
@@ -69,13 +68,13 @@ class _Diabetes6ScreenState extends State<Diabetes6Screen> {
                         width: double.infinity,
                         withShadow: true,
                         onPressed: () {
-                           if (controller.postDiabetes.familyHistoryOfDiabetes != null) {
-                                    Get.toNamed(CustomPage.diabetes7Page);
-                                  } else {
-                                    showToast("You should answer the question",
-                                        MessageErrorType.error);
-                                  } 
-                    
+                          if (controller.postDiabetes.familyHistoryOfDiabetes !=
+                              null) {
+                            Get.toNamed(CustomPage.diabetes7Page);
+                          } else {
+                            showToast("You should answer the question",
+                                MessageErrorType.error);
+                          }
                         },
                         radius: 10,
                         height: 46,

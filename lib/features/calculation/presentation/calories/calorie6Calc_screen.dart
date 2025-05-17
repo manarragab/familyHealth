@@ -79,7 +79,7 @@ class _Calorie6calcScreenState extends State<Calorie6calcScreen> {
               ),
               GestureDetector(
                 onTap: () {
-                  Get.to(CaloriecalcScreen());
+                  Get.offAll(CaloriecalcScreen());
                 },
                 child: Container(
                   child: Row(

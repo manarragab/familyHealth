@@ -14,7 +14,7 @@ class DotsbarItem extends StatelessWidget {
     Key? key,
     required this.step,
     required this.id,
-  }) : totalSteps = (id == 'calorie') ? 5 : 7;  
+  }) : totalSteps = (id == 'calorie') ? 5 :(id == 'ibs') ? 4: 7;  
 
   @override
   Widget build(BuildContext context) {

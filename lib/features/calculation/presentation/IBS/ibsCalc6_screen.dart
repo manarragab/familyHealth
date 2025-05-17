@@ -1,35 +1,31 @@
 import 'package:abg/data/const/export.dart';
-import 'package:abg/data/models/calculation/diabetes/post_diabetes/post_diabetes_MD.dart';
+import 'package:abg/data/models/calculation/IBS/post_IBS/post_IBS_MD.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
-import 'package:abg/features/calculation/presentation/diabetes/diabetes1_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/coloredBar.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
 import 'package:abg/res/router/pages.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Diabetes8Screen extends StatefulWidget {
-  @override
-  State<Diabetes8Screen> createState() => _Diabetes8ScreenState();
-}
-
-class _Diabetes8ScreenState extends State<Diabetes8Screen> {
-  Calculationcontroller controller = Get.find();
+class Ibscalc6Screen extends GetWidget<Calculationcontroller> {
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
-        body: Padding(
+        body: GetBuilder<Calculationcontroller>(
+          id: "ibs6",
+          builder: (_){
+return Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
             child: ListView(
               children: [
                 Greencontainer(
                     firstTxt:
-                        "Check your blood sugar risk easily and stay ahead of your health.",
-                    centertxt: "Diabetes Type 2 Risk Calculator",
-                    title: "Diabetes\nType2\nRisk",
-                    image: "assets/svg/diabetes.svg",
-                    heightt: 550,
+                  "Easily assess your risk of Irritable Bowel Syndrome (IBS) and take a proactive step toward better digestive health.",
+              centertxt: "NEW Calculator",
+              title: "Symptom\nChecker\nFor IBS",
+              image: "assets/svg/ibs.svg",
+              heightt: 540.h,
                     widg: Column(children: [
                       SizedBox(
                         height: 10,
@@ -43,7 +39,7 @@ class _Diabetes8ScreenState extends State<Diabetes8Screen> {
                         ),
                       ),
                       Coloredbar(
-                        id: "diabetes8",
+                        id: "ibs6",
                         txt2: ["", "", ""],
                         txt: [
                           "Low Risk",
@@ -51,12 +47,41 @@ class _Diabetes8ScreenState extends State<Diabetes8Screen> {
                           "High Risk",
                           "Very High Risk"
                         ],
-                        title: "score",
-                        subTitle: controller.responseDiabetes.data?.riskResult
-                            .toString(),
+                       
+                      //  subTitle: controller.responseDiabetes.data?.riskResult.toString(),
+                      ),
+                     SizedBox(
+                        height: 10,
+                      ),
+                      Row(
+                        children: [
+                          Container(
+                            width: 20,
+                            height: 20,
+                            decoration: BoxDecoration(
+                                color: CustomColors.redd,
+                                borderRadius: BorderRadius.circular(2)),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                      
+                            controller.responseIBS.data?.category??"",
+                            style: GoogleFonts.almarai(
+                              fontSize: 16,
+                              color: CustomColors.darkblack1,
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ],
+                      ),
+                    SizedBox(
+                        height: 10,
                       ),
                       Text(
-                        "Right now, your risk for having type 2 diabetes is low. However, your risk changes over time. Be sure to schedule regular check-ups with your doctor and take healthy steps toward preventing or delaying diabetes.",
+                            controller.responseIBS.data?.message??"",
+
                         style: GoogleFonts.almarai(
                           color: CustomColors.darkblue3,
                           fontSize: 16,
@@ -69,9 +94,8 @@ class _Diabetes8ScreenState extends State<Diabetes8Screen> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    controller.postDiabetes = PostDiabetesMd();
-                    Get.until((route) =>
-                        Get.currentRoute == CustomPage.diabetes1Page);
+                controller.postIBS=PostIbsMD();
+                    Get.until((route)=>Get.currentRoute==CustomPage.ibsPage1);
                   },
                   child: Container(
                     child: Row(
@@ -98,6 +122,7 @@ class _Diabetes8ScreenState extends State<Diabetes8Screen> {
                   ),
                 ),
               ],
-            )));
+            ));
+        }) );
   }
 }

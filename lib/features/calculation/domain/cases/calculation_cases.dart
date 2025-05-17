@@ -1,5 +1,7 @@
 import 'package:abg/data/models/calculation/BMI/post_BMI/post_BMI_MD.dart';
 import 'package:abg/data/models/calculation/BMI/post_BMI/post_BMI_response.dart';
+import 'package:abg/data/models/calculation/IBS/post_IBS/post_IBS_MD.dart';
+import 'package:abg/data/models/calculation/IBS/post_IBS/post_IBS_response.dart';
 import 'package:abg/data/models/calculation/diabetes/post_diabetes/post_diabetes_MD.dart';
 import 'package:abg/data/models/calculation/diabetes/post_diabetes/post_diabetes_response.dart';
 import 'package:abg/data/models/calculation/pregnancyTracker/post_tracker/post_tracker_MD.dart';
@@ -24,6 +26,8 @@ class CalculationCases {
     return _data.addDiabetes(post);
   }
 
-
+ Future<ResponseModel<IBS?>> addIBS(PostIbsMD post) {
+    return _data.addIBS(post);
+  }
   
 }

@@ -39,6 +39,16 @@ class TFonts {
           fontWeight: fontWeight,
           fontSize: fontSize);
 
+
+          static almarai(
+          {Color? color,
+          FontWeight fontWeight = TFontWights.regular,
+          double fontSize = 12}) =>
+      GoogleFonts.almarai(
+          color: color ?? CustomColors.textDark,
+          fontWeight: fontWeight,
+          fontSize: fontSize);
+
   static orderCardBody(
           {Color? color,
           FontWeight fontWeight = TFontWights.regular,

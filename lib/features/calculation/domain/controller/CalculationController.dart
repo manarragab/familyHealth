@@ -11,8 +11,8 @@ import 'package:abg/data/models/calculation/pregnancyTracker/post_tracker/post_t
 import 'package:abg/features/calculation/domain/cases/calculation_cases.dart';
 import 'package:abg/features/calculation/presentation/BmiCalc/BMI2calc_screen.dart';
 import 'package:abg/features/calculation/presentation/DuedateCalc/dateCalc_screen.dart';
-import 'package:abg/features/calculation/presentation/diabetes/diabetes3_screen.dart';
-import 'package:abg/features/calculation/presentation/diabetes/diabetes8_screen.dart';
+import 'package:abg/data/models/calculation/IBS/post_IBS/post_IBS_MD.dart';
+import 'package:abg/data/models/calculation/IBS/post_IBS/post_IBS_response.dart';
 import 'package:abg/res/router/pages.dart';
 import 'package:dio/dio.dart';
 
@@ -27,12 +27,127 @@ class Calculationcontroller extends MainGetxController {
   PostDiabetesMd postDiabetes = PostDiabetesMd();
   PostDiabetesResponse responseDiabetes = PostDiabetesResponse();
 
+  PostIbsMD postIBS = PostIbsMD();
+  PostIbsResponse responseIBS = PostIbsResponse();
+
+  addIBS() async {
+    loadingGetxController.showLoading();
+    var response = await sl<CalculationCases>().addIBS(postIBS);
+    loadingGetxController.hideLoading();
+    statusError.checkStatus(response, () {
+      responseIBS = response as PostIbsResponse;
+      Get.toNamed(CustomPage.ibsPage6);
+    });
+  }
+
+  final questions = [
+    'Do you get recurring abdominal pain at least 1 day per week?',
+    'Have you been getting this pain for at least the last three months?',
+    'Is the pain related to opening your bowels?',
+    'Has there been a change in how your stool looks?',
+    'Is the pain associated with new onset diarrhea?',
+  ];
+
+  List<bool?> answers = List.generate(5, (_) => null);
+
+  void storeValues(int index) {
+    switch (index) {
+      case 0:
+        postIBS.recurringAbdominalPain = answers[0];
+        print("hhhhhhhhhhh ${postIBS.recurringAbdominalPain}");
+        break;
+
+      case 1:
+        postIBS.painDurationThreeMonths = answers[1];
+        print("ooooooooooooooooooooo ${postIBS.painDurationThreeMonths}");
+        break;
+
+      case 2:
+        postIBS.painRelatedToBowel = answers[2];
+        break;
+
+      case 3:
+        postIBS.stoolAppearanceChange = answers[3];
+        break;
+
+      case 4:
+        postIBS.newOnsetDiarrhea = answers[4];
+        break;
+    }
+  }
+
+  final questions2 = [
+    'Is the pain associated with new onset constipation?',
+    'Have you experienced sudden changes in bowel habits without an obvious cause (like dieting)?',
+    'Have you experienced bleeding from your back passage?',
+    'Have you lost weight without trying?',
+    'Do you feel any new bulges (masses) in your abdomen?',
+  ];
+
+  final List<bool?> answers2 = List.generate(5, (_) => null);
+
+  void storeValues2(int index) {
+    switch (index) {
+      case 0:
+        postIBS.newOnsetConstipation = answers2[0];
+        print("hhhhhhhhhhh ${postIBS.newOnsetConstipation}");
+        break;
+
+      case 1:
+        postIBS.suddenBowelHabitChanges = answers2[1];
+        print("iiiiiiiiiiiiiiiiiiiii ${postIBS.suddenBowelHabitChanges}");
+        break;
+
+      case 2:
+        postIBS.rectalBleeding = answers2[2];
+        print("ooooooooooooooooooooo ${postIBS.rectalBleeding}");
+        break;
+
+      case 3:
+        postIBS.unintentionalWeightLoss = answers2[3];
+        print("yyyyyyyyyyyyyyyyyy ${postIBS.unintentionalWeightLoss}");
+        break;
+
+      case 4:
+        postIBS.abdominalMass = answers2[4];
+        print("zzzzzzzzzzzzzzzz ${postIBS.abdominalMass}");
+        break;
+    }
+  }
+
+  final questions3 = [
+    'Have you had recent unexplained fever, malaise, or night sweats?',
+    'Have you had any of these symptoms for the past 6 months?',
+    'Is there a family history of colon cancer?',
+  ];
+
+  final List<bool?> answers3 = List.generate(3, (_) => null);
+
+  void storeValues3(int index) {
+    switch (index) {
+      case 0:
+        postIBS.feverMalaiseNightSweats = answers3[0];
+        print("hhhhhhhhhhh ${postIBS.feverMalaiseNightSweats}");
+        break;
+
+      case 1:
+        postIBS.symptomsPastSixMonths = answers3[1];
+        print("iiiiiiiiiiiiiiiiiiiii ${postIBS.symptomsPastSixMonths}");
+        break;
+
+      case 2:
+        postIBS.familyHistoryColonCancer = answers3[2];
+        print("ooooooooooooooooooooo ${postIBS.familyHistoryColonCancer}");
+        break;
+    }
+  }
+
   String? idd;
   void setId(String id) {
     idd = id;
   }
 
-String? idColored;
+  String? idColored;
   addBmi() async {
     loadingGetxController.showLoading();
     var response = await sl<CalculationCases>().addBmi(postBmi);
@@ -40,8 +155,8 @@ String? idColored;
     statusError.checkStatus(response, () {
       responseBMi = response as PostBMIResponse;
 
-        updateBmi(responseBMi.data?.score ?? 0.0, Get.width - 80 , idd);
-      
+      updateBmi(responseBMi.data?.score ?? 0.0, Get.width - 80, idd);
+
       Get.to(Bmi2calcScreen());
     });
   }
@@ -53,22 +168,23 @@ String? idColored;
     statusError.checkStatus(response, () {
       responseDiabetes = response as PostDiabetesResponse;
 
-print("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq ${responseDiabetes.data?.riskResult}");
+      print(
+          "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq ${responseDiabetes.data?.riskResult}");
 
-     updateBmi(responseDiabetes.data?.riskResult?.toDouble() ?? 0.0, Get.width - 80 , idd);
- update(['diabetes8']); 
-                                    Get.toNamed(CustomPage.diabetes8Page);
+      updateBmi(responseDiabetes.data?.riskResult?.toDouble() ?? 0.0,
+          Get.width - 80, idd);
+      update(['diabetes8']);
+      Get.toNamed(CustomPage.diabetes8Page);
     });
   }
 
   //select gender (diabetes)
-  String selectt="";
-  void selectGender(String val , String id){
-selectt=val;
- postDiabetes.gender=val;
-update([id]);
+  String selectt = "";
+  void selectGender(String val, String id) {
+    selectt = val;
+    postDiabetes.gender = val;
+    update([id]);
   }
-
 
   int? selectedDay;
   int? selectedMonth;
@@ -76,11 +192,10 @@ update([id]);
 
   void postPeroid() {
     if (selectedDay == null && selectedMonth == null && selectedYear == null) {
-      showToast("You should select menstrual date",
-                              MessageErrorType.error);
+      showToast("You should select menstrual date", MessageErrorType.error);
     } else {
-       postTracker.date =
-        "${selectedYear.toString()}-${selectedMonth.toString().padLeft(2, '0')}-${selectedDay.toString().padLeft(2, '0')}";
+      postTracker.date =
+          "${selectedYear.toString()}-${selectedMonth.toString().padLeft(2, '0')}-${selectedDay.toString().padLeft(2, '0')}";
 
       print("................... ${postTracker.date}");
     }
@@ -104,7 +219,7 @@ update([id]);
   final double minBmi = 10.0;
   final double maxBmi = 40.0;
   final double speedFactor = 2.5;
-  void updateBmi(double newPosition, double barWidth , idd) {
+  void updateBmi(double newPosition, double barWidth, idd) {
     bmiValue = ((newPosition / barWidth) * (maxBmi - minBmi)) + minBmi;
     bmiValue = bmiValue.clamp(minBmi, maxBmi);
   }
@@ -120,11 +235,15 @@ update([id]);
     valuesMap[key] = newValue;
     switch (measure) {
       case "cm":
-    key=="one"||key=="two"? postBmi.height = newValue.toInt() : postDiabetes.height = newValue.toInt();
+        key == "one" || key == "two"
+            ? postBmi.height = newValue.toInt()
+            : postDiabetes.height = newValue.toInt();
         break;
 
       case "kg":
-    key=="one"||key=="two"? postBmi.weight = newValue.toInt() : postDiabetes.weight = newValue.toInt();
+        key == "one" || key == "two"
+            ? postBmi.weight = newValue.toInt()
+            : postDiabetes.weight = newValue.toInt();
         break;
     }
     update([key]);
@@ -137,7 +256,7 @@ update([id]);
     selectedIndex = value;
 
     if (id == "diabetes1") {
-      postDiabetes.age = value +10;
+      postDiabetes.age = value + 10;
     }
   }
 
@@ -170,26 +289,37 @@ update([id]);
 
 //diabetes radio
   String? select;
-  void selecting(String val, String id , bool pressure) {
+  void selecting(String val, String id, bool pressure) {
     selectedRadio = val;
-    if(id=="diabetes3"){
-    postDiabetes.highBloodPressure=pressure;
-    print("ddddddddddddddd ${postDiabetes.highBloodPressure}");
+    if (id == "diabetes3") {
+      postDiabetes.highBloodPressure = pressure;
+      print("ddddddddddddddd ${postDiabetes.highBloodPressure}");
+    } else if (id == "diabetes4") {
+      postDiabetes.steroidsUsage = pressure;
     }
-    else if(id=="diabetes4"){
-postDiabetes.steroidsUsage=pressure;
+    //for txt1 , txt2
+    else if (id == "ibs2") {
+      if (pressure == true) {
+        String x = "49_or_less";
+        postIBS.age = x;
+        print("ibssssssssssss ${postIBS.age}");
+      } else {
+        String y = "50_or_more";
+        postIBS.age = y;
+        print("ibssssssssssss ${postIBS.age}");
+      }
     }
     update([id]);
   }
-
 
 //family diabetes
   String? rad;
   int? num;
   int? num2;
-  void radioFamily(String value , String id){
-    rad=value;
-   id=="diabetes6"?postDiabetes.familyHistoryOfDiabetes=num : postDiabetes.smokingHistory=num2;
+  void radioFamily(String value, String id) {
+    rad = value;
+    id == "diabetes6"
+        ? postDiabetes.familyHistoryOfDiabetes = num
+        : postDiabetes.smokingHistory = num2;
   }
-
 }

@@ -13,7 +13,7 @@ class Diabetes4Screen extends StatefulWidget {
 }
 
 class _Diabetes4ScreenState extends State<Diabetes4Screen> {
-    Calculationcontroller controller=Get.find();
+  Calculationcontroller controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,6 @@ class _Diabetes4ScreenState extends State<Diabetes4Screen> {
           child: ListView(
             children: [
               Greencontainer(
-                
                   firstTxt:
                       "Check your blood sugar risk easily and stay ahead of your health.",
                   centertxt: "Diabetes Type 2 Risk Calculator",
@@ -36,9 +35,10 @@ class _Diabetes4ScreenState extends State<Diabetes4Screen> {
                       SizedBox(
                         height: 45,
                       ),
-                      DotsbarItem(  
-                         id: "diabetes4",
-                         step: 4,),
+                      DotsbarItem(
+                        id: "diabetes4",
+                        step: 4,
+                      ),
                       SizedBox(
                         height: 35,
                       ),
@@ -50,28 +50,23 @@ class _Diabetes4ScreenState extends State<Diabetes4Screen> {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                    
-                   SizedBox(
+                      SizedBox(
                         height: 20,
                       ),
-                  
-                  
-                  White4container(id: "diabetes4" ),
-                  
+                      White4container(id: "diabetes4"),
                       SizedBox(
                         height: 30,
                       ),
                       MainButton(
-                         width: double.infinity,
+                        width: double.infinity,
                         withShadow: true,
                         onPressed: () {
-                         if (controller.postDiabetes.steroidsUsage != null) {
-                                    Get.toNamed(CustomPage.diabetes5Page);
-                                  } else {
-                                    showToast("You should answer the question",
-                                        MessageErrorType.error);
-                                  } 
-                      
+                          if (controller.postDiabetes.steroidsUsage != null) {
+                            Get.toNamed(CustomPage.diabetes5Page);
+                          } else {
+                            showToast("You should answer the question",
+                                MessageErrorType.error);
+                          }
                         },
                         radius: 10,
                         height: 46,
@@ -97,7 +92,7 @@ class _Diabetes4ScreenState extends State<Diabetes4Screen> {
                                 color: CustomColors.darkblue3, width: 2)),
                         child: MaterialButton(
                           onPressed: () {
-                           Get.back();
+                            Get.back();
                           },
                           child: Text(
                             "Back",

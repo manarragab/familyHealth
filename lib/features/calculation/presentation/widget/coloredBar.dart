@@ -35,13 +35,13 @@ controller.setId(id);
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-           id=="diabetes8"?SizedBox():  _buildNumberRow(),
+           id=="diabetes8" ||  id=="ibs6"?SizedBox():  _buildNumberRow(),
               SizedBox(height: 5),
               _buildBar(barWidth, indicatorPosition),
               SizedBox(height: 5),
               _buildLabelRow(barWidth),
               SizedBox(height: 25),
-              _buildBmiScore(),
+             id=="ibs6"?SizedBox():   _buildBmiScore(),
             ],
           ),
         );
@@ -73,7 +73,7 @@ controller.setId(id);
               _buildBarSegment(barWidth * 0.25, Colors.blue, "low"),
               _buildBarSegment(barWidth * 0.25, Colors.green, "normal"),
               _buildBarSegment(barWidth * 0.25, Colors.yellow, "over"),
-              _buildBarSegment(barWidth * 0.25, Colors.red, "obese"),
+              _buildBarSegment(barWidth * 0.25, CustomColors.redd, "obese"),
             ],
           ),
         ),
@@ -158,7 +158,7 @@ subTitle??"",
         color: color,
         borderRadius: BorderRadius.horizontal(
           left: color == Colors.blue ? Radius.circular(10) : Radius.zero,
-          right: color == Colors.red ? Radius.circular(10) : Radius.zero,
+          right: color == CustomColors.redd ? Radius.circular(10) : Radius.zero,
         ),
       ),
     );

@@ -5,7 +5,17 @@ import 'package:abg/features/calculation/domain/controller/CalculationController
 
 class White4container extends StatelessWidget {
   final String id;
-  const White4container({super.key, required this.id});
+  final String? title;
+  final String? txt1;
+  final String? txt2;
+
+  const White4container({
+    super.key,
+    required this.id,
+    this.title,
+    this.txt1,
+    this.txt2,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,10 +24,6 @@ class White4container extends StatelessWidget {
     return GetBuilder<Calculationcontroller>(
       id: id,
       builder: (_) {
-        final bool selectedYes = calc.selectedRadio == "Yes";
-        final bool selectedNo = calc.selectedRadio == "No";
-
-
         return Container(
           width: Get.width,
           decoration: BoxDecoration(
@@ -29,7 +35,7 @@ class White4container extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Are you taking high blood pressure medication?",
+                title ?? "Are you taking high blood pressure medication?",
                 style: TFonts.inter(
                   color: CustomColors.darkblack1,
                   fontSize: 12,
@@ -41,20 +47,14 @@ class White4container extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   _radioOption(
-                    text: "Yes",
-                    selected: selectedYes,
-                    onTap: () {
-                      calc.selecting("Yes", id , true);
-                
-                    },
+                    text: txt1 ?? "Yes",
+                    selected: calc.selectedRadio == (txt1 ?? "Yes"),
+                    onTap: () => _handleSelection(txt1 ?? "Yes", true),
                   ),
                   _radioOption(
-                    text: "No",
-                    selected: selectedNo,
-                    onTap: () {
-                      calc.selecting("No", id , false );
-                    
-                    },
+                    text: txt2 ?? "No",
+                    selected: calc.selectedRadio == (txt2 ?? "No"),
+                    onTap: () => _handleSelection(txt2 ?? "No", false),
                   ),
                 ],
               ),
@@ -92,4 +92,12 @@ class White4container extends StatelessWidget {
       ),
     );
   }
+
+  
+  void _handleSelection(String text, bool isSelected) {
+    final calc = Get.find<Calculationcontroller>();
+    calc.selecting(text, id, isSelected);
+    print("texttttttttttttttt ${calc.selectedRadio}");
+  }
+
 }
