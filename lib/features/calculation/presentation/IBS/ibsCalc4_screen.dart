@@ -24,7 +24,6 @@ class Ibscalc4Screen extends GetWidget<Calculationcontroller> {
               centertxt: "NEW Calculator",
               title: "Symptom\nChecker\nFor IBS",
               image: "assets/svg/ibs.svg",
-              heightt: 900.h,
               widg: Column(
                 children: [
                    SizedBox(

@@ -55,7 +55,7 @@ class Greencontainer extends StatelessWidget {
         Container(
           padding: EdgeInsets.symmetric(horizontal: 12),
           width: double.infinity,
-          height: heightt ?? 515,
+          height: heightt,
           decoration: BoxDecoration(
               color: CustomColors.lightGreen1,
               borderRadius: BorderRadius.circular(10)),

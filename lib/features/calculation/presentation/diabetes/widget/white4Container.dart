@@ -70,7 +70,7 @@ class White4container extends StatelessWidget {
     required bool selected,
     required VoidCallback onTap,
   }) {
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
       child: Row(
         children: [
