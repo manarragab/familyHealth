@@ -35,13 +35,13 @@ controller.setId(id);
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-           id=="diabetes8" ||  id=="ibs6"?SizedBox():  _buildNumberRow(),
+           id=="diabetes8" ?SizedBox():  _buildNumberRow(),
               SizedBox(height: 5),
               _buildBar(barWidth, indicatorPosition),
               SizedBox(height: 5),
               _buildLabelRow(barWidth),
               SizedBox(height: 25),
-             id=="ibs6"?SizedBox():   _buildBmiScore(),
+             _buildBmiScore(),
             ],
           ),
         );

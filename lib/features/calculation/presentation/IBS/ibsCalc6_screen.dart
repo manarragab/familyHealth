@@ -17,7 +17,7 @@ class Ibscalc6Screen extends GetWidget<Calculationcontroller> {
           builder: (_){
 return Padding(
             padding: EdgeInsets.symmetric(horizontal: 16),
-            child: ListView(
+            child: Column(
               children: [
                 Greencontainer(
                     firstTxt:
@@ -25,56 +25,24 @@ return Padding(
               centertxt: "NEW Calculator",
               title: "Symptom\nChecker\nFor IBS",
               image: "assets/svg/ibs.svg",
-              heightt: 540.h,
-                    widg: Column(children: [
+              heightt: 350.h,
+                    widg: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
                       SizedBox(
                         height: 10,
                       ),
+                     
+                     
                       Text(
-                        "Score",
+                                            
+                        controller.responseIBS.data?.category??"",
+                        textAlign: TextAlign.left,
                         style: GoogleFonts.almarai(
-                          color: CustomColors.darkblue3,
-                          fontSize: 30,
-                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
+                          color: CustomColors.darkblack1,
+                          fontWeight: FontWeight.w400,
                         ),
-                      ),
-                      Coloredbar(
-                        id: "ibs6",
-                        txt2: ["", "", ""],
-                        txt: [
-                          "Low Risk",
-                          "Normal Risk",
-                          "High Risk",
-                          "Very High Risk"
-                        ],
-                       
-                      //  subTitle: controller.responseDiabetes.data?.riskResult.toString(),
-                      ),
-                     SizedBox(
-                        height: 10,
-                      ),
-                      Row(
-                        children: [
-                          Container(
-                            width: 20,
-                            height: 20,
-                            decoration: BoxDecoration(
-                                color: CustomColors.redd,
-                                borderRadius: BorderRadius.circular(2)),
-                          ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Text(
-                      
-                            controller.responseIBS.data?.category??"",
-                            style: GoogleFonts.almarai(
-                              fontSize: 16,
-                              color: CustomColors.darkblack1,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ],
                       ),
                     SizedBox(
                         height: 10,
