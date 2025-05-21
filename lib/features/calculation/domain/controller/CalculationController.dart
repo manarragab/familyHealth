@@ -157,7 +157,7 @@ class Calculationcontroller extends MainGetxController {
     statusError.checkStatus(response, () {
       responseBMi = response as PostBMIResponse;
 
-      updateBmi(responseBMi.data?.score ?? 0.0, Get.width - 80, idd);
+      updateBmi(responseBMi.data?.score ?? 0.0 , Get.width - 80, idd);
 
       Get.to(Bmi2calcScreen());
     });

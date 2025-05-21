@@ -6,10 +6,16 @@ class Coloredbar extends StatelessWidget {
   final List<String>? txt;
   final List<String>? txt2;
   final String? title;
-  final String? subTitle; 
-  final String id; 
+  final String? subTitle;
+  final String id;
 
-  Coloredbar({super.key, this.txt, this.txt2  , this.title , this.subTitle, required this.id});
+  Coloredbar(
+      {super.key,
+      this.txt,
+      this.txt2,
+      this.title,
+      this.subTitle,
+      required this.id});
 
   final Calculationcontroller controller = Get.find();
 
@@ -17,31 +23,50 @@ class Coloredbar extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = Get.width;
     double barWidth = screenWidth - 80;
-    
-    
-
+    double percent = 0.0;
     return GetBuilder<Calculationcontroller>(
       id: id,
       builder: (context) {
-        double indicatorPosition =
-            ((controller.bmiValue - controller.minBmi) /
-                (controller.maxBmi - controller.minBmi)) *
-            barWidth;
-          
-controller.setId(id);
+        double selected = controller.bmiValue;
+        switch (selected) {
+          case < 18.5:
+            percent = (selected / 18.5) * 0.25;
+
+            /// low weight
+            break;
+          case < 25:
+            percent = (selected / 25) * 0.5;
+
+            /// normal weight
+            break;
+          case < 30:
+            percent = (selected / 30) * 0.75;
+
+            /// over weight
+            break;
+          default:
+            percent = 0.9;
+
+          /// obesity
+        }
+
+        double indicatorPosition = percent * barWidth;
+        sPrint.info(
+            'indicatorPosition:: $indicatorPosition barwidth: $barWidth  ${((controller.bmiValue) / (controller.maxBmi))}  ${(controller.bmiValue)} / ${(controller.maxBmi - controller.minBmi)}');
+        controller.setId(id);
 
         return Container(
           margin: EdgeInsets.only(top: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-           id=="diabetes8" ?SizedBox():  _buildNumberRow(),
+              id == "diabetes8" ? SizedBox() : _buildNumberRow(),
               SizedBox(height: 5),
               _buildBar(barWidth, indicatorPosition),
               SizedBox(height: 5),
               _buildLabelRow(barWidth),
               SizedBox(height: 25),
-             _buildBmiScore(),
+              _buildBmiScore(),
             ],
           ),
         );
@@ -80,12 +105,7 @@ controller.setId(id);
         Positioned(
           left: indicatorPosition.clamp(0, barWidth - 6),
           child: GestureDetector(
-            
-            onHorizontalDragUpdate: (details) {
-              // controller.updateBmi(
-              //     indicatorPosition + (details.delta.dx * controller.speedFactor * 2), // Faster cursor
-              //     barWidth);
-            },
+            onHorizontalDragUpdate: (details) {},
             child: Container(
               width: 4,
               height: 30,
@@ -117,33 +137,33 @@ controller.setId(id);
       builder: (context) => Column(
         children: [
           Text(
-            title??"BMI score",
+            title ?? "BMI score",
             style: GoogleFonts.almarai(
               fontSize: 30,
               color: CustomColors.darkblack1,
               fontWeight: FontWeight.w700,
             ),
           ),
-
-     Text(
-subTitle??"",
- key: ValueKey(id),
-  style: GoogleFonts.almarai(
-    fontSize: 40,
-    color: CustomColors.green1,
-    fontWeight: FontWeight.w700,
-  ),
-),
-
-          SizedBox(height: 18),
- id=="diabetes8"? SizedBox() : Text(
-            subTitle??"",
+          Text(
+            subTitle ?? "",
+            key: ValueKey(id),
             style: GoogleFonts.almarai(
-              fontSize: 16,
-              color: CustomColors.darkblack1,
+              fontSize: 40,
+              color: CustomColors.green1,
               fontWeight: FontWeight.w700,
             ),
           ),
+          SizedBox(height: 18),
+          id == "diabetes8"
+              ? SizedBox()
+              : Text(
+                  subTitle ?? "",
+                  style: GoogleFonts.almarai(
+                    fontSize: 16,
+                    color: CustomColors.darkblack1,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
         ],
       ),
     );
@@ -167,7 +187,7 @@ subTitle??"",
   Widget _buildLabel(String text, int i) {
     return Text(
       txt?[i] ?? text,
-     // key: ValueKey("label_$i"),
+      // key: ValueKey("label_$i"),
       style: GoogleFonts.almarai(
         fontSize: 13,
         color: CustomColors.darkblack1,
