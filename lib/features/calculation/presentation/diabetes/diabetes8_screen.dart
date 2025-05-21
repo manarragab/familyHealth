@@ -69,7 +69,7 @@ class _Diabetes8ScreenState extends State<Diabetes8Screen> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    controller.postDiabetes = PostDiabetesMd();
+                    controller.emptyData();
                     Get.until((route) =>
                         Get.currentRoute == CustomPage.diabetes1Page);
                   },

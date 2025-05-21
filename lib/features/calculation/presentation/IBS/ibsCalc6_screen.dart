@@ -59,7 +59,7 @@ class Ibscalc6Screen extends GetWidget<Calculationcontroller> {
                       ),
                       GestureDetector(
                         onTap: () {
-                          controller.postIBS = PostIbsMD();
+                          controller.emptyData();
                           Get.until((route) =>
                               Get.currentRoute == CustomPage.ibsPage1);
                         },

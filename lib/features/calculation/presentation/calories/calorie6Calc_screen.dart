@@ -79,7 +79,8 @@ class _Calorie6calcScreenState extends State<Calorie6calcScreen> {
               ),
               GestureDetector(
                 onTap: () {
-                  Get.offAll(CaloriecalcScreen());
+              //    Get.offAll(CaloriecalcScreen());
+                  showToast("under devlopment", MessageErrorType.error);
                 },
                 child: Container(
                   child: Row(

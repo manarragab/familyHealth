@@ -322,4 +322,12 @@ class Calculationcontroller extends MainGetxController {
         ? postDiabetes.familyHistoryOfDiabetes = num
         : postDiabetes.smokingHistory = num2;
   }
+
+  void emptyData() {
+    selectedRadio = null;
+    postBmi = PostBmiMd();
+    postTracker = PostTrackerMD();
+    postDiabetes = PostDiabetesMd();
+    postIBS = PostIbsMD();
+  }
 }
