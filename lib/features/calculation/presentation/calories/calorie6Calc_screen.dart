@@ -27,7 +27,7 @@ class _Calorie6calcScreenState extends State<Calorie6calcScreen> {
                 centertxt: "Calorie Calculator",
                 title: "Calorie",
                 image: "assets/images/fruity.png",
-                heightt: 534,
+               
                 widg: Column(
                   children: [
                     SizedBox(

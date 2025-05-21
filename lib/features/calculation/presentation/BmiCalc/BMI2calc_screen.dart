@@ -15,12 +15,12 @@ class Bmi2calcScreen extends GetView<Calculationcontroller>{
           child: ListView(
             children: [
               Greencontainer(
-                  heightt: 449,
                   widg: Container(
                     child: Column(
                       children: [
                         Coloredbar(
                           id: "BMI2",
+                          score: controller.responseBMi.data?.score?.toStringAsFixed(2)??"" ,
                            subTitle: controller.responseBMi.data?.category,),
                       ],
                     ),
@@ -31,7 +31,7 @@ class Bmi2calcScreen extends GetView<Calculationcontroller>{
               Container(
                 padding: EdgeInsets.symmetric(vertical: 15, horizontal: 7),
                 width: double.infinity,
-                height: 149,
+               
                 decoration: BoxDecoration(
                     color: CustomColors.lightGreen1,
                     borderRadius: BorderRadius.circular(10)),

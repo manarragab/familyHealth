@@ -157,7 +157,6 @@ class Calculationcontroller extends MainGetxController {
     statusError.checkStatus(response, () {
       responseBMi = response as PostBMIResponse;
 
-      updateBmi(responseBMi.data?.score ?? 0.0 , Get.width - 80, idd);
 
       Get.to(Bmi2calcScreen());
     });
@@ -173,8 +172,6 @@ class Calculationcontroller extends MainGetxController {
       print(
           "qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq ${responseDiabetes.data?.riskResult}");
 
-      updateBmi(responseDiabetes.data?.riskResult?.toDouble() ?? 0.0,
-          Get.width - 80, idd);
       update(['diabetes8']);
       Get.toNamed(CustomPage.diabetes8Page);
     });
@@ -203,15 +200,7 @@ class Calculationcontroller extends MainGetxController {
   }
 
   //colored bar
-  double bmiValue = 25.0;
-  final double minBmi = 10.0;
-  final double maxBmi = 40.0;
-  final double speedFactor = 2.5;
-
-  void updateBmi(double newPosition, double barWidth, idd) {
-    bmiValue = ((newPosition / barWidth) * (maxBmi - minBmi)) + minBmi;
-    bmiValue = bmiValue.clamp(minBmi, maxBmi);
-  }
+ 
 
 //white2container , audio bar
   Map<String, double> valuesMap = {};
@@ -252,9 +241,9 @@ class Calculationcontroller extends MainGetxController {
 //radiooitem
   String? selectedRadio;
 
-  void selected(String val) {
+  void selected(String val , String id) {
     selectedRadio = val;
-    update();
+    update([id]);
     // select=true;
   }
 
@@ -279,21 +268,23 @@ class Calculationcontroller extends MainGetxController {
   }
 
 //diabetes radio
-  String? select;
 
   void selecting(String val, String id, bool pressure) {
     selectedRadio = val;
     if (id == "diabetes3") {
       postDiabetes.highBloodPressure = pressure;
       print("ddddddddddddddd ${postDiabetes.highBloodPressure}");
+     
     } else if (id == "diabetes4") {
       postDiabetes.steroidsUsage = pressure;
+      
     }
     //for txt1 , txt2
     else if (id == "ibs2") {
       if (pressure == true) {
         String x = "49_or_less";
         postIBS.age = x;
+        
         print("ibssssssssssss ${postIBS.age}");
       } else {
         String y = "50_or_more";
@@ -329,7 +320,6 @@ class Calculationcontroller extends MainGetxController {
     selectedIndex = 0;
     valuesMap = {};
     selectedone = null;
-    select = null;
     rad = null;
     num = null;
     num2 = null;

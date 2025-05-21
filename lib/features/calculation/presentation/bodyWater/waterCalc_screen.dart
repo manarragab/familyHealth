@@ -26,7 +26,7 @@ class WatercalcScreen extends StatelessWidget {
                     "Control your diet with this easy-to-use calorie calculator.",
                 image: "assets/images/water2.png",
                 title: "Body water",
-                heightt: 636,
+             
                 size: 33.5,
                 widg: Container(
                     child: Column(

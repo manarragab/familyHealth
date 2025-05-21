@@ -21,7 +21,7 @@ class Ibscalc2Screen extends StatelessWidget {
               centertxt: "NEW Calculator",
               title: "Symptom\nChecker\nFor IBS",
               image: "assets/svg/ibs.svg",
-            //  heightt: 615.h,
+          
               widg: Column(
                 children: [
                   SizedBox(

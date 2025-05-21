@@ -47,17 +47,22 @@ class SignUpScreen extends GetView<AuthController> {
               ),
               CustomPadding.heightButton,
               CustomTextField.nameTextField(
+                controller: controller.nameController,
                 (value) {
                   controller.postRegister.name = value;
-                },
+                }, 
               ),
+
               CustomPadding.smallHeight,
               CustomTextField.datePickerTextField(
+                  controller: controller.dateController,
+                isRequired: true, 
                   prefixIconPath: "assets/svg/clender.svg",
                   hint: CustomTrans.dateOfBirth.tr,
-                  onDatePickerPress: () {
+                  onDatePickerPress: () { 
                     CustomDatePicker((date) {
                       controller.postRegister.dateOfBirth = date;
+                      controller.dateController.text = date.stringDate;
                     }).showDatePicker(context);
                   }),
               CustomPadding.smallHeight,
@@ -89,6 +94,10 @@ class SignUpScreen extends GetView<AuthController> {
                     hideConfirmPassword(!(hideConfirmPassword.value));
                   },
                   validator: (value) {
+                    
+                    if (value == null || value.isEmpty) {
+                      return CustomTrans.mustHaveValue.tr;
+                    }
                     if (controller.postRegister.password != value) {
                       return CustomTrans.wrongConfirmedPassword.tr;
                     }

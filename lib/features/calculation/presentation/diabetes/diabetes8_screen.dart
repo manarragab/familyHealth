@@ -1,7 +1,6 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/data/models/calculation/diabetes/post_diabetes/post_diabetes_MD.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
-import 'package:abg/features/calculation/presentation/diabetes/diabetes1_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/coloredBar.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
 import 'package:abg/res/router/pages.dart';
@@ -29,7 +28,7 @@ class _Diabetes8ScreenState extends State<Diabetes8Screen> {
                     centertxt: "Diabetes Type 2 Risk Calculator",
                     title: "Diabetes\nType2\nRisk",
                     image: "assets/svg/diabetes.svg",
-                    heightt: 550,
+                 
                     widg: Column(children: [
                       SizedBox(
                         height: 10,
@@ -38,23 +37,35 @@ class _Diabetes8ScreenState extends State<Diabetes8Screen> {
                         "Score",
                         style: GoogleFonts.almarai(
                           color: CustomColors.darkblue3,
-                          fontSize: 30,
+                          fontSize: 24,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      Coloredbar(
-                        id: "diabetes8",
-                        txt2: ["", "", ""],
-                        txt: [
-                          "Low Risk",
-                          "Normal Risk",
-                          "High Risk",
-                          "Very High Risk"
-                        ],
-                        title: "score",
-                        subTitle: controller.responseDiabetes.data?.riskResult
-                            .toString(),
+                      // Coloredbar(
+                      //   id: "diabetes8",
+                      //   txt2: ["", "", ""],
+                      //   txt: [
+                      //     "Low Risk",
+                      //     "Normal Risk",
+                      //     "High Risk",
+                      //     "Very High Risk"
+                      //   ],
+                      //   title: "score",
+                      //   subTitle: controller.responseDiabetes.data!.riskResult
+                      //       ?.toStringAsFixed(2),
+                      // ),
+
+                       
+                     SizedBox(height: 10,),
+                      Text(
+                         controller.responseDiabetes.data!.riskResult?.toStringAsFixed(2)??"",
+                        style: GoogleFonts.almarai(
+                          color: CustomColors.primary,
+                          fontSize: 24.w,
+                          fontWeight: FontWeight.w700,
+                        ),
                       ),
+                       SizedBox(height: 10,),
                       Text(
                         "Right now, your risk for having type 2 diabetes is low. However, your risk changes over time. Be sure to schedule regular check-ups with your doctor and take healthy steps toward preventing or delaying diabetes.",
                         style: GoogleFonts.almarai(

@@ -7,7 +7,6 @@ class Greencontainer extends StatelessWidget {
   final String? title;
   final String? image;
   final Widget widg;
-  final double? heightt;
   final String? firstTxt;
     final String? centertxt;
     final double? size;
@@ -18,10 +17,9 @@ class Greencontainer extends StatelessWidget {
     this.title,
     this.image, 
     required this.widg,
-    this.heightt,
     this.firstTxt,
     this.centertxt,
-    this.size
+    this.size, 
   });
   @override
   Widget build(BuildContext context) {
@@ -53,9 +51,9 @@ class Greencontainer extends StatelessWidget {
           height: 15,
         ),
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 12),
+          padding: EdgeInsets.only(left: 12 , right: 12,  bottom: 16),
           width: double.infinity,
-          height: heightt,
+         
           decoration: BoxDecoration(
               color: CustomColors.lightGreen1,
               borderRadius: BorderRadius.circular(10)),

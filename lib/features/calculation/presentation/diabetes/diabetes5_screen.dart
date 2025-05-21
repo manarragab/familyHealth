@@ -29,7 +29,7 @@ class _Diabetes5ScreenState extends State<Diabetes5Screen> {
                   centertxt: "Diabetes Type 2 Risk Calculator",
                   title: "Diabetes\nType2\nRisk",
                   image: "assets/svg/diabetes.svg",
-                  heightt: 710,
+                 
                   widg: Column(
                     children: [
                       SizedBox(
