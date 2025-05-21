@@ -1,3 +1,6 @@
+
+import 'package:abg/data/const/export.dart';
+import 'package:abg/res/configuration/cupertino_date_picker/cupertino_date_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
@@ -12,9 +15,12 @@ class DateItem extends StatefulWidget {
 class _DateItemState extends State<DateItem> {
   final DateTime now = DateTime.now();
 
-  final FixedExtentScrollController _dayController = FixedExtentScrollController();
-  final FixedExtentScrollController _monthController = FixedExtentScrollController();
-  final FixedExtentScrollController _yearController = FixedExtentScrollController();
+  final FixedExtentScrollController _dayController =
+      FixedExtentScrollController();
+  final FixedExtentScrollController _monthController =
+      FixedExtentScrollController();
+  final FixedExtentScrollController _yearController =
+      FixedExtentScrollController();
 
   @override
   void initState() {
@@ -52,7 +58,24 @@ class _DateItemState extends State<DateItem> {
                 width: 2,
               ),
             ),
-            child: Container(
+            child: CupertinoDatePicker(
+              itemExtent: 50,
+              minDate: DateTime(2000),
+              maxDate: DateTime(2030),
+              selectedDate: DateTime.now(),
+              useMagnifier: true,
+              selectionOverlay: Container(
+                width: double.infinity,
+                height: 60,
+              ),
+              selectedStyle: TFonts.appBarTitle(
+                color: Colors.black,
+                fontWeight: TFontWights.medium,
+                fontSize: 20,
+              ),
+              onSelectedItemChanged: (date) => date,
+            ),
+            /*      child: Container(
               margin: EdgeInsets.symmetric(horizontal: 25),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -163,7 +186,7 @@ class _DateItemState extends State<DateItem> {
                   ),
                 ],
               ),
-            ),
+            ),*/
           ),
         ],
       );
@@ -179,5 +202,10 @@ class _DateItemState extends State<DateItem> {
         fontWeight: FontWeight.w400,
       ),
     );
+  }
+
+  Widget? getSelected(BuildContext context,
+      {required int columnCount, required int selectedIndex}) {
+    return Container();
   }
 }
