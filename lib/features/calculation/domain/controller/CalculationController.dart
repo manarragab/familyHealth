@@ -186,20 +186,8 @@ class Calculationcontroller extends MainGetxController {
     update([id]);
   }
 
-  int? selectedDay;
-  int? selectedMonth;
-  int? selectedYear;
+DateTime? selectedDueDate;
 
-  void postPeroid() {
-    if (selectedDay == null && selectedMonth == null && selectedYear == null) {
-      showToast("You should select menstrual date", MessageErrorType.error);
-    } else {
-      postTracker.date =
-          "${selectedYear.toString()}-${selectedMonth.toString().padLeft(2, '0')}-${selectedDay.toString().padLeft(2, '0')}";
-
-      print("................... ${postTracker.date}");
-    }
-  }
 
   addTracker() async {
     loadingGetxController.showLoading();
