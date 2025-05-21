@@ -64,7 +64,7 @@ class _Diabetes8ScreenState extends State<Diabetes8Screen> {
                         ),
                       ),
                     ])),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 GestureDetector(
@@ -73,28 +73,26 @@ class _Diabetes8ScreenState extends State<Diabetes8Screen> {
                     Get.until((route) =>
                         Get.currentRoute == CustomPage.diabetes1Page);
                   },
-                  child: Container(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          "assets/images/greensign.png",
-                          width: 25.9,
-                          height: 24,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        "assets/images/greensign.png",
+                        width: 25.9,
+                        height: 24,
+                      ),
+                      const SizedBox(
+                        width: 7,
+                      ),
+                      Text(
+                        "Recalculation",
+                        style: GoogleFonts.almarai(
+                          color: CustomColors.green1,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w400,
                         ),
-                        SizedBox(
-                          width: 7,
-                        ),
-                        Text(
-                          "Recalculation",
-                          style: GoogleFonts.almarai(
-                            color: CustomColors.green1,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ],
