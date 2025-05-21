@@ -143,11 +143,13 @@ class Calculationcontroller extends MainGetxController {
   }
 
   String? idd;
+
   void setId(String id) {
     idd = id;
   }
 
   String? idColored;
+
   addBmi() async {
     loadingGetxController.showLoading();
     var response = await sl<CalculationCases>().addBmi(postBmi);
@@ -180,14 +182,12 @@ class Calculationcontroller extends MainGetxController {
 
   //select gender (diabetes)
   String selectt = "";
+
   void selectGender(String val, String id) {
     selectt = val;
     postDiabetes.gender = val;
     update([id]);
   }
-
-DateTime? selectedDueDate;
-
 
   addTracker() async {
     loadingGetxController.showLoading();
@@ -207,6 +207,7 @@ DateTime? selectedDueDate;
   final double minBmi = 10.0;
   final double maxBmi = 40.0;
   final double speedFactor = 2.5;
+
   void updateBmi(double newPosition, double barWidth, idd) {
     bmiValue = ((newPosition / barWidth) * (maxBmi - minBmi)) + minBmi;
     bmiValue = bmiValue.clamp(minBmi, maxBmi);
@@ -250,6 +251,7 @@ DateTime? selectedDueDate;
 
 //radiooitem
   String? selectedRadio;
+
   void selected(String val) {
     selectedRadio = val;
     update();
@@ -258,6 +260,7 @@ DateTime? selectedDueDate;
 
 //radioooitem
   String? selectedone;
+
   void selectOne(String val) {
     selectedone = val;
     update();
@@ -277,6 +280,7 @@ DateTime? selectedDueDate;
 
 //diabetes radio
   String? select;
+
   void selecting(String val, String id, bool pressure) {
     selectedRadio = val;
     if (id == "diabetes3") {
@@ -304,6 +308,7 @@ DateTime? selectedDueDate;
   String? rad;
   int? num;
   int? num2;
+
   void radioFamily(String value, String id) {
     rad = value;
     id == "diabetes6"

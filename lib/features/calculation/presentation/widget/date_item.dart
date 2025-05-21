@@ -53,9 +53,8 @@ class _DateItemState extends State<DateItem> {
             child: CupertinoDatePicker(
               itemExtent: 50,
               minDate: DateTime(2000),
-              maxDate: DateTime(DateTime.now().year),
-              selectedDate: DateTime.now(),
-              useMagnifier: true,
+              maxDate: DateTime.now(),
+              selectedDate: DateTime.now().subtract(const Duration(days: 1)),
               selectionOverlay: Container(
                 width: double.infinity,
                 height: 60,
@@ -66,7 +65,7 @@ class _DateItemState extends State<DateItem> {
                 fontSize: 20,
               ),
               onSelectedItemChanged: (date) =>
-                  controller.selectedDueDate = date,
+                  controller.postTracker.date = DateFormat('yyyy-MM-dd').format(date),
             ),
           ),
         ],
