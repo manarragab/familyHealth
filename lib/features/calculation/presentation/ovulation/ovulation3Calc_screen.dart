@@ -1,3 +1,4 @@
+import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
 import 'package:abg/features/calculation/presentation/DuedateCalc/dueDate_screen.dart';
 import 'package:abg/features/calculation/presentation/ovulation/ovulationCalc_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/pinkContainer.dart';
@@ -12,6 +13,7 @@ import 'package:google_fonts/google_fonts.dart';
 class Ovulation3calcScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Calculationcontroller controller=Get.find();
     return Scaffold(
       appBar: CustomAppBar.appBar(CustomTrans.dueDateCalc.tr),
       body: Padding(
@@ -65,6 +67,8 @@ class Ovulation3calcScreen extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
+                controller.emptyData();
+
                 Get.off(OvulationcalcScreen());
               },
               child: Container(

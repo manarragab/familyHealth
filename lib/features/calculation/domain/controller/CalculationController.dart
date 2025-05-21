@@ -244,12 +244,10 @@ class Calculationcontroller extends MainGetxController {
   void selected(String val , String id) {
     selectedRadio = val;
     update([id]);
-    // select=true;
   }
 
 //radioooitem
   String? selectedone;
-
   void selectOne(String val) {
     selectedone = val;
     update();
@@ -326,5 +324,6 @@ class Calculationcontroller extends MainGetxController {
     valuesBar = {};
     idColored = null;
     idd = null;
+    selectedRadio=null;
   }
 }

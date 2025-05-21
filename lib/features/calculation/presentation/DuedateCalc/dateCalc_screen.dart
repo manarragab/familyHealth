@@ -45,6 +45,8 @@ class DatecalcScreen extends GetView<Calculationcontroller>{
             ),
             GestureDetector(
               onTap: () {
+                controller.emptyData();
+
                Get.back();
               },
               child: Container(

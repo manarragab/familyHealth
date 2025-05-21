@@ -1,3 +1,4 @@
+import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
 import 'package:abg/features/calculation/presentation/bodyWater/waterCalc_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/coloredBar.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
@@ -9,8 +10,10 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Water2calcScreen extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
+    Calculationcontroller calcController=Get.find();
     return Scaffold(
         appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
         body: Padding(
@@ -50,6 +53,7 @@ class Water2calcScreen extends StatelessWidget {
               ),
               GestureDetector(
                 onTap: () {
+calcController.emptyData();
                   Get.back();
                 },
                 child: Container(
