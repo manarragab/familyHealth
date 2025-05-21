@@ -329,5 +329,6 @@ class Calculationcontroller extends MainGetxController {
     postTracker = PostTrackerMD();
     postDiabetes = PostDiabetesMd();
     postIBS = PostIbsMD();
+    answers = List.generate(5, (_) => null);
   }
 }
