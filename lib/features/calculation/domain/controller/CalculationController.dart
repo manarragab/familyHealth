@@ -84,7 +84,7 @@ class Calculationcontroller extends MainGetxController {
     'Do you feel any new bulges (masses) in your abdomen?',
   ];
 
-  final List<bool?> answers2 = List.generate(5, (_) => null);
+   List<bool?> answers2 = List.generate(5, (_) => null);
 
   void storeValues2(int index) {
     switch (index) {
@@ -121,7 +121,7 @@ class Calculationcontroller extends MainGetxController {
     'Is there a family history of colon cancer?',
   ];
 
-  final List<bool?> answers3 = List.generate(3, (_) => null);
+   List<bool?> answers3 = List.generate(3, (_) => null);
 
   void storeValues3(int index) {
     switch (index) {
@@ -323,5 +323,18 @@ class Calculationcontroller extends MainGetxController {
     postDiabetes = PostDiabetesMd();
     postIBS = PostIbsMD();
     answers = List.generate(5, (_) => null);
+    answers2 = List.generate(5, (_) => null);
+    answers3 = List.generate(3, (_) => null);
+    selectt = "";
+    selectedIndex = 0;
+    valuesMap = {};
+    selectedone = null;
+    select = null;
+    rad = null;
+    num = null;
+    num2 = null;
+    valuesBar = {};
+    idColored = null;
+    idd = null;
   }
 }
