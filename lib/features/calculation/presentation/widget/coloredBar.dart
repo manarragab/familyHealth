@@ -139,17 +139,8 @@ class Coloredbar extends StatelessWidget {
           Text(
             title ?? "BMI score",
             style: GoogleFonts.almarai(
-              fontSize: 30,
+              fontSize: 25.w,
               color: CustomColors.darkblack1,
-              fontWeight: FontWeight.w700,
-            ),
-          ),
-          Text(
-            subTitle ?? "",
-            key: ValueKey(id),
-            style: GoogleFonts.almarai(
-              fontSize: 40,
-              color: CustomColors.green1,
               fontWeight: FontWeight.w700,
             ),
           ),
@@ -159,8 +150,8 @@ class Coloredbar extends StatelessWidget {
               : Text(
                   subTitle ?? "",
                   style: GoogleFonts.almarai(
-                    fontSize: 16,
-                    color: CustomColors.darkblack1,
+                    fontSize: 22.w,
+                    color: CustomColors.primary,
                     fontWeight: FontWeight.w700,
                   ),
                 ),
