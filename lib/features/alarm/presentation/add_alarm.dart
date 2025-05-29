@@ -80,7 +80,7 @@ class AddAlarm extends GetView<AlarmController> {
                     controller.alarmTimeController.text =   DateFormat("hh:mm a").format(date);
 
 //this edit as when i got data from api it be always AM 
-                      }).showTimePicker(context);
+                      }).showTimePickerEveryHalfHour(context);
                     },
                   ),
                   const SizedBox(height: 16),

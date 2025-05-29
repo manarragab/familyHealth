@@ -124,7 +124,7 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
             ),
             InkWell(
               onTap: () {
-                Get.to(OvulationcalcScreen());
+                Get.toNamed(CustomPage.ovulatePage);
               },
               child: CardItem(
                 image: "assets/images/womb.png",
