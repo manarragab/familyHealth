@@ -92,7 +92,7 @@ class _Ovulation3calcScreenState extends State<Ovulation3calcScreen> {
                 ),
                 MainButton(
                   onPressed: () {
-                    Get.offAllNamed(CustomPage.homePage);
+                    Get.until((route) => Get.currentRoute == CustomPage.layoutPage);
                   },
                   backgroundColor: CustomColors.pink,
                   width: 70,

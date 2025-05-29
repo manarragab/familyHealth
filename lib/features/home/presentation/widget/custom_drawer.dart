@@ -1,3 +1,4 @@
+
 import 'package:abg/data/const/export.dart';
 import 'package:abg/data/remote_data/core.dart';
 import 'package:abg/features/auth/domain/cases/auth_case.dart';
@@ -56,7 +57,10 @@ class CustomDrawer extends GetView<AuthController> {
             children: items
                 .map(
                   (e) => ListTile(
-                    onTap: e.onTap,
+                    onTap: () {
+                      Get.back();
+                      e.onTap?.call();
+                    },
                     leading: CircleAvatar(
                       backgroundColor:
                           const Color(0xff30495E).withOpacity(0.85),
