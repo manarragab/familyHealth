@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:get/get.dart';
 import 'package:abg/res/configuration/color.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
+import 'package:intl/intl.dart';
 
 class DateItem extends StatefulWidget {
   @override
@@ -12,12 +13,15 @@ class DateItem extends StatefulWidget {
 }
 
 class _DateItemState extends State<DateItem> {
-  final DateTime now = DateTime.now();
+  final DateTime today = DateTime.now();
+  final calc = Get.find<Calculationcontroller>();
 
   @override
   void initState() {
     super.initState();
-    // No initial selection, we just allow the user to choose a date.
+
+    // ✅ Set today's day as a string (e.g., '29')
+    calc.postTracker.date = DateFormat('dd').format(today);
   }
 
   @override
@@ -54,7 +58,7 @@ class _DateItemState extends State<DateItem> {
               itemExtent: 50,
               minDate: DateTime(2000),
               maxDate: DateTime.now(),
-              selectedDate: DateTime.now().subtract(const Duration(days: 1)),
+              selectedDate: today, // ✅ start with today
               selectionOverlay: Container(
                 width: double.infinity,
                 height: 60,
@@ -64,8 +68,16 @@ class _DateItemState extends State<DateItem> {
                 fontWeight: TFontWights.medium,
                 fontSize: 20,
               ),
-              onSelectedItemChanged: (date) =>
-                  controller.postTracker.date = DateFormat('yyyy-MM-dd').format(date),
+              onSelectedItemChanged: (DateTime date) {
+                // ✅ Save only the day part as a string (e.g. '29')
+controller.postTracker.date =DateFormat('yyyy-MM-dd').format(date);
+                controller.update();
+
+
+// controller.postTracker.date = DateFormat('yyyy-MM-dd')
+//     .format(DateTime.now().subtract(const Duration(days: 1)));
+
+              },
             ),
           ),
         ],
@@ -82,10 +94,5 @@ class _DateItemState extends State<DateItem> {
         fontWeight: FontWeight.w400,
       ),
     );
-  }
-
-  Widget? getSelected(BuildContext context,
-      {required int columnCount, required int selectedIndex}) {
-    return Container();
   }
 }

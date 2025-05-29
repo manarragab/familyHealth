@@ -79,6 +79,7 @@ class _Ovulation3calcScreenState extends State<Ovulation3calcScreen> {
                     controller.emptyData();
                     Get.until(
                         (route) => Get.currentRoute == CustomPage.ovulatePage);
+                      
                                 },
                   
            backgroundColor: CustomColors.pink,

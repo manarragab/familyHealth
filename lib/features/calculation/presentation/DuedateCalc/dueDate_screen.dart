@@ -58,8 +58,11 @@ class _DuedateScreenState extends State<DuedateScreen> {
                         if (controller.postTracker.date != null) {
                           controller.addTracker();
                         } else {
-                          showToast("You should select menstrual date",
-                              MessageErrorType.error);
+                         
+controller.postTracker.date = DateFormat('yyyy-MM-dd')
+    .format(DateTime.now().subtract(const Duration(days: 1)));
+                          // showToast("You should select menstrual date",
+                          //     MessageErrorType.error);
                         }
                       },
                       radius: 10,

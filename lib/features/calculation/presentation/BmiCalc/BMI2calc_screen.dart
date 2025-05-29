@@ -109,7 +109,6 @@ controller.emptyData();
                   onPressed: () {
                     Get.toNamed(CustomPage.homePage);
                   },
-                  backgroundColor: CustomColors.pink,
                   width: 70,
                  titleWidget: Icon(Icons.home_outlined ,
                  size: 30

@@ -7,13 +7,14 @@ class Whitecontainer extends StatelessWidget {
   final String title;
   final String subTitle;
   final Color? col;
+  final bool? week;
 
   const Whitecontainer(
       {super.key,
       required this.image,
       required this.title,
       required this.subTitle,
-      this.col});
+      this.col, this.week});
 
   @override
   Widget build(BuildContext context) {
@@ -48,7 +49,7 @@ class Whitecontainer extends StatelessWidget {
                 ),
               ),
               Text(
-                subTitle,
+           week==true ?  "${subTitle} weeks"  :  subTitle,
                 style: GoogleFonts.almarai(
                   color: CustomColors.darkBlue2,
                   fontSize: 14,

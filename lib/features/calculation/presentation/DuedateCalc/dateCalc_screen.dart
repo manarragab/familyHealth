@@ -36,9 +36,11 @@ class DatecalcScreen extends GetView<Calculationcontroller>{
                     height: 11,
                   ),
                   Whitecontainer(
+                    week: true,
                       image: "assets/images/loveBook.png",
                       title: "Last menstrual period since",
                       subTitle: controller.responseTracker.data?.weeksPassed.toString()??"")
+               
                 ],
               ),
             ),
