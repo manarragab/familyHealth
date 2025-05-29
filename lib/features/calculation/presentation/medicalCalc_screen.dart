@@ -82,7 +82,7 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
               height: 13,
             ),
             InkWell(
-              onTap: (){
+              onTap: () {
                 Get.to(BmicalcScreen());
               },
               child: CardItem(
@@ -137,8 +137,7 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
             SizedBox(
               height: 7,
             ),
-
-             InkWell(
+            InkWell(
               onTap: () {
                 Get.toNamed(CustomPage.diabetes1Page);
               },
@@ -153,8 +152,7 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
             SizedBox(
               height: 7,
             ),
-
- InkWell(
+            InkWell(
               onTap: () {
                 Get.toNamed(CustomPage.ibsPage1);
               },
@@ -169,10 +167,9 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
             SizedBox(
               height: 7,
             ),
-
             InkWell(
-              onTap: (){
-              Get.to(BmicalcScreen());
+              onTap: () {
+                Get.to(BmicalcScreen());
               },
               child: CardItem(
                 image: "assets/images/BMI.png",
@@ -186,9 +183,8 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
               height: 7,
             ),
             InkWell(
-              onTap: (){
-
-              Get.to(CaloriecalcScreen());
+              onTap: () {
+                Get.to(CaloriecalcScreen());
               },
               child: CardItem(
                 image: "assets/images/fruits.png",
@@ -202,9 +198,8 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
               height: 7,
             ),
             InkWell(
-              onTap: (){
-
-               Get.to( WatercalcScreen());
+              onTap: () {
+                Get.to(WatercalcScreen());
               },
               child: CardItem(
                 image: "assets/images/water.png",

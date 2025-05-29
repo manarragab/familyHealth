@@ -66,11 +66,9 @@ class _Ovulation3calcScreenState extends State<Ovulation3calcScreen> {
                 col: CustomColors.lightgrey5,
               ),
             ),
-            
             SizedBox(
               height: 15,
             ),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -79,9 +77,8 @@ class _Ovulation3calcScreenState extends State<Ovulation3calcScreen> {
                     controller.emptyData();
                     Get.until(
                         (route) => Get.currentRoute == CustomPage.ovulatePage);
-                                },
-                  
-           backgroundColor: CustomColors.pink,
+                  },
+                  backgroundColor: CustomColors.pink,
                   width: 60,
                   titleWidget: Image.asset(
                     "assets/images/greensign.png",
@@ -93,15 +90,14 @@ class _Ovulation3calcScreenState extends State<Ovulation3calcScreen> {
                 SizedBox(
                   width: 5,
                 ),
-                 MainButton(
+                MainButton(
                   onPressed: () {
-                    Get.toNamed(CustomPage.homePage);
+                    Get.offAllNamed(CustomPage.homePage);
                   },
                   backgroundColor: CustomColors.pink,
                   width: 70,
-                 titleWidget: Icon(Icons.home_outlined ,
-                 size: 30
-                 , color: Colors.white),
+                  titleWidget:
+                      Icon(Icons.home_outlined, size: 30, color: Colors.white),
                 ),
               ],
             ),
