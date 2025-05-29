@@ -106,4 +106,44 @@ class CustomDatePicker {
       ),
     );
   }
+
+  void showTimePickerEveryHalfHour(BuildContext context) {
+    showCupertinoModalPopup<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return _buildBottomPicker(
+          CupertinoDatePicker(
+            mode: CupertinoDatePickerMode.time,
+            initialDateTime: _roundToNearest30Minutes(_date),
+            minimumYear: minYear,
+            minuteInterval: 30, // <-- Forces 30-minute increments
+            maximumYear: DateTime.now().year,
+            onDateTimeChanged: (DateTime newDateTime) {
+              date(newDateTime);
+            },
+          ),
+        );
+      },
+    );
+  }
+
+  DateTime _roundToNearest30Minutes(DateTime dateTime) {
+    int minute = dateTime.minute;
+    int newMinute = (minute < 15)
+        ? 0
+        : (minute < 45 ? 30 : 0);
+
+    // if we rounded up to next hour
+    if (minute >= 45) {
+      dateTime = dateTime.add(const Duration(hours: 1));
+    }
+
+    return DateTime(
+      dateTime.year,
+      dateTime.month,
+      dateTime.day,
+      dateTime.hour,
+      newMinute,
+    );
+  }
 }

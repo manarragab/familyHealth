@@ -82,7 +82,7 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
               height: 13,
             ),
             InkWell(
-              onTap: (){
+              onTap: () {
                 Get.to(BmicalcScreen());
               },
               child: CardItem(
@@ -125,6 +125,7 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
             InkWell(
               onTap: () {
                 Get.to(OvulationcalcScreen());
+                Get.toNamed(CustomPage.ovulatePage);
                 Get.toNamed(CustomPage.ovulatePage);
               },
               child: CardItem(
@@ -172,8 +173,8 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
             ),
 
             InkWell(
-              onTap: (){
-              Get.to(BmicalcScreen());
+              onTap: () {
+                Get.to(BmicalcScreen());
               },
               child: CardItem(
                 image: "assets/images/BMI.png",
@@ -187,9 +188,8 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
               height: 7,
             ),
             InkWell(
-              onTap: (){
-
-              Get.to(CaloriecalcScreen());
+              onTap: () {
+                Get.to(CaloriecalcScreen());
               },
               child: CardItem(
                 image: "assets/images/fruits.png",
@@ -203,9 +203,8 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
               height: 7,
             ),
             InkWell(
-              onTap: (){
-
-               Get.to( WatercalcScreen());
+              onTap: () {
+                Get.to(WatercalcScreen());
               },
               child: CardItem(
                 image: "assets/images/water.png",

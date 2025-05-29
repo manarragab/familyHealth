@@ -16,6 +16,11 @@ class Diabetes2Screen extends StatefulWidget {
 class _Diabetes2ScreenState extends State<Diabetes2Screen> {
   Calculationcontroller controller = Get.find();
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+  @override
   Widget build(BuildContext context) {
     return GetBuilder<Calculationcontroller>(
         id: "diabetes2Screen",
@@ -23,7 +28,7 @@ class _Diabetes2ScreenState extends State<Diabetes2Screen> {
           return Scaffold(
               appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
               body: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: ListView(
                   children: [
                     Greencontainer(

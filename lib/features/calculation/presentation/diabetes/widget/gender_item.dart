@@ -28,8 +28,6 @@ class GenderItem extends GetWidget<Calculationcontroller> {
               selected: maleSel,
               onTap: () {
                 controller.selectGender("male" , id);
-             
-                
               },
             ),
             genderBox(

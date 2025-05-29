@@ -11,16 +11,26 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-class Diabetes1Screen extends GetView<Calculationcontroller> {
+class Diabetes1Screen extends StatefulWidget {
   const Diabetes1Screen({
     super.key,
   });
 
   @override
+  State<Diabetes1Screen> createState() => _Diabetes1ScreenState();
+}
+
+class _Diabetes1ScreenState extends State<Diabetes1Screen> {
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return GetBuilder<Calculationcontroller>(
         id: "diabetes1Screen",
-        builder: (_) {
+        builder: (controller) {
           return Scaffold(
               appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
               body: Padding(
@@ -33,17 +43,16 @@ class Diabetes1Screen extends GetView<Calculationcontroller> {
                         centertxt: "Diabetes Type 2 Risk Calculator",
                         title: "Diabetes\nType2\nRisk",
                         image: "assets/svg/diabetes.svg",
-                       
                         widg: Column(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 45,
                             ),
                             DotsbarItem(
                               id: "diabetes1",
                               step: 1,
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 35,
                             ),
                             Text(
@@ -54,13 +63,13 @@ class Diabetes1Screen extends GetView<Calculationcontroller> {
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 37,
                             ),
-                            ListdayItem(
+                            const ListdayItem(
                               id: "diabetes1",
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 45,
                             ),
                             MainButton(
