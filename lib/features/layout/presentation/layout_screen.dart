@@ -21,23 +21,23 @@ class LayoutScreen extends GetView<LayoutController> {
   List<Widget> navigationBar = [
     Homescreen(),
     PillsScreen(),
-   // const Scaffold(),
+    // const Scaffold(),
     FamilyScreen(),
     MyprofileScreen(),
   ];
 
   Widget getNavigationBar(int index) {
-    switch (index) {
+/*    switch (index) {
       case 0:
         Get.put(HomeController()).onRefresh();
         break;
-         case 1:
+      case 1:
         Get.put(PilsController());
         break;
       case 2:
         Get.put(FamilyController()).onRefresh();
         break;
-    }
+    }*/
 
     //   if (index == 2) {
     //     if (serviceController.model.data?.isEmpty ?? true) {
@@ -59,7 +59,7 @@ class LayoutScreen extends GetView<LayoutController> {
     return WillPopScope(
       onWillPop: () async {
         if (controller.currentIndex != 0) {
-          controller.changeNavBarIndex(0);
+          controller.changeNavBarIndex(0, useUpdate: true);
         } else {
           Get.back();
         }
@@ -80,7 +80,8 @@ class LayoutScreen extends GetView<LayoutController> {
         ),
         bottomNavigationBar: GetBuilder<LayoutController>(builder: (logic) {
           return LayoutBottomNavBar(
-            changeNavBarIndex: controller.changeNavBarIndex,
+            changeNavBarIndex: (index) =>
+                controller.changeNavBarIndex(index, useUpdate: true),
             currentIndex: controller.currentIndex,
           );
         }),
