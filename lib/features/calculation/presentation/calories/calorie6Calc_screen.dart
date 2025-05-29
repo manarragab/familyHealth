@@ -104,7 +104,7 @@ class _Calorie6calcScreenState extends State<Calorie6calcScreen> {
                 ),
                   MainButton(
                   onPressed: () {
-                    Get.toNamed(CustomPage.homePage);
+                    Get.toNamed(CustomPage.layoutPage);
                   },
                   backgroundColor: CustomColors.pink,
                   width: 70,
@@ -112,7 +112,7 @@ class _Calorie6calcScreenState extends State<Calorie6calcScreen> {
                  size: 30
                  , color: Colors.white),
                 ),
-                
+
               ],
             ),
           ],

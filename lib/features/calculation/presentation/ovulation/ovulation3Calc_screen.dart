@@ -25,8 +25,8 @@ class _Ovulation3calcScreenState extends State<Ovulation3calcScreen> {
         child: ListView(
           children: [
             Pinkcontainer(
-              title: "Due date",
-              heightt: 443,
+
+title: "Ovulation",            
               image: "assets/images/girl.png",
               widg: Column(
                 children: [
@@ -54,9 +54,11 @@ class _Ovulation3calcScreenState extends State<Ovulation3calcScreen> {
                 ],
               ),
             ),
+
             SizedBox(
               height: 30,
             ),
+
             Container(
               margin: EdgeInsets.symmetric(horizontal: 15),
               child: Whitecontainer(
@@ -80,7 +82,6 @@ class _Ovulation3calcScreenState extends State<Ovulation3calcScreen> {
                     Get.until(
                         (route) => Get.currentRoute == CustomPage.ovulatePage);
                                 },
-                  
            backgroundColor: CustomColors.pink,
                   width: 60,
                   titleWidget: Image.asset(
@@ -95,7 +96,7 @@ class _Ovulation3calcScreenState extends State<Ovulation3calcScreen> {
                 ),
                  MainButton(
                   onPressed: () {
-                    Get.toNamed(CustomPage.homePage);
+                    Get.toNamed(CustomPage.layoutPage);
                   },
                   backgroundColor: CustomColors.pink,
                   width: 70,

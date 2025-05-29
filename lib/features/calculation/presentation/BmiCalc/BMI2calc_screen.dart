@@ -107,7 +107,7 @@ controller.emptyData();
                 ),
                  MainButton(
                   onPressed: () {
-                    Get.toNamed(CustomPage.homePage);
+                    Get.toNamed(CustomPage.layoutPage);
                   },
                   width: 70,
                  titleWidget: Icon(Icons.home_outlined ,

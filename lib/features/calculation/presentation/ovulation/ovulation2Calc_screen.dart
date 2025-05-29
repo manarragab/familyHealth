@@ -25,7 +25,7 @@ class _Ovulation2calcScreenState extends State<Ovulation2calcScreen> {
         padding: EdgeInsets.symmetric(horizontal: 16),
         child: Pinkcontainer(
           title: "Ovulation",
-          heightt: 429,
+         
           firstTxt: "Ovulation Calculator",
           image: "assets/images/ballon.png",
           widg: Column(

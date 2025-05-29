@@ -79,7 +79,7 @@ calcController.emptyData();
                 ),
                  MainButton(
                   onPressed: () {
-                    Get.toNamed(CustomPage.homePage);
+                    Get.toNamed(CustomPage.layoutPage);
                   },
                   backgroundColor: CustomColors.pink,
                   width: 70,

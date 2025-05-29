@@ -102,7 +102,7 @@ class _Diabetes8ScreenState extends State<Diabetes8Screen> {
                     ),
                      MainButton(
                   onPressed: () {
-                    Get.toNamed(CustomPage.homePage);
+                    Get.toNamed(CustomPage.layoutPage);
                   },
                   backgroundColor: CustomColors.pink,
                   width: 70,

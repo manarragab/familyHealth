@@ -24,7 +24,7 @@ class Pinkcontainer extends StatelessWidget {
         children: [
           Center(
             child: Text(
-              firstTxt ?? "Due date Calculator",
+              firstTxt ?? "Ovulation Calculator",
               style: GoogleFonts.almarai(
                 fontSize: 14,
                 color: CustomColors.darkBlue2,
@@ -47,10 +47,10 @@ class Pinkcontainer extends StatelessWidget {
             height: 20,
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 15),
+            padding: EdgeInsets.only(bottom: 15, left: 15,right: 15),
             //   width: 382,
             width: double.infinity,
-            height: heightt ?? 412,
+          
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: CustomColors.lightpink1,
