@@ -269,16 +269,7 @@ class Calculationcontroller extends MainGetxController {
 
   void selecting(String val, String id, bool pressure) {
     selectedRadio = val;
-    if (id == "diabetes3") {
-      postDiabetes.highBloodPressure = pressure;
-      print("ddddddddddddddd ${postDiabetes.highBloodPressure}");
-     
-    } else if (id == "diabetes4") {
-      postDiabetes.steroidsUsage = pressure;
-      
-    }
-    //for txt1 , txt2
-    else if (id == "ibs2") {
+    if (id == "ibs2") {
       if (pressure == true) {
         String x = "49_or_less";
         postIBS.age = x;
@@ -305,6 +296,27 @@ class Calculationcontroller extends MainGetxController {
         : postDiabetes.smokingHistory = num2;
   }
 
+//diabetes type2
+final List<String> diabetesQuestions =
+ ["Are you taking high blood pressure medication?",
+ 'Do you take steriods?'];
+
+   List<bool?> diabetesAnswers = List.generate(2, (_) => null);
+
+ void storeDiabetesValues(int index) {
+    switch (index) {
+      case 0:
+      postDiabetes.highBloodPressure = diabetesAnswers[0];
+        print("111111111111111111  ${postDiabetes.highBloodPressure}");
+        break;
+
+      case 1:
+      postDiabetes.steroidsUsage = diabetesAnswers[1];
+        print("00000000000000000  ${postDiabetes.steroidsUsage}");
+        break;
+
+    }}
+
   void emptyData() {
     selectedRadio = null;
     postBmi = PostBmiMd();
@@ -314,6 +326,7 @@ class Calculationcontroller extends MainGetxController {
     answers = List.generate(5, (_) => null);
     answers2 = List.generate(5, (_) => null);
     answers3 = List.generate(3, (_) => null);
+    diabetesAnswers = List.generate(2, (_) => null);
     selectt = "";
     selectedIndex = 0;
     valuesMap = {};

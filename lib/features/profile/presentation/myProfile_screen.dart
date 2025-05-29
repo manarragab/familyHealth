@@ -3,6 +3,7 @@ import 'package:abg/data/models/family/get_family/family_model.dart';
 import 'package:abg/data/models/family/post_family/post_family_response.dart';
 import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
 import 'package:abg/features/auth/domain/cases/auth_case.dart';
+import 'package:abg/features/auth/domain/controller/auth_controller.dart';
 import 'package:abg/features/family/domain/controller/family_controller.dart';
 import 'package:abg/features/family/presentation/widget/dadContainer.dart';
 import 'package:abg/features/profile/presentation/profile_screen.dart';
@@ -19,7 +20,7 @@ class MyprofileScreen extends StatefulWidget {
 
 class _MyprofileScreenState extends State<MyprofileScreen> {
   RefreshController refreshController = RefreshController();
-
+  AuthController authController = Get.find();
   FamilyController controller = Get.put(FamilyController());
 
   List<String> texts = [
@@ -43,6 +44,8 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
   @override
   Widget build(BuildContext context) {
     final user = sl<AuthCases>().getUser()?.data;
+    print("ddddddddddddddddddddd ${authController.postRegister.name ?? ""}");
+
     return Scaffold(
         appBar: CustomAppBar.appBar(CustomTrans.Profile.tr),
         body: Padding(
@@ -53,7 +56,8 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Hey ${sl<AuthCases>().getUser()?.data?.name ?? ""}",
+                    //   "Hey ${user?.name ?? ""}",
+                    "Hey ${authController.postRegister.name ?? ""}",
                     style: GoogleFonts.almarai(
                       fontSize: 18,
                       fontWeight: FontWeight.w700,
@@ -99,8 +103,7 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                       child: Stack(children: [
                         Container(
                           width: Get.width * 1.73 / 3,
-                          decoration: const BoxDecoration(
-                              // color: Colors.blue
+                          decoration: const BoxDecoration( 
                               ),
                           margin: const EdgeInsets.only(bottom: 12),
                           child: user?.image != null

@@ -14,7 +14,6 @@ import 'package:abg/res/router/pages.dart';
 class AuthController extends MainGetxController {
   final otpController = Get.put(OTPController());
   PostRegister postRegister = PostRegister();
-
  TextEditingController phoneController = TextEditingController();
  TextEditingController emailController = TextEditingController();
  TextEditingController passwordController = TextEditingController();

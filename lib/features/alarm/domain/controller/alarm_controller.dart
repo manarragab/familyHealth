@@ -95,6 +95,7 @@ class AlarmController extends MainGetxController with CustomStateMixin {
   //  });
   }
 
+
   addAlarm() async {
     loadingGetxController.showLoading();
     var response = await sl<AlarmCases>().addAlarm(postAlarm);

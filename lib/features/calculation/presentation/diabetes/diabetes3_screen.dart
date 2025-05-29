@@ -1,5 +1,6 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
+import 'package:abg/features/calculation/presentation/IBS/widget/questions_item.dart';
 import 'package:abg/features/calculation/presentation/diabetes/diabetes4_screen.dart';
 import 'package:abg/features/calculation/presentation/diabetes/widget/white4Container.dart';
 import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
@@ -47,9 +48,32 @@ class _Diabetes3ScreenState extends State<Diabetes3Screen> {
                         ),
                       ),
                       SizedBox(
-                        height: 20,
+                        height: 20.h,
                       ),
-                      White4container(id: "diabetes3"),
+                     // White4container(id: "diabetes3"),
+
+     GetBuilder<Calculationcontroller>(builder: (_){
+      return  Container(
+          width: Get.width,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(12),
+          ),
+          padding: const EdgeInsets.all(20),
+          child:  QuestionsItem(
+                                question:
+                                    '${controller.diabetesQuestions[0]}',
+                                value: controller.diabetesAnswers[0],
+                                onChanged: (val) {
+                                  controller.diabetesAnswers[0] = val;
+                                  controller.storeDiabetesValues(0);
+                                  controller.update();
+                                }));
+     })   ,
+
+
+
+
                       SizedBox(
                         height: 30,
                       ),

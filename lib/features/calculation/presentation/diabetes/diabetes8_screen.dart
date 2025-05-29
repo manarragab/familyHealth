@@ -28,7 +28,6 @@ class _Diabetes8ScreenState extends State<Diabetes8Screen> {
                     centertxt: "Diabetes Type 2 Risk Calculator",
                     title: "Diabetes\nType2\nRisk",
                     image: "assets/svg/diabetes.svg",
-                 
                     widg: Column(children: [
                       SizedBox(
                         height: 10,
@@ -55,17 +54,20 @@ class _Diabetes8ScreenState extends State<Diabetes8Screen> {
                       //       ?.toStringAsFixed(2),
                       // ),
 
-                       
-                     SizedBox(height: 10,),
+                      SizedBox(
+                        height: 10,
+                      ),
                       Text(
-                         controller.responseDiabetes.data!.riskResult?.toStringAsFixed(2)??"",
+                        "${controller.responseDiabetes.data!.riskResult?.toStringAsFixed(2) ?? ""} %",
                         style: GoogleFonts.almarai(
                           color: CustomColors.primary,
                           fontSize: 24.w,
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                       SizedBox(height: 10,),
+                      SizedBox(
+                        height: 10,
+                      ),
                       Text(
                         "Right now, your risk for having type 2 diabetes is low. However, your risk changes over time. Be sure to schedule regular check-ups with your doctor and take healthy steps toward preventing or delaying diabetes.",
                         style: GoogleFonts.almarai(
@@ -78,33 +80,37 @@ class _Diabetes8ScreenState extends State<Diabetes8Screen> {
                 const SizedBox(
                   height: 20,
                 ),
-                GestureDetector(
-                  onTap: () {
-                    controller.emptyData();
-                    Get.until((route) =>
-                        Get.currentRoute == CustomPage.diabetes1Page);
-                  },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    MainButton(
+                      onPressed: () {
+                        controller.emptyData();
+                        Get.until((route) =>
+                            Get.currentRoute == CustomPage.diabetes1Page);
+                      },
+                      width: 60,
+                      titleWidget: Image.asset(
                         "assets/images/greensign.png",
-                        width: 25.9,
+                        width: 25,
                         height: 24,
+                        color: Colors.white,
                       ),
-                      const SizedBox(
-                        width: 7,
-                      ),
-                      Text(
-                        "Recalculation",
-                        style: GoogleFonts.almarai(
-                          color: CustomColors.green1,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                    SizedBox(
+                      width: 5,
+                    ),
+                     MainButton(
+                  onPressed: () {
+                    Get.toNamed(CustomPage.homePage);
+                  },
+                  backgroundColor: CustomColors.pink,
+                  width: 70,
+                 titleWidget: Icon(Icons.home_outlined ,
+                 size: 30
+                 , color: Colors.white),
+                ),
+                  ],
                 ),
               ],
             )));

@@ -1,19 +1,23 @@
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
-import 'package:abg/features/calculation/presentation/DuedateCalc/dueDate_screen.dart';
-import 'package:abg/features/calculation/presentation/ovulation/ovulationCalc_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/pinkContainer.dart';
 import 'package:abg/features/calculation/presentation/widget/whiteContainer.dart';
 import 'package:abg/localization/all_keys.dart';
+import 'package:abg/res/common-widgets/custm_button.dart';
 import 'package:abg/res/configuration/app_bar.dart';
 import 'package:abg/res/configuration/color.dart';
+import 'package:abg/res/router/pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-class Ovulation3calcScreen extends StatelessWidget {
+class Ovulation3calcScreen extends StatefulWidget {
+  @override
+  State<Ovulation3calcScreen> createState() => _Ovulation3calcScreenState();
+}
+
+class _Ovulation3calcScreenState extends State<Ovulation3calcScreen> {
   @override
   Widget build(BuildContext context) {
-    Calculationcontroller controller=Get.find();
+    Calculationcontroller controller = Get.find();
     return Scaffold(
       appBar: CustomAppBar.appBar(CustomTrans.dueDateCalc.tr),
       body: Padding(
@@ -62,39 +66,45 @@ class Ovulation3calcScreen extends StatelessWidget {
                 col: CustomColors.lightgrey5,
               ),
             ),
+            
             SizedBox(
               height: 15,
             ),
-            GestureDetector(
-              onTap: () {
-                controller.emptyData();
 
-                Get.off(OvulationcalcScreen());
-              },
-              child: Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Image.asset(
-                      "assets/images/sign.png",
-                      width: 25.9,
-                      height: 24,
-                    ),
-                    SizedBox(
-                      width: 7,
-                    ),
-                    Text(
-                      "Recalculation",
-                      style: GoogleFonts.almarai(
-                        color: CustomColors.darkpink,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ],
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                MainButton(
+                  onPressed: () {
+                    controller.emptyData();
+                    Get.until(
+                        (route) => Get.currentRoute == CustomPage.ovulatePage);
+                                },
+                  
+           backgroundColor: CustomColors.pink,
+                  width: 60,
+                  titleWidget: Image.asset(
+                    "assets/images/greensign.png",
+                    width: 25,
+                    height: 24,
+                    color: Colors.white,
+                  ),
                 ),
-              ),
-            )
+                SizedBox(
+                  width: 5,
+                ),
+                 MainButton(
+                  onPressed: () {
+                    Get.toNamed(CustomPage.homePage);
+                  },
+                  backgroundColor: CustomColors.pink,
+                  width: 70,
+                 titleWidget: Icon(Icons.home_outlined ,
+                 size: 30
+                 , color: Colors.white),
+                ),
+              ],
+            ),
           ],
         ),
       ),

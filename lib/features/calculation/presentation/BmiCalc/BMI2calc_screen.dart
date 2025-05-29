@@ -2,6 +2,7 @@ import 'package:abg/data/const/export.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
 import 'package:abg/features/calculation/presentation/widget/coloredBar.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
+import 'package:abg/res/router/pages.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Bmi2calcScreen extends GetView<Calculationcontroller>{
@@ -81,35 +82,43 @@ class Bmi2calcScreen extends GetView<Calculationcontroller>{
               SizedBox(
                 height: 20,
               ),
-              GestureDetector(
-                onTap: () {
-                  controller.emptyData();
+
+
+
+ Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                MainButton(
+                  onPressed: () {
+
+controller.emptyData();
                   Get.back();
-                },
-                child: Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        "assets/images/greensign.png",
-                        width: 25.9,
-                        height: 24,
-                      ),
-                      SizedBox(
-                        width: 7,
-                      ),
-                      Text(
-                        "Recalculation",
-                        style: GoogleFonts.almarai(
-                          color: CustomColors.green1,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ],
+                     },
+                  width: 60,
+                  titleWidget: Image.asset(
+                    "assets/images/greensign.png",
+                    width: 25,
+                    height: 24,
+                    color: Colors.white,
                   ),
                 ),
-              ),
+                SizedBox(
+                  width: 5,
+                ),
+                 MainButton(
+                  onPressed: () {
+                    Get.toNamed(CustomPage.homePage);
+                  },
+                  backgroundColor: CustomColors.pink,
+                  width: 70,
+                 titleWidget: Icon(Icons.home_outlined ,
+                 size: 30
+                 , color: Colors.white),
+                ),
+              ],
+            ),
+
+           
             ],
           ),
         ));

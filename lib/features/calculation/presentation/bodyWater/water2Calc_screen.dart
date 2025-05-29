@@ -3,8 +3,10 @@ import 'package:abg/features/calculation/presentation/bodyWater/waterCalc_screen
 import 'package:abg/features/calculation/presentation/widget/coloredBar.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
 import 'package:abg/localization/all_keys.dart';
+import 'package:abg/res/common-widgets/custm_button.dart';
 import 'package:abg/res/configuration/app_bar.dart';
 import 'package:abg/res/configuration/color.dart';
+import 'package:abg/res/router/pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -51,35 +53,45 @@ class Water2calcScreen extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              GestureDetector(
-                onTap: () {
+
+
+
+
+ Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                MainButton(
+                  onPressed: () {
+
 calcController.emptyData();
                   Get.back();
-                },
-                child: Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Image.asset(
-                        "assets/images/greensign.png",
-                        width: 25.9,
-                        height: 24,
-                      ),
-                      SizedBox(
-                        width: 7,
-                      ),
-                      Text(
-                        "Recalculation",
-                        style: GoogleFonts.almarai(
-                          color: CustomColors.green1,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w400,
-                        ),
-                      ),
-                    ],
+                     },
+                  width: 60,
+                  titleWidget: Image.asset(
+                    "assets/images/greensign.png",
+                    width: 25,
+                    height: 24,
+                    color: Colors.white,
                   ),
                 ),
-              ),
+                SizedBox(
+                  width: 5,
+                ),
+                 MainButton(
+                  onPressed: () {
+                    Get.toNamed(CustomPage.homePage);
+                  },
+                  backgroundColor: CustomColors.pink,
+                  width: 70,
+                 titleWidget: Icon(Icons.home_outlined ,
+                 size: 30
+                 , color: Colors.white),
+                ),
+              ],
+            ),
+
+
+
             ],
           ),
         ));

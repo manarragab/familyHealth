@@ -21,10 +21,13 @@ import 'package:abg/features/calculation/presentation/diabetes/diabetes5_screen.
 import 'package:abg/features/calculation/presentation/diabetes/diabetes6_screen.dart';
 import 'package:abg/features/calculation/presentation/diabetes/diabetes7_screen.dart';
 import 'package:abg/features/calculation/presentation/diabetes/diabetes8_screen.dart';
+import 'package:abg/features/calculation/presentation/ovulation/ovulationCalc_screen.dart';
 import 'package:abg/features/family/domain/controller/family_controller.dart';
 import 'package:abg/features/family/presentation/family_screen.dart';
 import 'package:abg/features/followUp/domain/controller/followUp_controller.dart';
 import 'package:abg/features/followUp/presentation/followUp_screen.dart';
+import 'package:abg/features/home/domain/controller/home_controller.dart';
+import 'package:abg/features/home/presentation/home_screen.dart';
 import 'package:abg/features/layout/domain/controller/layout_controller.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
 import 'package:abg/features/calculation/presentation/medicalCalc_screen.dart';
@@ -266,8 +269,27 @@ class CustomPage {
           Get.put(Calculationcontroller());
         })),
 
+
+        GetPage(
+        name: homePage,
+        page: () =>  Homescreen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+          Get.put(HomeController());
+        })),
+
+ GetPage(
+        name: ovulatePage,
+        page: () =>  OvulationcalcScreen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+          Get.put(Calculationcontroller(), permanent: true);
+        })),
+       
+
   ];
 
+  static String ovulatePage = '/ovulatePage';
   static String layoutPage = '/layout';
   static String splashPage = '/';
   static String mapPage = '/map';

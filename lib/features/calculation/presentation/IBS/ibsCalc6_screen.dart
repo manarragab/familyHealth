@@ -57,35 +57,34 @@ class Ibscalc6Screen extends GetWidget<Calculationcontroller> {
                       SizedBox(
                         height: 20,
                       ),
-                      GestureDetector(
-                        onTap: () {
-                          controller.emptyData();
-                          Get.until((route) =>
-                              Get.currentRoute == CustomPage.ibsPage1);
-                        },
-                        child: Container(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Image.asset(
-                                "assets/images/greensign.png",
-                                width: 25.9,
-                                height: 24,
-                              ),
-                              SizedBox(
-                                width: 7,
-                              ),
-                              Text(
-                                "Recalculation",
-                                style: GoogleFonts.almarai(
-                                  color: CustomColors.green1,
-                                  fontSize: 20,
-                                  fontWeight: FontWeight.w400,
-                                ),
-                              ),
-                            ],
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          MainButton(
+                            onPressed: () {
+                              controller.emptyData();
+                              Get.until((route) =>
+                                  Get.currentRoute == CustomPage.ibsPage1);
+                            },
+                            width: 60,
+                            titleWidget: Image.asset(
+                              "assets/images/greensign.png",
+                              width: 25,
+                              height: 24,
+                              color: Colors.white,
+                            ),
                           ),
-                        ),
+                          SizedBox(
+                            width: 5,
+                          ),
+                          MainButton(
+                            onPressed: () {
+                              Get.toNamed(CustomPage.homePage);
+                            },
+                            width: Get.width / 3,
+                            title: "Home",
+                          ),
+                        ],
                       ),
                     ],
                   ));
