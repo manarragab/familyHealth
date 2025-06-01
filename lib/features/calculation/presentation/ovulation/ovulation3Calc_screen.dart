@@ -25,8 +25,7 @@ class _Ovulation3calcScreenState extends State<Ovulation3calcScreen> {
         child: ListView(
           children: [
             Pinkcontainer(
-
-title: "Ovulation",            
+              title: "Ovulation",
               image: "assets/images/girl.png",
               widg: Column(
                 children: [
@@ -54,11 +53,9 @@ title: "Ovulation",
                 ],
               ),
             ),
-
             SizedBox(
               height: 30,
             ),
-
             Container(
               margin: EdgeInsets.symmetric(horizontal: 15),
               child: Whitecontainer(
@@ -68,11 +65,9 @@ title: "Ovulation",
                 col: CustomColors.lightgrey5,
               ),
             ),
-            
             SizedBox(
               height: 15,
             ),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -81,8 +76,8 @@ title: "Ovulation",
                     controller.emptyData();
                     Get.until(
                         (route) => Get.currentRoute == CustomPage.ovulatePage);
-                                },
-           backgroundColor: CustomColors.pink,
+                  },
+                  backgroundColor: CustomColors.pink,
                   width: 60,
                   titleWidget: Image.asset(
                     "assets/images/greensign.png",
@@ -94,15 +89,15 @@ title: "Ovulation",
                 SizedBox(
                   width: 5,
                 ),
-                 MainButton(
+                MainButton(
                   onPressed: () {
-                    Get.toNamed(CustomPage.layoutPage);
+                    Get.until(
+                        (route) => Get.currentRoute == CustomPage.layoutPage);
                   },
                   backgroundColor: CustomColors.pink,
                   width: 70,
-                 titleWidget: Icon(Icons.home_outlined ,
-                 size: 30
-                 , color: Colors.white),
+                  titleWidget:
+                      Icon(Icons.home_outlined, size: 30, color: Colors.white),
                 ),
               ],
             ),
