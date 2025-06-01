@@ -104,7 +104,6 @@ class _Diabetes8ScreenState extends State<Diabetes8Screen> {
                   onPressed: () {
                     Get.toNamed(CustomPage.layoutPage);
                   },
-                  backgroundColor: CustomColors.pink,
                   width: 70,
                  titleWidget: Icon(Icons.home_outlined ,
                  size: 30

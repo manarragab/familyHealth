@@ -1,4 +1,5 @@
 import 'package:abg/data/const/export.dart';
+import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
 import 'package:abg/features/calculation/presentation/IBS/ibscalc2_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
 import 'package:get/get_connect/http/src/utils/utils.dart';
@@ -7,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 class Ibscalc1Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    Calculationcontroller controller = Get.find();  
     return Scaffold(
       appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
       body: Padding(
@@ -74,6 +76,8 @@ class Ibscalc1Screen extends StatelessWidget {
                     height: 80.h,
                   ),
                   MainButton(onPressed: (){
+                                            controller.emptyData();
+
 Get.to(Ibscalc2Screen());
                   } ,
                   title: CustomTrans.started.tr,
