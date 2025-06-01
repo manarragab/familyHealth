@@ -79,7 +79,7 @@ class Ibscalc6Screen extends GetWidget<Calculationcontroller> {
                           ),
                           MainButton(
                             onPressed: () {
-                              Get.toNamed(CustomPage.homePage);
+                              Get.offAllNamed(CustomPage.homePage);
                             },
                             width: Get.width / 3,
                             titleWidget:

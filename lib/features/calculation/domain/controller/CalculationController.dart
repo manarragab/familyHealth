@@ -319,7 +319,7 @@ final List<String> diabetesQuestions =
 
   void emptyData() {
     selectedRadio = null;
-    postTracker = PostTrackerMD(date: DateTime.now().subtract(const Duration(days: 1)).stringDate);
+    //postTracker = PostTrackerMD(date: DateTime.now().subtract(const Duration(days: 1)).stringDate);
     postDiabetes = PostDiabetesMd();
     postIBS = PostIbsMD();
     answers = List.generate(5, (_) => null);

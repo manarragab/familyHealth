@@ -34,6 +34,8 @@ class MyGroupCard extends GetView<GroupController> {
         children: [
           // Circular Image
           Container(
+             width: 60,
+                height: 60,
             padding: const EdgeInsets.all(4), // Green border width
             decoration: const BoxDecoration(
               shape: BoxShape.circle,
