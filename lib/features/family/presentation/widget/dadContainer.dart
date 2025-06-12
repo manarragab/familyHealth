@@ -1,12 +1,7 @@
 import 'package:abg/data/const/export.dart';
-import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
 import 'package:abg/features/family/domain/controller/family_controller.dart';
 import 'package:abg/features/family/presentation/todatActivity_screen.dart';
-import 'package:abg/features/home/presentation/widget/family_container.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:get/get.dart'; // Make sure to import GetX
-import 'package:flutter_svg/flutter_svg.dart';
 
 class Dadcontainer extends StatefulWidget {
   final int index;
@@ -36,7 +31,7 @@ class _DadcontainerState extends State<Dadcontainer> {
     return GestureDetector(
       onTap: () {
         controller.choosen(widget.index);
-        if (widget.index == 1) {
+        if (widget.index == 0) {
           Get.to(TodatactivityScreen());
         }
       },

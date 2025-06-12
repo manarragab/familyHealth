@@ -13,6 +13,8 @@ import 'package:abg/features/calculation/presentation/IBS/ibsCalc4_screen.dart';
 import 'package:abg/features/calculation/presentation/IBS/ibsCalc5_screen.dart';
 import 'package:abg/features/calculation/presentation/IBS/ibsCalc6_screen.dart';
 import 'package:abg/features/calculation/presentation/IBS/ibscalc2_screen.dart';
+import 'package:abg/features/calculation/presentation/bodyWater/waterCalc_screen.dart';
+import 'package:abg/features/calculation/presentation/calories/calorieCalc_screen.dart';
 import 'package:abg/features/calculation/presentation/diabetes/diabetes1_screen.dart';
 import 'package:abg/features/calculation/presentation/diabetes/diabetes2_screen.dart';
 import 'package:abg/features/calculation/presentation/diabetes/diabetes3_screen.dart';
@@ -24,6 +26,7 @@ import 'package:abg/features/calculation/presentation/diabetes/diabetes8_screen.
 import 'package:abg/features/calculation/presentation/ovulation/ovulationCalc_screen.dart';
 import 'package:abg/features/family/domain/controller/family_controller.dart';
 import 'package:abg/features/family/presentation/family_screen.dart';
+import 'package:abg/features/family/presentation/myfamily_screen.dart';
 import 'package:abg/features/followUp/domain/controller/followUp_controller.dart';
 import 'package:abg/features/followUp/presentation/followUp_screen.dart';
 import 'package:abg/features/home/domain/controller/home_controller.dart';
@@ -36,6 +39,8 @@ import 'package:abg/features/notification/domain/controller/notification_control
 import 'package:abg/features/notification/presentation/notification_screen.dart';
 import 'package:abg/features/onboard/domain/controller/board_controller.dart';
 import 'package:abg/features/onboard/presentation/onboard_screen.dart';
+import 'package:abg/features/pills/domain/controller/pils_controller.dart';
+import 'package:abg/features/pills/presentation/pills_screen.dart';
 import 'package:abg/features/progressTracker/domain/controller/progressTracker_controller.dart';
 import 'package:abg/features/progressTracker/presentation/progressTracker_screen.dart';
 import 'package:abg/features/verify_account/domain/controller/main_verify_account_controller.dart';
@@ -110,7 +115,7 @@ class CustomPage {
         })),
          GetPage(
         name: myFamily,
-        page: () =>   FamilyScreen(),
+        page: () => MyfamilyScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
         Get.put(FamilyController()).onRefresh();
@@ -283,12 +288,38 @@ class CustomPage {
         page: () =>  OvulationcalcScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
-          Get.put(Calculationcontroller(), permanent: true);
+          Get.put(Calculationcontroller());
         })),
        
 
+        GetPage(
+        name: caloriePage,
+        page: () =>  CaloriecalcScreen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+          Get.put(Calculationcontroller());
+        })),
+
+          GetPage(
+        name: waterPage,
+        page: () =>  WatercalcScreen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+          Get.put(Calculationcontroller());
+        })),
+       
+  GetPage(
+        name: pillsPage,
+        page: () =>  PillsScreen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+         Get.put(PilsController());
+        })),
   ];
 
+  static String pillsPage = '/pillsPage';
+  static String caloriePage = '/caloriePage';
+  static String waterPage = '/waterPage';
   static String ovulatePage = '/ovulatePage';
   static String layoutPage = '/layout';
   static String splashPage = '/';

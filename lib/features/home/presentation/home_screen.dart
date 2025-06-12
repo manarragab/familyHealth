@@ -3,6 +3,7 @@ import 'package:abg/data/models/home/home_model.dart';
 import 'package:abg/data/models/reminder/reminder.dart';
 import 'package:abg/data/models/reminder_family/reminder_family.dart';
 import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
+import 'package:abg/features/auth/domain/controller/auth_controller.dart';
 import 'package:abg/features/group/domain/controller/group_controller.dart';
 import 'package:abg/features/group/presentation/group_screen.dart';
 import 'package:abg/features/home/domain/controller/home_controller.dart';
@@ -21,6 +22,7 @@ class Homescreen extends GetView<HomeController> {
 
   @override
   Widget build(BuildContext context) {
+    AuthController authController = Get.find<AuthController>();
     return Scaffold(
       key: scaffoldKey,
       appBar: CustomAppBar.homeAppBar(
@@ -68,11 +70,18 @@ class Homescreen extends GetView<HomeController> {
                 // Search bar
                 Row(
                   children: [
-                    const CircleAvatar(
-                      radius: 22,
-                      backgroundImage:
-                          NetworkImage('https://via.placeholder.com/100'),
-                    ),
+                    CircleAvatar(
+    radius: 22,
+    backgroundColor: Colors.grey.shade200,
+    backgroundImage: authController.postRegister.image != null
+        ? FileImage(authController.postRegister.image!)
+        : const AssetImage("assets/images/cheker.png") as ImageProvider,
+  ),
+                    // const CircleAvatar(
+                    //   radius: 22,
+                    //   backgroundImage:
+                    //       NetworkImage('https://via.placeholder.com/100'),
+                    // ),
                     const SizedBox(width: 16),
                     Expanded(
                       child: TextField(

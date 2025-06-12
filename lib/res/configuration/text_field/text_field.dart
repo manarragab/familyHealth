@@ -560,18 +560,22 @@ class CustomTextField {
     List<String>? autoFillHints,
     void Function()? searchTap,
     EdgeInsetsGeometry? padding,
+     required Function() OnTap,
   }) {
     return Padding(
       padding: padding ?? EdgeInsets.symmetric(horizontal: 16.w),
       child: SizedBox(
         // height: 50,
         child: TextFormField(
+         // readOnly: true,
           controller: controller,
           autofillHints: autoFillHints,
-          keyboardType: const TextInputType.numberWithOptions(signed: true),
+          keyboardType: TextInputType.text,
+          onTap: OnTap,
+        //  keyboardType: const TextInputType.numberWithOptions(signed: true),
           style: TFonts.inter(
               color: CustomColors.primary,
-              fontSize: 14.sp,
+              fontSize: 18.sp,
               fontWeight: TFontWights.bold),
           onChanged: (x) => onChange(x.trim()),
           decoration: _defaultDecoration(

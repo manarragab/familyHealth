@@ -1,13 +1,16 @@
 import 'dart:developer';
-
 import 'package:abg/data/const/enums.dart';
 import 'package:abg/data/const/export.dart';
 import 'package:abg/data/models/calculation/BMI/post_BMI/post_BMI_MD.dart';
 import 'package:abg/data/models/calculation/BMI/post_BMI/post_BMI_response.dart';
 import 'package:abg/data/models/calculation/diabetes/post_diabetes/post_diabetes_MD.dart';
 import 'package:abg/data/models/calculation/diabetes/post_diabetes/post_diabetes_response.dart';
+import 'package:abg/data/models/calculation/favourite/get_favourite/get_favourite.dart';
+import 'package:abg/data/models/calculation/favourite/post_favourite/post_favourite.dart';
+import 'package:abg/data/models/calculation/favourite/post_favourite/post_favourite_response.dart';
 import 'package:abg/data/models/calculation/pregnancyTracker/post_tracker/post_tracker_MD.dart';
 import 'package:abg/data/models/calculation/pregnancyTracker/post_tracker/post_tracker_response.dart';
+import 'package:abg/domain_data/custom_mixin/mixen_widgets/status_error.dart';
 import 'package:abg/features/calculation/domain/cases/calculation_cases.dart';
 import 'package:abg/features/calculation/presentation/BmiCalc/BMI2calc_screen.dart';
 import 'package:abg/features/calculation/presentation/DuedateCalc/dateCalc_screen.dart';
@@ -15,8 +18,10 @@ import 'package:abg/data/models/calculation/IBS/post_IBS/post_IBS_MD.dart';
 import 'package:abg/data/models/calculation/IBS/post_IBS/post_IBS_response.dart';
 import 'package:abg/res/router/pages.dart';
 import 'package:dio/dio.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
 
-class Calculationcontroller extends MainGetxController {
+class Calculationcontroller extends MainGetxController with CustomStateMixin{
 //API
   PostBMIResponse responseBMi = PostBMIResponse();
   PostBmiMd postBmi = PostBmiMd();
@@ -29,6 +34,65 @@ class Calculationcontroller extends MainGetxController {
 
   PostIbsMD postIBS = PostIbsMD();
   PostIbsResponse responseIBS = PostIbsResponse();
+
+  PostFavouriteResponse responseFavourite = PostFavouriteResponse();
+  GetFavourites getFavourite = GetFavourites();
+  RefreshController refreshController = RefreshController();
+List<Calculators>? calculator;
+
+RefreshController refreshControllerr=RefreshController();
+
+List<String> calcImages=[
+"assets/images/BMI.png",
+"assets/images/baby.png",
+"assets/images/womb.png",
+"assets/svg/diabetes.svg",
+"assets/svg/ibs.svg",
+"assets/images/fruits.png",
+"assets/images/water.png",
+];
+
+
+  onRefresh() async {
+    getFavourite = await refreshData(
+        model: getFavourite,
+        futureMethod: () => sl<CalculationCases>().getFavourites(),
+        controller: refreshController,
+        getPage: (_) => _,
+        checkIfEmpty: (data) {
+          if (data is GetFavourites) {
+             final calculators = data.data?.calculators;
+        if (calculators == null || calculators.isEmpty) {
+          data.status = StatusType.empty.index;
+        }
+      }
+     return data;
+        });
+  }
+
+
+  addFavourites( CalculationTypes calculatorType ) async {
+    loadingGetxController.showLoading();
+    var response = await sl<CalculationCases>().addFavourites(PostFavourite(calculatorType:calculatorType));
+    loadingGetxController.hideLoading();
+    statusError.checkStatus(response, () {
+      onRefresh();
+      Get.back();
+    });
+  }
+
+  deleteFavourite(String id) async {
+    loadingGetxController.showCustomLoading(id.toString());
+    var response = await sl<CalculationCases>().deleteFavourites(id);
+    loadingGetxController.hideCustomLoading(id.toString());
+    statusError.checkStatus(response, () {
+      getFavourite.data?.calculators?.removeWhere((e) => e.name == id);
+      change(getFavourite, status: RxStatus.success());
+    });
+  }
+
+
+
 
   addIBS() async {
     loadingGetxController.showLoading();
@@ -273,7 +337,6 @@ class Calculationcontroller extends MainGetxController {
       if (pressure == true) {
         String x = "49_or_less";
         postIBS.age = x;
-        
         print("ibssssssssssss ${postIBS.age}");
       } else {
         String y = "50_or_more";
@@ -314,8 +377,8 @@ final List<String> diabetesQuestions =
       postDiabetes.steroidsUsage = diabetesAnswers[1];
         print("00000000000000000  ${postDiabetes.steroidsUsage}");
         break;
-
     }}
+
 
   void emptyData() {
     selectedRadio = null;

@@ -8,7 +8,9 @@ import 'package:google_fonts/google_fonts.dart';
 class Bmi2calcScreen extends GetView<Calculationcontroller>{
   @override
   Widget build(BuildContext context) {
-    
+    String obesity=controller.responseBMi.data?.category??"";
+
+
     return Scaffold(
         appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
         body: Padding(
@@ -46,7 +48,12 @@ class Bmi2calcScreen extends GetView<Calculationcontroller>{
                             width: 20,
                             height: 20,
                             decoration: BoxDecoration(
-                                color: CustomColors.green1,
+                                color: obesity=='Class III Obesity' ||obesity=='Class I Obesity' ||obesity=='Class II Obesity'?
+                                CustomColors.redd:
+                                obesity=='Overweight'? Colors.yellow:
+                                  obesity=='Normal Weight'? CustomColors.green1:
+                                  Colors.blue
+                                ,
                                 borderRadius: BorderRadius.circular(2)),
                           ),
                           SizedBox(
@@ -107,8 +114,9 @@ controller.emptyData();
                 ),
                  MainButton(
                   onPressed: () {
-                    Get.toNamed(CustomPage.layoutPage);
-                  },
+ Get.until(
+                        (route) => Get.currentRoute == CustomPage.layoutPage);
+                                  },
                   width: 70,
                  titleWidget: Icon(Icons.home_outlined ,
                  size: 30

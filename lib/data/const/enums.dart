@@ -47,11 +47,40 @@ enum AlarmType { reminder, medicine, appointment }
 
 enum FamilyType { SeeAll , MySon ,Mum, Dad , MyDauther, Husband  }
 
+enum MedicalType {
+  HeartDisease,
+  BrainDisease,
+  StomachDisease,
+  LungDisease,
+  KidneyDisease,
+  LiverDisease,
+  SkinDisease,
+  EyeDisease,
+  BoneDisease,
+  BloodDisease,
+  DentalDisease,
+  MentalHealth,
+  Diabetes,
+  ThyroidDisease,
+  Cancer,
+  ImmuneDisorder,
+  InfectiousDisease,
+  Allergy,
+  ReproductiveDisease,
+  NeurologicalDisorder,
+  RespiratoryDisease,
+  DigestiveDisease,
+  UrinaryDisease,
+  EndocrineDisorder,
+  MuscularDisorder,
+}
+
 enum SelectSomeone { A , B , C}
 
 enum ProgressType { Daily, Weekly, Monthly } 
 
 enum PeriodType { Day60 , Day90 , Other}
 
+enum CalculationTypes { bmi,pregnancyTracker,periodCalculator,diabetesCalculator,ibsSymptomAssessment}
 
 

@@ -11,6 +11,9 @@ import 'package:abg/data/models/calculation/IBS/post_IBS/post_IBS_MD.dart';
 import 'package:abg/data/models/calculation/IBS/post_IBS/post_IBS_response.dart';
 import 'package:abg/data/models/calculation/diabetes/post_diabetes/post_diabetes_MD.dart';
 import 'package:abg/data/models/calculation/diabetes/post_diabetes/post_diabetes_response.dart';
+import 'package:abg/data/models/calculation/favourite/get_favourite/get_favourite.dart';
+import 'package:abg/data/models/calculation/favourite/post_favourite/post_favourite.dart';
+import 'package:abg/data/models/calculation/favourite/post_favourite/post_favourite_response.dart';
 import 'package:abg/data/models/calculation/pregnancyTracker/post_tracker/post_tracker_MD.dart';
 import 'package:abg/data/models/calculation/pregnancyTracker/post_tracker/post_tracker_response.dart';
 import 'package:abg/data/models/chat/chat_model.dart';
@@ -175,9 +178,25 @@ class DataRepository implements DomainData {
   return remote.addDiabetes(post);
   }
 
-
       @override
   Future<ResponseModel<IBS?>> addIBS(PostIbsMD post) {
   return remote.addIBS(post);
+  }
+
+  
+  @override
+
+  Future<ResponseModel<Favourites?>> getFavourites() {
+   return remote.getFavourites();
+  }
+
+  @override
+  Future<ResponseModel<Favourite?>> addFavourites(PostFavourite post) {
+    return remote.addFavourites(post);
+  }
+
+  @override
+  Future<ResponseModel> deleteFavourites(String id) {
+    return remote.deleteFavourites(id);
   }
 }

@@ -30,25 +30,40 @@ class Coloredbar extends StatelessWidget {
       id: id,
       builder: (context) {
         double selected = controller.responseBMi.data?.score ?? 0.0;  
-        switch (selected) {
-          case < 18.5:
-            percent = (selected / 18.5) * 0.25;
-            /// low weight
-            break;
-          case < 25:
-            percent = (selected / 25) * 0.5;
-            /// normal weight
-            break;
-          case < 30:
-            percent = (selected / 30) * 0.75;
-  
+        // switch (selected) {
+        //   case < 18.5:
+        //     percent = (selected / 18.5) * 0.25;
+        //     /// low weight
+        //     break;
+        //   case < 25:
+        //     percent = (selected / 25) * 0.5;
+        //     /// normal weight
+        //     break;
+        //   case < 30:
+        //     percent = (selected / 30) * 0.75;
 
-            /// over weight
-            break;
-          default:
-            percent = 0.9;
-          /// obesity
-        }
+        //     /// over weight
+        //     break;
+        //   default:
+        //     percent = 0.9;
+        //   /// obesity
+        // }
+double minScore = 0;
+double maxScore = double.tryParse(txt2?.last ?? "30") ?? 30;
+maxScore += 10; 
+
+percent = ((selected - minScore) / (maxScore - minScore)).clamp(0.0, 1.0);
+
+       if (selected < 18.5) {
+  percent = (selected / 18.5) * 0.22;
+} else if (selected < 25) {
+  percent = 0.25 + ((selected - 18.5) / (25 - 18.5)) * 0.22;
+} else if (selected < 30) {
+  percent = 0.5 + ((selected - 25) / (30 - 25)) * 0.20;
+} else {
+  percent = 0.75 + ((selected - 30) / (maxScore - 30)) * 0.04;
+  if (percent > 1.0) percent = 1.0;
+}
 
         double indicatorPosition = percent * barWidth ;
        
@@ -95,8 +110,8 @@ class Coloredbar extends StatelessWidget {
           child: Row(
             children: [
               _buildBarSegment(barWidth * 0.25, Colors.blue, "low"),
-              _buildBarSegment(barWidth * 0.25, Colors.green, "normal"),
-              _buildBarSegment(barWidth * 0.25, Colors.yellow, "over"),
+              _buildBarSegment(barWidth * 0.24, Colors.green, "normal"),
+              _buildBarSegment(barWidth * 0.23, Colors.yellow, "over"),
               _buildBarSegment(barWidth * 0.25, CustomColors.redd, "obese"),
             ],
           ),
@@ -120,11 +135,15 @@ class Coloredbar extends StatelessWidget {
     return Container(
       width: barWidth,
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           _buildLabel(txt?[0] ?? "low weight", 0),
+
           _buildLabel(txt?[1] ?? "normal weight", 1),
+              
           _buildLabel(txt?[2] ?? "over weight", 2),
+       
+SizedBox(width: Get.width * 2/100  ,),
           _buildLabel(txt?[3] ?? "Obesity", 3),
         ],
       ),

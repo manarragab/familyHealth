@@ -104,8 +104,9 @@ class _Calorie6calcScreenState extends State<Calorie6calcScreen> {
                 ),
                   MainButton(
                   onPressed: () {
-                    Get.toNamed(CustomPage.layoutPage);
-                  },
+ Get.until(
+                        (route) => Get.currentRoute == CustomPage.layoutPage);
+                                  },
                   backgroundColor: CustomColors.pink,
                   width: 70,
                  titleWidget: Icon(Icons.home_outlined ,

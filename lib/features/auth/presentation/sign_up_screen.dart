@@ -2,12 +2,14 @@ import 'package:abg/data/const/export.dart';
 import 'package:abg/features/auth/domain/controller/auth_controller.dart';
 import 'package:abg/res/common-widgets/custom_check_box.dart';
 import 'package:abg/res/configuration/bottom_sheet/date_picker.dart';
+import 'package:abg/res/configuration/image/pick_image.dart';
 import 'package:abg/res/configuration/text_field/text_field.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
 import 'package:abg/res/router/pages.dart';
 import 'package:flutter/gestures.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-class SignUpScreen extends GetView<AuthController> {
+class SignUpScreen extends GetWidget<AuthController> {
   SignUpScreen({Key? key}) : super(key: key);
   final formKey = GlobalKey<FormState>();
   String? phone = '';
@@ -46,6 +48,61 @@ class SignUpScreen extends GetView<AuthController> {
                     fontSize: 16, fontWeight: TFontWights.regular),
               ),
               CustomPadding.heightButton,
+                GetBuilder<AuthController>(builder: (logic) {
+                    return GestureDetector(
+                      onTap: () async {
+                      final pickedFile = await Pick.pickImage(context); 
+                        if (pickedFile != null) {
+                          controller.postRegister.image = pickedFile;
+                         
+                        controller.update();
+                      }
+                      },
+                      child: Stack(
+                        children: [
+                          Container(
+                            width: 382,
+                            height: 306.17,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(
+                                  width: 0.5, color: CustomColors.lightBlue2),
+                            ),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10),
+                             child: 
+                              controller.postRegister.image != null
+                                  ? Image.file(controller.postRegister.image!,
+                                      fit: BoxFit.cover)
+                                   : Image.asset("assets/images/cheker.png",
+                                          fit: BoxFit.cover),
+                            ),
+                          ),
+                         if (controller.postRegister.image == null )
+                            Positioned.fill(
+                              child: Center(
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    SvgPicture.asset("assets/svg/camera.svg",
+                                        width: 45, height: 40),
+                                    const SizedBox(height: 8),
+                                    Text("Add Photo",
+                                        style: GoogleFonts.almarai(
+                                            fontSize: 16,
+                                            color: CustomColors.darkBlue2,
+                                            fontWeight: FontWeight.w700)),
+                                  ],
+                                ),
+                              ),
+                            ),
+                        ],
+                      ),
+                    );
+                  }),
+              CustomPadding.heightButton,
+
+
               CustomTextField.nameTextField(
                 controller: controller.nameController,
                 (value) {
@@ -161,7 +218,7 @@ class SignUpScreen extends GetView<AuthController> {
                     ),
                     children: [
                       TextSpan(
-                        text: "   ${CustomTrans.login.tr}   ",
+                        text: "${CustomTrans.login.tr}   ",
                         style: TFonts.inter(
                             color: CustomColors.secondary,
                             fontSize: TFontSizes.f16,

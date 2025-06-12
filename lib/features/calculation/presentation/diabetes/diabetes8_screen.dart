@@ -69,7 +69,8 @@ class _Diabetes8ScreenState extends State<Diabetes8Screen> {
                         height: 10,
                       ),
                       Text(
-                        "Right now, your risk for having type 2 diabetes is low. However, your risk changes over time. Be sure to schedule regular check-ups with your doctor and take healthy steps toward preventing or delaying diabetes.",
+controller.responseDiabetes.data!.comment??"",
+                       // "Right now, your risk for having type 2 diabetes is low. However, your risk changes over time. Be sure to schedule regular check-ups with your doctor and take healthy steps toward preventing or delaying diabetes.",
                         style: GoogleFonts.almarai(
                           color: CustomColors.darkblue3,
                           fontSize: 16,
@@ -102,8 +103,9 @@ class _Diabetes8ScreenState extends State<Diabetes8Screen> {
                     ),
                      MainButton(
                   onPressed: () {
-   Get.until(
-                        (route) => Get.currentRoute == CustomPage.layoutPage);
+
+   Get.until((route) => Get.currentRoute == CustomPage.layoutPage);
+   
                                   },
                   width: 70,
                  titleWidget: Icon(Icons.home_outlined ,

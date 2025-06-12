@@ -102,6 +102,7 @@ class AddfamilyScreen extends GetView<FamilyController> {
                       }),
                       const SizedBox(height: 20),
                       CustomTextField.nameTextField(
+                        controller: controller.nameController,
                         (val) {
                           controller.postFam.name=val;
                         },
@@ -114,12 +115,13 @@ class AddfamilyScreen extends GetView<FamilyController> {
                           controller: controller.dateController,
                           onDatePickerPress: () {
                             CustomDatePicker((date) {
-                              controller.postFam.birthDate = date.stringDate;
+                              controller.postFam.brithDate = date.stringDate;
                               controller.dateController.text = date.stringDate;
                             }).showDatePicker(context);
                           }),
                       const SizedBox(height: 20),
                       CustomTextField.phoneTextField(
+                        controller:controller.phoneController ,
                         (val) {
                           controller.postFam.phone = val;
                         },
@@ -129,16 +131,17 @@ class AddfamilyScreen extends GetView<FamilyController> {
                     
 
          CustomTextField.dropDownTextField(
-                          controller: controller.selectSomeoneController,
+                          controller: controller.familyDiseaseController,
                           hint: "Medical record",
                           onDropDownPress: () {
                             CustomBottomSheet.showDefaultListBottomSheet(context,
-                                title: "Select someone :-",
-                                data: FamilyType.values, mainTitle: (index) {
-                              return FamilyType.values[index].name;
+                                title: "Medical record:-",
+                                data: MedicalType.values, mainTitle: (index) {
+                              return MedicalType.values[index].name;
                             }, onTap: (index) {
-                              controller.selectSomeoneController.text =
-                                  FamilyType.values[index].name;
+                              controller.familyDiseaseController.text =
+                                  MedicalType.values[index].name;
+                              controller.postFam.medicalRecord = MedicalType.values[index].name;
                               Get.back();
                             });
                           }),
@@ -156,6 +159,8 @@ class AddfamilyScreen extends GetView<FamilyController> {
                             }, onTap: (index) {
                               controller.selectSomeoneController.text =
                                   FamilyType.values[index].name;
+                              controller.postFam.relative =
+                                  FamilyType.values[index].name;
                               Get.back();
                             });
                           }),
@@ -163,6 +168,7 @@ class AddfamilyScreen extends GetView<FamilyController> {
                       Center(
                         child: MainButton(
                           onPressed: () {
+                         
                           controller.addFamily();
                           },
                           radius: 25, 
@@ -173,14 +179,14 @@ class AddfamilyScreen extends GetView<FamilyController> {
                       ),
                      
          
-                           const SizedBox(
-                        height: 23,
-                      ),
-                      InkWell(
-                        onTap: (){
-                          Get.to(FamilyScreen());
-                        },
-                        child: const Text("family" , style: TextStyle(color: Colors.blue),)),
+                      //      const SizedBox(
+                      //   height: 23,
+                      // ),
+                      // InkWell(
+                      //   onTap: (){
+                      //     Get.to(FamilyScreen());
+                      //   },
+                      //   child: const Text("family" , style: TextStyle(color: Colors.blue),)),
                       
                     ],
                   ),

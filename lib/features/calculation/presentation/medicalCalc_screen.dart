@@ -1,222 +1,350 @@
-import 'package:abg/data/const/export.dart';
+import 'package:abg/data/const/enums.dart';
+import 'package:abg/data/models/calculation/favourite/get_favourite/get_favourite.dart';
+import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
+import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
 import 'package:abg/features/calculation/presentation/BmiCalc/BMIcalc_screen.dart';
-import 'package:abg/features/calculation/presentation/calories/calorieCalc_screen.dart';
-import 'package:abg/features/calculation/presentation/DuedateCalc/dueDate_screen.dart';
-import 'package:abg/features/calculation/presentation/diabetes/diabetes1_screen.dart';
-import 'package:abg/features/calculation/presentation/ovulation/ovulationCalc_screen.dart';
-import 'package:abg/features/calculation/presentation/bodyWater/waterCalc_screen.dart';
-import 'package:abg/features/calculation/presentation/widget/card_item.dart';
-import 'package:abg/localization/all_keys.dart';
-import 'package:abg/res/configuration/app_bar.dart';
-import 'package:abg/res/configuration/color.dart';
+import 'package:abg/res/configuration/text_field/text_field.dart';
 import 'package:abg/res/router/pages.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:abg/data/const/export.dart';
+import 'package:abg/features/calculation/presentation/widget/card_item.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class MedicalcalcScreen extends StatefulWidget {
   @override
   State<MedicalcalcScreen> createState() => _MedicalcalcScreenState();
 }
 
+// class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
+//   List<Map<String, dynamic>> favoriteItems = [];
+  TextEditingController searchController = TextEditingController();
+
+//   final List<Map<String, dynamic>> allItems = [
+//     {
+//       'index': 0,
+//       'image': 'assets/images/BMI.png',
+//       'title': 'BMI Calculator',
+//       'subTitle':
+//           "The BMI calculator is a powerful tool for assessing healthy weight and understanding your fitness level.",
+//       'elevation': 2.3,
+//     },
+//     {
+//       'index': 1,
+//       'image': 'assets/images/baby.png',
+//       'title': 'Due date Calculator',
+//       'subTitle':
+//           "Pregnancy and childbirth calculator provides information about the due date and helps understand the stages of pregnancy.",
+//       'elevation': 2.3,
+//     },
+//     {
+//       'index': 2,
+//       'image': 'assets/images/diabetes.png',
+//       'title': 'Diabetes Type2 Risk Calculator',
+//       'subTitle':
+//           'Helps determine the risk of developing type 2 diabetes in yor body.',
+//       'elevation': 2.3,
+//     },
+//     {
+//       'index': 3,
+//       'image': 'assets/images/ibss.png',
+//       'title': 'Symptom Checker For IBS Calculator',
+//       'subTitle':
+//           'Easily assess your risk of Irritable Bowel Syndrome (IBS) and take a proactive step toward better digestive health.',
+//       'elevation': 2.3,
+//     },
+//     {
+//       'index': 4,
+//       'image': 'assets/images/fruits.png',
+//       'title': 'Calorie Calculator',
+//       'subTitle':
+//           "This calculator can help you determine the types and amounts of food that suit your needs and track your daily food intake.",
+//       'elevation': 2.3,
+//     },
+//     {
+//       'index': 5,
+//       'image': 'assets/images/water.png',
+//       'title': 'Body water Calculator',
+//       'subTitle':
+//           "This calculator can help you determine the types and amounts of water that suit your needs and track your daily water intake.",
+//       'elevation': 2.3,
+//     },
+//     {
+//       'index': 6,
+//       'image': 'assets/images/womb.png',
+//       'title': 'Ovulation Calculator',
+//       'subTitle':
+//           "It provides an ovulation day calculator to determine the period when the egg is ready for fertilization",
+//       'elevation': 2.3,
+//     },
+//   ];
+
+//   List<Map<String, dynamic>> get filteredItems {
+//     String query = searchController.text.toLowerCase();
+//     if (query.isEmpty) return allItems;
+//     return allItems
+//         .where((item) => item['title'].toLowerCase().contains(query))
+//         .toList();
+//   }
+
+//   void handleFavoriteToggle(bool isFav, Map<String, dynamic> item) {
+//     setState(() {
+//       if (isFav) {
+//         if (!favoriteItems.any((e) => e['title'] == item['title'])) {
+//           favoriteItems.add(item);
+//         }
+//       } else {
+//         favoriteItems.removeWhere((e) => e['title'] == item['title']);
+//       }
+//     });
+//   }
+
+//   Widget buildCardItem(Map<String, dynamic> item) {
+//     final isFav = favoriteItems.any((e) => e['title'] == item['title']);
+//     return Padding(
+//       padding: const EdgeInsets.only(bottom: 7),
+//       child: InkWell(
+//         onTap: () {
+//           switch (item['index']) {
+//             case 0:
+//               Get.to(BmicalcScreen());
+//               break;
+//             case 1:
+//               Get.toNamed(CustomPage.dueDatePage);
+//               break;
+//             case 2:
+//               Get.toNamed(CustomPage.diabetes1Page);
+//               break;
+//             case 3:
+//               Get.toNamed(CustomPage.ibsPage1);
+//               break;
+//             case 4:
+//               Get.toNamed(CustomPage.caloriePage);
+//               break;
+//             case 5:
+//               Get.toNamed(CustomPage.waterPage);
+//               break;
+//             case 6:
+//               Get.toNamed(CustomPage.ovulatePage);
+//               break;
+//           }
+//         },
+//         child: CardItem(
+//           image: item['image'],
+//           elevation: item['elevation'],
+//           title: item['title'],
+//           subTitle: item['subTitle'],
+//           isFavorite: isFav,
+//           onFavoriteToggle: (isNowFav) => handleFavoriteToggle(isNowFav, item),
+//         ),
+//       ),
+//     );
+//   }
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       appBar: CustomAppBar.appBar("Medical Calculators"),
+//       body: Padding(
+//         padding: const EdgeInsets.symmetric(horizontal: 16),
+//         child: ListView(
+//           children: [
+//             const SizedBox(height: 10),
+//             CustomTextField.searchField(
+//               OnTap: () {},
+//               (value) {
+//                 setState(() {});
+//               },
+//               controller: searchController,
+//               hint: "Search medical calculators",
+//               padding: const EdgeInsets.only(right: 5),
+//             ),
+//             const SizedBox(height: 16),
+//             if (favoriteItems.isNotEmpty && searchController.text.isEmpty) ...[
+//               Text(
+//                 "Favorite",
+//                 style: GoogleFonts.almarai(
+//                   fontSize: 18,
+//                   color: CustomColors.darkBlue2,
+//                   fontWeight: FontWeight.w700,
+//                 ),
+//               ),
+//               const SizedBox(height: 10),
+//               ...favoriteItems.map(buildCardItem),
+//               const SizedBox(height: 16),
+//             ],
+//             Text(
+//               "Most important medical calculations ",
+//               style: GoogleFonts.almarai(
+//                 fontSize: 18,
+//                 color: CustomColors.darkBlue2,
+//                 fontWeight: FontWeight.w700,
+//               ),
+//             ),
+//             const SizedBox(height: 10),
+//             ...filteredItems.map(buildCardItem),
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+
+
 class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
+  final Calculationcontroller contr = Get.find();
+  TextEditingController searchController = TextEditingController();
+
+  /// Returns the entire list of calculators from the controller
+  List<Calculators> get calculators => contr.calculator ?? [];
+
+  /// List of filtered items based on the search query
+  List<Calculators> get filteredItems {
+    final query = searchController.text.toLowerCase();
+    if (query.isEmpty) return calculators;
+    return calculators.where((item) => (item.displayName ?? '')
+        .toLowerCase()
+        .contains(query))
+        .toList();
+  }
+
+  List<Calculators> get favoriteItems =>
+      calculators.where((c) => c.isFavorite == true).toList();
+
+  void handleFavoriteToggle(Calculators item, int index) async {
+    setState(() {
+      item.isFavorite = !(item.isFavorite ?? false);
+    });
+
+    CalculationTypes? type;
+    switch (index) {
+      case 0:
+        type = CalculationTypes.bmi;
+        break;
+      case 1:
+        type = CalculationTypes.pregnancyTracker;
+        break;
+      case 2:
+        type = CalculationTypes.diabetesCalculator;
+        break;
+      case 3:
+        type = CalculationTypes.ibsSymptomAssessment;
+        break;
+      case 4:
+        type = CalculationTypes.periodCalculator;
+        break;
+    }
+
+    if (type != null) {
+      if (item.isFavorite == true) {
+        await contr.addFavourites(type);
+      } else {
+        await contr.deleteFavourite(type.name);
+      }
+    }
+  }
+
+  void navigateToPage(int index) {
+    switch (index) {
+      case 0:
+        Get.to(BmicalcScreen());
+        break;
+      case 1:
+        Get.toNamed(CustomPage.dueDatePage);
+        break;
+      case 2:
+        Get.toNamed(CustomPage.diabetes1Page);
+        break;
+      case 3:
+        Get.toNamed(CustomPage.ibsPage1);
+        break;
+      case 4:
+        Get.toNamed(CustomPage.caloriePage);
+        break;
+
+      // case 5:
+      //   Get.toNamed(CustomPage.waterPage);
+      //   break;
+      // case 6:
+      //   Get.toNamed(CustomPage.ovulatePage);
+      //   break;
+    }
+  }
+
+  Widget buildCardItem(Calculators item, int index) {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: 7),
+      child:contr.obx((state) {
+       // GetFavourites getFavourites=state!;
+      //  List<Calculators> data=getFavourites.data?.calculators??[];
+          return SmartRefresher(
+            controller: contr.refreshControllerr,
+            onRefresh: contr.onRefresh,
+            child: CardItem(
+        image: contr.calcImages[index],
+        title: item.displayName ?? 'Name',
+        subTitle: item.description ?? 'Description',
+        onPress: () => navigateToPage(index),
+        fav: () => handleFavoriteToggle(item, index),
+      ),
+    );}));
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
-        child: ListView(
-          children: [
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 9, vertical: 8),
-              width: 382,
-              height: 40,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: CustomColors.lightgrey5,
-              ),
-              child: TextFormField(
-                textAlignVertical: TextAlignVertical.center,
-                decoration: InputDecoration(
-                  isDense: true,
-                  border: OutlineInputBorder(borderSide: BorderSide.none),
-                  contentPadding: EdgeInsets.zero,
-                  hintText: "Search medical calculators",
-                  hintStyle: GoogleFonts.almarai(
-                    fontSize: 12,
-                    color: CustomColors.darkgrey3,
-                    fontWeight: FontWeight.w700,
-                  ),
-                  suffixIcon: InkWell(
-                    child: Container(
-                      width: 11.5,
-                      height: 11.5,
-                      child: Align(
-                        alignment: Alignment.centerRight,
-                        child: SvgPicture.asset(
-                          "assets/svg/search.svg",
-                          width: 11.5,
-                          height: 11.5,
-                          fit: BoxFit.contain,
-                        ),
-                      ),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child:  ListView(
+              children: [
+                
+                const SizedBox(height: 10),
+                CustomTextField.searchField(
+                  (value) => setState(() {}),
+                  controller: searchController,
+                  hint: "Search medical calculators",
+                  padding: const EdgeInsets.only(right: 5),
+                  OnTap: () {},
+                ),
+                const SizedBox(height: 16),
+                if (favoriteItems.isNotEmpty && searchController.text.isEmpty) ...[
+                  Text(
+                    "Favorite",
+                    style: GoogleFonts.almarai(
+                      fontSize: 18,
+                      color: CustomColors.darkBlue2,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
+                  const SizedBox(height: 10),
+                  ...favoriteItems.asMap().entries.map((entry) {
+                    int mainIndex = calculators.indexOf(entry.value);
+                    return buildCardItem(entry.value, mainIndex);
+                  }).toList(),
+                  const SizedBox(height: 16),
+                ],
+
+                Text(
+                  "Most important medical calculations",
+                  style: GoogleFonts.almarai(
+                    fontSize: 18,
+                    color: CustomColors.darkBlue2,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 16,
-            ),
-            Text(
-              "Favorite",
-              style: GoogleFonts.almarai(
-                fontSize: 18,
-                color: CustomColors.darkBlue2,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-            SizedBox(
-              height: 13,
-            ),
-            InkWell(
-              onTap: () {
-                Get.to(BmicalcScreen());
-              },
-              child: CardItem(
-                image: "assets/images/BMI.png",
-                elevation: 0.0,
-                title: "BMI Calculator",
-                subTitle:
-                    "The BMI calculator is a powerful tool for assessing healthy weight and understanding your fitness level.",
-              ),
-            ),
-            SizedBox(
-              height: 18,
-            ),
-            Text(
-              "Most important medical calculations ",
-              style: GoogleFonts.almarai(
-                fontSize: 18,
-                color: CustomColors.darkBlue2,
-                fontWeight: FontWeight.w700,
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            InkWell(
-              onTap: () {
-                Get.toNamed(CustomPage.dueDatePage);
-              },
-              child: CardItem(
-                image: "assets/images/baby.png",
-                elevation: 2.3,
-                title: "Due date Calculator",
-                subTitle:
-                    "Pregnancy and childbirth calculator provides information about the due date and helps understand the stages of pregnancy.",
-              ),
-            ),
-            SizedBox(
-              height: 7,
-            ),
-            InkWell(
-              onTap: () {
-                Get.to(OvulationcalcScreen());
-                Get.toNamed(CustomPage.ovulatePage);
-                Get.toNamed(CustomPage.ovulatePage);
-              },
-              child: CardItem(
-                image: "assets/images/womb.png",
-                elevation: 2.3,
-                title: "Ovulation Calculator",
-                subTitle:
-                    "It provides an ovulation day calculator to determine the period when the egg is ready for fertilization",
-              ),
-            ),
-            SizedBox(
-              height: 7,
-            ),
+                const SizedBox(height: 10),
+                
+                ...filteredItems.asMap().entries.map((entry) {
+                  int mainIndex = calculators.indexOf(entry.value);
+                  return buildCardItem(entry.value, mainIndex);
+                }).toList(),
+              ],
+            ),        
 
-             InkWell(
-              onTap: () {
-                Get.toNamed(CustomPage.diabetes1Page);
-              },
-              child: CardItem(
-                image: "assets/svg/diabetes.svg",
-                elevation: 2.3,
-                title: "Diabetes Type2 Risk Calculator",
-                subTitle:
-                    "It provides an Diabetes Type2 Risk day calculator to determine when the egg is ready for fertilization",
-              ),
-            ),
-            SizedBox(
-              height: 7,
-            ),
-
- InkWell(
-              onTap: () {
-                Get.toNamed(CustomPage.ibsPage1);
-              },
-              child: CardItem(
-                image: "assets/svg/ibs.svg",
-                elevation: 2.3,
-                title: "Symptom Checker For IBS Calculator",
-                subTitle:
-                    "It provides an Diabetes Type2 Risk day calculator to determine when the egg is ready for fertilization",
-              ),
-            ),
-            SizedBox(
-              height: 7,
-            ),
-
-            InkWell(
-              onTap: () {
-                Get.to(BmicalcScreen());
-              },
-              child: CardItem(
-                image: "assets/images/BMI.png",
-                elevation: 2.3,
-                title: "BMI Calculator",
-                subTitle:
-                    "The BMI calculator is a powerful tool for assessing healthy weight and understanding your fitness level.",
-              ),
-            ),
-            SizedBox(
-              height: 7,
-            ),
-            InkWell(
-              onTap: () {
-                Get.to(CaloriecalcScreen());
-              },
-              child: CardItem(
-                image: "assets/images/fruits.png",
-                elevation: 2.3,
-                title: "Calorie Calculator",
-                subTitle:
-                    "This calculator can help you determine the types and amounts of food that suit your needs and track your daily food intake.",
-              ),
-            ),
-            SizedBox(
-              height: 7,
-            ),
-            InkWell(
-              onTap: () {
-                Get.to(WatercalcScreen());
-              },
-              child: CardItem(
-                image: "assets/images/water.png",
-                elevation: 2.3,
-                title: "Body water Calculator",
-                subTitle:
-                    "This calculator can help you determine the types and amounts of food that suit your needs and track your daily food intake.",
-              ),
-            ),
-          ],
-        ),
-      ),
+          ),
+        
+    
     );
   }
 }

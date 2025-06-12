@@ -73,14 +73,15 @@ class AddAlarm extends GetView<AlarmController> {
                     controller: controller.alarmTimeController,
                     hint: CustomTrans.time.tr,
                     onDatePickerPress: () {
+                       
                       CustomDatePicker((date) {
+
                        // controller.postAlarm.alarmTime = date.stringTime24;
                         controller.postAlarm.alarmTime =  DateFormat("HH:mm").format(date);
                     //    controller.alarmTimeController.text = date.stringTime;
                     controller.alarmTimeController.text =   DateFormat("hh:mm a").format(date);
 
-//this edit as when i got data from api it be always AM 
-                      }).showTimePickerEveryHalfHour(context);
+                      }).showTimePicker(context);
                     },
                   ),
                   const SizedBox(height: 16),

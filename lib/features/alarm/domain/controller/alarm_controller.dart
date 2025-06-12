@@ -101,8 +101,12 @@ class AlarmController extends MainGetxController with CustomStateMixin {
     var response = await sl<AlarmCases>().addAlarm(postAlarm);
     loadingGetxController.hideLoading();
     statusError.checkStatus(response, () {
+      
       // PushNotificationsManager().subscribe("alarm-${response.data?.alarmDate}_${response.data?.alarmTime}");
       CustomAlarm().addAlarm(response.data!);
+          //   CustomAlarm().snoozeAlarm( 
+          // response.data!.alarmDate,);
+
       onRefresh();
       Get.back();
     });

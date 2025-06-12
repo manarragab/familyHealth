@@ -4,6 +4,9 @@ import 'package:abg/data/models/calculation/IBS/post_IBS/post_IBS_MD.dart';
 import 'package:abg/data/models/calculation/IBS/post_IBS/post_IBS_response.dart';
 import 'package:abg/data/models/calculation/diabetes/post_diabetes/post_diabetes_MD.dart';
 import 'package:abg/data/models/calculation/diabetes/post_diabetes/post_diabetes_response.dart';
+import 'package:abg/data/models/calculation/favourite/get_favourite/get_favourite.dart';
+import 'package:abg/data/models/calculation/favourite/post_favourite/post_favourite.dart';
+import 'package:abg/data/models/calculation/favourite/post_favourite/post_favourite_response.dart';
 import 'package:abg/data/models/calculation/pregnancyTracker/post_tracker/post_tracker_MD.dart';
 import 'package:abg/data/models/calculation/pregnancyTracker/post_tracker/post_tracker_response.dart';
 import 'package:abg/data/remote_data/response_model.dart';
@@ -30,4 +33,19 @@ class CalculationCases {
     return _data.addIBS(post);
   }
   
+  
+  @override
+  Future<ResponseModel<Favourites?>> getFavourites() {
+   return  _data.getFavourites();
+  }
+
+  @override
+  Future<ResponseModel<Favourite?>> addFavourites(PostFavourite post) {
+    return  _data.addFavourites(post);
+  }
+
+  @override
+  Future<ResponseModel> deleteFavourites(String id) {
+    return  _data.deleteFavourites(id);
+  }
 }

@@ -79,9 +79,9 @@ calcController.emptyData();
                 ),
                  MainButton(
                   onPressed: () {
-                    Get.toNamed(CustomPage.layoutPage);
-                  },
-                  backgroundColor: CustomColors.pink,
+ Get.until(
+                        (route) => Get.currentRoute == CustomPage.layoutPage);
+                                  },
                   width: 70,
                  titleWidget: Icon(Icons.home_outlined ,
                  size: 30

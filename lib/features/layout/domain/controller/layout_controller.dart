@@ -26,8 +26,6 @@ class LayoutController extends MainGetxController {
       case 3:
         Get.put(FamilyController()).onRefresh();
         break;
-      case 4:
-        break;
     }
     currentIndex = index;
     if (useUpdate) {

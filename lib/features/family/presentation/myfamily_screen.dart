@@ -47,6 +47,7 @@ class MyfamilyScreen extends GetView<FamilyController> {
       floatingActionButton: FloatingActionButton(
         elevation: 0,
         onPressed: () {
+          controller.clearData();
           Get.to(AddfamilyScreen());
         },
         child: const Icon(

@@ -1,7 +1,9 @@
 
 import 'package:abg/data/remote_data/response_model.dart';
 
-class PostDiabetesResponse  extends ResponseModel<Diabetes?> {
+import 'post_diabetes_MD.dart';
+
+class PostDiabetesResponse extends ResponseModel<Diabetes?>{
   Diabetes? data;
   num? status;
   String? message;
@@ -26,17 +28,21 @@ class PostDiabetesResponse  extends ResponseModel<Diabetes?> {
 }
 
 class Diabetes {
-  num? riskResult;
+  double? riskResult;
+  String? comment;
 
-  Diabetes({this.riskResult});
+  Diabetes({this.riskResult, this.comment});
 
   Diabetes.fromJson(Map<String, dynamic> json) {
     riskResult = json["risk_result"];
+    comment = json["comment"];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> _data = <String, dynamic>{};
     _data["risk_result"] = riskResult;
+    _data["comment"] = comment;
     return _data;
   }
+  
 }

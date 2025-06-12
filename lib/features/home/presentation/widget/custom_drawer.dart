@@ -10,6 +10,7 @@ class CustomDrawer extends GetView<AuthController> {
 
   @override
   Widget build(BuildContext context) {
+    AuthController authController = Get.find<AuthController>();
     final user = sl<AuthCases>().getUser()?.data;
     return Drawer(
       child: Column(
@@ -20,6 +21,7 @@ class CustomDrawer extends GetView<AuthController> {
                 padding: EdgeInsets.zero,
                 child: Stack(
                   children: [
+
                     user?.image != null
                         ? Image.network(
                             user?.image ?? "",
@@ -34,12 +36,20 @@ class CustomDrawer extends GetView<AuthController> {
                     Padding(
                       padding: const EdgeInsets.only(top: 15.0),
                       child: ListTile(
-                        leading: const CircleAvatar(
-                          radius: 30,
-                          backgroundImage: NetworkImage(demoImage),
-                        ),
+                        leading:  
+  CircleAvatar(
+    radius: 25,
+    backgroundColor: Colors.grey.shade200,
+    backgroundImage: authController.postRegister.image != null
+        ? FileImage(authController.postRegister.image!)
+        : const AssetImage("assets/images/cheker.png") as ImageProvider,
+  ),
+
                         title: Text(
-                          sl<AuthCases>().getUser()?.data?.name ?? "",
+                          // sl<AuthCases>().getUser()?.data?.name ?? "",
+
+                          authController.postRegister.name ??"",
+                              // sl<AuthCases>().getUser()?.data?.name ?? "",
                           style: TFonts.textTitleWhiteStyle(),
                         ),
                         subtitle: Text(
@@ -112,7 +122,12 @@ class CustomDrawer extends GetView<AuthController> {
         }),
     DrawerItem(
         image: "assets/svg/liberary.svg", name: "My Liberary", onTap: () {}),
-    DrawerItem(image: "assets/svg/bills.svg", name: "Pills", onTap: () {}),
+    DrawerItem(image: "assets/svg/bills.svg", name: "Pills", onTap: () {
+                Get.toNamed(CustomPage.pillsPage);
+
+    }),
+
+    
     DrawerItem(
         image: "assets/svg/doctor.svg", name: "Talk To Doctor", onTap: () {}),
     DrawerItem(

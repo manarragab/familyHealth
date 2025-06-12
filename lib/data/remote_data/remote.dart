@@ -14,6 +14,9 @@ import 'package:abg/data/models/calculation/IBS/post_IBS/post_IBS_MD.dart';
 import 'package:abg/data/models/calculation/IBS/post_IBS/post_IBS_response.dart';
 import 'package:abg/data/models/calculation/diabetes/post_diabetes/post_diabetes_MD.dart';
 import 'package:abg/data/models/calculation/diabetes/post_diabetes/post_diabetes_response.dart';
+import 'package:abg/data/models/calculation/favourite/get_favourite/get_favourite.dart';
+import 'package:abg/data/models/calculation/favourite/post_favourite/post_favourite.dart';
+import 'package:abg/data/models/calculation/favourite/post_favourite/post_favourite_response.dart';
 import 'package:abg/data/models/calculation/pregnancyTracker/post_tracker/post_tracker_MD.dart';
 import 'package:abg/data/models/calculation/pregnancyTracker/post_tracker/post_tracker_response.dart';
 import 'package:abg/data/models/chat/chat_model.dart';
@@ -358,16 +361,59 @@ class Remote {
 //calculation => IBS
   Future<ResponseModel<IBS?>> addIBS(PostIbsMD post) {
     return _helper.post<IBS?>(post.toJson(),
-    useFormData: false,
-
-        path: "/user/ibs/symptom-assessment", onSuccess: (dynamic data) {
+    useFormData: false, path: "/user/ibs/symptom-assessment",
+     onSuccess: (dynamic data) {
       return PostIbsResponse.fromJson(data);
     }, onError: (data) {
-
       return ResponseModel(status: data.status, message: data.message);
     }, isLogin: true , );
   }
 
 
+//calculation=> favouri 
+//   Future<ResponseModel<Favourites?>> getFavourites() async {
+//   return _helper.get<Favourites?>({}, path: "/user/favorite-calculators",
+//     onSuccess: (dynamic data) {return GetFavourites.fromJson(data);},
+//     onError: (data) {
+//       return ResponseModel(status: data.status, message: data.message);
+//     },
+//     isLogin: true,
+//   );
+// }
+
+
+Future<ResponseModel<Favourites?>> getFavourites() async {
+return _helper.get<Favourites?>( {}, path: "/user/favorite-calculators",
+    onSuccess: (dynamic data) {
+      return GetFavourites.fromJson(data);
+    },
+    onError: (data) {
+      return ResponseModel(status: data.status, message: data.message);
+    },
+    isLogin: true,
+  );
+}
+
+
+  Future<ResponseModel<Favourite?>> addFavourites(PostFavourite post) async {
+    return _helper.post<Favourite?>(await post.toJson(), path: "/user/favorite-calculators/toggle",
+        onSuccess: (dynamic data) {
+      return PostFavouriteResponse.fromJson(data);
+    }, onError: (data) {
+      return ResponseModel(status: data.status, message: data.message);
+    }, isLogin: true);
+  }
+
+  Future<ResponseModel<dynamic>> deleteFavourites(String id) async {
+    return _helper.delete<dynamic>(
+        path: "/user/favorite-calculators/toggle/$id",
+        onSuccess: (dynamic data) {
+          return ResponseModel.fromJson(data);
+        },
+        onError: (data) {
+          return ResponseModel(status: data.status, message: data.message);
+        },
+        isLogin: true);
+  }
 
 }

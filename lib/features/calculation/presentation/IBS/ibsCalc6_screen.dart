@@ -79,9 +79,10 @@ class Ibscalc6Screen extends GetWidget<Calculationcontroller> {
                           ),
                           MainButton(
                             onPressed: () {
-                              Get.offAllNamed(CustomPage.homePage);
-                            },
-                            width: Get.width / 3,
+  Get.until(
+                        (route) => Get.currentRoute == CustomPage.layoutPage);
+                                            },
+                            width:70,
                             titleWidget:
                       Icon(Icons.home_outlined, size: 30, color: Colors.white),
             

@@ -33,7 +33,7 @@ class GreycontainerItem extends GetWidget<FamilyController>  {
           SizedBox(
             width: 50,
             height: 50,
-            child: Image.network(
+            child: CustomImage.network(
               image,
               fit: BoxFit.cover,
             ),

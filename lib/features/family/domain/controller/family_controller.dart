@@ -43,7 +43,18 @@ TextEditingController dateController=TextEditingController();
 TextEditingController familyController=TextEditingController();
 TextEditingController selectSomeoneController=TextEditingController();
 TextEditingController familyDiseaseController=TextEditingController();
+TextEditingController nameController=TextEditingController();
+TextEditingController phoneController=TextEditingController();
 
+void clearData() {
+  postFam = PostFamilyModel();
+    nameController.clear();
+    phoneController.clear();
+    dateController.clear();
+    familyController.clear();
+    selectSomeoneController.clear();
+    familyDiseaseController.clear();
+  }
 
   int _pageNum = 1;
 
@@ -71,6 +82,10 @@ addFamily()async{
     statusError.checkStatus(response, () {
       onRefresh();
       Get.back();
+      print("hhhhhhhhhhhhhh ${postFam.relative}");
+        print(
+                                  "Selected Medical Record: ${postFam.medicalRecord}");
+                            
     });
 
 }

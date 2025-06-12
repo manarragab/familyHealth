@@ -7,7 +7,6 @@ import 'package:abg/features/alarm/domain/controller/alarm_controller.dart';
 import 'package:abg/features/alarm/presentation/add_alarm.dart';
 import 'package:abg/features/alarm/presentation/widget/alarm_item.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
-import 'package:abg/res/notification/alarm/alarm.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class AlarmScreen extends GetView<AlarmController> {
