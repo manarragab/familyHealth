@@ -17,7 +17,7 @@ class MedicalcalcScreen extends StatefulWidget {
 
 // class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
 //   List<Map<String, dynamic>> favoriteItems = [];
-  TextEditingController searchController = TextEditingController();
+TextEditingController searchController = TextEditingController();
 
 //   final List<Map<String, dynamic>> allItems = [
 //     {
@@ -189,22 +189,20 @@ class MedicalcalcScreen extends StatefulWidget {
 //   }
 // }
 
-
-
 class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
   final Calculationcontroller contr = Get.find();
   TextEditingController searchController = TextEditingController();
 
   /// Returns the entire list of calculators from the controller
-  List<Calculators> get calculators => contr.getFavourite.data?.calculators ?? [];
+  List<Calculators> get calculators =>
+      contr.getFavourite.data?.calculators ?? [];
 
   /// List of filtered items based on the search query
   List<Calculators> get filteredItems {
     final query = searchController.text.toLowerCase();
     if (query.isEmpty) return calculators;
-    return calculators.where((item) => (item.displayName ?? '')
-        .toLowerCase()
-        .contains(query))
+    return calculators
+        .where((item) => (item.displayName ?? '').toLowerCase().contains(query))
         .toList();
   }
 
@@ -273,34 +271,19 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
 
   Widget buildCardItem(Calculators item, int index) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 7),
-      child:contr.obx((state) {
-       GetFavourites getFavourites=state!;
-       List<Calculators> data=getFavourites.data?.calculators??[];
-          return SmartRefresher(
-            controller: contr.refreshControllerr,
-            onRefresh: contr.onRefresh,
-            child: 
-
-ListView.builder(
-  shrinkWrap: true,
-  itemCount: 5,
-  itemBuilder:(context, index) {
-    return CardItem(
-      image: data[index].icon ?? 'assets/images/BMI.png',
-      
-      title: item.displayName ?? 'Medical Calculators',
-      subTitle: item.description ?? '',
-      // isFavorite: item.isFavorite ?? false,
-      // onTap: () => navigateToPage(index),
-      // onFavoriteToggle: (isNowFav) => handleFavoriteToggle(item, index),
-    );
-  },
-  
-  )
-    );}));
+        padding: const EdgeInsets.only(bottom: 7),
+        child: contr.obx((state) {
+          GetFavourites getFavourites = state!;
+          List<Calculators> data = getFavourites.data?.calculators ?? [];
+          return CardItem(
+            image: contr.calcImages[index],
+            title: item.displayName ?? 'Name',
+            subTitle: item.description ?? 'Description',
+            onPress: () => navigateToPage(index),
+            fav: () => handleFavoriteToggle(item, index),
+          );
+        }));
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -308,63 +291,85 @@ ListView.builder(
       appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child:  ListView(
-              children: [
-                
-                const SizedBox(height: 10),
-                CustomTextField.searchField(
-                  (value) => setState(() {}),
-                  controller: searchController,
-                  hint: "Search medical calculators",
-                  padding: const EdgeInsets.only(right: 5),
-                  OnTap: () {},
-                ),
-                const SizedBox(height: 16),
-                if (favoriteItems.isNotEmpty && searchController.text.isEmpty) ...[
-                  Text(
-                    "Favorite",
-                    style: GoogleFonts.almarai(
-                      fontSize: 18,
-                      color: CustomColors.darkBlue2,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  ...favoriteItems.asMap().entries.map((entry) {
-                    int mainIndex = calculators.indexOf(entry.value);
-                    return buildCardItem(entry.value, mainIndex);
-                  }).toList(),
-                  const SizedBox(height: 16),
-                ],
+        child: SmartRefresher(
+          controller: contr.refreshControllerr,
+          onRefresh: contr.onRefresh,
+          child: ListView(
+            children: [
+              const SizedBox(height: 10),
+              CustomTextField.searchField(
+                (value) => setState(() {}),
+                controller: searchController,
+                hint: "Search medical calculators",
+                padding: const EdgeInsets.only(right: 5),
+                OnTap: () {},
+              ),
+              const SizedBox(height: 16),
+              Padding(
+                  padding: const EdgeInsets.only(bottom: 7),
+                  child: contr.obx((state) {
+                    GetFavourites getFavourites = state!;
+                    List<Calculators> data =
+                        getFavourites.data?.calculators ?? [];
+                    return Column(
+                      children: [
+                        if (favoriteItems.isNotEmpty &&
+                            searchController.text.isEmpty) ...[
+                          Text(
+                            "Favorite",
+                            style: GoogleFonts.almarai(
+                              fontSize: 18,
+                              color: CustomColors.darkBlue2,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          ...favoriteItems.asMap().entries.map((entry) {
+                            int mainIndex = calculators.indexOf(entry.value);
+                            return buildCardItem(entry.value, mainIndex);
+                          }).toList(),
+                          const SizedBox(height: 16),
+                        ],
+                        ...List.generate(data.length, (index) {
+                          return CardItem(
+                            image: data[index].icon ?? 'assets/images/BMI.png',
+                            title: data[index].displayName ??
+                                'Medical Calculators',
+                            subTitle: data[index].description ?? '',
+                            // isFavorite: item.isFavorite ?? false,
+                            // onTap: () => navigateToPage(index),
+                            // onFavoriteToggle: (isNowFav) => handleFavoriteToggle(item, index),
+                          );
+                        }),
+                        Text(
+                          "Most important medical calculations",
+                          style: GoogleFonts.almarai(
+                            fontSize: 18,
+                            color: CustomColors.darkBlue2,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        //   Text(
+                        //  calculators[0].displayName ?? 'Medical Calculators',
+                        //   style: GoogleFonts.almarai(
+                        //     fontSize: 18,
+                        //     color: CustomColors.darkBlue2,
+                        //     fontWeight: FontWeight.w700,
+                        //   ),
+                        // ),
+                        const SizedBox(height: 10),
 
-                Text(
-                  "Most important medical calculations",
-                  style: GoogleFonts.almarai(
-                    fontSize: 18,
-                    color: CustomColors.darkBlue2,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                //   Text(
-                //  calculators[0].displayName ?? 'Medical Calculators',
-                //   style: GoogleFonts.almarai(
-                //     fontSize: 18,
-                //     color: CustomColors.darkBlue2,
-                //     fontWeight: FontWeight.w700,
-                //   ),
-                // ),
-                const SizedBox(height: 10),
-                
-                ...filteredItems.asMap().entries.map((entry) {
-                  int mainIndex = calculators.indexOf(entry.value);
-                  return buildCardItem(entry.value, mainIndex);
-                }).toList(),
-              ],
-            ),        
-
+                        ...filteredItems.asMap().entries.map((entry) {
+                          int mainIndex = calculators.indexOf(entry.value);
+                          return buildCardItem(entry.value, mainIndex);
+                        }).toList(),
+                      ],
+                    );
+                  })),
+            ],
           ),
-        
-    
+        ),
+      ),
     );
   }
 }

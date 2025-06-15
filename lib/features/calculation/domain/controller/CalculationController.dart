@@ -38,7 +38,7 @@ class Calculationcontroller extends MainGetxController with CustomStateMixin{
   PostFavouriteResponse responseFavourite = PostFavouriteResponse();
   GetFavourites getFavourite = GetFavourites();
   RefreshController refreshController = RefreshController();
-List<Calculators>? calculator;
+
 
 RefreshController refreshControllerr=RefreshController();
 
@@ -61,8 +61,7 @@ List<String> calcImages=[
         getPage: (_) => _,
         checkIfEmpty: (data) {
           if (data is GetFavourites) {
-             final calculators = data.data?.calculators;
-        if (calculators == null || calculators.isEmpty) {
+        if (data.data?.calculators?.isEmpty??true) {
           data.status = StatusType.empty.index;
         }
       }
