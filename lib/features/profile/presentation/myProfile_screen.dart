@@ -134,10 +134,10 @@ return    LoadingOverLay(
       bottomLeft: Radius.circular(120),
     ),
     image: DecorationImage(
-      image: authController.postRegister.image != null
-          ? FileImage(authController.postRegister.image!)
-          : authController.imageUrl != null
-              ? FileImage(authController.imageUrl!)
+      image: authController.user?.image != null
+        ? NetworkImage(authController.user?.image ??"" )
+          // : authController.imageUrl != null
+          //     ? FileImage(authController.imageUrl!)
               : const AssetImage("assets/images/cheker.png") as ImageProvider,
       fit: BoxFit.cover,
     ),
@@ -162,10 +162,10 @@ return    LoadingOverLay(
                             onTap: () async{
                              final pick= await Pick.pickImage(context);
                                if (pick != null) {
-                            authController.postRegister.image = pick;
                             setState(() {
+                          authController.postRegister.image = pick;
+
                               authController.imageUrl = pick;
-                               
                             });
                             controller.update();
                           }

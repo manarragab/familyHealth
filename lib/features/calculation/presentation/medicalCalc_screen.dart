@@ -17,7 +17,7 @@ class MedicalcalcScreen extends StatefulWidget {
 
 // class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
 //   List<Map<String, dynamic>> favoriteItems = [];
-  TextEditingController searchController = TextEditingController();
+TextEditingController searchController = TextEditingController();
 
 //   final List<Map<String, dynamic>> allItems = [
 //     {
@@ -189,31 +189,29 @@ class MedicalcalcScreen extends StatefulWidget {
 //   }
 // }
 
-
-
 class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
   final Calculationcontroller contr = Get.find();
   TextEditingController searchController = TextEditingController();
 
   /// Returns the entire list of calculators from the controller
-  List<Calculators> get calculators => contr.getFavourite.data?.calculators ?? [];
+  List<Calculators> get calculators =>
+      contr.getFavourite.data?.calculators ?? [];
 
   /// List of filtered items based on the search query
   List<Calculators> get filteredItems {
     final query = searchController.text.toLowerCase();
     if (query.isEmpty) return calculators;
-    return calculators.where((item) => (item.displayName ?? '')
-        .toLowerCase()
-        .contains(query))
+    return calculators
+        .where((item) => (item.displayName ?? '').toLowerCase().contains(query))
         .toList();
   }
 
   List<Calculators> get favoriteItems =>
       calculators.where((c) => c.isFavorite == true).toList();
 
-  void handleFavoriteToggle(Calculators item, int index) async {
+  void handleFavoriteToggle(Calculators calculators, int index) async {
     setState(() {
-      item.isFavorite = !(item.isFavorite ?? false);
+      calculators.isFavorite = !(calculators.isFavorite ?? false);
     });
 
     CalculationTypes? type;
@@ -236,7 +234,7 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
     }
 
     if (type != null) {
-      if (item.isFavorite == true) {
+      if (calculators.isFavorite == true) {
         await contr.addFavourites(type);
       } else {
         await contr.deleteFavourite(type.name);
@@ -244,63 +242,41 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
     }
   }
 
-  void navigateToPage(int index) {
-    switch (index) {
-      case 0:
-        Get.to(BmicalcScreen());
-        break;
-      case 1:
-        Get.toNamed(CustomPage.dueDatePage);
-        break;
-      case 2:
-        Get.toNamed(CustomPage.diabetes1Page);
-        break;
-      case 3:
-        Get.toNamed(CustomPage.ibsPage1);
-        break;
-      case 4:
-        Get.toNamed(CustomPage.caloriePage);
-        break;
+  void navigateToPage(Calculators calculator) {
+    final name = calculator.name?.toLowerCase();
 
-      // case 5:
-      //   Get.toNamed(CustomPage.waterPage);
-      //   break;
-      // case 6:
-      //   Get.toNamed(CustomPage.ovulatePage);
-      //   break;
+    if (name == null) return;
+
+    if (name == "bmi") {
+      Get.to(BmicalcScreen());
+    } else if (name == "pregnancy-tracker") {
+      Get.toNamed(CustomPage.progressTracker);
+    } else if (name == "diabetes-calculator") {
+      Get.toNamed(CustomPage.diabetes1Page);
+    } else if (name == "ibs-symptom-assessment") {
+      Get.toNamed(CustomPage.ibsPage1);
+    } else if (name == "period-calculator") {
+      Get.toNamed(CustomPage.dueDatePage);
+    } else {
+      // fallback page or nothing
+      print("No matching page found.");
     }
   }
 
-  Widget buildCardItem(Calculators item, int index) {
+  Widget buildCardItem(Calculators calculator) {
+    int index = calculators.indexOf(calculator);
     return Padding(
       padding: const EdgeInsets.only(bottom: 7),
-      child:contr.obx((state) {
-       GetFavourites getFavourites=state!;
-       List<Calculators> data=getFavourites.data?.calculators??[];
-          return SmartRefresher(
-            controller: contr.refreshControllerr,
-            onRefresh: contr.onRefresh,
-            child: 
-
-ListView.builder(
-  shrinkWrap: true,
-  itemCount: 5,
-  itemBuilder:(context, index) {
-    return CardItem(
-      image: data[index].icon ?? 'assets/images/BMI.png',
-      
-      title: item.displayName ?? 'Medical Calculators',
-      subTitle: item.description ?? '',
-      // isFavorite: item.isFavorite ?? false,
-      // onTap: () => navigateToPage(index),
-      // onFavoriteToggle: (isNowFav) => handleFavoriteToggle(item, index),
+      child: CardItem(
+        image: calculator.icon ?? 'assets/images/BMI.png',
+        title: calculator.displayName ?? 'Name',
+        subTitle: calculator.description ?? 'Description',
+        onPress: () => navigateToPage(calculator),
+        fav: () => handleFavoriteToggle(calculator, index),
+        isFavourite: calculator.isFavorite ?? false,
+      ),
     );
-  },
-  
-  )
-    );}));
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -308,63 +284,73 @@ ListView.builder(
       appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
-        child:  ListView(
-              children: [
-                
-                const SizedBox(height: 10),
-                CustomTextField.searchField(
-                  (value) => setState(() {}),
-                  controller: searchController,
-                  hint: "Search medical calculators",
-                  padding: const EdgeInsets.only(right: 5),
-                  OnTap: () {},
-                ),
-                const SizedBox(height: 16),
-                if (favoriteItems.isNotEmpty && searchController.text.isEmpty) ...[
-                  Text(
-                    "Favorite",
-                    style: GoogleFonts.almarai(
-                      fontSize: 18,
-                      color: CustomColors.darkBlue2,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  ...favoriteItems.asMap().entries.map((entry) {
-                    int mainIndex = calculators.indexOf(entry.value);
-                    return buildCardItem(entry.value, mainIndex);
-                  }).toList(),
-                  const SizedBox(height: 16),
-                ],
-
-                Text(
-                  "Most important medical calculations",
-                  style: GoogleFonts.almarai(
-                    fontSize: 18,
-                    color: CustomColors.darkBlue2,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                //   Text(
-                //  calculators[0].displayName ?? 'Medical Calculators',
-                //   style: GoogleFonts.almarai(
-                //     fontSize: 18,
-                //     color: CustomColors.darkBlue2,
-                //     fontWeight: FontWeight.w700,
-                //   ),
-                // ),
-                const SizedBox(height: 10),
-                
-                ...filteredItems.asMap().entries.map((entry) {
-                  int mainIndex = calculators.indexOf(entry.value);
-                  return buildCardItem(entry.value, mainIndex);
-                }).toList(),
-              ],
-            ),        
-
+        child: SmartRefresher(
+          controller: contr.refreshControllerr,
+          onRefresh: contr.onRefresh,
+          child: ListView(
+            children: [
+              const SizedBox(height: 10),
+              CustomTextField.searchField(
+                (value) => setState(() {}),
+                controller: searchController,
+                hint: "Search medical calculators",
+                padding: const EdgeInsets.only(right: 5),
+                OnTap: () {},
+              ),
+              const SizedBox(height: 16),
+              Padding(
+                  padding: const EdgeInsets.only(bottom: 7),
+                  child: contr.obx((state) {
+                    GetFavourites getFavourites = state!;
+                    List<Calculators> data =
+                        getFavourites.data?.calculators ?? [];
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        if (favoriteItems.isNotEmpty &&
+                            searchController.text.isEmpty) ...[
+                          Text(
+                            "Favorite",
+                            // textAlign: TextAlign.start,
+                            style: GoogleFonts.almarai(
+                              fontSize: 18,
+                              color: CustomColors.darkBlue2,
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          ...favoriteItems.asMap().entries.map((entry) {
+                            int mainIndex = calculators.indexOf(entry.value);
+                            return buildCardItem(entry.value);
+                          }).toList(),
+                        ],
+                        Text(
+                          "Most important medical calculations",
+                          style: GoogleFonts.almarai(
+                            fontSize: 18,
+                            color: CustomColors.darkBlue2,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        ...List.generate(filteredItems.length, (index) {
+                          final item = filteredItems[index];
+                          return CardItem(
+                            image: item.icon ?? 'assets/images/BMI.png',
+                            title: item.displayName ?? 'Medical Calculators',
+                            subTitle: item.description ?? '',
+                            onPress: () => navigateToPage(item),
+                            fav: () => handleFavoriteToggle(item, index),
+                            isFavourite: item.isFavorite ?? false,
+                          );
+                        }),
+                      ],
+                    );
+                  })),
+            ],
           ),
-        
-    
+        ),
+      ),
     );
   }
 }

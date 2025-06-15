@@ -40,20 +40,20 @@ class CustomDrawer extends GetView<AuthController> {
   CircleAvatar(
     radius: 25,
     backgroundColor: Colors.grey.shade200,
-    backgroundImage: authController.postRegister.image != null
-        ? FileImage(authController.postRegister.image!)
+    backgroundImage: authController.user?.image != null
+        ? NetworkImage(authController.user?.image ??"" )
         : const AssetImage("assets/images/cheker.png") as ImageProvider,
   ),
 
                         title: Text(
                           // sl<AuthCases>().getUser()?.data?.name ?? "",
 //authController.namee??"",
-                          authController.postRegister.name ??"",
+                          authController.user?.name??"",
                               // sl<AuthCases>().getUser()?.data?.name ?? "",
                           style: TFonts.textTitleWhiteStyle(),
                         ),
                         subtitle: Text(
-                          sl<AuthCases>().getUser()?.data?.academicYear ?? "",
+                           authController.user?.academicYear?? "",
                           style: TFonts.textBodyWhiteStyle,
                         ),
                       ),

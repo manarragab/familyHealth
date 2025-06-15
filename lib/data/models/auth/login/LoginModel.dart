@@ -59,7 +59,7 @@ class LoginData {
   String? academicYear;
   String? phone;
   String? image;
-
+  
   String? deviceToken;
   int? isLoggedIn;
   int? isBanned;

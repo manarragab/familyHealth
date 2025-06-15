@@ -79,7 +79,13 @@ class RegistResp {
 
   RegistResp({this.id, this.name, this.email, this.emailVerifiedAt, this.userType, this.phone, this.dateOfBirth, this.gender, this.image, this.longitude, this.latitude, this.socialId, this.socialType, this.deviceToken, this.isLoggedIn, this.isBanned, this.createdAt, this.updatedAt, this.imagePath});
 
-  RegistResp.fromJson(Map<String, dynamic> json) {
+  RegistResp.fromJson(Map<String, dynamic> json)  {
+     final map = <String, dynamic>{};
+    if (image != null)  {
+      final mimeType = lookupMimeType(image!.path) ?? 'application/octet-stream'; // Detect file type
+      final mediaType = MediaType.parse(mimeType); // Convert to MediaType
+      map['image'] =  MultipartFile.fromFile(image!.path,contentType: mediaType);
+    }
     id = json["id"];
     name = json["name"];
     email = json["email"];
@@ -88,7 +94,7 @@ class RegistResp {
     phone = json["phone"];
     dateOfBirth = json["date_of_birth"];
     gender = json["gender"];
-    image = json["image"];
+   // image = json["image"];
     longitude = json["longitude"];
     latitude = json["latitude"];
     socialId = json["social_id"];

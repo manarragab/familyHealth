@@ -109,16 +109,24 @@ class AddfamilyScreen extends GetView<FamilyController> {
                         hint: "Full Name",
                       ),
                       const SizedBox(height: 20),
-                      CustomTextField.datePickerTextField(
-                          hint: "Date of birth",
-                          prefixIconPath: "assets/svg/clender.svg",
-                          controller: controller.dateController,
-                          onDatePickerPress: () {
-                            CustomDatePicker((date) {
-                              controller.postFam.brithDate = date.stringDate;
-                              controller.dateController.text = date.stringDate;
-                            }).showDatePicker(context);
-                          }),
+                     CustomTextField.datePickerTextField(
+  hint: "Date of birth",
+  prefixIconPath: "assets/svg/clender.svg",
+  controller: controller.dateController,
+  onDatePickerPress: () async {
+    CustomDatePicker((date) {
+      controller.postFam.brithDate = date.stringDate;
+      controller.dateController.text = date.stringDate;
+    }).showDatePicker(context);
+
+    if (controller.dateController.text.isEmpty) {
+      final now = DateFormat('yyyy-MM-dd').format(DateTime.now());
+      controller.dateController.text = now;
+      controller.postFam.brithDate = now;
+    }
+  },
+),
+
                       const SizedBox(height: 20),
                       CustomTextField.phoneTextField(
                         controller:controller.phoneController ,

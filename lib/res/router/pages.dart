@@ -73,6 +73,7 @@ class CustomPage {
           GetBinding();
           Get.put(LayoutController()).changeNavBarIndex(0);
         })),
+       
     GetPage(
         name: splashPage,
         page: () => const Splash(),

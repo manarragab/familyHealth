@@ -8,10 +8,11 @@ class CardItem extends StatelessWidget {
   final void Function()? fav;
     final String title;
     final String subTitle;
+    final bool? isFavourite;
 final Calculators? favouriteModel;
   const CardItem({
     super.key,
-      required this.image, this.onPress, this.fav, required this.title, required this.subTitle, this.favouriteModel,
+      required this.image, this.onPress, this.fav, required this.title, required this.subTitle, this.favouriteModel, this.isFavourite,
   });
 
   @override
@@ -32,7 +33,7 @@ onPress?.call();
               SizedBox(
                 width: 90,
                 height: 90,
-                child: CustomImage.asset(image, fit: BoxFit.cover),
+                child: CustomImage.network(image, fit: BoxFit.cover),
               ),
               const SizedBox(width: 7),
               Expanded(
@@ -70,12 +71,12 @@ onPress?.call();
                 margin: const EdgeInsets.only(top: 14),
                 width: 22,
                 child: GestureDetector(
+
                   onTap: () {
                    fav?.call();
-
                   },
                   child: SvgPicture.asset(
-                    favouriteModel?.isFavorite == true
+                   isFavourite == true
                         ? "assets/svg/filledLove.svg"
                         : "assets/svg/outlineLove.svg",
                     width: 22,

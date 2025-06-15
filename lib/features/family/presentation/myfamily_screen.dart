@@ -18,40 +18,38 @@ class MyfamilyScreen extends GetView<FamilyController> {
       body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
           child: controller.obx((state) {
-            FamilyModel model=state;
-             List<Family> data=model.data?? [];
-            return SmartRefresher(
-            
-              controller:controller. refreshControllerr,
-           onRefresh: controller.onRefresh,
-              child: ListView.separated(
-                itemCount: data.length,
-                separatorBuilder: (context,index)=> const SizedBox(height: 10,),
-                itemBuilder:  (context, index) {
-                  Family fam=data[index];
-                  return LoadingOverLay(
-                      showLoadingOnly: true,
-                      id: fam.id.toString(),
-                      child: GreycontainerItem(
-                     key: ValueKey(fam.id),
-                    image: fam.image??"",
-                    name: fam.name??"",
-                    kind: fam.relative??"",
-                    age: fam.age??1,
-                     onDelete: () {
-                      controller.deleteFamily(fam.id!);
-                      
-                     },
-                  ),);
-                },
-              ),
-            );
-          })),
+  final model = state;
+  List<Family> data = model?.data ?? [];
+
+  return ListView.separated(
+    itemCount: data.length,
+    separatorBuilder: (_, __) => const SizedBox(height: 10),
+    itemBuilder: (_, index) {
+      final fam = data[index];
+      //final id = fam.id.toString();
+      return LoadingOverLay(
+      id: fam.id.toString(),
+        showLoadingOnly: true,
+        child: GreycontainerItem(
+     key: ValueKey(fam.id),
+          image: fam.image ?? "",
+          name: fam.name ?? "",
+          kind: fam.relative ?? "",
+          age: fam.age ?? 1,
+          onDelete: () async {
+            await controller.deleteFamily(fam.id!);
+          },
+        ),
+      );
+    },
+  );
+})),
       floatingActionButton: FloatingActionButton(
         elevation: 0,
         onPressed: () {
           controller.clearData();
           Get.to(AddfamilyScreen());
+          controller.onRefresh();
         },
         child: const Icon(
           Icons.add,

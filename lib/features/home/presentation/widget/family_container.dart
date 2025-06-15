@@ -38,8 +38,8 @@ return GestureDetector(
       controller.tapped(widget.index);
     });
   },
+
   child: Container(
-       
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),

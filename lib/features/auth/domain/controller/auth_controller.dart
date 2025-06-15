@@ -24,22 +24,15 @@ class AuthController extends MainGetxController {
  TextEditingController passwordController = TextEditingController();
  TextEditingController nameController = TextEditingController();
  TextEditingController dateController= TextEditingController();
-  TextEditingController genderController= TextEditingController();
-
+ TextEditingController genderController= TextEditingController();
+MainGetxController mainController=Get.find();
 File? imageUrl;
 
-// void onInit() {
-  
-//     imageUrl = postRegister.image;
-//     super.onInit();
-//   }
-
-
-
-  File? imageFile;
-
-String? namee;
- 
+void onInit() {
+    //imageUrl = mainController.user?.image;
+    mainController.user?.image;
+    super.onInit();
+}
 
 
   // @override

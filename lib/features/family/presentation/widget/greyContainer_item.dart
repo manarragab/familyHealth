@@ -81,6 +81,7 @@ class GreycontainerItem extends GetWidget<FamilyController>  {
               InkWell(
                 onTap: (){
                   onDelete();
+                  
                 },
                 child: SvgPicture.asset("assets/svg/delete.svg")),
              const SizedBox(height:22),

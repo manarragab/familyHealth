@@ -371,17 +371,6 @@ class Remote {
   }
 
 
-//calculation=> favouri 
-//   Future<ResponseModel<Favourites?>> getFavourites() async {
-//   return _helper.get<Favourites?>({}, path: "/user/favorite-calculators",
-//     onSuccess: (dynamic data) {return GetFavourites.fromJson(data);},
-//     onError: (data) {
-//       return ResponseModel(status: data.status, message: data.message);
-//     },
-//     isLogin: true,
-//   );
-// }
-
 
 Future<ResponseModel<Favourites?>> getFavourites() async {
 return _helper.get<Favourites?>( {}, path: "/user/favorite-calculators",
@@ -404,6 +393,7 @@ return _helper.get<Favourites?>( {}, path: "/user/favorite-calculators",
       return ResponseModel(status: data.status, message: data.message);
     }, isLogin: true);
   }
+
 
   Future<ResponseModel<dynamic>> deleteFavourites(String id) async {
     return _helper.delete<dynamic>(
