@@ -23,4 +23,5 @@ class GetStorageData {
     //  Print.info('insert user:: ${loginModel?.toJson()}');
     getStorage.write(_user, loginModel?.toJson());
   }
+  
 }

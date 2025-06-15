@@ -83,4 +83,4 @@ enum PeriodType { Day60 , Day90 , Other}
 
 enum CalculationTypes { bmi,pregnancyTracker,periodCalculator,diabetesCalculator,ibsSymptomAssessment}
 
-
+enum Gender { male,female}

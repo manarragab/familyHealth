@@ -5,52 +5,100 @@ import 'package:flutter/services.dart';
 
 import '../validator.dart';
 
-enum FelidType { phone, email, none }
+//enum FelidType { phone, email, none }
 
 class CustomTextField {
-  static Widget selectDropDown(
-    String Function(dynamic value) onChange, {
-    String hint = '',
-    String? label,
-    String? Function(String?)? validator,
-    TextEditingController? controller,
-    bool? enabled,
-    List<dynamic> allData = const [],
-    required String Function(dynamic) getValue,
-  }) {
-    String? data;
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 10),
-      child: SizedBox(
-        // height: 50,
-        child: TextFormField(
-          enabled: enabled,
-          validator: validator ??
-              ((value) => TValidator.normalValidator(data?.trim(), hint: hint)),
-          decoration: _defaultDecoration(
-            suffixIcon: DropdownButtonFormField<dynamic>(
-              value: data,
-              onChanged: (newValue) {
-                data = onChange(newValue);
-              },
-              decoration: _defaultDecoration(),
-              dropdownColor: Colors.white,
-              items: allData.map<DropdownMenuItem<dynamic>>((dynamic value) {
-                return DropdownMenuItem<dynamic>(
-                  value: value,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    child: Text(getValue(value)),
-                  ),
-                );
-              }).toList(),
-            ),
-            hintText: hint,
-          ),
-        ),
-      ),
+ static Widget selectDropDown(
+  String Function(dynamic value) onChange, {
+  String hint = '',
+  String? label,
+  FormFieldValidator<dynamic>? validator,
+  TextEditingController? controller,
+  bool? enabled,
+  List<dynamic> allData = const [],
+  required String Function(dynamic) getValue,
+}) {
+  dynamic selectedValue;
+
+  if (controller != null && controller.text.isNotEmpty) {
+    selectedValue = allData.firstWhere(
+      (e) => getValue(e) == controller.text,
+    //orElse: () => null as Gender,
     );
   }
+
+  return DropdownButtonFormField<dynamic>(
+   
+    value: selectedValue,
+    decoration: _defaultDecoration(
+      hintText: hint,
+       removeHintWrite: true,
+    ),
+    isExpanded: true,
+    validator: validator ??((value) => TValidator.normalValidator(value, hint: hint)),
+    items: allData.map((dynamic value) {
+      return DropdownMenuItem<dynamic>(
+        value: value,
+        child: Text(getValue(value)),
+      );
+    }).toList(),
+    onChanged: (newValue) {
+      if (controller != null) {
+        controller.text = getValue(newValue);
+      }
+      onChange(newValue);
+      Get.back(); // Close the bottom sheet or dialog if needed
+    },
+  );
+}
+
+
+// static Widget selectDropDown({
+//   required String hint,
+//   String? label,
+//   required List<dynamic> allData,
+//   required String Function(dynamic) getValue,
+//   required void Function(dynamic) onChanged,
+//   TextEditingController? controller,
+//   bool enabled = true,
+// FormFieldValidator<dynamic>? validator,
+// }) {
+//   return Padding(
+//     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+//     child: DropdownButtonFormField<dynamic>(
+//       isExpanded: true,
+//       decoration: InputDecoration(
+//         labelText: label,
+//         hintText: hint,
+//         border: OutlineInputBorder(borderRadius: BorderRadius.circular(8)),
+//       ),
+//       validator: validator ??((value) => TValidator.normalValidator(value?.trim(), hint: hint)),
+//   //    
+//       value: allData.firstWhere(
+//         (e) => controller?.text == getValue(e),
+//         orElse:()=>null as Gender,
+//       ),
+//       onChanged: enabled
+//           ? (value) {
+//               if (controller != null) {
+//                 controller.text = getValue(value);
+//               }
+//               onChanged(value);
+//               Get.back(); // If you're using a bottom sheet, closes it
+//             }
+//           : null,
+//       items: allData.map<DropdownMenuItem<dynamic>>((value) {
+//         return DropdownMenuItem<dynamic>(
+//           value: value,
+//           child: Text(getValue(value)),
+//         );
+//       }).toList(),
+//     ),
+//   );
+// }
+
+
+
 
   static Widget dynamicTextField(
     Function(String value) onChange, {
@@ -145,7 +193,7 @@ class CustomTextField {
       //  prefixIcon: prefixIcon,
       hintText: "${removeHintWrite ? '' : CustomTrans.write.tr} $hintText",
       hintStyle: TFonts.inter(
-          color: CustomColors.black,
+          color: CustomColors.grey2,
           fontSize: 16,
           fontWeight: TFontWights.regular),
       labelStyle: TFonts.inter(

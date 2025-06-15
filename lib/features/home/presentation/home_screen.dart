@@ -1,9 +1,12 @@
 import 'package:abg/data/const/export.dart';
+import 'package:abg/data/models/family/get_family/family_model.dart';
+import 'package:abg/data/models/family/post_family/post_family_MD.dart';
 import 'package:abg/data/models/home/home_model.dart';
 import 'package:abg/data/models/reminder/reminder.dart';
 import 'package:abg/data/models/reminder_family/reminder_family.dart';
 import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
 import 'package:abg/features/auth/domain/controller/auth_controller.dart';
+import 'package:abg/features/family/domain/controller/family_controller.dart';
 import 'package:abg/features/group/domain/controller/group_controller.dart';
 import 'package:abg/features/group/presentation/group_screen.dart';
 import 'package:abg/features/home/domain/controller/home_controller.dart';
@@ -23,6 +26,7 @@ class Homescreen extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     AuthController authController = Get.find<AuthController>();
+   FamilyController familyController=Get.put(FamilyController());
     return Scaffold(
       key: scaffoldKey,
       appBar: CustomAppBar.homeAppBar(
@@ -73,8 +77,8 @@ class Homescreen extends GetView<HomeController> {
                     CircleAvatar(
     radius: 22,
     backgroundColor: Colors.grey.shade200,
-    backgroundImage: authController.postRegister.image != null
-        ? FileImage(authController.postRegister.image!)
+    backgroundImage: authController.user?.image != null
+        ? NetworkImage(authController.user?.image ??"" )
         : const AssetImage("assets/images/cheker.png") as ImageProvider,
   ),
                     // const CircleAvatar(
@@ -147,30 +151,33 @@ class Homescreen extends GetView<HomeController> {
                       const SizedBox(height: 16),
                       SizedBox(
                         height: 125,
-                        child: ListView.separated(
+                        child:   familyController.obx((value) {
+                 
+                  return ListView.separated(
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
-                            FamilyReminders remind =
-                                model.data!.familyReminders![index];
-                            // FamilyModel model2=value;
-                            // List<Family> list=model2.data??[];
-                            // Family remind=list[index];
+                          //  FamilyReminders remind =
+                          //      model.data!.familyReminders![index];
+                            FamilyModel model2=value;
+                            List<Family> list=model2.data??[];
+                            Family remind=list[index];
+                            // PostFamilyModel postFamilyModel=PostFamilyModel();
                             return FamilyContainer(
                               index: index,
                               name: remind.name ?? "",
                               relation: remind.relative ?? "",
-                              title: remind.name ?? "",
-                              dosage: "not found",
-                              time: remind.createdAt ?? "",
+                             // title: remind.medicalRecord ?? "",
+                             // dosage: "not found",
+                              //time: remind.brithDate ?? "mm",
                               //isTaken: true,
                               image: remind.image ?? "",
-                              whenGetIT: 'after launch',
+                              whenGetIT: remind.phone,
                             );
                           },
                           separatorBuilder: (context, index) =>
                               const SizedBox(width: 10),
                           itemCount: model.data?.familyReminders?.length ?? 0,
-                        ),
+                        );},),
                       ),
                       const SizedBox(height: 16),
                       if (false)

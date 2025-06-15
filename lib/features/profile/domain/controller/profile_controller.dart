@@ -5,11 +5,12 @@ class ProfileController extends MainGetxController{
 
 List<String> texts=[
 "Health Trackers",
-"My Period",
+
 "My Family",
 
 "Pills",
-"My Interest"
+"My Interest",
+"My Period",
 ];
 
   // List<(String, dynamic)> texts = [
@@ -24,12 +25,15 @@ List<String> texts=[
 
   List<Color> colors = [
     CustomColors.lightBlue3,
-    CustomColors.darkpinky,
     CustomColors.secondary,
   
     CustomColors.lightyellow,
-    CustomColors.lighttblue1
+    CustomColors.lighttblue1,
+        CustomColors.darkpinky,
+
   ];
+
+
 
 
 }

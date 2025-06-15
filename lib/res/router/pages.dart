@@ -120,7 +120,6 @@ class CustomPage {
         binding: BindingsBuilder(() {
         Get.put(FamilyController()).onRefresh();
         })),
-
           GetPage(
         name: followUp,
         page: () =>   FollowupScreen(),
@@ -142,7 +141,7 @@ class CustomPage {
         page: () =>  MedicalcalcScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
-          Get.put(Calculationcontroller());
+          Get.put(Calculationcontroller()).onRefresh();
         })),
 
          GetPage(

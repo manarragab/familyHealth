@@ -1,17 +1,15 @@
 import 'package:abg/data/const/export.dart';
-import 'package:abg/data/models/family/get_family/family_model.dart';
-import 'package:abg/data/models/family/post_family/post_family_response.dart';
 import 'package:abg/data/models/home/home_model.dart';
 import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
 import 'package:abg/features/auth/domain/cases/auth_case.dart';
 import 'package:abg/features/auth/domain/controller/auth_controller.dart';
 import 'package:abg/features/family/domain/controller/family_controller.dart';
-import 'package:abg/features/family/presentation/widget/dadContainer.dart';
 import 'package:abg/features/home/domain/controller/home_controller.dart';
 import 'package:abg/features/profile/domain/controller/profile_controller.dart';
 import 'package:abg/features/profile/presentation/profile_screen.dart';
 import 'package:abg/features/profile/presentation/widget/colored_container.dart';
 import 'package:abg/res/configuration/image/pick_image.dart';
+import 'package:abg/res/loading/loading_overlay_widget.dart';
 import 'package:abg/res/router/pages.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
@@ -71,7 +69,7 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children:
-                        List.generate(profileController.texts.length, (index) {
+                        List.generate( authController.postRegister.gender=="male"?profileController.texts.length-1: profileController.texts.length, (index) {
                       return GestureDetector(
                         onTap: () {
                           switch (index) {
@@ -97,55 +95,97 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                     }),
                   ),
                   // Avatar inside semi-circle
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: Container(
-                      width: Get.width / 2.2,
-                      height: Get.height / 3,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(120),
-                          bottomLeft: Radius.circular(120),
-                        ),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black12,
-                            blurRadius: 6,
-                            offset: Offset(0, 3),
-                          ),
-                        ],
-                      ),
-                      child: Align(
-                        alignment: Alignment.centerRight,
-                        child: Container(
-                          width: Get.width / 2.2,
-                          height: Get.height / 3,
-                          decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.only(
-                              topLeft: Radius.circular(120),
-                              bottomLeft: Radius.circular(120),
-                            ),
-                            image: DecorationImage(
-                              image: authController.postRegister.image != null
-                                  ? FileImage(
-                                      authController.postRegister.image!)
-                                  : const AssetImage("assets/images/cheker.png")
-                                      as ImageProvider,
-                              fit: BoxFit.cover,
-                            ),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.black12,
-                                blurRadius: 6,
-                                offset: Offset(0, 3),
+                 
+                 
+                 
+                 
+                                                   GetBuilder<AuthController>(builder: (logic) {
+return    LoadingOverLay(
+  showLoadingOnly: true,
+  child: Stack(
+                      children: [
+                             Align(
+                          alignment: Alignment.centerRight,
+                          child: Container(
+                            width: Get.width / 2.2,
+                            height: Get.height / 3,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(120),
+                                bottomLeft: Radius.circular(120),
                               ),
-                            ],
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black12,
+                                  blurRadius: 6,
+                                  offset: Offset(0, 3),
+                                ),
+                              ],
+                            ),
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: Container(
+                                width: Get.width / 2.2,
+                                height: Get.height / 3,
+                                decoration: BoxDecoration(
+    borderRadius: const BorderRadius.only(
+      topLeft: Radius.circular(120),
+      bottomLeft: Radius.circular(120),
+    ),
+    image: DecorationImage(
+      image: authController.postRegister.image != null
+          ? FileImage(authController.postRegister.image!)
+          : authController.imageUrl != null
+              ? FileImage(authController.imageUrl!)
+              : const AssetImage("assets/images/cheker.png") as ImageProvider,
+      fit: BoxFit.cover,
+    ),
+    boxShadow: [
+      BoxShadow(
+        color: Colors.black12,
+        blurRadius: 6,
+        offset: Offset(0, 3),
+      ),
+    ],
+  ),
+  
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+  
+                        Positioned(
+                          top: 220,
+                          right: 110,
+                          child: GestureDetector(
+                            onTap: () async{
+                             final pick= await Pick.pickImage(context);
+                               if (pick != null) {
+                            authController.postRegister.image = pick;
+                            setState(() {
+                              authController.imageUrl = pick;
+                               
+                            });
+                            controller.update();
+                          }
+                            },
+                            child: CircleAvatar(
+                              radius: 20,
+                              backgroundColor: CustomColors.lightBlue2,
+                              child: Padding(
+                                padding: const EdgeInsets.all(10),
+                                child: CustomImage.asset("assets/svg/camera.svg" ,color: Colors.white),
+                              )
+                            ),
+                          ),
+                        ),
+                                       
+                      ],
                     ),
-                  ),
+); }),
+
+                  
                 ],
               ),
             ),

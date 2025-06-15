@@ -1,3 +1,8 @@
+import 'dart:io';
+
+import 'package:dio/dio.dart';
+import 'package:mime/mime.dart';
+import 'package:http_parser/http_parser.dart';
 /// id : 4
 /// user_id : 2
 /// name : "Family member two name"
@@ -19,6 +24,7 @@ class FamilyReminders {
     this.image,
     this.createdAt,
     this.updatedAt,
+    this.medicalRecord,
   });
 
   FamilyReminders.fromJson(dynamic json) {
@@ -31,6 +37,8 @@ class FamilyReminders {
     image = json['image'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
+   medicalRecord= json['medical_record[]'];
+
   }
   num? id;
   num? userId;
@@ -41,18 +49,28 @@ class FamilyReminders {
   String? image;
   String? createdAt;
   String? updatedAt;
+     String? medicalRecord;
 
-  Map<String, dynamic> toJson() {
+
+  Future<Map<String, dynamic>> toJson() async {
     final map = <String, dynamic>{};
+    //  if (image != null) {
+    //   final mimeType = lookupMimeType(image!.path) ?? 'application/octet-stream'; 
+    //   final mediaType = MediaType.parse(mimeType); 
+    //   map['image'] = await MultipartFile.fromFile(image!.path,contentType: mediaType);
+    // }
     map['id'] = id;
     map['user_id'] = userId;
     map['name'] = name;
     map['brith_date'] = brithDate;
     map['phone'] = phone;
     map['relative'] = relative;
-    map['image'] = image;
+        map['image'] = image;
+print("image: $image");
     map['created_at'] = createdAt;
     map['updated_at'] = updatedAt;
+        map['medical_record[]'] = medicalRecord;
+
     return map;
   }
 }

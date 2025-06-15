@@ -55,10 +55,20 @@ return GestureDetector(
               children: [
                 Row(
                  children: [
+                 
                     CircleAvatar(
-                      radius: 20,
-                      backgroundImage: NetworkImage(widget.image),
-                    ),
+  radius: 20,
+  backgroundColor: Colors.grey.shade200,
+  child: ClipOval(
+    child: CustomImage.network(
+    widget.  image,
+      width: 40,
+      height: 40,
+      fit: BoxFit.cover,
+    ),
+  ),
+),
+
                     const SizedBox(width: 8),
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -78,11 +88,7 @@ return GestureDetector(
                 ),
             // const SizedBox(width: 20),
               
-                Icon(
-                    selected ? Icons.check_circle : Icons.radio_button_unchecked,
-                    color: selected ? Colors.green : Colors.grey,
-                    size: 25,
-                  ),
+               
                 
               ],
             ),

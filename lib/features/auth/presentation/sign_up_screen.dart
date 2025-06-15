@@ -1,6 +1,8 @@
+import 'package:abg/data/const/enums.dart';
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/auth/domain/controller/auth_controller.dart';
 import 'package:abg/res/common-widgets/custom_check_box.dart';
+import 'package:abg/res/configuration/bottom_sheet/bottom_sheets.dart';
 import 'package:abg/res/configuration/bottom_sheet/date_picker.dart';
 import 'package:abg/res/configuration/image/pick_image.dart';
 import 'package:abg/res/configuration/text_field/text_field.dart';
@@ -133,6 +135,28 @@ class SignUpScreen extends GetWidget<AuthController> {
                 (value) => controller.postRegister.phone = value,
               ),
               CustomPadding.smallHeight,
+           
+CustomTextField.selectDropDown(
+  (value) {
+    controller.postRegister.gender = value.toString().split('.').last;
+  return  controller.genderController.text = value;
+  }, 
+  validator: (val){
+ if(val==null){
+   return "Gender is required";
+ }
+  },
+  hint: "Gender",
+  controller: controller.genderController,
+  allData: Gender.values,
+  getValue: (val) => val.toString().split('.').last,
+ 
+),
+
+
+                          
+                                        CustomPadding.smallHeight,
+
               Obx(() {
                 return CustomTextField.passwordTextField(
                   (value) => controller.postRegister.password = value,

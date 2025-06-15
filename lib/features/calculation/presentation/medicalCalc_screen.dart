@@ -196,7 +196,7 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
   TextEditingController searchController = TextEditingController();
 
   /// Returns the entire list of calculators from the controller
-  List<Calculators> get calculators => contr.calculator ?? [];
+  List<Calculators> get calculators => contr.getFavourite.data?.calculators ?? [];
 
   /// List of filtered items based on the search query
   List<Calculators> get filteredItems {
@@ -275,20 +275,32 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 7),
       child:contr.obx((state) {
-       // GetFavourites getFavourites=state!;
-      //  List<Calculators> data=getFavourites.data?.calculators??[];
+       GetFavourites getFavourites=state!;
+       List<Calculators> data=getFavourites.data?.calculators??[];
           return SmartRefresher(
             controller: contr.refreshControllerr,
             onRefresh: contr.onRefresh,
-            child: CardItem(
-        image: contr.calcImages[index],
-        title: item.displayName ?? 'Name',
-        subTitle: item.description ?? 'Description',
-        onPress: () => navigateToPage(index),
-        fav: () => handleFavoriteToggle(item, index),
-      ),
+            child: 
+
+ListView.builder(
+  shrinkWrap: true,
+  itemCount: 5,
+  itemBuilder:(context, index) {
+    return CardItem(
+      image: data[index].icon ?? 'assets/images/BMI.png',
+      
+      title: item.displayName ?? 'Medical Calculators',
+      subTitle: item.description ?? '',
+      // isFavorite: item.isFavorite ?? false,
+      // onTap: () => navigateToPage(index),
+      // onFavoriteToggle: (isNowFav) => handleFavoriteToggle(item, index),
+    );
+  },
+  
+  )
     );}));
   }
+
 
   @override
   Widget build(BuildContext context) {
@@ -333,6 +345,14 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
                     fontWeight: FontWeight.w700,
                   ),
                 ),
+                //   Text(
+                //  calculators[0].displayName ?? 'Medical Calculators',
+                //   style: GoogleFonts.almarai(
+                //     fontSize: 18,
+                //     color: CustomColors.darkBlue2,
+                //     fontWeight: FontWeight.w700,
+                //   ),
+                // ),
                 const SizedBox(height: 10),
                 
                 ...filteredItems.asMap().entries.map((entry) {

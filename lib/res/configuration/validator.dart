@@ -4,7 +4,7 @@ import '../../localization/all_keys.dart';
 import 'print_types.dart';
 
 class TValidator {
-  static String? normalValidator(String? value,{String? hint,bool Function(String)? validate}) {
+  static dynamic? normalValidator(String? value,{String? hint,bool Function(dynamic)? validate}) {
     bool showValidate = false;
     if(validate != null){
       showValidate = validate(value!);

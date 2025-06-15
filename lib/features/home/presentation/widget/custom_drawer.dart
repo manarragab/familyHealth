@@ -47,7 +47,7 @@ class CustomDrawer extends GetView<AuthController> {
 
                         title: Text(
                           // sl<AuthCases>().getUser()?.data?.name ?? "",
-
+//authController.namee??"",
                           authController.postRegister.name ??"",
                               // sl<AuthCases>().getUser()?.data?.name ?? "",
                           style: TFonts.textTitleWhiteStyle(),

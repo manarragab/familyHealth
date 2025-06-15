@@ -5,16 +5,12 @@ import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
 import 'package:abg/features/family/domain/controller/family_controller.dart';
 import 'package:abg/features/family/presentation/addfamily_screen.dart';
 import 'package:abg/features/family/presentation/widget/greyContainer_item.dart';
+import 'package:abg/res/loading/loading_overlay_widget.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class MyfamilyScreen extends GetView<FamilyController> {
    MyfamilyScreen({super.key});
-  RefreshController refreshControllerr = RefreshController();
-
-  @override
-  void dispose() {
-    refreshControllerr.dispose();
-  }
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,21 +21,28 @@ class MyfamilyScreen extends GetView<FamilyController> {
             FamilyModel model=state;
              List<Family> data=model.data?? [];
             return SmartRefresher(
-              controller: refreshControllerr,
-              onRefresh: controller.onRefresh,
+            
+              controller:controller. refreshControllerr,
+           onRefresh: controller.onRefresh,
               child: ListView.separated(
                 itemCount: data.length,
                 separatorBuilder: (context,index)=> const SizedBox(height: 10,),
                 itemBuilder:  (context, index) {
                   Family fam=data[index];
-                  return GreycontainerItem(
+                  return LoadingOverLay(
+                      showLoadingOnly: true,
+                      id: fam.id.toString(),
+                      child: GreycontainerItem(
+                     key: ValueKey(fam.id),
                     image: fam.image??"",
                     name: fam.name??"",
                     kind: fam.relative??"",
-                    age: fam.age??1, onDelete: () {
-                      controller.deleteFamily(fam.id!.toInt());
+                    age: fam.age??1,
+                     onDelete: () {
+                      controller.deleteFamily(fam.id!);
+                      
                      },
-                  );
+                  ),);
                 },
               ),
             );

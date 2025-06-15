@@ -59,6 +59,7 @@ class LoginData {
   String? academicYear;
   String? phone;
   String? image;
+
   String? deviceToken;
   int? isLoggedIn;
   int? isBanned;
@@ -73,7 +74,7 @@ class LoginData {
     userType = json['user_type'];
     academicYear = null;
     phone = json['phone'];
-    image = json['image'];
+    image = json['image_path'];
     deviceToken = json['token'];
     isLoggedIn = json['is_logged_in'];
     isBanned = json['is_banned'];
@@ -90,7 +91,7 @@ class LoginData {
     data['user_type'] = userType;
     data['academic_year'] = academicYear;
     data['phone'] = phone;
-    data['image'] = image;
+    data['image_path'] = image;
     data['token'] = deviceToken;
     data['is_logged_in'] = isLoggedIn;
     data['is_banned'] = isBanned;

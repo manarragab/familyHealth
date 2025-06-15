@@ -85,13 +85,13 @@ class GreycontainerItem extends GetWidget<FamilyController>  {
                 child: SvgPicture.asset("assets/svg/delete.svg")),
              const SizedBox(height:22),
            
-              Text(
-                  "Details",
-                  style: GoogleFonts.almarai(
-                      fontSize: 10,
-                      fontWeight: FontWeight.w400,
-                      color: CustomColors.darkpinky),
-                ),
+              // Text(
+              //     "Details",
+              //     style: GoogleFonts.almarai(
+              //         fontSize: 10,
+              //         fontWeight: FontWeight.w400,
+              //         color: CustomColors.darkpinky),
+              //   ),
             ],
           ); 
 

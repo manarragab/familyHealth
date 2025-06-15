@@ -45,6 +45,15 @@ TextEditingController selectSomeoneController=TextEditingController();
 TextEditingController familyDiseaseController=TextEditingController();
 TextEditingController nameController=TextEditingController();
 TextEditingController phoneController=TextEditingController();
+ RefreshController refreshControllerr = RefreshController();
+
+ 
+
+  @override
+ void onClose() {
+    refreshControllerr.dispose();
+    super.onClose();
+  }
 
 void clearData() {
   postFam = PostFamilyModel();
@@ -84,19 +93,37 @@ addFamily()async{
       Get.back();
       print("hhhhhhhhhhhhhh ${postFam.relative}");
         print(
-                                  "Selected Medical Record: ${postFam.medicalRecord}");
+      "Selected Medical Record: ${postFam.medicalRecord}");
                             
     });
 
 }
+  // deleteFamily(int id) async {
+  //   loadingGetxController.showCustomLoading(id.toString());
+  //   var response = await sl<FamilyCases>().deleteFamily(id);
+  //   loadingGetxController.hideCustomLoading(id.toString());
+  //   statusError.checkStatus(response, () {
+  //     famMD.data?.removeWhere((e) => e.id == id);
+  //     change(famMD);
+  //   });
+  // }
+
   deleteFamily(int id) async {
-    loadingGetxController.showCustomLoading(id.toString());
-    var response = await sl<FamilyCases>().deleteFamily(id);
-    loadingGetxController.hideCustomLoading(id.toString());
-    statusError.checkStatus(response, () {
-      famMD.data?.removeWhere((e) => e.id == id);
-      change(famMD);
-    });
-  }
+  print('Trying to delete ID: $id');
+  print('Before deletion: ${famMD.data?.map((e) => e.id).toList()}');
+
+  loadingGetxController.showCustomLoading(id.toString());
+  var response = await sl<FamilyCases>().deleteFamily(id);
+  loadingGetxController.hideCustomLoading(id.toString());
+
+  statusError.checkStatus(response, () {
+    famMD.data?.removeWhere((e) => e.id == id);
+
+    print('After deletion: ${famMD.data?.map((e) => e.id).toList()}');
+
+    change(famMD);
+  });
+}
+
 
 }
