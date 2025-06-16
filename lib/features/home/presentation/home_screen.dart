@@ -2,6 +2,7 @@ import 'package:abg/data/const/export.dart';
 import 'package:abg/data/models/family/get_family/family_model.dart';
 import 'package:abg/data/models/home/home_model.dart';
 import 'package:abg/data/models/reminder/reminder.dart';
+import 'package:abg/data/models/reminder_family/reminder_family.dart';
 import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
 import 'package:abg/features/auth/domain/controller/auth_controller.dart';
 import 'package:abg/features/family/domain/controller/family_controller.dart';
@@ -147,57 +148,26 @@ class Homescreen extends GetWidget<HomeController> {
                         ),
                       ),
                       const SizedBox(height: 16),
-                  //     SizedBox(
-                  //       height: 125,
-                  //       child:   familyController.obx((value) {
-                  // return ListView.separated(
-                  //         scrollDirection: Axis.horizontal,
-                  //         itemBuilder: (context, index) {
-                  //         //  FamilyReminders remind =
-                  //         //      model.data!.familyReminders![index];
-                  //           FamilyModel model2=value;
-                  //           List<Family> list=model2.data??[];
-                  //           Family remind=list[index];
-                  //           // PostFamilyModel postFamilyModel=PostFamilyModel();
-                  //           return FamilyContainer(
-                  //             index: index,
-                  //             name: remind.name ?? "",
-                  //             relation: remind.relative ?? "",
-                  //            // title: remind.medicalRecord ?? "",
-                  //            // dosage: "not found",
-                  //             //time: remind.brithDate ?? "mm",
-                  //             //isTaken: true,
-                  //             image: remind.image ?? "",
-                  //             whenGetIT: remind.phone,
-                  //           );
-                  //         },
-                  //         separatorBuilder: (context, index) =>
-                  //             const SizedBox(width: 10),
-                  //         itemCount: model.data?.familyReminders?.length ?? 0,
-                  //       );},),
-                  //     ),
 
-                   SizedBox(
-  height: 125,
-  child: familyController.obx((value) {
-    List<Family> list = value.data ?? []; // ✅ البيانات الصحيحة
-    return ListView.separated(
-      scrollDirection: Axis.horizontal,
-      itemCount: list.length,
-      separatorBuilder: (_, __) => const SizedBox(width: 10),
-      itemBuilder: (context, index) {
-        Family remind = list[index];
-        return FamilyContainer(
-          index: index,
-          name: remind.name ?? "",
-          relation: remind.relative ?? "",
-          image: remind.image ?? "",
-          whenGetIT: remind.phone,
-        );
-      },
-    );
-  }),
-),
+                      SizedBox(
+                        height: 125,
+                        child: ListView.separated(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: model.data?.familyReminders?.length??0,
+                          separatorBuilder: (_, __) =>
+                          const SizedBox(width: 10),
+                          itemBuilder: (context, index) {
+                            FamilyReminders remind = model.data!.familyReminders![index];
+                            return FamilyContainer(
+                              index: index,
+                              name: remind.name ?? "",
+                              relation: remind.relative ?? "",
+                              image: remind.image ?? "",
+                              whenGetIT: remind.phone,
+                            );
+                          },
+                        ),
+                      ),
                       const SizedBox(height: 16),
                       if (false)
                         Column(

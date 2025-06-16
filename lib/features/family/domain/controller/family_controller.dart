@@ -47,19 +47,6 @@ TextEditingController nameController=TextEditingController();
 TextEditingController phoneController=TextEditingController();
  RefreshController refreshControllerr = RefreshController();
 
- 
-@override
-void onInit(){
-  super.onInit();
-   onRefresh();
-}
-
-  @override
- void onClose() {
-    refreshControllerr.dispose();
-    super.onClose();
-  }
-
 void clearData() {
   postFam = PostFamilyModel();
     nameController.clear();
@@ -73,7 +60,6 @@ void clearData() {
   int _pageNum = 1;
 
   onRefresh() async {
-    
     famMD = await refreshData(
         model: famMD,
         futureMethod: () => sl<FamilyCases>().getFamily(),
