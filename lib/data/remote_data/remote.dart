@@ -396,15 +396,14 @@ return _helper.get<Favourites?>( {}, path: "/user/favorite-calculators",
 
 
   Future<ResponseModel<dynamic>> deleteFavourites(String id) async {
-    return _helper.delete<dynamic>(
-        path: "/user/favorite-calculators/toggle/$id",
+    return _helper.post<Favourite?>({
+      "calculator_name":id,
+    }, path: "/user/favorite-calculators/toggle",
         onSuccess: (dynamic data) {
-          return ResponseModel.fromJson(data);
-        },
-        onError: (data) {
+          return PostFavouriteResponse.fromJson(data);
+        }, onError: (data) {
           return ResponseModel(status: data.status, message: data.message);
-        },
-        isLogin: true);
+        }, isLogin: true);
   }
 
 }

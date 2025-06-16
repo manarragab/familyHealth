@@ -70,24 +70,18 @@ List<String> calcImages=[
   }
 
 
-  addFavourites( CalculationTypes calculatorType ) async {
+  addFavourites( String name ,Function() onSuccess ) async {
     loadingGetxController.showLoading();
-    var response = await sl<CalculationCases>().addFavourites(PostFavourite(calculatorType:calculatorType));
+    var response = await sl<CalculationCases>().addFavourites(PostFavourite(name:name));
     loadingGetxController.hideLoading();
-    statusError.checkStatus(response, () {
-      onRefresh();
-  
-    });
+    statusError.checkStatus(response, onSuccess);
   }
 
-  deleteFavourite(String id) async {
+  deleteFavourite(String id,Function() onSuccess) async {
     loadingGetxController.showCustomLoading(id.toString());
     var response = await sl<CalculationCases>().deleteFavourites(id);
     loadingGetxController.hideCustomLoading(id.toString());
-    statusError.checkStatus(response, () {
-      getFavourite.data?.calculators?.removeWhere((e) => e.name == id);
-      change(getFavourite, status: RxStatus.success());
-    });
+    statusError.checkStatus(response, onSuccess);
   }
 
 

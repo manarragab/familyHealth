@@ -49,7 +49,6 @@ class MyfamilyScreen extends GetView<FamilyController> {
         onPressed: () {
           controller.clearData();
           Get.to(AddfamilyScreen());
-          controller.onRefresh();
         },
         child: const Icon(
           Icons.add,

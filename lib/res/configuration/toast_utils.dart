@@ -29,7 +29,7 @@ void showToast(String msg, MessageErrorType errorType) {
     snackPosition: SnackPosition.TOP,
     snackStyle: SnackStyle.FLOATING,
     title: errorType.name,
-    message: "${errorType.name} : $msg",
+    message: "${errorType.name}: $msg",
     borderRadius: 10,
     margin: const EdgeInsets.all(10),
     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
