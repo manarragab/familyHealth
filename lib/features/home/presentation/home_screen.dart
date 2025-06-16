@@ -25,7 +25,7 @@ class Homescreen extends GetWidget<HomeController> {
   @override
   Widget build(BuildContext context) {
     AuthController authController = Get.find<AuthController>();
-   FamilyController familyController=Get.put(FamilyController());
+    FamilyController familyController = Get.put(FamilyController());
     return Scaffold(
       key: scaffoldKey,
       appBar: CustomAppBar.homeAppBar(
@@ -74,17 +74,13 @@ class Homescreen extends GetWidget<HomeController> {
                 Row(
                   children: [
                     CircleAvatar(
-    radius: 22,
-    backgroundColor: Colors.grey.shade200,
-    backgroundImage: authController.user?.image != null
-        ? NetworkImage(authController.user?.image ??"" )
-        : const AssetImage("assets/images/cheker.png") as ImageProvider,
-  ),
-                    // const CircleAvatar(
-                    //   radius: 22,
-                    //   backgroundImage:
-                    //       NetworkImage('https://via.placeholder.com/100'),
-                    // ),
+                      radius: 22,
+                      backgroundColor: Colors.grey.shade200,
+                      backgroundImage: authController.user?.image != null
+                          ? NetworkImage(authController.user?.image ?? "")
+                          : const AssetImage("assets/images/cheker.png")
+                              as ImageProvider,
+                    ),
                     const SizedBox(width: 16),
                     Expanded(
                       child: TextField(
@@ -153,11 +149,12 @@ class Homescreen extends GetWidget<HomeController> {
                         height: 125,
                         child: ListView.separated(
                           scrollDirection: Axis.horizontal,
-                          itemCount: model.data?.familyReminders?.length??0,
+                          itemCount: model.data?.familyReminders?.length ?? 0,
                           separatorBuilder: (_, __) =>
-                          const SizedBox(width: 10),
+                              const SizedBox(width: 10),
                           itemBuilder: (context, index) {
-                            FamilyReminders remind = model.data!.familyReminders![index];
+                            FamilyReminders remind =
+                                model.data!.familyReminders![index];
                             return FamilyContainer(
                               index: index,
                               name: remind.name ?? "",
@@ -294,7 +291,7 @@ class Homescreen extends GetWidget<HomeController> {
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color:  Colors.grey[100],
+        color: Colors.grey[100],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
