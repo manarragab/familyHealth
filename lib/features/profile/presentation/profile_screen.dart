@@ -49,6 +49,7 @@ class ProfileScreen extends StatelessWidget {
       ),
     );
   }
+  
 
   final List<CustomListModel> model = [
     CustomListModel(CustomTrans.logout.tr, "assets/svg/exit2.svg", () {

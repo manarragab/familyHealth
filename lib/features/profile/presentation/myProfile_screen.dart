@@ -141,6 +141,7 @@ return    LoadingOverLay(
               : const AssetImage("assets/images/cheker.png") as ImageProvider,
       fit: BoxFit.cover,
     ),
+    
     boxShadow: [
       BoxShadow(
         color: Colors.black12,

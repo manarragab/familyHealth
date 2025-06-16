@@ -76,7 +76,7 @@ List<String> calcImages=[
     loadingGetxController.hideLoading();
     statusError.checkStatus(response, () {
       onRefresh();
-      Get.back();
+  
     });
   }
 

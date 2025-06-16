@@ -193,16 +193,15 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
   final Calculationcontroller contr = Get.find();
   TextEditingController searchController = TextEditingController();
 
-  /// Returns the entire list of calculators from the controller
   List<Calculators> get calculators =>
       contr.getFavourite.data?.calculators ?? [];
 
-  /// List of filtered items based on the search query
+  //the search query
   List<Calculators> get filteredItems {
     final query = searchController.text.toLowerCase();
     if (query.isEmpty) return calculators;
     return calculators
-        .where((item) => (item.displayName ?? '').toLowerCase().contains(query))
+        .where((item) => (item.displayName  ?? '').toLowerCase().contains(query))
         .toList();
   }
 
@@ -302,8 +301,7 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
                   padding: const EdgeInsets.only(bottom: 7),
                   child: contr.obx((state) {
                     GetFavourites getFavourites = state!;
-                    List<Calculators> data =
-                        getFavourites.data?.calculators ?? [];
+                    List<Calculators> data = getFavourites.data?.calculators ?? [];
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -311,7 +309,6 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
                             searchController.text.isEmpty) ...[
                           Text(
                             "Favorite",
-                            // textAlign: TextAlign.start,
                             style: GoogleFonts.almarai(
                               fontSize: 18,
                               color: CustomColors.darkBlue2,
@@ -320,7 +317,6 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
                           ),
                           const SizedBox(height: 10),
                           ...favoriteItems.asMap().entries.map((entry) {
-                            int mainIndex = calculators.indexOf(entry.value);
                             return buildCardItem(entry.value);
                           }).toList(),
                         ],
