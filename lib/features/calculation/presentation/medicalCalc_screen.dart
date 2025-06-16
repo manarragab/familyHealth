@@ -210,35 +210,18 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
       calculators.where((c) => c.isFavorite == true).toList();
 
   void handleFavoriteToggle(Calculators calculators, int index) async {
-    setState(() {
-      calculators.isFavorite = !(calculators.isFavorite ?? false);
-    });
-
-    CalculationTypes? type;
-    switch (index) {
-      case 0:
-        type = CalculationTypes.bmi;
-        break;
-      case 1:
-        type = CalculationTypes.pregnancyTracker;
-        break;
-      case 2:
-        type = CalculationTypes.diabetesCalculator;
-        break;
-      case 3:
-        type = CalculationTypes.ibsSymptomAssessment;
-        break;
-      case 4:
-        type = CalculationTypes.periodCalculator;
-        break;
-    }
-
-    if (type != null) {
-      if (calculators.isFavorite == true) {
-        await contr.addFavourites(type);
-      } else {
-        await contr.deleteFavourite(type.name);
-      }
+    if (calculators.isFavorite != true) {
+      await contr.addFavourites(calculators.name!, () {
+        setState(() {
+          calculators.isFavorite = true;
+        });
+      });
+    } else {
+      await contr.deleteFavourite(calculators.name!, () {
+        setState(() {
+          calculators.isFavorite = false;
+        });
+      });
     }
   }
 
