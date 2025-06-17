@@ -8,32 +8,33 @@ import 'package:alarm/alarm.dart';
 import 'package:alarm/model/volume_settings.dart';
 
 class CustomAlarm {
-
   AlarmPermissions permissions = AlarmPermissions();
-  LocalNotification notification = LocalNotification();  
+  LocalNotification notification = LocalNotification();
 
   addAlarm(AlarmData alarm) async {
     sPrint.info('startAlarm');
     bool isCheck = await permissions.checkPermissions();
     if (isCheck) {
-     // String alarmTime = alarm.alarmTime;
+      // String alarmTime = alarm.alarmTime;
 // String alarmTime = DateFormat("HH:mm").format(DateFormat("HH:mm:ss").parse(alarm.alarmTime));
 
-String alarmTimeRaw = alarm.alarmTime;
-late String alarmTime;
+      String alarmTimeRaw = alarm.alarmTime;
+      late String alarmTime;
 
-try { 
-  // Try parsing "HH:mm:ss"
-  alarmTime = DateFormat("HH:mm").format(DateFormat("HH:mm:ss").parse(alarmTimeRaw));
-} catch (_) {
-  try {
-    // Fallback to "HH:mm"
-    alarmTime = DateFormat("HH:mm").format(DateFormat("HH:mm").parse(alarmTimeRaw));
-  } catch (_) {
-   print("Invalid time format"); 
-   // Or handle as needed
-  }
-}
+      try {
+        // Try parsing "HH:mm:ss"
+        alarmTime = DateFormat("HH:mm")
+            .format(DateFormat("HH:mm:ss").parse(alarmTimeRaw));
+      } catch (_) {
+        try {
+          // Fallback to "HH:mm"
+          alarmTime = DateFormat("HH:mm")
+              .format(DateFormat("HH:mm").parse(alarmTimeRaw));
+        } catch (_) {
+          print("Invalid time format");
+          // Or handle as needed
+        }
+      }
 
 // Split the string at ":"
       List<String> parts = alarmTime.split(":");
@@ -120,7 +121,8 @@ try {
       date = date.add(const Duration(days: 1));
       sPrint.info('alarm:: $userID$id  $count $date');
       count = count + 1;
-      sPrint.info("date.isBefore(endDate) =============> ${date.isBefore(endDate)}  ${date} < ${endDate}");
+      sPrint.info(
+          "date.isBefore(endDate) =============> ${date.isBefore(endDate)}  ${date} < ${endDate}");
     } while (date.isBefore(endDate) && count < 10);
     sPrint.success('end alarm');
   }
@@ -138,9 +140,6 @@ try {
     Alarm.stopAll();
   }
 }
-
-
-
 
 // import 'dart:io';
 // import 'package:abg/data/const/export.dart';
@@ -280,7 +279,7 @@ try {
 //     DateTime snoozeTime = DateTime.now().add(Duration(minutes: minutes));
 
 //     final snoozeSettings = AlarmSettings(
-//       id: currentAlarm.id + 9999, 
+//       id: currentAlarm.id + 9999,
 //       dateTime: snoozeTime,
 //       assetAudioPath: currentAlarm.assetAudioPath,
 //       loopAudio: currentAlarm.loopAudio,

@@ -40,7 +40,7 @@ String imageDomain() {
   }*/
 
 // for prod
-  return 'http://171.163.205.92.host.secureserver.net';
+  return 'https://family-health.za3bot.com/';
 }
 
 enum PathType { image, pdf, video, noPath, none }
