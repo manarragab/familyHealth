@@ -8,6 +8,9 @@ import 'package:abg/features/calculation/domain/controller/CalculationController
 import 'package:intl/intl.dart';
 
 class DateItem extends StatefulWidget {
+  final String id;
+  const DateItem({super.key, required this.id});
+
   @override
   _DateItemState createState() => _DateItemState();
 }
@@ -26,7 +29,9 @@ class _DateItemState extends State<DateItem> {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<Calculationcontroller>(builder: (controller) {
+    return GetBuilder<Calculationcontroller>(
+      id: widget.id,
+      builder: (controller) {
       return Column(
         children: [
           Container(
@@ -70,13 +75,18 @@ class _DateItemState extends State<DateItem> {
               ),
               onSelectedItemChanged: (DateTime date) {
                 // ✅ Save only the day part as a string (e.g. '29')
-controller.postTracker.date =DateFormat('yyyy-MM-dd').format(date);
-                controller.update();
-
+              if(widget.id == "duedate1"){
+                  controller.postTracker.date =
+                    DateFormat('yyyy-MM-dd').format(date);
+              }
+              else if(widget.id == "ovulate1"){
+                  controller.postPeriod.startDate =
+                    DateFormat('yyyy-MM-dd').format(date);
+              }
+                controller.update([widget.id]);
 
 // controller.postTracker.date = DateFormat('yyyy-MM-dd')
 //     .format(DateTime.now().subtract(const Duration(days: 1)));
-
               },
             ),
           ),

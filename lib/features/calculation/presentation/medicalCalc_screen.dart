@@ -250,7 +250,7 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 7),
       child: CardItem(
-        image: calculator.icon ?? 'assets/images/BMI.png',
+        image: contr.calcImages[0] ?? 'assets/svg/bmi.svg',
         title: calculator.displayName ?? 'Name',
         subTitle: calculator.description ?? 'Description',
         onPress: () => navigateToPage(calculator),
@@ -315,7 +315,7 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
                         ...List.generate(filteredItems.length, (index) {
                           final item = filteredItems[index];
                           return CardItem(
-                            image: item.icon ?? 'assets/images/BMI.png',
+                            image: contr.calcImages[index] ?? 'assets/images/BMI.png',
                             title: item.displayName ?? 'Medical Calculators',
                             subTitle: item.description ?? '',
                             onPress: () => navigateToPage(item),

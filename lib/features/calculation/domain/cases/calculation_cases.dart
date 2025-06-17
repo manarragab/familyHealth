@@ -7,6 +7,8 @@ import 'package:abg/data/models/calculation/diabetes/post_diabetes/post_diabetes
 import 'package:abg/data/models/calculation/favourite/get_favourite/get_favourite.dart';
 import 'package:abg/data/models/calculation/favourite/post_favourite/post_favourite.dart';
 import 'package:abg/data/models/calculation/favourite/post_favourite/post_favourite_response.dart';
+import 'package:abg/data/models/calculation/period/post_period/post_period.dart';
+import 'package:abg/data/models/calculation/period/post_period/post_period_response.dart';
 import 'package:abg/data/models/calculation/pregnancyTracker/post_tracker/post_tracker_MD.dart';
 import 'package:abg/data/models/calculation/pregnancyTracker/post_tracker/post_tracker_response.dart';
 import 'package:abg/data/remote_data/response_model.dart';
@@ -47,5 +49,10 @@ class CalculationCases {
   @override
   Future<ResponseModel> deleteFavourites(String id) {
     return  _data.deleteFavourites(id);
+  }
+
+  @override
+   Future<ResponseModel<Period?>> addPeriod(Postperiod post) {
+    return _data.addPeriod(post);
   }
 }

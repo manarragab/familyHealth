@@ -14,6 +14,8 @@ import 'package:abg/data/models/calculation/diabetes/post_diabetes/post_diabetes
 import 'package:abg/data/models/calculation/favourite/get_favourite/get_favourite.dart';
 import 'package:abg/data/models/calculation/favourite/post_favourite/post_favourite.dart';
 import 'package:abg/data/models/calculation/favourite/post_favourite/post_favourite_response.dart';
+import 'package:abg/data/models/calculation/period/post_period/post_period.dart';
+import 'package:abg/data/models/calculation/period/post_period/post_period_response.dart';
 import 'package:abg/data/models/calculation/pregnancyTracker/post_tracker/post_tracker_MD.dart';
 import 'package:abg/data/models/calculation/pregnancyTracker/post_tracker/post_tracker_response.dart';
 import 'package:abg/data/models/chat/chat_model.dart';
@@ -122,6 +124,7 @@ abstract class DomainData {
 
  Future<ResponseModel<dynamic>>  deleteFavourites(String id);
 
+  Future<ResponseModel<Period?>> addPeriod(Postperiod post);
 
   ///----------------------------------- team -----------------------------
 

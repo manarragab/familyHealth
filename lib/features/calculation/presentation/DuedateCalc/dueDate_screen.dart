@@ -41,7 +41,9 @@ class _DuedateScreenState extends State<DuedateScreen> {
                   SizedBox(
                     height: 15,
                   ),
-                  DateItem(),
+                  DateItem(
+                    id: "duedate1",
+                  ),
                   SizedBox(
                     height: 23,
                   ),

@@ -18,6 +18,12 @@ class _Ovulation3calcScreenState extends State<Ovulation3calcScreen> {
   @override
   Widget build(BuildContext context) {
     Calculationcontroller controller = Get.find();
+   final startDate= controller.postperiodResponse.data?.futureCycle?.fertileWindow?.start??"";
+      final endtDate= controller.postperiodResponse.data?.futureCycle?.fertileWindow?.end??"";
+      final ovulationDate= controller.postperiodResponse.data?.futureCycle?.ovulationDate??"";
+      final periodDate= controller.postperiodResponse.data?.currentCycle?.nextPeriodDate??"";
+      final dueDate= controller.postperiodResponse.data?.futureCycle?.nextCycleStart??"";
+
     return Scaffold(
       appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
       body: Padding(
@@ -35,21 +41,21 @@ class _Ovulation3calcScreenState extends State<Ovulation3calcScreen> {
                   Whitecontainer(
                       image: "assets/images/firtility1.png",
                       title: CustomTrans.fertilityPeriod.tr,
-                      subTitle: "19/09 TO 25/09"),
+                      subTitle: "($startDate)  TO  ($endtDate)"),
                   SizedBox(
                     height: 11,
                   ),
                   Whitecontainer(
                       image: "assets/images/firtility2.png",
                       title: CustomTrans.nextOvulationDate.tr,
-                      subTitle: "17/10/2024"),
+                      subTitle: "$ovulationDate"),
                   SizedBox(
                     height: 11,
                   ),
                   Whitecontainer(
                       image: "assets/images/menstrual.png",
                       title:CustomTrans.nextPeriodDate.tr,
-                      subTitle: "08/10/2024")
+                      subTitle: "$periodDate")
                 ],
               ),
             ),
@@ -61,7 +67,7 @@ class _Ovulation3calcScreenState extends State<Ovulation3calcScreen> {
               child: Whitecontainer(
                 image: 'assets/images/pregnant.png',
                 title: CustomTrans.yourEstimatedDueDateIs.tr,
-                subTitle: "22/06/2025",
+                subTitle: "$dueDate",
                 col: CustomColors.lightgrey5,
               ),
             ),

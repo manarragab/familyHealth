@@ -8,6 +8,8 @@ import 'package:abg/data/models/calculation/diabetes/post_diabetes/post_diabetes
 import 'package:abg/data/models/calculation/favourite/get_favourite/get_favourite.dart';
 import 'package:abg/data/models/calculation/favourite/post_favourite/post_favourite.dart';
 import 'package:abg/data/models/calculation/favourite/post_favourite/post_favourite_response.dart';
+import 'package:abg/data/models/calculation/period/post_period/post_period.dart';
+import 'package:abg/data/models/calculation/period/post_period/post_period_response.dart';
 import 'package:abg/data/models/calculation/pregnancyTracker/post_tracker/post_tracker_MD.dart';
 import 'package:abg/data/models/calculation/pregnancyTracker/post_tracker/post_tracker_response.dart';
 import 'package:abg/domain_data/custom_mixin/mixen_widgets/status_error.dart';
@@ -42,14 +44,25 @@ class Calculationcontroller extends MainGetxController with CustomStateMixin{
 
 RefreshController refreshControllerr=RefreshController();
 
+Postperiod postPeriod = Postperiod();
+PostperiodResponse postperiodResponse=PostperiodResponse();
+
+ addPeriod() async {
+    loadingGetxController.showLoading();
+    var response = await sl<CalculationCases>().addPeriod(postPeriod);
+    loadingGetxController.hideLoading();
+    statusError.checkStatus(response, () {
+      postperiodResponse = response as PostperiodResponse;
+       Get.toNamed(CustomPage.ovulatePage3);
+    });
+  }
+
 List<String> calcImages=[
-"assets/images/BMI.png",
-"assets/images/baby.png",
-"assets/images/womb.png",
+"assets/svg/bmi.svg",
+"assets/svg/period.svg",
+"assets/svg/baby.svg",
 "assets/svg/diabetes.svg",
 "assets/svg/ibs.svg",
-"assets/images/fruits.png",
-"assets/images/water.png",
 ];
 
 
@@ -292,6 +305,10 @@ List<String> calcImages=[
 
     if (id == "diabetes1") {
       postDiabetes.age = value + 10;
+    }
+     else if (id == "ovulate2") {
+      postPeriod.periodDuration  = value + 1;
+      print("periodDuration: ${postPeriod.periodDuration}");
     }
   }
 

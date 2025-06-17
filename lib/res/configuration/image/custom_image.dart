@@ -37,7 +37,7 @@ class CustomImage {
     Color? color,
   }) {
     return CustomImageAsset(
-      path: path,
+      path:path,
       height: height,
       width: width,
       fit: fit,

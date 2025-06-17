@@ -23,6 +23,8 @@ import 'package:abg/features/calculation/presentation/diabetes/diabetes5_screen.
 import 'package:abg/features/calculation/presentation/diabetes/diabetes6_screen.dart';
 import 'package:abg/features/calculation/presentation/diabetes/diabetes7_screen.dart';
 import 'package:abg/features/calculation/presentation/diabetes/diabetes8_screen.dart';
+import 'package:abg/features/calculation/presentation/ovulation/ovulation2Calc_screen.dart';
+import 'package:abg/features/calculation/presentation/ovulation/ovulation3Calc_screen.dart';
 import 'package:abg/features/calculation/presentation/ovulation/ovulationCalc_screen.dart';
 import 'package:abg/features/family/domain/controller/family_controller.dart';
 import 'package:abg/features/family/presentation/family_screen.dart';
@@ -315,6 +317,26 @@ class CustomPage {
         binding: BindingsBuilder(() {
          Get.put(PilsController());
         })),
+
+
+  GetPage(
+        name: ovulatePage2,
+        page: () =>  Ovulation2calcScreen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+         Get.put(Calculationcontroller());
+        })),
+
+ GetPage(
+        name: ovulatePage3,
+        page: () =>  Ovulation3calcScreen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+         Get.put(Calculationcontroller());
+        })),
+
+
+        
   ];
 
   static String pillsPage = '/pillsPage';
@@ -364,6 +386,13 @@ class CustomPage {
     static String ibsPage4="/ibsPage4";
     static String ibsPage5="/ibsPage5";
     static String ibsPage6="/ibsPage6";
+
+    static String ovulatePage1="/ovulatePage1";
+    static String ovulatePage2="/ovulatePage2";
+        static String ovulatePage3="/ovulatePage3";
+
+
+
 
 
 }
