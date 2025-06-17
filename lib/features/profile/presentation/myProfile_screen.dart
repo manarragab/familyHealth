@@ -43,7 +43,7 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Hey ${authController.postRegister.name ?? ""}",
+                    "Hey ${authController.user?.name ?? ""}",
                     style: GoogleFonts.almarai(
                       fontSize: 18,
                       fontWeight: FontWeight.w700,

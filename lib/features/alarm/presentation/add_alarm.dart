@@ -65,6 +65,10 @@ class AddAlarm extends GetView<AlarmController> {
                         controller.postAlarm.alarmDate = date.stringDate;
                         controller.alarmDateController.text = date.stringDate;
                       }).showDatePicker(context);
+                      if(controller.alarmDateController.text ==null||controller.alarmDateController.text.isEmpty){
+                        controller.postAlarm.alarmDate = DateFormat("yyyy-MM-dd").format(DateTime.now());
+                        controller.alarmDateController.text = DateFormat("yyyy-MM-dd").format(DateTime.now());
+                      }
                     },
                   ),
                   const SizedBox(height: 16),
@@ -75,13 +79,16 @@ class AddAlarm extends GetView<AlarmController> {
                     onDatePickerPress: () {
                        
                       CustomDatePicker((date) {
-
                        // controller.postAlarm.alarmTime = date.stringTime24;
                         controller.postAlarm.alarmTime =  DateFormat("HH:mm").format(date);
                     //    controller.alarmTimeController.text = date.stringTime;
                     controller.alarmTimeController.text =   DateFormat("hh:mm a").format(date);
 
                       }).showTimePicker(context);
+                      if(controller.alarmTimeController.text ==null||controller.alarmTimeController.text.isEmpty){
+                        controller.postAlarm.alarmTime = DateFormat("hh:mm a").format(DateTime.now());
+                        controller.alarmTimeController.text = DateFormat("hh:mm a").format(DateTime.now());
+                      }
                     },
                   ),
                   const SizedBox(height: 16),
