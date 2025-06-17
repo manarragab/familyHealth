@@ -133,7 +133,7 @@ class CustomTrans {
   static String tBestSelling = ''; //ProductType.bestSelling.name;
 
 // side menu
-  static const String favorite = 'tFavorite';
+  static const String favorite = 'Favorite';
   static const String payment = 'tpayment';
 
 //payment types

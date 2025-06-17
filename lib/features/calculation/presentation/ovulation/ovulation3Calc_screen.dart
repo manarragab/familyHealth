@@ -23,6 +23,7 @@ class _Ovulation3calcScreenState extends State<Ovulation3calcScreen> {
       final ovulationDate= controller.postperiodResponse.data?.futureCycle?.ovulationDate??"";
       final periodDate= controller.postperiodResponse.data?.currentCycle?.nextPeriodDate??"";
       final dueDate= controller.postperiodResponse.data?.futureCycle?.nextCycleStart??"";
+      final duration= controller.postperiodResponse.data?.futureCycle?.daysFromNow??"";
 
     return Scaffold(
       appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
@@ -67,7 +68,7 @@ class _Ovulation3calcScreenState extends State<Ovulation3calcScreen> {
               child: Whitecontainer(
                 image: 'assets/images/pregnant.png',
                 title: CustomTrans.yourEstimatedDueDateIs.tr,
-                subTitle: "$dueDate",
+                subTitle: "$dueDate   (After $duration Days)",
                 col: CustomColors.lightgrey5,
               ),
             ),

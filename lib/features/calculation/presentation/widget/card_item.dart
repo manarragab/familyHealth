@@ -34,7 +34,7 @@ onPress?.call();
                 width: 90,
                 height: 90,
                 child: Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(5.0),
                   child: CustomImage.asset(image, fit: BoxFit.cover)),
               ),
               const SizedBox(width: 7),

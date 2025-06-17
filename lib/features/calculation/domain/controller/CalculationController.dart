@@ -58,11 +58,11 @@ PostperiodResponse postperiodResponse=PostperiodResponse();
   }
 
 List<String> calcImages=[
-"assets/svg/bmi.svg",
-"assets/svg/period.svg",
-"assets/svg/baby.svg",
-"assets/svg/diabetes.svg",
-"assets/svg/ibs.svg",
+"assets/images/BMI.png",
+"assets/images/baby.png",
+"assets/images/womb.png",
+"assets/images/diabetes.png",
+"assets/images/ibs.png",
 ];
 
 

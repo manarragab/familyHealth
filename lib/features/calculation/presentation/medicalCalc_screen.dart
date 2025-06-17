@@ -250,7 +250,7 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 7),
       child: CardItem(
-        image: contr.calcImages[0] ?? 'assets/svg/bmi.svg',
+        image: contr.calcImages[0] ?? 'assets/images/bmi.png',
         title: calculator.displayName ?? 'Name',
         subTitle: calculator.description ?? 'Description',
         onPress: () => navigateToPage(calculator),
