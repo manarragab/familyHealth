@@ -19,13 +19,13 @@ class _Ovulation3calcScreenState extends State<Ovulation3calcScreen> {
   Widget build(BuildContext context) {
     Calculationcontroller controller = Get.find();
     return Scaffold(
-      appBar: CustomAppBar.appBar(CustomTrans.dueDateCalc.tr),
+      appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16),
         child: ListView(
           children: [
             Pinkcontainer(
-              title: "Ovulation",
+              title: CustomTrans.ovulation.tr,
               image: "assets/images/girl.png",
               widg: Column(
                 children: [
@@ -34,21 +34,21 @@ class _Ovulation3calcScreenState extends State<Ovulation3calcScreen> {
                   ),
                   Whitecontainer(
                       image: "assets/images/firtility1.png",
-                      title: "Fertility period",
+                      title: CustomTrans.fertilityPeriod.tr,
                       subTitle: "19/09 TO 25/09"),
                   SizedBox(
                     height: 11,
                   ),
                   Whitecontainer(
                       image: "assets/images/firtility2.png",
-                      title: "Next ovulation date",
+                      title: CustomTrans.nextOvulationDate.tr,
                       subTitle: "17/10/2024"),
                   SizedBox(
                     height: 11,
                   ),
                   Whitecontainer(
                       image: "assets/images/menstrual.png",
-                      title: "Next period date",
+                      title:CustomTrans.nextPeriodDate.tr,
                       subTitle: "08/10/2024")
                 ],
               ),
@@ -60,7 +60,7 @@ class _Ovulation3calcScreenState extends State<Ovulation3calcScreen> {
               margin: EdgeInsets.symmetric(horizontal: 15),
               child: Whitecontainer(
                 image: 'assets/images/pregnant.png',
-                title: "Your estimated due date is",
+                title: CustomTrans.yourEstimatedDueDateIs.tr,
                 subTitle: "22/06/2025",
                 col: CustomColors.lightgrey5,
               ),

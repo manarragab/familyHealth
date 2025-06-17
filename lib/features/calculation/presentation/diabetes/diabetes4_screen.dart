@@ -1,8 +1,6 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
 import 'package:abg/features/calculation/presentation/IBS/widget/questions_item.dart';
-import 'package:abg/features/calculation/presentation/diabetes/diabetes5_screen.dart';
-import 'package:abg/features/calculation/presentation/diabetes/widget/white4Container.dart';
 import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
 import 'package:abg/res/router/pages.dart';
@@ -25,12 +23,11 @@ class _Diabetes4ScreenState extends State<Diabetes4Screen> {
           child: ListView(
             children: [
               Greencontainer(
-                  firstTxt:
-                      "Check your blood sugar risk easily and stay ahead of your health.",
-                  centertxt: "Diabetes Type 2 Risk Calculator",
-                  title: "Diabetes\nType2\nRisk",
+                  firstTxt: CustomTrans
+                      .checkYourBloodSugarRiskEasilyAndStayAheadOfYourHealth.tr,
+                  centertxt: CustomTrans.diabetesType2RiskCalculator.tr,
+                  title: CustomTrans.diabetesType2Risk.tr,
                   image: "assets/svg/diabetes.svg",
-               
                   widg: Column(
                     children: [
                       SizedBox(
@@ -44,7 +41,7 @@ class _Diabetes4ScreenState extends State<Diabetes4Screen> {
                         height: 35,
                       ),
                       Text(
-                        "Steroids Usage",
+                        CustomTrans.steroidsUsage.tr,
                         style: TFonts.inter(
                           color: CustomColors.darkblue3,
                           fontSize: 20.w,
@@ -58,27 +55,23 @@ class _Diabetes4ScreenState extends State<Diabetes4Screen> {
                       //   title: "Do you take steroids?",
                       //   id: "diabetes4"),
 
-
- GetBuilder<Calculationcontroller>(builder: (_){
-      return  Container(
-          width: Get.width,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(12),
-          ),
-          padding: const EdgeInsets.all(20),
-          child:  QuestionsItem(
-                                question:
-                                    '${controller.diabetesQuestions[1]}',
+                      GetBuilder<Calculationcontroller>(builder: (_) {
+                        return Container(
+                            width: Get.width,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            padding: const EdgeInsets.all(20),
+                            child: QuestionsItem(
+                                question: '${controller.diabetesQuestions[1]}',
                                 value: controller.diabetesAnswers[1],
                                 onChanged: (val) {
                                   controller.diabetesAnswers[1] = val;
                                   controller.storeDiabetesValues(1);
                                   controller.update();
                                 }));
-     })   ,
-
-
+                      }),
 
                       SizedBox(
                         height: 30,
@@ -90,7 +83,7 @@ class _Diabetes4ScreenState extends State<Diabetes4Screen> {
                           if (controller.postDiabetes.steroidsUsage != null) {
                             Get.toNamed(CustomPage.diabetes5Page);
                           } else {
-                            showToast("You should answer the question",
+                            showToast(CustomTrans.youShouldAnswerTheQuestion.tr,
                                 MessageErrorType.error);
                           }
                         },
@@ -121,7 +114,7 @@ class _Diabetes4ScreenState extends State<Diabetes4Screen> {
                             Get.back();
                           },
                           child: Text(
-                            "Back",
+                            CustomTrans.back.tr,
                             style: GoogleFonts.almarai(
                               fontSize: 24,
                               color: CustomColors.darkblue3,

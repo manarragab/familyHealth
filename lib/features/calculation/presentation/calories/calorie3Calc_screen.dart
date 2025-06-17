@@ -22,10 +22,9 @@ class _Calorie3calcScreenState extends State<Calorie3calcScreen> {
           child: ListView(
             children: [
               Greencontainer(
-                  firstTxt:
-                      "Control your diet with this easy-to-use calorie calculator.",
-                  centertxt: "Calorie Calculator",
-                  title: "Calorie",
+                   firstTxt: CustomTrans.controlYourDietWithThisEasyToUseCalorieCalculator.tr,
+                centertxt: CustomTrans.calorieCalculator.tr,
+                title: CustomTrans.calorie.tr,
                   image: "assets/images/fruity.png",
                 
                   widg: Column(
@@ -41,7 +40,7 @@ class _Calorie3calcScreenState extends State<Calorie3calcScreen> {
                         height: 35,
                       ),
                       Text(
-                        "Weight",
+                       CustomTrans.weight.tr,
                         style: GoogleFonts.almarai(
                           color: CustomColors.darkblue3,
                           fontSize: 30,
@@ -53,7 +52,7 @@ class _Calorie3calcScreenState extends State<Calorie3calcScreen> {
                       ),
                       White2container(
                         KEY: "three",
-                          title1: "your weight", title2: "(kg)", measure: "kg"),
+                          title1: CustomTrans.yourWieght.tr, title2: "(${CustomTrans.kg.tr})", measure: CustomTrans.kg.tr),
                       SizedBox(
                         height: 35,
                       ),
@@ -90,7 +89,7 @@ class _Calorie3calcScreenState extends State<Calorie3calcScreen> {
                             Get.to(Calorie2calcScreen());
                           },
                           child: Text(
-                            "Back",
+                          CustomTrans.back.tr,
                             style: GoogleFonts.almarai(
                               fontSize: 24,
                               color: CustomColors.darkblue3,

@@ -17,10 +17,9 @@ class Ibscalc3Screen extends GetWidget<Calculationcontroller> {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: SingleChildScrollView(
           child: Greencontainer(
-              firstTxt:
-                  "Easily assess your risk of Irritable Bowel Syndrome (IBS) and take a proactive step toward better digestive health.",
-              centertxt: "NEW Calculator",
-              title: "Symptom\nChecker\nFor IBS",
+              firstTxt: CustomTrans.easilyAssessYourRiskOfIBS.tr,
+              centertxt: CustomTrans.newCalculator.tr,
+              title: CustomTrans.symptomCheckerForIBS.tr,
               image: "assets/svg/ibs.svg",
               widg: Column(
                 children: [
@@ -34,7 +33,7 @@ class Ibscalc3Screen extends GetWidget<Calculationcontroller> {
                     height: 20.h,
                   ),
                   Text(
-                    "Group2",
+                   CustomTrans.group2.tr,
                     style: TFonts.almarai(
                       fontSize: 20.w,
                       color: CustomColors.darkblue3,
@@ -83,7 +82,7 @@ class Ibscalc3Screen extends GetWidget<Calculationcontroller> {
                             "dddddddddddddddddddd ${controller.postIBS.recurringAbdominalPain}");
                         Get.toNamed(CustomPage.ibsPage4);
                       } else {
-                        showToast("You should answer the question",
+                        showToast(CustomTrans.youShouldAnswerTheQuestion.tr,
                             MessageErrorType.error);
                       }
                     },

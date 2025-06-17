@@ -7,6 +7,7 @@ class Pinkcontainer extends StatelessWidget {
   final Widget widg;
   final double? heightt;
   final String? firstTxt;
+  final String? desc;
 
   const Pinkcontainer({
     super.key,
@@ -14,7 +15,7 @@ class Pinkcontainer extends StatelessWidget {
     required this.image,
     required this.widg,
     this.heightt,
-    this.firstTxt,
+    this.firstTxt, this.desc,
   });
 
   @override
@@ -24,7 +25,7 @@ class Pinkcontainer extends StatelessWidget {
         children: [
           Center(
             child: Text(
-              firstTxt ?? "Ovulation Calculator",
+              firstTxt ?? CustomTrans.ovulationCalculator.tr,
               style: GoogleFonts.almarai(
                 fontSize: 14,
                 color: CustomColors.darkBlue2,
@@ -36,7 +37,7 @@ class Pinkcontainer extends StatelessWidget {
             height: 25,
           ),
           Text(
-            "The ovulation calculator will help you determine the key days when ovulation occurs, which are the days when the body is ready for pregnancy.",
+  desc??   CustomTrans.ovulationCalculatorWill.tr,
             style: GoogleFonts.almarai(
               fontSize: 15,
               color: CustomColors.darkBlue2,

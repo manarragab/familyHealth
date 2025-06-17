@@ -24,10 +24,9 @@ class _Diabetes6ScreenState extends State<Diabetes6Screen> {
           child: ListView(
             children: [
               Greencontainer(
-                  firstTxt:
-                      "Check your blood sugar risk easily and stay ahead of your health.",
-                  centertxt: "Diabetes Type 2 Risk Calculator",
-                  title: "Diabetes\nType2\nRisk",
+                  firstTxt:CustomTrans.checkYourBloodSugarRiskEasilyAndStayAheadOfYourHealth.tr,
+                        centertxt:   CustomTrans.diabetesType2RiskCalculator.tr,
+                        title: CustomTrans.diabetesType2Risk.tr,
                   image: "assets/svg/diabetes.svg",
                   
                   widg: Column(
@@ -43,7 +42,7 @@ class _Diabetes6ScreenState extends State<Diabetes6Screen> {
                         height: 35,
                       ),
                       Text(
-                        "Family History of Diabetes",
+                        CustomTrans.familyHistoryOfDiabetes.tr,
                         style: GoogleFonts.almarai(
                           color: CustomColors.darkblue3,
                           fontSize: 20,
@@ -55,11 +54,11 @@ class _Diabetes6ScreenState extends State<Diabetes6Screen> {
                       ),
                       White5container(
                           id: "diabetes6",
-                          Q: "Do any of your first-degree family members have diabetes?",
+                          Q: CustomTrans.doAnyOfYourFirstDegreeFamilyMembersHaveDiabetes.tr,
                           options: [
-                            "No first-degree family members with diabetes",
-                            "Parent or sibling with diabetes",
-                            "Parent and sibling with diabetes"
+                            CustomTrans.noFirstDegreeFamilyMembersWithDiabetes.tr,
+                      CustomTrans.parentOrSiblingWithDiabetes.tr,
+                          CustomTrans.parentAndSiblingWithDiabetes.tr,
                           ]),
                       SizedBox(
                         height: 30,
@@ -72,7 +71,7 @@ class _Diabetes6ScreenState extends State<Diabetes6Screen> {
                               null) {
                             Get.toNamed(CustomPage.diabetes7Page);
                           } else {
-                            showToast("You should answer the question",
+                            showToast(CustomTrans.youShouldAnswerTheQuestion.tr,
                                 MessageErrorType.error);
                           }
                         },
@@ -103,7 +102,7 @@ class _Diabetes6ScreenState extends State<Diabetes6Screen> {
                             Get.back();
                           },
                           child: Text(
-                            "Back",
+                          CustomTrans.back.tr,
                             style: GoogleFonts.almarai(
                               fontSize: 24,
                               color: CustomColors.darkblue3,

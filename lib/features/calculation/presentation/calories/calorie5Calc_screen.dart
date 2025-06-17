@@ -22,12 +22,11 @@ class _Calorie5calcScreenState extends State<Calorie5calcScreen> {
           child: ListView(
             children: [
               Greencontainer(
-                  firstTxt:
-                      "Control your diet with this easy-to-use calorie calculator.",
-                  centertxt: "Calorie Calculator",
-                  title: "Calorie",
+                  firstTxt: CustomTrans
+                      .controlYourDietWithThisEasyToUseCalorieCalculator.tr,
+                  centertxt: CustomTrans.calorieCalculator.tr,
+                  title: CustomTrans.calorie.tr,
                   image: "assets/images/fruity.png",
-                
                   widg: Column(
                     children: [
                       SizedBox(
@@ -41,7 +40,7 @@ class _Calorie5calcScreenState extends State<Calorie5calcScreen> {
                         height: 35,
                       ),
                       Text(
-                        "Activity",
+                        CustomTrans.activity.tr,
                         style: GoogleFonts.almarai(
                           color: CustomColors.darkblue3,
                           fontSize: 30,
@@ -68,22 +67,26 @@ class _Calorie5calcScreenState extends State<Calorie5calcScreen> {
                             crossAxisSpacing: 9),
                         children: [
                           RadiooItem(
-                              title: "Established",
-                              subTitle: "Little or no exercise"),
+                            title: CustomTrans.establishedActivityTitle.tr,
+                            subTitle:
+                                CustomTrans.establishedActivitySubtitle.tr,
+                          ),
                           RadiooItem(
-                              title: "light ",
-                              subTitle: "Exercise 1-3 times a week"),
+                            title: CustomTrans.lightActivityTitle.tr,
+                            subTitle: CustomTrans.lightActivitySubtitle.tr,
+                          ),
                           RadiooItem(
-                              title: "Moderate",
-                              subTitle: "Exercise 4-5 times a week"),
+                            title: CustomTrans.moderateActivityTitle.tr,
+                            subTitle: CustomTrans.moderateActivitySubtitle.tr,
+                          ),
                           RadiooItem(
-                              title: "Active",
-                              subTitle:
-                                  "Exercise daily or vigorously3-4 times a week."),
+                            title: CustomTrans.activeActivityTitle.tr,
+                            subTitle: CustomTrans.activeActivitySubtitle.tr,
+                          ),
                           RadiooItem(
-                              title: "Very active",
-                              subTitle:
-                                  "Do intense exercise 6-7 times a week."),
+                            title: CustomTrans.veryActiveActivityTitle.tr,
+                            subTitle: CustomTrans.veryActiveActivitySubtitle.tr,
+                          ),
                         ],
                       ),
                       SizedBox(
@@ -121,7 +124,7 @@ class _Calorie5calcScreenState extends State<Calorie5calcScreen> {
                             Get.to(Calorie4calcScreen());
                           },
                           child: Text(
-                            "Back",
+                            CustomTrans.back.tr,
                             style: GoogleFonts.almarai(
                               fontSize: 24,
                               color: CustomColors.darkblue3,

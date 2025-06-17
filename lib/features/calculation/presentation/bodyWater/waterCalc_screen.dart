@@ -21,21 +21,19 @@ class WatercalcScreen extends StatelessWidget {
           child: ListView(
             children: [
               Greencontainer(
-                centertxt: "Body water Calculator",
-                firstTxt:
-                    "Control your diet with this easy-to-use calorie calculator.",
+                centertxt: CustomTrans.bodyWaterCalculator.tr,
+                firstTxt: CustomTrans.controlYourDietWithThisEasyToUseCalorieCalculator.tr,
                 image: "assets/images/water2.png",
-                title: "Body water",
-             
+                title: CustomTrans.bodyWater.tr,
                 size: 33.5,
                 widg: Container(
                     child: Column(
                   children: [
                     White2container(
                         KEY: "five",
-                        title1: "your weight",
-                        title2: "(kg)",
-                        measure: "kg"),
+                        title1: CustomTrans.yourWieght.tr,
+                        title2: "(${CustomTrans.kg.tr})",
+                        measure: CustomTrans.kg.tr),
                     SizedBox(
                       height: 15,
                     ),
@@ -58,7 +56,7 @@ class WatercalcScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "  Activity level",
+                            CustomTrans.activityLevel.tr,
                             style: GoogleFonts.almarai(
                               fontSize: 12,
                               color: CustomColors.darkBlue2,
@@ -68,11 +66,11 @@ class WatercalcScreen extends StatelessWidget {
                           SizedBox(
                             height: 6,
                           ),
-                          RadioooItem(title: "Inactive"),
-                          RadioooItem(title: "Little activity"),
-                          RadioooItem(title: "Average activity"),
-                          RadioooItem(title: "Very active"),
-                          RadioooItem(title: "So very active"),
+                          RadioooItem(title: CustomTrans.inactive.tr),
+                          RadioooItem(title: CustomTrans.littleActivity.tr),
+                          RadioooItem(title: CustomTrans.averageActivity.tr),
+                          RadioooItem(title: CustomTrans.veryActive.tr),
+                          RadioooItem(title: CustomTrans.soVeryActive.tr),
                         ],
                       ),
                     ),

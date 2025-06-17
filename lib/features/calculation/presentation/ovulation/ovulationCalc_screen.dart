@@ -18,7 +18,7 @@ class OvulationcalcScreen extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 16),
           child: Pinkcontainer(
               title: "Ovulation",
-              firstTxt: "Ovulation Calculator",
+              firstTxt: CustomTrans.ovulationCalculator.tr,
               image: "assets/images/ballon.png",
               widg: Column(
                 children: [
@@ -26,7 +26,7 @@ class OvulationcalcScreen extends StatelessWidget {
                     height: 20,
                   ),
                   Text(
-                    "The first day of the last menstrual cycle",
+                   CustomTrans.theFirstDayOfTheLastMenstrualCycle.tr,
                     style: GoogleFonts.almarai(
                       fontSize: 14,
                       color: CustomColors.darkBlue2,

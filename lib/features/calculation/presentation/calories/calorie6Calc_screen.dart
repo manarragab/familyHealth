@@ -1,13 +1,10 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
-import 'package:abg/features/calculation/presentation/calories/calorie2Calc_screen.dart';
-import 'package:abg/features/calculation/presentation/calories/calorieCalc_screen.dart';
-import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
-import 'package:abg/features/calculation/presentation/widget/listDay_item.dart';
 import 'package:abg/features/calculation/presentation/widget/white3Container.dart';
 import 'package:abg/res/router/pages.dart';
 import 'package:google_fonts/google_fonts.dart';
+
 
 class Calorie6calcScreen extends StatefulWidget {
   @override
@@ -25,19 +22,18 @@ class _Calorie6calcScreenState extends State<Calorie6calcScreen> {
           child: ListView(
             children: [
               Greencontainer(
-                firstTxt:
-                    "Control your diet with this easy-to-use calorie calculator.",
-                centertxt: "Calorie Calculator",
-                title: "Calorie",
-                image: "assets/images/fruity.png",
-               
+                firstTxt: CustomTrans.controlYourDietWithThisEasyToUseCalorieCalculator.tr,
+                centertxt: CustomTrans.calorieCalculator.tr,
+                title: CustomTrans.calorie.tr,
+                image: "assets/images/fruity.png", // Ensure this asset exists
+                
                 widg: Column(
                   children: [
                     SizedBox(
                       height: 15,
                     ),
                     Text(
-                      "Score",
+                      CustomTrans.score.tr,
                       style: GoogleFonts.almarai(
                         color: CustomColors.darkblue3,
                         fontSize: 30,
@@ -49,29 +45,29 @@ class _Calorie6calcScreenState extends State<Calorie6calcScreen> {
                     ),
                     White3container(
                       txt: [
-                        "100%",
-                        "Maintain weight",
-                        "0 kg/week",
-                        "4069.4",
-                        "Calories/day"
+                        CustomTrans.percentage100.tr,
+                        CustomTrans.maintainWeight.tr,
+                        CustomTrans.zeroKgPerWeek.tr,
+                        CustomTrans.caloriesPerDay4069.tr,
+                        CustomTrans.caloriesPerDayText.tr
                       ],
                     ),
                     White3container(
                       txt: [
-                        "94%",
-                        "light weight loss",
-                        "0.25 kg/week",
-                        "3819.4",
-                        "Calories/day"
+                        CustomTrans.percentage94.tr,
+                        CustomTrans.lightWeightLoss.tr,
+                        CustomTrans.pointTwoFiveKgPerWeek.tr,
+                        CustomTrans.caloriesPerDay3819.tr,
+                        CustomTrans.caloriesPerDayText.tr
                       ],
                     ),
                     White3container(
                       txt: [
-                        "88%",
-                        "severe weight loss",
-                        "0.5 kg/week",
-                        "3569.4",
-                        "Calories/day"
+                        CustomTrans.percentage88.tr,
+                        CustomTrans.severeWeightLoss.tr,
+                        CustomTrans.pointFiveKgPerWeek.tr,
+                        CustomTrans.caloriesPerDay3569.tr,
+                        CustomTrans.caloriesPerDayText.tr
                       ],
                     ),
                   ],
@@ -81,44 +77,39 @@ class _Calorie6calcScreenState extends State<Calorie6calcScreen> {
                 height: 20,
               ),
 
-
- Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                MainButton(
-                  onPressed: () {
-                   // controller.emptyData();
-                   showToast("under devlopment", MessageErrorType.error);
-
-                     },
-                  width: 60,
-                  titleWidget: Image.asset(
-                    "assets/images/greensign.png",
-                    width: 25,
-                    height: 24,
-                    color: Colors.white,
-                  ),
-                ),
-                SizedBox(
-                  width: 5,
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
                   MainButton(
-                  onPressed: () {
- Get.until(
-                        (route) => Get.currentRoute == CustomPage.layoutPage);
-                                  },
-                  backgroundColor: CustomColors.pink,
-                  width: 70,
-                 titleWidget: Icon(Icons.home_outlined ,
-                 size: 30
-                 , color: Colors.white),
-                ),
-
-              ],
-            ),
-          ],
-
-            
+                    onPressed: () {
+                      // controller.emptyData(); // Uncomment if needed
+                      showToast("underDevelopment", MessageErrorType.error);
+                    },
+                    width: 60,
+                    titleWidget: Image.asset(
+                      "assets/images/greensign.png", // Ensure this asset exists
+                      width: 25,
+                      height: 24,
+                      color: Colors.white,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 5,
+                  ),
+                  MainButton(
+                    onPressed: () {
+                      Get.until((route) => Get.currentRoute == CustomPage.layoutPage);
+                    },
+                    backgroundColor: CustomColors.pink,
+                    width: 70,
+                    titleWidget: Icon(Icons.home_outlined ,
+                      size: 30,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ));
   }

@@ -950,7 +950,7 @@ class CustomTrans {
 
 //calculation
   static const String medicalCalc = "Medical calculations";
-  static const String dueDateCalc = "Medical calculations";
+  static const String dueDateCalc = "Due date calculator";
   static const String calculate = "Calculate";
   static const String next2 = "Next";
   static const String calculating = "Calculating";
@@ -977,5 +977,114 @@ static const String AddHabitTracking="Add habit tracking";
   static const String Areyousureyouwanttodeletehabittracking=  "Are you sure you want to delete habit tracking?";
 
 
+
+
+
+
+
+static const String searchmedicalcalculators="Search medical calculators";
+static const String mostimportantmedicalcalculations="Most important medical calculations";
+static const String ovulationCalculator="Ovulation Calculator";
+static const String ovulation="Ovulation";
+static const String fertilityPeriod="Fertility period";
+static const String nextOvulationDate="Next ovulation date";
+static const String nextPeriodDate="Next period date";
+static const String yourEstimatedDueDateIs="Your estimated due date is";
+static const String theFirstDayOfTheLastMenstrualCycle="The first day of the last menstrual cycle";
+static const String theTimePeriodForTheLengthOfTheMenstrualCycle="The time period for the length of the menstrual cycle";
+static const String ovulationCalculatorWill="The ovulation calculator will help you determine the key days when ovulation occurs, which are the days when the body is ready for pregnancy.";
+static const String calculatingPregnancy="Calculating pregnancy helps estimate the baby’s expected due date (EDD) so you can prepare in advance.";
+static const String easilyAssessYourRiskOfIBS="Easily assess your risk of Irritable Bowel Syndrome (IBS) and take a proactive step toward better digestive health.";
+static const String newCalculator="NEW Calculator";
+static const String symptomCheckerForIBS="Symptom\nChecker\nFor IBS";
+static const String toProvideAccurateAssessment="To provide you with an accurate assessment, this tool will guide you through 14 clinically relevant questions, grouped into 4 key categories";
+static const String estimatedCompletionTime="Estimated completion time: Less than 3 minutes";
+static const String pleaseAnswerAllQuestionsTruthfully="Please answer all questions truthfully based on your current health status. Your responses will help us determine whether your symptoms align with IBS or warrant further medical evaluation.";
+static const String whenYouAreReadyTapStart="When you're ready, tap 'Start' to begin the assessment";
+static const String howOldAreYou="How old are you ?";
+static const String fortyNineOrLess="49 or less";
+static const String fiftyOrMore="50 or more";
+static const String youShouldAnswerTheQuestion="You should answer the question";
+static const String group2="Group2";
+static const String group="Group";
+static const String expectedBirthDate="Expected birth date";
+static const String lastMenstrualPeriodSince="Last menstrual period since";
+
+
+
+static const String checkYourBloodSugarRiskEasilyAndStayAheadOfYourHealth="Check your blood sugar risk easily and stay ahead of your health.";
+static const String diabetesType2RiskCalculator="Diabetes Type 2 Risk Calculator";
+static const String diabetesType2Risk="Diabetes\nType2\nRisk";
+static const String age="Age";
+static const String youShouldSelectAge="You should select age";
+static const String youShouldSelectGender="You should select gender";
+static const String highBloodPressureMedicines="High Blood Pressure Medicines";
+static const String steroidsUsage="Steroids Usage";
+static const String bmi="BMI";
+static const String pleaseEnterYourHeight="Please enter your height";
+static const String pleaseEnterYourWeight="Please enter your weight";
+static const String cm="cm";
+static const String kg="kg";
+static const String youShouldSetValueForHeightWeightBoth="You should set value for height && weight both";
+static const String familyHistoryOfDiabetes="Family History of Diabetes";
+static const String doAnyOfYourFirstDegreeFamilyMembersHaveDiabetes="Do any of your first-degree family members have diabetes?";
+static const String noFirstDegreeFamilyMembersWithDiabetes="No first-degree family members with diabetes";
+static const String parentOrSiblingWithDiabetes="Parent or sibling with diabetes";
+static const String parentAndSiblingWithDiabetes="Parent and sibling with diabetes";
+static const String smokingHistory="Smoking History";
+static const String whatIsYourSmokingStatus="What is your smoking status?";
+static const String nonSmoker="Non-Smoker";
+static const String formerSmoker="Former Smoker";
+static const String currentSmoker="Current Smoker";
+static const String score="score";
+static const String yourWieght="Your Weight";
+
+
+static const String controlYourDietWithThisEasyToUseCalorieCalculator="Control your diet with this easy-to-use calorie calculator.";
+static const String bodyWaterCalculator="Body water Calculator";
+static const String bodyWater="Body water";
+static const String activityLevel="Activity level";
+static const String inactive="Inactive";
+static const String littleActivity="Little activity"; 
+static const String averageActivity="Average activity";
+static const String veryActive="Very active"; 
+static const String soVeryActive="So very active"; 
+static const String threeLi="3Li";
+static const String fiveLi="5Li";
+static const String eightLi="8Li";
+static const String benefitFromMedicalAdviceAboutTheImportanceOfDrinkingWaterTalkToASpecialistDoctorForGuidanceAndAdvice="Benefit from medical advice about the importance of drinking water. Talk to a specialist doctor for guidance and advice";
+
+
+
+static const String calorieCalculator = "Calorie Calculator";
+static const String calorie = "Calorie";
+static const String male = "Male";
+static const String female = "Female";
+static const String weight = "Weight";
+static const String activity = "Activity";
+static const String establishedActivityTitle = "Established";
+static const String establishedActivitySubtitle = "Little or no exercise";
+static const String lightActivityTitle = "light";
+static const String lightActivitySubtitle = "Exercise 1-3 times a week";
+static const String moderateActivityTitle = "Moderate";
+static const String moderateActivitySubtitle = "Exercise 4-5 times a week";
+static const String activeActivityTitle = "Active";
+static const String activeActivitySubtitle = "Exercise daily or vigorously3-4 times a week.";
+static const String veryActiveActivityTitle = "Very active";
+static const String veryActiveActivitySubtitle = "Do intense exercise 6-7 times a week.";
+static const String percentage100 = "100%";
+static const String maintainWeight = "Maintain weight";
+static const String zeroKgPerWeek = "0 kg/week";
+static const String caloriesPerDay4069 = "4069.4";
+static const String caloriesPerDayText = "Calories/day";
+static const String percentage88 = "88%";
+static const String severeWeightLoss = "severe weight loss";
+static const String pointFiveKgPerWeek = "0.5 kg/week";
+static const String caloriesPerDay3569 = "3569.4";
+static const String percentage94="94%";
+static const String lightWeightLoss="light weight loss";
+static const String pointTwoFiveKgPerWeek="0.25 kg/week";
+static const String caloriesPerDay3819="3819.4";
+static const String height = "height";
 
 }

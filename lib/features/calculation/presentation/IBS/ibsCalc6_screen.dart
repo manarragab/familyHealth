@@ -1,7 +1,5 @@
 import 'package:abg/data/const/export.dart';
-import 'package:abg/data/models/calculation/IBS/post_IBS/post_IBS_MD.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
-import 'package:abg/features/calculation/presentation/widget/coloredBar.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
 import 'package:abg/res/router/pages.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,10 +17,9 @@ class Ibscalc6Screen extends GetWidget<Calculationcontroller> {
                   child: Column(
                     children: [
                       Greencontainer(
-                          firstTxt:
-                              "Easily assess your risk of Irritable Bowel Syndrome (IBS) and take a proactive step toward better digestive health.",
-                          centertxt: "NEW Calculator",
-                          title: "Symptom\nChecker\nFor IBS",
+                          firstTxt: CustomTrans.easilyAssessYourRiskOfIBS.tr,
+                          centertxt: CustomTrans.newCalculator.tr,
+                          title: CustomTrans.symptomCheckerForIBS.tr,
                           image: "assets/svg/ibs.svg",
                           widg: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -79,13 +76,12 @@ class Ibscalc6Screen extends GetWidget<Calculationcontroller> {
                           ),
                           MainButton(
                             onPressed: () {
-  Get.until(
-                        (route) => Get.currentRoute == CustomPage.layoutPage);
-                                            },
-                            width:70,
-                            titleWidget:
-                      Icon(Icons.home_outlined, size: 30, color: Colors.white),
-            
+                              Get.until((route) =>
+                                  Get.currentRoute == CustomPage.layoutPage);
+                            },
+                            width: 70,
+                            titleWidget: Icon(Icons.home_outlined,
+                                size: 30, color: Colors.white),
                           ),
                         ],
                       ),

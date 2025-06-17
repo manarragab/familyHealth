@@ -1,8 +1,6 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
 import 'package:abg/features/calculation/presentation/IBS/widget/questions_item.dart';
-import 'package:abg/features/calculation/presentation/diabetes/diabetes4_screen.dart';
-import 'package:abg/features/calculation/presentation/diabetes/widget/white4Container.dart';
 import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
 import 'package:abg/res/router/pages.dart';
@@ -24,10 +22,9 @@ class _Diabetes3ScreenState extends State<Diabetes3Screen> {
           child: ListView(
             children: [
               Greencontainer(
-                  firstTxt:
-                      "Check your blood sugar risk easily and stay ahead of your health.",
-                  centertxt: "Diabetes Type 2 Risk Calculator",
-                  title: "Diabetes\nType2\nRisk",
+                  firstTxt:CustomTrans.checkYourBloodSugarRiskEasilyAndStayAheadOfYourHealth.tr,
+                        centertxt:   CustomTrans.diabetesType2RiskCalculator.tr,
+                        title: CustomTrans.diabetesType2Risk.tr,
                   image: "assets/svg/diabetes.svg",
                
                   widg: Column(
@@ -40,7 +37,7 @@ class _Diabetes3ScreenState extends State<Diabetes3Screen> {
                         height: 35,
                       ),
                       Text(
-                        "High Blood Pressure Medicines",
+                        CustomTrans.highBloodPressureMedicines.tr,
                         style: TFonts.inter(
                           color: CustomColors.darkblue3,
                           fontSize: 20.w,
@@ -85,7 +82,8 @@ class _Diabetes3ScreenState extends State<Diabetes3Screen> {
                               null) {
                             Get.toNamed(CustomPage.diabetes4Page);
                           } else {
-                            showToast("You should answer the question",
+                            showToast(                           CustomTrans.youShouldAnswerTheQuestion.tr,
+
                                 MessageErrorType.error);
                           }
                         },
@@ -116,7 +114,7 @@ class _Diabetes3ScreenState extends State<Diabetes3Screen> {
                             Get.back();
                           },
                           child: Text(
-                            "Back",
+                           CustomTrans.back.tr,
                             style: GoogleFonts.almarai(
                               fontSize: 24,
                               color: CustomColors.darkblue3,

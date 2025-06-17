@@ -21,10 +21,9 @@ class _Calorie4calcScreenState extends State<Calorie4calcScreen> {
           child: ListView(
             children: [
               Greencontainer(
-                  firstTxt:
-                      "Control your diet with this easy-to-use calorie calculator.",
-                  centertxt: "Calorie Calculator",
-                  title: "Calorie",
+                   firstTxt: CustomTrans.controlYourDietWithThisEasyToUseCalorieCalculator.tr,
+                centertxt: CustomTrans.calorieCalculator.tr,
+                title: CustomTrans.calorie.tr,
                   image: "assets/images/fruity.png",
              
                   widg: Column(
@@ -40,7 +39,7 @@ class _Calorie4calcScreenState extends State<Calorie4calcScreen> {
                         height: 35,
                       ),
                       Text(
-                        "Height",
+                      CustomTrans.height.tr,
                         style: GoogleFonts.almarai(
                           color: CustomColors.darkblue3,
                           fontSize: 30,
@@ -52,9 +51,9 @@ class _Calorie4calcScreenState extends State<Calorie4calcScreen> {
                       ),
                       White2container(
                           KEY: "four",
-                          title1: "Please enter your height",
-                          title2: "(cm)",
-                          measure: "cm"),
+                          title1:  CustomTrans.pleaseEnterYourHeight.tr,
+                          title2: "(${CustomTrans.cm.tr})",
+                          measure: CustomTrans.cm.tr),
                       SizedBox(
                         height: 35,
                       ),
@@ -90,7 +89,7 @@ class _Calorie4calcScreenState extends State<Calorie4calcScreen> {
                             Get.to(Calorie3calcScreen());
                           },
                           child: Text(
-                            "Back",
+                            CustomTrans.back.tr,
                             style: GoogleFonts.almarai(
                               fontSize: 24,
                               color: CustomColors.darkblue3,

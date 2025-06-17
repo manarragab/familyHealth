@@ -1,15 +1,8 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
-import 'package:abg/features/calculation/presentation/DuedateCalc/dateCalc_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/date_item.dart';
 import 'package:abg/features/calculation/presentation/widget/pinkContainer.dart';
-import 'package:abg/localization/all_keys.dart';
-import 'package:abg/res/common-widgets/custm_button.dart';
-import 'package:abg/res/configuration/app_bar.dart';
-import 'package:abg/res/configuration/color.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DuedateScreen extends StatefulWidget {
@@ -28,7 +21,9 @@ class _DuedateScreenState extends State<DuedateScreen> {
         child: Column(
           children: [
             Pinkcontainer(
-              title: "Due date",
+              title: CustomTrans.dueDate.tr,
+              firstTxt: CustomTrans.dueDateCalc.tr,
+              desc: CustomTrans.calculatingPregnancy.tr,
               image: "assets/images/girl.png",
               widg: Column(
                 children: [
@@ -36,7 +31,7 @@ class _DuedateScreenState extends State<DuedateScreen> {
                     height: 20,
                   ),
                   Text(
-                    "The first day of the last menstrual cycle",
+                  CustomTrans.theFirstDayOfTheLastMenstrualCycle.tr,
                     style: GoogleFonts.almarai(
                       fontSize: 14,
                       color: CustomColors.darkBlue2,

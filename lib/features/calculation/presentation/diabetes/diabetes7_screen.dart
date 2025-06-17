@@ -1,6 +1,5 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
-import 'package:abg/features/calculation/presentation/diabetes/diabetes8_screen.dart';
 import 'package:abg/features/calculation/presentation/diabetes/widget/white5Container.dart';
 import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
@@ -24,10 +23,9 @@ class _Diabetes7ScreenState extends State<Diabetes7Screen> {
           child: ListView(
             children: [
               Greencontainer(
-                  firstTxt:
-                      "Check your blood sugar risk easily and stay ahead of your health.",
-                  centertxt: "Diabetes Type 2 Risk Calculator",
-                  title: "Diabetes\nType2\nRisk",
+                  firstTxt:CustomTrans.checkYourBloodSugarRiskEasilyAndStayAheadOfYourHealth.tr,
+                        centertxt:   CustomTrans.diabetesType2RiskCalculator.tr,
+                        title: CustomTrans.diabetesType2Risk.tr,
                   image: "assets/svg/diabetes.svg",
                  
                   widg: Column(
@@ -43,7 +41,7 @@ class _Diabetes7ScreenState extends State<Diabetes7Screen> {
                         height: 35,
                       ),
                       Text(
-                        "Smoking History",
+                       CustomTrans.smokingHistory.tr,
                         style: GoogleFonts.almarai(
                           color: CustomColors.darkblue3,
                           fontSize: 20,
@@ -55,11 +53,11 @@ class _Diabetes7ScreenState extends State<Diabetes7Screen> {
                       ),
                       White5container(
                           id: "diabetes7",
-                          Q: "What is your smoking status?",
+                          Q: CustomTrans.whatIsYourSmokingStatus.tr,
                           options: [
-                            "Non-Smoker",
-                            "Former Smoker",
-                            "Current Smoker"
+                            CustomTrans.nonSmoker.tr,
+                           CustomTrans.formerSmoker.tr,
+                          CustomTrans.currentSmoker.tr,
                           ]),
                       SizedBox(
                         height: 30,
@@ -74,7 +72,7 @@ class _Diabetes7ScreenState extends State<Diabetes7Screen> {
                                 null) {
                               controller.addDiabetes();
                             } else {
-                              showToast("You should answer the question",
+                              showToast(CustomTrans.youShouldAnswerTheQuestion.tr,
                                   MessageErrorType.error);
                             }
                           },
@@ -106,7 +104,7 @@ class _Diabetes7ScreenState extends State<Diabetes7Screen> {
                             Get.back();
                           },
                           child: Text(
-                            "Back",
+                           CustomTrans.back.tr, 
                             style: GoogleFonts.almarai(
                               fontSize: 24,
                               color: CustomColors.darkblue3,

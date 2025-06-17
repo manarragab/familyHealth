@@ -208,7 +208,7 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
   List<Calculators> get favoriteItems =>
       calculators.where((c) => c.isFavorite == true).toList();
 
-  void handleFavoriteToggle(Calculators calculators, int index) async {
+  void handleFavoriteToggle(Calculators calculators) async {
     if (calculators.isFavorite != true) {
       await contr.addFavourites(calculators.name!, () {
         setState(() {
@@ -232,13 +232,13 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
     if (name == "bmi") {
       Get.to(BmicalcScreen());
     } else if (name == "pregnancy-tracker") {
-      Get.toNamed(CustomPage.progressTracker);
+      Get.toNamed(CustomPage.dueDatePage);
     } else if (name == "diabetes-calculator") {
       Get.toNamed(CustomPage.diabetes1Page);
     } else if (name == "ibs-symptom-assessment") {
       Get.toNamed(CustomPage.ibsPage1);
     } else if (name == "period-calculator") {
-      Get.toNamed(CustomPage.dueDatePage);
+      Get.toNamed(CustomPage.ovulatePage);
     } else {
       // fallback page or nothing
       print("No matching page found.");
@@ -246,7 +246,7 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
   }
 
   Widget buildCardItem(Calculators calculator) {
-    int index = calculators.indexOf(calculator);
+   // int index = calculators.indexOf(calculator);
     return Padding(
       padding: const EdgeInsets.only(bottom: 7),
       child: CardItem(
@@ -254,7 +254,7 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
         title: calculator.displayName ?? 'Name',
         subTitle: calculator.description ?? 'Description',
         onPress: () => navigateToPage(calculator),
-        fav: () => handleFavoriteToggle(calculator, index),
+        fav: () => handleFavoriteToggle(calculator),
         isFavourite: calculator.isFavorite ?? false,
       ),
     );
@@ -275,7 +275,7 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
               CustomTextField.searchField(
                 (value) => setState(() {}),
                 controller: searchController,
-                hint: "Search medical calculators",
+                hint: CustomTrans.searchmedicalcalculators.tr,
                 padding: const EdgeInsets.only(right: 5),
                 OnTap: () {},
               ),
@@ -291,7 +291,7 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
                         if (favoriteItems.isNotEmpty &&
                             searchController.text.isEmpty) ...[
                           Text(
-                            "Favorite",
+                            CustomTrans.favorite.tr,
                             style: GoogleFonts.almarai(
                               fontSize: 18,
                               color: CustomColors.darkBlue2,
@@ -304,7 +304,7 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
                           }).toList(),
                         ],
                         Text(
-                          "Most important medical calculations",
+                      CustomTrans.mostimportantmedicalcalculations.tr,
                           style: GoogleFonts.almarai(
                             fontSize: 18,
                             color: CustomColors.darkBlue2,
@@ -319,7 +319,7 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
                             title: item.displayName ?? 'Medical Calculators',
                             subTitle: item.description ?? '',
                             onPress: () => navigateToPage(item),
-                            fav: () => handleFavoriteToggle(item, index),
+                            fav: () => handleFavoriteToggle(item),
                             isFavourite: item.isFavorite ?? false,
                           );
                         }),

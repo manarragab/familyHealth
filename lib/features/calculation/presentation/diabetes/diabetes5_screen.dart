@@ -24,10 +24,9 @@ class _Diabetes5ScreenState extends State<Diabetes5Screen> {
           child: ListView(
             children: [
               Greencontainer(
-                  firstTxt:
-                      "Check your blood sugar risk easily and stay ahead of your health.",
-                  centertxt: "Diabetes Type 2 Risk Calculator",
-                  title: "Diabetes\nType2\nRisk",
+                 firstTxt:CustomTrans.checkYourBloodSugarRiskEasilyAndStayAheadOfYourHealth.tr,
+                        centertxt:   CustomTrans.diabetesType2RiskCalculator.tr,
+                        title: CustomTrans.diabetesType2Risk.tr,
                   image: "assets/svg/diabetes.svg",
                  
                   widg: Column(
@@ -43,7 +42,7 @@ class _Diabetes5ScreenState extends State<Diabetes5Screen> {
                         height: 30,
                       ),
                       Text(
-                        "BMI",
+                       CustomTrans.bmi.tr,
                         style: GoogleFonts.almarai(
                           color: CustomColors.darkblue3,
                           fontSize: 20,
@@ -55,17 +54,17 @@ class _Diabetes5ScreenState extends State<Diabetes5Screen> {
                       ),
                       White2container(
                           KEY: "diabetess5",
-                          title1: "Please enter your height",
-                          title2: "(cm)",
-                          measure: "cm"),
+                          title1: CustomTrans.pleaseEnterYourHeight.tr,
+                          title2: "(${CustomTrans.cm.tr})",
+                          measure: CustomTrans.cm.tr),
                       SizedBox(
                         height: 10,
                       ),
                       White2container(
                           KEY: "diabetes5",
-                          title1: "Please enter your wieght",
-                          title2: "(kg)",
-                          measure: "kg"),
+                          title1: CustomTrans.pleaseEnterYourWeight.tr,
+                          title2: "(${CustomTrans.kg.tr})",
+                          measure: CustomTrans.kg.tr),
                       SizedBox(
                         height: 30,
                       ),
@@ -78,7 +77,7 @@ class _Diabetes5ScreenState extends State<Diabetes5Screen> {
                             Get.toNamed(CustomPage.diabetes6Page);
                           } else {
                             showToast(
-                                "You should set value for height && weight both",
+                               CustomTrans.youShouldSetValueForHeightWeightBoth.tr,
                                 MessageErrorType.error);
                           }
                         },
@@ -109,7 +108,7 @@ class _Diabetes5ScreenState extends State<Diabetes5Screen> {
                             Get.back();
                           },
                           child: Text(
-                            "Back",
+                         CustomTrans.back.tr,
                             style: GoogleFonts.almarai(
                               fontSize: 24,
                               color: CustomColors.darkblue3,

@@ -19,7 +19,9 @@ class DatecalcScreen extends GetView<Calculationcontroller>{
         child: Column(
           children: [
             Pinkcontainer(
-              title: "Due date",
+                title: CustomTrans.dueDate.tr,
+              firstTxt: CustomTrans.dueDateCalc.tr,
+              desc: CustomTrans.calculatingPregnancy.tr,
               heightt: 362,
               image: "assets/images/girl.png",
               widg: Column(
@@ -29,7 +31,7 @@ class DatecalcScreen extends GetView<Calculationcontroller>{
                   ),
                   Whitecontainer(
                       image: "assets/images/pregnant.png",
-                      title: "Expected birth date",
+                      title: CustomTrans.expectedBirthDate.tr,
                       subTitle: controller.responseTracker.data?.expectedPregnancyDate??""),
                   SizedBox(
                     height: 11,
@@ -37,7 +39,7 @@ class DatecalcScreen extends GetView<Calculationcontroller>{
                   Whitecontainer(
                     week: true,
                       image: "assets/images/loveBook.png",
-                      title: "Last menstrual period since",
+                      title:CustomTrans.lastMenstrualPeriodSince.tr,
                       subTitle: controller.responseTracker.data?.weeksPassed.toString()??"")
                
                 ],

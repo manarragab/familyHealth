@@ -1,5 +1,4 @@
 import 'package:abg/data/const/export.dart';
-import 'package:abg/data/models/family/get_family/family_model.dart';
 import 'package:abg/data/models/home/home_model.dart';
 import 'package:abg/data/models/reminder/reminder.dart';
 import 'package:abg/data/models/reminder_family/reminder_family.dart';
@@ -160,7 +159,7 @@ class Homescreen extends GetWidget<HomeController> {
                               name: remind.name ?? "",
                               relation: remind.relative ?? "",
                               image: remind.image ?? "",
-                              whenGetIT: remind.phone,
+                              whenGetIT: remind.phone ?? "",
                             );
                           },
                         ),

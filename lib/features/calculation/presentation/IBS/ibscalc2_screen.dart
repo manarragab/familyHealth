@@ -16,10 +16,9 @@ class Ibscalc2Screen extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: SingleChildScrollView(
           child: Greencontainer(
-              firstTxt:
-                  "Easily assess your risk of Irritable Bowel Syndrome (IBS) and take a proactive step toward better digestive health.",
-              centertxt: "NEW Calculator",
-              title: "Symptom\nChecker\nFor IBS",
+              firstTxt: CustomTrans.easilyAssessYourRiskOfIBS.tr,
+              centertxt: CustomTrans.newCalculator.tr,
+              title: CustomTrans.symptomCheckerForIBS.tr,
               image: "assets/svg/ibs.svg",
           
               widg: Column(
@@ -34,7 +33,8 @@ class Ibscalc2Screen extends StatelessWidget {
                     height: 30.h,
                   ),
                   Text(
-                    "Group",
+                                    CustomTrans.group.tr ,
+
                     style: TFonts.almarai(
                       fontSize: 20.w,
                       color: CustomColors.darkblue3,
@@ -46,9 +46,9 @@ class Ibscalc2Screen extends StatelessWidget {
                   ),
                   White4container(
                     id: "ibs2",
-                    title: "How old are you ?",
-                    txt1: "49 or less",
-                    txt2: "50 or more",
+                    title: CustomTrans.howOldAreYou.tr,
+                    txt1: CustomTrans.fortyNineOrLess.tr,
+                    txt2: CustomTrans.fiftyOrMore.tr,
                   ),
                   SizedBox(
                     height: 30.h,
@@ -59,7 +59,7 @@ class Ibscalc2Screen extends StatelessWidget {
                         print("dddddddddddddddddddd ${controller.postIBS.age}");
                         Get.toNamed(CustomPage.ibsPage3);
                       } else {
-                        showToast("You should answer the question",
+                        showToast(CustomTrans.youShouldAnswerTheQuestion.tr,
                             MessageErrorType.error);
                       }
                     },

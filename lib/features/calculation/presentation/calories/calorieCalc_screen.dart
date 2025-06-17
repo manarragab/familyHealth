@@ -20,10 +20,9 @@ class _CaloriecalcScreenState extends State<CaloriecalcScreen> {
           child: ListView(
             children: [
               Greencontainer(
-                  firstTxt:
-                      "Control your diet with this easy-to-use calorie calculator.",
-                  centertxt: "Calorie Calculator",
-                  title: "Calorie",
+                   firstTxt: CustomTrans.controlYourDietWithThisEasyToUseCalorieCalculator.tr,
+                centertxt: CustomTrans.calorieCalculator.tr,
+                title: CustomTrans.calorie.tr,
                   image: "assets/images/fruity.png",
                  
                   widg: Column(
@@ -38,7 +37,7 @@ class _CaloriecalcScreenState extends State<CaloriecalcScreen> {
                         height: 35,
                       ),
                       Text(
-                        "Age",
+                        CustomTrans.age.tr,
                         style: GoogleFonts.almarai(
                           color: CustomColors.darkblue3,
                           fontSize: 30,

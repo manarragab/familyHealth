@@ -1,9 +1,7 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/calculation/presentation/calories/calorie3Calc_screen.dart';
-import 'package:abg/features/calculation/presentation/calories/calorieCalc_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
-import 'package:abg/features/calculation/presentation/widget/listDay_item.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Calorie2calcScreen extends StatefulWidget {
@@ -21,10 +19,9 @@ class _Calorie2calcScreenState extends State<Calorie2calcScreen> {
           child: ListView(
             children: [
               Greencontainer(
-                  firstTxt:
-                      "Control your diet with this easy-to-use calorie calculator.",
-                  centertxt: "Calorie Calculator",
-                  title: "Calorie",
+                   firstTxt: CustomTrans.controlYourDietWithThisEasyToUseCalorieCalculator.tr,
+                centertxt: CustomTrans.calorieCalculator.tr,
+                title: CustomTrans.calorie.tr,
                   image: "assets/images/fruity.png",
                 
                   widg: Column(
@@ -39,7 +36,7 @@ class _Calorie2calcScreenState extends State<Calorie2calcScreen> {
                         height: 35,
                       ),
                       Text(
-                        "Gender",
+                        CustomTrans.gender.tr,
                         style: GoogleFonts.almarai(
                           color: CustomColors.darkblue3,
                           fontSize: 30,
@@ -61,7 +58,7 @@ class _Calorie2calcScreenState extends State<Calorie2calcScreen> {
                                   height: 7,
                                 ),
                                 Text(
-                                  "Male",
+                                 CustomTrans.male.tr,
                                   style: GoogleFonts.almarai(
                                     color: CustomColors.darkblack1,
                                     fontSize: 14,
@@ -77,7 +74,7 @@ class _Calorie2calcScreenState extends State<Calorie2calcScreen> {
                                   height: 7,
                                 ),
                                 Text(
-                                  "Female",
+                                  CustomTrans.female.tr,
                                   style: GoogleFonts.almarai(
                                     color: CustomColors.darkblack1,
                                     fontSize: 14,
@@ -124,7 +121,7 @@ class _Calorie2calcScreenState extends State<Calorie2calcScreen> {
                            Get.back();
                           },
                           child: Text(
-                            "Back",
+                            CustomTrans.back.tr,
                             style: GoogleFonts.almarai(
                               fontSize: 24,
                               color: CustomColors.darkblue3,

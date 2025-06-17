@@ -5,7 +5,6 @@ import 'package:abg/localization/all_keys.dart';
 import 'package:abg/res/common-widgets/custm_button.dart';
 import 'package:abg/res/configuration/app_bar.dart';
 import 'package:abg/res/configuration/color.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -24,9 +23,9 @@ class _Ovulation2calcScreenState extends State<Ovulation2calcScreen> {
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16),
         child: Pinkcontainer(
-          title: "Ovulation",
+          title: CustomTrans.ovulation.tr,
          
-          firstTxt: "Ovulation Calculator",
+          firstTxt:CustomTrans.ovulationCalculator.tr,
           image: "assets/images/ballon.png",
           widg: Column(
             children: [
@@ -34,7 +33,7 @@ class _Ovulation2calcScreenState extends State<Ovulation2calcScreen> {
                 height: 20,
               ),
               Text(
-                "The time period for the length of the menstrual cycle",
+                CustomTrans.theTimePeriodForTheLengthOfTheMenstrualCycle.tr,
                 style: GoogleFonts.almarai(
                   fontSize: 13.7,
                   color: CustomColors.darkBlue2,

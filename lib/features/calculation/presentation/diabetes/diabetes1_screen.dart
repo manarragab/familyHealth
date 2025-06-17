@@ -3,13 +3,7 @@ import 'package:abg/features/calculation/domain/controller/CalculationController
 import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
 import 'package:abg/features/calculation/presentation/widget/listDay_item.dart';
-import 'package:abg/localization/all_keys.dart';
-import 'package:abg/res/configuration/app_bar.dart';
-import 'package:abg/res/loading/loading_overlay_widget.dart';
 import 'package:abg/res/router/pages.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class Diabetes1Screen extends StatefulWidget {
   const Diabetes1Screen({
@@ -38,10 +32,9 @@ class _Diabetes1ScreenState extends State<Diabetes1Screen> {
                 child: ListView(
                   children: [
                     Greencontainer(
-                        firstTxt:
-                            "Check your blood sugar risk easily and stay ahead of your health.",
-                        centertxt: "Diabetes Type 2 Risk Calculator",
-                        title: "Diabetes\nType2\nRisk",
+                        firstTxt:CustomTrans.checkYourBloodSugarRiskEasilyAndStayAheadOfYourHealth.tr,
+                        centertxt:   CustomTrans.diabetesType2RiskCalculator.tr,
+                        title: CustomTrans.diabetesType2Risk.tr,
                         image: "assets/svg/diabetes.svg",
                         widg: Column(
                           children: [
@@ -56,7 +49,7 @@ class _Diabetes1ScreenState extends State<Diabetes1Screen> {
                               height: 35,
                             ),
                             Text(
-                              "Age",
+                            CustomTrans.age.tr,
                               style: TFonts.inter(
                                 color: CustomColors.darkblue3,
                                 fontSize: 30,
@@ -78,7 +71,7 @@ class _Diabetes1ScreenState extends State<Diabetes1Screen> {
                                 if (controller.postDiabetes.age != null) {
                                   Get.toNamed(CustomPage.diabetes2Page);
                                 } else {
-                                  showToast("You should select age",
+                                  showToast(CustomTrans.youShouldSelectAge.tr,
                                       MessageErrorType.error);
                                 }
                               },

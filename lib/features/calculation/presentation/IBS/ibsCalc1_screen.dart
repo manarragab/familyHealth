@@ -6,26 +6,24 @@ import 'package:abg/features/calculation/presentation/widget/greenContainer.dart
 class Ibscalc1Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Calculationcontroller controller = Get.find();  
+    Calculationcontroller controller = Get.find();
     return Scaffold(
       appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: SingleChildScrollView(
           child: Greencontainer(
-              firstTxt:
-                  "Easily assess your risk of Irritable Bowel Syndrome (IBS) and take a proactive step toward better digestive health.",
-              centertxt: "NEW Calculator",
-              title: "Symptom\nChecker\nFor IBS",
+              firstTxt: CustomTrans.easilyAssessYourRiskOfIBS.tr,
+              centertxt: CustomTrans.newCalculator.tr,
+              title: CustomTrans.symptomCheckerForIBS.tr,
               image: "assets/svg/ibs.svg",
-            
               widg: Column(
                 children: [
-                   SizedBox(
+                  SizedBox(
                     height: 15,
                   ),
                   Text(
-                    "To provide you with an accurate assessment, this tool will guide you through 14 clinically relevant questions, grouped into 4 key categories",
+                    CustomTrans.toProvideAccurateAssessment.tr,
                     style: TFonts.almarai(
                       fontSize: 15.w,
                       color: CustomColors.green1,
@@ -37,9 +35,10 @@ class Ibscalc1Screen extends StatelessWidget {
                   ),
                   Row(
                     children: [
-                      CustomImage.asset("assets/images/time.png" , width: 24 , height: 24),
+                      CustomImage.asset("assets/images/time.png",
+                          width: 24, height: 24),
                       Text(
-                        "Estimated completion time: Less than 3 minutes",
+                        CustomTrans.estimatedCompletionTime.tr,
                         style: TFonts.almarai(
                           fontSize: 15.w,
                           color: CustomColors.darkblue3,
@@ -52,7 +51,7 @@ class Ibscalc1Screen extends StatelessWidget {
                     height: 15,
                   ),
                   Text(
-"Please answer all questions truthfully based on your current health status. Your responses will help us determine whether your symptoms align with IBS or warrant further medical evaluation.",
+                    CustomTrans.pleaseAnswerAllQuestionsTruthfully.tr,
                     style: TFonts.almarai(
                       fontSize: 15.w,
                       color: CustomColors.green1,
@@ -63,25 +62,26 @@ class Ibscalc1Screen extends StatelessWidget {
                     height: 15,
                   ),
                   Text(
-                    "When you're ready, tap 'Start' to begin the assessment",
+                    CustomTrans.whenYouAreReadyTapStart.tr,
                     style: TFonts.almarai(
                       fontSize: 14.w,
                       color: CustomColors.darkblue3,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
- SizedBox(
+                  SizedBox(
                     height: 80.h,
                   ),
-                  MainButton(onPressed: (){
-                                            controller.emptyData();
+                  MainButton(
+                    onPressed: () {
+                      controller.emptyData();
 
-Get.to(Ibscalc2Screen());
-                  } ,
-                  title: CustomTrans.started.tr,
-                  radius: 10,
-                  fontWeight: FontWeight.w400,
-                  backgroundColor: CustomColors.darkblue3,
+                      Get.to(Ibscalc2Screen());
+                    },
+                    title: CustomTrans.started.tr,
+                    radius: 10,
+                    fontWeight: FontWeight.w400,
+                    backgroundColor: CustomColors.darkblue3,
                   )
                 ],
               )),
