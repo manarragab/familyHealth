@@ -130,7 +130,7 @@ class CustomImageNetwork extends StatelessWidget {
     if (path.toString().contains('http')) {
       return path;
     } else {
-      return apiUrl() + path.toString();
+      return imageDomain() + path.toString();
     }
   }
 
