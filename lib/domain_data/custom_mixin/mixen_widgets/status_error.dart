@@ -20,8 +20,8 @@ class StatusError {
         return StatusType.apiError;
       case 200 || 201 || 202:
         return StatusType.apiSuccess;
-      case 401:
-        return StatusType.authError;
+     case 401:
+       return StatusType.authError;
       default:
         return StatusType.values[status.toInt()];
     }

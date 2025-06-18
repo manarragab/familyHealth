@@ -53,7 +53,7 @@ class CustomDrawer extends GetView<AuthController> {
                           style: TFonts.textTitleWhiteStyle(),
                         ),
                         subtitle: Text(
-                           authController.user?.academicYear?? "",
+                           authController.user?.phone?? "",
                           style: TFonts.textBodyWhiteStyle,
                         ),
                       ),

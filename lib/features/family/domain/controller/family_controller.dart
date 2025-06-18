@@ -68,6 +68,7 @@ void clearData() {
           if (data is FamilyModel) {
             if (data.data?.isEmpty ?? true) {
               data.status=StatusType.empty.index;
+              
             }
           }
           return data;

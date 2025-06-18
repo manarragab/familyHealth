@@ -2,7 +2,6 @@ import 'package:abg/data/const/enums.dart';
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/auth/domain/controller/auth_controller.dart';
 import 'package:abg/res/common-widgets/custom_check_box.dart';
-import 'package:abg/res/configuration/bottom_sheet/bottom_sheets.dart';
 import 'package:abg/res/configuration/bottom_sheet/date_picker.dart';
 import 'package:abg/res/configuration/image/pick_image.dart';
 import 'package:abg/res/configuration/text_field/text_field.dart';
@@ -106,11 +105,13 @@ class SignUpScreen extends GetWidget<AuthController> {
 
 
               CustomTextField.nameTextField(
-                controller: controller.nameController,
-                (value) {
-                  controller.postRegister.name = value;
-                }, 
-              ),
+  (value) {
+    controller.postRegister.name = value;
+    print("name: ${controller.postRegister.name}");
+  },
+  controller: controller.nameController,
+),
+
 
               CustomPadding.smallHeight,
               CustomTextField.datePickerTextField(
@@ -122,6 +123,7 @@ class SignUpScreen extends GetWidget<AuthController> {
                     CustomDatePicker((date) {
                       controller.postRegister.dateOfBirth = date;
                       controller.dateController.text = date.stringDate;
+                      print("date: ${controller.postRegister.dateOfBirth}");
                     }).showDatePicker(context);
                   }),
               CustomPadding.smallHeight,
@@ -169,7 +171,9 @@ CustomTextField.selectDropDown(
               CustomPadding.smallHeight,
               Obx(() {
                 return CustomTextField.passwordTextField(
-                  (value) => null,
+                  (value) => {
+                  
+                  },
                   isVisible: hideConfirmPassword.value,
                   changeVisible: () {
                     hideConfirmPassword(!(hideConfirmPassword.value));

@@ -13,11 +13,13 @@ class AuthCases {
   AuthCases(this._data);
 
   LoginModel? getUser() {
+    
     return _data.getUser();
   }
 
   setUser(LoginModel? loginModel) {
     return _data.setUser(loginModel);
+    
   }
 
   Future<dynamic> login(String text, String password) {

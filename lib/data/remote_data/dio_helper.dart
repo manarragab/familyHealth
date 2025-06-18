@@ -47,7 +47,7 @@ class DioHelper {
     try {
       if (isLogin) {
         loginModel = sl<AuthCases>().getUser()!;
-        sPrint.info('login ::: ${loginModel.toJson()}');
+        sPrint.info('login ::: ${loginModel.data?.toJson()}');
         if (loginModel.data?.deviceToken != null) {
           return true;
         } else {

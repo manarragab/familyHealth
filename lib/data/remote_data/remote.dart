@@ -42,38 +42,76 @@ class Remote {
   Remote(this._helper);
 
   // feature authenticate
+Future<ResponseModel<LoginData>> loginn(String text, String password) async {
+  sPrint.info('get data');
 
-  Future<ResponseModel> login(String text, String password) async {
-    sPrint.info('get data');
-    bool isPhoneNumber = GetUtils.isPhoneNumber(text);
-    Map<String, dynamic> json = {
+  Map<String, dynamic> json = {
+    'email': text,
+    'password': password,
+    'device_token': await PushNotificationsManager().getNotificationToken(),
+  };
+
+  return _helper.post<LoginData>(
+    json,
+    path: '/user/login',
+    onSuccess: (data) {
+      sPrint.success(data);
+      sPrint.info('getting data:: $data');
+
+      final loginModel = LoginModel.fromJson(data);
+
+      return ResponseModel<LoginData>(
+        status: loginModel.status,
+        message: loginModel.message,
+        data: loginModel.data,
+      );
+    },
+    onError: (error) {
+      sPrint.warning('login error: ${error.message}');
+      return ResponseModel<LoginData>(
+        status: 0,
+        message: error.message,
+      );
+    },
+    useFormData: true,
+    isLogin: false,
+  );
+}
+
+Future<ResponseModel> login(String text, String password) async {
+  try {
+    final json = {
       'email': text,
       'password': password,
-      'device_token': await PushNotificationsManager().getNotificationToken()
+      'device_token': await PushNotificationsManager().getNotificationToken(),
     };
-    // return Future.delayed(const Duration(seconds: 1), () {
-    //   return LoginModel();
-    // });
 
-    return _helper.post<LoginData?>(
+    return await _helper.post(
       json,
       path: '/user/login',
-      onSuccess: (Map<String, dynamic> data) {
-        sPrint.success(data);
-        sPrint.info('getting data:: $data');
-        // var response =  LoginModel.fromJson(data["data"]);
-        // sPrint.info('login:: ${response.toJson()}');
-        // return response;
-        return LoginModel.fromJson(data);
-      },
+     onSuccess: (Map<String, dynamic> data) {
+      print("🔥 raw response from backend: $data");
+  return LoginModel.fromJson(data); // ✅ خليه يعمل parse للكل
+},
+
       onError: (data) {
-        sPrint.warning('error  ${data.data?.status}:: ${data.message}');
-        return ResponseModel(status: 0, message: "${data.message}");
+        return LoginModel(
+          status: 0,
+          message: data.message,
+        );
       },
       useFormData: true,
       isLogin: false,
     );
+  } catch (e) {
+    return ResponseModel<LoginModel?>(
+      status: 0,
+      message: e.toString(),
+    );
   }
+}
+
+
 
   Future<ResponseModel> register(PostRegister register) async {
     return _helper.post<LoginData?>(
@@ -82,7 +120,10 @@ class Remote {
       onSuccess: (Map<String, dynamic> data) {
         sPrint.success(data);
         sPrint.info('getting data:: $data');
-        return LoginModel.fromJson(data);
+        final loginModel = LoginModel.fromJson(data);      
+       return LoginModel.fromJson(data);
+
+      
       },
       onError: (data) {
         sPrint.warning('error  ${data.data?.status}:: ${data.message}');
@@ -157,8 +198,8 @@ class Remote {
   }
 
   Future<ResponseModel<LoginData?>> editProfile(PostEditProfile profile) async {
-    return _helper.post<LoginData?>(profile.toJson(), path: "/editProfile",
-        onSuccess: (dynamic data) {
+    return _helper.post<LoginData?>(await profile.toJson(), path: "/user/update-profile",
+      onSuccess: (dynamic data) {
       return LoginModel.fromJson(data);
     }, onError: (data) {
       return ResponseModel(status: data.status, message: data.message);

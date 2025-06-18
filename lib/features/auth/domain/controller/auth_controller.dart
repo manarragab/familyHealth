@@ -65,14 +65,33 @@ void onInit() {
   bool startCounting = false;
 
   bool rememberMe = false;
+login() async {
+  sPrint.info('login');
+  loadingGetxController.showLoading();
 
-  login() async {
+  var response = await sl<AuthCases>()
+      .login(postRegister.email ?? "", postRegister.password ?? "");
+
+  loadingGetxController.hideLoading();
+
+  statusError.checkStatus(
+    response,
+    () {
+      loginModel = response as LoginModel; // ✅ خذ الـ data من ResponseModel
+      sPrint.info('response data:: ${response.toJson()}');
+      sPrint.info('login data:: ${loginModel.toJson()}');
+      sl<AuthCases>().setUser(loginModel);
+      Get.offAllNamed(CustomPage.layoutPage);
+    },
+    onError: (msg) {
+      Get.snackbar("خطأ", msg ?? "فشل تسجيل الدخول");
+    },
+  );
+}
+
+  loginm() async {
     sPrint.info('login');
-    // must show loading
     loadingGetxController.showLoading();
-
-    // user auth cases for api link or storage
-    //todo no need for password wait to call the client to know why there is screen for change password
     var response = await sl<AuthCases>()
         .login(postRegister.email??"", postRegister.password??"");
     sPrint.info(response);
@@ -84,7 +103,7 @@ void onInit() {
       () {
         loginModel = response;
         sPrint.info('response data:: ${response.toJson()}');
-        sPrint.info('login data:: ${loginModel.toJson()}');
+        sPrint.info('login data:: ${loginModel.data?.toJson()}');
         sl<AuthCases>().setUser(loginModel);
         Get.offAllNamed(CustomPage.layoutPage);
         /*   sPrint.info('getting success login');
@@ -113,7 +132,11 @@ void onInit() {
       response,
       () {
         loginModel = response as LoginModel;
-        sPrint.info('login data:: ${loginModel.toJson()}');
+        sPrint.info('login data:: ${loginModel.data?.toJson()}');
+        print("User name: ${loginModel.data?.name}");
+print("User email: ${loginModel.data?.email}");
+//print("Token: ${loginModel.data?.token}");
+
         sl<AuthCases>().setUser(loginModel);
         Get.offAllNamed(CustomPage.layoutPage);
         /*   sPrint.info('getting success login');
@@ -216,8 +239,13 @@ void onInit() {
   void updateProfile() async {
     loadingGetxController.showProgress();
     var response = await sl<AuthCases>().editProfile(PostEditProfile(
-      firstName: postRegister.name??"",
-      lastName: "",
+        name: postRegister.name ?? "",
+      email: postRegister.email ?? "",
+      phone: postRegister.phone ?? "",
+      dateOfBirth: postRegister.dateOfBirth ?? DateTime.now(),
+      password: postRegister.password ?? "",
+      gender: postRegister.gender??"",
+      image: postRegister.image,
     ));
     loadingGetxController.hideLoading();
     statusError.checkStatus(response, () {

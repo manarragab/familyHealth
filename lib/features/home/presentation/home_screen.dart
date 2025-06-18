@@ -147,22 +147,25 @@ class Homescreen extends GetWidget<HomeController> {
                       SizedBox(
                         height: 125,
                         child: ListView.separated(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: model.data?.familyReminders?.length ?? 0,
-                          separatorBuilder: (_, __) =>
-                              const SizedBox(width: 10),
-                          itemBuilder: (context, index) {
-                            FamilyReminders remind =
-                                model.data!.familyReminders![index];
-                            return FamilyContainer(
-                              index: index,
-                              name: remind.name ?? "",
-                              relation: remind.relative ?? "",
-                              image: remind.image ?? "",
-                              whenGetIT: remind.phone ?? "",
-                            );
-                          },
-                        ),
+  scrollDirection: Axis.horizontal,
+  itemCount: model.data?.familyReminders?.length ?? 0,
+  separatorBuilder: (_, __) => const SizedBox(width: 10),
+  itemBuilder: (context, index) {
+    FamilyReminders1 remind = model.data!.familyReminders![index];
+
+    return FamilyContainer(
+      index: index,
+      name: remind.name ?? "",
+      relation: remind.relative ?? "",
+      image: remind.image ?? "",
+      whenGetIT: remind.phone ?? "",
+     dosage: remind.familyRecords?[index].type??"",
+    );
+  },
+),
+
+
+
                       ),
                       const SizedBox(height: 16),
                       if (false)

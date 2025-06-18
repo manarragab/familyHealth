@@ -61,7 +61,7 @@ class HomeData {
     if (json['family_reminders'] != null) {
       familyReminders = [];
       json['family_reminders'].forEach((v) {
-        familyReminders?.add(FamilyReminders.fromJson(v));
+        familyReminders?.add(FamilyReminders1.fromJson(v));
       });
     }
     if (json['groups'] != null) {
@@ -78,7 +78,7 @@ class HomeData {
     }
   }
   List<Reminders>? reminders;
-  List<FamilyReminders>? familyReminders;
+  List<FamilyReminders1>? familyReminders;
   List<Groups>? groups;
   List<Banners>? banners;
 
@@ -90,6 +90,7 @@ class HomeData {
     if (familyReminders != null) {
       map['family_reminders'] =
           familyReminders?.map((v) => v.toJson()).toList();
+          
     }
     if (groups != null) {
       map['groups'] = groups?.map((v) => v.toJson()).toList();

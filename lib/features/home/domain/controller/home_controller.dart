@@ -26,5 +26,26 @@ class HomeController extends MainGetxController with CustomStateMixin {
       },
       getPage: (page) => _page = page,
     );
+    print("Family list count: ${model.data?.familyReminders?.length}");
+
   }
+//   onRefresh() async {
+//   final result = await refreshData(
+//     model: model,
+//     futureMethod: () => sl<HomeCases>().home(),
+//     controller: refreshController,
+//     checkIfEmpty: (data) => data,
+//     getPage: (page) => _page = page,
+//   );
+
+//   if (result != null) {
+//     model = result;
+//   } else {
+//     print("⚠️ رجعت null من السيرفر");
+//     model = HomeModel(); // أو احتفظ بالقيمة القديمة
+//   }
+
+//   print("Family list count: ${model.data?.familyReminders?.length}");
+// }
+
 }
