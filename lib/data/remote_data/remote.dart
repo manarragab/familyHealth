@@ -184,7 +184,7 @@ class Remote {
       "image": await MultipartFile.fromFile(file.path),
     }, path: "/user/update-profile", onSuccess: (dynamic data) {
       final value = ResponseModel<String>.fromJson(data);
-      value.data = data['data']['image'];
+      value.data = data['data']['image_path'];
       return value;
     }, onError: (data) {
       sPrint.warning('error${data.data?.status}:: ${data.data?.msg}');
@@ -200,6 +200,7 @@ class Remote {
       return ResponseModel(status: data.status, message: data.message);
     }, useFormData: true, isLogin: true);
   }
+  
 
   Future<ResponseModel<LoginData?>> signOut() async {
     return _helper.post<LoginData?>({}, path: "/auth/logout",

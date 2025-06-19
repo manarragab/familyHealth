@@ -22,12 +22,6 @@ class CustomDrawer extends GetView<AuthController> {
                 child: Stack(
                   children: [
 
-                    // user?.image != null
-                    //     ? Image.network(
-                    //         user?.image ?? "",
-                    //         fit: BoxFit.fill,
-                    //         width: Get.width,
-                    //       )
                        Image.asset(
                             "assets/images/drawer_header.png",
                             fit: BoxFit.fill,
@@ -40,9 +34,15 @@ class CustomDrawer extends GetView<AuthController> {
   CircleAvatar(
     radius: 25,
     backgroundColor: Colors.grey.shade200,
-    backgroundImage: authController.user?.image != null
-        ? NetworkImage(authController.user?.image ??"" )
-        : const AssetImage("assets/images/cheker.png") as ImageProvider,
+    backgroundImage:  authController.user?.image !=
+                                                  null
+                                              ? NetworkImage(
+                                                  authController.user?.image ??
+                                                      "")
+                                           //   : authController.imageUrl != null
+                                                  // ? NetworkImage(
+                                                  //     authController.imageUrl!)
+                                                  :  const AssetImage("assets/images/cheker.png") as ImageProvider,
   ),
 
                         title: Text(

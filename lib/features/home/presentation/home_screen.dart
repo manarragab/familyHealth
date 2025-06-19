@@ -66,25 +66,27 @@ class Homescreen extends GetWidget<HomeController> {
                     ),
                     const Spacer(),
                     CustomImage.asset("assets/svg/emojis.svg",
-                        height: 25, width: 25, fit: BoxFit.fitWidth)
+                        height: 50, width: 70, fit: BoxFit.fitWidth)
                   ],
                 ),
                 const SizedBox(height: 16),
                 Row(
                   children: [
-                    authController.user?.image == null
-                        ? const Icon(
-                            Icons.person,
-                            size: 40,
-                          )
-                        : CircleAvatar(
-                            radius: 22,
-                            backgroundColor: Colors.grey.shade200,
-                            backgroundImage: authController.user?.image != null
-                                ? NetworkImage(authController.user?.image ?? "")
-                                : const AssetImage("assets/images/cheker.png")
-                                    as ImageProvider,
-                          ),
+                CircleAvatar(
+                      radius: 22,
+                      backgroundColor: Colors.grey.shade200,
+                      backgroundImage:  authController.user?.image !=
+                                                  null
+                                              ? NetworkImage(
+                                                  authController.user?.image ??
+                                                      "")
+                                              // : authController.imageUrl != null
+                                              //     ? NetworkImage(
+                                              //         authController.imageUrl!)
+                                                  : const AssetImage("assets/images/cheker.png")
+                              as ImageProvider,
+                    ),
+                   
                     const SizedBox(width: 16),
                     Expanded(
                       child: TextField(

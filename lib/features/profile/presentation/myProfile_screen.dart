@@ -137,14 +137,11 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                                           bottomLeft: Radius.circular(120),
                                         ),
                                         image: DecorationImage(
-                                          image: authController.user?.image !=
-                                                  null
+                                          image: authController.user?.image != null
                                               ? NetworkImage(
                                                   authController.user?.image ??
                                                       "")
-                                              : controller.imageUrl != null
-                                                  ? FileImage(
-                                                      controller.imageUrl!)
+                                             
                                                   : const AssetImage(
                                                           "assets/images/cheker.png")
                                                       as ImageProvider,
@@ -164,13 +161,15 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                               ),
                             ),
                             Positioned(
-                              top: 220,
-                              right: 110,
+                              top: Get.height / 3.55,
+                              right: Get.width / 3.5,
                               child: GestureDetector(
                                 onTap: () async {
                                   final pick = await Pick.pickImage(context);
                                   if (pick != null) {
-                                    authController.updateProfileImage(pick);
+                                   //authController.imageUrl = pick;
+                            authController.updateProfileImage(pick);
+                          
                                    // authController.updateProfile();
                                   }
                                 },

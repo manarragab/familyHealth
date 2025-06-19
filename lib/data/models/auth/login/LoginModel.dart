@@ -1,4 +1,12 @@
+import 'dart:io';
+
 import 'package:abg/data/remote_data/response_model.dart';
+
+
+import 'package:dio/dio.dart';
+import 'package:mime/mime.dart';
+import 'package:http_parser/http_parser.dart';
+
 
 // class LoginModel extends ResponseModel<LoginData?> {
 //   LoginModel({
@@ -114,7 +122,7 @@ class LoginModel extends ResponseModel<LoginData?> {
     data = json["data"] == null ? null : LoginData.fromJson(json["data"]);
     status = json["status"];
     message = json["message"];
-    token = json["token"];
+   token = json["token"];
   }
 
   Map<String, dynamic> toJson() {
@@ -124,7 +132,7 @@ class LoginModel extends ResponseModel<LoginData?> {
     }
     _data["status"] = status;
     _data["message"] = message;
-    _data["token"] = token;
+   _data["token"] = token;
 
     return _data;
   }
@@ -189,17 +197,18 @@ class LoginData {
     createdAt = json["created_at"];
     updatedAt = json["updated_at"];
     image = json["image_path"];
-    print("image_path:?????????????????????????????????????? $image");
   }
 
-  Map<String, dynamic> toJson() {
+ Map<String, dynamic> toJson()  {
     final Map<String, dynamic> _data = <String, dynamic>{};
+
 
 // if (image != null) {
 //       final mimeType = lookupMimeType(image!.path) ?? 'application/octet-stream'; // Detect file type
 //       final mediaType = MediaType.parse(mimeType); // Convert to MediaType
 //       _data['image_path'] = await MultipartFile.fromFile(image!.path,contentType: mediaType);
 //     }
+
 
     _data["id"] = id;
     _data["name"] = name;
@@ -219,9 +228,12 @@ class LoginData {
     _data["created_at"] = createdAt;
     _data["updated_at"] = updatedAt;
     _data["image_path"] = image;
+        print("image_path:?????????????????????????????????????? $image");
+
     return _data;
   }
 }
+
 
 // class LoginModel extends ResponseModel<LoginData?> {
 //   LoginData? data;
@@ -230,6 +242,7 @@ class LoginData {
 
 //   LoginModel({this.data, this.status, this.message});
 
+  
 // LoginModel.fromJson(Map<String, dynamic> json) {
 //   sPrint.info('LoginModel.fromJson - raw json["data"]: ${json["data"]}');
 //   data = json["data"] == null ? null : LoginData.fromJson(json["data"]);
@@ -345,3 +358,4 @@ class LoginData {
 //     return _data;
 //   }
 // }
+

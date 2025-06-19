@@ -137,10 +137,13 @@ class SignUpScreen extends GetWidget<AuthController> {
                 (value) => controller.postRegister.phone = value,
               ),
               CustomPadding.smallHeight,
-           
-CustomTextField.selectDropDown(
+
+
+              
+       CustomTextField.selectDropDown(
   (value) {
     controller.postRegister.gender = value.toString().split('.').last;
+    print("gender: ${controller.postRegister.gender}");
   return  controller.genderController.text = value;
   }, 
   validator: (val){
@@ -153,10 +156,7 @@ CustomTextField.selectDropDown(
   allData: Gender.values,
   getValue: (val) => val.toString().split('.').last,
  
-),
-
-
-                          
+),       
                                         CustomPadding.smallHeight,
 
               Obx(() {

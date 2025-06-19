@@ -38,8 +38,10 @@ File? imageUrl;
 
 int _page = 1;
 void onInit() {
-    //imageUrl = mainController.user?.image;
-    mainController.user?.image;
+//imageUrl = mainController.user?.image;
+//imageUrl=loginModel.data?.image;
+if(imageUrl!=null)
+imageUrl;
     super.onInit();
 }
 
@@ -119,33 +121,7 @@ login() async {
   );
 }
 
-  loginm() async {
-    sPrint.info('login');
-    loadingGetxController.showLoading();
-    var response = await sl<AuthCases>()
-        .login(postRegister.email??"", postRegister.password??"");
-    sPrint.info(response);
-    // must end loading
-    loadingGetxController.hideLoading();
-
-    statusError.checkStatus(
-      response,
-      () {
-        loginModel = response;
-        sPrint.info('response data:: ${response.toJson()}');
-        sPrint.info('login data:: ${loginModel.data?.toJson()}');
-        sl<AuthCases>().setUser(loginModel);
-        Get.offAllNamed(CustomPage.layoutPage);
-        /*   sPrint.info('getting success login');
-      Get.put(OTPController()).startCount();
-      Get.to(() => OtpConfirmationView(
-          getCode: (code) => getCode(code), resendCode: resendOTP));*/
-      },
-      onError: (msg) {},
-      // stateMixin:
-    );
-  }
-
+  
   register() async {
     sPrint.info('login');
     // must show loading
@@ -154,7 +130,7 @@ login() async {
     // user auth cases for api link or storage
     //todo no need for password wait to call the client to know why there is screen for change password
     var response = await sl<AuthCases>().register(postRegister);
-    sPrint.info(response);
+    sPrint.info("responseeeeeeeeeeeeeeee  $response");
     // must end loading
     loadingGetxController.hideLoading();
 
@@ -165,9 +141,11 @@ login() async {
         sPrint.info('login data:: ${loginModel.data?.toJson()}');
         print("User name: ${loginModel.data?.name}");
 print("User email: ${loginModel.data?.email}");
-print("Token: ${loginModel.token }");
+
 
         sl<AuthCases>().setUser(loginModel);
+        print("Token: ${loginModel.token }");
+
         Get.offAllNamed(CustomPage.layoutPage);
         /*   sPrint.info('getting success login');
       Get.put(OTPController()).startCount();
