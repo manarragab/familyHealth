@@ -4,17 +4,23 @@ import 'dart:io';
 import 'package:abg/data/const/export.dart';
 import 'package:abg/data/models/auth/login/LoginModel.dart';
 import 'package:abg/data/models/auth/users/PostEditProfile.dart';
+import 'package:abg/data/models/auth/users/UsersModel.dart';
+import 'package:abg/data/models/auth/users/get_user_data.dart';
 import 'package:abg/data/models/auth/users/post_assign_user.dart';
 import 'package:abg/data/models/auth/users/post_register_response.dart';
+import 'package:abg/data/remote_data/response_model.dart';
+import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
+import 'package:abg/domain_data/custom_mixin/mixen_widgets/status_error.dart';
 import 'package:abg/features/auth/domain/cases/auth_case.dart';
 import 'package:abg/features/auth/domain/controller/otp_controller.dart';
 import 'package:abg/features/auth/presentation/otp_confirmation_view.dart';
 import 'package:abg/features/auth/presentation/reset_password_screen.dart';
 import 'package:abg/features/layout/domain/controller/layout_controller.dart';
 import 'package:abg/res/router/pages.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class AuthController extends MainGetxController {
+class AuthController extends MainGetxController with  CustomStateMixin{
   final otpController = Get.put(OTPController());
   PostRegister postRegister = PostRegister();
   ResponseRegister postRegisterResponse =
@@ -27,13 +33,37 @@ class AuthController extends MainGetxController {
  TextEditingController genderController= TextEditingController();
 MainGetxController mainController=Get.find();
 File? imageUrl;
+  RefreshController refreshController = RefreshController();
+//Future<ResponseModel<User?>> get user => sl<AuthCases>().getUserData();
 
+int _page = 1;
 void onInit() {
     //imageUrl = mainController.user?.image;
     mainController.user?.image;
     super.onInit();
 }
 
+GetUserData model=GetUserData();
+  onRefresh() async {
+    model = await refreshData(
+      model: model,
+      futureMethod: () => sl<AuthCases>().getUserData(),
+      controller: refreshController,
+      checkIfEmpty: (data) {
+        if (data is GetUserData) {
+  if ((data.data?.name ?? '').isEmpty) {
+    data.status = StatusType.empty.index;
+  }
+}
+        return data;
+      },
+      getPage: (page) => _page = page,
+    );
+  //  CustomAlarm().clearAll();
+  //  model.data?.forEach((e) {
+  //    CustomAlarm().addAlarm(e);
+  //  });
+  }
 
   // @override
   // void onClose() {
@@ -135,7 +165,7 @@ login() async {
         sPrint.info('login data:: ${loginModel.data?.toJson()}');
         print("User name: ${loginModel.data?.name}");
 print("User email: ${loginModel.data?.email}");
-//print("Token: ${loginModel.data?.token}");
+print("Token: ${loginModel.token }");
 
         sl<AuthCases>().setUser(loginModel);
         Get.offAllNamed(CustomPage.layoutPage);

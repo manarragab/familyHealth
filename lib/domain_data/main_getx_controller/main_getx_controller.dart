@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:abg/data/const/export.dart';
 import 'package:abg/data/models/auth/login/LoginModel.dart';
+import 'package:abg/data/models/auth/users/get_user_data.dart';
+import 'package:abg/data/remote_data/response_model.dart';
 import 'package:abg/features/auth/domain/cases/auth_case.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
 
@@ -15,7 +17,7 @@ class MainGetxController extends GetxController {
       Get.put(LoadingGetxController());
 
   bool get isLogin => sl<AuthCases>().getUser() != null;
-  LoginData? get user => sl<AuthCases>().getUser()?.data;
+ LoginData? get user => sl<AuthCases>().getUser()?.data;
 
   customDebounce(
       {Duration duration = const Duration(milliseconds: 500),

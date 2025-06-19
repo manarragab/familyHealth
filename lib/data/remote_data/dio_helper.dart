@@ -48,7 +48,7 @@ class DioHelper {
       if (isLogin) {
         loginModel = sl<AuthCases>().getUser()!;
         sPrint.info('login ::: ${loginModel.data?.toJson()}');
-        if (loginModel.data?.deviceToken != null) {
+        if (loginModel.token != null) {
           return true;
         } else {
           throw ("login exception from app");
@@ -85,7 +85,7 @@ class DioHelper {
                     "lang": TLang.getCurrentLocale().name,
                     "Accept-Language": TLang.getCurrentLocale().name,
                     // if (isLogin)
-                    'Authorization': 'Bearer ${loginModel.data?.deviceToken}',
+                    'Authorization': 'Bearer ${loginModel.token}',
                     ...headers
                   }));
           sPrint.warning(_response.data);
@@ -154,7 +154,7 @@ class DioHelper {
                     "lang": TLang.getCurrentLocale().name,
                     "Accept-Language": TLang.getCurrentLocale().name,
                     if (isLogin)
-                      'Authorization': 'Bearer ${loginModel.data?.deviceToken}'
+                      'Authorization': 'Bearer ${loginModel.token }'
                   }));
           sPrint.warning(
               "${path.contains('http') ? path : apiUrl() + path} \n${_response.data}");
@@ -225,7 +225,7 @@ class DioHelper {
                     "lang": TLang.getCurrentLocale().name,
                     "Accept-Language": TLang.getCurrentLocale().name,
                     if (isLogin)
-                      'Authorization': 'Bearer ${loginModel.data?.deviceToken}'
+                      'Authorization': 'Bearer ${loginModel.token }'
                   }));
           sPrint.warning(_response.data);
           if (_response.data is String) {
@@ -285,7 +285,7 @@ class DioHelper {
                     "lang": TLang.getCurrentLocale().name,
                     "Accept-Language": TLang.getCurrentLocale().name,
                     if (isLogin)
-                      'Authorization': 'Bearer ${loginModel.data?.deviceToken}'
+                      'Authorization': 'Bearer ${loginModel.token }'
                   }));
           sPrint.warning(_response.data);
           if (_response.statusCode == 200 && _response.data is! String) {

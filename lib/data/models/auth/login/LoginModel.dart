@@ -1,5 +1,12 @@
-import 'package:abg/data/const/export.dart';
+import 'dart:io';
+
 import 'package:abg/data/remote_data/response_model.dart';
+
+
+import 'package:dio/dio.dart';
+import 'package:mime/mime.dart';
+import 'package:http_parser/http_parser.dart';
+
 
 // class LoginModel extends ResponseModel<LoginData?> {
 //   LoginModel({
@@ -60,7 +67,7 @@ import 'package:abg/data/remote_data/response_model.dart';
 //   String? academicYear;
 //   String? phone;
 //   String? image;
-  
+
 //   String? deviceToken;
 //   int? isLoggedIn;
 //   int? isBanned;
@@ -103,12 +110,11 @@ import 'package:abg/data/remote_data/response_model.dart';
 //   }
 // }
 
-
-
-class LoginModel extends ResponseModel<LoginData?>{
+class LoginModel extends ResponseModel<LoginData?> {
   LoginData? data;
   num? status;
   String? message;
+  String? token;
 
   LoginModel({this.data, this.status, this.message});
 
@@ -116,15 +122,18 @@ class LoginModel extends ResponseModel<LoginData?>{
     data = json["data"] == null ? null : LoginData.fromJson(json["data"]);
     status = json["status"];
     message = json["message"];
+    token = json["token"];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> _data = <String, dynamic>{};
-    if(data != null) {
+    if (data != null) {
       _data["data"] = data?.toJson();
     }
     _data["status"] = status;
     _data["message"] = message;
+    _data["token"] = token;
+
     return _data;
   }
 }
@@ -143,14 +152,31 @@ class LoginData {
   dynamic latitude;
   dynamic socialId;
   dynamic socialType;
-  String? deviceToken;
+  // String? deviceToken;
   int? isLoggedIn;
   int? isBanned;
   String? createdAt;
   String? updatedAt;
-  String? imagePath;
 
-  LoginData({this.id, this.name, this.email, this.emailVerifiedAt, this.userType, this.phone, this.dateOfBirth, this.gender, this.image, this.longitude, this.latitude, this.socialId, this.socialType, this.deviceToken, this.isLoggedIn, this.isBanned, this.createdAt, this.updatedAt, this.imagePath});
+  LoginData({
+    this.id,
+    this.name,
+    this.email,
+    this.emailVerifiedAt,
+    this.userType,
+    this.phone,
+    this.dateOfBirth,
+    this.gender,
+    this.image,
+    this.longitude,
+    this.latitude,
+    this.socialId,
+    this.socialType,
+    this.isLoggedIn,
+    this.isBanned,
+    this.createdAt,
+    this.updatedAt,
+  });
 
   LoginData.fromJson(Map<String, dynamic> json) {
     id = json["id"];
@@ -161,21 +187,30 @@ class LoginData {
     phone = json["phone"];
     dateOfBirth = json["date_of_birth"];
     gender = json["gender"];
-    image = json["image"];
     longitude = json["longitude"];
     latitude = json["latitude"];
     socialId = json["social_id"];
     socialType = json["social_type"];
-    deviceToken = json["device_token"];
+    //deviceToken = json["device_token"];
     isLoggedIn = json["is_logged_in"];
     isBanned = json["is_banned"];
     createdAt = json["created_at"];
     updatedAt = json["updated_at"];
-    imagePath = json["image_path"];
+    image = json["image_path"];
+    print("image_path:?????????????????????????????????????? $image");
   }
 
-  Map<String, dynamic> toJson() {
+  Future<Map<String, dynamic>> toJson()  async{
     final Map<String, dynamic> _data = <String, dynamic>{};
+
+
+// if (image != null) {
+//       final mimeType = lookupMimeType(image!.path) ?? 'application/octet-stream'; // Detect file type
+//       final mediaType = MediaType.parse(mimeType); // Convert to MediaType
+//       _data['image_path'] = await MultipartFile.fromFile(image!.path,contentType: mediaType);
+//     }
+
+
     _data["id"] = id;
     _data["name"] = name;
     _data["email"] = email;
@@ -184,17 +219,16 @@ class LoginData {
     _data["phone"] = phone;
     _data["date_of_birth"] = dateOfBirth;
     _data["gender"] = gender;
-    _data["image"] = image;
     _data["longitude"] = longitude;
     _data["latitude"] = latitude;
     _data["social_id"] = socialId;
     _data["social_type"] = socialType;
-    _data["device_token"] = deviceToken;
+    //_data["device_token"] = deviceToken;
     _data["is_logged_in"] = isLoggedIn;
     _data["is_banned"] = isBanned;
     _data["created_at"] = createdAt;
     _data["updated_at"] = updatedAt;
-    _data["image_path"] = imagePath;
+    _data["image_path"] = image;
     return _data;
   }
 }

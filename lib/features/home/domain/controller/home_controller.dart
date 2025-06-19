@@ -10,6 +10,13 @@ class HomeController extends MainGetxController with CustomStateMixin {
   HomeModel model = HomeModel();
   int _page = 1;
 
+@override
+  void onInit() {
+     super.onInit();
+    onRefresh();
+  }
+
+
   onRefresh() async {
     model = await refreshData(
       model: model,

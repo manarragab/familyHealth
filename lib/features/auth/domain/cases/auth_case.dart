@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:abg/data/models/auth/login/LoginModel.dart';
 import 'package:abg/data/models/auth/users/PostEditProfile.dart';
+import 'package:abg/data/models/auth/users/get_user_data.dart';
 import 'package:abg/data/models/auth/users/post_assign_user.dart';
 import 'package:abg/data/models/social/social_model.dart';
 import 'package:abg/data/remote_data/response_model.dart';
@@ -57,4 +58,10 @@ class AuthCases {
   Future<ResponseModel<LoginData?>> socialLogin(SocialModel? socialModel) {
     return _data.socialLogin(socialModel);
   }
+
+
+  Future<ResponseModel<User?>> getUserData() {
+    return _data.getUserData();
+  }
+  
 }

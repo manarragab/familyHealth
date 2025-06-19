@@ -49,7 +49,8 @@ class Homescreen extends GetWidget<HomeController> {
               children: [
                 // Greeting and mood emojis
                 Text(
-                  "Hey ${controller.user?.name ?? ""}",
+                // authController.model.data?.name??"",
+                 "Hey ${controller.user?.name ?? ""}",
                   style: TFonts.textTitleStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -68,11 +69,12 @@ class Homescreen extends GetWidget<HomeController> {
                   ],
                 ),
                 const SizedBox(height: 16),
-
+//Text("${authController.user?.image}"),
+//Image.network(authController.user?.image ?? ""),
                 // Search bar
                 Row(
                   children: [
-                    CircleAvatar(
+             authController.user?.image ==null?Icon(Icons.person,size: 200,):       CircleAvatar(
                       radius: 22,
                       backgroundColor: Colors.grey.shade200,
                       backgroundImage: authController.user?.image != null
@@ -99,8 +101,9 @@ class Homescreen extends GetWidget<HomeController> {
                 ),
                 const SizedBox(height: 24),
 
-                controller.obx((value) {
-                  HomeModel model = value;
+                controller.obx((state) {
+                  HomeModel model = state;
+                  controller.onRefresh();
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -151,15 +154,16 @@ class Homescreen extends GetWidget<HomeController> {
   itemCount: model.data?.familyReminders?.length ?? 0,
   separatorBuilder: (_, __) => const SizedBox(width: 10),
   itemBuilder: (context, index) {
+    
     FamilyReminders1 remind = model.data!.familyReminders![index];
-
+   
     return FamilyContainer(
       index: index,
       name: remind.name ?? "",
       relation: remind.relative ?? "",
       image: remind.image ?? "",
       whenGetIT: remind.phone ?? "",
-     dosage: remind.familyRecords?[index].type??"",
+     dosage: remind.familyRecords?[0].type??"",
     );
   },
 ),

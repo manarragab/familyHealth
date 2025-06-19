@@ -13,7 +13,8 @@ class HomeBanarItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CustomImage.network(imageUrl,
+    return CustomImage.network(
+      imageUrl,
         borderRadius: BorderRadius.circular(5),
         height: 120,
         width: 381.w,

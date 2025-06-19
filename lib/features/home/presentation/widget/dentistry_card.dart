@@ -43,7 +43,7 @@ class MyGroupCard extends GetView<GroupController> {
             ),
             child: ClipOval(
               child: CustomImage.network(
-                demoImage, // Replace with the actual image URL
+                data.image??demoImage, // Replace with the actual image URL
                 width: 60,
                 height: 60,
                 fit: BoxFit.cover,

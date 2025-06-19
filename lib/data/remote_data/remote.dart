@@ -7,6 +7,7 @@ import 'package:abg/data/models/alarm/post_alarms/post_alarm.dart';
 import 'package:abg/data/models/alarm/post_alarms/post_alarm_response.dart';
 import 'package:abg/data/models/auth/login/LoginModel.dart';
 import 'package:abg/data/models/auth/users/PostEditProfile.dart';
+import 'package:abg/data/models/auth/users/get_user_data.dart';
 import 'package:abg/data/models/auth/users/post_assign_user.dart';
 import 'package:abg/data/models/calculation/BMI/post_BMI/post_BMI_MD.dart';
 import 'package:abg/data/models/calculation/BMI/post_BMI/post_BMI_response.dart';
@@ -42,41 +43,41 @@ class Remote {
   Remote(this._helper);
 
   // feature authenticate
-Future<ResponseModel<LoginData>> loginn(String text, String password) async {
-  sPrint.info('get data');
+// Future<ResponseModel<LoginData>> loginn(String text, String password) async {
+//   sPrint.info('get data');
 
-  Map<String, dynamic> json = {
-    'email': text,
-    'password': password,
-    'device_token': await PushNotificationsManager().getNotificationToken(),
-  };
+//   Map<String, dynamic> json = {
+//     'email': text,
+//     'password': password,
+//     'device_token': await PushNotificationsManager().getNotificationToken(),
+//   };
 
-  return _helper.post<LoginData>(
-    json,
-    path: '/user/login',
-    onSuccess: (data) {
-      sPrint.success(data);
-      sPrint.info('getting data:: $data');
+//   return _helper.post<LoginData>(
+//     json,
+//     path: '/user/login',
+//     onSuccess: (data) {
+//       sPrint.success(data);
+//       sPrint.info('getting data:: $data');
 
-      final loginModel = LoginModel.fromJson(data);
+//       final loginModel = LoginModel.fromJson(data);
 
-      return ResponseModel<LoginData>(
-        status: loginModel.status,
-        message: loginModel.message,
-        data: loginModel.data,
-      );
-    },
-    onError: (error) {
-      sPrint.warning('login error: ${error.message}');
-      return ResponseModel<LoginData>(
-        status: 0,
-        message: error.message,
-      );
-    },
-    useFormData: true,
-    isLogin: false,
-  );
-}
+//       return ResponseModel<LoginData>(
+//         status: loginModel.status,
+//         message: loginModel.message,
+//         data: loginModel.data,
+//       );
+//     },
+//     onError: (error) {
+//       sPrint.warning('login error: ${error.message}');
+//       return ResponseModel<LoginData>(
+//         status: 0,
+//         message: error.message,
+//       );
+//     },
+//     useFormData: true,
+//     isLogin: false,
+//   );
+// }
 
 Future<ResponseModel> login(String text, String password) async {
   try {
@@ -91,7 +92,7 @@ Future<ResponseModel> login(String text, String password) async {
       path: '/user/login',
      onSuccess: (Map<String, dynamic> data) {
       print("🔥 raw response from backend: $data");
-  return LoginModel.fromJson(data); // ✅ خليه يعمل parse للكل
+  return LoginModel.fromJson(data); 
 },
 
       onError: (data) {
@@ -460,6 +461,17 @@ return _helper.get<Favourites?>( {}, path: "/user/favorite-calculators",
       return ResponseModel(status: data.status, message: data.message);
     }, isLogin: true );
   }
+
+
+  Future<ResponseModel<User?>> getUserData() async {
+    return _helper.get<User?>({}, path: "/user/data",
+        onSuccess: (dynamic data) {
+      return GetUserData.fromJson(data);
+    }, onError: (data) {
+      return ResponseModel(status: data.status, message: data.message);
+    }, isLogin: true);
+  }
+
 
 
 }

@@ -171,7 +171,7 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                                   final pick = await Pick.pickImage(context);
                                   if (pick != null) {
                                     authController.updateProfileImage(pick);
-                                    authController.updateProfile();
+                                   // authController.updateProfile();
                                   }
                                 },
                                 child: CircleAvatar(

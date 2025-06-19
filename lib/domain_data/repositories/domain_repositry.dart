@@ -4,6 +4,7 @@ import 'package:abg/data/models/alarm/get_alarms/alarm_model.dart';
 import 'package:abg/data/models/alarm/post_alarms/post_alarm.dart';
 import 'package:abg/data/models/auth/login/LoginModel.dart';
 import 'package:abg/data/models/auth/users/PostEditProfile.dart';
+import 'package:abg/data/models/auth/users/get_user_data.dart';
 import 'package:abg/data/models/auth/users/post_assign_user.dart';
 import 'package:abg/data/models/calculation/BMI/post_BMI/post_BMI_MD.dart';
 import 'package:abg/data/models/calculation/BMI/post_BMI/post_BMI_response.dart';
@@ -129,6 +130,8 @@ abstract class DomainData {
   ///----------------------------------- team -----------------------------
 
   // get storage
+
+  Future<ResponseModel<User?>> getUserData();
 
   LoginModel? getUser();
 

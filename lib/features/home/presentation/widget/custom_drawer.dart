@@ -22,13 +22,13 @@ class CustomDrawer extends GetView<AuthController> {
                 child: Stack(
                   children: [
 
-                    user?.image != null
-                        ? Image.network(
-                            user?.image ?? "",
-                            fit: BoxFit.fill,
-                            width: Get.width,
-                          )
-                        : Image.asset(
+                    // user?.image != null
+                    //     ? Image.network(
+                    //         user?.image ?? "",
+                    //         fit: BoxFit.fill,
+                    //         width: Get.width,
+                    //       )
+                       Image.asset(
                             "assets/images/drawer_header.png",
                             fit: BoxFit.fill,
                             width: Get.width,
