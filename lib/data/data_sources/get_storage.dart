@@ -1,3 +1,4 @@
+import 'package:abg/data/const/export.dart';
 import 'package:abg/data/models/auth/login/LoginModel.dart';
 import 'package:get_storage/get_storage.dart';
 
@@ -21,7 +22,7 @@ class GetStorageData {
 
   setUser(LoginModel? loginModel) {
     //  Print.info('insert user:: ${loginModel?.toJson()}');
+    sPrint.error('insert user ${loginModel?.toJson()}', StackTrace.current);
     getStorage.write(_user, loginModel?.toJson());
   }
-  
 }

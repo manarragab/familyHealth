@@ -1,12 +1,4 @@
-import 'dart:io';
-
 import 'package:abg/data/remote_data/response_model.dart';
-
-
-import 'package:dio/dio.dart';
-import 'package:mime/mime.dart';
-import 'package:http_parser/http_parser.dart';
-
 
 // class LoginModel extends ResponseModel<LoginData?> {
 //   LoginModel({
@@ -152,7 +144,7 @@ class LoginData {
   dynamic latitude;
   dynamic socialId;
   dynamic socialType;
-  // String? deviceToken;
+  String? deviceToken;
   int? isLoggedIn;
   int? isBanned;
   String? createdAt;
@@ -191,7 +183,7 @@ class LoginData {
     latitude = json["latitude"];
     socialId = json["social_id"];
     socialType = json["social_type"];
-    //deviceToken = json["device_token"];
+    deviceToken = json["device_token"];
     isLoggedIn = json["is_logged_in"];
     isBanned = json["is_banned"];
     createdAt = json["created_at"];
@@ -200,16 +192,14 @@ class LoginData {
     print("image_path:?????????????????????????????????????? $image");
   }
 
-  Future<Map<String, dynamic>> toJson()  async{
+  Map<String, dynamic> toJson() {
     final Map<String, dynamic> _data = <String, dynamic>{};
-
 
 // if (image != null) {
 //       final mimeType = lookupMimeType(image!.path) ?? 'application/octet-stream'; // Detect file type
 //       final mediaType = MediaType.parse(mimeType); // Convert to MediaType
 //       _data['image_path'] = await MultipartFile.fromFile(image!.path,contentType: mediaType);
 //     }
-
 
     _data["id"] = id;
     _data["name"] = name;
@@ -223,7 +213,7 @@ class LoginData {
     _data["latitude"] = latitude;
     _data["social_id"] = socialId;
     _data["social_type"] = socialType;
-    //_data["device_token"] = deviceToken;
+    _data["device_token"] = deviceToken;
     _data["is_logged_in"] = isLoggedIn;
     _data["is_banned"] = isBanned;
     _data["created_at"] = createdAt;
@@ -233,7 +223,6 @@ class LoginData {
   }
 }
 
-
 // class LoginModel extends ResponseModel<LoginData?> {
 //   LoginData? data;
 //   num? status;
@@ -241,7 +230,6 @@ class LoginData {
 
 //   LoginModel({this.data, this.status, this.message});
 
-  
 // LoginModel.fromJson(Map<String, dynamic> json) {
 //   sPrint.info('LoginModel.fromJson - raw json["data"]: ${json["data"]}');
 //   data = json["data"] == null ? null : LoginData.fromJson(json["data"]);
@@ -357,4 +345,3 @@ class LoginData {
 //     return _data;
 //   }
 // }
-

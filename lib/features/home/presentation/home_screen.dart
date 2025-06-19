@@ -13,6 +13,7 @@ import 'package:abg/features/home/presentation/widget/family_container.dart';
 import 'package:abg/features/home/presentation/widget/home_banaras_bar.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+
 import 'widget/bill_card.dart';
 import 'widget/custom_drawer.dart';
 import 'widget/dentistry_card.dart';
@@ -49,8 +50,8 @@ class Homescreen extends GetWidget<HomeController> {
               children: [
                 // Greeting and mood emojis
                 Text(
-                // authController.model.data?.name??"",
-                 "Hey ${controller.user?.name ?? ""}",
+                  // authController.model.data?.name??"",
+                  "Hey ${controller.user?.name ?? ""}",
                   style: TFonts.textTitleStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -65,23 +66,25 @@ class Homescreen extends GetWidget<HomeController> {
                     ),
                     const Spacer(),
                     CustomImage.asset("assets/svg/emojis.svg",
-                        height: 25, fit: BoxFit.fitWidth)
+                        height: 25, width: 25, fit: BoxFit.fitWidth)
                   ],
                 ),
                 const SizedBox(height: 16),
-//Text("${authController.user?.image}"),
-//Image.network(authController.user?.image ?? ""),
-                // Search bar
                 Row(
                   children: [
-             authController.user?.image ==null?Icon(Icons.person,size: 200,):       CircleAvatar(
-                      radius: 22,
-                      backgroundColor: Colors.grey.shade200,
-                      backgroundImage: authController.user?.image != null
-                          ? NetworkImage(authController.user?.image ?? "")
-                          : const AssetImage("assets/images/cheker.png")
-                              as ImageProvider,
-                    ),
+                    authController.user?.image == null
+                        ? const Icon(
+                            Icons.person,
+                            size: 40,
+                          )
+                        : CircleAvatar(
+                            radius: 22,
+                            backgroundColor: Colors.grey.shade200,
+                            backgroundImage: authController.user?.image != null
+                                ? NetworkImage(authController.user?.image ?? "")
+                                : const AssetImage("assets/images/cheker.png")
+                                    as ImageProvider,
+                          ),
                     const SizedBox(width: 16),
                     Expanded(
                       child: TextField(
@@ -150,26 +153,24 @@ class Homescreen extends GetWidget<HomeController> {
                       SizedBox(
                         height: 125,
                         child: ListView.separated(
-  scrollDirection: Axis.horizontal,
-  itemCount: model.data?.familyReminders?.length ?? 0,
-  separatorBuilder: (_, __) => const SizedBox(width: 10),
-  itemBuilder: (context, index) {
-    
-    FamilyReminders1 remind = model.data!.familyReminders![index];
-   
-    return FamilyContainer(
-      index: index,
-      name: remind.name ?? "",
-      relation: remind.relative ?? "",
-      image: remind.image ?? "",
-      whenGetIT: remind.phone ?? "",
-     dosage: remind.familyRecords?[0].type??"",
-    );
-  },
-),
+                          scrollDirection: Axis.horizontal,
+                          itemCount: model.data?.familyReminders?.length ?? 0,
+                          separatorBuilder: (_, __) =>
+                              const SizedBox(width: 10),
+                          itemBuilder: (context, index) {
+                            FamilyReminders1 remind =
+                                model.data!.familyReminders![index];
 
-
-
+                            return FamilyContainer(
+                              index: index,
+                              name: remind.name ?? "",
+                              relation: remind.relative ?? "",
+                              image: remind.image ?? "",
+                              whenGetIT: remind.phone ?? "",
+                              dosage: remind.familyRecords?[0].type ?? "",
+                            );
+                          },
+                        ),
                       ),
                       const SizedBox(height: 16),
                       if (false)

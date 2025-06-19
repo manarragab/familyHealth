@@ -79,40 +79,37 @@ class Remote {
 //   );
 // }
 
-Future<ResponseModel> login(String text, String password) async {
-  try {
-    final json = {
-      'email': text,
-      'password': password,
-      'device_token': await PushNotificationsManager().getNotificationToken(),
-    };
+  Future<ResponseModel> login(String text, String password) async {
+    try {
+      final json = {
+        'email': text,
+        'password': password,
+        'device_token': await PushNotificationsManager().getNotificationToken(),
+      };
 
-    return await _helper.post(
-      json,
-      path: '/user/login',
-     onSuccess: (Map<String, dynamic> data) {
-      print("🔥 raw response from backend: $data");
-  return LoginModel.fromJson(data); 
-},
-
-      onError: (data) {
-        return LoginModel(
-          status: 0,
-          message: data.message,
-        );
-      },
-      useFormData: true,
-      isLogin: false,
-    );
-  } catch (e) {
-    return ResponseModel<LoginModel?>(
-      status: 0,
-      message: e.toString(),
-    );
+      return await _helper.post(
+        json,
+        path: '/user/login',
+        onSuccess: (Map<String, dynamic> data) {
+          print("🔥 raw response from backend: $data");
+          return LoginModel.fromJson(data);
+        },
+        onError: (data) {
+          return LoginModel(
+            status: 0,
+            message: data.message,
+          );
+        },
+        useFormData: true,
+        isLogin: false,
+      );
+    } catch (e) {
+      return ResponseModel<LoginModel?>(
+        status: 0,
+        message: e.toString(),
+      );
+    }
   }
-}
-
-
 
   Future<ResponseModel> register(PostRegister register) async {
     return _helper.post<LoginData?>(
@@ -121,10 +118,8 @@ Future<ResponseModel> login(String text, String password) async {
       onSuccess: (Map<String, dynamic> data) {
         sPrint.success(data);
         sPrint.info('getting data:: $data');
-        final loginModel = LoginModel.fromJson(data);      
-       return LoginModel.fromJson(data);
-
-      
+        final loginModel = LoginModel.fromJson(data);
+        return LoginModel.fromJson(data);
       },
       onError: (data) {
         sPrint.warning('error  ${data.data?.status}:: ${data.message}');
@@ -145,7 +140,6 @@ Future<ResponseModel> login(String text, String password) async {
     // return Future.delayed(const Duration(seconds: 1), () {
     //   return LoginModel();
     // });
-
 
     return _helper.post<dynamic>(json, path: '/user/forget-password',
         onSuccess: (Map<String, dynamic> data) {
@@ -188,7 +182,7 @@ Future<ResponseModel> login(String text, String password) async {
   Future<ResponseModel<String?>> uploadProfileImage(File file) async {
     return _helper.post<String?>({
       "image": await MultipartFile.fromFile(file.path),
-    }, path: "/uploadProfileImage", onSuccess: (dynamic data) {
+    }, path: "/user/update-profile", onSuccess: (dynamic data) {
       final value = ResponseModel<String>.fromJson(data);
       value.data = data['data']['image'];
       return value;
@@ -199,8 +193,8 @@ Future<ResponseModel> login(String text, String password) async {
   }
 
   Future<ResponseModel<LoginData?>> editProfile(PostEditProfile profile) async {
-    return _helper.post<LoginData?>(await profile.toJson(), path: "/user/update-profile",
-      onSuccess: (dynamic data) {
+    return _helper.post<LoginData?>(await profile.toJson(),
+        path: "/user/update-profile", onSuccess: (dynamic data) {
       return LoginModel.fromJson(data);
     }, onError: (data) {
       return ResponseModel(status: data.status, message: data.message);
@@ -379,7 +373,6 @@ Future<ResponseModel> login(String text, String password) async {
     }, isLogin: true);
   }
 
-
   //calculation => Due date
   Future<ResponseModel<Tracker?>> addTracker(PostTrackerMD post) {
     return _helper.post<Tracker?>(post.toJson(),
@@ -389,7 +382,6 @@ Future<ResponseModel> login(String text, String password) async {
       return ResponseModel(status: data.status, message: data.message);
     }, isLogin: true);
   }
-
 
 //calculation => diabetes
   Future<ResponseModel<Diabetes?>> addDiabetes(PostDiabetesMd post) {
@@ -401,67 +393,65 @@ Future<ResponseModel> login(String text, String password) async {
     }, isLogin: true);
   }
 
-
-  
 //calculation => IBS
   Future<ResponseModel<IBS?>> addIBS(PostIbsMD post) {
-    return _helper.post<IBS?>(post.toJson(),
-    useFormData: false, path: "/user/ibs/symptom-assessment",
-     onSuccess: (dynamic data) {
-      return PostIbsResponse.fromJson(data);
-    }, onError: (data) {
-      return ResponseModel(status: data.status, message: data.message);
-    }, isLogin: true , );
+    return _helper.post<IBS?>(
+      post.toJson(),
+      useFormData: false,
+      path: "/user/ibs/symptom-assessment",
+      onSuccess: (dynamic data) {
+        return PostIbsResponse.fromJson(data);
+      },
+      onError: (data) {
+        return ResponseModel(status: data.status, message: data.message);
+      },
+      isLogin: true,
+    );
   }
 
-
-
-Future<ResponseModel<Favourites?>> getFavourites() async {
-return _helper.get<Favourites?>( {}, path: "/user/favorite-calculators",
-    onSuccess: (dynamic data) {
-      return GetFavourites.fromJson(data);
-    },
-    onError: (data) {
-      return ResponseModel(status: data.status, message: data.message);
-    },
-    isLogin: true,
-  );
-}
-
+  Future<ResponseModel<Favourites?>> getFavourites() async {
+    return _helper.get<Favourites?>(
+      {},
+      path: "/user/favorite-calculators",
+      onSuccess: (dynamic data) {
+        return GetFavourites.fromJson(data);
+      },
+      onError: (data) {
+        return ResponseModel(status: data.status, message: data.message);
+      },
+      isLogin: true,
+    );
+  }
 
   Future<ResponseModel<Favourite?>> addFavourites(PostFavourite post) async {
-    return _helper.post<Favourite?>(await post.toJson(), path: "/user/favorite-calculators/toggle",
-        onSuccess: (dynamic data) {
+    return _helper.post<Favourite?>(await post.toJson(),
+        path: "/user/favorite-calculators/toggle", onSuccess: (dynamic data) {
       return PostFavouriteResponse.fromJson(data);
     }, onError: (data) {
       return ResponseModel(status: data.status, message: data.message);
     }, isLogin: true);
   }
 
-
   Future<ResponseModel<dynamic>> deleteFavourites(String id) async {
     return _helper.post<Favourite?>({
-      "calculator_name":id,
-    }, path: "/user/favorite-calculators/toggle",
-        onSuccess: (dynamic data) {
-          return PostFavouriteResponse.fromJson(data);
-        }, onError: (data) {
-          return ResponseModel(status: data.status, message: data.message);
-        }, isLogin: true);
+      "calculator_name": id,
+    }, path: "/user/favorite-calculators/toggle", onSuccess: (dynamic data) {
+      return PostFavouriteResponse.fromJson(data);
+    }, onError: (data) {
+      return ResponseModel(status: data.status, message: data.message);
+    }, isLogin: true);
   }
-
 
   //calculation => period
   Future<ResponseModel<Period?>> addPeriod(Postperiod post) {
     return _helper.post<Period?>(post.toJson(),
-    useFormData: false,
+        useFormData: false,
         path: "/user/period-calculator/calculate", onSuccess: (dynamic data) {
       return PostperiodResponse.fromJson(data);
     }, onError: (data) {
       return ResponseModel(status: data.status, message: data.message);
-    }, isLogin: true );
+    }, isLogin: true);
   }
-
 
   Future<ResponseModel<User?>> getUserData() async {
     return _helper.get<User?>({}, path: "/user/data",
@@ -471,7 +461,4 @@ return _helper.get<Favourites?>( {}, path: "/user/favorite-calculators",
       return ResponseModel(status: data.status, message: data.message);
     }, isLogin: true);
   }
-
-
-
 }

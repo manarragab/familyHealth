@@ -40,9 +40,9 @@ class GetXSocialLoginController extends MainGetxController {
     // must end loading
     loadingGetxController.hideLoading();
     statusError.checkStatus(response, () {
-   sPrint.info('success social login');
+      sPrint.info('success social login');
       loginModel = response as LoginModel;
-      sPrint.info(loginModel?.toJson());
+      sPrint.info(response.toJson());
       sl<AuthCases>().setUser(loginModel);
       Get.toNamed(CustomPage.layoutPage);
     });
