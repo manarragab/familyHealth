@@ -25,7 +25,7 @@ class AlarmController extends MainGetxController with CustomStateMixin {
   TextEditingController medicineStartController = TextEditingController();
   TextEditingController medicineEndController = TextEditingController();
   String? imageUrl;
-
+  bool firstTime = true;
   int _page = 1;
 
   void clearData() {
@@ -89,23 +89,23 @@ class AlarmController extends MainGetxController with CustomStateMixin {
       },
       getPage: (page) => _page = page,
     );
-  //  CustomAlarm().clearAll();
-  //  model.data?.forEach((e) {
-  //    CustomAlarm().addAlarm(e);
-  //  });
+    if (firstTime) {
+      firstTime = false;
+      model.data?.forEach((e) {
+        CustomAlarm().addAlarm(e);
+      });
+    }
   }
-
 
   addAlarm() async {
     loadingGetxController.showLoading();
     var response = await sl<AlarmCases>().addAlarm(postAlarm);
     loadingGetxController.hideLoading();
     statusError.checkStatus(response, () {
-      
       // PushNotificationsManager().subscribe("alarm-${response.data?.alarmDate}_${response.data?.alarmTime}");
       CustomAlarm().addAlarm(response.data!);
-          //   CustomAlarm().snoozeAlarm( 
-          // response.data!.alarmDate,);
+      //   CustomAlarm().snoozeAlarm(
+      // response.data!.alarmDate,);
 
       onRefresh();
       Get.back();
