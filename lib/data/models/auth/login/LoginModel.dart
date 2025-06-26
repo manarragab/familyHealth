@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:abg/data/const/export.dart';
 import 'package:abg/data/remote_data/response_model.dart';
 
 
@@ -120,6 +121,7 @@ class LoginModel extends ResponseModel<LoginData?> {
 
   LoginModel.fromJson(Map<String, dynamic> json) {
     data = json["data"] == null ? null : LoginData.fromJson(json["data"]);
+    sPrint.info('data from keys :: ${json.keys}');
     status = json["status"];
     message = json["message"];
    token = json["token"];

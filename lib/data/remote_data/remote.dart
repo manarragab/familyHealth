@@ -119,7 +119,8 @@ class Remote {
         sPrint.success(data);
         sPrint.info('getting data:: $data');
         final loginModel = LoginModel.fromJson(data);
-        return LoginModel.fromJson(data);
+        sPrint.info('register data from remote:: ${loginModel.toJson()}');
+        return loginModel;
       },
       onError: (data) {
         sPrint.warning('error  ${data.data?.status}:: ${data.message}');

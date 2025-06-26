@@ -108,7 +108,6 @@ class Homescreen extends GetWidget<HomeController> {
 
                 controller.obx((state) {
                   HomeModel model = state;
-                  controller.onRefresh();
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
