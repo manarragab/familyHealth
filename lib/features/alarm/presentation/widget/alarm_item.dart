@@ -10,7 +10,6 @@ class AlarmItem extends StatelessWidget {
   final String description;
   final String date;
   final String time;
-  final VoidCallback onEdit;
   final VoidCallback onDelete;
   final bool sign;
   const AlarmItem({
@@ -20,7 +19,6 @@ class AlarmItem extends StatelessWidget {
     required this.description,
     required this.date,
     required this.time,
-    required this.onEdit,
     required this.onDelete,this.sign = false,
   }) : super(key: key);
 
@@ -60,16 +58,16 @@ class AlarmItem extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           )),
                       const Spacer(),
-                      InkWell(
-                        onTap: onEdit,
-                        child: SvgPicture.asset(
-                          "assets/svg/edit.svg",
-                        ),
-                      ),
-                      const SizedBox
-                        (
-                        width: 20,
-                      ),
+                      // InkWell(
+                      //   onTap: onEdit,
+                      //   child: SvgPicture.asset(
+                      //     "assets/svg/edit.svg",
+                      //   ),
+                      // ),
+                      // const SizedBox
+                      //   (
+                      //   width: 20,
+                      // ),
                       InkWell(
                         onTap: onDelete,
                         child: SvgPicture.asset(

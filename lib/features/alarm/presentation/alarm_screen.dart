@@ -64,9 +64,9 @@ class AlarmScreen extends GetView<AlarmController> {
                         description: alarm.description ?? "",
                         date: alarm.alarmDate ?? "",
                         time: alarmTime ?? "",
-                        onEdit: () {
-                          controller.getDetails(alarm.id!.toInt());
-                        },
+                        // onEdit: () {
+                        //   controller.getDetails(alarm.id!.toInt());
+                        // },
                         onDelete: () {
                           controller.deleteAlarm(alarm.id!.toInt());
                         },

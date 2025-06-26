@@ -125,6 +125,10 @@ class SignUpScreen extends GetWidget<AuthController> {
                       controller.dateController.text = date.stringDate;
                       print("date: ${controller.postRegister.dateOfBirth}");
                     }).showDatePicker(context);
+                    if(controller.dateController.text ==null||controller.dateController.text.isEmpty){
+                        controller.postRegister.dateOfBirth = DateFormat("yyyy-MM-dd").format(DateTime.now()) as DateTime?;
+                        controller.dateController.text = DateFormat("yyyy-MM-dd").format(DateTime.now());
+                      }      
                   }),
               CustomPadding.smallHeight,
               CustomTextField.emailTextField(

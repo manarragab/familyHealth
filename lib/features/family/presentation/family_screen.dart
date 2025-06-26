@@ -3,15 +3,12 @@ import 'package:abg/data/const/export.dart';
 import 'package:abg/data/models/family/get_family/family_model.dart';
 import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
 import 'package:abg/features/family/domain/controller/family_controller.dart';
+import 'package:abg/features/family/presentation/add_reminders.dart';
 import 'package:abg/features/family/presentation/profileFamily_screen.dart';
 import 'package:abg/features/family/presentation/widget/familyType_container.dart';
 import 'package:abg/features/home/presentation/widget/family_container.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutter/material.dart';
-
-import '../../../data/models/family/post_family/post_family_response.dart';
 
 class FamilyScreen extends StatefulWidget {
   const FamilyScreen({super.key});
@@ -21,10 +18,29 @@ class FamilyScreen extends StatefulWidget {
 }
 
 class _FamilyScreenState extends State<FamilyScreen> {
+  
   RefreshController refreshController = RefreshController();
   FamilyController control = Get.find();
-  int selectedIndex = 0;
+
+
+
+
+  int selectedIndex = -1;
   late FamilyModel model;
+  
+  List<Family> get _filteredFamilyImages {
+  final model = control.state;
+  if (model == null) return [];
+  final data = model.data ?? [];
+  return data.where((f) => f.relative == FamilyType.values[selectedIndex].name).toList();
+}
+
+@override
+void initState() {
+  super.initState();
+  control.reset(); // ✅ Reset state on screen open
+}
+
 
   @override
   void dispose() {
@@ -34,210 +50,235 @@ class _FamilyScreenState extends State<FamilyScreen> {
 
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       appBar: CustomAppBar.appBar(CustomTrans.myFamily.tr),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        child: control.obx((state) {
-          model = state;
-          List<Family> list=model.data??[];
+//       body: Padding(
+//         padding: const EdgeInsets.symmetric(horizontal: 16),
+//         child: control.obx((state) {
+//           model = state;
+//           List<Family> list=model.data??[];
+  
 
-          return ListView(
-            children: [
-              _buildFamilyTypeGrid(),
-              const SizedBox(height: 14),
-              _buildImageStack(),
-              const SizedBox(height: 17),
-              _buildinfoersTitle(),
-              const SizedBox(height: 10),
-              _buildFamilyList(list),
-            ],
-          );
-        }),
-      ),
-    );
-  }
+//           return ListView(
+//             children: [
+//               _buildFamilyTypeGrid(),
+//               const SizedBox(height: 14),
+//         selectedIndex== -1 || _filteredFamilyImages.isEmpty  ? const SizedBox(): _buildImageStack(),
+//               const SizedBox(height: 17),
+//               _buildinfoersTitle(),
+//               const SizedBox(height: 10),
+//               _buildFamilyList(list),
+//             ],
+//           );
+//         }),
+//       ),
+//     );
+//   }
 
-  Widget _buildFamilyTypeGrid() {
-    return SizedBox(
-      height: 100,
-      child: GridView.builder(
-        shrinkWrap: true,
-        physics: NeverScrollableScrollPhysics(),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-          mainAxisExtent: 40,
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 12,
-        ),
-        itemCount: FamilyType.values.length,
-        itemBuilder: (context, index) {
-          return FamilytypeContainer(
-            index: index,
-            tapped: () => setState(() => selectedIndex = index),
-          );
-        },
-      ),
-    );
-  }
+//   Widget _buildFamilyTypeGrid() {
+//     return SizedBox(
+//       height: 100,
+//       child: GridView.builder(
+//         shrinkWrap: true,
+//         physics: NeverScrollableScrollPhysics(),
+//         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+//           crossAxisCount: 3,
+//           mainAxisExtent: 40,
+//           crossAxisSpacing: 10,
+//           mainAxisSpacing: 12,
+//         ),
+//         itemCount: FamilyType.values.length,
+//         itemBuilder: (context, index) {
+//           return FamilytypeContainer(
+//             index: index,
+//             tapped: () => setState(() => selectedIndex = index),
+//           );
+//         },
+//       ),
+//     );
+//   }
 
-  Widget _buildImageStack() {
-    return Stack(
-      children: [
-        _buildImageContainer(),
-        _buildActionButtons(),
-        _buildImageLabel(),
-      ],
-    );
-  }
+//   Widget _buildImageStack() {
+//     return Stack(
+//       children: [
+//         _buildImageContainer(),
+       
+//         _buildImageLabel(),
+//       ],
+//     );
+//   }
 
-  Widget _buildImageContainer() {
-    return Container(
-     clipBehavior: Clip.hardEdge,
-      width: double.infinity,
-      height: 350,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(32),
-      ),
-      child: InkWell(
-        onTap: (){
-          Get.to(ProfilefamilyScreen(image: _getImagePath(selectedIndex), title: FamilyType.values[selectedIndex].name,));
-        },
-        child: Image.asset(_getImagePath(selectedIndex), fit: BoxFit.cover)),
-    );
-  }
 
-  Widget _buildActionButtons() {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          _buildCircleIcon("assets/svg/whiteCamera.svg"),
-          _buildCircleIcon("assets/svg/whiteFolder.svg"),
-        ],
-      ),
-    );
-  }
+//  Widget _buildImageContainer() {
+//   final matchingImages = _filteredFamilyImages;
 
-  Widget _buildCircleIcon(String assetPath) {
-    return Container(
-      width: 28,
-      height: 28,
-      decoration: const BoxDecoration(
-        color: CustomColors.darkpinky,
-        shape: BoxShape.circle,
-      ),
-      child: Padding(
-        padding: const EdgeInsets.all(6),
-        child: SvgPicture.asset(assetPath),
-      ),
-    );
-  }
+//   if (matchingImages.isEmpty) {
+//     return Container(
+//       height: 350,
+//       width: double.infinity,
+//       clipBehavior: Clip.hardEdge,
+//       decoration: BoxDecoration(
+//         borderRadius: BorderRadius.circular(32),
+//       ),
+//       child: Image.asset("assets/images/cheker.png", fit: BoxFit.cover),
+//     );
+//   }
 
-  Widget _buildImageLabel() {
-    return Positioned(
-      bottom: 20,
-      left: 20,
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
-        height: 30,
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(50),
-        ),
-        child: Row(
-          children: [
-            Text(
-              FamilyType.values[selectedIndex].name,
-              style: GoogleFonts.almarai(
-                fontSize: 16,
-                fontWeight: FontWeight.w700,
-                color: CustomColors.lighttblue,
-              ),
-            ),
-            const SizedBox(width: 5),
-            Container(
-              width: 20,
-              height: 20,
-              decoration: BoxDecoration(
-                color: CustomColors.primary,
-                shape: BoxShape.circle,
-              ),
-              child: const Icon(
-                Icons.add,
-                color: Colors.white,
-                size: 15,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
+//   return SizedBox(
+//     height: 350,
+//     child: PageView.builder(
+//       itemCount: matchingImages.length,
+//       itemBuilder: (context, index) {
+//         final fam = matchingImages[index];
+//         return InkWell(
+//           onTap: () {
+//             Get.to(ProfilefamilyScreen(
+//               image: fam.image ?? "",
+//               title: fam.name ?? "",
+//               age: fam.age ?? 1,
+//               kind: FamilyType.values[selectedIndex].name ,
+//             ));
+//           },
+//           child: Container(
+//             margin: const EdgeInsets.symmetric(horizontal: 4),
+//             clipBehavior: Clip.hardEdge,
+//             decoration: BoxDecoration(
+//               borderRadius: BorderRadius.circular(32),
+//             ),
+//             child: CustomImage.network(
+//               fam.image ?? "",
+//               fit: BoxFit.cover,
+//               ),
+//           ),
+//         );
+//       },
+//     ),
+//   );
+// }
 
-  Widget _buildinfoersTitle() {
-    return Text(
-      "Reminders",
-      style: GoogleFonts.almarai(
-        fontSize: 18,
-        fontWeight: FontWeight.w700,
-        color: CustomColors.darkblue,
-      ),
-    );
-  }
+//   Widget _buildImageLabel() {
+//     return Positioned(
+//       bottom: 20,
+//       left: 20,
+//       child: Container(
+//         padding: const EdgeInsets.symmetric(horizontal: 10),
+//         height: 30,
+//         decoration: BoxDecoration(
+//           color: Colors.white,
+//           borderRadius: BorderRadius.circular(50),
+//         ),
+//         child: Center(
+//           child: Text(
+//             FamilyType.values[selectedIndex].name,
+//             style: GoogleFonts.almarai(
+//               fontSize: 16,
+//               fontWeight: FontWeight.w700,
+//               color: CustomColors.lighttblue,
+//             ),
+//           ),
+//         ),
+//       ),
+//     );
+//   }
 
-  Widget _buildFamilyList(List<Family> list) {
-    return SizedBox(
-      height: 132,
-      child: SmartRefresher(
-        controller: refreshController,
-        onRefresh: () async {
-          await control.onRefresh();
-          refreshController.refreshCompleted();
-        },
-        child: ListView.builder(
-          shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
-          itemCount: list.length,
-          itemBuilder: (context, index) {
-            Family info = list[index];
-            return Container(
-              margin: const EdgeInsets.all(8),
-              child: FamilyContainer(
-                index: index,
-                name: info.name ?? "",
-                relation: info.relative ?? "",
-                title: info.birthDate ?? "",
-               // dosage: "Not found",
-              //  time: info.createdAt ?? "",
-                image: info.image ?? "",
-                whenGetIT: 'After lunch',
-                time: info.birthDate ?? "nn",
-              ),
-            );
-          },
-        )
-      ),
+//   Widget _buildinfoersTitle() {
+//     return Row(
+//       mainAxisAlignment: MainAxisAlignment.spaceBetween ,
+//       children: [
+//         Text(
+//           "Reminders",
+//           style: GoogleFonts.almarai(
+//             fontSize: 18,
+//             fontWeight: FontWeight.w700,
+//             color: CustomColors.darkblue,
+//           ),
+//         ),
+// InkWell(
+//   onTap: (){
+//     if(selectedIndex==-1){
+//       Get.to(AddReminders(person:  "" ,));
+//       }
+//     Get.to(AddReminders(person:  FamilyType.values[selectedIndex].name ,));
+//     print("personnnnnnn ${FamilyType.values[selectedIndex].name}");
+//   },
+//   child: Container(
+//   padding: EdgeInsets.symmetric(horizontal: 10),
+//       height: 30,
+//           width: Get.width/2.3,
+//           //clipBehavior: Clip.hardEdge,
+//           decoration: BoxDecoration(
+//             borderRadius: BorderRadius.circular(25),
+//             color: CustomColors.grey6,
+        
+//           ),
+//     child: Row(
+//       mainAxisAlignment: MainAxisAlignment.center,
+//       children: [
+//          Text(
+//               "Add Reminders",
+//               style: GoogleFonts.almarai(
+//                 fontSize: 16,
+//                 fontWeight: FontWeight.w700,
+//                 color: CustomColors.darkblue,
+//               ),
+//             ),
+//            Spacer(),
+//         Container(
+//           height: 20,
+//           width: 20,
+//           //clipBehavior: Clip.hardEdge,
+//           decoration: BoxDecoration(
+//             borderRadius: BorderRadius.circular(25),
+//             color: CustomColors.primary,
+        
+//           ),
+//           child: Icon(Icons.add, color: Colors.white, size: 18,),),
+//       ],
+//     ),
+//   ),
+// ),
+
+        
+//       ],
+//     );
+//   }
+  
+
+//   Widget _buildFamilyList(List<Family> list) {
+//     return SizedBox(
+//       height: 132,
+//       child: SmartRefresher(
+//         controller: refreshController,
+//         onRefresh: () async {
+//           await control.onRefresh();
+//           refreshController.refreshCompleted();
+//         },
+//         child: ListView.builder(
+//           shrinkWrap: true,
+//           scrollDirection: Axis.horizontal,
+//           itemCount: list.length,
+//           itemBuilder: (context, index) {
+//             Family info = list[index];
+//             return Container(
+//               margin: const EdgeInsets.all(8),
+//               child: FamilyContainer(
+//                 index: index,
+//                 name: info.name ?? "",
+//                 relation: info.relative ?? "",
+//                 title: info.birthDate ?? "",
+//                // dosage: "Not found",
+//               //  time: info.createdAt ?? "",
+//                 image: info.image ?? "",
+//                 whenGetIT: 'After lunch',
+//                 time: info.birthDate ?? "nn",
+//               ),
+//             );
+//           },
+//         )
+//       ),
     );
 
     
-  }
-  
-  String _getImagePath(int selectedIndex) {
-    switch (selectedIndex) {
-      case 1:
-        return "assets/images/nono1.png";
-      case 2:
-        return "assets/images/grandMother.png";
-      case 3:
-        return "assets/images/nono2.png";
-      case 4:
-        return "assets/images/boyy.png";
-      case 5:
-        return "assets/images/girll.png";
-      default:
-        return "assets/images/cheker.png";
-    }
   }
 }

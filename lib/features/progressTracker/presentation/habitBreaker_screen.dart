@@ -57,7 +57,7 @@ class HabitbreakerScreen extends StatelessWidget {
                       "Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing",
                   date: "13/9/2024",
                   time: "01.30 pm",
-                  onEdit: () {},
+                //  onEdit: () {},
                   onDelete: () {
                 Get.dialog(
                   Delete(),

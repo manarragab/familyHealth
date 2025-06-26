@@ -1,8 +1,10 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:intl/intl.dart';
 import 'package:mime/mime.dart';
 import 'package:http_parser/http_parser.dart';
+
 /// image : "file"
 /// type : "medicine"
 /// title : "medicine title is here"
@@ -64,6 +66,7 @@ class PostAlarm {
     map['description'] = description;
     map['alarm_date'] = alarmDate;
     map['alarm_time'] = alarmTime;
+    //print("alarm_timeeeeee: ${DateFormat("HH:mm").format(alarmTime as DateTime)}");
     map['medicine_start_date'] = medicineStartDate ?? alarmDate;
     map['medicine_end_date'] = medicineEndDate;
     map['is_repeatable'] = isRepeatable ? "1" : "0";

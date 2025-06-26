@@ -1,22 +1,29 @@
+import 'package:abg/data/const/enums.dart';
 import 'package:abg/data/const/export.dart';
 import 'package:abg/data/models/family/get_family/family_model.dart';
-import 'package:abg/data/models/family/post_family/post_family_response.dart';
+import 'package:abg/data/models/home/home_model.dart';
+import 'package:abg/data/models/reminder_family/reminder_family.dart';
 import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
 import 'package:abg/features/family/domain/controller/family_controller.dart';
 import 'package:abg/features/family/presentation/widget/dadContainer.dart';
 import 'package:abg/features/family/presentation/widget/disease_card.dart';
-import 'package:flutter/widgets.dart';
+import 'package:abg/features/home/domain/controller/home_controller.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfilefamilyScreen extends StatefulWidget {
   final String? image;
-    final String title;
+  final String? title;
+  final int? age;
+  final String? kind;
 
   ProfilefamilyScreen({
     super.key,
-    this.image, 
-   required this.title,
+    this.image,
+     this.title,
+     this.age,
+     this.kind,
   });
 
   @override
@@ -39,35 +46,31 @@ class _ProfilefamilyScreenState extends State<ProfilefamilyScreen> {
           return ListView(
             children: [
               _buildHeader(),
-               const SizedBox(height: 20),
-
-                Container(
-                      width: double.infinity,
-                      height: 1,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(0.5),
-                        color: CustomColors.grey4,
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black
-                                .withOpacity(0.2),
-                            blurRadius: 4, 
-                            offset:
-                                const Offset(0, 2),
-                          ),
-                        ],
-                      ),
+              const SizedBox(height: 20),
+              Container(
+                width: double.infinity,
+                height: 1,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(0.5),
+                  color: CustomColors.grey4,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.2),
+                      blurRadius: 4,
+                      offset: const Offset(0, 2),
                     ),
-                    const SizedBox(height: 20),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 20),
               _buildTitle("Reminders"),
               _buildFamilyList(list),
               const SizedBox(height: 12),
               _buildMedicalRecordTitle(),
               const SizedBox(height: 12),
-              _buildDiseaseList(),
-               const SizedBox(height: 50),
-               Image.asset("assets/images/health.png")
-
+              _buildDiseaseListForName(widget.title??""),
+              const SizedBox(height: 50),
+              Image.asset("assets/images/health.png")
             ],
           );
         }),
@@ -79,14 +82,18 @@ class _ProfilefamilyScreenState extends State<ProfilefamilyScreen> {
     return Center(
       child: Column(
         children: [
-          Text(widget.title, style: GoogleFonts.almarai(fontSize: 20, fontWeight: FontWeight.w400, color: CustomColors.darkblue)),
+          Text(widget.kind.toString() ?? "Dad",
+              style: GoogleFonts.almarai(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w400,
+                  color: CustomColors.darkblue)),
           const SizedBox(height: 15),
           Container(
             width: 200,
             height: 160,
             clipBehavior: Clip.hardEdge,
             decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
-            child: Image.asset(widget.image ?? "", fit: BoxFit.cover),
+            child: CustomImage.network(widget.image ?? "", fit: BoxFit.cover),
           ),
           const SizedBox(height: 10),
           Row(
@@ -94,11 +101,19 @@ class _ProfilefamilyScreenState extends State<ProfilefamilyScreen> {
             children: [
               Image.asset("assets/images/QR.png"),
               const SizedBox(width: 7),
-              Text("Omar Ahmed", style: GoogleFonts.almarai(fontSize: 16, fontWeight: FontWeight.w700, color: CustomColors.darkblue)),
+              Text(widget.title??"",
+                  style: GoogleFonts.almarai(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                      color: CustomColors.darkblue)),
             ],
           ),
           const SizedBox(height: 5),
-          Text("Age: 50 year", style: GoogleFonts.almarai(fontSize: 12, fontWeight: FontWeight.w400, color: CustomColors.darkblue)),
+          Text("Age:  ${widget.age.toString() ?? "1"}  years",
+              style: GoogleFonts.almarai(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w400,
+                  color: CustomColors.darkblue)),
           const SizedBox(height: 15),
           SizedBox(
             width: 120,
@@ -106,7 +121,25 @@ class _ProfilefamilyScreenState extends State<ProfilefamilyScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 icons("assets/svg/chatIcon.svg"),
-                icons("assets/svg/phone.svg"),
+                InkWell(
+                  onTap: () async {
+                    HomeController homeControl = Get.find();
+                    final remind =
+                        homeControl.state.data?.familyReminders?.firstWhere(
+                      (e) => e.name == widget.title,
+                      orElse: () => FamilyReminders1(),
+                    );
+
+                    final Uri phoneUri =
+                        Uri(scheme: 'tel', path: remind?.phone ?? "");
+                    if (await canLaunchUrl(phoneUri)) {
+                      await launchUrl(phoneUri);
+                    } else {
+                      Get.snackbar('Error', ('Could not launch $phoneUri'));
+                    }
+                  },
+                  child: icons("assets/svg/phone.svg"),
+                ),
                 icons("assets/svg/alarmIcon.svg"),
               ],
             ),
@@ -120,7 +153,9 @@ class _ProfilefamilyScreenState extends State<ProfilefamilyScreen> {
     return Container(
       width: 32,
       height: 32,
-      decoration: BoxDecoration(color: CustomColors.lighttblue2, borderRadius: BorderRadius.circular(5)),
+      decoration: BoxDecoration(
+          color: CustomColors.lighttblue2,
+          borderRadius: BorderRadius.circular(5)),
       child: Padding(
         padding: const EdgeInsets.all(5),
         child: SvgPicture.asset(image),
@@ -131,7 +166,10 @@ class _ProfilefamilyScreenState extends State<ProfilefamilyScreen> {
   Widget _buildTitle(String title) {
     return Text(
       title,
-      style: GoogleFonts.almarai(fontSize: 18, fontWeight: FontWeight.w700, color: CustomColors.darkblue),
+      style: GoogleFonts.almarai(
+          fontSize: 18,
+          fontWeight: FontWeight.w700,
+          color: CustomColors.darkblue),
     );
   }
 
@@ -153,10 +191,10 @@ class _ProfilefamilyScreenState extends State<ProfilefamilyScreen> {
               width: 145,
               margin: const EdgeInsets.all(8),
               child: Dadcontainer(
-                 key: ValueKey(index), 
+                key: ValueKey(index),
                 index: index,
                 name: info.name ?? "",
-                weight: '500mg',
+                kind:widget.kind.toString() ,
                 time: '1:20pm',
               ),
             );
@@ -176,19 +214,55 @@ class _ProfilefamilyScreenState extends State<ProfilefamilyScreen> {
     );
   }
 
-  Widget _buildDiseaseList() {
-    return SizedBox(
-      height: 90,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: control.disease.length,
-        itemBuilder: (context, index) {
-          return DiseaseCard(
-            disease: control.disease[index],
-            image: control.images[index],
-          );
-        },
-      ),
-    );
+  Widget _buildDiseaseListForName(String name) {
+    HomeController controller = Get.find();
+
+    return controller.obx((state) {
+      HomeModel model = state;
+
+      final remind = model.data?.familyReminders?.firstWhere(
+        (e) => e.name == name,
+      );
+
+      if (remind == null || (remind.familyRecords?.isEmpty ?? true)) {
+        return Center(child: const Text("No Diseases"));
+      }
+
+      final diseases = remind.familyRecords!
+          .where((e) => (e.type ?? "").isNotEmpty)
+          .map((e) => e.type!)
+          .toList();
+
+      return SizedBox(
+        height: 100,
+        child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: diseases.length,
+          itemBuilder: (context, index) {
+            return DiseaseCard(
+              disease: diseases[index],
+              image: diseases[index]== MedicalType.BoneDisease.name?control.imagesDiseases[0] :
+              
+              diseases[index]== MedicalType.BrainDisease.name?control.imagesDiseases[1] :
+              diseases[index]== MedicalType.EarDisease.name?control.imagesDiseases[2] :
+              diseases[index]== MedicalType.EyeDisease.name?control.imagesDiseases[3] :
+              diseases[index]== MedicalType.GynecologyDisease.name?control.imagesDiseases[4] :
+              diseases[index]== MedicalType.HeartDisease.name?control.imagesDiseases[5] :
+
+             diseases[index]== MedicalType.KidneyDisease.name?control.imagesDiseases[6] :
+             diseases[index]== MedicalType.LungDisease.name?control.imagesDiseases[7] :
+             diseases[index]== MedicalType.MuscularDisorder.name?control.imagesDiseases[8] :
+             diseases[index]== MedicalType.PillDisease.name?control.imagesDiseases[9] :
+             diseases[index]== MedicalType.StomachDisease.name?control.imagesDiseases[10] 
+:""
+
+
+
+
+            );
+          },
+        ),
+      );
+    });
   }
 }

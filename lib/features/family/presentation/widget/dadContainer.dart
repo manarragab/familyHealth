@@ -6,14 +6,14 @@ import 'package:google_fonts/google_fonts.dart';
 class Dadcontainer extends StatefulWidget {
   final int index;
   final String name;
-  final String weight;
+  final String? kind;
   final String time;
   final String? icon;
 
   Dadcontainer({
     super.key,
     required this.name,
-    required this.weight,
+     this.kind,
     required this.time,
     required this.index,
     this.icon,
@@ -31,9 +31,9 @@ class _DadcontainerState extends State<Dadcontainer> {
     return GestureDetector(
       onTap: () {
         controller.choosen(widget.index);
-        if (widget.index == 0) {
-          Get.to(TodatactivityScreen());
-        }
+       
+          Get.to(TodatactivityScreen(name:widget.name ,kind: widget.kind??"",));
+      
       },
       child: Container(
         margin: const EdgeInsets.all(3),
@@ -59,14 +59,14 @@ class _DadcontainerState extends State<Dadcontainer> {
                     color: CustomColors.darkblue,
                   ),
                 ),
-                Text(
-                  widget.weight,
-                  style: GoogleFonts.almarai(
-                    fontSize: 11,
-                    fontWeight: FontWeight.w700,
-                    color: CustomColors.darkblue,
-                  ),
-                ),
+                // Text(
+                //   widget.weight??"",
+                //   style: GoogleFonts.almarai(
+                //     fontSize: 11,
+                //     fontWeight: FontWeight.w700,
+                //     color: CustomColors.darkblue,
+                //   ),
+                // ),
               ],
             ),
             const SizedBox(height: 10),

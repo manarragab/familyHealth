@@ -38,6 +38,8 @@ class AddAlarm extends GetView<AlarmController> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: List.generate(AlarmType.values.length, (index) {
+          print("xxxxxxxxxxvvvv  ${ controller.postAlarm.type}");
+
                   return RadioItem(type: AlarmType.values[index]);
                 }),
               ),
@@ -80,13 +82,14 @@ class AddAlarm extends GetView<AlarmController> {
                        
                       CustomDatePicker((date) {
                        // controller.postAlarm.alarmTime = date.stringTime24;
-                        controller.postAlarm.alarmTime =  DateFormat("HH:mm").format(date);
+controller.postAlarm.alarmTime = DateFormat("HH:mm").format(date);
+                        print("rrrrrrrrrrrrrr ${controller.postAlarm.alarmTime}");
                     //    controller.alarmTimeController.text = date.stringTime;
                     controller.alarmTimeController.text =   DateFormat("hh:mm a").format(date);
 
                       }).showTimePicker(context);
                       if(controller.alarmTimeController.text ==null||controller.alarmTimeController.text.isEmpty){
-                        controller.postAlarm.alarmTime = DateFormat("hh:mm a").format(DateTime.now());
+                        controller.postAlarm.alarmTime = DateFormat("hh:mm").format(DateTime.now());
                         controller.alarmTimeController.text = DateFormat("hh:mm a").format(DateTime.now());
                       }
                     },
@@ -123,6 +126,10 @@ class AddAlarm extends GetView<AlarmController> {
                                     controller.medicineStartController.text =
                                         date.stringDate;
                                   }).showDatePicker(context);
+                                   if(controller.medicineStartController.text ==null||controller.medicineStartController.text.isEmpty){
+                        controller.postAlarm.alarmDate = DateFormat("yyyy-MM-dd").format(DateTime.now());
+                        controller.medicineStartController.text = DateFormat("yyyy-MM-dd").format(DateTime.now());
+                      }
                                 },
                               ),
                               const SizedBox(height: 16),
@@ -135,6 +142,10 @@ class AddAlarm extends GetView<AlarmController> {
                                     controller.postAlarm.medicineEndDate = date.stringDate;
                                     controller.medicineEndController.text = date.stringDate;
                                   }).showDatePicker(context);
+                                   if(controller.medicineEndController.text ==null||controller.medicineEndController.text.isEmpty){
+                        controller.postAlarm.alarmDate = DateFormat("yyyy-MM-dd").format(DateTime.now());
+                        controller.medicineEndController.text = DateFormat("yyyy-MM-dd").format(DateTime.now());
+                      }
                                 },
                               ),
                             ],
@@ -203,11 +214,14 @@ class AddAlarm extends GetView<AlarmController> {
                   Center(
                     child: MainButton(
                       onPressed: () {
-                        if (controller.postAlarm.id != null) {
-                          controller.updateAlarm();
-                        } else {
                           controller.addAlarm();
-                        }
+              print("dddddddddddddd  ${controller.postAlarm.alarmTime}");
+
+                        // if (controller.postAlarm.id != null) {
+                        //   controller.updateAlarm();
+                        // } else {
+                        
+                        // }
                       },
                       radius: 10,
                       title: CustomTrans.addAlarm.tr,

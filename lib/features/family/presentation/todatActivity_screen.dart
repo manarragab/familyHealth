@@ -7,6 +7,9 @@ import 'package:abg/features/family/presentation/widget/dadContainer.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 class TodatactivityScreen extends GetView<FamilyController> {
+  final String name;
+  final String kind;
+  const TodatactivityScreen({Key? key, required this.name, required this.kind}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<FamilyController>();
@@ -23,7 +26,7 @@ class TodatactivityScreen extends GetView<FamilyController> {
             children: [
               Center(
                 child: Text(
-                  "My Dad",
+                  kind,
                   style: GoogleFonts.almarai(
                     fontSize: 20,
                     fontWeight: FontWeight.w400,
@@ -72,7 +75,7 @@ class TodatactivityScreen extends GetView<FamilyController> {
                     ),
                     child: Center(
                       child: Text(
-                        "Panadol 500 gm",
+                       name,
                         style: GoogleFonts.almarai(
                           fontSize: 20,
                           fontWeight: FontWeight.w800,
@@ -99,7 +102,7 @@ class TodatactivityScreen extends GetView<FamilyController> {
                   Family data = list[index];
                   return Dadcontainer(
                     name: data.name ?? "",
-                    weight: "500mg",
+                   // kind: "500mg",
                     time: '1:20pm',
                     index: index,
                     icon: index==1? "assets/svg/pinkSign.svg": null,

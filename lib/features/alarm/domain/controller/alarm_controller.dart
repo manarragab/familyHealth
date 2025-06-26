@@ -101,12 +101,10 @@ class AlarmController extends MainGetxController with CustomStateMixin {
     var response = await sl<AlarmCases>().addAlarm(postAlarm);
     loadingGetxController.hideLoading();
     statusError.checkStatus(response, () {
-      
+    
       // PushNotificationsManager().subscribe("alarm-${response.data?.alarmDate}_${response.data?.alarmTime}");
       CustomAlarm().addAlarm(response.data!);
-          //   CustomAlarm().snoozeAlarm( 
-          // response.data!.alarmDate,);
-
+        
       onRefresh();
       Get.back();
     });
@@ -117,6 +115,7 @@ class AlarmController extends MainGetxController with CustomStateMixin {
     var response = await sl<AlarmCases>().deleteAlarm(id);
     loadingGetxController.hideCustomLoading(id.toString());
     statusError.checkStatus(response, () {
+      CustomAlarm().deleteAlarm(model.data!.firstWhere((e) => e.id == id));
       model.data?.removeWhere((e) => e.id == id);
       change(model);
     });

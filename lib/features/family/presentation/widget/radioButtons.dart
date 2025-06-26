@@ -4,14 +4,14 @@ import 'package:abg/features/alarm/domain/controller/alarm_controller.dart';
 import 'package:abg/features/family/domain/controller/family_controller.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class RadioItem extends GetView<AlarmController> {
+class Radiobuttons extends GetView<FamilyController> {
   final AlarmType type;
 
-  const RadioItem({super.key, required this.type});
+  const Radiobuttons({super.key, required this.type});
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<  AlarmController>(
+    return GetBuilder<  FamilyController>(
       
       builder: (controller) {
       sPrint.info('build :: ${controller.selectRadio}');
@@ -19,7 +19,7 @@ class RadioItem extends GetView<AlarmController> {
       return GestureDetector(
         onTap: () {
           controller.selectRadio = type;
-          controller.postAlarm.type = type.name;
+         // controller.postAlarm.type = type.name;
           controller.update();
         },
         child: Row(
@@ -33,8 +33,8 @@ class RadioItem extends GetView<AlarmController> {
               onChanged: (val) {
                 controller.selectRadio = type;
                 print("xxxxxxxxxxxxxxxxxxxxxxxxx  ${ type.name}");
-               controller.postAlarm.type = type.name;
-               print("xxxxxxxxxxxxxxxxxxxxxxxxx  ${ controller.postAlarm.type}");
+               //controller.postAlarm.type = type.name;
+              // print("xxxxxxxxxxxxxxxxxxxxxxxxx  ${ controller.postAlarm.type}");
                 controller.update();
               },
               visualDensity: VisualDensity.compact,

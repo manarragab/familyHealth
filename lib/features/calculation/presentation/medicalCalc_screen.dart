@@ -189,6 +189,11 @@ TextEditingController searchController = TextEditingController();
 //   }
 // }
 
+
+
+
+
+
 class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
   final Calculationcontroller contr = Get.find();
   TextEditingController searchController = TextEditingController();
@@ -246,19 +251,20 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
   }
 
   Widget buildCardItem(Calculators calculator) {
-   // int index = calculators.indexOf(calculator);
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 7),
-      child: CardItem(
-        image: contr.calcImages[0] ?? 'assets/images/bmi.png',
-        title: calculator.displayName ?? 'Name',
-        subTitle: calculator.description ?? 'Description',
-        onPress: () => navigateToPage(calculator),
-        fav: () => handleFavoriteToggle(calculator),
-        isFavourite: calculator.isFavorite ?? false,
-      ),
-    );
-  }
+  int index = calculators.indexOf(calculator); // ← يجيب ترتيب العنصر
+  return Padding(
+    padding: const EdgeInsets.only(bottom: 7),
+    child: CardItem(
+      image: contr.calcImages[index], // ← الصورة المرتبطة بالعنصر
+      title: calculator.displayName ?? 'Name',
+      subTitle: calculator.description ?? 'Description',
+      onPress: () => navigateToPage(calculator),
+      fav: () => handleFavoriteToggle(calculator),
+      isFavourite: calculator.isFavorite ?? false,
+    ),
+  );
+}
+
 
   @override
   Widget build(BuildContext context) {
@@ -315,7 +321,7 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
                         ...List.generate(filteredItems.length, (index) {
                           final item = filteredItems[index];
                           return CardItem(
-                            image: contr.calcImages[index] ?? 'assets/images/BMI.png',
+                            image: contr.calcImages[index] ,
                             title: item.displayName ?? 'Medical Calculators',
                             subTitle: item.description ?? '',
                             onPress: () => navigateToPage(item),

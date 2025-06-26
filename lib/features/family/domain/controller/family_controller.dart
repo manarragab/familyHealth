@@ -1,4 +1,5 @@
 
+import 'package:abg/data/const/enums.dart';
 import 'package:abg/data/const/export.dart';
 import 'package:abg/data/models/family/get_family/family_model.dart';
 import 'package:abg/data/models/family/post_family/post_family_MD.dart';
@@ -8,6 +9,13 @@ import 'package:abg/features/family/domain/cases/family_cases.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class FamilyController extends MainGetxController with CustomStateMixin {
+
+AlarmType? selectRadio;
+
+void selectradio(AlarmType value) {
+    selectRadio = value;
+    update();
+  }
 
 var isSelect=(-1).obs;
 void selected(index){
@@ -46,6 +54,13 @@ TextEditingController familyDiseaseController=TextEditingController();
 TextEditingController nameController=TextEditingController();
 TextEditingController phoneController=TextEditingController();
  RefreshController refreshControllerr = RefreshController();
+ TextEditingController messageController=TextEditingController();
+TextEditingController reminderDateController=TextEditingController();
+TextEditingController reminderTimeController=TextEditingController();
+TextEditingController numbersController=TextEditingController();
+
+List<String> selectedTimes = [];
+
 
 void clearData() {
   postFam = PostFamilyModel();
@@ -55,6 +70,10 @@ void clearData() {
     familyController.clear();
     selectSomeoneController.clear();
     familyDiseaseController.clear();
+    reminderTimeController.clear();
+    reminderDateController.clear();
+    messageController.clear();
+    selectRadio=null;
   }
 
   int _pageNum = 1;
@@ -105,7 +124,6 @@ addFamily()async{
   deleteFamily(int id) async {
   print('Trying to delete ID: $id');
   print('Before deletion: ${famMD.data?.map((e) => e.id).toList()}');
-
   loadingGetxController.showCustomLoading(id.toString());
   var response = await sl<FamilyCases>().deleteFamily(id);
   loadingGetxController.hideCustomLoading(id.toString());
@@ -118,6 +136,31 @@ addFamily()async{
     change(famMD);
   });
 }
+
+List<MedicalType> selectedDiseases = [];
+void reset() {
+  isSelect.value = -1;
+  istapped.value = -1;
+  isChoosen.value = -1;
+  selectedDiseases.clear();
+  familyDiseaseController.clear();
+}
+
+List<String> imagesDiseases=[
+"assets/svg/Bone.svg",
+"assets/svg/Brain.svg",
+"assets/svg/Ear.svg",
+"assets/svg/Eye.svg",
+"assets/svg/Gynecology.svg",
+"assets/svg/Heart.svg",
+"assets/svg/Kidney.svg",
+"assets/svg/Lung.svg",
+"assets/svg/Muscle.svg",
+"assets/svg/Pill.svg",
+"assets/svg/Stomach.svg",
+];
+
+
 
 
 }

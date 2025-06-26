@@ -282,7 +282,7 @@ class CustomPage {
         page: () =>  Homescreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
-          Get.put(HomeController()).onRefresh();
+          Get.put(HomeController());
         })),
 
  GetPage(

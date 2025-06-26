@@ -1,3 +1,4 @@
+import 'package:abg/data/const/export.dart';
 import 'package:abg/data/remote_data/response_model.dart';
 
 class GetFavourites extends ResponseModel<Favourites?> {
