@@ -1,4 +1,5 @@
 // home_banaras_bar
+import 'package:abg/data/const/export.dart';
 import 'package:abg/features/home/presentation/widget/home_banar_item.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -28,14 +29,14 @@ class HomeBanarasBar extends StatelessWidget {
             aspectRatio: 16 / 9,
             enlargeCenterPage: true,
             viewportFraction: 0.99,
+            onPageChanged: (index,_){
+              sPrint.info('index:: $index');
+              getIndex(index);
+            }
           ),
           itemCount: images.length,
           itemBuilder:
               (BuildContext context, int itemIndex, int pageViewIndex) {
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              // executes after build
-              getIndex(itemIndex);
-            });
             return HomeBanarItem(
               imageUrl: images[itemIndex],
             );

@@ -73,7 +73,7 @@ class Homescreen extends GetWidget<HomeController> {
                 const SizedBox(height: 16),
                 Row(
                   children: [
-                    CircleAvatar(
+                CircleAvatar(
                       radius: 22,
                       backgroundColor: Colors.grey.shade200,
                       backgroundImage: authController.user?.image != null
@@ -84,6 +84,7 @@ class Homescreen extends GetWidget<HomeController> {
                           : const AssetImage("assets/images/cheker.png")
                               as ImageProvider,
                     ),
+                   
                     const SizedBox(width: 16),
                     Expanded(
                       child: TextField(
@@ -105,10 +106,11 @@ class Homescreen extends GetWidget<HomeController> {
 
                 controller.obx((state) {
                   HomeModel model = state;
-                    controller.onRefresh();
+                  controller.onRefresh();
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      // Reminders Section
                       const Text(
                         "Reminders",
                         style: TextStyle(
@@ -127,7 +129,6 @@ class Homescreen extends GetWidget<HomeController> {
                               final alarmTime = DateFormat.jm().format(
                                   DateFormat("HH:mm:ss")
                                       .parse(remind.alarmTime));
-
                               return _buildReminderCard(
                                 title: remind.title ?? "",
                                 subtitle: alarmTime,
@@ -150,7 +151,7 @@ class Homescreen extends GetWidget<HomeController> {
                       const SizedBox(height: 16),
 
                       SizedBox(
-                        height: Get.height * 0.20,
+                        height: 125,
                         child: ListView.separated(
                           scrollDirection: Axis.horizontal,
                           itemCount: model.data?.familyReminders?.length ?? 0,

@@ -37,13 +37,7 @@ File? imageUrl;
 //Future<ResponseModel<User?>> get user => sl<AuthCases>().getUserData();
 
 int _page = 1;
-void onInit() {
-//imageUrl = mainController.user?.image;
-//imageUrl=loginModel.data?.image;
-if(imageUrl!=null)
-imageUrl;
-    super.onInit();
-}
+
 
 GetUserData model=GetUserData();
   onRefresh() async {
@@ -53,18 +47,18 @@ GetUserData model=GetUserData();
       controller: refreshController,
       checkIfEmpty: (data) {
         if (data is GetUserData) {
-  if ((data.data?.name ?? '').isEmpty) {
-    data.status = StatusType.empty.index;
-  }
-}
+          if ((data.data?.name ?? '').isEmpty) {
+            data.status = StatusType.empty.index;
+          }
+        }
         return data;
       },
       getPage: (page) => _page = page,
     );
-  //  CustomAlarm().clearAll();
-  //  model.data?.forEach((e) {
-  //    CustomAlarm().addAlarm(e);
-  //  });
+    //  CustomAlarm().clearAll();
+    //  model.data?.forEach((e) {
+    //    CustomAlarm().addAlarm(e);
+    //  });
   }
 
   // @override
@@ -97,31 +91,31 @@ GetUserData model=GetUserData();
   bool startCounting = false;
 
   bool rememberMe = false;
-login() async {
-  sPrint.info('login');
-  loadingGetxController.showLoading();
+  login() async {
+    sPrint.info('login');
+    loadingGetxController.showLoading();
 
-  var response = await sl<AuthCases>()
-      .login(postRegister.email ?? "", postRegister.password ?? "");
+    var response = await sl<AuthCases>()
+        .login(postRegister.email ?? "", postRegister.password ?? "");
 
-  loadingGetxController.hideLoading();
+    loadingGetxController.hideLoading();
 
-  statusError.checkStatus(
-    response,
-    () {
-      loginModel = response as LoginModel; // ✅ خذ الـ data من ResponseModel
-      sPrint.info('response data:: ${response.toJson()}');
-      sPrint.info('login data:: ${loginModel.toJson()}');
-      sl<AuthCases>().setUser(loginModel);
-      Get.offAllNamed(CustomPage.layoutPage);
-    },
-    onError: (msg) {
-      Get.snackbar("خطأ", msg ?? "فشل تسجيل الدخول");
-    },
-  );
-}
+    statusError.checkStatus(
+      response,
+      () {
+        loginModel = response as LoginModel; // ✅ خذ الـ data من ResponseModel
+        sPrint.info('response data:: ${response.toJson()}');
+        sPrint.info('login data:: ${loginModel.toJson()}');
+        sl<AuthCases>().setUser(loginModel);
+        Get.offAllNamed(CustomPage.layoutPage);
+      },
+      onError: (msg) {
+        Get.snackbar("خطأ", msg ?? "فشل تسجيل الدخول");
+      },
+    );
+  }
 
-  
+
   register() async {
     sPrint.info('login');
     // must show loading
@@ -177,7 +171,7 @@ print("User email: ${loginModel.data?.email}");
   getCode({bool moveTo = false}) async {
     sPrint.info('code:: $code');
     loadingGetxController.showLoading();
-    var response = await sl<AuthCases>().getCode(postRegister.email??"");
+    var response = await sl<AuthCases>().getCode(postRegister.email ?? "");
     loadingGetxController.hideLoading();
     return statusError.checkStatus(
       response,
@@ -200,7 +194,8 @@ print("User email: ${loginModel.data?.email}");
 
   checkCode(String code) async {
     loadingGetxController.showLoading();
-    var response = await sl<AuthCases>().checkCode(code, postRegister.email??"");
+    var response =
+        await sl<AuthCases>().checkCode(code, postRegister.email ?? "");
     loadingGetxController.hideLoading();
     statusError.checkStatus(response, () {
       loginModel = response as LoginModel;
@@ -217,8 +212,8 @@ print("User email: ${loginModel.data?.email}");
 
   void setPassword() async {
     loadingGetxController.showLoading();
-    var response =
-        await sl<AuthCases>().resetPassord(password: postRegister.password??"");
+    var response = await sl<AuthCases>()
+        .resetPassord(password: postRegister.password ?? "");
     loadingGetxController.hideLoading();
     statusError.checkStatus(response, () {
       Get.offAllNamed(CustomPage.loginPage);
@@ -226,7 +221,10 @@ print("User email: ${loginModel.data?.email}");
   }
 
   void updateMyAccountScreen() {
-    postRegister = PostRegister(name: user?.name ?? "",email: user?.email ?? "",phone:user?.phone ?? "" );
+    postRegister = PostRegister(
+        name: user?.name ?? "",
+        email: user?.email ?? "",
+        phone: user?.phone ?? "");
   }
 
   void updateProfileImage(File file) async {
@@ -247,12 +245,12 @@ print("User email: ${loginModel.data?.email}");
   void updateProfile() async {
     loadingGetxController.showProgress();
     var response = await sl<AuthCases>().editProfile(PostEditProfile(
-        name: postRegister.name ?? "",
+      name: postRegister.name ?? "",
       email: postRegister.email ?? "",
       phone: postRegister.phone ?? "",
       dateOfBirth: postRegister.dateOfBirth ?? DateTime.now(),
       password: postRegister.password ?? "",
-      gender: postRegister.gender??"",
+      gender: postRegister.gender ?? "",
       image: postRegister.image,
     ));
     loadingGetxController.hideLoading();
