@@ -105,7 +105,6 @@ class Homescreen extends GetWidget<HomeController> {
 
                 controller.obx((state) {
                   HomeModel model = state;
-                    controller.onRefresh();
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -247,7 +246,7 @@ class Homescreen extends GetWidget<HomeController> {
                           (index) {
                         return MyGroupCard(data: model.data!.groups![index]);
                       }),
-                      
+
                       if (model.data?.banners?.isNotEmpty ?? false)
                         const SizedBox(height: 16),
                       if (model.data?.banners?.isNotEmpty ?? false)
