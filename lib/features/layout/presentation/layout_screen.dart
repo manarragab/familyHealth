@@ -1,7 +1,10 @@
 import 'package:abg/features/auth/domain/cases/auth_case.dart';
+import 'package:abg/features/family/domain/controller/family_controller.dart';
 import 'package:abg/features/family/presentation/family_screen.dart';
+import 'package:abg/features/home/domain/controller/home_controller.dart';
 import 'package:abg/features/home/presentation/home_screen.dart';
 import 'package:abg/features/layout/domain/controller/layout_controller.dart';
+import 'package:abg/features/pills/domain/controller/pils_controller.dart';
 import 'package:abg/features/pills/presentation/pills_screen.dart';
 import 'package:abg/features/profile/presentation/myProfile_screen.dart';
 import 'package:abg/res/configuration/print_types.dart';
@@ -18,12 +21,12 @@ class LayoutScreen extends GetView<LayoutController> {
     Homescreen(),
     PillsScreen(),
     // const Scaffold(),
-    FamilyScreen(),
+   const FamilyScreen(),
     MyprofileScreen(),
   ];
 
   Widget getNavigationBar(int index) {
-/*    switch (index) {
+    switch (index) {
       case 0:
         Get.put(HomeController()).onRefresh();
         break;
@@ -33,7 +36,7 @@ class LayoutScreen extends GetView<LayoutController> {
       case 2:
         Get.put(FamilyController()).onRefresh();
         break;
-    }*/
+    }
 
     //   if (index == 2) {
     //     if (serviceController.model.data?.isEmpty ?? true) {

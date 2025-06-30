@@ -1,5 +1,6 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/family/domain/controller/family_controller.dart';
+import 'package:abg/features/family/presentation/profileFamily_screen.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class GreycontainerItem extends GetWidget<FamilyController>  {
@@ -86,13 +87,24 @@ class GreycontainerItem extends GetWidget<FamilyController>  {
                 child: SvgPicture.asset("assets/svg/delete.svg")),
              const SizedBox(height:22),
            
-              // Text(
-              //     "Details",
-              //     style: GoogleFonts.almarai(
-              //         fontSize: 10,
-              //         fontWeight: FontWeight.w400,
-              //         color: CustomColors.darkpinky),
-              //   ),
+              GestureDetector(
+                onTap: (){
+                  Get.to(ProfilefamilyScreen(
+
+                    age: age,
+                    image: image,
+                    kind: kind,
+                    title: name,
+                  ));
+                },
+                child: Text(
+                    "Details",
+                    style: GoogleFonts.almarai(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w400,
+                        color: CustomColors.darkpinky),
+                  ),
+              ),
             ],
           ); 
 

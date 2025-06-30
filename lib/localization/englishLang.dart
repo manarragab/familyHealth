@@ -95,7 +95,7 @@ Map<String, String> en = {
   CustomTrans.notification: 'Notifications',
   CustomTrans.confirm: "Confirm",
   CustomTrans.save: "Save",
-  CustomTrans.favorite: 'tFavorite',
+  CustomTrans.favorite: 'Favorite',
   CustomTrans.payment: 'Payment',
   CustomTrans.home: 'Home',
   CustomTrans.myOrder: 'orders',
@@ -808,7 +808,6 @@ PeriodType.Other.name:"Other",
   CustomTrans.resetPassword: 'Reset Password',
   CustomTrans.enterTheNewPassword: 'Enter the new password',
   CustomTrans.Areyousureyouwanttodeletehabittracking: 'Are you sure you deleted Habit Breaker?',
-
 
 CustomTrans.dueDateCalc:"Due date calculator",
 CustomTrans.calculatingPregnancy:"Calculating pregnancy helps estimate the baby’s expected due date (EDD) so you can prepare in advance.",

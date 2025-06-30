@@ -11,6 +11,7 @@ class FamilyContainer extends StatefulWidget {
   bool? isTaken;
   final String image;
   final int index;
+  final List<String>? medicalRecords;
 
   FamilyContainer(
       {super.key,
@@ -22,7 +23,8 @@ class FamilyContainer extends StatefulWidget {
       this.whenGetIT,
       this.time,
       this.isTaken,
-      required this.image});
+      required this.image,
+      this.medicalRecords});
 
   @override
   State<FamilyContainer> createState() => _FamilyContainerState();
@@ -44,7 +46,7 @@ class _FamilyContainerState extends State<FamilyContainer> {
           });
         },
         child: Container(
-          padding: const EdgeInsets.all(12),
+          padding: const EdgeInsets.symmetric(horizontal: 10 , vertical: 8),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(12),
             color: Colors.grey[100],
@@ -92,21 +94,51 @@ class _FamilyContainerState extends State<FamilyContainer> {
                 ],
               ),
               const SizedBox(height: 8),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    widget.title ?? "",
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  //  const SizedBox(width: 8),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   children: [
+              //     Text(
+              //       widget.title ?? "",
+              //       style: const TextStyle(fontWeight: FontWeight.bold),
+              //     ),
+              //     //  const SizedBox(width: 8),
 
-                  Text(
-                    widget.dosage ?? "",
-                    style: const TextStyle(color: Colors.grey),
-                  ),
-                ],
+              //     Text(
+              //       widget.dosage ?? "",
+              //       style: const TextStyle(color: Colors.grey),
+              //     ),
+              //   ],
+              // ),
+
+             if (widget.medicalRecords != null && widget.medicalRecords!.isNotEmpty)
+  SizedBox(
+    height: 50, // ✅ الارتفاع الثابت المطلوب
+    child: SingleChildScrollView(
+      scrollDirection: Axis.vertical,
+      child: Column(
+        
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: widget.medicalRecords!.map((record) {
+          return Container(
+            margin: const EdgeInsets.only(bottom: 5),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+            decoration: BoxDecoration(
+              color: Colors.green.withOpacity(0.1),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Center(
+              child: Text(
+                record,
+                style: const TextStyle(fontSize: 12, color: Colors.green),
               ),
+            ),
+          );
+        }).toList(),
+      ),
+    ),
+  ),
+
+
               const SizedBox(height: 8),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

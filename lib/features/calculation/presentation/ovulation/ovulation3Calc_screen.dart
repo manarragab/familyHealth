@@ -33,7 +33,7 @@ class _Ovulation3calcScreenState extends State<Ovulation3calcScreen> {
           children: [
             Pinkcontainer(
               title: CustomTrans.ovulation.tr,
-              image: "assets/images/girl.png",
+              image:  "assets/images/ballon.png",
               widg: Column(
                 children: [
                   SizedBox(
@@ -61,20 +61,19 @@ class _Ovulation3calcScreenState extends State<Ovulation3calcScreen> {
               ),
             ),
             SizedBox(
-              height: 30,
+              height: 50,
             ),
-            Container(
-              margin: EdgeInsets.symmetric(horizontal: 15),
-              child: Whitecontainer(
-                image: 'assets/images/pregnant.png',
-                title: CustomTrans.yourEstimatedDueDateIs.tr,
-                subTitle: "$dueDate   (After $duration Days)",
-                col: CustomColors.lightgrey5,
-              ),
-            ),
-            SizedBox(
-              height: 15,
-            ),
+            
+            // Container(
+            //   margin: EdgeInsets.symmetric(horizontal: 15),
+            //   child: Whitecontainer(
+            //     image: 'assets/images/pregnant.png',
+            //     title: CustomTrans.yourEstimatedDueDateIs.tr,
+            //     subTitle: "$dueDate   (After $duration Days)",
+            //     col: CustomColors.lightgrey5,
+            //   ),
+            // ),
+            
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

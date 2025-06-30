@@ -180,6 +180,7 @@ class Remote {
     );
   }
 
+
   Future<ResponseModel<String?>> uploadProfileImage(File file) async {
     return _helper.post<String?>({
       "image": await MultipartFile.fromFile(file.path),
@@ -192,6 +193,7 @@ class Remote {
       return ResponseModel.fromJson(data.toJson());
     }, useFormData: true, isLogin: true);
   }
+
 
   Future<ResponseModel<LoginData?>> editProfile(PostEditProfile profile) async {
     return _helper.post<LoginData?>(await profile.toJson(),

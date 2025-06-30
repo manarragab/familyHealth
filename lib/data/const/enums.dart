@@ -45,22 +45,27 @@ enum InterestType { moreInterest, interest }
 
 enum AlarmType { reminder, medicine, appointment }
 
+enum ReminderType { medicine, reminder, appointment }
+
 enum FamilyType { SeeAll , MySon ,Mum, Dad , MyDauther, Husband  }
 
 enum MedicalType {
   HeartDisease,
   BrainDisease,
+  EarDisease,
   StomachDisease,
   LungDisease,
   KidneyDisease,
   LiverDisease,
   SkinDisease,
   EyeDisease,
+  GynecologyDisease,
   BoneDisease,
   BloodDisease,
   DentalDisease,
   MentalHealth,
   Diabetes,
+  BloodPressure,
   ThyroidDisease,
   Cancer,
   ImmuneDisorder,
@@ -73,6 +78,7 @@ enum MedicalType {
   UrinaryDisease,
   EndocrineDisorder,
   MuscularDisorder,
+  PillDisease,
 }
 
 enum SelectSomeone { A , B , C}

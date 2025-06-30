@@ -69,12 +69,14 @@ class HomeData {
       json['groups'].forEach((v) {
         groups?.add(Groups.fromJson(v));
       });
+      groups?.sort((a, b) => a.order!.compareTo(b.order!));
     }
     banners = [];
     if (json['banners'] != null) {
       json['banners'].forEach((v) {
         banners?.add(Banners.fromJson(v));
       });
+      banners?.sort((a, b) => a.order!.compareTo(b.order!));
     }
   }
   List<Reminders>? reminders;

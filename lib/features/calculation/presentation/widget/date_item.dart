@@ -84,7 +84,6 @@ class _DateItemState extends State<DateItem> {
                     DateFormat('yyyy-MM-dd').format(date);
               }
                 controller.update([widget.id]);
-
 // controller.postTracker.date = DateFormat('yyyy-MM-dd')
 //     .format(DateTime.now().subtract(const Duration(days: 1)));
               },

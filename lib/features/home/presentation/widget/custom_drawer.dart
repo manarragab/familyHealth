@@ -1,4 +1,3 @@
-
 import 'package:abg/data/const/export.dart';
 import 'package:abg/data/remote_data/core.dart';
 import 'package:abg/features/auth/domain/cases/auth_case.dart';
@@ -21,39 +20,32 @@ class CustomDrawer extends GetView<AuthController> {
                 padding: EdgeInsets.zero,
                 child: Stack(
                   children: [
-
-                       Image.asset(
-                            "assets/images/drawer_header.png",
-                            fit: BoxFit.fill,
-                            width: Get.width,
-                          ),
+                    Image.asset(
+                      "assets/images/drawer_header.png",
+                      fit: BoxFit.fill,
+                      width: Get.width,
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(top: 15.0),
                       child: ListTile(
-                        leading:  
-  CircleAvatar(
-    radius: 25,
-    backgroundColor: Colors.grey.shade200,
-    backgroundImage:  authController.user?.image !=
-                                                  null
-                                              ? NetworkImage(
-                                                  authController.user?.image ??
-                                                      "")
-                                           //   : authController.imageUrl != null
-                                                  // ? NetworkImage(
-                                                  //     authController.imageUrl!)
-                                                  :  const AssetImage("assets/images/cheker.png") as ImageProvider,
-  ),
-
+                        leading: CircleAvatar(
+                          radius: 25,
+                          backgroundColor: Colors.grey.shade200,
+                          backgroundImage: authController.user?.image != null
+                              ? NetworkImage(authController.user?.image ?? "")
+                              // ? NetworkImage(
+                              : const AssetImage("assets/images/cheker.png")
+                                  as ImageProvider,
+                        ),
                         title: Text(
                           // sl<AuthCases>().getUser()?.data?.name ?? "",
 //authController.namee??"",
-                          authController.user?.name??"",
-                              // sl<AuthCases>().getUser()?.data?.name ?? "",
+                          authController.user?.name ?? "",
+                          // sl<AuthCases>().getUser()?.data?.name ?? "",
                           style: TFonts.textTitleWhiteStyle(),
                         ),
                         subtitle: Text(
-                           authController.user?.phone?? "",
+                          authController.user?.phone ?? "",
                           style: TFonts.textBodyWhiteStyle,
                         ),
                       ),
@@ -72,11 +64,17 @@ class CustomDrawer extends GetView<AuthController> {
                       e.onTap?.call();
                     },
                     leading: CircleAvatar(
-                      backgroundColor:
-                          const Color(0xff30495E).withOpacity(0.85),
+                      backgroundColor: e.name == CustomTrans.logout.tr
+                          ? Colors.white
+                          : const Color(0xff30495E).withOpacity(0.85),
                       child: SvgPicture.asset(e.image!),
                     ),
-                    title: Text(e.name ?? ""),
+                    title: Text(
+                      e.name ?? "",
+                    ),
+                    textColor: e.name == CustomTrans.logout.tr
+                        ? Colors.red
+                        : Colors.black,
                   ),
                 )
                 .toList(),
@@ -122,12 +120,12 @@ class CustomDrawer extends GetView<AuthController> {
         }),
     DrawerItem(
         image: "assets/svg/liberary.svg", name: "My Liberary", onTap: () {}),
-    DrawerItem(image: "assets/svg/bills.svg", name: "Pills", onTap: () {
-                Get.toNamed(CustomPage.pillsPage);
-
-    }),
-
-    
+    DrawerItem(
+        image: "assets/svg/bills.svg",
+        name: "Pills",
+        onTap: () {
+          Get.toNamed(CustomPage.pillsPage);
+        }),
     DrawerItem(
         image: "assets/svg/doctor.svg", name: "Talk To Doctor", onTap: () {}),
     DrawerItem(
@@ -139,6 +137,12 @@ class CustomDrawer extends GetView<AuthController> {
     DrawerItem(
         image: "assets/svg/settings.svg", name: "Settings", onTap: () {}),
     DrawerItem(image: "assets/svg/support.svg", name: "Support", onTap: () {}),
+    DrawerItem(
+        image: "assets/svg/exit2.svg",
+        name: CustomTrans.logout.tr,
+        onTap: () {
+          Get.put(AuthController()).logOut();
+        }),
   ];
 }
 

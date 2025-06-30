@@ -124,7 +124,9 @@ class CustomTextField {
   }
 
   static Widget numberTextField(
+  
     Function(String value) onChange, {
+    TextEditingController? controller,
     String hint = '',
     Widget? prefixIcon,
   }) {
@@ -132,7 +134,9 @@ class CustomTextField {
       mainAxisSize: MainAxisSize.min,
       children: [
        TextFormField(
-              keyboardType: TextInputType.multiline,
+        controller: controller,
+        
+              keyboardType: TextInputType.number,
               inputFormatters: [CustomFormatter.onlyDouble()],
               validator: (value) => TValidator.normalValidator(value?.trim()),
               onChanged: (x) => onChange(replaceArabicNumber(x.trim())),

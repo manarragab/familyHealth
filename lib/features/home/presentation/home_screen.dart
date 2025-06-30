@@ -26,6 +26,7 @@ class Homescreen extends GetWidget<HomeController> {
   Widget build(BuildContext context) {
     AuthController authController = Get.find<AuthController>();
     FamilyController familyController = Get.put(FamilyController());
+    controller.onRefresh();
     return Scaffold(
       key: scaffoldKey,
       appBar: CustomAppBar.homeAppBar(
@@ -72,21 +73,17 @@ class Homescreen extends GetWidget<HomeController> {
                 const SizedBox(height: 16),
                 Row(
                   children: [
-                CircleAvatar(
+                    CircleAvatar(
                       radius: 22,
                       backgroundColor: Colors.grey.shade200,
-                      backgroundImage:  authController.user?.image !=
-                                                  null
-                                              ? NetworkImage(
-                                                  authController.user?.image ??
-                                                      "")
-                                              // : authController.imageUrl != null
-                                              //     ? NetworkImage(
-                                              //         authController.imageUrl!)
-                                                  : const AssetImage("assets/images/cheker.png")
+                      backgroundImage: authController.user?.image != null
+                          ? NetworkImage(authController.user?.image ?? "")
+                          // : authController.imageUrl != null
+                          //     ? NetworkImage(
+                          //         authController.imageUrl!)
+                          : const AssetImage("assets/images/cheker.png")
                               as ImageProvider,
                     ),
-                   
                     const SizedBox(width: 16),
                     Expanded(
                       child: TextField(
@@ -108,10 +105,10 @@ class Homescreen extends GetWidget<HomeController> {
 
                 controller.obx((state) {
                   HomeModel model = state;
+                    controller.onRefresh();
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Reminders Section
                       const Text(
                         "Reminders",
                         style: TextStyle(
@@ -130,6 +127,7 @@ class Homescreen extends GetWidget<HomeController> {
                               final alarmTime = DateFormat.jm().format(
                                   DateFormat("HH:mm:ss")
                                       .parse(remind.alarmTime));
+
                               return _buildReminderCard(
                                 title: remind.title ?? "",
                                 subtitle: alarmTime,
@@ -152,7 +150,7 @@ class Homescreen extends GetWidget<HomeController> {
                       const SizedBox(height: 16),
 
                       SizedBox(
-                        height: 125,
+                        height: Get.height * 0.20,
                         child: ListView.separated(
                           scrollDirection: Axis.horizontal,
                           itemCount: model.data?.familyReminders?.length ?? 0,
@@ -168,7 +166,10 @@ class Homescreen extends GetWidget<HomeController> {
                               relation: remind.relative ?? "",
                               image: remind.image ?? "",
                               whenGetIT: remind.phone ?? "",
-                              dosage: remind.familyRecords?[0].type ?? "",
+                              medicalRecords: remind.familyRecords
+                                  ?.map((e) => e.type ?? "")
+                                  .where((e) => e.isNotEmpty)
+                                  .toList(),
                             );
                           },
                         ),
@@ -246,6 +247,7 @@ class Homescreen extends GetWidget<HomeController> {
                           (index) {
                         return MyGroupCard(data: model.data!.groups![index]);
                       }),
+                      
                       if (model.data?.banners?.isNotEmpty ?? false)
                         const SizedBox(height: 16),
                       if (model.data?.banners?.isNotEmpty ?? false)

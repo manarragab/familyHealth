@@ -2,10 +2,10 @@ import 'package:abg/data/const/export.dart';
 import 'package:abg/data/models/family/get_family/family_model.dart';
 import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
 import 'package:abg/features/family/domain/controller/family_controller.dart';
+import 'package:abg/features/family/presentation/add_reminders.dart';
 import 'package:abg/features/family/presentation/addfamily_screen.dart';
 import 'package:abg/features/family/presentation/widget/greyContainer_item.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
-import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class MyfamilyScreen extends GetView<FamilyController> {
    MyfamilyScreen({super.key});
@@ -30,7 +30,7 @@ class MyfamilyScreen extends GetView<FamilyController> {
       id: fam.id.toString(),
         showLoadingOnly: true,
         child: GreycontainerItem(
-     key: ValueKey(fam.id),
+          key: ValueKey(fam.id),
           image: fam.image ?? "",
           name: fam.name ?? "",
           kind: fam.relative ?? "",
@@ -38,6 +38,7 @@ class MyfamilyScreen extends GetView<FamilyController> {
           onDelete: () async {
             await controller.deleteFamily(fam.id!);
           },
+          
         ),
       );
     },

@@ -1,10 +1,8 @@
 import 'package:abg/data/const/export.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class DiseaseCard extends StatelessWidget{
 
+class DiseaseCard extends StatelessWidget {
   final String image;
   final String disease;
 
@@ -13,37 +11,33 @@ class DiseaseCard extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Container(
-     width:90 ,
-height: 90,
-decoration: BoxDecoration(
-  borderRadius: BorderRadius.circular(10)
-),
+      
+      margin: const EdgeInsets.symmetric(horizontal: 4),
       child: Card(
-color: CustomColors.grey0,
-  child: Container(
-   // margin: EdgeInsets.all(5),
-    child: Column(children: [
-      Image.asset(image , height: 60),
-    
- 
-      Flexible(
-        child: Text(disease ,style: GoogleFonts.almarai(
-         
-            
-          fontSize: disease.length > 10 ? 10:  disease.length > 15 ? 7 :12,
-          fontWeight: FontWeight.w700
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        color: CustomColors.grey0,
+        child: Padding(
+          padding: const EdgeInsets.all(6),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset(image, height: 40, color: Colors.green),
+              const SizedBox(height: 6),
+              Text(
+                disease,
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: GoogleFonts.almarai(
+                  fontSize: 10,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.black,
+                ),
+              ),
+            ],
+          ),
         ),
-        maxLines: 1,
-        ),
-      )
-    
-    ],),
-  ),
       ),
     );
   }
-
-
-
-  
 }

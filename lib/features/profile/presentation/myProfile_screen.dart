@@ -71,7 +71,7 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                     Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: List.generate(
-                          authController.postRegister.gender == "male"
+                          authController.user?.gender == "male"
                               ? profileController.texts.length - 1
                               : profileController.texts.length, (index) {
                         return GestureDetector(
@@ -225,52 +225,7 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                 );
               }),
 
-              // Family List
-              // controller.obx((state) {
-              //   FamilyModel fam = state;
-              //   List<Family> list = fam.data ?? [];
-              //   return SizedBox(
-              //     height: 80,
-              //     child: SmartRefresher(
-              //       controller: refreshController,
-              //       onRefresh: () async {
-              //         await controller.onRefresh();
-              //         refreshController.refreshCompleted();
-              //       },
-              //       child: ListView.builder(
-              //         scrollDirection: Axis.horizontal,
-              //         itemCount: list.length,
-              //         itemBuilder: (context, index) {
-              //           final info = list[index];
-              //           return Container(
-              //             margin: const EdgeInsets.all(8),
-              //             child: Dadcontainer(
-              //               key: ValueKey(index),
-              //               index: index,
-              //               name: info.name ?? "",
-              //               weight: '500mg',
-              //               time: '1:20pm',
-              //             ),
-              //           );
-              //         },
-              //       ),
-              //     ),
-              //   );
-              // }),
-
-              const SizedBox(height: 20),
-
-              // Logout Button
-              Center(
-                child: MainButton(
-                  onPressed: () => Get.to(ProfileScreen()),
-                  backgroundColor: Colors.redAccent,
-                  width: Get.width * 2 / 3,
-                  radius: 10,
-                  title: CustomTrans.logOut.tr,
-                  fontSize: 24,
-                ),
-              ),
+             
             ],
           ),
         ),
