@@ -9,7 +9,7 @@ class CustomLauncher {
     return launcher.canLaunchUrl(url);
   }
 
-  Future<void> launchInBrowser(Uri url) async {
+ static Future<void> launchInBrowser(Uri url) async {
     if (!await launchUrl(
       url,
       mode: LaunchMode.externalApplication,
@@ -18,7 +18,7 @@ class CustomLauncher {
     }
   }
 
-  Future<void> launchInWebViewOrVC(Uri url) async {
+ static Future<void> launchInWebViewOrVC(Uri url) async {
     if (!await launchUrl(
       url,
       mode: LaunchMode.inAppWebView,

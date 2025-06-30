@@ -1,17 +1,17 @@
 // home_banaras_bar
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/home/presentation/widget/home_banar_item.dart';
+import 'package:abg/res/configuration/open_url/launch_url.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/material.dart';
-import 'package:get/state_manager.dart';
 import 'dot_item.dart';
 
 class HomeBanarasBar extends StatelessWidget {
   final List<String> images;
-
+final List<String> redirectURL;
   HomeBanarasBar({
     Key? key,
     required this.images,
+    required this.redirectURL,
   }) : super(key: key);
 
   final getIndex = 0.obs;
@@ -37,8 +37,13 @@ class HomeBanarasBar extends StatelessWidget {
           itemCount: images.length,
           itemBuilder:
               (BuildContext context, int itemIndex, int pageViewIndex) {
-            return HomeBanarItem(
-              imageUrl: images[itemIndex],
+            return GestureDetector(
+              onTap: (){
+           CustomLauncher.launchInBrowser(Uri.parse(redirectURL[itemIndex]));
+              },
+              child: HomeBanarItem(
+                imageUrl: images[itemIndex],
+              ),
             );
           },
         ),

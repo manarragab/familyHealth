@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:abg/data/const/export.dart';
 import 'package:abg/data/models/alarm/get_alarms/alarm_model.dart';
 import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
@@ -53,9 +51,9 @@ class AlarmScreen extends GetView<AlarmController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ...List.generate(list.length, (index) {
-                    AlarmData alarm = list[index];
-      final  alarmTime = DateFormat.jm().format(DateFormat("HH:mm").parse(alarm.alarmTime));         
-                    return LoadingOverLay(
+                     AlarmData alarm = list[index];
+                     final alarmTime = DateFormat.jm().format(DateFormat("HH:mm").parse(alarm.alarmTime));         
+                     return LoadingOverLay(
                       showLoadingOnly: true,
                       id: alarm.id.toString(),
                       child: AlarmItem(

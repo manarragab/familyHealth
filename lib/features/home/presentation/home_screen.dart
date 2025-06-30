@@ -25,7 +25,6 @@ class Homescreen extends GetWidget<HomeController> {
   @override
   Widget build(BuildContext context) {
     AuthController authController = Get.find<AuthController>();
-    FamilyController familyController = Get.put(FamilyController());
     controller.onRefresh();
     return Scaffold(
       key: scaffoldKey,
@@ -37,7 +36,7 @@ class Homescreen extends GetWidget<HomeController> {
           }
         },
         onNotificationPress: () {
-          //  Get.toNamed(CustomPage.notificationPage);
+        // Get.toNamed(CustomPage.notificationPage);
         },
       ),
       drawer: CustomDrawer(),
@@ -67,10 +66,10 @@ class Homescreen extends GetWidget<HomeController> {
                     ),
                     const Spacer(),
                     CustomImage.asset("assets/svg/emojis.svg",
-                        height: 50, width: 70, fit: BoxFit.fitWidth)
+                        height: 80, width: 100, fit: BoxFit.fitWidth)
                   ],
                 ),
-                const SizedBox(height: 16),
+              //  const SizedBox(height: 16),
                 Row(
                   children: [
                     CircleAvatar(
@@ -78,9 +77,7 @@ class Homescreen extends GetWidget<HomeController> {
                       backgroundColor: Colors.grey.shade200,
                       backgroundImage: authController.user?.image != null
                           ? NetworkImage(authController.user?.image ?? "")
-                          // : authController.imageUrl != null
-                          //     ? NetworkImage(
-                          //         authController.imageUrl!)
+                          
                           : const AssetImage("assets/images/cheker.png")
                               as ImageProvider,
                     ),
@@ -105,7 +102,7 @@ class Homescreen extends GetWidget<HomeController> {
 
                 controller.obx((state) {
                   HomeModel model = state;
-                    controller.onRefresh();
+                  //controller.onRefresh();
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -116,6 +113,7 @@ class Homescreen extends GetWidget<HomeController> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
+                      
                       const SizedBox(height: 16),
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
@@ -254,8 +252,10 @@ class Homescreen extends GetWidget<HomeController> {
                         HomeBanarasBar(
                             images: model.data?.banners
                                     ?.map((e) => e.image ?? "")
-                                    .toList() ??
-                                []),
+                                    .toList() ?? [],
+                                 redirectURL:  model.data?.banners
+                                    ?.map((e) => e.redirectUrl ?? "")
+                                    .toList() ?? [],),
 
                       const SizedBox(height: 16),
                       if (false)

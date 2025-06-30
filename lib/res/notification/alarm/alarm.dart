@@ -128,12 +128,13 @@ deleteAlarm(AlarmData alarm) async {
         //   body: alarm.description ?? "",
         // );
       } else {
+        
         stopAndroidAlarm(
           alarm.id!.toInt(),
           alarm.userId!.toInt(),
           start,
           end,
-          hour,
+          hour,    
           minute,
          
         );
