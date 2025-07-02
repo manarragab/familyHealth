@@ -145,10 +145,6 @@ deleteAlarm(AlarmData alarm) async {
     }
   }
 
-
-
-
-
   startAndroidAlarm(
     int id,
     int userID,
@@ -199,9 +195,6 @@ deleteAlarm(AlarmData alarm) async {
     sPrint.success('end alarm');
   }
 
-
-
-
  stopAndroidAlarm(
     int id,
     int userID,
@@ -223,10 +216,6 @@ count=count+1;
   }
 
 
-
-
-
-
   void getAllAlarms() {
     sPrint.info('get all alarm');
     Alarm.getAlarms().asStream().listen((value) {
@@ -243,10 +232,12 @@ void stopAlarm(int id){
   Alarm.stop(id);
 }
 
-
-
-  
 }
+
+
+
+
+
 
 // import 'dart:io';
 // import 'package:abg/data/const/export.dart';

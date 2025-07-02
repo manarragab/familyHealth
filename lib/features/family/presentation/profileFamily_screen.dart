@@ -33,6 +33,26 @@ class ProfilefamilyScreen extends StatefulWidget {
 class _ProfilefamilyScreenState extends State<ProfilefamilyScreen> {
   RefreshController refreshController = RefreshController();
   FamilyController control = Get.find();
+// bool _isFirst = true;
+
+// @override
+// void didChangeDependencies() {
+//   super.didChangeDependencies();
+//   if (_isFirst) {
+//     _isFirst = false;
+//     control.onInit(); // re-fetches your data
+//   }
+// }
+
+@override
+void initState() {
+  super.initState();
+  WidgetsBinding.instance.addPostFrameCallback((_) {
+    control.onRefresh(); // reliable even after hot reload
+  });
+}
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +89,7 @@ class _ProfilefamilyScreenState extends State<ProfilefamilyScreen> {
               _buildMedicalRecordTitle(),
               const SizedBox(height: 12),
               _buildDiseaseListForName(widget.title??""),
-              const SizedBox(height: 50),
+              const SizedBox(height: 20),
               Image.asset("assets/images/health.png")
             ],
           );
@@ -140,7 +160,50 @@ class _ProfilefamilyScreenState extends State<ProfilefamilyScreen> {
                   },
                   child: icons("assets/svg/phone.svg"),
                 ),
-                icons("assets/svg/alarmIcon.svg"),
+
+
+
+                InkWell(
+                  onTap: (){
+                   Get.dialog(
+                    AlertDialog(
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))  ,
+icon: CustomImage.asset("assets/images/all.png",height: 100,width: 100,),
+content: Text("Sending a reminder notification about the medication appointment",
+textAlign: TextAlign.center,
+              style: GoogleFonts.almarai(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w400,
+                  color: CustomColors.darkblue)),
+                  actions: [
+                   Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                       MainButton(onPressed: (){},
+                    title: "Send",
+                    radius: 7,
+                    width: Get.width/3.3,
+                    height: 30,
+                    ),
+                     MainButton(onPressed: (){
+                      Get.back();
+                     },
+                    title: "Cancel",
+                    textColor: CustomColors.redd,
+                    radius: 7,
+                    width: Get.width/3.3,
+                    backgroundColor: Colors.white,
+                    borderColor: CustomColors.redd,
+                    height: 30,
+                    ),
+                    ],
+                   ),
+                   SizedBox(height: 10,),
+                  ],
+                    )
+                   ) ;
+                  },
+                  child: icons("assets/svg/alarmIcon.svg")),
               ],
             ),
           ),
@@ -180,7 +243,7 @@ class _ProfilefamilyScreenState extends State<ProfilefamilyScreen> {
         controller: refreshController,
         onRefresh: () async {
           await control.onRefresh();
-          refreshController.refreshCompleted();
+        //  refreshController.refreshCompleted();
         },
         child: ListView.builder(
           scrollDirection: Axis.horizontal,
@@ -217,7 +280,7 @@ class _ProfilefamilyScreenState extends State<ProfilefamilyScreen> {
   Widget _buildDiseaseListForName(String name) {
     HomeController controller = Get.find();
 
-    return controller.obx((state) {
+      return controller.obx((state) {
       HomeModel model = state;
 
       final remind = model.data?.familyReminders?.firstWhere(
@@ -241,22 +304,31 @@ class _ProfilefamilyScreenState extends State<ProfilefamilyScreen> {
           itemBuilder: (context, index) {
             return DiseaseCard(
               disease: diseases[index],
-              image: diseases[index]== MedicalType.BoneDisease.name?control.imagesDiseases[0] :
-              
+              image: diseases[index]== MedicalType.BoneDisease.name?control.imagesDiseases[0] : 
               diseases[index]== MedicalType.BrainDisease.name?control.imagesDiseases[1] :
               diseases[index]== MedicalType.EarDisease.name?control.imagesDiseases[2] :
               diseases[index]== MedicalType.EyeDisease.name?control.imagesDiseases[3] :
               diseases[index]== MedicalType.GynecologyDisease.name?control.imagesDiseases[4] :
               diseases[index]== MedicalType.HeartDisease.name?control.imagesDiseases[5] :
-
              diseases[index]== MedicalType.KidneyDisease.name?control.imagesDiseases[6] :
              diseases[index]== MedicalType.LungDisease.name?control.imagesDiseases[7] :
              diseases[index]== MedicalType.MuscularDisorder.name?control.imagesDiseases[8] :
              diseases[index]== MedicalType.PillDisease.name?control.imagesDiseases[9] :
-             diseases[index]== MedicalType.StomachDisease.name?control.imagesDiseases[10] 
-:""
-
-
+             diseases[index]== MedicalType.StomachDisease.name?control.imagesDiseases[10] :
+              diseases[index]== MedicalType.LiverDisease.name?control.imagesDiseases[11] :
+              diseases[index]== MedicalType.Diabetes.name?control.imagesDiseases[12] :
+              diseases[index]== MedicalType.DentalDisease.name?control.imagesDiseases[13] :
+              diseases[index]== MedicalType.DigestiveDisease.name?control.imagesDiseases[14] :
+              diseases[index]== MedicalType.EndocrineDisorder.name?control.imagesDiseases[15] :
+              diseases[index]== MedicalType.ImmuneDisorder.name?control.imagesDiseases[16] :
+              diseases[index]== MedicalType.InfectiousDisease.name?control.imagesDiseases[17] :
+              diseases[index]== MedicalType.NeurologicalDisorder.name?control.imagesDiseases[18] :
+              diseases[index]== MedicalType.MentalHealth.name?control.imagesDiseases[19] :
+              diseases[index]== MedicalType.PillDisease.name?control.imagesDiseases[20] :
+              diseases[index]== MedicalType.ReproductiveDisease.name?control.imagesDiseases[21] :
+              diseases[index]== MedicalType.SkinDisease.name?control.imagesDiseases[22] :
+              diseases[index]== MedicalType.ThyroidDisease.name?control.imagesDiseases[23] :
+              diseases[index]== MedicalType.UrinaryDisease.name?control.imagesDiseases[24] :"",
 
 
             );

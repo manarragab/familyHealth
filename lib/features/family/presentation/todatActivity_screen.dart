@@ -94,18 +94,17 @@ class TodatactivityScreen extends GetView<FamilyController> {
                   crossAxisCount: 2,
                   mainAxisExtent: 60,
                   mainAxisSpacing: 3,
-                   
-
+                  
                 ),
                 itemCount: list.length,
                 itemBuilder: (context, index) {
                   Family data = list[index];
                   return Dadcontainer(
                     name: data.name ?? "",
-                   // kind: "500mg",
+                    // kind: "500mg",
                     time: '1:20pm',
                     index: index,
-                    icon: index==1? "assets/svg/pinkSign.svg": null,
+                    icon: index == 1 ? "assets/svg/pinkSign.svg": null,
                   );
                 },
               ),

@@ -436,15 +436,6 @@ class AddfamilyScreen extends GetView<FamilyController> {
                           fontWeight: FontWeight.w400,
                         ),
                       ),
-
-                      //      const SizedBox(
-                      //   height: 23,
-                      // ),
-                      // InkWell(
-                      //   onTap: (){
-                      //     Get.to(FamilyScreen());
-                      //   },
-                      //   child: const Text("family" , style: TextStyle(color: Colors.blue),)),
                     ],
                   ),
                 ),

@@ -27,7 +27,7 @@ import 'package:abg/features/calculation/presentation/ovulation/ovulation2Calc_s
 import 'package:abg/features/calculation/presentation/ovulation/ovulation3Calc_screen.dart';
 import 'package:abg/features/calculation/presentation/ovulation/ovulationCalc_screen.dart';
 import 'package:abg/features/family/domain/controller/family_controller.dart';
-import 'package:abg/features/family/presentation/family_screen.dart';
+import 'package:abg/features/family/presentation/addfamily_screen.dart';
 import 'package:abg/features/family/presentation/myfamily_screen.dart';
 import 'package:abg/features/followUp/domain/controller/followUp_controller.dart';
 import 'package:abg/features/followUp/presentation/followUp_screen.dart';
@@ -57,25 +57,24 @@ class CustomPage {
         name: loginPage,
         page: () => LoginScreen(),
         transition: Transition.fadeIn,
-        binding: BindingsBuilder((){
+        binding: BindingsBuilder(() {
           Get.put(AuthController()).clearData();
         })),
     GetPage(
         name: registerScreen,
         page: () => SignUpScreen(),
         transition: Transition.fadeIn,
-        binding: BindingsBuilder((){
+        binding: BindingsBuilder(() {
           Get.put(AuthController()).clearData();
         })),
     GetPage(
         name: layoutPage,
         page: () => LayoutScreen(),
         transition: Transition.fadeIn,
-        binding: BindingsBuilder((){
+        binding: BindingsBuilder(() {
           GetBinding();
           Get.put(LayoutController()).changeNavBarIndex(0);
         })),
-       
     GetPage(
         name: splashPage,
         page: () => const Splash(),
@@ -116,229 +115,198 @@ class CustomPage {
         binding: BindingsBuilder(() {
           Get.put(AlarmController()).onRefresh();
         })),
-         GetPage(
+    GetPage(
         name: myFamily,
         page: () => MyfamilyScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
-        Get.put(FamilyController()).onRefresh();
+          Get.put(FamilyController()).onRefresh();
         })),
-          GetPage(
+    GetPage(
         name: followUp,
-        page: () =>   FollowupScreen(),
+        page: () => FollowupScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
-        Get.put(FollowupController());
+          Get.put(FollowupController());
         })),
-
-         GetPage(
+    GetPage(
         name: progressTracker,
-        page: () =>   ProgresstrackerScreen(),
+        page: () => ProgresstrackerScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
-        Get.put(ProgresstrackerController());
+          Get.put(ProgresstrackerController());
         })),
-
-  GetPage(
+    GetPage(
         name: calculation,
-        page: () =>  MedicalcalcScreen(),
+        page: () => MedicalcalcScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller()).onRefresh();
         })),
-
-         GetPage(
+    GetPage(
         name: diabetes2Page,
-        page: () =>  Diabetes2Screen(),
+        page: () => Diabetes2Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
-
-         GetPage(
+    GetPage(
         name: diabetes1Page,
-        page: () =>  Diabetes1Screen(),
+        page: () => Diabetes1Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
-
-          GetPage(
+    GetPage(
         name: diabetes3Page,
-        page: () =>  Diabetes3Screen(),
+        page: () => Diabetes3Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
-        })), 
-        
-         GetPage(
+        })),
+    GetPage(
         name: diabetes4Page,
-        page: () =>  Diabetes4Screen(),
+        page: () => Diabetes4Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
-        
-        
-          GetPage(
+    GetPage(
         name: diabetes5Page,
-        page: () =>  Diabetes5Screen(),
+        page: () => Diabetes5Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
-        })), 
-        
-         GetPage(
+        })),
+    GetPage(
         name: diabetes6Page,
-        page: () =>  Diabetes6Screen(),
+        page: () => Diabetes6Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
-        })), 
-        
-         GetPage(
+        })),
+    GetPage(
         name: diabetes7Page,
-        page: () =>  Diabetes7Screen(),
+        page: () => Diabetes7Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
-        })), 
-        
-         GetPage(
+        })),
+    GetPage(
         name: diabetes8Page,
-        page: () =>  Diabetes8Screen(),
+        page: () => Diabetes8Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
-
- GetPage(
+    GetPage(
         name: dueDatePage,
-        page: () =>  DuedateScreen(),
+        page: () => DuedateScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
-
-
-        
- GetPage(
+    GetPage(
         name: ibsPage1,
-        page: () =>  Ibscalc1Screen(),
+        page: () => Ibscalc1Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
-
-
-        
-        
- GetPage(
+    GetPage(
         name: ibsPage2,
-        page: () =>  Ibscalc2Screen(),
+        page: () => Ibscalc2Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
-        
- GetPage(
+    GetPage(
         name: ibsPage3,
-        page: () =>  Ibscalc3Screen(),
+        page: () => Ibscalc3Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
-
-
-         GetPage(
+    GetPage(
         name: ibsPage4,
         page: () => Ibscalc4Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
-        })), 
-        
-        
-        GetPage(
+        })),
+    GetPage(
         name: ibsPage5,
-        page: () =>  Ibscalc5Screen(),
+        page: () => Ibscalc5Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
-
-
-        GetPage(
+    GetPage(
         name: ibsPage6,
         page: () => Ibscalc6Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
-
-
-        GetPage(
+    GetPage(
         name: homePage,
-        page: () =>  Homescreen(),
+        page: () => Homescreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(HomeController());
         })),
-
- GetPage(
+    GetPage(
         name: ovulatePage,
-        page: () =>  OvulationcalcScreen(),
+        page: () => OvulationcalcScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
-       
-
-        GetPage(
+    GetPage(
         name: caloriePage,
-        page: () =>  CaloriecalcScreen(),
+        page: () => CaloriecalcScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
-
-          GetPage(
+    GetPage(
         name: waterPage,
-        page: () =>  WatercalcScreen(),
+        page: () => WatercalcScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
-       
-  GetPage(
+    GetPage(
         name: pillsPage,
-        page: () =>  PillsScreen(),
+        page: () => PillsScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
-         Get.put(PilsController());
+          Get.put(PilsController());
         })),
-
-
-  GetPage(
+    GetPage(
         name: ovulatePage2,
-        page: () =>  Ovulation2calcScreen(),
+        page: () => Ovulation2calcScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
-         Get.put(Calculationcontroller());
+          Get.put(Calculationcontroller());
         })),
-
- GetPage(
+    GetPage(
         name: ovulatePage3,
-        page: () =>  Ovulation3calcScreen(),
+        page: () => Ovulation3calcScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
-         Get.put(Calculationcontroller());
+          Get.put(Calculationcontroller());
         })),
-
-
-        
+    GetPage(
+        name: addFamilyPage,
+        page: () => AddfamilyScreen(),
+        transition: Transition.fadeIn,
+        binding: BindingsBuilder(() {
+          Get.put(Calculationcontroller());
+        })),
   ];
 
+  static String addFamilyPage = '/addFamilyPage';
   static String pillsPage = '/pillsPage';
   static String caloriePage = '/caloriePage';
   static String waterPage = '/waterPage';
@@ -353,46 +321,30 @@ class CustomPage {
   // static String otpPage = '/otp';
   static const String loginPage = '/login';
   static const String notificationPage = '/notification';
-
   static String onBoardPage = "/on_board";
-
   static String registerScreen = "/register";
   static String mainVerifyAccountScreen = "/main_verify_account_screen";
-
   static String myAlarm = "/my_alarm_page";
-  static String calculation="/calculation";
-
-    static String myFamily = "/family_page";
-        static String followUp = "/follow_up_page";
-          static String progressTracker = "/progress_tracker_page";
-
-
-
-    static String diabetes1Page="/diabetes1";
-    static String diabetes2Page="/diabetes2";
-    static String diabetes3Page="/diabetes3";
-    static String diabetes4Page="/diabetes4";
-    static String diabetes5Page="/diabetes5";
-    static String diabetes6Page="/diabetes6";
-    static String diabetes7Page="/diabetes7";
-    static String diabetes8Page="/diabetes8";
-
-    static String dueDatePage="/duedate";
-
-    static String ibsPage1="/ibsPage1";
-
-    static String ibsPage2="/ibsPage2";
-    static String ibsPage3="/ibsPage3";
-    static String ibsPage4="/ibsPage4";
-    static String ibsPage5="/ibsPage5";
-    static String ibsPage6="/ibsPage6";
-
-    static String ovulatePage1="/ovulatePage1";
-    static String ovulatePage2="/ovulatePage2";
-        static String ovulatePage3="/ovulatePage3";
-
-
-
-
-
+  static String calculation = "/calculation";
+  static String myFamily = "/family_page";
+  static String followUp = "/follow_up_page";
+  static String progressTracker = "/progress_tracker_page";
+  static String diabetes1Page = "/diabetes1";
+  static String diabetes2Page = "/diabetes2";
+  static String diabetes3Page = "/diabetes3";
+  static String diabetes4Page = "/diabetes4";
+  static String diabetes5Page = "/diabetes5";
+  static String diabetes6Page = "/diabetes6";
+  static String diabetes7Page = "/diabetes7";
+  static String diabetes8Page = "/diabetes8";
+  static String dueDatePage = "/duedate";
+  static String ibsPage1 = "/ibsPage1";
+  static String ibsPage2 = "/ibsPage2";
+  static String ibsPage3 = "/ibsPage3";
+  static String ibsPage4 = "/ibsPage4";
+  static String ibsPage5 = "/ibsPage5";
+  static String ibsPage6 = "/ibsPage6";
+  static String ovulatePage1 = "/ovulatePage1";
+  static String ovulatePage2 = "/ovulatePage2";
+  static String ovulatePage3 = "/ovulatePage3";
 }

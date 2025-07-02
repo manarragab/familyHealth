@@ -145,8 +145,6 @@ class CustomTextField {
                 hintText: hint,
               ),
             ),
-
-
       ],
     );
   }

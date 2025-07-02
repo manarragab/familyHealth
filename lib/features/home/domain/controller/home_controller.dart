@@ -7,6 +7,7 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class HomeController extends MainGetxController with CustomStateMixin {
   RefreshController refreshController = RefreshController();
+  TextEditingController searchController = TextEditingController();
 LoginModel loginModel=LoginModel();
   HomeModel model = HomeModel();
   int _page = 1;

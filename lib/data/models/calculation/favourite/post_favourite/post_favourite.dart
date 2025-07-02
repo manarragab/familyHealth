@@ -1,4 +1,3 @@
-import 'package:abg/data/const/enums.dart';
 
 class PostFavourite {
   PostFavourite({required this.name});

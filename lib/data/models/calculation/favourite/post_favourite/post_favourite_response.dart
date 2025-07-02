@@ -25,7 +25,7 @@ class PostFavouriteResponse extends ResponseModel<Favourite?> {
   }
 }
 
-class Favourite  {
+class Favourite {
   String? calculatorName;
   bool? isFavorite;
   String? action;

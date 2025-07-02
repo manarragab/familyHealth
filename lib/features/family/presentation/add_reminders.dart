@@ -1,10 +1,8 @@
 import 'package:abg/data/const/enums.dart';
 import 'package:abg/data/const/export.dart';
-import 'package:abg/features/alarm/presentation/widget/radio_item.dart';
 import 'package:abg/features/family/domain/controller/family_controller.dart';
 import 'package:abg/features/family/presentation/widget/radioButtons.dart';
 import 'package:abg/res/configuration/bottom_sheet/bottom_sheets.dart';
-import 'package:abg/res/configuration/bottom_sheet/date_picker.dart';
 import 'package:abg/res/configuration/image/pick_image.dart';
 import 'package:abg/res/configuration/text_field/text_field.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
@@ -13,13 +11,9 @@ import 'package:google_fonts/google_fonts.dart';
 class AddReminders extends GetWidget<FamilyController> {
   final String? person;
 
-  const AddReminders({
-    Key? key,
-    this.person,
-  }) : super(
-          key: key,
-        );
-  @override
+  const AddReminders({Key? key,this.person,}) : super( key: key,);
+
+    @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar.appBar("add reminder"),
@@ -125,11 +119,9 @@ class AddReminders extends GetWidget<FamilyController> {
                       final formattedEnd =
                           DateFormat("yyyy-MM-dd").format(endDate);
 
-                      // 🟢 عرضهم في الحقل
                       controller.reminderDateController.text =
                           "$formattedStart → $formattedEnd";
 
-                      // 🟢 حفظهم إن احتجتِ
                       //  controller.postAlarm.startDate = formattedStart;
                       //controller.postAlarm.endDate = formattedEnd;
                     },
@@ -145,7 +137,7 @@ class AddReminders extends GetWidget<FamilyController> {
                   //     CustomDatePicker((date) {
                   //       // controller.postAlarm.alarmTime = date.stringTime24;
                   //       // controller.postAlarm.alarmTime =  DateFormat("HH:mm").format(date);
-                  //       //    controller.alarmTimeController.text = date.stringTime;
+                  //       // controller.alarmTimeController.text = date.stringTime;
                   //       controller.reminderTimeController.text =
                   //           DateFormat("hh:mm a").format(date);
                   //     }).showTimePicker(context);
@@ -159,11 +151,12 @@ class AddReminders extends GetWidget<FamilyController> {
                   // ),
 
                   CustomTextField.numberTextField(
-                      controller: controller.numbersController, (val) {
+                      controller: controller.numbersController,
+                       (val) {
                     controller.numbersController.text = val;
                   }, hint: "medicine times numbers"),
-
-                  const SizedBox(height: 16),
+                  
+                  const SizedBox(height: 16),                          
 
                   CustomTextField.datePickerTextField(
                     prefixIconPath: "assets/svg/clock.svg",

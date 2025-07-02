@@ -17,6 +17,7 @@ class GroupModel extends ResponseModel<GroupData?> {
     status = json['status'];
     message = json['message'];
   }
+  
   @override
   GroupData? data;
   @override

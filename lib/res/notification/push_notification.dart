@@ -202,18 +202,18 @@ class LocalNotification {
         start,
         const NotificationDetails(
           android: AndroidNotificationDetails(
-            'daily_alarm_channel', // Channel ID
-            'Daily Alarm Notifications', // Channel Name
+            'daily_alarm_channel', 
+            'Daily Alarm Notifications', 
             importance: Importance.high,
             priority: Priority.high,
-            icon: '@mipmap/ic_launcher', // ✅ Ensure this is set properly
-            sound: RawResourceAndroidNotificationSound('alarm'), // Custom sound
+            icon: '@mipmap/ic_launcher',
+            sound: RawResourceAndroidNotificationSound('alarm'), 
           ),
         ),
         uiLocalNotificationDateInterpretation:
         UILocalNotificationDateInterpretation.absoluteTime,
         androidScheduleMode:
-        AndroidScheduleMode.alarmClock, // Ensures it repeats daily
+        AndroidScheduleMode.alarmClock, 
       );
       count = count + 1;
       start = start.add(const Duration(days: 1));

@@ -1,8 +1,6 @@
 
 import 'package:abg/data/remote_data/response_model.dart';
 
-import 'post_diabetes_MD.dart';
-
 class PostDiabetesResponse extends ResponseModel<Diabetes?>{
   Diabetes? data;
   num? status;

@@ -32,17 +32,6 @@ void choosen(index){
   isChoosen.value=index;
 }
 
-List<String> disease=[
-  "Heart Disease" ,"Brain Disease" , "Stomach Disease" ,"Lung Disease" ,"Lung Disease"
-];
-
-List<String> images=[
-  "assets/images/heart.png",
-    "assets/images/brain.png",
-  "assets/images/stomach.png",
-  "assets/images/lung.png",  "assets/images/lung.png",
-];
-
   FamilyModel famMD = FamilyModel();
   PostFamilyModel postFam =PostFamilyModel();
   RefreshController ref = RefreshController();
@@ -53,13 +42,20 @@ TextEditingController selectSomeoneController=TextEditingController();
 TextEditingController familyDiseaseController=TextEditingController();
 TextEditingController nameController=TextEditingController();
 TextEditingController phoneController=TextEditingController();
- RefreshController refreshControllerr = RefreshController();
- TextEditingController messageController=TextEditingController();
+RefreshController refreshControllerr = RefreshController();
+TextEditingController messageController=TextEditingController();
 TextEditingController reminderDateController=TextEditingController();
 TextEditingController reminderTimeController=TextEditingController();
 TextEditingController numbersController=TextEditingController();
 
 List<String> selectedTimes = [];
+
+
+@override
+void onInit() {
+  super.onInit();
+  onRefresh();
+}
 
 
 void clearData() {
@@ -103,7 +99,6 @@ addFamily()async{
     statusError.checkStatus(response, () {
       onRefresh();
       Get.back();
-     
       print("hhhhhhhhhhhhhh ${postFam.relative}");
         print(
       "Selected Medical Record: ${postFam.medicalRecord}");
@@ -140,24 +135,38 @@ addFamily()async{
 List<MedicalType> selectedDiseases = [];
 void reset() {
   isSelect.value = -1;
-  istapped.value = -1;
+  //istapped.value = -1;
   isChoosen.value = -1;
   selectedDiseases.clear();
   familyDiseaseController.clear();
 }
 
 List<String> imagesDiseases=[
-"assets/svg/Bone.svg",
-"assets/svg/Brain.svg",
-"assets/svg/Ear.svg",
-"assets/svg/Eye.svg",
-"assets/svg/Gynecology.svg",
-"assets/svg/Heart.svg",
-"assets/svg/Kidney.svg",
-"assets/svg/Lung.svg",
-"assets/svg/Muscle.svg",
-"assets/svg/Pill.svg",
-"assets/svg/Stomach.svg",
+"assets/images/bone.png",
+"assets/images/brain.png",
+"assets/images/ear.png",
+"assets/images/eye.png",
+"assets/images/genycology.png",
+"assets/images/heart.png",
+"assets/images/kidney.png",
+"assets/images/lung.png",
+"assets/images/muscle.png",
+"assets/images/pill.png",
+"assets/images/stomach.png",
+"assets/images/liver.png",
+"assets/images/diabetess.png",
+"assets/images/dental.png",
+"assets/images/digestive.png",
+"assets/images/endocrine.png",
+"assets/images/immune.png",
+"assets/images/infections.png",
+"assets/images/neurological.png",
+"assets/images/mental.png",
+"assets/images/pill.png",
+"assets/images/reproductive.png",
+"assets/images/skin.png",
+"assets/images/thyroid.png",
+"assets/images/urinary.png",
 ];
 
 

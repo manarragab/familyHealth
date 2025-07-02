@@ -26,7 +26,7 @@ class AlarmController extends MainGetxController with CustomStateMixin {
   TextEditingController medicineStartController = TextEditingController();
   TextEditingController medicineEndController = TextEditingController();
   String? imageUrl;
-
+  bool firstTime = true;
   int _page = 1;
 
   void clearData() {
@@ -75,6 +75,7 @@ class AlarmController extends MainGetxController with CustomStateMixin {
     Get.to(() => const AddAlarm(), transition: Transition.fadeIn);
   }
 
+
   onRefresh() async {
     model = await refreshData(
       model: model,
@@ -90,10 +91,13 @@ class AlarmController extends MainGetxController with CustomStateMixin {
       },
       getPage: (page) => _page = page,
     );
-  //  CustomAlarm().clearAll();
-  //  model.data?.forEach((e) {
-  //    CustomAlarm().addAlarm(e);
-  //  });
+    if (firstTime) {
+      CustomAlarm().clearAll();
+      firstTime = false;
+      model.data?.forEach((e) {
+        CustomAlarm().addAlarm(e);
+      });
+    }
   }
 
 
@@ -103,7 +107,10 @@ class AlarmController extends MainGetxController with CustomStateMixin {
     loadingGetxController.hideLoading();
     statusError.checkStatus(response, () {
       // PushNotificationsManager().subscribe("alarm-${response.data?.alarmDate}_${response.data?.alarmTime}");
-      CustomAlarm().addAlarm(response.data!);
+     // CustomAlarm().addAlarm(response.data!);
+      //   CustomAlarm().snoozeAlarm(
+      // response.data!.alarmDate,);
+
       onRefresh();
       Get.back();
     });
@@ -114,7 +121,6 @@ class AlarmController extends MainGetxController with CustomStateMixin {
     var response = await sl<AlarmCases>().deleteAlarm(id);
     loadingGetxController.hideCustomLoading(id.toString());
     statusError.checkStatus(response, () {
-      CustomAlarm().deleteAlarm(model.data!.firstWhere((e) => e.id == id));
       model.data?.removeWhere((e) => e.id == id);
       change(model);
     });

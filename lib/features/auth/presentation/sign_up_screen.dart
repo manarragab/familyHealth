@@ -49,86 +49,85 @@ class SignUpScreen extends GetWidget<AuthController> {
                     fontSize: 16, fontWeight: TFontWights.regular),
               ),
               CustomPadding.heightButton,
-                GetBuilder<AuthController>(builder: (logic) {
-                    return GestureDetector(
-                      onTap: () async {
-                      final pickedFile = await Pick.pickImage(context); 
-                        if (pickedFile != null) {
-                          controller.postRegister.image = pickedFile;
-                         
-                        controller.update();
-                      }
-                      },
-                      child: Stack(
-                        children: [
-                          Container(
-                            width: 382,
-                            height: 306.17,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              border: Border.all(
-                                  width: 0.5, color: CustomColors.lightBlue2),
-                            ),
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10),
-                             child: 
-                              controller.postRegister.image != null
-                                  ? Image.file(controller.postRegister.image!,
-                                      fit: BoxFit.cover)
-                                   : Image.asset("assets/images/cheker.png",
-                                          fit: BoxFit.cover),
+              GetBuilder<AuthController>(builder: (logic) {
+                return GestureDetector(
+                  onTap: () async {
+                    final pickedFile = await Pick.pickImage(context);
+                    if (pickedFile != null) {
+                      controller.postRegister.image = pickedFile;
+
+                      controller.update();
+                    }
+                  },
+                  child: Stack(
+                    children: [
+                      Container(
+                        width: 382,
+                        height: 306.17,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(
+                              width: 0.5, color: CustomColors.lightBlue2),
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10),
+                          child: controller.postRegister.image != null
+                              ? Image.file(controller.postRegister.image!,
+                                  fit: BoxFit.cover)
+                              : Image.asset("assets/images/cheker.png",
+                                  fit: BoxFit.cover),
+                        ),
+                      ),
+                      if (controller.postRegister.image == null)
+                        Positioned.fill(
+                          child: Center(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                SvgPicture.asset("assets/svg/camera.svg",
+                                    width: 45, height: 40),
+                                const SizedBox(height: 8),
+                                Text("Add Photo",
+                                    style: GoogleFonts.almarai(
+                                        fontSize: 16,
+                                        color: CustomColors.darkBlue2,
+                                        fontWeight: FontWeight.w700)),
+                              ],
                             ),
                           ),
-                         if (controller.postRegister.image == null )
-                            Positioned.fill(
-                              child: Center(
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    SvgPicture.asset("assets/svg/camera.svg",
-                                        width: 45, height: 40),
-                                    const SizedBox(height: 8),
-                                    Text("Add Photo",
-                                        style: GoogleFonts.almarai(
-                                            fontSize: 16,
-                                            color: CustomColors.darkBlue2,
-                                            fontWeight: FontWeight.w700)),
-                                  ],
-                                ),
-                              ),
-                            ),
-                        ],
-                      ),
-                    );
-                  }),
+                        ),
+                    ],
+                  ),
+                );
+              }),
               CustomPadding.heightButton,
-
-
               CustomTextField.nameTextField(
-  (value) {
-    controller.postRegister.name = value;
-    print("name: ${controller.postRegister.name}");
-  },
-  controller: controller.nameController,
-),
-
-
+                (value) {
+                  controller.postRegister.name = value;
+                  print("name: ${controller.postRegister.name}");
+                },
+                controller: controller.nameController,
+              ),
               CustomPadding.smallHeight,
               CustomTextField.datePickerTextField(
                   controller: controller.dateController,
-                isRequired: true, 
+                  isRequired: true,
                   prefixIconPath: "assets/svg/clender.svg",
                   hint: CustomTrans.dateOfBirth.tr,
-                  onDatePickerPress: () { 
+                  onDatePickerPress: () {
                     CustomDatePicker((date) {
                       controller.postRegister.dateOfBirth = date;
                       controller.dateController.text = date.stringDate;
                       print("date: ${controller.postRegister.dateOfBirth}");
                     }).showDatePicker(context);
-                    if(controller.dateController.text ==null||controller.dateController.text.isEmpty){
-                        controller.postRegister.dateOfBirth = DateFormat("yyyy-MM-dd").format(DateTime.now()) as DateTime?;
-                        controller.dateController.text = DateFormat("yyyy-MM-dd").format(DateTime.now());
-                      }      
+                    if (controller.dateController.text == null ||
+                        controller.dateController.text.isEmpty) {
+                      controller.postRegister.dateOfBirth =
+                          DateFormat("yyyy-MM-dd").format(DateTime.now())
+                              as DateTime?;
+                      controller.dateController.text =
+                          DateFormat("yyyy-MM-dd").format(DateTime.now());
+                    }
                   }),
               CustomPadding.smallHeight,
               CustomTextField.emailTextField(
@@ -141,28 +140,24 @@ class SignUpScreen extends GetWidget<AuthController> {
                 (value) => controller.postRegister.phone = value,
               ),
               CustomPadding.smallHeight,
-
-
-              
-       CustomTextField.selectDropDown(
-  (value) {
-    controller.postRegister.gender = value.toString().split('.').last;
-    print("gender: ${controller.postRegister.gender}");
-  return  controller.genderController.text = value;
-  }, 
-  validator: (val){
- if(val==null){
-   return "Gender is required";
- }
-  },
-  hint: "Gender",
-  controller: controller.genderController,
-  allData: Gender.values,
-  getValue: (val) => val.toString().split('.').last,
- 
-),       
-                                        CustomPadding.smallHeight,
-
+              CustomTextField.selectDropDown(
+                (value) {
+                  controller.postRegister.gender =
+                      value.toString().split('.').last;
+                  print("gender: ${controller.postRegister.gender}");
+                  return controller.genderController.text = value;
+                },
+                validator: (val) {
+                  if (val == null) {
+                    return "Gender is required";
+                  }
+                },
+                hint: "Gender",
+                controller: controller.genderController,
+                allData: Gender.values,
+                getValue: (val) => val.toString().split('.').last,
+              ),
+              CustomPadding.smallHeight,
               Obx(() {
                 return CustomTextField.passwordTextField(
                   (value) => controller.postRegister.password = value,
@@ -175,15 +170,12 @@ class SignUpScreen extends GetWidget<AuthController> {
               CustomPadding.smallHeight,
               Obx(() {
                 return CustomTextField.passwordTextField(
-                  (value) => {
-                  
-                  },
+                  (value) => {},
                   isVisible: hideConfirmPassword.value,
                   changeVisible: () {
                     hideConfirmPassword(!(hideConfirmPassword.value));
                   },
                   validator: (value) {
-                    
                     if (value == null || value.isEmpty) {
                       return CustomTrans.mustHaveValue.tr;
                     }
