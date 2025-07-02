@@ -30,7 +30,7 @@ final List<String> redirectURL;
             enlargeCenterPage: true,
             viewportFraction: 0.99,
             onPageChanged: (index,_){
-              sPrint.info('index:: $index');
+             // sPrint.info('index:: $index');
               getIndex(index);
             }
           ),

@@ -33,27 +33,7 @@ class ProfilefamilyScreen extends StatefulWidget {
 class _ProfilefamilyScreenState extends State<ProfilefamilyScreen> {
   RefreshController refreshController = RefreshController();
   FamilyController control = Get.find();
-// bool _isFirst = true;
-
-// @override
-// void didChangeDependencies() {
-//   super.didChangeDependencies();
-//   if (_isFirst) {
-//     _isFirst = false;
-//     control.onInit(); // re-fetches your data
-//   }
-// }
-
-@override
-void initState() {
-  super.initState();
-  WidgetsBinding.instance.addPostFrameCallback((_) {
-    control.onRefresh(); // reliable even after hot reload
-  });
-}
-
-
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -161,23 +141,21 @@ void initState() {
                   child: icons("assets/svg/phone.svg"),
                 ),
 
-
-
                 InkWell(
                   onTap: (){
                    Get.dialog(
                     AlertDialog(
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20))  ,
-icon: CustomImage.asset("assets/images/all.png",height: 100,width: 100,),
-content: Text("Sending a reminder notification about the medication appointment",
-textAlign: TextAlign.center,
-              style: GoogleFonts.almarai(
+                      icon: CustomImage.asset("assets/images/all.png",height: 100,width: 100,),
+                      content: Text("Sending a reminder notification about the medication appointment",
+                      textAlign: TextAlign.center,
+                  style: GoogleFonts.almarai(
                   fontSize: 18,
                   fontWeight: FontWeight.w400,
                   color: CustomColors.darkblue)),
                   actions: [
                    Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                        MainButton(onPressed: (){},
                     title: "Send",
@@ -242,7 +220,7 @@ textAlign: TextAlign.center,
       child: SmartRefresher(
         controller: refreshController,
         onRefresh: () async {
-          await control.onRefresh();
+         // await control.onRefresh();
         //  refreshController.refreshCompleted();
         },
         child: ListView.builder(

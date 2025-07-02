@@ -74,7 +74,7 @@ void clearData() {
 
   int _pageNum = 1;
 
-  onRefresh() async {
+  onRefreshh() async {
     famMD = await refreshData(
         model: famMD,
         futureMethod: () => sl<FamilyCases>().getFamily(),
@@ -83,14 +83,41 @@ void clearData() {
           if (data is FamilyModel) {
             if (data.data?.isEmpty ?? true) {
               data.status=StatusType.empty.index;
-              
             }
           }
           return data;
         },
-        //load refresh part with part
+        
         getPage: (page) => _pageNum = page);
+        change(famMD, status: RxStatus.success());
+
   }
+
+
+
+  onRefresh() async {
+  famMD = await refreshData(
+    model: famMD,
+    futureMethod: () => sl<FamilyCases>().getFamily(),
+    controller: ref,
+    checkIfEmpty: (data) {
+      if (data is FamilyModel) {
+        if (data.data?.isEmpty ?? true) {
+          data.status = StatusType.empty.index;
+        }
+      }
+      return data;
+    },
+    getPage: (page) => _pageNum = page,
+  );
+
+  if (famMD != null) {
+    change(famMD!, status: RxStatus.success());
+  } else {
+    change(null, status: RxStatus.error("No data received"));
+  }
+}
+
 
 addFamily()async{
   loadingGetxController.showLoading();

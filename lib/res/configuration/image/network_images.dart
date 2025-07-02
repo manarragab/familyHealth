@@ -140,6 +140,13 @@ class CustomImageNetwork extends StatelessWidget {
     return isSVG;
   }
 
+
+// bool isSvgPath(String? path) {
+//   final isSVG = (path ?? "").toLowerCase().endsWith('.svg');
+//   sPrint.warning('isSVG:: $isSVG');
+//   return isSVG;
+// }
+
   bool isLocalPath(String path) {
     return path.startsWith("assets");
   }

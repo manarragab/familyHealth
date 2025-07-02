@@ -12,6 +12,7 @@ import 'package:abg/features/home/presentation/widget/family_container.dart';
 import 'package:abg/features/home/presentation/widget/home_banaras_bar.dart';
 import 'package:abg/res/configuration/text_field/text_field.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
+import 'package:abg/res/router/pages.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'widget/bill_card.dart';
 import 'widget/custom_drawer.dart';
@@ -24,7 +25,6 @@ class Homescreen extends GetWidget<HomeController> {
   @override
   Widget build(BuildContext context) {
     AuthController authController = Get.find<AuthController>();
-    controller.onRefresh();
     return Scaffold(
       key: scaffoldKey,
       appBar: CustomAppBar.homeAppBar(
@@ -35,7 +35,7 @@ class Homescreen extends GetWidget<HomeController> {
           }
         },
         onNotificationPress: () {
-          //  Get.toNamed(CustomPage.notificationPage);
+           Get.toNamed(CustomPage.notificationPage);
         },
       ),
       drawer: CustomDrawer(),
@@ -76,9 +76,6 @@ class Homescreen extends GetWidget<HomeController> {
                       backgroundColor: Colors.grey.shade200,
                       backgroundImage: authController.user?.image != null
                           ? NetworkImage(authController.user?.image ?? "")
-                          // : authController.imageUrl != null
-                          //     ? NetworkImage(
-                          //         authController.imageUrl!)
                           : const AssetImage("assets/images/cheker.png")
                               as ImageProvider,
                     ),
@@ -92,7 +89,6 @@ class Homescreen extends GetWidget<HomeController> {
                         hint: "What are you looking for?",
                         controller: controller.searchController,
                       ),
-                     
                     ),
                   ],
                 ),

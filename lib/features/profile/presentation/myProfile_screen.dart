@@ -4,6 +4,7 @@ import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
 import 'package:abg/features/auth/domain/cases/auth_case.dart';
 import 'package:abg/features/auth/domain/controller/auth_controller.dart';
 import 'package:abg/features/family/domain/controller/family_controller.dart';
+import 'package:abg/features/group/presentation/group_screen.dart';
 import 'package:abg/features/home/domain/controller/home_controller.dart';
 import 'package:abg/features/profile/domain/controller/profile_controller.dart';
 import 'package:abg/features/profile/presentation/profile_screen.dart';
@@ -81,14 +82,17 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                                 Get.toNamed(CustomPage.progressTracker);
                                 break;
                               case 1:
-                                Get.toNamed(CustomPage.dueDatePage);
-                                break;
-                              case 2:
                                 Get.toNamed(CustomPage.myFamily);
                                 break;
-                              case 3:
+                              case 2:
                                 Get.toNamed(CustomPage.pillsPage);
                                 break;
+                              case 3:
+                                Get.to(GroupScreen());
+                                break;
+                              case 4:
+                                Get.toNamed(CustomPage.dueDatePage);
+                                break;            
                             }
                           },
                           child: ColoredContainer(

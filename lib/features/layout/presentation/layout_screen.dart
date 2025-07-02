@@ -21,7 +21,7 @@ class LayoutScreen extends GetView<LayoutController> {
     Homescreen(),
     PillsScreen(),
     // const Scaffold(),
-   const FamilyScreen(),
+    const FamilyScreen(),
     MyprofileScreen(),
   ];
 
@@ -34,6 +34,11 @@ class LayoutScreen extends GetView<LayoutController> {
         Get.put(PilsController());
         break;
       case 2:
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          Get.put(FamilyController()).onRefresh();
+        });
+        break;
+      case 3:
         Get.put(FamilyController()).onRefresh();
         break;
     }
