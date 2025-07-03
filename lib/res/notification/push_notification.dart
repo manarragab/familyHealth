@@ -1,16 +1,15 @@
+import 'package:abg/res/notification/alarm/alarm.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:timezone/timezone.dart' as tz;
 import 'package:url_launcher/url_launcher.dart';
 
 import '../configuration/print_types.dart';
-import 'package:timezone/data/latest_all.dart' as tz;
-import 'package:timezone/timezone.dart' as tz;
-
 
 final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-FlutterLocalNotificationsPlugin();
+    FlutterLocalNotificationsPlugin();
 
 class PushNotificationsManager {
   PushNotificationsManager._();
@@ -55,6 +54,12 @@ class PushNotificationsManager {
             message: message.notification?.body ?? "",
             onReceive: (p0) {},
           );
+        } else if (message.data['type'] != null &&
+            message.data['type'] == 'alarm') {
+          CustomAlarm.showAlarmNotification(
+              title: message.data['title'],
+              message: message.data['body'],
+              id: message.data['id']);
         }
       },
     );
@@ -131,7 +136,7 @@ class LocalNotification {
       FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin,
       void Function(NotificationResponse) onReceive) async {
     var initializationsSettings = const InitializationSettings(
-        android: AndroidInitializationSettings('mipmap/launcher_icon'),
+        android: AndroidInitializationSettings('mipmap/ic_launcher'),
         iOS: DarwinInitializationSettings());
     await flutterLocalNotificationsPlugin.initialize(initializationsSettings,
         onDidReceiveBackgroundNotificationResponse: onReceive,
@@ -147,13 +152,13 @@ class LocalNotification {
     AndroidNotificationDetails androidPlatformChannelSpecifics =
         AndroidNotificationDetails(
       title,
-      'com.benzol.co.benzol.android',
+      'com.mint.android',
       playSound: true,
       //   sound: const RawResourceAndroidNotificationSound('notification'),
       importance: Importance.max,
       priority: Priority.high,
-      icon: '@mipmap/launcher_icon',
-      largeIcon: const DrawableResourceAndroidBitmap('@mipmap/launcher_icon'),
+      icon: '@mipmap/ic_launcher',
+      largeIcon: const DrawableResourceAndroidBitmap('@mipmap/ic_launcher'),
     );
 
     var not = NotificationDetails(
@@ -202,18 +207,17 @@ class LocalNotification {
         start,
         const NotificationDetails(
           android: AndroidNotificationDetails(
-            'daily_alarm_channel', 
-            'Daily Alarm Notifications', 
+            'daily_alarm_channel',
+            'Daily Alarm Notifications',
             importance: Importance.high,
             priority: Priority.high,
             icon: '@mipmap/ic_launcher',
-            sound: RawResourceAndroidNotificationSound('alarm'), 
+            sound: RawResourceAndroidNotificationSound('alarm'),
           ),
         ),
         uiLocalNotificationDateInterpretation:
-        UILocalNotificationDateInterpretation.absoluteTime,
-        androidScheduleMode:
-        AndroidScheduleMode.alarmClock, 
+            UILocalNotificationDateInterpretation.absoluteTime,
+        androidScheduleMode: AndroidScheduleMode.alarmClock,
       );
       count = count + 1;
       start = start.add(const Duration(days: 1));
@@ -221,5 +225,4 @@ class LocalNotification {
     } while (start.isBefore(end) && false);
     sPrint.success('end alarm');
   }
-
 }

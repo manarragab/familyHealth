@@ -6,10 +6,83 @@ import 'package:abg/res/notification/alarm/alarm_permission.dart';
 import 'package:abg/res/notification/push_notification.dart';
 import 'package:alarm/alarm.dart';
 import 'package:alarm/model/volume_settings.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
+@pragma('vm:entry-point')
+void onReceive(NotificationResponse response) {
+  if (response.actionId == 'stop_alarm') {
+    print('Alarm STOP button pressed (BG)');
+    flutterLocalNotificationsPlugin.cancelAll();
+  }
+}
 
 class CustomAlarm {
   AlarmPermissions permissions = AlarmPermissions();
   LocalNotification notification = LocalNotification();
+
+  static init() async {
+    const AndroidInitializationSettings androidInitSettings =
+        AndroidInitializationSettings('@mipmap/ic_launcher');
+
+    const DarwinInitializationSettings iOSInitSettings =
+        DarwinInitializationSettings();
+
+    const InitializationSettings initializationSettings =
+        InitializationSettings(
+      android: androidInitSettings,
+      iOS: iOSInitSettings,
+    );
+
+    await flutterLocalNotificationsPlugin.initialize(
+      initializationSettings,
+      onDidReceiveNotificationResponse: onReceive,
+      onDidReceiveBackgroundNotificationResponse: onReceive,
+    );
+  }
+
+  static Future<void> showAlarmNotification(
+      {required String? title,
+      required String? message,
+      required String? id}) async {
+    const androidDetails = AndroidNotificationDetails(
+      'mintalarm_channel_id',
+      'Alarm Channel',
+      channelDescription: 'Channel for alarm-style notifications',
+      importance: Importance.max,
+      priority: Priority.high,
+      fullScreenIntent: true,
+      playSound: true,
+      sound: RawResourceAndroidNotificationSound('alarm'),
+      // 🚫 Make it non-dismissible
+      ongoing: true,
+      // keeps it pinned
+      autoCancel: false,
+      // don’t auto-dismiss when tapped
+      onlyAlertOnce: false,
+      // allow repeated sound/vibration
+
+      icon: '@mipmap/ic_launcher',
+      category: AndroidNotificationCategory.alarm,
+      actions: <AndroidNotificationAction>[
+        AndroidNotificationAction(
+          'stop_alarm',
+          'STOP',
+          showsUserInterface: true,
+          cancelNotification: true,
+        ),
+      ],
+    );
+
+    const platformDetails = NotificationDetails(android: androidDetails);
+
+    await flutterLocalNotificationsPlugin.show(
+      int.tryParse(id.toString()) ?? 0,
+      title ?? 'Alarm',
+      message ?? 'Wake up!',
+      platformDetails,
+      payload: 'alarm_payload',
+    );
+  }
 
   addAlarm(AlarmData alarm) async {
     sPrint.info('startAlarm');
@@ -77,9 +150,7 @@ class CustomAlarm {
     }
   }
 
-
-
-deleteAlarm(AlarmData alarm) async {
+  deleteAlarm(AlarmData alarm) async {
     sPrint.info('startAlarm');
     bool isCheck = await permissions.checkPermissions();
     if (isCheck) {
@@ -128,15 +199,13 @@ deleteAlarm(AlarmData alarm) async {
         //   body: alarm.description ?? "",
         // );
       } else {
-        
         stopAndroidAlarm(
           alarm.id!.toInt(),
           alarm.userId!.toInt(),
           start,
           end,
-          hour,    
+          hour,
           minute,
-         
         );
       }
     } else {
@@ -195,26 +264,27 @@ deleteAlarm(AlarmData alarm) async {
     sPrint.success('end alarm');
   }
 
- stopAndroidAlarm(
+  stopAndroidAlarm(
     int id,
     int userID,
     DateTime startDate,
     DateTime? endDate,
     int hour,
-    int minute,)
-     async {
+    int minute,
+  ) async {
     sPrint.info("alarm start $hour $minute");
     endDate = endDate ?? startDate;
     int count = 1;
     DateTime date = DateTime(startDate.year, startDate.month, startDate.day,
         hour, minute, startDate.second);
     do {
-      stopAlarm( int.parse("$userID$id$count"),);
-count=count+1;
- } while (date.isBefore(endDate) && count < 10);
+      stopAlarm(
+        int.parse("$userID$id$count"),
+      );
+      count = count + 1;
+    } while (date.isBefore(endDate) && count < 10);
     sPrint.success('end alarm');
   }
-
 
   void getAllAlarms() {
     sPrint.info('get all alarm');
@@ -228,16 +298,11 @@ count=count+1;
   void clearAll() {
     Alarm.stopAll();
   }
-void stopAlarm(int id){
-  Alarm.stop(id);
+
+  void stopAlarm(int id) {
+    Alarm.stop(id);
+  }
 }
-
-}
-
-
-
-
-
 
 // import 'dart:io';
 // import 'package:abg/data/const/export.dart';

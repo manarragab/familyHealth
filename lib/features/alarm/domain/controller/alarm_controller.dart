@@ -9,7 +9,7 @@ import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
 import 'package:abg/domain_data/custom_mixin/mixen_widgets/status_error.dart';
 import 'package:abg/features/alarm/domain/cases/alarm_cases.dart';
 import 'package:abg/features/alarm/presentation/add_alarm.dart';
-import 'package:abg/res/notification/alarm/alarm.dart';
+import 'package:abg/res/notification/push_notification.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class AlarmController extends MainGetxController with CustomStateMixin {
@@ -28,6 +28,12 @@ class AlarmController extends MainGetxController with CustomStateMixin {
   String? imageUrl;
   bool firstTime = true;
   int _page = 1;
+
+  @override
+  void onInit() {
+    LocalNotification().requestAlarmNotification();
+    super.onInit();
+  }
 
   void clearData() {
     postAlarm = PostAlarm();
@@ -75,7 +81,6 @@ class AlarmController extends MainGetxController with CustomStateMixin {
     Get.to(() => const AddAlarm(), transition: Transition.fadeIn);
   }
 
-
   onRefresh() async {
     model = await refreshData(
       model: model,
@@ -91,15 +96,13 @@ class AlarmController extends MainGetxController with CustomStateMixin {
       },
       getPage: (page) => _page = page,
     );
-    if (firstTime) {
-      CustomAlarm().clearAll();
-      firstTime = false;
-      model.data?.forEach((e) {
-        CustomAlarm().addAlarm(e);
-      });
-    }
+    //  if (firstTime) {
+    //    firstTime = false;
+    //    model.data?.forEach((e) {
+    //      CustomAlarm().addAlarm(e);
+    //    });
+    //  }
   }
-
 
   addAlarm() async {
     loadingGetxController.showLoading();
@@ -107,7 +110,7 @@ class AlarmController extends MainGetxController with CustomStateMixin {
     loadingGetxController.hideLoading();
     statusError.checkStatus(response, () {
       // PushNotificationsManager().subscribe("alarm-${response.data?.alarmDate}_${response.data?.alarmTime}");
-     // CustomAlarm().addAlarm(response.data!);
+      //   CustomAlarm().addAlarm(response.data!);
       //   CustomAlarm().snoozeAlarm(
       // response.data!.alarmDate,);
 
@@ -141,7 +144,7 @@ class AlarmController extends MainGetxController with CustomStateMixin {
     statusError.checkStatus(response, () async {
       onRefresh();
       postAlarm.image = null;
-      CustomAlarm().addAlarm(AlarmData.fromJson(await postAlarm.toJson()));
+      //   CustomAlarm().addAlarm(AlarmData.fromJson(await postAlarm.toJson()));
       Get.back();
     });
   }
