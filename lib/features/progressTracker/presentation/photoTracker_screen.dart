@@ -6,6 +6,8 @@ import 'package:abg/features/progressTracker/domain/controller/progressTracker_c
 import 'package:google_fonts/google_fonts.dart';
 
 class PhototrackerScreen extends GetWidget<ProgresstrackerController> {
+  const PhototrackerScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,7 +24,7 @@ class PhototrackerScreen extends GetWidget<ProgresstrackerController> {
                 color: CustomColors.darkblue,
               ),
             ),
-            SizedBox(height: 25),
+            const SizedBox(height: 25),
             MainButton(
               onPressed: () {
                 Get.to(AddphotoScreen());
@@ -32,7 +34,7 @@ class PhototrackerScreen extends GetWidget<ProgresstrackerController> {
               fontSize: 24,
               fontWeight: FontWeight.w400,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ...List.generate(4, (index) {
               return Addphoto();
             }),

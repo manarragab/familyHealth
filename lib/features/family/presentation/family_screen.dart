@@ -1,13 +1,7 @@
 import 'package:abg/data/const/enums.dart';
 import 'package:abg/data/const/export.dart';
 import 'package:abg/data/models/family/get_family/family_model.dart';
-import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
 import 'package:abg/features/family/domain/controller/family_controller.dart';
-import 'package:abg/features/family/presentation/add_reminders.dart';
-import 'package:abg/features/family/presentation/profileFamily_screen.dart';
-import 'package:abg/features/family/presentation/widget/familyType_container.dart';
-import 'package:abg/features/home/presentation/widget/family_container.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class FamilyScreen extends StatefulWidget {

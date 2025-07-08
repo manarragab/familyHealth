@@ -11,11 +11,11 @@ class Postperiod {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["start_date"] = startDate;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["start_date"] = startDate;
     print("start_date: $startDate");
-    _data["period_duration"] = periodDuration;
+    data["period_duration"] = periodDuration;
     print("period_duration: $periodDuration");
-    return _data;
+    return data;
   }
 }

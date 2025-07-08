@@ -24,7 +24,7 @@ class Whitey1container extends StatelessWidget {
             fontWeight: FontWeight.w400,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 4,
         ),
         Container(
@@ -35,7 +35,7 @@ class Whitey1container extends StatelessWidget {
               borderRadius: BorderRadius.circular(10)),
           child: Center(
             child: Text(
-              "${pressure}",
+              "$pressure",
               style: GoogleFonts.almarai(
                 fontSize: 20,
                 color: CustomColors.lighttblue,

@@ -10,12 +10,14 @@ import 'package:get/get.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
 
 class DatecalcScreen extends GetView<Calculationcontroller>{
+  const DatecalcScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar.appBar(CustomTrans.dueDateCalc.tr),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           children: [
             Pinkcontainer(
@@ -26,14 +28,14 @@ class DatecalcScreen extends GetView<Calculationcontroller>{
               image: "assets/images/girl.png",
               widg: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Whitecontainer(
                       image: "assets/images/pregnant.png",
                       title: CustomTrans.expectedBirthDate.tr,
                       subTitle: controller.responseTracker.data?.expectedPregnancyDate??""),
-                  SizedBox(
+                  const SizedBox(
                     height: 11,
                   ),
                   Whitecontainer(
@@ -45,7 +47,7 @@ class DatecalcScreen extends GetView<Calculationcontroller>{
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 35,
             ),
 
@@ -67,7 +69,7 @@ class DatecalcScreen extends GetView<Calculationcontroller>{
                     color: Colors.white,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 5,
                 ),
                 MainButton(
@@ -77,7 +79,7 @@ class DatecalcScreen extends GetView<Calculationcontroller>{
                       },
                   backgroundColor: CustomColors.pink,
                   width: 70,
-                 titleWidget: Icon(Icons.home_outlined ,
+                 titleWidget: const Icon(Icons.home_outlined ,
                  size: 30
                  , color: Colors.white),
                 ),

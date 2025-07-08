@@ -11,6 +11,8 @@ import 'package:abg/features/calculation/presentation/widget/card_item.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class MedicalcalcScreen extends StatefulWidget {
+  const MedicalcalcScreen({super.key});
+
   @override
   State<MedicalcalcScreen> createState() => _MedicalcalcScreenState();
 }

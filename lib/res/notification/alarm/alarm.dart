@@ -259,7 +259,7 @@ class CustomAlarm {
       sPrint.info('alarm:: $userID$id  $count $date');
       count = count + 1;
       sPrint.info(
-          "date.isBefore(endDate) =============> ${date.isBefore(endDate)}  ${date} < ${endDate}");
+          "date.isBefore(endDate) =============> ${date.isBefore(endDate)}  $date < $endDate");
     } while (date.isBefore(endDate) && count < 10);
     sPrint.success('end alarm');
   }
@@ -289,9 +289,9 @@ class CustomAlarm {
   void getAllAlarms() {
     sPrint.info('get all alarm');
     Alarm.getAlarms().asStream().listen((value) {
-      value.forEach((e) {
+      for (var e in value) {
         sPrint.warning(e.toJson());
-      });
+      }
     });
   }
 

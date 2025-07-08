@@ -26,11 +26,11 @@ class _AudiobarState extends State<Audiobar> {
         double currentValue = controller.getValue(widget.KEY);
 
         return Container(
-          padding: EdgeInsets.only(right: 16),
+          padding: const EdgeInsets.only(right: 16),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
+              SizedBox(
                 width: Get.width*0.85,
                 height: 15,
                 child: FlutterSlider(
@@ -53,7 +53,7 @@ class _AudiobarState extends State<Audiobar> {
                     inactiveTrackBarHeight: 15,
                   ),
                   handler: FlutterSliderHandler(                
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                     child: Container(),
                   ),
                 ),

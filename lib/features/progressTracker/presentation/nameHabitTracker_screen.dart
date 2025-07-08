@@ -7,13 +7,15 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:abg/features/progressTracker/domain/controller/progressTracker_controller.dart';
 
 class NamehabittrackerScreen extends GetWidget<ProgresstrackerController> {
+  const NamehabittrackerScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar.appBar(CustomTrans.habitTracker.tr),
       body: ListView(
         children: [
-          Container(
+          SizedBox(
               width: double.infinity,
               child: Image.asset(
                 "assets/images/cheker.png",
@@ -48,7 +50,7 @@ class NamehabittrackerScreen extends GetWidget<ProgresstrackerController> {
                     color: CustomColors.lighttblue,
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 InkWell(
                   child: SvgPicture.asset(
                     "assets/svg/clock.svg",
@@ -63,7 +65,7 @@ class NamehabittrackerScreen extends GetWidget<ProgresstrackerController> {
                     color: CustomColors.lighttblue,
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Image.asset("assets/images/signs.png"),
                 const SizedBox(width: 4),
                 Text(
@@ -77,18 +79,18 @@ class NamehabittrackerScreen extends GetWidget<ProgresstrackerController> {
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Divider(
             thickness: 3,
             color: Colors.grey[200],
           ),
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Row(
               children: [
                 Text(
@@ -99,7 +101,7 @@ class NamehabittrackerScreen extends GetWidget<ProgresstrackerController> {
                     color: CustomColors.lighttblue,
                   ),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Text(
                   "Sunday",
                   style: GoogleFonts.almarai(
@@ -108,7 +110,7 @@ class NamehabittrackerScreen extends GetWidget<ProgresstrackerController> {
                     color: CustomColors.lighttblue,
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Text(
                   "2024/10/01",
                   style: GoogleFonts.almarai(
@@ -120,9 +122,9 @@ class NamehabittrackerScreen extends GetWidget<ProgresstrackerController> {
               ],
             ),
           ),
-          SizedBox(height: 10,),
+          const SizedBox(height: 10,),
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 16),
+            margin: const EdgeInsets.symmetric(horizontal: 16),
             width: double.infinity,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -142,20 +144,20 @@ class NamehabittrackerScreen extends GetWidget<ProgresstrackerController> {
               })
             ],),
           ),
-          SizedBox(height: 15,),
-         Audiobar( KEY: "jj"),
-                   SizedBox(height: 8,),
+          const SizedBox(height: 15,),
+         const Audiobar( KEY: "jj"),
+                   const SizedBox(height: 8,),
 
           Divider(
             thickness: 3,
             color: Colors.grey[200],
           ),
          
-          SizedBox(
+          const SizedBox(
             height: 10,
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Row(
               children: [
                 Text(
@@ -166,7 +168,7 @@ class NamehabittrackerScreen extends GetWidget<ProgresstrackerController> {
                     color: CustomColors.lighttblue,
                   ),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Text(
                   "Sunday",
                   style: GoogleFonts.almarai(
@@ -175,7 +177,7 @@ class NamehabittrackerScreen extends GetWidget<ProgresstrackerController> {
                     color: CustomColors.lighttblue,
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 Text(
                   "2024/10/01",
                   style: GoogleFonts.almarai(
@@ -187,9 +189,9 @@ class NamehabittrackerScreen extends GetWidget<ProgresstrackerController> {
               ],
             ),
           ),
-          SizedBox(height: 10,),
+          const SizedBox(height: 10,),
           Container(
-            margin: EdgeInsets.symmetric(horizontal: 16),
+            margin: const EdgeInsets.symmetric(horizontal: 16),
             width: double.infinity,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -204,9 +206,9 @@ class NamehabittrackerScreen extends GetWidget<ProgresstrackerController> {
               })
             ],),
           ),
-          SizedBox(height: 15,),
-         Audiobar( KEY: "kk"),
-                   SizedBox(height: 8,),
+          const SizedBox(height: 15,),
+         const Audiobar( KEY: "kk"),
+                   const SizedBox(height: 8,),
 
           Divider(
             thickness: 3,

@@ -35,7 +35,7 @@ class AlarmItem extends StatelessWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
+            SizedBox(
               width: 100,
               height: 100,
               child: CustomImage.network(
@@ -103,7 +103,7 @@ class AlarmItem extends StatelessWidget {
                       Text(date,
                           style: const TextStyle(
                               fontSize: 12, color: Colors.black)),
-                     Spacer(),
+                     const Spacer(),
                       InkWell(
                         child: SvgPicture.asset(
                           "assets/svg/clock.svg",

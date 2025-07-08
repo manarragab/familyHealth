@@ -64,7 +64,7 @@ class _DateItemState extends State<DateItem> {
               minDate: DateTime(2000),
               maxDate: DateTime.now(),
               selectedDate: today, // ✅ start with today
-              selectionOverlay: Container(
+              selectionOverlay: SizedBox(
                 width: double.infinity,
                 height: 60,
               ),

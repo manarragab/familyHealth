@@ -36,7 +36,7 @@ class Greencontainer extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 25,
         ),
         Text(
@@ -47,11 +47,11 @@ class Greencontainer extends StatelessWidget {
             fontWeight: FontWeight.w400,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 15,
         ),
         Container(
-          padding: EdgeInsets.only(left: 12 , right: 12,  bottom: 16),
+          padding: const EdgeInsets.only(left: 12 , right: 12,  bottom: 16),
           width: double.infinity,
          
           decoration: BoxDecoration(
@@ -60,7 +60,7 @@ class Greencontainer extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                margin: EdgeInsets.only(top: 25),
+                margin: const EdgeInsets.only(top: 25),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -98,7 +98,7 @@ class Greencontainer extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(top: 15),
+                margin: const EdgeInsets.only(top: 15),
                 child: widg,
               ),
             ],

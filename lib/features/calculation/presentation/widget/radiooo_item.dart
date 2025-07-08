@@ -26,10 +26,10 @@ class RadioooItem extends StatelessWidget {
             },
             activeColor: CustomColors.green1,
             materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
-           visualDensity: VisualDensity(horizontal: -4, vertical: -1.7), 
+           visualDensity: const VisualDensity(horizontal: -4, vertical: -1.7), 
 
           ),
-          SizedBox(
+          const SizedBox(
             width: 5,
           ),
           Text(

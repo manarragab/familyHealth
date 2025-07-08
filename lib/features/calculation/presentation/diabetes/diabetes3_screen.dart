@@ -7,6 +7,8 @@ import 'package:abg/res/router/pages.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Diabetes3Screen extends StatefulWidget {
+  const Diabetes3Screen({super.key});
+
   @override
   State<Diabetes3Screen> createState() => _Diabetes3ScreenState();
 }
@@ -18,7 +20,7 @@ class _Diabetes3ScreenState extends State<Diabetes3Screen> {
     return Scaffold(
         appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: ListView(
             children: [
               Greencontainer(
@@ -29,11 +31,11 @@ class _Diabetes3ScreenState extends State<Diabetes3Screen> {
                
                   widg: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 45,
                       ),
                       DotsbarItem(id: "diabetes3", step: 3),
-                      SizedBox(
+                      const SizedBox(
                         height: 35,
                       ),
                       Text(
@@ -59,7 +61,7 @@ class _Diabetes3ScreenState extends State<Diabetes3Screen> {
           padding: const EdgeInsets.all(20),
           child:  QuestionsItem(
                                 question:
-                                    '${controller.diabetesQuestions[0]}',
+                                    controller.diabetesQuestions[0],
                                 value: controller.diabetesAnswers[0],
                                 onChanged: (val) {
                                   controller.diabetesAnswers[0] = val;
@@ -71,7 +73,7 @@ class _Diabetes3ScreenState extends State<Diabetes3Screen> {
 
 
 
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       MainButton(
@@ -99,7 +101,7 @@ class _Diabetes3ScreenState extends State<Diabetes3Screen> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(

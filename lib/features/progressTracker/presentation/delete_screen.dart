@@ -30,11 +30,11 @@ class Delete extends StatelessWidget {
                           fontSize: 20,
                           color: CustomColors.lighttblue2,
                           fontWeight: FontWeight.w700)),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
                   Container(
-                    margin: EdgeInsets.symmetric(horizontal: 70),
+                    margin: const EdgeInsets.symmetric(horizontal: 70),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [

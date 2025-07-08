@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class Ovulation3calcScreen extends StatefulWidget {
+  const Ovulation3calcScreen({super.key});
+
   @override
   State<Ovulation3calcScreen> createState() => _Ovulation3calcScreenState();
 }
@@ -28,7 +30,7 @@ class _Ovulation3calcScreenState extends State<Ovulation3calcScreen> {
     return Scaffold(
       appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: ListView(
           children: [
             Pinkcontainer(
@@ -36,31 +38,31 @@ class _Ovulation3calcScreenState extends State<Ovulation3calcScreen> {
               image:  "assets/images/ballon.png",
               widg: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Whitecontainer(
                       image: "assets/images/firtility1.png",
                       title: CustomTrans.fertilityPeriod.tr,
                       subTitle: "($startDate)  TO  ($endtDate)"),
-                  SizedBox(
+                  const SizedBox(
                     height: 11,
                   ),
                   Whitecontainer(
                       image: "assets/images/firtility2.png",
                       title: CustomTrans.nextOvulationDate.tr,
-                      subTitle: "$ovulationDate"),
-                  SizedBox(
+                      subTitle: ovulationDate),
+                  const SizedBox(
                     height: 11,
                   ),
                   Whitecontainer(
                       image: "assets/images/menstrual.png",
                       title:CustomTrans.nextPeriodDate.tr,
-                      subTitle: "$periodDate")
+                      subTitle: periodDate)
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             
@@ -92,7 +94,7 @@ class _Ovulation3calcScreenState extends State<Ovulation3calcScreen> {
                     color: Colors.white,
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   width: 5,
                 ),
                 MainButton(
@@ -103,7 +105,7 @@ class _Ovulation3calcScreenState extends State<Ovulation3calcScreen> {
                   backgroundColor: CustomColors.pink,
                   width: 70,
                   titleWidget:
-                      Icon(Icons.home_outlined, size: 30, color: Colors.white),
+                      const Icon(Icons.home_outlined, size: 30, color: Colors.white),
                 ),
               ],
             ),

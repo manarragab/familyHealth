@@ -4,7 +4,6 @@ import 'dart:io';
 
 import 'package:abg/data/const/enums.dart';
 import 'package:abg/data/const/export.dart';
-import 'package:abg/domain_data/main_getx_controller/main_getx_controller.dart';
 
 class ProgresstrackerController extends MainGetxController{
 

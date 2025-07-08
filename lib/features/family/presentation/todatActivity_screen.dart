@@ -17,7 +17,7 @@ class TodatactivityScreen extends GetView<FamilyController> {
     return Scaffold(
       appBar: CustomAppBar.appBar(CustomTrans.family.tr),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: controller.obx((state) {
           FamilyModel fam = state;
           List<Family> list = fam.data ?? [];
@@ -86,11 +86,11 @@ class TodatactivityScreen extends GetView<FamilyController> {
                   )
                 ],
               ),
-              SizedBox(height: 10,),
+              const SizedBox(height: 10,),
               GridView.builder(
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   mainAxisExtent: 60,
                   mainAxisSpacing: 3,
@@ -109,7 +109,7 @@ class TodatactivityScreen extends GetView<FamilyController> {
                 },
               ),
 
-              SizedBox(height: 15,),
+              const SizedBox(height: 15,),
 
               Image.asset("assets/images/health.png"),
             ],

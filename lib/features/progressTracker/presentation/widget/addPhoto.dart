@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:abg/features/progressTracker/domain/controller/progressTracker_controller.dart';
 class Addphoto extends GetWidget<ProgresstrackerController> {
+  const Addphoto({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsetsDirectional.only(bottom: 20),
+      margin: const EdgeInsetsDirectional.only(bottom: 20),
       child: Column(
         children: [
           Row(
@@ -22,7 +24,7 @@ class Addphoto extends GetWidget<ProgresstrackerController> {
                 ),
               ),
               Container(
-                padding: EdgeInsets.symmetric(horizontal: 11),
+                padding: const EdgeInsets.symmetric(horizontal: 11),
                 height: 28,
                 width: 104.5,
                 decoration: BoxDecoration(
@@ -51,7 +53,7 @@ class Addphoto extends GetWidget<ProgresstrackerController> {
             child: ListView.builder(
               shrinkWrap: true,
               scrollDirection: Axis.horizontal,
-              physics: AlwaysScrollableScrollPhysics(),
+              physics: const AlwaysScrollableScrollPhysics(),
               itemCount: 20,
               itemBuilder: (context, index) {
                 return Obx(() {
@@ -60,7 +62,7 @@ class Addphoto extends GetWidget<ProgresstrackerController> {
                       Column(
                         children: [
                           Container(
-                            margin: EdgeInsets.symmetric(horizontal: 2),
+                            margin: const EdgeInsets.symmetric(horizontal: 2),
                             height: 120,
                             width: Get.width * 1 / 4,
                             child: Image.asset(

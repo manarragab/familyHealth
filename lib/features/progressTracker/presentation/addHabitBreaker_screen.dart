@@ -16,6 +16,8 @@ import 'package:abg/features/progressTracker/domain/controller/progressTracker_c
 import 'package:google_fonts/google_fonts.dart';
 
 class AddhabitbreakerScreen extends GetView<ProgresstrackerController> {
+  const AddhabitbreakerScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +35,7 @@ class AddhabitbreakerScreen extends GetView<ProgresstrackerController> {
                   color: CustomColors.darkblue,
                 ),
               ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               Form(
                   key: key,
                   child: Column(
@@ -42,7 +44,7 @@ class AddhabitbreakerScreen extends GetView<ProgresstrackerController> {
                         (val) {},
                         hint: "Name",
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       Align(
@@ -64,12 +66,12 @@ class AddhabitbreakerScreen extends GetView<ProgresstrackerController> {
                           return Radioo(ID: "breaker"  ,period: PeriodType.values[index]);
                         }),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       CustomTextField.dynamicTextField((value) {},
                           onTapped: () {}, hint: "Example 120 days"),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       CustomTextField.datePickerTextField(
@@ -81,7 +83,7 @@ class AddhabitbreakerScreen extends GetView<ProgresstrackerController> {
                               controller.date3Controller.text = date.stringDate;
                             }).showDatePicker(context);
                           }),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       CustomTextField.paragraphTextField((val) {},
@@ -94,7 +96,7 @@ class AddhabitbreakerScreen extends GetView<ProgresstrackerController> {
                         child: MainButton(
                           onPressed: () {
                           Get.dialog(
-                       Done(),
+                       const Done(),
                        );
                           },
                           radius: 10,

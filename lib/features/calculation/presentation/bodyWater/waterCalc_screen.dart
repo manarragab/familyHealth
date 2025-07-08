@@ -12,12 +12,14 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class WatercalcScreen extends StatelessWidget {
+  const WatercalcScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: ListView(
             children: [
               Greencontainer(
@@ -34,15 +36,15 @@ class WatercalcScreen extends StatelessWidget {
                         title1: CustomTrans.yourWieght.tr,
                         title2: "(${CustomTrans.kg.tr})",
                         measure: CustomTrans.kg.tr),
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Container(
-                      padding: EdgeInsets.all(15),
+                      padding: const EdgeInsets.all(15),
                       width: double.infinity,
                       height: 215,
                       decoration: BoxDecoration(
-                          boxShadow: [
+                          boxShadow: const [
                             BoxShadow(
                               color: Colors.black12,
                               blurRadius: 6,
@@ -63,7 +65,7 @@ class WatercalcScreen extends StatelessWidget {
                               fontWeight: FontWeight.w700,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             height: 6,
                           ),
                           RadioooItem(title: CustomTrans.inactive.tr),
@@ -74,11 +76,11 @@ class WatercalcScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 18,
                     ),
                     Container(
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         boxShadow: [
                           BoxShadow(
                             color: Colors.black12,

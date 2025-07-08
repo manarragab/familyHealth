@@ -19,7 +19,7 @@ class Whitecontainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 9),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 9),
       width: double.infinity,
       height: 71,
       decoration: BoxDecoration(
@@ -33,7 +33,7 @@ class Whitecontainer extends StatelessWidget {
             width: 50,
             height: 50,
           ),
-          SizedBox(
+          const SizedBox(
             width: 8,
           ),
           Column(
@@ -49,7 +49,7 @@ class Whitecontainer extends StatelessWidget {
                 ),
               ),
               Text(
-           week==true ?  "${subTitle} weeks"  :  subTitle,
+           week==true ?  "$subTitle weeks"  :  subTitle,
                 style: GoogleFonts.almarai(
                   color: CustomColors.darkBlue2,
                   fontSize: 14,

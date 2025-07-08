@@ -152,7 +152,7 @@ class CustomPage {
         })),
     GetPage(
         name: diabetes1Page,
-        page: () => Diabetes1Screen(),
+        page: () => const Diabetes1Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());

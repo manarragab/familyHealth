@@ -2,8 +2,11 @@
 import 'package:abg/data/remote_data/response_model.dart';
 
 class PostIbsResponse  extends ResponseModel<IBS?>{
+  @override
   IBS? data;
+  @override
   num? status;
+  @override
   String? message;
 
   PostIbsResponse({this.data, this.status, this.message});
@@ -14,14 +17,15 @@ class PostIbsResponse  extends ResponseModel<IBS?>{
     message = json["message"];
   }
 
+  @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
+    final Map<String, dynamic> data = <String, dynamic>{};
     if(data != null) {
-      _data["data"] = data?.toJson();
+      data["data"] = data?.toJson();
     }
-    _data["status"] = status;
-    _data["message"] = message;
-    return _data;
+    data["status"] = status;
+    data["message"] = message;
+    return data;
   }
 }
 
@@ -39,10 +43,10 @@ class IBS {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["status"] = status;
-    _data["category"] = category;
-    _data["message"] = message;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["status"] = status;
+    data["category"] = category;
+    data["message"] = message;
+    return data;
   }
 }

@@ -112,10 +112,10 @@ class _CupertinoDatePickerState extends State<CupertinoDatePicker> {
     _selectedMonthIndex = _selectedDate.month - 1;
     _selectedYearIndex = _selectedDate.year - _minDate.year;
     WidgetsBinding.instance.addPostFrameCallback(
-          (_) => {
-        _scrollList(_dayScrollController, _selectedDayIndex),
-        _scrollList(_monthScrollController, _selectedMonthIndex),
-        _scrollList(_yearScrollController, _selectedYearIndex),
+          (_) {
+        _scrollList(_dayScrollController, _selectedDayIndex);
+        _scrollList(_monthScrollController, _selectedMonthIndex);
+        _scrollList(_yearScrollController, _selectedYearIndex);
       },
     );
   }

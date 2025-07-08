@@ -17,7 +17,7 @@ class Context {
       scaffoldBackgroundColor: CustomColors.backgroundScaffold,
       iconTheme: IconThemeData(color: CustomColors.fontColor, size: 20.h),
       visualDensity: VisualDensity.adaptivePlatformDensity,
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
           shape: OutlineInputBorder(
               borderSide: const BorderSide(color: CustomColors.lightGrey),
               borderRadius: BorderRadius.circular(10))),

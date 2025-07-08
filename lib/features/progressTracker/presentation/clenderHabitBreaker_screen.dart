@@ -19,6 +19,8 @@ class ClenderhabitbreakerScreen extends StatelessWidget {
     DateTime(2025, 3, 27),
   ];
 
+  ClenderhabitbreakerScreen({super.key});
+
   bool isHighlighted(DateTime date) {
     for (var range in highlightedRanges) {
       if (date.isAfter(range.start.subtract(const Duration(days: 1))) && date.isBefore(range.end.add(const Duration(days: 1)))) {
@@ -47,7 +49,7 @@ class ClenderhabitbreakerScreen extends StatelessWidget {
               thickness: 3,
               color: Colors.grey[200],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Row(
@@ -60,7 +62,7 @@ class ClenderhabitbreakerScreen extends StatelessWidget {
                     color: CustomColors.lighttblue,
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 InkWell(
                   child: SvgPicture.asset(
                     "assets/svg/clender.svg",
@@ -75,7 +77,7 @@ class ClenderhabitbreakerScreen extends StatelessWidget {
                     color: CustomColors.lighttblue,
                   ),
                 ),
-                Spacer(),
+                const Spacer(),
                 InkWell(
                   child: SvgPicture.asset(
                     "assets/svg/clock.svg",
@@ -92,14 +94,14 @@ class ClenderhabitbreakerScreen extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Divider(
               thickness: 3,
               color: Colors.grey[200],
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
             Center(
@@ -112,11 +114,11 @@ class ClenderhabitbreakerScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             Container(
-              margin: EdgeInsets.symmetric(horizontal: 40),
+              margin: const EdgeInsets.symmetric(horizontal: 40),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -142,14 +144,14 @@ class ClenderhabitbreakerScreen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Divider(
               thickness: 3,
               color: Colors.grey[200],
             ),
-            SizedBox(
+            const SizedBox(
               height: 5,
             ),
 

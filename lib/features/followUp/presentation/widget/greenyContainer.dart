@@ -34,11 +34,11 @@ class Greenycontainer extends StatelessWidget {
             ),
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 30,
         ),
         Container(
-          padding: EdgeInsets.symmetric(horizontal: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 12),
           width: double.infinity,
           height: heightt ?? 426,
           decoration: BoxDecoration(
@@ -47,7 +47,7 @@ class Greenycontainer extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                margin: EdgeInsets.only(top: 25),
+                margin: const EdgeInsets.only(top: 25),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -84,7 +84,7 @@ class Greenycontainer extends StatelessWidget {
                 ),
               ),
               Container(
-                margin: EdgeInsets.only(top: 15),
+                margin: const EdgeInsets.only(top: 15),
                 child: widg,
               ),
             ],

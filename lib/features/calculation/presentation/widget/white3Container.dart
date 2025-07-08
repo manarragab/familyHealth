@@ -5,19 +5,19 @@ import 'package:google_fonts/google_fonts.dart';
 class White3container extends StatelessWidget {
   final List<String> txt;
 
-  White3container({super.key, required this.txt});
+  const White3container({super.key, required this.txt});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 7),
+      margin: const EdgeInsets.symmetric(vertical: 7),
       height: 71,
       width: double.infinity,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: Colors.white,
       ),
-      padding: EdgeInsets.symmetric(horizontal: 15, vertical: 7),
+      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 7),
       child: Column(
         children: [
           Row(
@@ -47,7 +47,7 @@ class White3container extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   Text(
@@ -70,7 +70,7 @@ class White3container extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 5,
                   ),
                   Text(

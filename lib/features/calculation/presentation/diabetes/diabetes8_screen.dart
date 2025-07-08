@@ -5,6 +5,8 @@ import 'package:abg/res/router/pages.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Diabetes8Screen extends StatefulWidget {
+  const Diabetes8Screen({super.key});
+
   @override
   State<Diabetes8Screen> createState() => _Diabetes8ScreenState();
 }
@@ -17,7 +19,7 @@ class _Diabetes8ScreenState extends State<Diabetes8Screen> {
     return Scaffold(
         appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
         body: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16),
             child: ListView(
               children: [
                 Greencontainer(
@@ -26,7 +28,7 @@ class _Diabetes8ScreenState extends State<Diabetes8Screen> {
                         title: CustomTrans.diabetesType2Risk.tr,
                     image: "assets/svg/diabetes.svg",
                     widg: Column(children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(
@@ -51,7 +53,7 @@ class _Diabetes8ScreenState extends State<Diabetes8Screen> {
                       //       ?.toStringAsFixed(2),
                       // ),
 
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(
@@ -62,7 +64,7 @@ class _Diabetes8ScreenState extends State<Diabetes8Screen> {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Text(
@@ -95,7 +97,7 @@ controller.responseDiabetes.data!.comment??"",
                         color: Colors.white,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 5,
                     ),
                      MainButton(
@@ -105,7 +107,7 @@ controller.responseDiabetes.data!.comment??"",
    
                                   },
                   width: 70,
-                 titleWidget: Icon(Icons.home_outlined ,
+                 titleWidget: const Icon(Icons.home_outlined ,
                  size: 30
                  , color: Colors.white),
                 ),

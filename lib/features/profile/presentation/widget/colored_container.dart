@@ -11,8 +11,8 @@ class ColoredContainer extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 20),
-     padding: EdgeInsets.symmetric(vertical: 10 ,horizontal: 18),
+      margin: const EdgeInsets.only(bottom: 20),
+     padding: const EdgeInsets.symmetric(vertical: 10 ,horizontal: 18),
       height: 42,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),

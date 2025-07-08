@@ -4,6 +4,8 @@ import 'package:abg/features/pills/presentation/widget/pdfContainer.dart';
 import 'package:abg/res/configuration/text_field/text_field.dart';
 
 class PillsScreen extends StatefulWidget {
+  const PillsScreen({super.key});
+
   @override
   State<PillsScreen> createState() => _PillsScreenState();
 }

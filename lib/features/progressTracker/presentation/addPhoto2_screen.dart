@@ -163,7 +163,7 @@ class Addphoto2Screen extends GetView<ProgresstrackerController> {
                     child: MainButton(
                       onPressed: () {
                        Get.dialog(
-                       Done(),
+                       const Done(),
                        );
                       },
                       radius: 10,

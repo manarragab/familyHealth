@@ -8,7 +8,7 @@ class Pdfcontainer extends GetView<PilsController> {
   final int index;
   final String pillName;
 
-  Pdfcontainer({
+  const Pdfcontainer({
     super.key,
     required this.index,
     required this.pillName,

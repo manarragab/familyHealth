@@ -17,6 +17,8 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:intl/intl.dart';
 
 class MyprofileScreen extends StatefulWidget {
+  const MyprofileScreen({super.key});
+
   @override
   State<MyprofileScreen> createState() => _MyprofileScreenState();
 }
@@ -88,7 +90,7 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                                 Get.toNamed(CustomPage.pillsPage);
                                 break;
                               case 3:
-                                Get.to(GroupScreen());
+                                Get.to(const GroupScreen());
                                 break;
                               case 4:
                                 Get.toNamed(CustomPage.dueDatePage);

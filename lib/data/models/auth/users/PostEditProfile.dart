@@ -50,20 +50,20 @@ class PostEditProfile {
   }
 
   Future<Map<String, dynamic>> toJson() async{
-    final Map<String, dynamic> _data = <String, dynamic>{};
+    final Map<String, dynamic> data = <String, dynamic>{};
 
      if (image != null) {
       final mimeType = lookupMimeType(image!.path) ?? 'application/octet-stream'; // Detect file type
       final mediaType = MediaType.parse(mimeType); // Convert to MediaType
-      _data['image'] = await MultipartFile.fromFile(image!.path,contentType: mediaType);
+      data['image'] = await MultipartFile.fromFile(image!.path,contentType: mediaType);
     }
-    _data["name"] = name;
-    _data["email"] = email;
-    _data["phone"] = phone;
-    _data["date_of_birth"] = dateOfBirth;
-    _data["password"] = password;
-    _data["gender"] = gender;
-    _data["image"] = image;
-    return _data;
+    data["name"] = name;
+    data["email"] = email;
+    data["phone"] = phone;
+    data["date_of_birth"] = dateOfBirth;
+    data["password"] = password;
+    data["gender"] = gender;
+    data["image"] = image;
+    return data;
   }
 }

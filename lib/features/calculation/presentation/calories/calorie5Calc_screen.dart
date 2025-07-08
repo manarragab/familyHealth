@@ -8,6 +8,8 @@ import 'package:abg/features/calculation/presentation/widget/radioo_item.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Calorie5calcScreen extends StatefulWidget {
+  const Calorie5calcScreen({super.key});
+
   @override
   State<Calorie5calcScreen> createState() => _Calorie5calcScreenState();
 }
@@ -18,7 +20,7 @@ class _Calorie5calcScreenState extends State<Calorie5calcScreen> {
     return Scaffold(
         appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: ListView(
             children: [
               Greencontainer(
@@ -29,14 +31,14 @@ class _Calorie5calcScreenState extends State<Calorie5calcScreen> {
                   image: "assets/images/fruity.png",
                   widg: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 45,
                       ),
                       DotsbarItem(
                         id: "calorie",
                         step: 5,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 35,
                       ),
                       Text(
@@ -47,7 +49,7 @@ class _Calorie5calcScreenState extends State<Calorie5calcScreen> {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
 
@@ -60,7 +62,7 @@ class _Calorie5calcScreenState extends State<Calorie5calcScreen> {
                       //     //Radio(value: value, groupValue: groupValue, onChanged: onChanged)
                       GridView(
                         shrinkWrap: true,
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                             childAspectRatio: 3.2,
                             crossAxisCount: 2,
                             mainAxisSpacing: 9,
@@ -89,7 +91,7 @@ class _Calorie5calcScreenState extends State<Calorie5calcScreen> {
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       MainButton(
@@ -109,7 +111,7 @@ class _Calorie5calcScreenState extends State<Calorie5calcScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(

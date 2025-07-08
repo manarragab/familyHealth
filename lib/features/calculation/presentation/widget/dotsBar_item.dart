@@ -10,8 +10,8 @@ class DotsbarItem extends StatelessWidget {
   final int step;
   final String id;
 
-  DotsbarItem({
-    Key? key,
+  const DotsbarItem({super.key, 
+   
     required this.step,
     required this.id,
   }) : totalSteps = (id == 'calorie') ? 5 :(id == 'ibs') ? 4: 7;  

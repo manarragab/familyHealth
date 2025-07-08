@@ -11,13 +11,15 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Water2calcScreen extends StatelessWidget {
+  const Water2calcScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     Calculationcontroller calcController = Get.find();
     return Scaffold(
         appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: ListView(
             children: [
               Greencontainer(
@@ -37,7 +39,7 @@ class Water2calcScreen extends StatelessWidget {
                         CustomTrans.fiveLi.tr,
                         CustomTrans.eightLi.tr,
                       ],
-                      txt: ["", "", "", ""],
+                      txt: const ["", "", "", ""],
                       title: CustomTrans.score.tr,
                       subTitle: "",
                     ),
@@ -54,7 +56,7 @@ class Water2calcScreen extends StatelessWidget {
                   ],
                 )),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Row(
@@ -73,7 +75,7 @@ class Water2calcScreen extends StatelessWidget {
                       color: Colors.white,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   MainButton(
@@ -82,7 +84,7 @@ class Water2calcScreen extends StatelessWidget {
                           (route) => Get.currentRoute == CustomPage.layoutPage);
                     },
                     width: 70,
-                    titleWidget: Icon(Icons.home_outlined,
+                    titleWidget: const Icon(Icons.home_outlined,
                         size: 30, color: Colors.white),
                   ),
                 ],

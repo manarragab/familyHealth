@@ -8,9 +8,9 @@ class PostTrackerMD {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["date"] = date ;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["date"] = date ;
+    return data;
   }
 }
 

@@ -1,5 +1,4 @@
 import 'dart:developer';
-import 'package:abg/data/const/enums.dart';
 import 'package:abg/data/const/export.dart';
 import 'package:abg/data/models/calculation/BMI/post_BMI/post_BMI_MD.dart';
 import 'package:abg/data/models/calculation/BMI/post_BMI/post_BMI_response.dart';
@@ -19,7 +18,6 @@ import 'package:abg/features/calculation/presentation/DuedateCalc/dateCalc_scree
 import 'package:abg/data/models/calculation/IBS/post_IBS/post_IBS_MD.dart';
 import 'package:abg/data/models/calculation/IBS/post_IBS/post_IBS_response.dart';
 import 'package:abg/res/router/pages.dart';
-import 'package:dio/dio.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
 

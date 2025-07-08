@@ -14,6 +14,8 @@ import 'package:flutter/rendering.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HabitbreakerScreen extends StatelessWidget {
+  const HabitbreakerScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +32,7 @@ class HabitbreakerScreen extends StatelessWidget {
                 color: CustomColors.darkblue,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             MainButton(
@@ -42,7 +44,7 @@ class HabitbreakerScreen extends StatelessWidget {
               fontSize: 24,
               fontWeight: FontWeight.w400,
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             ...List.generate(4, (index) {
@@ -60,7 +62,7 @@ class HabitbreakerScreen extends StatelessWidget {
                 //  onEdit: () {},
                   onDelete: () {
                 Get.dialog(
-                  Delete(),
+                  const Delete(),
                 );
                   }, image: '',
                 ),

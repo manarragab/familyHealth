@@ -7,7 +7,7 @@ import 'package:abg/res/loading/loading_overlay_widget.dart';
 import 'package:abg/res/router/pages.dart';
 
 class MyfamilyScreen extends GetView<FamilyController> {
-   MyfamilyScreen({super.key});
+   const MyfamilyScreen({super.key});
  
   @override
   Widget build(BuildContext context) {

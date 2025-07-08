@@ -2,8 +2,11 @@
 import 'package:abg/data/remote_data/response_model.dart';
 
 class PostFavouriteResponse extends ResponseModel<Favourite?> {
+  @override
   Favourite? data;
+  @override
   num? status;
+  @override
   String? message;
 
   PostFavouriteResponse({this.data, this.status, this.message});
@@ -14,14 +17,15 @@ class PostFavouriteResponse extends ResponseModel<Favourite?> {
     message = json["message"];
   }
 
+  @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
+    final Map<String, dynamic> data = <String, dynamic>{};
     if(data != null) {
-      _data["data"] = data?.toJson();
+      data["data"] = data?.toJson();
     }
-    _data["status"] = status;
-    _data["message"] = message;
-    return _data;
+    data["status"] = status;
+    data["message"] = message;
+    return data;
   }
 }
 
@@ -39,10 +43,10 @@ class Favourite {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["calculator_name"] = calculatorName;
-    _data["is_favorite"] = isFavorite;
-    _data["action"] = action;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["calculator_name"] = calculatorName;
+    data["is_favorite"] = isFavorite;
+    data["action"] = action;
+    return data;
   }
 }

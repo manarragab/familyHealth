@@ -9,6 +9,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 class ProgresstrackerScreen extends GetView<ProgresstrackerController>{
   int select=0;
+
+  ProgresstrackerScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(

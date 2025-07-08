@@ -14,11 +14,11 @@ class PostBmiMd {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    _data["weight"]=weight ??50;
-    _data["height"]=height ??50;
-    _data["add_to_profile"]=add_to_profile ==true? "1" : "0";
-    return _data;
+    data["weight"]=weight ??50;
+    data["height"]=height ??50;
+    data["add_to_profile"]=add_to_profile ==true? "1" : "0";
+    return data;
   }
 }

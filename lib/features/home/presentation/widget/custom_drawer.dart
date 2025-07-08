@@ -1,5 +1,4 @@
 import 'package:abg/data/const/export.dart';
-import 'package:abg/data/remote_data/core.dart';
 import 'package:abg/features/auth/domain/cases/auth_case.dart';
 import 'package:abg/features/auth/domain/controller/auth_controller.dart';
 import 'package:abg/res/router/pages.dart';

@@ -4,6 +4,8 @@ import 'package:abg/features/calculation/presentation/IBS/ibscalc2_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
 
 class Ibscalc1Screen extends StatelessWidget {
+  const Ibscalc1Screen({super.key});
+
   @override
   Widget build(BuildContext context) {
     Calculationcontroller controller = Get.find();
@@ -19,7 +21,7 @@ class Ibscalc1Screen extends StatelessWidget {
               image: "assets/svg/ibs.svg",
               widg: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Text(
@@ -30,7 +32,7 @@ class Ibscalc1Screen extends StatelessWidget {
                       fontWeight: FontWeight.w400,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Row(
@@ -47,7 +49,7 @@ class Ibscalc1Screen extends StatelessWidget {
                       )
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Text(
@@ -58,7 +60,7 @@ class Ibscalc1Screen extends StatelessWidget {
                       fontWeight: FontWeight.w400,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Text(

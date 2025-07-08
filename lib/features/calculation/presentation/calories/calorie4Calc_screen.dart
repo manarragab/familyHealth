@@ -7,6 +7,8 @@ import 'package:abg/features/calculation/presentation/widget/white2Container.dar
 import 'package:google_fonts/google_fonts.dart';
 
 class Calorie4calcScreen extends StatefulWidget {
+  const Calorie4calcScreen({super.key});
+
   @override
   State<Calorie4calcScreen> createState() => _Calorie4calcScreenState();
 }
@@ -17,7 +19,7 @@ class _Calorie4calcScreenState extends State<Calorie4calcScreen> {
     return Scaffold(
         appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: ListView(
             children: [
               Greencontainer(
@@ -28,14 +30,14 @@ class _Calorie4calcScreenState extends State<Calorie4calcScreen> {
              
                   widg: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 45,
                       ),
                       DotsbarItem(
                         id: "calorie",
                         step: 4,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 35,
                       ),
                       Text(
@@ -46,7 +48,7 @@ class _Calorie4calcScreenState extends State<Calorie4calcScreen> {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       White2container(
@@ -54,7 +56,7 @@ class _Calorie4calcScreenState extends State<Calorie4calcScreen> {
                           title1:  CustomTrans.pleaseEnterYourHeight.tr,
                           title2: "(${CustomTrans.cm.tr})",
                           measure: CustomTrans.cm.tr),
-                      SizedBox(
+                      const SizedBox(
                         height: 35,
                       ),
                       MainButton(
@@ -74,7 +76,7 @@ class _Calorie4calcScreenState extends State<Calorie4calcScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(

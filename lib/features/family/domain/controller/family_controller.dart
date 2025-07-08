@@ -111,11 +111,7 @@ void clearData() {
     getPage: (page) => _pageNum = page,
   );
 
-  if (famMD != null) {
-    change(famMD!, status: RxStatus.success());
-  } else {
-    change(null, status: RxStatus.error("No data received"));
-  }
+  change(famMD!, status: RxStatus.success());
 }
 
 

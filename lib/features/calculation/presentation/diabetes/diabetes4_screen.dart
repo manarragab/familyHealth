@@ -7,6 +7,8 @@ import 'package:abg/res/router/pages.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Diabetes4Screen extends StatefulWidget {
+  const Diabetes4Screen({super.key});
+
   @override
   State<Diabetes4Screen> createState() => _Diabetes4ScreenState();
 }
@@ -19,7 +21,7 @@ class _Diabetes4ScreenState extends State<Diabetes4Screen> {
     return Scaffold(
         appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: ListView(
             children: [
               Greencontainer(
@@ -30,14 +32,14 @@ class _Diabetes4ScreenState extends State<Diabetes4Screen> {
                   image: "assets/svg/diabetes.svg",
                   widg: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 45,
                       ),
                       DotsbarItem(
                         id: "diabetes4",
                         step: 4,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 35,
                       ),
                       Text(
@@ -48,7 +50,7 @@ class _Diabetes4ScreenState extends State<Diabetes4Screen> {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       // White4container(
@@ -64,7 +66,7 @@ class _Diabetes4ScreenState extends State<Diabetes4Screen> {
                             ),
                             padding: const EdgeInsets.all(20),
                             child: QuestionsItem(
-                                question: '${controller.diabetesQuestions[1]}',
+                                question: controller.diabetesQuestions[1],
                                 value: controller.diabetesAnswers[1],
                                 onChanged: (val) {
                                   controller.diabetesAnswers[1] = val;
@@ -73,7 +75,7 @@ class _Diabetes4ScreenState extends State<Diabetes4Screen> {
                                 }));
                       }),
 
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       MainButton(
@@ -99,7 +101,7 @@ class _Diabetes4ScreenState extends State<Diabetes4Screen> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(

@@ -13,6 +13,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Ovulation2calcScreen extends StatefulWidget {
+  const Ovulation2calcScreen({super.key});
+
   @override
   State<Ovulation2calcScreen> createState() => _Ovulation2calcScreenState();
 }
@@ -25,14 +27,14 @@ class _Ovulation2calcScreenState extends State<Ovulation2calcScreen> {
     return Scaffold(
       appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Pinkcontainer(
           title: CustomTrans.ovulation.tr,
           firstTxt: CustomTrans.ovulationCalculator.tr,
           image: "assets/images/ballon.png",
           widg: Column(
             children: [
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Text(
@@ -43,13 +45,13 @@ class _Ovulation2calcScreenState extends State<Ovulation2calcScreen> {
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
-              ListdayItem(
+              const ListdayItem(
                 id: "ovulate2",
               ),
-              SizedBox(
+              const SizedBox(
                 height: 15,
               ),
               LoadingOverLay(

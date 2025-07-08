@@ -11,6 +11,8 @@ import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Ibscalc4Screen extends GetWidget<Calculationcontroller> {
+  const Ibscalc4Screen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +27,7 @@ class Ibscalc4Screen extends GetWidget<Calculationcontroller> {
               image: "assets/svg/ibs.svg",
               widg: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Container(
@@ -48,7 +50,7 @@ class Ibscalc4Screen extends GetWidget<Calculationcontroller> {
                   GetBuilder<Calculationcontroller>(builder: (_) {
                     return Container(
                       padding:
-                          EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+                          const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(12)),
@@ -91,7 +93,7 @@ class Ibscalc4Screen extends GetWidget<Calculationcontroller> {
                     fontWeight: FontWeight.w400,
                     backgroundColor: CustomColors.darkblue3,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   MainButton(

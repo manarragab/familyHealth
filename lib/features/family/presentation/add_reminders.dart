@@ -92,12 +92,13 @@ class AddReminders extends GetWidget<FamilyController> {
                         firstDate: DateTime(2000),
                         lastDate: DateTime(2100),
                       );
-                      if (startDate == null)
-                        return SnackBar(
-                          content: const Text("Please select start date"),
+                      if (startDate == null) {
+                        return const SnackBar(
+                          content: Text("Please select start date"),
                           backgroundColor: Colors.red,
-                          duration: const Duration(seconds: 3),
+                          duration: Duration(seconds: 3),
                         );
+                      }
 
                       DateTime? endDate = await showDatePicker(
                         context: context,
@@ -106,12 +107,13 @@ class AddReminders extends GetWidget<FamilyController> {
                         lastDate: DateTime(2100),
                       );
 
-                      if (endDate == null)
-                        return SnackBar(
-                          content: const Text("Please select end date"),
+                      if (endDate == null) {
+                        return const SnackBar(
+                          content: Text("Please select end date"),
                           backgroundColor: Colors.red,
-                          duration: const Duration(seconds: 3),
+                          duration: Duration(seconds: 3),
                         );
+                      }
 
                       // 🟢 تنسيق التاريخ
                       final formattedStart =

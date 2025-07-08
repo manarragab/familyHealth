@@ -18,7 +18,7 @@ class ProfilefamilyScreen extends StatefulWidget {
   final int? age;
   final String? kind;
 
-  ProfilefamilyScreen({
+  const ProfilefamilyScreen({
     super.key,
     this.image,
      this.title,
@@ -176,7 +176,7 @@ class _ProfilefamilyScreenState extends State<ProfilefamilyScreen> {
                     ),
                     ],
                    ),
-                   SizedBox(height: 10,),
+                   const SizedBox(height: 10,),
                   ],
                     )
                    ) ;
@@ -266,7 +266,7 @@ class _ProfilefamilyScreenState extends State<ProfilefamilyScreen> {
       );
 
       if (remind == null || (remind.familyRecords?.isEmpty ?? true)) {
-        return Center(child: const Text("No Diseases"));
+        return const Center(child: Text("No Diseases"));
       }
 
       final diseases = remind.familyRecords!

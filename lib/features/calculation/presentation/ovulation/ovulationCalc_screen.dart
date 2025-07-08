@@ -15,20 +15,22 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class OvulationcalcScreen extends StatelessWidget {
+  const OvulationcalcScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     Calculationcontroller controller = Get.find();
     return Scaffold(
         appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Pinkcontainer(
               title: "Ovulation",
               firstTxt: CustomTrans.ovulationCalculator.tr,
               image: "assets/images/ballon.png",
               widg: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Text(
@@ -39,13 +41,13 @@ class OvulationcalcScreen extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
-                  DateItem(
+                  const DateItem(
                     id: "ovulate1",
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 23,
                   ),
                   LoadingOverLay(

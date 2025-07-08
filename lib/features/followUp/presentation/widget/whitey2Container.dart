@@ -31,12 +31,12 @@ class _Whitey2containerState extends State<Whitey2container> {
         double currentValue = controller.getValue(widget.KEY);
 
         return Container(
-          padding: EdgeInsets.all(12),
-          margin: EdgeInsets.only(top: 13),
+          padding: const EdgeInsets.all(12),
+          margin: const EdgeInsets.only(top: 13),
           width: double.infinity,
           height: 98,
           decoration: BoxDecoration(
-            boxShadow: [
+            boxShadow: const [
               BoxShadow(
                 color: Colors.black12,
                 blurRadius: 6,
@@ -71,7 +71,7 @@ class _Whitey2containerState extends State<Whitey2container> {
                   ),
                 ],
               ),
-              SizedBox(height: 9),
+              const SizedBox(height: 9),
               SizedBox(
                 width: double.infinity,
                 height: 15,
@@ -82,7 +82,7 @@ class _Whitey2containerState extends State<Whitey2container> {
                   values: [currentValue],
                   min: 1,
                   max: 300,
-                  trackBar: FlutterSliderTrackBar(
+                  trackBar: const FlutterSliderTrackBar(
                     activeTrackBar: BoxDecoration(
                       color: CustomColors.green1,
                     ),
@@ -93,11 +93,11 @@ class _Whitey2containerState extends State<Whitey2container> {
                     inactiveTrackBarHeight: 4,
                   ),
                   handler: FlutterSliderHandler(
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                     child: Container(
                       width: 12,
                       height: 12,
-                      decoration: BoxDecoration(
+                      decoration: const BoxDecoration(
                         color: Colors.white,
                         shape: BoxShape.circle,
                         boxShadow: [
@@ -112,7 +112,7 @@ class _Whitey2containerState extends State<Whitey2container> {
                   ),
                 ),
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [

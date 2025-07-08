@@ -48,7 +48,7 @@ class RadiooItem extends StatelessWidget {
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    SizedBox(height: 6,),
+                    const SizedBox(height: 6,),
                     Text(
                       subTitle,
                       style: GoogleFonts.almarai(

@@ -120,8 +120,7 @@ class SignUpScreen extends GetWidget<AuthController> {
                       controller.dateController.text = date.stringDate;
                       print("date: ${controller.postRegister.dateOfBirth}");
                     }).showDatePicker(context);
-                    if (controller.dateController.text == null ||
-                        controller.dateController.text.isEmpty) {
+                    if (controller.dateController.text.isEmpty) {
                       controller.postRegister.dateOfBirth =
                           DateFormat("yyyy-MM-dd").format(DateTime.now())
                               as DateTime?;
@@ -151,6 +150,7 @@ class SignUpScreen extends GetWidget<AuthController> {
                   if (val == null) {
                     return "Gender is required";
                   }
+                  return null;
                 },
                 hint: "Gender",
                 controller: controller.genderController,

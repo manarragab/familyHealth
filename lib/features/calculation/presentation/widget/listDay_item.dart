@@ -25,7 +25,7 @@ class _ListdayItemState extends State<ListdayItem> {
         builder: (context){
 
 return  Center(
-                child: Container(
+                child: SizedBox(
                   height: 130,
                   width: double.infinity,
                   child: Stack(
@@ -41,7 +41,7 @@ return  Center(
                       ),
                       ListWheelScrollView.useDelegate(
                         itemExtent: 33,
-                        physics: FixedExtentScrollPhysics(),
+                        physics: const FixedExtentScrollPhysics(),
                         onSelectedItemChanged: (i) {
                           setState(() {
                            cont.selectedIndex= i;

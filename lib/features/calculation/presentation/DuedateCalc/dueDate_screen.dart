@@ -6,6 +6,8 @@ import 'package:abg/res/loading/loading_overlay_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class DuedateScreen extends StatefulWidget {
+  const DuedateScreen({super.key});
+
   @override
   State<DuedateScreen> createState() => _DuedateScreenState();
 }
@@ -17,7 +19,7 @@ class _DuedateScreenState extends State<DuedateScreen> {
     return Scaffold(
       appBar: CustomAppBar.appBar(CustomTrans.dueDateCalc.tr),
       body: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
           children: [
             Pinkcontainer(
@@ -27,7 +29,7 @@ class _DuedateScreenState extends State<DuedateScreen> {
               image: "assets/images/girl.png",
               widg: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Text(
@@ -38,13 +40,13 @@ class _DuedateScreenState extends State<DuedateScreen> {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
-                  DateItem(
+                  const DateItem(
                     id: "duedate1",
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 23,
                   ),
                   LoadingOverLay(

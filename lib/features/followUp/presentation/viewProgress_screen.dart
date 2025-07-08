@@ -7,6 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:abg/features/followUp/domain/controller/followUp_controller.dart';
 
 class ViewProgressScreen extends StatefulWidget {
+  const ViewProgressScreen({super.key});
+
   @override
   State<ViewProgressScreen> createState() => _ViewProgressScreenState();
 }
@@ -35,7 +37,7 @@ class _ViewProgressScreenState extends State<ViewProgressScreen> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Text(
@@ -172,20 +174,20 @@ class _ViewProgressScreenState extends State<ViewProgressScreen> {
                           ),
                         ),
                       ),
-                      rightTitles: AxisTitles(
+                      rightTitles: const AxisTitles(
                         sideTitles: SideTitles(showTitles: false),
                       ),
-                      topTitles: AxisTitles(
+                      topTitles: const AxisTitles(
                         sideTitles: SideTitles(showTitles: false),
                       ),
                     ),
-                    gridData: FlGridData(show: false),
+                    gridData: const FlGridData(show: false),
                     lineBarsData: [
                       LineChartBarData(
                         spots: controller.data[controller.selectedPeriod] ?? [],
                         isCurved: true,
                         color: CustomColors.bluee,
-                        dotData: FlDotData(show: true),
+                        dotData: const FlDotData(show: true),
                       ),
                       LineChartBarData(
                         spots: controller.data[controller.selectedPeriod]!
@@ -200,7 +202,7 @@ class _ViewProgressScreenState extends State<ViewProgressScreen> {
                         }).toList(),
                         isCurved: true,
                         color: CustomColors.grenn,
-                        dotData: FlDotData(show: true),
+                        dotData: const FlDotData(show: true),
                       ),
                     ],
                   ),

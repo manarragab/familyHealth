@@ -10,6 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class HabittrackerScreen extends StatelessWidget {
+  const HabittrackerScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,19 +28,19 @@ class HabittrackerScreen extends StatelessWidget {
                 color: CustomColors.darkblue,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             MainButton(
               onPressed: () {
-                Get.to(Addphoto2Screen());
+                Get.to(const Addphoto2Screen());
               },
               radius: 10,
               title: CustomTrans.AddHabitTracking.tr,
               fontSize: 24,
               fontWeight: FontWeight.w400,
             ),
-            SizedBox(
+            const SizedBox(
               height: 15,
             ),
             ...List.generate(10, (index) {
@@ -79,9 +81,9 @@ class HabittrackerScreen extends StatelessWidget {
                             fontSize: 20,
                             color: CustomColors.lighttblue2,
                             fontWeight: FontWeight.w700)),
-                            SizedBox(height: 30,),
+                            const SizedBox(height: 30,),
                     Container(
-                      margin: EdgeInsets.symmetric(horizontal: 70),
+                      margin: const EdgeInsets.symmetric(horizontal: 70),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
