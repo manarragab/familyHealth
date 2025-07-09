@@ -27,7 +27,7 @@ class Ibscalc5Screen extends GetWidget<Calculationcontroller> {
                   ),
                   Container(
                       margin: EdgeInsets.symmetric(horizontal: 50.w),
-                      child: DotsbarItem(step: 4, id: "ibs")),
+                      child: const DotsbarItem(step: 4, id: "ibs")),
                   SizedBox(
                     height: 20.h,
                   ),

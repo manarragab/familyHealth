@@ -226,7 +226,7 @@ List<String> calcImages=[
       responseBMi = response as PostBMIResponse;
 
 
-      Get.to(Bmi2calcScreen());
+      Get.to(const Bmi2calcScreen());
     });
   }
 
@@ -263,7 +263,7 @@ List<String> calcImages=[
       responseTracker = response as PostTrackerResponse;
 
       print(responseTracker.data?.weeksPassed.toString());
-      Get.to(DatecalcScreen());
+      Get.to(const DatecalcScreen());
     });
   }
 

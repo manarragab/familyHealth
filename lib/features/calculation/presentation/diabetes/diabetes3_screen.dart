@@ -34,7 +34,7 @@ class _Diabetes3ScreenState extends State<Diabetes3Screen> {
                       const SizedBox(
                         height: 45,
                       ),
-                      DotsbarItem(id: "diabetes3", step: 3),
+                      const DotsbarItem(id: "diabetes3", step: 3),
                       const SizedBox(
                         height: 35,
                       ),

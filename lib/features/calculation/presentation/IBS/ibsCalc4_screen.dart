@@ -1,14 +1,9 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
 import 'package:abg/features/calculation/presentation/IBS/widget/questions_item.dart';
-import 'package:abg/features/calculation/presentation/diabetes/widget/white4Container.dart';
 import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
-import 'package:abg/features/calculation/presentation/widget/white3Container.dart';
-import 'package:abg/features/calculation/presentation/widget/whiteContainer.dart';
 import 'package:abg/res/router/pages.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Ibscalc4Screen extends GetWidget<Calculationcontroller> {
   const Ibscalc4Screen({super.key});
@@ -32,7 +27,7 @@ class Ibscalc4Screen extends GetWidget<Calculationcontroller> {
                   ),
                   Container(
                       margin: EdgeInsets.symmetric(horizontal: 50.w),
-                      child: DotsbarItem(step: 3, id: "ibs")),
+                      child: const DotsbarItem(step: 3, id: "ibs")),
                   SizedBox(
                     height: 20.h,
                   ),

@@ -111,7 +111,7 @@ void clearData() {
     getPage: (page) => _pageNum = page,
   );
 
-  change(famMD!, status: RxStatus.success());
+  change(famMD, status: RxStatus.success());
 }
 
 

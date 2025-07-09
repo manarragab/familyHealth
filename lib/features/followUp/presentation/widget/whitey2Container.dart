@@ -1,8 +1,6 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/followUp/domain/controller/followUp_controller.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_xlider/flutter_xlider.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Whitey2container extends StatefulWidget {

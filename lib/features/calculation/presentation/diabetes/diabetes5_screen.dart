@@ -1,6 +1,5 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
-import 'package:abg/features/calculation/presentation/diabetes/diabetes6_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
 import 'package:abg/features/calculation/presentation/widget/white2Container.dart';
@@ -36,7 +35,7 @@ class _Diabetes5ScreenState extends State<Diabetes5Screen> {
                       const SizedBox(
                         height: 35,
                       ),
-                      DotsbarItem(
+                      const DotsbarItem(
                         id: "diabetes5",
                         step: 5,
                       ),

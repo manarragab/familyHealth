@@ -1,7 +1,4 @@
 import 'package:abg/data/const/export.dart';
-import 'package:abg/res/configuration/color.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Whitey1container extends StatelessWidget {

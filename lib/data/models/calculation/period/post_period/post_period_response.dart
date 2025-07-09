@@ -19,13 +19,11 @@ class PostperiodResponse extends ResponseModel<Period?> {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if(data != null) {
-      data["data"] = data?.toJson();
-    }
-    data["status"] = status;
-    data["message"] = message;
-    return data;
+    final Map<String, dynamic> result = <String, dynamic>{};
+    result["data"] = data?.toJson();
+    result["status"] = status;
+    result["message"] = message;
+    return result;
   }
 }
 

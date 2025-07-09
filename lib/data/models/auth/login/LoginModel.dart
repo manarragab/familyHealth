@@ -1,12 +1,8 @@
-import 'dart:io';
 
 import 'package:abg/data/const/export.dart';
 import 'package:abg/data/remote_data/response_model.dart';
 
 
-import 'package:dio/dio.dart';
-import 'package:mime/mime.dart';
-import 'package:http_parser/http_parser.dart';
 
 
 // class LoginModel extends ResponseModel<LoginData?> {
@@ -132,15 +128,13 @@ class LoginModel extends ResponseModel<LoginData?> {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if (data != null) {
-      data["data"] = data?.toJson();
-    }
-    data["status"] = status;
-    data["message"] = message;
-   data["token"] = token;
+  final Map<String, dynamic> result = <String, dynamic>{};
+  result["data"] = data?.toJson();
+  result["status"] = status;
+  result["message"] = message;
+  result["token"] = token;
 
-    return data;
+  return result;
   }
 }
 

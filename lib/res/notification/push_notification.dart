@@ -41,7 +41,14 @@ class PushNotificationsManager {
       (RemoteMessage message) {
         sPrint.info('getMessage::: $message');
         RemoteNotification? notification = message.notification;
-        if (notification != null) {
+         if (message.data['type'] != null &&
+            message.data['type'] == 'alarm') {
+          CustomAlarm.showAlarmNotification(
+              title: message.data['title'],
+              message: message.data['body'],
+              id: message.data['id']);
+              print("alarmmmmmmmmmmmmm ${message.data['title']}");
+        } else if (notification != null) {
           // foreground
           sPrint.info('notificationMessage::::${message.notification!.title}');
           sPrint.info('notificationMessage::::${message.notification!.body}');
@@ -54,13 +61,8 @@ class PushNotificationsManager {
             message: message.notification?.body ?? "",
             onReceive: (p0) {},
           );
-        } else if (message.data['type'] != null &&
-            message.data['type'] == 'alarm') {
-          CustomAlarm.showAlarmNotification(
-              title: message.data['title'],
-              message: message.data['body'],
-              id: message.data['id']);
-        }
+          print("testyyyyyyyyyyyyyyyy ${message.notification?.title}");
+        } 
       },
     );
 

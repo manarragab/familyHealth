@@ -19,13 +19,11 @@ class PostFavouriteResponse extends ResponseModel<Favourite?> {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    if(data != null) {
-      data["data"] = data?.toJson();
-    }
-    data["status"] = status;
-    data["message"] = message;
-    return data;
+    final Map<String, dynamic> dataMap = <String, dynamic>{};
+    dataMap["data"] = data?.toJson();
+    dataMap["status"] = status;
+    dataMap["message"] = message;
+    return dataMap;
   }
 }
 

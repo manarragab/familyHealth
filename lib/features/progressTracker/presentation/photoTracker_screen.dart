@@ -1,7 +1,6 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/progressTracker/presentation/addPhoto_screen.dart';
 import 'package:abg/features/progressTracker/presentation/widget/addPhoto.dart';
-import 'package:flutter/material.dart';
 import 'package:abg/features/progressTracker/domain/controller/progressTracker_controller.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -27,7 +26,7 @@ class PhototrackerScreen extends GetWidget<ProgresstrackerController> {
             const SizedBox(height: 25),
             MainButton(
               onPressed: () {
-                Get.to(AddphotoScreen());
+                Get.to(const AddphotoScreen());
               },
               title: "Add photo tracker",
               radius: 10,
@@ -36,7 +35,7 @@ class PhototrackerScreen extends GetWidget<ProgresstrackerController> {
             ),
             const SizedBox(height: 20),
             ...List.generate(4, (index) {
-              return Addphoto();
+              return const Addphoto();
             }),
           ],
         ),

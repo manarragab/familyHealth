@@ -5,7 +5,6 @@ import 'package:abg/data/models/alarm/get_alarms/alarm_model.dart';
 import 'package:abg/res/notification/alarm/alarm_permission.dart';
 import 'package:abg/res/notification/push_notification.dart';
 import 'package:alarm/alarm.dart';
-import 'package:alarm/model/volume_settings.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 @pragma('vm:entry-point')

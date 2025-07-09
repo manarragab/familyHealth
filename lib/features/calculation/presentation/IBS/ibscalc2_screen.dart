@@ -30,7 +30,7 @@ class Ibscalc2Screen extends StatelessWidget {
                   ),
                   Container(
                       margin: EdgeInsets.symmetric(horizontal: 50.w),
-                      child: DotsbarItem(step: 1, id: "ibs")),
+                      child: const DotsbarItem(step: 1, id: "ibs")),
                   SizedBox(
                     height: 30.h,
                   ),

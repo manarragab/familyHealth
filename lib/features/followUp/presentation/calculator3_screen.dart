@@ -128,7 +128,7 @@ class Calculator3Screen extends StatelessWidget {
                 margin: const EdgeInsets.symmetric(horizontal: 15),
                 child: MainButton(
                   onPressed: () {
-                    Get.to(ViewProgressScreen());
+                    Get.to(const ViewProgressScreen());
                   },
                   title: "View progress",
                   withShadow: true,

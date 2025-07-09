@@ -4,7 +4,6 @@ import 'package:abg/features/followUp/presentation/calculator2_screen.dart';
 import 'package:abg/features/followUp/presentation/calculator3_screen.dart';
 import 'package:abg/features/followUp/presentation/viewProgress_screen.dart';
 import 'package:abg/features/followUp/presentation/widget/grey_container.dart';
-import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:abg/features/followUp/domain/controller/followUp_controller.dart';
 
@@ -64,7 +63,7 @@ class FollowupScreen extends GetView<FollowupController> {
                 margin: const EdgeInsets.symmetric(horizontal: 15),
                 child: MainButton(
                   onPressed: () {
-                    Get.to(ViewProgressScreen());
+                    Get.to(const ViewProgressScreen());
                   },
                   title: "View progress",
                   withShadow: true,

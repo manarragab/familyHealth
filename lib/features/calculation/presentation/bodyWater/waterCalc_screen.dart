@@ -1,4 +1,3 @@
-import 'package:abg/features/calculation/presentation/BmiCalc/BMI2calc_screen.dart';
 import 'package:abg/features/calculation/presentation/bodyWater/water2Calc_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
 import 'package:abg/features/calculation/presentation/widget/radiooo_item.dart';
@@ -93,7 +92,7 @@ class WatercalcScreen extends StatelessWidget {
                       child: MainButton(
                         withShadow: true,
                         onPressed: () {
-                          Get.to(Water2calcScreen());
+                          Get.to(const Water2calcScreen());
                         },
                         radius: 10,
                         height: 46,

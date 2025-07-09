@@ -19,10 +19,10 @@ class LayoutScreen extends GetView<LayoutController> {
 
   List<Widget> navigationBar = [
     Homescreen(),
-    PillsScreen(),
+    const PillsScreen(),
     // const Scaffold(),
     const FamilyScreen(),
-    MyprofileScreen(),
+    const MyprofileScreen(),
   ];
 
   Widget getNavigationBar(int index) {

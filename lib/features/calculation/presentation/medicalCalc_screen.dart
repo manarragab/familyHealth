@@ -1,4 +1,3 @@
-import 'package:abg/data/const/enums.dart';
 import 'package:abg/data/models/calculation/favourite/get_favourite/get_favourite.dart';
 import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
@@ -237,7 +236,7 @@ class _MedicalcalcScreenState extends State<MedicalcalcScreen> {
     if (name == null) return;
 
     if (name == "bmi") {
-      Get.to(BmicalcScreen());
+      Get.to(const BmicalcScreen());
     } else if (name == "pregnancy-tracker") {
       Get.toNamed(CustomPage.dueDatePage);
     } else if (name == "diabetes-calculator") {

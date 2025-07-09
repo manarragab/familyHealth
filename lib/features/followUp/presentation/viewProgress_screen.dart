@@ -1,8 +1,5 @@
 import 'package:abg/data/const/export.dart';
-import 'package:abg/localization/all_keys.dart';
-import 'package:abg/res/configuration/app_bar.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:abg/features/followUp/domain/controller/followUp_controller.dart';
 

@@ -18,13 +18,11 @@ class GetFavourites extends ResponseModel<Favourites?> {
 
   @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = {};
-    if (data != null) {
-      data["data"] = data?.toJson();
-    }
-    data["status"] = status;
-    data["message"] = message;
-    return data;
+    final Map<String, dynamic> result = {};
+    result["data"] = data?.toJson();
+    result["status"] = status;
+    result["message"] = message;
+    return result;
   }
 }
 

@@ -33,7 +33,7 @@ class _Calorie4calcScreenState extends State<Calorie4calcScreen> {
                       const SizedBox(
                         height: 45,
                       ),
-                      DotsbarItem(
+                      const DotsbarItem(
                         id: "calorie",
                         step: 4,
                       ),
@@ -62,7 +62,7 @@ class _Calorie4calcScreenState extends State<Calorie4calcScreen> {
                       MainButton(
                         withShadow: true,
                         onPressed: () {
-                          Get.to(Calorie5calcScreen());
+                          Get.to(const Calorie5calcScreen());
                         },
                         radius: 10,
                         height: 46,
@@ -88,7 +88,7 @@ class _Calorie4calcScreenState extends State<Calorie4calcScreen> {
                                 color: CustomColors.darkblue3, width: 2)),
                         child: MaterialButton(
                           onPressed: () {
-                            Get.to(Calorie3calcScreen());
+                            Get.to(const Calorie3calcScreen());
                           },
                           child: Text(
                             CustomTrans.back.tr,

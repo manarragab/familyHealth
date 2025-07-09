@@ -20,9 +20,7 @@ class GetUserData extends ResponseModel<User>  {
   @override
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    if(data != null) {
-      data["data"] = data?.toJson();
-    }
+    data["data"] = this.data?.toJson();
     data["status"] = status;
     data["message"] = message;
     return data;

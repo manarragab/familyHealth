@@ -1,8 +1,5 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
-import 'package:abg/res/configuration/color.dart';
-import 'package:abg/res/configuration/fonts.dart';
-import 'package:flutter/material.dart';
 
 class White5container extends StatefulWidget {
   final String id;
