@@ -6,6 +6,8 @@ import 'package:abg/res/router/pages.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Bmi2calcScreen extends GetView<Calculationcontroller> {
+  const Bmi2calcScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     String obesity = controller.responseBMi.data?.category ?? "";
@@ -13,7 +15,7 @@ class Bmi2calcScreen extends GetView<Calculationcontroller> {
     return Scaffold(
         appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: ListView(
             children: [
               Greencontainer(
@@ -30,11 +32,11 @@ class Bmi2calcScreen extends GetView<Calculationcontroller> {
                   ],
                 ),
               )),
-              SizedBox(
+              const SizedBox(
                 height: 17,
               ),
               Container(
-                padding: EdgeInsets.symmetric(vertical: 15, horizontal: 7),
+                padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 7),
                 width: double.infinity,
                 decoration: BoxDecoration(
                     color: CustomColors.lightGreen1,
@@ -42,7 +44,7 @@ class Bmi2calcScreen extends GetView<Calculationcontroller> {
                 child: Column(
                   children: [
                     Container(
-                      margin: EdgeInsets.symmetric(horizontal: 10),
+                      margin: const EdgeInsets.symmetric(horizontal: 10),
                       child: Row(
                         children: [
                           Container(
@@ -60,7 +62,7 @@ class Bmi2calcScreen extends GetView<Calculationcontroller> {
                                             : Colors.blue,
                                 borderRadius: BorderRadius.circular(2)),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 10,
                           ),
                           Text(
@@ -74,7 +76,7 @@ class Bmi2calcScreen extends GetView<Calculationcontroller> {
                         ],
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 7,
                     ),
                     Text(
@@ -88,7 +90,7 @@ class Bmi2calcScreen extends GetView<Calculationcontroller> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Row(
@@ -107,7 +109,7 @@ class Bmi2calcScreen extends GetView<Calculationcontroller> {
                       color: Colors.white,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   MainButton(
@@ -116,7 +118,7 @@ class Bmi2calcScreen extends GetView<Calculationcontroller> {
                           (route) => Get.currentRoute == CustomPage.layoutPage);
                     },
                     width: 70,
-                    titleWidget: Icon(Icons.home_outlined,
+                    titleWidget: const Icon(Icons.home_outlined,
                         size: 30, color: Colors.white),
                   ),
                 ],

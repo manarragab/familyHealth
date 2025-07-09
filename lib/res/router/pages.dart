@@ -117,14 +117,14 @@ class CustomPage {
         })),
     GetPage(
         name: myFamily,
-        page: () => MyfamilyScreen(),
+        page: () => const MyfamilyScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(FamilyController()).onRefresh();
         })),
     GetPage(
         name: followUp,
-        page: () => FollowupScreen(),
+        page: () => const FollowupScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(FollowupController());
@@ -138,77 +138,77 @@ class CustomPage {
         })),
     GetPage(
         name: calculation,
-        page: () => MedicalcalcScreen(),
+        page: () => const MedicalcalcScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller()).onRefresh();
         })),
     GetPage(
         name: diabetes2Page,
-        page: () => Diabetes2Screen(),
+        page: () => const Diabetes2Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
     GetPage(
         name: diabetes1Page,
-        page: () => Diabetes1Screen(),
+        page: () => const Diabetes1Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
     GetPage(
         name: diabetes3Page,
-        page: () => Diabetes3Screen(),
+        page: () => const Diabetes3Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
     GetPage(
         name: diabetes4Page,
-        page: () => Diabetes4Screen(),
+        page: () => const Diabetes4Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
     GetPage(
         name: diabetes5Page,
-        page: () => Diabetes5Screen(),
+        page: () => const Diabetes5Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
     GetPage(
         name: diabetes6Page,
-        page: () => Diabetes6Screen(),
+        page: () => const Diabetes6Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
     GetPage(
         name: diabetes7Page,
-        page: () => Diabetes7Screen(),
+        page: () => const Diabetes7Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
     GetPage(
         name: diabetes8Page,
-        page: () => Diabetes8Screen(),
+        page: () => const Diabetes8Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
     GetPage(
         name: dueDatePage,
-        page: () => DuedateScreen(),
+        page: () => const DuedateScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
     GetPage(
         name: ibsPage1,
-        page: () => Ibscalc1Screen(),
+        page: () => const Ibscalc1Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
@@ -222,28 +222,28 @@ class CustomPage {
         })),
     GetPage(
         name: ibsPage3,
-        page: () => Ibscalc3Screen(),
+        page: () => const Ibscalc3Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
     GetPage(
         name: ibsPage4,
-        page: () => Ibscalc4Screen(),
+        page: () => const Ibscalc4Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
     GetPage(
         name: ibsPage5,
-        page: () => Ibscalc5Screen(),
+        page: () => const Ibscalc5Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
     GetPage(
         name: ibsPage6,
-        page: () => Ibscalc6Screen(),
+        page: () => const Ibscalc6Screen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
@@ -257,42 +257,42 @@ class CustomPage {
         })),
     GetPage(
         name: ovulatePage,
-        page: () => OvulationcalcScreen(),
+        page: () => const OvulationcalcScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
     GetPage(
         name: caloriePage,
-        page: () => CaloriecalcScreen(),
+        page: () => const CaloriecalcScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
     GetPage(
         name: waterPage,
-        page: () => WatercalcScreen(),
+        page: () => const WatercalcScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
     GetPage(
         name: pillsPage,
-        page: () => PillsScreen(),
+        page: () => const PillsScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(PilsController());
         })),
     GetPage(
         name: ovulatePage2,
-        page: () => Ovulation2calcScreen(),
+        page: () => const Ovulation2calcScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());
         })),
     GetPage(
         name: ovulatePage3,
-        page: () => Ovulation3calcScreen(),
+        page: () => const Ovulation3calcScreen(),
         transition: Transition.fadeIn,
         binding: BindingsBuilder(() {
           Get.put(Calculationcontroller());

@@ -12,7 +12,8 @@ LoginModel loginModel=LoginModel();
   HomeModel model = HomeModel();
   int _page = 1;
 
-void onInit() {
+@override
+  void onInit() {
     super.onInit();
     onRefresh();
   }

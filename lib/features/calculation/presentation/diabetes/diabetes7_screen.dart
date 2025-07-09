@@ -7,6 +7,8 @@ import 'package:abg/res/loading/loading_overlay_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Diabetes7Screen extends StatefulWidget {
+  const Diabetes7Screen({super.key});
+
   @override
   State<Diabetes7Screen> createState() => _Diabetes7ScreenState();
 }
@@ -19,7 +21,7 @@ class _Diabetes7ScreenState extends State<Diabetes7Screen> {
     return Scaffold(
         appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: ListView(
             children: [
               Greencontainer(
@@ -30,14 +32,14 @@ class _Diabetes7ScreenState extends State<Diabetes7Screen> {
                  
                   widg: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
-                      DotsbarItem(
+                      const DotsbarItem(
                         id: "diabetes7",
                         step: 7,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 35,
                       ),
                       Text(
@@ -48,7 +50,7 @@ class _Diabetes7ScreenState extends State<Diabetes7Screen> {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       White5container(
@@ -59,7 +61,7 @@ class _Diabetes7ScreenState extends State<Diabetes7Screen> {
                            CustomTrans.formerSmoker.tr,
                           CustomTrans.currentSmoker.tr,
                           ]),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       LoadingOverLay(
@@ -89,7 +91,7 @@ class _Diabetes7ScreenState extends State<Diabetes7Screen> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(

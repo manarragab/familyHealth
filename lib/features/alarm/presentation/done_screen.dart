@@ -28,7 +28,7 @@ class Done extends StatelessWidget {
                         Container(
                           width: 167,
                           height: 167,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: CustomColors.lightgrey4,
                             shape: BoxShape.circle,
                           ),

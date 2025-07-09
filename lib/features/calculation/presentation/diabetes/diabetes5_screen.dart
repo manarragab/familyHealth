@@ -1,6 +1,5 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
-import 'package:abg/features/calculation/presentation/diabetes/diabetes6_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
 import 'package:abg/features/calculation/presentation/widget/white2Container.dart';
@@ -8,6 +7,8 @@ import 'package:abg/res/router/pages.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Diabetes5Screen extends StatefulWidget {
+  const Diabetes5Screen({super.key});
+
   @override
   State<Diabetes5Screen> createState() => _Diabetes5ScreenState();
 }
@@ -20,7 +21,7 @@ class _Diabetes5ScreenState extends State<Diabetes5Screen> {
     return Scaffold(
         appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: ListView(
             children: [
               Greencontainer(
@@ -31,14 +32,14 @@ class _Diabetes5ScreenState extends State<Diabetes5Screen> {
                  
                   widg: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 35,
                       ),
-                      DotsbarItem(
+                      const DotsbarItem(
                         id: "diabetes5",
                         step: 5,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       Text(
@@ -49,7 +50,7 @@ class _Diabetes5ScreenState extends State<Diabetes5Screen> {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       White2container(
@@ -57,7 +58,7 @@ class _Diabetes5ScreenState extends State<Diabetes5Screen> {
                           title1: CustomTrans.pleaseEnterYourHeight.tr,
                           title2: "(${CustomTrans.cm.tr})",
                           measure: CustomTrans.cm.tr),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       White2container(
@@ -65,7 +66,7 @@ class _Diabetes5ScreenState extends State<Diabetes5Screen> {
                           title1: CustomTrans.pleaseEnterYourWeight.tr,
                           title2: "(${CustomTrans.kg.tr})",
                           measure: CustomTrans.kg.tr),
-                      SizedBox(
+                      const SizedBox(
                         height: 30,
                       ),
                       MainButton(
@@ -93,7 +94,7 @@ class _Diabetes5ScreenState extends State<Diabetes5Screen> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(

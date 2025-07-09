@@ -18,7 +18,7 @@ class Calculator1Screen extends StatelessWidget {
     return Scaffold(
         appBar: CustomAppBar.appBar(CustomTrans.followUp.tr),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: ListView(
             children: [
             Greenycontainer(
@@ -27,7 +27,7 @@ class Calculator1Screen extends StatelessWidget {
                     child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 5,
                     ),
                     Text(
@@ -38,12 +38,12 @@ class Calculator1Screen extends StatelessWidget {
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    Whitey2container(
+                    const Whitey2container(
                         KEY: "one",
                         title1: "your weight",
                         title2: "(kg)",
                         measure: "kg"),
-                    SizedBox(
+                    const SizedBox(
                       height: 23,
                     ),
                     MainButton(
@@ -64,11 +64,11 @@ class Calculator1Screen extends StatelessWidget {
                   ],
                 )),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Container(
-                padding: EdgeInsets.all(12),
+                padding: const EdgeInsets.all(12),
                 width: double.infinity,
                 height: 160,
                 decoration: BoxDecoration(
@@ -85,7 +85,7 @@ class Calculator1Screen extends StatelessWidget {
                               color: CustomColors.green1,
                               borderRadius: BorderRadius.circular(2)),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           width: 10,
                         ),
                         Text(
@@ -98,7 +98,7 @@ class Calculator1Screen extends StatelessWidget {
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 7,
                     ),
                     Text(
@@ -112,14 +112,14 @@ class Calculator1Screen extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 30,
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 15),
                 child: MainButton(
                   onPressed: () {
-                    Get.to(ViewProgressScreen());
+                    Get.to(const ViewProgressScreen());
                   },
                   title: "View progress",
                   withShadow: true,

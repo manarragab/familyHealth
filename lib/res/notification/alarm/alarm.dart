@@ -5,7 +5,6 @@ import 'package:abg/data/models/alarm/get_alarms/alarm_model.dart';
 import 'package:abg/res/notification/alarm/alarm_permission.dart';
 import 'package:abg/res/notification/push_notification.dart';
 import 'package:alarm/alarm.dart';
-import 'package:alarm/model/volume_settings.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 @pragma('vm:entry-point')
@@ -259,7 +258,7 @@ class CustomAlarm {
       sPrint.info('alarm:: $userID$id  $count $date');
       count = count + 1;
       sPrint.info(
-          "date.isBefore(endDate) =============> ${date.isBefore(endDate)}  ${date} < ${endDate}");
+          "date.isBefore(endDate) =============> ${date.isBefore(endDate)}  $date < $endDate");
     } while (date.isBefore(endDate) && count < 10);
     sPrint.success('end alarm');
   }
@@ -289,9 +288,9 @@ class CustomAlarm {
   void getAllAlarms() {
     sPrint.info('get all alarm');
     Alarm.getAlarms().asStream().listen((value) {
-      value.forEach((e) {
+      for (var e in value) {
         sPrint.warning(e.toJson());
-      });
+      }
     });
   }
 

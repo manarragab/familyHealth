@@ -28,7 +28,7 @@ class _Diabetes1ScreenState extends State<Diabetes1Screen> {
           return Scaffold(
               appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
               body: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: ListView(
                   children: [
                     Greencontainer(
@@ -41,7 +41,7 @@ class _Diabetes1ScreenState extends State<Diabetes1Screen> {
                             const SizedBox(
                               height: 45,
                             ),
-                            DotsbarItem(
+                            const DotsbarItem(
                               id: "diabetes1",
                               step: 1,
                             ),

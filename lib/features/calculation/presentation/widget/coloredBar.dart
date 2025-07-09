@@ -70,16 +70,16 @@ percent = ((selected - minScore) / (maxScore - minScore)).clamp(0.0, 1.0);
         controller.setId(id);
 
         return Container(
-          margin: EdgeInsets.only(top: 20),
+          margin: const EdgeInsets.only(top: 20),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              id == "diabetes8" ? SizedBox() : _buildNumberRow(),
-              SizedBox(height: 5),
+              id == "diabetes8" ? const SizedBox() : _buildNumberRow(),
+              const SizedBox(height: 5),
               _buildBar(barWidth, indicatorPosition),
-              SizedBox(height: 5),
+              const SizedBox(height: 5),
               _buildLabelRow(barWidth),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               _buildBmiScore(),
             ],
           ),
@@ -90,7 +90,7 @@ percent = ((selected - minScore) / (maxScore - minScore)).clamp(0.0, 1.0);
 
   Widget _buildNumberRow() {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 74),
+      margin: const EdgeInsets.symmetric(horizontal: 74),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -132,7 +132,7 @@ percent = ((selected - minScore) / (maxScore - minScore)).clamp(0.0, 1.0);
   }
 
   Widget _buildLabelRow(double barWidth) {
-    return Container(
+    return SizedBox(
       width: barWidth,
       child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -162,7 +162,7 @@ SizedBox(width: Get.width * 2/100  ,),
               fontWeight: FontWeight.w700,
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
 
           Text(
                   score ?? "",
@@ -172,11 +172,11 @@ SizedBox(width: Get.width * 2/100  ,),
                     fontWeight: FontWeight.w700,
                   ),
                 ),
-                          SizedBox(height: 10),
+                          const SizedBox(height: 10),
 
 
           id == "diabetes8"
-              ? SizedBox()
+              ? const SizedBox()
               : Text(
                   subTitle ?? "",
                   style: GoogleFonts.almarai(
@@ -198,8 +198,8 @@ SizedBox(width: Get.width * 2/100  ,),
       decoration: BoxDecoration(
         color: color,
         borderRadius: BorderRadius.horizontal(
-          left: color == Colors.blue ? Radius.circular(10) : Radius.zero,
-          right: color == CustomColors.redd ? Radius.circular(10) : Radius.zero,
+          left: color == Colors.blue ? const Radius.circular(10) : Radius.zero,
+          right: color == CustomColors.redd ? const Radius.circular(10) : Radius.zero,
         ),
       ),
     );
@@ -220,7 +220,7 @@ SizedBox(width: Get.width * 2/100  ,),
     return Text(
       number,
       key: ValueKey("number_$index"),
-      style: TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
+      style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w700),
     );
   }
 }

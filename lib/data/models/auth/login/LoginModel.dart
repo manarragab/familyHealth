@@ -1,12 +1,8 @@
-import 'dart:io';
 
 import 'package:abg/data/const/export.dart';
 import 'package:abg/data/remote_data/response_model.dart';
 
 
-import 'package:dio/dio.dart';
-import 'package:mime/mime.dart';
-import 'package:http_parser/http_parser.dart';
 
 
 // class LoginModel extends ResponseModel<LoginData?> {
@@ -112,8 +108,11 @@ import 'package:http_parser/http_parser.dart';
 // }
 
 class LoginModel extends ResponseModel<LoginData?> {
+  @override
   LoginData? data;
+  @override
   num? status;
+  @override
   String? message;
   String? token;
 
@@ -127,16 +126,15 @@ class LoginModel extends ResponseModel<LoginData?> {
    token = json["token"];
   }
 
+  @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    if (data != null) {
-      _data["data"] = data?.toJson();
-    }
-    _data["status"] = status;
-    _data["message"] = message;
-   _data["token"] = token;
+  final Map<String, dynamic> result = <String, dynamic>{};
+  result["data"] = data?.toJson();
+  result["status"] = status;
+  result["message"] = message;
+  result["token"] = token;
 
-    return _data;
+  return result;
   }
 }
 
@@ -202,7 +200,7 @@ class LoginData {
   }
 
  Map<String, dynamic> toJson()  {
-    final Map<String, dynamic> _data = <String, dynamic>{};
+    final Map<String, dynamic> data = <String, dynamic>{};
 
 
 // if (image != null) {
@@ -212,27 +210,27 @@ class LoginData {
 //     }
 
 
-    _data["id"] = id;
-    _data["name"] = name;
-    _data["email"] = email;
-    _data["email_verified_at"] = emailVerifiedAt;
-    _data["user_type"] = userType;
-    _data["phone"] = phone;
-    _data["date_of_birth"] = dateOfBirth;
-    _data["gender"] = gender;
-    _data["longitude"] = longitude;
-    _data["latitude"] = latitude;
-    _data["social_id"] = socialId;
-    _data["social_type"] = socialType;
-    _data["device_token"] = deviceToken;
-    _data["is_logged_in"] = isLoggedIn;
-    _data["is_banned"] = isBanned;
-    _data["created_at"] = createdAt;
-    _data["updated_at"] = updatedAt;
-    _data["image_path"] = image;
+    data["id"] = id;
+    data["name"] = name;
+    data["email"] = email;
+    data["email_verified_at"] = emailVerifiedAt;
+    data["user_type"] = userType;
+    data["phone"] = phone;
+    data["date_of_birth"] = dateOfBirth;
+    data["gender"] = gender;
+    data["longitude"] = longitude;
+    data["latitude"] = latitude;
+    data["social_id"] = socialId;
+    data["social_type"] = socialType;
+    data["device_token"] = deviceToken;
+    data["is_logged_in"] = isLoggedIn;
+    data["is_banned"] = isBanned;
+    data["created_at"] = createdAt;
+    data["updated_at"] = updatedAt;
+    data["image_path"] = image;
         print("image_path:?????????????????????????????????????? $image");
 
-    return _data;
+    return data;
   }
 }
 

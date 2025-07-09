@@ -1,21 +1,17 @@
-import 'dart:ffi';
 
 import 'package:abg/data/const/enums.dart';
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/alarm/presentation/done_screen.dart';
-import 'package:abg/features/home/presentation/home_screen.dart';
 import 'package:abg/features/progressTracker/presentation/widget/radioo.dart';
-import 'package:abg/res/configuration/bottom_sheet/bottom_sheets.dart';
 import 'package:abg/res/configuration/bottom_sheet/date_picker.dart';
-import 'package:abg/res/configuration/image/pick_image.dart';
 import 'package:abg/res/configuration/text_field/text_field.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
-import 'package:flutter/widgets.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:abg/features/progressTracker/domain/controller/progressTracker_controller.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AddhabitbreakerScreen extends GetView<ProgresstrackerController> {
+  const AddhabitbreakerScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +29,7 @@ class AddhabitbreakerScreen extends GetView<ProgresstrackerController> {
                   color: CustomColors.darkblue,
                 ),
               ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               Form(
                   key: key,
                   child: Column(
@@ -42,7 +38,7 @@ class AddhabitbreakerScreen extends GetView<ProgresstrackerController> {
                         (val) {},
                         hint: "Name",
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       Align(
@@ -64,12 +60,12 @@ class AddhabitbreakerScreen extends GetView<ProgresstrackerController> {
                           return Radioo(ID: "breaker"  ,period: PeriodType.values[index]);
                         }),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       CustomTextField.dynamicTextField((value) {},
                           onTapped: () {}, hint: "Example 120 days"),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       CustomTextField.datePickerTextField(
@@ -81,7 +77,7 @@ class AddhabitbreakerScreen extends GetView<ProgresstrackerController> {
                               controller.date3Controller.text = date.stringDate;
                             }).showDatePicker(context);
                           }),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       CustomTextField.paragraphTextField((val) {},
@@ -94,7 +90,7 @@ class AddhabitbreakerScreen extends GetView<ProgresstrackerController> {
                         child: MainButton(
                           onPressed: () {
                           Get.dialog(
-                       Done(),
+                       const Done(),
                        );
                           },
                           radius: 10,

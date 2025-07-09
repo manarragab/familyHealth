@@ -4,11 +4,12 @@ import 'package:abg/features/progressTracker/domain/controller/progressTracker_c
 import 'package:abg/features/progressTracker/presentation/habitBreaker_screen.dart';
 import 'package:abg/features/progressTracker/presentation/habitTracker_screen.dart';
 import 'package:abg/features/progressTracker/presentation/photoTracker_screen.dart';
-import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class ProgresstrackerScreen extends GetView<ProgresstrackerController>{
   int select=0;
+
+  ProgresstrackerScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,15 +30,15 @@ class ProgresstrackerScreen extends GetView<ProgresstrackerController>{
             onTapped: (){
               switch(index){
                 case 0:
-                Get.to(PhototrackerScreen());
+                Get.to(const PhototrackerScreen());
                 break;
 
                 case 1:
-                Get.to(HabittrackerScreen());
+                Get.to(const HabittrackerScreen());
                 break;
 
                 case 2:
-                Get.to(HabitbreakerScreen());
+                Get.to(const HabitbreakerScreen());
                 break;
 
               }

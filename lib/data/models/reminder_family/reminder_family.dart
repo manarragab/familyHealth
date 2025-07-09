@@ -1,8 +1,4 @@
-import 'dart:io';
 
-import 'package:dio/dio.dart';
-import 'package:mime/mime.dart';
-import 'package:http_parser/http_parser.dart';
 
 /// id : 4
 /// user_id : 2
@@ -88,11 +84,11 @@ class FamilyReminders {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
+    final Map<String, dynamic> data = <String, dynamic>{};
     if(familyReminders != null) {
-      _data["family_reminders"] = familyReminders?.map((e) => e.toJson()).toList();
+      data["family_reminders"] = familyReminders?.map((e) => e.toJson()).toList();
     }
-    return _data;
+    return data;
   }
 }
 
@@ -124,8 +120,8 @@ class FamilyReminders1 {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["id"] = id;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["id"] = id;
 
 
 
@@ -192,18 +188,18 @@ class FamilyReminders1 {
 
 
 
-    _data["user_id"] = userId;
-    _data["name"] = name;
-    _data["brith_date"] = brithDate;
-    _data["phone"] = phone;
-    _data["relative"] = relative;
-    _data["image"] = image;
-    _data["created_at"] = createdAt;
-    _data["updated_at"] = updatedAt;
+    data["user_id"] = userId;
+    data["name"] = name;
+    data["brith_date"] = brithDate;
+    data["phone"] = phone;
+    data["relative"] = relative;
+    data["image"] = image;
+    data["created_at"] = createdAt;
+    data["updated_at"] = updatedAt;
     if(familyRecords != null) {
-      _data["family_records"] = familyRecords?.map((e) => e.toJson()).toList();
+      data["family_records"] = familyRecords?.map((e) => e.toJson()).toList();
     }
-    return _data;
+    return data;
   }
 }
 
@@ -225,12 +221,12 @@ class FamilyRecords {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["id"] = id;
-    _data["family_id"] = familyId;
-    _data["type"] = type;
-    _data["created_at"] = createdAt;
-    _data["updated_at"] = updatedAt;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["id"] = id;
+    data["family_id"] = familyId;
+    data["type"] = type;
+    data["created_at"] = createdAt;
+    data["updated_at"] = updatedAt;
+    return data;
   }
 }

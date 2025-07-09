@@ -1,4 +1,3 @@
-import 'dart:ffi';
 
 import 'package:abg/data/const/enums.dart';
 import 'package:abg/data/const/export.dart';
@@ -8,12 +7,12 @@ import 'package:abg/res/configuration/bottom_sheet/date_picker.dart';
 import 'package:abg/res/configuration/image/pick_image.dart';
 import 'package:abg/res/configuration/text_field/text_field.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
-import 'package:flutter/widgets.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:abg/features/progressTracker/domain/controller/progressTracker_controller.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AddphotoScreen extends GetView<ProgresstrackerController> {
+  const AddphotoScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +30,7 @@ class AddphotoScreen extends GetView<ProgresstrackerController> {
                   color: CustomColors.darkblue,
                 ),
               ),
-              SizedBox(height: 25),
+              const SizedBox(height: 25),
               Form(
                   key: key,
                   child: Column(
@@ -40,12 +39,12 @@ class AddphotoScreen extends GetView<ProgresstrackerController> {
                         (val) {},
                         hint: "Name",
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       CustomTextField.paragraphTextField((val) {},
                           hint: "The message you want with the tracker"),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       CustomTextField.datePickerTextField(
@@ -57,7 +56,7 @@ class AddphotoScreen extends GetView<ProgresstrackerController> {
                               controller.date1Controller.text = date.stringDate;
                             }).showDatePicker(context);
                           }),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       GetBuilder<ProgresstrackerController>(builder: (logic) {
@@ -119,7 +118,7 @@ controller.update();
                           ),
                         );
                       }),
-                      SizedBox(
+                      const SizedBox(
                         height: 16,
                       ),
                       CustomTextField.dropDownTextField(
@@ -146,7 +145,7 @@ controller.update();
                         child: MainButton(
                           onPressed: () {
                            Get.dialog(
-                       Done(),
+                       const Done(),
                        );
                           },
                           radius: 10,

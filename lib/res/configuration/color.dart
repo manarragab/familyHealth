@@ -132,9 +132,9 @@ static const Color lightyellow= Color.fromRGBO(255, 204, 0, 1);
 
 
   static const Color lightgrey5= Color(0xFFF8F8F8);
-  static Color lightpink1= Color(0xFFF2285B).withOpacity(0.1); //10%
+  static Color lightpink1= const Color(0xFFF2285B).withOpacity(0.1); //10%
   static const Color darkpink= Color(0xFFEE2D6C);
-  static  Color lightblue3= Color(0xFF24394A).withOpacity(0.2); //20%
+  static  Color lightblue3= const Color(0xFF24394A).withOpacity(0.2); //20%
   static const Color lightGreen1 = Color.fromRGBO(134, 205, 75, 0.3);
   
   static const Color grey12 = Color.fromRGBO(132, 132, 132, 1);

@@ -1,8 +1,5 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
-import 'package:abg/res/configuration/color.dart';
-import 'package:abg/res/configuration/fonts.dart';
-import 'package:flutter/material.dart';
 
 class White5container extends StatefulWidget {
   final String id;
@@ -27,8 +24,8 @@ class _White5containerState extends State<White5container> {
         id: widget.id,
         builder: (_) {
           return Container(
-              margin: EdgeInsets.all(5),
-              padding: EdgeInsets.all(7),
+              margin: const EdgeInsets.all(5),
+              padding: const EdgeInsets.all(7),
               width: double.infinity,
               decoration: BoxDecoration(
                   color: Colors.white, borderRadius: BorderRadius.circular(12)),
@@ -37,7 +34,7 @@ class _White5containerState extends State<White5container> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin: EdgeInsets.symmetric(vertical: 7),
+                    margin: const EdgeInsets.symmetric(vertical: 7),
                     child: Text(
                       widget.Q,
                       style: TFonts.inter(
@@ -51,7 +48,7 @@ class _White5containerState extends State<White5container> {
                     return RadioListTile(
                       dense: true,
                       visualDensity:
-                          VisualDensity(horizontal: -4, vertical: -4),
+                          const VisualDensity(horizontal: -4, vertical: -4),
                       contentPadding: EdgeInsets.zero,
                       activeColor: CustomColors.green1,
                       title: Text(

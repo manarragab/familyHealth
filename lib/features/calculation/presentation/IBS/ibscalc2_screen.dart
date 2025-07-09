@@ -8,6 +8,8 @@ import 'package:abg/res/router/pages.dart';
 class Ibscalc2Screen extends StatelessWidget {
   Calculationcontroller controller = Get.find();
 
+  Ibscalc2Screen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,12 +25,12 @@ class Ibscalc2Screen extends StatelessWidget {
           
               widg: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Container(
                       margin: EdgeInsets.symmetric(horizontal: 50.w),
-                      child: DotsbarItem(step: 1, id: "ibs")),
+                      child: const DotsbarItem(step: 1, id: "ibs")),
                   SizedBox(
                     height: 30.h,
                   ),
@@ -68,7 +70,7 @@ class Ibscalc2Screen extends StatelessWidget {
                     fontWeight: FontWeight.w400,
                     backgroundColor: CustomColors.darkblue3,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   MainButton(

@@ -1,13 +1,14 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/calculation/presentation/calories/calorie2Calc_screen.dart';
 import 'package:abg/features/calculation/presentation/calories/calorie4Calc_screen.dart';
-import 'package:abg/features/calculation/presentation/calories/calorieCalc_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
 import 'package:abg/features/calculation/presentation/widget/white2Container.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Calorie3calcScreen extends StatefulWidget {
+  const Calorie3calcScreen({super.key});
+
   @override
   State<Calorie3calcScreen> createState() => _Calorie3calcScreenState();
 }
@@ -18,7 +19,7 @@ class _Calorie3calcScreenState extends State<Calorie3calcScreen> {
     return Scaffold(
         appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: ListView(
             children: [
               Greencontainer(
@@ -29,14 +30,14 @@ class _Calorie3calcScreenState extends State<Calorie3calcScreen> {
                 
                   widg: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 45,
                       ),
-                      DotsbarItem(
+                      const DotsbarItem(
                         id: "calorie",
                         step: 3,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 35,
                       ),
                       Text(
@@ -47,19 +48,19 @@ class _Calorie3calcScreenState extends State<Calorie3calcScreen> {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       White2container(
                         KEY: "three",
                           title1: CustomTrans.yourWieght.tr, title2: "(${CustomTrans.kg.tr})", measure: CustomTrans.kg.tr),
-                      SizedBox(
+                      const SizedBox(
                         height: 35,
                       ),
                       MainButton(
                        withShadow: true,
                         onPressed: () {
-                       Get.to(Calorie4calcScreen());
+                       Get.to(const Calorie4calcScreen());
                         },
                         radius: 10,
                         height: 46,
@@ -73,7 +74,7 @@ class _Calorie3calcScreenState extends State<Calorie3calcScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(
@@ -86,7 +87,7 @@ class _Calorie3calcScreenState extends State<Calorie3calcScreen> {
                         child: MaterialButton(
                           onPressed: () {
 
-                            Get.to(Calorie2calcScreen());
+                            Get.to(const Calorie2calcScreen());
                           },
                           child: Text(
                           CustomTrans.back.tr,

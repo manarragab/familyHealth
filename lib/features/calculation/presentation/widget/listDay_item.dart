@@ -1,9 +1,5 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
-import 'package:abg/res/configuration/color.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class ListdayItem extends StatefulWidget{
   final String id;
@@ -25,7 +21,7 @@ class _ListdayItemState extends State<ListdayItem> {
         builder: (context){
 
 return  Center(
-                child: Container(
+                child: SizedBox(
                   height: 130,
                   width: double.infinity,
                   child: Stack(
@@ -41,7 +37,7 @@ return  Center(
                       ),
                       ListWheelScrollView.useDelegate(
                         itemExtent: 33,
-                        physics: FixedExtentScrollPhysics(),
+                        physics: const FixedExtentScrollPhysics(),
                         onSelectedItemChanged: (i) {
                           setState(() {
                            cont.selectedIndex= i;

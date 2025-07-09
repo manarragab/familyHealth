@@ -1,7 +1,4 @@
 import 'package:abg/data/const/export.dart';
-import 'package:abg/res/configuration/color.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Whitey1container extends StatelessWidget {
@@ -24,7 +21,7 @@ class Whitey1container extends StatelessWidget {
             fontWeight: FontWeight.w400,
           ),
         ),
-        SizedBox(
+        const SizedBox(
           height: 4,
         ),
         Container(
@@ -35,7 +32,7 @@ class Whitey1container extends StatelessWidget {
               borderRadius: BorderRadius.circular(10)),
           child: Center(
             child: Text(
-              "${pressure}",
+              "$pressure",
               style: GoogleFonts.almarai(
                 fontSize: 20,
                 color: CustomColors.lighttblue,

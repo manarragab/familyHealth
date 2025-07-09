@@ -7,16 +7,16 @@ import 'package:abg/features/family/domain/controller/family_controller.dart';
 import 'package:abg/features/group/presentation/group_screen.dart';
 import 'package:abg/features/home/domain/controller/home_controller.dart';
 import 'package:abg/features/profile/domain/controller/profile_controller.dart';
-import 'package:abg/features/profile/presentation/profile_screen.dart';
 import 'package:abg/features/profile/presentation/widget/colored_container.dart';
 import 'package:abg/res/configuration/image/pick_image.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
 import 'package:abg/res/router/pages.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
-import 'package:intl/intl.dart';
 
 class MyprofileScreen extends StatefulWidget {
+  const MyprofileScreen({super.key});
+
   @override
   State<MyprofileScreen> createState() => _MyprofileScreenState();
 }
@@ -88,7 +88,7 @@ class _MyprofileScreenState extends State<MyprofileScreen> {
                                 Get.toNamed(CustomPage.pillsPage);
                                 break;
                               case 3:
-                                Get.to(GroupScreen());
+                                Get.to(const GroupScreen());
                                 break;
                               case 4:
                                 Get.toNamed(CustomPage.dueDatePage);

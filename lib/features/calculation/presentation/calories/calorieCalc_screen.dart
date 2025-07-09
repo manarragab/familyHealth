@@ -6,6 +6,8 @@ import 'package:abg/features/calculation/presentation/widget/listDay_item.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CaloriecalcScreen extends StatefulWidget {
+  const CaloriecalcScreen({super.key});
+
   @override
   State<CaloriecalcScreen> createState() => _CaloriecalcScreenState();
 }
@@ -16,7 +18,7 @@ class _CaloriecalcScreenState extends State<CaloriecalcScreen> {
     return Scaffold(
         appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: ListView(
             children: [
               Greencontainer(
@@ -27,13 +29,13 @@ class _CaloriecalcScreenState extends State<CaloriecalcScreen> {
                  
                   widg: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 45,
                       ),
-                      DotsbarItem(
+                      const DotsbarItem(
                          id: "calorie",
                         step: 1,),
-                      SizedBox(
+                      const SizedBox(
                         height: 35,
                       ),
                       Text(
@@ -44,18 +46,18 @@ class _CaloriecalcScreenState extends State<CaloriecalcScreen> {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 37,
                       ),
-                      ListdayItem(id: "calorie1",),
-                      SizedBox(
+                      const ListdayItem(id: "calorie1",),
+                      const SizedBox(
                         height: 45,
                       ),
                       MainButton(
                         withShadow: true,
                         onPressed: () {
 
-                          Get.to(Calorie2calcScreen());
+                          Get.to(const Calorie2calcScreen());
                         },
                         radius: 10,
                         height: 46,

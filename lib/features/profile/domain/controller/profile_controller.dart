@@ -1,5 +1,4 @@
 import 'package:abg/data/const/export.dart';
-import 'package:abg/res/router/pages.dart';
 
 class ProfileController extends MainGetxController{
 

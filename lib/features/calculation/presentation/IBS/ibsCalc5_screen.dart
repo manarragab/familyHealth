@@ -6,6 +6,8 @@ import 'package:abg/features/calculation/presentation/widget/greenContainer.dart
 import 'package:abg/res/loading/loading_overlay_widget.dart';
 
 class Ibscalc5Screen extends GetWidget<Calculationcontroller> {
+  const Ibscalc5Screen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,12 +22,12 @@ class Ibscalc5Screen extends GetWidget<Calculationcontroller> {
               image: "assets/svg/ibs.svg",
               widg: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Container(
                       margin: EdgeInsets.symmetric(horizontal: 50.w),
-                      child: DotsbarItem(step: 4, id: "ibs")),
+                      child: const DotsbarItem(step: 4, id: "ibs")),
                   SizedBox(
                     height: 20.h,
                   ),
@@ -43,7 +45,7 @@ class Ibscalc5Screen extends GetWidget<Calculationcontroller> {
                   GetBuilder<Calculationcontroller>(builder: (_) {
                     return Container(
                       padding:
-                          EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+                          const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(12)),
@@ -89,7 +91,7 @@ class Ibscalc5Screen extends GetWidget<Calculationcontroller> {
                       backgroundColor: CustomColors.darkblue3,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   MainButton(

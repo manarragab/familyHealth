@@ -2,8 +2,11 @@
 import 'package:abg/data/remote_data/response_model.dart';
 
 class PostDiabetesResponse extends ResponseModel<Diabetes?>{
+  @override
   Diabetes? data;
+  @override
   num? status;
+  @override
   String? message;
 
   PostDiabetesResponse({this.data, this.status, this.message});
@@ -14,14 +17,13 @@ class PostDiabetesResponse extends ResponseModel<Diabetes?>{
     message = json["message"];
   }
 
+  @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    if(data != null) {
-      _data["data"] = data?.toJson();
-    }
-    _data["status"] = status;
-    _data["message"] = message;
-    return _data;
+    final Map<String, dynamic> result = <String, dynamic>{};
+    result["data"] = data?.toJson();
+    result["status"] = status;
+    result["message"] = message;
+    return result;
   }
 }
 
@@ -37,10 +39,62 @@ class Diabetes {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["risk_result"] = riskResult;
-    _data["comment"] = comment;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["risk_result"] = riskResult;
+    data["comment"] = comment;
+    return data;
   }
   
 }
+
+
+
+
+
+// import 'package:abg/data/remote_data/response_model.dart';
+
+// class PostDiabetesResponse extends ResponseModel<Diabetes?>{
+//   @override
+//   Diabetes? data;
+//   @override
+//   num? status;
+//   @override
+//   String? message;
+
+//   PostDiabetesResponse({this.data, this.status, this.message});
+
+//   PostDiabetesResponse.fromJson(Map<String, dynamic> json) {
+//     data = json["data"] == null ? null : Diabetes.fromJson(json["data"]);
+//     status = json["status"];
+//     message = json["message"];
+//   }
+
+//   @override
+//   Map<String, dynamic> toJson() {
+//     final Map<String, dynamic> data = <String, dynamic>{};
+//     data["data"] = data.toJson();
+//       data["status"] = status;
+//     data["message"] = message;
+//     return data;
+//   }
+// }
+
+// class Diabetes {
+//   double? riskResult;
+//   String? comment;
+
+//   Diabetes({this.riskResult, this.comment});
+
+//   Diabetes.fromJson(Map<String, dynamic> json) {
+//     riskResult = json["risk_result"];
+//     comment = json["comment"];
+//   }
+
+//   Map<String, dynamic> toJson() {
+//     final Map<String, dynamic> data = <String, dynamic>{};
+//     data["risk_result"] = riskResult;
+//     data["comment"] = comment;
+//     return data;
+//   }
+  
+// }

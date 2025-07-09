@@ -11,12 +11,14 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class BmicalcScreen extends GetView<Calculationcontroller>{
+  const BmicalcScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Column(
             children: [
               Greencontainer(
@@ -31,7 +33,7 @@ class BmicalcScreen extends GetView<Calculationcontroller>{
                     White2container(
                       KEY: "two",
                         title1: CustomTrans.yourWieght.tr, title2: "(${CustomTrans.kg.tr})", measure:  CustomTrans.kg.tr),
-                    SizedBox(
+                    const SizedBox(
                       height: 23,
                     ),
                     LoadingOverLay(

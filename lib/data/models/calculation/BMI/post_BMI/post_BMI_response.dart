@@ -48,10 +48,10 @@ class BMI {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["score"] = score;
-    _data["category"] = category;
-    _data["comment"] = comment;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["score"] = score;
+    data["category"] = category;
+    data["comment"] = comment;
+    return data;
   }
 }

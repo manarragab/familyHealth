@@ -1,34 +1,28 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
-import 'package:abg/features/calculation/presentation/ovulation/ovulation2Calc_screen.dart';
 import 'package:abg/features/calculation/presentation/widget/date_item.dart';
 import 'package:abg/features/calculation/presentation/widget/pinkContainer.dart';
-import 'package:abg/localization/all_keys.dart';
-import 'package:abg/res/common-widgets/custm_button.dart';
-import 'package:abg/res/configuration/app_bar.dart';
-import 'package:abg/res/configuration/color.dart';
-import 'package:abg/res/configuration/toast_utils.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
 import 'package:abg/res/router/pages.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class OvulationcalcScreen extends StatelessWidget {
+  const OvulationcalcScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     Calculationcontroller controller = Get.find();
     return Scaffold(
         appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: Pinkcontainer(
               title: "Ovulation",
               firstTxt: CustomTrans.ovulationCalculator.tr,
               image: "assets/images/ballon.png",
               widg: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   Text(
@@ -39,13 +33,13 @@ class OvulationcalcScreen extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 30,
                   ),
-                  DateItem(
+                  const DateItem(
                     id: "ovulate1",
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 23,
                   ),
                   LoadingOverLay(

@@ -1,10 +1,9 @@
 import 'package:abg/data/const/export.dart';
-import 'package:abg/localization/all_keys.dart';
-import 'package:abg/res/configuration/app_bar.dart';
-import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Pils2Screen extends StatelessWidget {
+  const Pils2Screen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +22,7 @@ class Pils2Screen extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             Stack(
               children: [
@@ -43,11 +42,11 @@ class Pils2Screen extends StatelessWidget {
                   child: Row(
                     children: [
                       Image.asset("assets/images/whiteHome.png"),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       Container(
                         width: 20,
                         height: 20,
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: CustomColors.red,
                           shape: BoxShape.circle,
                         ),
@@ -55,7 +54,7 @@ class Pils2Screen extends StatelessWidget {
                           child: Image.asset("assets/images/voice.png"),
                         ),
                       ),
-                      SizedBox(width: 5),
+                      const SizedBox(width: 5),
                       Text(
                         "Listen To The PIL",
                         style: GoogleFonts.almarai(
@@ -64,7 +63,7 @@ class Pils2Screen extends StatelessWidget {
                           color: Colors.white,
                         ),
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Image.asset("assets/images/dots.png"),
                     ],
                   ),
@@ -109,7 +108,7 @@ class Pils2Screen extends StatelessWidget {
                               color: Colors.white,
                             ),
                           ),
-                          SizedBox(width: 5),
+                          const SizedBox(width: 5),
                           Image.asset("assets/images/signn.png"),
                         ],
                       ),

@@ -7,6 +7,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 
 class Calorie6calcScreen extends StatefulWidget {
+  const Calorie6calcScreen({super.key});
+
   @override
   State<Calorie6calcScreen> createState() => _Calorie6calcScreenState();
 }
@@ -18,7 +20,7 @@ class _Calorie6calcScreenState extends State<Calorie6calcScreen> {
     return Scaffold(
         appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: ListView(
             children: [
               Greencontainer(
@@ -29,7 +31,7 @@ class _Calorie6calcScreenState extends State<Calorie6calcScreen> {
                 
                 widg: Column(
                   children: [
-                    SizedBox(
+                    const SizedBox(
                       height: 15,
                     ),
                     Text(
@@ -40,7 +42,7 @@ class _Calorie6calcScreenState extends State<Calorie6calcScreen> {
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 10,
                     ),
                     White3container(
@@ -73,7 +75,7 @@ class _Calorie6calcScreenState extends State<Calorie6calcScreen> {
                   ],
                 ),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
 
@@ -93,7 +95,7 @@ class _Calorie6calcScreenState extends State<Calorie6calcScreen> {
                       color: Colors.white,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 5,
                   ),
                   MainButton(
@@ -102,7 +104,7 @@ class _Calorie6calcScreenState extends State<Calorie6calcScreen> {
                     },
                     backgroundColor: CustomColors.pink,
                     width: 70,
-                    titleWidget: Icon(Icons.home_outlined ,
+                    titleWidget: const Icon(Icons.home_outlined ,
                       size: 30,
                       color: Colors.white,
                     ),

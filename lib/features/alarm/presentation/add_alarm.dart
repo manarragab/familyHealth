@@ -67,7 +67,7 @@ class AddAlarm extends GetView<AlarmController> {
                         controller.postAlarm.alarmDate = date.stringDate;
                         controller.alarmDateController.text = date.stringDate;
                       }).showDatePicker(context);
-                      if(controller.alarmDateController.text ==null||controller.alarmDateController.text.isEmpty){
+                      if(controller.alarmDateController.text.isEmpty){
                         controller.postAlarm.alarmDate = DateFormat("yyyy-MM-dd").format(DateTime.now());
                         controller.alarmDateController.text = DateFormat("yyyy-MM-dd").format(DateTime.now());
                       }
@@ -87,7 +87,7 @@ controller.postAlarm.alarmTime = DateFormat("HH:mm").format(date);
                     controller.alarmTimeController.text =   DateFormat("hh:mm a").format(date);
 
                       }).showTimePickerEveryQuarterHour(context);
-                      if(controller.alarmTimeController.text ==null||controller.alarmTimeController.text.isEmpty){
+                      if(controller.alarmTimeController.text.isEmpty){
                         controller.postAlarm.alarmTime = DateFormat("hh:mm").format(DateTime.now());
                         controller.alarmTimeController.text = DateFormat("hh:mm a").format(DateTime.now());
                       }
@@ -125,7 +125,7 @@ controller.postAlarm.alarmTime = DateFormat("HH:mm").format(date);
                                     controller.medicineStartController.text =
                                         date.stringDate;
                                   }).showDatePicker(context);
-                                   if(controller.medicineStartController.text ==null||controller.medicineStartController.text.isEmpty){
+                                   if(controller.medicineStartController.text.isEmpty){
                         controller.postAlarm.alarmDate = DateFormat("yyyy-MM-dd").format(DateTime.now());
                         controller.medicineStartController.text = DateFormat("yyyy-MM-dd").format(DateTime.now());
                       }
@@ -141,7 +141,7 @@ controller.postAlarm.alarmTime = DateFormat("HH:mm").format(date);
                                     controller.postAlarm.medicineEndDate = date.stringDate;
                                     controller.medicineEndController.text = date.stringDate;
                                   }).showDatePicker(context);
-                                   if(controller.medicineEndController.text ==null||controller.medicineEndController.text.isEmpty){
+                                   if(controller.medicineEndController.text.isEmpty){
                         controller.postAlarm.alarmDate = DateFormat("yyyy-MM-dd").format(DateTime.now());
                         controller.medicineEndController.text = DateFormat("yyyy-MM-dd").format(DateTime.now());
                       }

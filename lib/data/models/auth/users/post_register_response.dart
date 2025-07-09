@@ -6,8 +6,11 @@ import 'package:dio/dio.dart';
 import 'package:mime/mime.dart';
 import 'package:http_parser/http_parser.dart';
 class ResponseRegister  extends ResponseModel<Responsee?> {
+  @override
   Responsee? data;
+  @override
   num? status;
+  @override
   String? message;
 
   ResponseRegister({this.data, this.status, this.message});
@@ -18,14 +21,13 @@ class ResponseRegister  extends ResponseModel<Responsee?> {
     message = json["message"];
   }
 
+  @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    if(data != null) {
-      _data["data"] = data?.toJson();
-    }
-    _data["status"] = status;
-    _data["message"] = message;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["data"] = this.data?.toJson();
+    data["status"] = status;
+    data["message"] = message;
+    return data;
   }
 }
 
@@ -45,14 +47,12 @@ class Responsee {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["status"] = status;
-    _data["message"] = message;
-    if(data != null) {
-      _data["data"] = data?.toJson();
-    }
-    _data["token"] = token;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["status"] = status;
+    data["message"] = message;
+    data["data"] = this.data?.toJson();
+    data["token"] = token;
+    return data;
   }
 }
 
@@ -108,30 +108,30 @@ class RegistResp {
   }
 
   Future<Map<String, dynamic>> toJson() async{
-    final Map<String, dynamic> _data = <String, dynamic>{};
+    final Map<String, dynamic> data = <String, dynamic>{};
      if (image != null) {
       final mimeType = lookupMimeType(image!.path) ?? 'application/octet-stream'; // Detect file type
       final mediaType = MediaType.parse(mimeType); // Convert to MediaType
-      _data['image'] = await MultipartFile.fromFile(image!.path,contentType: mediaType);
+      data['image'] = await MultipartFile.fromFile(image!.path,contentType: mediaType);
     }
-    _data["id"] = id;
-    _data["name"] = name;
-    _data["email"] = email;
-    _data["email_verified_at"] = emailVerifiedAt;
-    _data["user_type"] = userType;
-    _data["phone"] = phone;
-    _data["date_of_birth"] = dateOfBirth;
-    _data["gender"] = gender;
-    _data["longitude"] = longitude;
-    _data["latitude"] = latitude;
-    _data["social_id"] = socialId;
-    _data["social_type"] = socialType;
-    _data["device_token"] = deviceToken;
-    _data["is_logged_in"] = isLoggedIn;
-    _data["is_banned"] = isBanned;
-    _data["created_at"] = createdAt;
-    _data["updated_at"] = updatedAt;
-    _data["image_path"] = imagePath;
-    return _data;
+    data["id"] = id;
+    data["name"] = name;
+    data["email"] = email;
+    data["email_verified_at"] = emailVerifiedAt;
+    data["user_type"] = userType;
+    data["phone"] = phone;
+    data["date_of_birth"] = dateOfBirth;
+    data["gender"] = gender;
+    data["longitude"] = longitude;
+    data["latitude"] = latitude;
+    data["social_id"] = socialId;
+    data["social_type"] = socialType;
+    data["device_token"] = deviceToken;
+    data["is_logged_in"] = isLoggedIn;
+    data["is_banned"] = isBanned;
+    data["created_at"] = createdAt;
+    data["updated_at"] = updatedAt;
+    data["image_path"] = imagePath;
+    return data;
   }
 }

@@ -2,8 +2,11 @@
 import 'package:abg/data/remote_data/response_model.dart';
 
 class PostperiodResponse extends ResponseModel<Period?> {
+  @override
   Period? data;
+  @override
   num? status;
+  @override
   String? message;
 
   PostperiodResponse({this.data, this.status, this.message});
@@ -14,14 +17,13 @@ class PostperiodResponse extends ResponseModel<Period?> {
     message = json["message"];
   }
 
+  @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    if(data != null) {
-      _data["data"] = data?.toJson();
-    }
-    _data["status"] = status;
-    _data["message"] = message;
-    return _data;
+    final Map<String, dynamic> result = <String, dynamic>{};
+    result["data"] = data?.toJson();
+    result["status"] = status;
+    result["message"] = message;
+    return result;
   }
 }
 
@@ -37,14 +39,14 @@ class Period {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
+    final Map<String, dynamic> data = <String, dynamic>{};
     if(currentCycle != null) {
-      _data["current_cycle"] = currentCycle?.toJson();
+      data["current_cycle"] = currentCycle?.toJson();
     }
     if(futureCycle != null) {
-      _data["future_cycle"] = futureCycle?.toJson();
+      data["future_cycle"] = futureCycle?.toJson();
     }
-    return _data;
+    return data;
   }
 }
 
@@ -70,17 +72,17 @@ class FutureCycle {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["cycle_number"] = cycleNumber;
-    _data["period_start"] = periodStart;
-    _data["period_end"] = periodEnd;
-    _data["ovulation_date"] = ovulationDate;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["cycle_number"] = cycleNumber;
+    data["period_start"] = periodStart;
+    data["period_end"] = periodEnd;
+    data["ovulation_date"] = ovulationDate;
     if(fertileWindow != null) {
-      _data["fertile_window"] = fertileWindow?.toJson();
+      data["fertile_window"] = fertileWindow?.toJson();
     }
-    _data["next_cycle_start"] = nextCycleStart;
-    _data["days_from_now"] = daysFromNow;
-    return _data;
+    data["next_cycle_start"] = nextCycleStart;
+    data["days_from_now"] = daysFromNow;
+    return data;
   }
 }
 
@@ -96,10 +98,10 @@ class FertileWindow {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["start"] = start;
-    _data["end"] = end;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["start"] = start;
+    data["end"] = end;
+    return data;
   }
 }
 
@@ -119,11 +121,11 @@ class CurrentCycle {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["cycle_day"] = cycleDay;
-    _data["days_since_last_period"] = daysSinceLastPeriod;
-    _data["next_period_date"] = nextPeriodDate;
-    _data["days_until_next_period"] = daysUntilNextPeriod;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["cycle_day"] = cycleDay;
+    data["days_since_last_period"] = daysSinceLastPeriod;
+    data["next_period_date"] = nextPeriodDate;
+    data["days_until_next_period"] = daysUntilNextPeriod;
+    return data;
   }
 }

@@ -1,14 +1,13 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
 import 'package:abg/features/calculation/presentation/IBS/widget/questions_item.dart';
-import 'package:abg/features/calculation/presentation/diabetes/widget/white4Container.dart';
 import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
 import 'package:abg/res/router/pages.dart';
-import 'package:get/get_connect/http/src/utils/utils.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class Ibscalc3Screen extends GetWidget<Calculationcontroller> {
+  const Ibscalc3Screen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,12 +22,12 @@ class Ibscalc3Screen extends GetWidget<Calculationcontroller> {
               image: "assets/svg/ibs.svg",
               widg: Column(
                 children: [
-                  SizedBox(
+                  const SizedBox(
                     height: 15,
                   ),
                   Container(
                       margin: EdgeInsets.symmetric(horizontal: 50.w),
-                      child: DotsbarItem(step: 2, id: "ibs")),
+                      child: const DotsbarItem(step: 2, id: "ibs")),
                   SizedBox(
                     height: 20.h,
                   ),
@@ -46,7 +45,7 @@ class Ibscalc3Screen extends GetWidget<Calculationcontroller> {
                   GetBuilder<Calculationcontroller>(builder: (_) {
                     return Container(
                       padding:
-                          EdgeInsets.symmetric(vertical: 15, horizontal: 15),
+                          const EdgeInsets.symmetric(vertical: 15, horizontal: 15),
                       decoration: BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.circular(12)),
@@ -91,7 +90,7 @@ class Ibscalc3Screen extends GetWidget<Calculationcontroller> {
                     fontWeight: FontWeight.w400,
                     backgroundColor: CustomColors.darkblue3,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   MainButton(

@@ -5,6 +5,8 @@ import 'package:abg/res/router/pages.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Ibscalc6Screen extends GetWidget<Calculationcontroller> {
+  const Ibscalc6Screen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +15,7 @@ class Ibscalc6Screen extends GetWidget<Calculationcontroller> {
             id: "ibs6",
             builder: (_) {
               return Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Column(
                     children: [
                       Greencontainer(
@@ -24,7 +26,7 @@ class Ibscalc6Screen extends GetWidget<Calculationcontroller> {
                           widg: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Text(
@@ -36,7 +38,7 @@ class Ibscalc6Screen extends GetWidget<Calculationcontroller> {
                                     fontWeight: FontWeight.w400,
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 10,
                                 ),
                                 Text(
@@ -47,11 +49,11 @@ class Ibscalc6Screen extends GetWidget<Calculationcontroller> {
                                     fontWeight: FontWeight.w700,
                                   ),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 20,
                                 ),
                               ])),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Row(
@@ -71,7 +73,7 @@ class Ibscalc6Screen extends GetWidget<Calculationcontroller> {
                               color: Colors.white,
                             ),
                           ),
-                          SizedBox(
+                          const SizedBox(
                             width: 5,
                           ),
                           MainButton(
@@ -80,7 +82,7 @@ class Ibscalc6Screen extends GetWidget<Calculationcontroller> {
                                   Get.currentRoute == CustomPage.layoutPage);
                             },
                             width: 70,
-                            titleWidget: Icon(Icons.home_outlined,
+                            titleWidget: const Icon(Icons.home_outlined,
                                 size: 30, color: Colors.white),
                           ),
                         ],

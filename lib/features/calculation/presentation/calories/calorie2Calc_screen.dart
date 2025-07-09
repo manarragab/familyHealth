@@ -5,6 +5,8 @@ import 'package:abg/features/calculation/presentation/widget/greenContainer.dart
 import 'package:google_fonts/google_fonts.dart';
 
 class Calorie2calcScreen extends StatefulWidget {
+  const Calorie2calcScreen({super.key});
+
   @override
   State<Calorie2calcScreen> createState() => _Calorie2calcScreenState();
 }
@@ -15,7 +17,7 @@ class _Calorie2calcScreenState extends State<Calorie2calcScreen> {
     return Scaffold(
         appBar: CustomAppBar.appBar(CustomTrans.medicalCalc.tr),
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 16),
+          padding: const EdgeInsets.symmetric(horizontal: 16),
           child: ListView(
             children: [
               Greencontainer(
@@ -26,13 +28,13 @@ class _Calorie2calcScreenState extends State<Calorie2calcScreen> {
                 
                   widg: Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 45,
                       ),
-                      DotsbarItem( 
+                      const DotsbarItem( 
                         id: "calorie",
                          step: 2,),
-                      SizedBox(
+                      const SizedBox(
                         height: 35,
                       ),
                       Text(
@@ -43,18 +45,18 @@ class _Calorie2calcScreenState extends State<Calorie2calcScreen> {
                           fontWeight: FontWeight.w700,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 25,
                       ),
                       Container(
-                        margin: EdgeInsets.symmetric(horizontal: 65),
+                        margin: const EdgeInsets.symmetric(horizontal: 65),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Column(
                               children: [
                                 Image.asset("assets/images/male.png"),
-                                SizedBox(
+                                const SizedBox(
                                   height: 7,
                                 ),
                                 Text(
@@ -70,7 +72,7 @@ class _Calorie2calcScreenState extends State<Calorie2calcScreen> {
                             Column(
                               children: [
                                 Image.asset("assets/images/female.png"),
-                                SizedBox(
+                                const SizedBox(
                                   height: 7,
                                 ),
                                 Text(
@@ -86,13 +88,13 @@ class _Calorie2calcScreenState extends State<Calorie2calcScreen> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 35,
                       ),
                       MainButton(
                         withShadow: true,
                         onPressed: () {
-                         Get.to(Calorie3calcScreen());
+                         Get.to(const Calorie3calcScreen());
                         },
                         radius: 10,
                         height: 46,
@@ -106,7 +108,7 @@ class _Calorie2calcScreenState extends State<Calorie2calcScreen> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 10,
                       ),
                       Container(

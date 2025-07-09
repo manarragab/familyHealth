@@ -10,7 +10,7 @@ class Dadcontainer extends StatefulWidget {
   final String time;
   final String? icon;
 
-  Dadcontainer({
+  const Dadcontainer({
     super.key,
     required this.name,
      this.kind,

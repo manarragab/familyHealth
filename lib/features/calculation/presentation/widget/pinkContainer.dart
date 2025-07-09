@@ -33,7 +33,7 @@ class Pinkcontainer extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 25,
           ),
           Text(
@@ -44,11 +44,11 @@ class Pinkcontainer extends StatelessWidget {
               fontWeight: FontWeight.w400,
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Container(
-            padding: EdgeInsets.only(bottom: 15, left: 15,right: 15),
+            padding: const EdgeInsets.only(bottom: 15, left: 15,right: 15),
             //   width: 382,
             width: double.infinity,
           
@@ -59,12 +59,12 @@ class Pinkcontainer extends StatelessWidget {
             child: Column(
               children: [
                 Container(
-                  margin: EdgeInsets.only(top: 25),
+                  margin: const EdgeInsets.only(top: 25),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                        margin: EdgeInsets.only(top: 20),
+                        margin: const EdgeInsets.only(top: 20),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [

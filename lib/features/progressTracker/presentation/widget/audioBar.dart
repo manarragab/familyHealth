@@ -1,8 +1,6 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/progressTracker/domain/controller/progressTracker_controller.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_xlider/flutter_xlider.dart';
-import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Audiobar extends StatefulWidget {
@@ -26,11 +24,11 @@ class _AudiobarState extends State<Audiobar> {
         double currentValue = controller.getValue(widget.KEY);
 
         return Container(
-          padding: EdgeInsets.only(right: 16),
+          padding: const EdgeInsets.only(right: 16),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Container(
+              SizedBox(
                 width: Get.width*0.85,
                 height: 15,
                 child: FlutterSlider(
@@ -53,7 +51,7 @@ class _AudiobarState extends State<Audiobar> {
                     inactiveTrackBarHeight: 15,
                   ),
                   handler: FlutterSliderHandler(                
-                    decoration: BoxDecoration(),
+                    decoration: const BoxDecoration(),
                     child: Container(),
                   ),
                 ),

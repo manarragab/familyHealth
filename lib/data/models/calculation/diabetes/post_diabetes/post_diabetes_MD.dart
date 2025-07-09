@@ -26,17 +26,17 @@ class PostDiabetesMd {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["age"] = age ;
-    _data["gender"] = gender;
-    _data["high_blood_pressure"] = (highBloodPressure ?? false) ? 1 : 0;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["age"] = age ;
+    data["gender"] = gender;
+    data["high_blood_pressure"] = (highBloodPressure ?? false) ? 1 : 0;
     print("xxxxxxxxxxxxxxxx $highBloodPressure");
-    _data["steroids_usage"] = (steroidsUsage?? false) ? 1 : 0;
-    _data["weight"] = weight ?? 50;
-    _data["height"] = height ?? 50;
+    data["steroids_usage"] = (steroidsUsage?? false) ? 1 : 0;
+    data["weight"] = weight ?? 50;
+    data["height"] = height ?? 50;
     //_data["bmiScore"] = bmiScore;
-    _data["family_history_of_diabetes"] = familyHistoryOfDiabetes ??1;
-    _data["smoking_history"] = smokingHistory ??1;
-    return _data;
+    data["family_history_of_diabetes"] = familyHistoryOfDiabetes ??1;
+    data["smoking_history"] = smokingHistory ??1;
+    return data;
   }
 }

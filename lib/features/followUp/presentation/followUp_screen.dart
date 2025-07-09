@@ -4,11 +4,12 @@ import 'package:abg/features/followUp/presentation/calculator2_screen.dart';
 import 'package:abg/features/followUp/presentation/calculator3_screen.dart';
 import 'package:abg/features/followUp/presentation/viewProgress_screen.dart';
 import 'package:abg/features/followUp/presentation/widget/grey_container.dart';
-import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:abg/features/followUp/domain/controller/followUp_controller.dart';
 
 class FollowupScreen extends GetView<FollowupController> {
+  const FollowupScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +25,7 @@ class FollowupScreen extends GetView<FollowupController> {
                     fontWeight: FontWeight.w400,
                     color: CustomColors.lighttblue),
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               ListView.builder(
@@ -55,14 +56,14 @@ class FollowupScreen extends GetView<FollowupController> {
                       title: controller.titles[index],
                     );
                   }),
-              SizedBox(
+              const SizedBox(
                 height: 25,
               ),
               Container(
-                margin: EdgeInsets.symmetric(horizontal: 15),
+                margin: const EdgeInsets.symmetric(horizontal: 15),
                 child: MainButton(
                   onPressed: () {
-                    Get.to(ViewProgressScreen());
+                    Get.to(const ViewProgressScreen());
                   },
                   title: "View progress",
                   withShadow: true,

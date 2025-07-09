@@ -1,14 +1,13 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/pills/domain/controller/pils_controller.dart';
 import 'package:abg/features/pills/presentation/pils2_screen.dart';
-import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Pdfcontainer extends GetView<PilsController> {
   final int index;
   final String pillName;
 
-  Pdfcontainer({
+  const Pdfcontainer({
     super.key,
     required this.index,
     required this.pillName,
@@ -21,7 +20,7 @@ class Pdfcontainer extends GetView<PilsController> {
       return InkWell(
         onTap: () {
           controller.select(index);
-          Get.to(Pils2Screen());
+          Get.to(const Pils2Screen());
         },
         child: Container(
           margin: const EdgeInsets.only(bottom: 10),

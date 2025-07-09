@@ -1,6 +1,5 @@
 import 'package:abg/data/const/export.dart';
 import 'package:abg/features/calculation/domain/controller/CalculationController.dart';
-import 'package:abg/features/calculation/presentation/diabetes/diabetes3_screen.dart';
 import 'package:abg/features/calculation/presentation/diabetes/widget/gender_item.dart';
 import 'package:abg/features/calculation/presentation/widget/dotsBar_item.dart';
 import 'package:abg/features/calculation/presentation/widget/greenContainer.dart';
@@ -9,6 +8,8 @@ import 'package:abg/res/router/pages.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class Diabetes2Screen extends StatefulWidget {
+  const Diabetes2Screen({super.key});
+
   @override
   State<Diabetes2Screen> createState() => _Diabetes2ScreenState();
 }
@@ -38,11 +39,11 @@ class _Diabetes2ScreenState extends State<Diabetes2Screen> {
                         
                         widg: Column(
                           children: [
-                            SizedBox(
+                            const SizedBox(
                               height: 45,
                             ),
-                            DotsbarItem(id: "diabetes2", step: 2),
-                            SizedBox(
+                            const DotsbarItem(id: "diabetes2", step: 2),
+                            const SizedBox(
                               height: 35,
                             ),
                             Text(
@@ -53,11 +54,11 @@ class _Diabetes2ScreenState extends State<Diabetes2Screen> {
                                 fontWeight: FontWeight.w700,
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 25,
                             ),
-                            GenderItem(id: "diabetes2"),
-                            SizedBox(
+                            const GenderItem(id: "diabetes2"),
+                            const SizedBox(
                               height: 35,
                             ),
                             LoadingOverLay(
@@ -86,7 +87,7 @@ class _Diabetes2ScreenState extends State<Diabetes2Screen> {
                                 ),
                               ),
                             ),
-                            SizedBox(
+                            const SizedBox(
                               height: 10,
                             ),
                             Container(

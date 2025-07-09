@@ -428,7 +428,7 @@ class Remote {
   }
 
   Future<ResponseModel<Favourite?>> addFavourites(PostFavourite post) async {
-    return _helper.post<Favourite?>(await post.toJson(),
+    return _helper.post<Favourite?>(post.toJson(),
         path: "/user/favorite-calculators/toggle", onSuccess: (dynamic data) {
       return PostFavouriteResponse.fromJson(data);
     }, onError: (data) {

@@ -2,8 +2,11 @@
 import 'package:abg/data/remote_data/response_model.dart';
 
 class PostTrackerResponse  extends ResponseModel<Tracker?>  {
+  @override
   Tracker? data;
+  @override
   num? status;
+  @override
   String? message;
 
   PostTrackerResponse({this.data, this.status, this.message});
@@ -14,14 +17,13 @@ class PostTrackerResponse  extends ResponseModel<Tracker?>  {
     message = json["message"];
   }
 
+  @override
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    if(data != null) {
-      _data["data"] = data?.toJson();
-    }
-    _data["status"] = status;
-    _data["message"] = message;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["data"] = this.data?.toJson();
+    data["status"] = status;
+    data["message"] = message;
+    return data;
   }
 }
 
@@ -37,9 +39,9 @@ class Tracker {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
-    _data["expectedPregnancyDate"] = expectedPregnancyDate;
-    _data["weeksPassed"] = weeksPassed;
-    return _data;
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data["expectedPregnancyDate"] = expectedPregnancyDate;
+    data["weeksPassed"] = weeksPassed;
+    return data;
   }
 }

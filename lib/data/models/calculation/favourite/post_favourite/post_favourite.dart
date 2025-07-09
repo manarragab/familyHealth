@@ -5,9 +5,9 @@ class PostFavourite {
   String? name;
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> _data = <String, dynamic>{};
+    final Map<String, dynamic> data = <String, dynamic>{};
 
-    _data["calculator_name"] = name;
-    return _data;
+    data["calculator_name"] = name;
+    return data;
   }
 }
