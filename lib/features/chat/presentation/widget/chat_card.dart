@@ -1,8 +1,9 @@
 import 'package:abg/data/const/export.dart';
+import 'package:abg/features/auth/domain/controller/auth_controller.dart';
 
 class ChatCard extends StatelessWidget {
   
-  const ChatCard({
+   ChatCard({
     required this.message,
     required this.isImage,
     required this.fromMe,
@@ -14,6 +15,7 @@ class ChatCard extends StatelessWidget {
   final bool isImage;
   final bool fromMe;
 
+AuthController authController= Get.find<AuthController>();
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class ChatCard extends StatelessWidget {
       child: Row(
         children: [
           CircleAvatar(
-            backgroundImage: NetworkImage(avatar),
+            backgroundImage:   fromMe ? NetworkImage(authController.user?.image ?? "") : NetworkImage(avatar),
             radius: 25,
           ),
           const SizedBox(width: 10),
@@ -36,7 +38,7 @@ class ChatCard extends StatelessWidget {
             margin: const EdgeInsetsDirectional.only(end: 50),
             padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 10),
             child: isImage
-                ? CustomImage.network(message)
+                ? CustomImage.network(message , fit: BoxFit.cover)
                 : Text(
                     message,
                     style: TFonts.cardBody(

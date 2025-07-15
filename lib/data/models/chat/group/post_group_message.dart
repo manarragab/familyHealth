@@ -2,12 +2,16 @@ import 'dart:core';
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:mime/mime.dart';
+import 'package:http_parser/http_parser.dart';
 
-/// image : ""
-/// type : "group"
-/// recipient_id : "4"
-/// message_type : "text"
-/// message : "message content is here"
+import 'package:dio/dio.dart';
+
+// / image : ""
+// / type : "group"
+// / recipient_id : "4"
+// / message_type : "text"
+// / message : "message content is here"
 
 class PostGroupMessage {
   PostGroupMessage({
@@ -33,8 +37,15 @@ class PostGroupMessage {
 
   Future<Map<String, dynamic>> toJson() async {
     final map = <String, dynamic>{};
+    // if (image != null) {
+    //   map['image'] = await MultipartFile.fromFile(image!.path);
+    // }
+
+
     if (image != null) {
-      map['image'] = await MultipartFile.fromFile(image!.path);
+      final mimeType = lookupMimeType(image!.path) ?? 'application/octet-stream'; // Detect file type
+      final mediaType = MediaType.parse(mimeType); // Convert to MediaType
+      map['image'] = await MultipartFile.fromFile(image!.path,contentType: mediaType);
     }
     map['type'] = type;
     map['recipient_id'] = recipientId;
@@ -43,3 +54,4 @@ class PostGroupMessage {
     return map;
   }
 }
+

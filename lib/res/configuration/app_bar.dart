@@ -1,4 +1,5 @@
 import 'package:abg/data/const/export.dart';
+import 'package:abg/features/chat/presentation/profile_details_screen.dart';
 import 'package:abg/res/common-widgets/custom_back_button.dart';
 
 class CustomAppBar {
@@ -117,53 +118,58 @@ class CustomAppBar {
   }
 
   static chatAppBar(
-      {String? title, required String leadingImage, required String subTitle}) {
+      {String? title, required String leadingImage, required String subTitle ,
+      required Function() onTap
+      }) {
     return PreferredSize(
       preferredSize: const Size.fromHeight(65),
       child: AppBar(
         elevation: 0,
         iconTheme: const IconThemeData(color: Colors.black),
         actions: [
-          Container(
-            padding: const EdgeInsets.only(top: 5),
-            width: Get.width - 30,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                const SizedBox(
-                  width: 10,
-                ),
-                CircleAvatar(
-                  backgroundImage: NetworkImage(leadingImage),
-                  radius: 40,
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      title ?? "",
-                      style: TFonts.inter(
-                        fontSize: TFontSizes.f16,
-                        fontWeight: TFontWights.bold,
+          GestureDetector(
+            onTap:onTap,
+            child: Container(
+              padding: const EdgeInsets.only(top: 5),
+              width: Get.width - 30,
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  CircleAvatar(
+                    backgroundImage: NetworkImage(leadingImage),
+                    radius: 40,
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        title ?? "",
+                        style: TFonts.inter(
+                          fontSize: TFontSizes.f16,
+                          fontWeight: TFontWights.bold,
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      subTitle,
-                      style: TFonts.inter(
-                        fontSize: TFontSizes.f14,
-                        fontWeight: TFontWights.regular,
+                      const SizedBox(
+                        height: 5,
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                      Text(
+                        subTitle,
+                        style: TFonts.inter(
+                          fontSize: TFontSizes.f14,
+                          fontWeight: TFontWights.regular,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
           )
         ],

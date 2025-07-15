@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:abg/data/models/auth/login/LoginModel.dart';
+import 'package:abg/data/models/auth/logout/post_logout.dart';
 import 'package:abg/data/models/auth/users/PostEditProfile.dart';
 import 'package:abg/data/models/auth/users/get_user_data.dart';
 import 'package:abg/data/models/auth/users/post_assign_user.dart';
@@ -27,8 +28,8 @@ class AuthCases {
     return _data.login(text, password);
   }
 
-  Future<ResponseModel<LoginData?>> signOut() {
-    return _data.signOut();
+  Future<ResponseModel<void>> signOut(PostLogout logout) {
+    return _data.signOut(logout);
   }
 
   Future<ResponseModel<dynamic>> getCode(String text) {

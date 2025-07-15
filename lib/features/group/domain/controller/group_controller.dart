@@ -1,4 +1,5 @@
 import 'package:abg/data/const/export.dart';
+import 'package:abg/data/models/chat/group/leave/post_leave_group.dart';
 import 'package:abg/data/models/group/group_model.dart';
 import 'package:abg/data/models/group/groups.dart';
 import 'package:abg/domain_data/custom_mixin/custom_state_mixin.dart';
@@ -27,4 +28,38 @@ class GroupController extends MainGetxController with CustomStateMixin {
       Get.put(HomeController()).onRefresh();
     });
   }
+
+// void exitGroup(Groups group) async {
+//   try {
+//     // 1. Call API
+//     await yourRepo.leaveGroup(group.id);
+
+//     // 2. Update local state
+//     group.isJoined = false;
+//     group.pivot = null;
+//     data!.data!.myGroups?.removeWhere((g) => g.id == group.id);
+//     data!.data!.suggestedGroups?.add(group);
+
+//     update(); // UI refresh
+//   } catch (e) {
+//     Get.snackbar("Error", "Failed to leave group");
+//   }
+// }
+
+
+TextEditingController noteController = TextEditingController();
+
+void leaveGroup(Groups data) async {
+    loadingGetxController.showLoading();
+    var response = await sl<GroupCase>().leaveGroup(PostLeaveGroup(groupId: data.id , 
+    notes: noteController.text
+    ));
+    print("wwwww  ${response.message}");
+    loadingGetxController.hideLoading();
+    statusError.checkStatus(response, () {
+      onRefresh();
+    });
+  }
+
+
 }

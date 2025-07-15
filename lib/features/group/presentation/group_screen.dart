@@ -26,7 +26,9 @@ class GroupScreen extends GetView<GroupController> {
             return Column(
               children: [
                 ...List.generate(model.data?.myGroups?.length ?? 0, (index) {
-                  return MyGroupCard(data: model.data!.myGroups![index]);
+                  return MyGroupCard(data: model.data!.myGroups![index],
+                  isJoined: true,
+                  );
                 }),
                 const SizedBox(height: 10),
                 Container(
@@ -38,7 +40,9 @@ class GroupScreen extends GetView<GroupController> {
                 ),
                 ...List.generate(model.data?.suggestedGroups?.length ?? 0,
                     (index) {
-                  return MyGroupCard(data: model.data!.suggestedGroups![index]);
+                  return MyGroupCard(data: model.data!.suggestedGroups![index],
+                  isJoined: false,
+                  );
                 }),
               ],
             );

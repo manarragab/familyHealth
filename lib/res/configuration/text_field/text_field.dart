@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:abg/data/const/export.dart';
 import 'package:abg/res/configuration/text_field/formatter.dart';
 import 'package:abg/res/loading/loading_overlay_widget.dart';
@@ -644,15 +646,82 @@ class CustomTextField {
     );
   }
 
-  static chat(
-    Function(String value) onChange, {
-    String hint = "",
-    TextEditingController? controller,
-    List<String>? autoFillHints,
-    void Function()? onTap,
-    EdgeInsetsGeometry? padding,
-  }) {
-    final button = Directionality(
+  // static chat(
+  //   Function(String value) onChange, {
+  //   String hint = "",
+  //   TextEditingController? controller,
+  //   List<String>? autoFillHints,
+  //   void Function()? onTap,
+  //   EdgeInsetsGeometry? padding,
+  // }) {
+  //   final button = Directionality(
+  //       textDirection: TextDirection.ltr,
+  //       child: SizedBox(
+  //         width: 50,
+  //         height: 50,
+  //         child: LoadingOverLay(
+  //           id: loadingIconID,
+  //           showLoadingOnly: true,
+  //           child: GestureDetector(
+  //               onTap: onTap, child: SvgPicture.asset("assets/svg/send.svg")),
+  //         ),
+  //       ));
+  //   return Padding(
+  //     padding: padding ?? EdgeInsets.symmetric(horizontal: 16.w, vertical: 10),
+  //     child: SizedBox(
+  //       child: Row(
+  //         children: [
+  //           Expanded(
+  //             child: TextFormField(
+  //               controller: controller,
+  //               autofillHints: autoFillHints,
+  //               style: TFonts.inter(
+  //                   color: CustomColors.primary,
+  //                   fontSize: 14.sp,
+  //                   fontWeight: TFontWights.bold),
+  //               onChanged: (x) => onChange(x.trim()),
+  //               decoration: InputDecoration(
+  //                 filled: true,
+  //                 hintText: CustomTrans.message.tr,
+  //                 hintStyle: TFonts.cardBody(color: Colors.grey),
+  //                 fillColor: const Color(0xffF2F2F2),
+  //                 border: OutlineInputBorder(
+  //                   borderSide: const BorderSide(
+  //                     color: Colors.transparent,
+  //                   ),
+  //                   borderRadius: BorderRadius.circular(10),
+  //                 ),
+  //                 enabledBorder: OutlineInputBorder(
+  //                   borderSide: const BorderSide(
+  //                     color: Colors.transparent,
+  //                   ),
+  //                   borderRadius: BorderRadius.circular(10),
+  //                 ),
+  //               ),
+  //             ),
+  //           ),
+  //           const SizedBox(
+  //             width: 10,
+  //           ),
+  //           button,
+  //         ],
+  //       ),
+  //     ),
+  //   );
+  // }
+
+
+  static Widget chat(
+  Function(String value) onChange, {
+  String hint = "",
+  TextEditingController? controller,
+  List<String>? autoFillHints,
+  void Function()? onTap,
+  void Function()? tapCamera,
+  EdgeInsetsGeometry? padding,
+  File? image, // ✅ جديد: الصورة اللي هتظهر
+}) {
+  final button = Directionality(
         textDirection: TextDirection.ltr,
         child: SizedBox(
           width: 50,
@@ -664,9 +733,29 @@ class CustomTextField {
                 onTap: onTap, child: SvgPicture.asset("assets/svg/send.svg")),
           ),
         ));
-    return Padding(
-      padding: padding ?? EdgeInsets.symmetric(horizontal: 16.w, vertical: 10),
-      child: SizedBox(
+  return Padding(
+  padding: padding ?? EdgeInsets.symmetric(horizontal: 16.w, vertical: 10),
+  child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      if (image != null) // ✅ عرض الصورة المختارة
+        Container(
+          margin: const EdgeInsets.only(bottom: 10),
+          height: 100,
+          width: 100,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Colors.grey.shade300),
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(10),
+            child: Image.file(
+              image,
+              fit: BoxFit.cover,
+            ),
+          ),
+        ),
+      SizedBox(
         child: Row(
           children: [
             Expanded(
@@ -674,39 +763,51 @@ class CustomTextField {
                 controller: controller,
                 autofillHints: autoFillHints,
                 style: TFonts.inter(
-                    color: CustomColors.primary,
-                    fontSize: 14.sp,
-                    fontWeight: TFontWights.bold),
+                  color: CustomColors.primary,
+                  fontSize: 14.sp,
+                  fontWeight: TFontWights.bold,
+                ),
                 onChanged: (x) => onChange(x.trim()),
                 decoration: InputDecoration(
+                  suffixIcon: Padding(
+                    padding: const EdgeInsets.all(12),
+                    child: GestureDetector(
+                      onTap: tapCamera,
+                      child: CustomImage.asset(
+                        "assets/svg/camera.svg",
+                        height: 15,
+                        width: 15,
+                        color: CustomColors.darkblue3,
+                      ),
+                    ),
+                  ),
                   filled: true,
                   hintText: CustomTrans.message.tr,
                   hintStyle: TFonts.cardBody(color: Colors.grey),
                   fillColor: const Color(0xffF2F2F2),
                   border: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: Colors.transparent,
-                    ),
+                    borderSide: const BorderSide(color: Colors.transparent),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   enabledBorder: OutlineInputBorder(
-                    borderSide: const BorderSide(
-                      color: Colors.transparent,
-                    ),
+                    borderSide: const BorderSide(color: Colors.transparent),
                     borderRadius: BorderRadius.circular(10),
                   ),
                 ),
               ),
             ),
-            const SizedBox(
-              width: 10,
-            ),
-            button,
+            const SizedBox(width: 10),
+          button
           ],
         ),
       ),
-    );
-  }
+    ],
+  ),
+);
+
+
+}
+
 }
 
 String replaceArabicNumber(String input) {

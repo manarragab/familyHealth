@@ -1,5 +1,6 @@
 import 'package:abg/data/models/chat/chat_model.dart';
 import 'package:abg/data/models/chat/group/post_group_message.dart';
+import 'package:abg/data/models/chat/group/post_message_response.dart';
 import 'package:abg/data/remote_data/response_model.dart';
 import 'package:abg/domain_data/repositories/domain_repositry.dart';
 
@@ -12,7 +13,7 @@ class ChatCases {
     return _data.chatGroup(id, page: page);
   }
 
-  Future<ResponseModel<ChatMessage?>> sendChatGroup(PostGroupMessage post) {
+  Future<ResponseModel<MessagesResponse?>> sendChatGroup(PostGroupMessage post) {
     return _data.sendChatGroup(post);
   }
 }

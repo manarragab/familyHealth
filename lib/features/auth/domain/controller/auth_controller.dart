@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:abg/data/const/export.dart';
 import 'package:abg/data/models/auth/login/LoginModel.dart';
+import 'package:abg/data/models/auth/logout/post_logout.dart';
 import 'package:abg/data/models/auth/users/PostEditProfile.dart';
 import 'package:abg/data/models/auth/users/get_user_data.dart';
 import 'package:abg/data/models/auth/users/post_assign_user.dart';
@@ -199,9 +200,11 @@ print("User email: ${loginModel.data?.email}");
     });
   }
 
+PostLogout postLogout = PostLogout();
   void logOut() {
-    sl<AuthCases>().setUser(null);
-    clearData();
+    sl<AuthCases>().signOut(postLogout);
+    //sl<AuthCases>().setUser(null);
+   // clearData();
     Get.offAllNamed(CustomPage.loginPage);
   }
 

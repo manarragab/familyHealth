@@ -10,7 +10,7 @@
 /// image_path : "http://127.0.0.1:8000/uploads/groups/193a1a9ed39ba92fe6d17b6683e9a3bd.jpg"
 /// pivot : {"user_id":2,"group_id":2}
 
-class Groups {
+class  Groups {
   Groups({
     this.id,
     this.createdBy,
@@ -23,6 +23,8 @@ class Groups {
     this.updatedAt,
     this.imagePath,
     this.pivot,
+    this.isJoined,
+    this.totalMessagesCount,
   });
 
   Groups.fromJson(dynamic json) {
@@ -37,6 +39,8 @@ class Groups {
     updatedAt = json['updated_at'];
     imagePath = json['image_path'];
     pivot = json['pivot'] != null ? Pivot.fromJson(json['pivot']) : null;
+    isJoined = json['is_joined'];
+    totalMessagesCount = json['total_messages_count'];
   }
   num? id;
   num? createdBy;
@@ -49,6 +53,8 @@ class Groups {
   String? updatedAt;
   String? imagePath;
   Pivot? pivot;
+  bool? isJoined;
+  num? totalMessagesCount;
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
@@ -65,6 +71,8 @@ class Groups {
     if (pivot != null) {
       map['pivot'] = pivot?.toJson();
     }
+    map['is_joined'] = isJoined;
+    map['total_messages_count'] = totalMessagesCount;
     return map;
   }
 }

@@ -5,7 +5,7 @@ import 'package:abg/data/remote_data/response_model.dart';
 /// status : 200
 /// message : "Message Sent Successfully!"
 
-class SendGroupModel extends ResponseModel<ChatMessage?> {
+class  SendGroupModel extends ResponseModel<ChatMessage?> {
   SendGroupModel({
     this.data,
     this.status,

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:abg/data/models/alarm/get_alarms/alarm_model.dart';
 import 'package:abg/data/models/alarm/post_alarms/post_alarm.dart';
 import 'package:abg/data/models/auth/login/LoginModel.dart';
+import 'package:abg/data/models/auth/logout/post_logout.dart';
 import 'package:abg/data/models/auth/users/PostEditProfile.dart';
 import 'package:abg/data/models/auth/users/get_user_data.dart';
 import 'package:abg/data/models/auth/users/post_assign_user.dart';
@@ -20,7 +21,10 @@ import 'package:abg/data/models/calculation/period/post_period/post_period_respo
 import 'package:abg/data/models/calculation/pregnancyTracker/post_tracker/post_tracker_MD.dart';
 import 'package:abg/data/models/calculation/pregnancyTracker/post_tracker/post_tracker_response.dart';
 import 'package:abg/data/models/chat/chat_model.dart';
+import 'package:abg/data/models/chat/group/leave/leave_group_response.dart';
+import 'package:abg/data/models/chat/group/leave/post_leave_group.dart';
 import 'package:abg/data/models/chat/group/post_group_message.dart';
+import 'package:abg/data/models/chat/group/post_message_response.dart';
 import 'package:abg/data/models/family/get_family/family_model.dart';
 import 'package:abg/data/models/family/post_family/post_family_MD.dart';
 import 'package:abg/data/models/group/group_model.dart';
@@ -63,7 +67,7 @@ abstract class DomainData {
 
   Future<dynamic> login(String phone, String password);
 
-  Future<ResponseModel<LoginData?>> signOut();
+  //Future<ResponseModel<LoginData?>> signOut();
 
   Future<ResponseModel<dynamic>> getCode(String phone);
 
@@ -85,7 +89,7 @@ abstract class DomainData {
 
   Future<ResponseModel<ChatData?>> chatGroup(String id, {int page = 1});
 
-  Future<ResponseModel<ChatMessage?>> sendChatGroup(PostGroupMessage post);
+  Future<ResponseModel<MessagesResponse?>> sendChatGroup(PostGroupMessage post);
 
   Future<ResponseModel<LoginData?>> socialLogin(SocialModel? socialModel);
 
@@ -98,6 +102,7 @@ abstract class DomainData {
   Future<ResponseModel<dynamic>> deleteAlarm(int id);
 
   Future<ResponseModel<AlarmData?>> alarmDetails(int id);
+
   Future<ResponseModel<AlarmData?>> updateAlarm(PostAlarm post);
 
   //family
@@ -135,4 +140,10 @@ abstract class DomainData {
   LoginModel? getUser();
 
   setUser(LoginModel? loginModel);
+
+  Future<ResponseModel<void>> signOut(PostLogout post);
+
+  Future<ResponseModel<LeavedGroup?>> leaveGroup(PostLeaveGroup post);
+
 }
+
