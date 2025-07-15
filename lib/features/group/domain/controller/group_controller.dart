@@ -47,8 +47,13 @@ class GroupController extends MainGetxController with CustomStateMixin {
 // }
 
 
-TextEditingController noteController = TextEditingController();
+  TextEditingController noteController = TextEditingController();
 
+  @override
+  void onClose() {
+    noteController.dispose();
+    super.onClose();
+  }
 void leaveGroup(Groups data) async {
     loadingGetxController.showLoading();
     var response = await sl<GroupCase>().leaveGroup(PostLeaveGroup(groupId: data.id , 
@@ -58,6 +63,9 @@ void leaveGroup(Groups data) async {
     loadingGetxController.hideLoading();
     statusError.checkStatus(response, () {
       onRefresh();
+            Get.put(HomeController()).onRefresh();
+
+      
     });
   }
 

@@ -74,7 +74,7 @@ final Groups dataGroup = Get.arguments;
 
   tapCamera: () async {
   controller.isImageLoading = true;
-  controller.update(); // علشان يعيد بناء الواجهة ويظهر اللودينج
+  controller.update(); 
 
   final pickedFile = await Pick.pickImage(context);
 
@@ -84,10 +84,10 @@ final Groups dataGroup = Get.arguments;
   }
 
   controller.isImageLoading = false;
-  controller.update(); // إعادة التحديث لإخفاء اللودينج
+  controller.update(); 
 },
 
-  image: controller.image, // ✅ تمرير الصورة هنا
+  image: controller.image,
   (value) {},
 ),
 
