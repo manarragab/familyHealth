@@ -371,6 +371,8 @@ class Remote {
     }, isLogin: true);
   }
 
+  
+
   Future<ResponseModel<dynamic>> deleteFamily(int id) async {
     return _helper.delete<dynamic>(
         path: "/user/family/$id",

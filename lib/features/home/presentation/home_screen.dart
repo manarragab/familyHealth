@@ -99,14 +99,14 @@ class Homescreen extends GetWidget<HomeController> {
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        "Reminders",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      const SizedBox(height: 16),
+                     getTitle(
+                          title: "Reminders",
+                          onTapMore: () {
+                                Get.toNamed(CustomPage.myAlarm);
+
+                          }),
+                    
+                     const SizedBox(height: 16),
                       SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
@@ -130,13 +130,15 @@ class Homescreen extends GetWidget<HomeController> {
                       const SizedBox(height: 24),
 
                       // Family Reminders Section
-                      const Text(
-                        "Family Reminders Today",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
+
+  getTitle(
+                          title: "Family Reminders Today",
+                          onTapMore: () {
+                                Get.toNamed(CustomPage.myFamily);
+
+                          }),
+
+                    
                       const SizedBox(height: 16),
 
                       SizedBox(
